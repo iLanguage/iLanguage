@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Unified University Inventory System</title>
+<link href="master.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+</head>
+
+<body>
+<div id="top"> <!-- The top panel -->
+ <!--  
+    <ul>
+      <li><a href="#">Menu 1</a></li>
+      <li><a href="#">Menu 2</a></li>
+      <li><a href="#">Menu 3</a></li>
+      <li><a href="#">Menu 4</a></li>
+      <li><a href="#">Subscribe via. RSS</a></li>
+    </ul>
+ -->
+	
+<div id="section">
+<h1>UUIS V0.10</h1>
+<p>IufA's Unified University Inventory System (UUIS).<br />  Many features will be coming in later itterations.</p>
+</div>
+</div>
+
+
+<div id="content">
+<div id="main"> <!-- This the main part of the page -->
+
+
+
+<form id="search" name="search" method="post" action="search_results.jsp">
+<table>
+<tr><td><span style="font-weight: bold">Query String<br />
+      <input name="query" type="text" value="" size="60" />
+</span></td>
+</tr>
+<tr><td><input type="submit" value="search" /></td></tr>
+</table>
+</form>
+<a href="javascript:showAdvanced()" id="link">+ Advanced Search</a>  
+<form id="advanced" name="advanced" method="post" action="search_results.jsp">
+<table>
+<tr><td><b>Query String</b><br /><input name="query" type="text" value="" size="60" /></td></tr>
+<tr><td><b>Vendor</b><br /><input name="vendor" type="text" value="" size="60" /></td></tr>
+<tr><td><b>Title</b><br /><input name="title" type="text" value="" size="60" /></td></tr>
+<tr><td>Version<br /><input name="version" type="text" value="" size="60" /></td></tr>
+<tr><td><b>License</b><br /><input name="license" type="text" value="" size="60" /></td></tr>
+<tr><td>License expiry date<br /><input name="expiryDate" type="text" value="" size="60" /></td></tr>
+<tr><td>Contact person<br /><input name="contact" type="text" value="" size="60" /></td></tr>
+<tr><td>Purchase number<br /><input name="pon" type="text" value="" size="60" /></td></tr>
+<tr><td>Purchase number<br />
+  <input name="rec" type="text" value="" size="60" /></td>
+</tr>
+<tr><td><input type="submit" value="Advanced search" /></td></tr>
+</table>
+</form>
+
+</div>
+<div id="right">  <!-- The left panel -->
+    <div id="space">
+    <h3>Space Inventory</h3>
+	  <table width="220" height="100" border="0">
+	  <tr valign=top><td width="160" height="100" valign="top">
+	  <img src="images/floorplan_zoom_selection.png" width="150" alt="Space Inventory Image" align="left"/></td>
+	  <td width="60" height="100" valign="top">
+      <ul>
+	  <li><a href="">View</a></li>
+      <li><a href="">Edit</a></li>
+      <li><a href="search_location.jsp">Search</a></li>
+      </ul>
+	  </td></tr></table>	
+    </div>
+    
+	<div id="assets">
+    <h3>Assets Inventory</h3>      
+	<table width="220" height="210" border="0">
+	  <tr valign=top><td width="160" height="210" valign="middle">
+	<img src="images/assets_ontology.png" width="150" alt="Assets Inventory Image" align="left"/>
+	</td><td width="60" height="210" valign="top">
+        <ul>
+	      <li><a href="">View</a></li>
+          <li><a href="?">Edit</a></li>
+          <li><a href="">Add</a></li>
+          <li><a href="search_asset.jsp">Search</a></li>
+       </ul></td>
+	  </tr></table>
+    </div>
+
+    <div id="software">
+    <h3>Software Inventory</h3>
+	<table width="220" height="210" border="0">
+	  <tr valign=top><td width="160" height="210" valign="middle">
+	<img src="images/software_module.png" width="150" alt="Software Inventory Image" align="left"/></td>
+	  <td width="60" height="210" valign="top">
+      <ul>
+	      <li><a href="">View</a></li>
+          <li><a href="">Edit</a></li>
+          <li><a href="search_software.jsp">Search</a></li>
+    </ul></td>
+	  </tr></table>
+    </div>
+
+     <div id="others">
+     <h3>Other Inventory Actions</h3>
+     <ul>
+        <li><a href="">Submit Inventory Change Request</a></li>
+        <li><a href="">Report Inventory Problem</a></li>
+	  	<li><a href="">Control Panel</a></li>
+	 </ul> 
+	 </div>	 
+</div>
+
+
+
+</div>  <!-- end of div content -->
+<div id="footer">
+<p>copyright<br />
+UUIS University</p>
+</div>
+</body>
+</html>
+<script language=javascript  type='text/javascript'>
+  var advance_search = document.getElementById('advanced');
+  advance_search.style.visibility = 'hidden';            
+
+  function show(id) {
+	var sho = document.getElementById(id);		
+	sho.style.visibility = 'visible';		
+  }
+
+  function hide(id){
+	var hidden = document.getElementById(id);
+	hidden.style.visibility = 'hidden';
+  }
+    
+  function remove(id) {
+       var element = document.getElementById(id);
+       element.parentNode.removeChild(element);
+  }
+
+  function swap(id1, id2){
+	var el1 = document.getElementById(id1);
+	var el2 = document.getElementById(id2);
+	el1.parentNode.insertBefore(el1, el2);
+  }
+  
+  function showAdvanced(){
+	hide('search');
+	hide('link');
+	swap('advanced','search');
+	show('advanced');
+  }
+
+
+</script>
+

@@ -1,0 +1,111 @@
+/*------------------------------
+=BASIC SETUP
+------------------------------*/
+
+/* Makeshift CSS Reset */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 0 auto;
+	padding: 22px 0;
+	width: 940px;
+	font-family:Arial, Helvetica, sans-serif;
+	background: #F0F0F0;
+        height: 100%;	
+}
+
+h1, h2 {
+	font-size: 28px;
+	line-height: 44px;
+	padding: 22px 0;
+}
+
+h3 {
+	font-size: 18px;
+	line-height: 22px;
+	padding: 11px 0;
+}
+
+p {
+	padding-bottom: 22px;
+}
+
+#top {
+     border:groove;
+     border-style:groove;
+     font-size:17px;
+     
+}
+ul{ list-style:none;}
+#top ul{
+    list-style:none;
+    list-style-position:inside;
+    margin: 0;
+    padding: 0;
+}
+ #top ul li{
+  padding-left:0.6em;
+  padding-top:3px;
+  display:inline;
+}
+#section{
+   background-image:url(images/intro_background.png); 
+   background-repeat: repeat-x;
+   color:#FFFFFF;
+   padding-left: 20px;
+}
+#main {
+      float:left;	
+      padding-left: 20px;
+      padding-top: 25px; 
+      height: 40em;
+ }
+	  
+#right {
+      float:right;
+      background: #F0F0F0;
+      margin-left:.8em;
+      padding-bottom: 1px;	  
+      height: 50em;
+      background-repeat: repeat-x;
+      padding-right: .3em;
+      border:groove;
+      border-style:groove;
+}
+
+#right div{
+  background-image:url(images/sidebar_section_background.png); 
+  background-repeat: repeat-x;
+  color:#000000;
+  margin: 0;
+  width: 240px;
+  padding-left: .3em;
+}
+
+#content{
+   height: 50em;
+   background-color:silver; 
+   border:groove;
+   border-style:groove;
+   margin: 0;
+   padding: 0px;
+}
+
+#footer{
+  text-align: center;
+  background-image:url(images/intro_background.png); 
+  color: black;
+  border:groove;
+  border-style:groove;
+  height: 60px; 
+  padding-top: 20px;
+}
+#content #main  input {
+	border-top-style: outset;
+	border-right-style: outset;
+	border-bottom-style: outset;
+	border-left-style: outset;
+}
