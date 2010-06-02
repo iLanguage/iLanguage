@@ -6,8 +6,15 @@
  */
 
 #include "LargeInt.h"
+#include <string>
+#include <iostream>
+#include "Sequence.h"
+using namespace std;
+
 LargeInt::LargeInt(char* characterInput){
-	//value = new Sequence::Sequence(characterInput);
+
+	cerr<<"Creating a largeint"<<endl;
+	Sequence value(characterInput);
 }
 LargeInt::LargeInt() {
 	// TODO Auto-generated constructor stub

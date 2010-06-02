@@ -10,11 +10,13 @@
 
 class Sequence {
 	bool negative;
+	char* originalString;
 	int size;
 	int* store;
 
 public:
 	void init(char* characterInput);
+	Sequence(char* characterInput);
 	Sequence();
 	virtual ~Sequence();
 };

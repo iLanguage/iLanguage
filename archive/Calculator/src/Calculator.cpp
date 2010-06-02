@@ -28,11 +28,11 @@ void Calculator::run(){
 
 
 	Calculator::printBackgroundInfo();
-	Calculator::printSampleInteraction();
-	Calculator::printMenu();
+	//Calculator::printSampleInteraction();
+	//Calculator::printMenu();
 
 	runTests();
-	runInteractively();
+	//runInteractively();
 
 	exit();
 }
@@ -142,13 +142,12 @@ void Calculator::runTests(){
 	cout<<"====+++=====Running Tests======++++====="<<endl;
 
 	//add 1123 to 25
+	cout<<endl<<"Creating some largeints."<<endl;
+	 LargeInt x("1123");
+	 LargeInt y("0034");
+	 LargeInt z("-2032");
+	 LargeInt w("27");
 
-	char* aNumber;
-	char* anotherNumber;
-
-	aNumber = "1123";
-
-	 //LargeInt accumulator = new LargeInt(aNumber);
 
 	cout<<"====+++=====Tests Completed====++++====="<<endl;
 }
