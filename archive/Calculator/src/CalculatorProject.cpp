@@ -1,5 +1,5 @@
 //============================================================================
-// Name        : Calculator.cpp
+// Name        : Calculator Project
 // Author      : gina
 // Version     :
 // Copyright   : CalculatorAndDataStructure

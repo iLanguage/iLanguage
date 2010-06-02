@@ -10,12 +10,22 @@
 #include <iostream>
 using namespace std;
 
+Sequence::Sequence(char* characterInput){
+	init(characterInput);
+}
+
 void Sequence::init(char* characterInput){
 	negative = false;
+	originalString = characterInput;
 
-	cerr<<"Creating a Sequence using input:  "<< characterInput<<endl;
+	//For grading purposes turn trace on to follow the procedure of turning an character string into the internal data structure
+	bool trace=true;
+
 
 	size = strlen(characterInput);//TBD: make a function to find the end of a char*
+	int originalSize =size;
+	if (trace)cout<<"Creating a Sequence using input:  "<< characterInput<<" of size "<<size<<endl;
+
 
 	int leadingTrashCount = 0;
 	/*
@@ -23,10 +33,10 @@ void Sequence::init(char* characterInput){
 	 */
 	if (characterInput[0] == '-')
 	{
-		cerr<<"its a negative number"<<endl;
 		negative=true;
 		leadingTrashCount++;
 		size--;
+		if (trace)cout<<"its a negative number, size is now "<<size<<endl;
 	}else{
 		negative=false;
 	}
@@ -36,23 +46,24 @@ void Sequence::init(char* characterInput){
 	 */
 	while(characterInput[leadingTrashCount] == '0')
 	{
-		cerr<<"this leading zero is being ignored"<<endl;
+
 		leadingTrashCount++;//look at the next one
 		size--;
+		if (trace) cout<<"this leading zero is being ignored, size is now "<<size<<endl;
 	}
 	store = new int[size];
-	cerr <<"Memory was allocated here is the reference: "<< &store <<endl;
+	if (trace)cout <<"Memory was allocated here is the reference: "<< &store <<endl;
 
 	/*
 	 * Put remaining integers into the store
 	 */
-	int top=0;
-	for(int i =size-1; i>=leadingTrashCount; i--){
+	int temp=0;
+	for(int i=leadingTrashCount; i<originalSize; i++){
 		char tempChar = characterInput[i];
 		int charAsInt = tempChar - '0';
-		cerr<< charAsInt<<" these values should match " <<tempChar<<endl;
-		store[top]=charAsInt;
-		top++;
+		if (trace) cout<< charAsInt<<" these values should match " <<tempChar<<endl;
+		store[temp]=charAsInt;
+		temp++;
 		//cout<<top;
 	}
 
