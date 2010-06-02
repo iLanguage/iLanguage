@@ -9,7 +9,12 @@
 #define SEQUENCE_H_
 
 class Sequence {
+	bool negative;
+	int size;
+	int* store;
+
 public:
+	void init(char* characterInput);
 	Sequence();
 	virtual ~Sequence();
 };
