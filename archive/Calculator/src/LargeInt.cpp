@@ -6,7 +6,9 @@
  */
 
 #include "LargeInt.h"
-
+LargeInt::LargeInt(char* characterInput){
+	//value = new Sequence::Sequence(characterInput);
+}
 LargeInt::LargeInt() {
 	// TODO Auto-generated constructor stub
 
