@@ -8,13 +8,51 @@
 #include "Sequence.h"
 #include <string>
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 Sequence::Sequence(char* characterInput){
-	init(characterInput);
+	size= init(characterInput);
+
+	if (trace) cout<<"Size is "<<size<<endl;
+}
+Sequence::Sequence(const Sequence & source){
+	if(trace) cout<<"Copying a sequence to a new object: "<<source.originalString<<endl;
+
+	size=source.size;
+	originalString=source.originalString;
+	negative=source.negative;
+	store = new int[size];
+
+	//deep copying
+	for(int i=0; i<size; i++){
+		store[i]=source.store[i];
+		if(trace)cout<<"Deep copying "<<source.store[i]<<" to "<<store[i]<<endl;
+	}
+
+}
+Sequence& Sequence::operator =(const Sequence & source){
+	if (trace) cout<<"Assigning from an existing sequence to another existing sequence"<<endl;
+
+	//avoid self assignment
+	if (this != &source){
+		size=source.size;
+		originalString=source.originalString;
+		negative=source.negative;
+		delete[] store;
+
+		store = new int[size];
+
+			//deep copying
+			for(int i=0; i<size; i++){
+				store[i]=source.store[i];
+				if(trace)cout<<"Deep copying "<<source.store[i]<<" to "<<store[i]<<endl;
+			}
+	}
+	return *this;  //return the pointer to this object
 }
 
-void Sequence::init(char* characterInput){
+int Sequence::init(char* characterInput){
 	negative = false;
 	originalString = characterInput;
 
@@ -67,6 +105,9 @@ void Sequence::init(char* characterInput){
 		//cout<<top;
 	}
 
+	if(trace)cout<<"Size is "<<size<<endl;
+
+	return size;//size didnt seem to remain set after control leaves the init function.
 }
 
 Sequence::Sequence() {
@@ -75,5 +116,43 @@ Sequence::Sequence() {
 }
 
 Sequence::~Sequence() {
+	delete[] store;
 	// TODO Auto-generated destructor stub
+}
+
+char* Sequence::getAsString(){
+	if (trace) cout<<"Size is "<<size<<endl;
+	/*
+	 * if( size < 0)
+			throw std::string("The size is negative, something is wrong.");
+	    else
+	        asString = new char[size];
+
+
+	if(negative)
+		asString[0]='-';
+	for(int i=0; i<size; i++){
+
+		asString[i+1] = 'x';
+	}
+	asString[size+2]='\0';
+	*/
+	return "xxx";
+}
+
+int Sequence::getSize(){
+	return size;
+}
+
+char* Sequence::getOriginalString(){
+	return originalString;  //does this give the pointer?
+}
+
+
+int Sequence::cStringLength ( const char* input){
+	int i =0;
+	//go through the input looking for the string termination character.
+	while (input[i] != '\0');
+		i++;
+	return i;
 }

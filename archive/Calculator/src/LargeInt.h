@@ -13,12 +13,20 @@
 class LargeInt {
 private:
 	Sequence value;
+	const static int baseSystem =10;
+	const static bool trace = true;
+
 public:
 	LargeInt();
 	LargeInt(char* characterInput);
+	explicit LargeInt (int n=10);
 	virtual ~LargeInt();
 	char* toString();
 
+	void Add(LargeInt &input);
+
+	int getSize();
+	char* getOriginalString();
 };
 
 #endif /* LARGEINT_H_ */

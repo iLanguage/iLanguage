@@ -32,7 +32,7 @@ void Calculator::run(){
 	//Calculator::printMenu();
 
 	runTests();
-	//runInteractively();
+	runInteractively();
 
 	exit();
 }
@@ -93,6 +93,7 @@ void Calculator::runInteractively(){
 		cerr<<"\t\tUserInput: "<<userInput<<endl;
 
 		char operation = userInput[0];
+		userInput[0]='0';
 		cerr<<"\tOperation: "<<operation<<endl;
 
 		switch (operation){
@@ -141,13 +142,24 @@ void Calculator::exit(){
 void Calculator::runTests(){
 	cout<<"====+++=====Running Tests======++++====="<<endl;
 
-	//add 1123 to 25
+
 	cout<<endl<<"Creating some largeints."<<endl;
 	 LargeInt x("1123");
 	 LargeInt y("0034");
 	 LargeInt z("-2032");
 	 LargeInt w("27");
 
+	 cout<<endl<<"Copying a LargeInt to a new one"<<endl;
+	 LargeInt p(z);
+
+
+	 LargeInt x2("11123");
+	 cout<<endl<<"Overwriting what was in x "<<x.getOriginalString()<<" with what's in x2 "<<x2.getOriginalString()<<endl;
+	 x=x2;
+
+
+	 cout<<endl<<"Testing arithmatical operations."<<endl;
+	 x.Add(y);
 
 	cout<<"====+++=====Tests Completed====++++====="<<endl;
 }
