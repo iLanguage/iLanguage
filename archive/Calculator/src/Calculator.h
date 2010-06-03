@@ -4,11 +4,16 @@
  *  Created on: Jun 2, 2010
  *      Author: gina
  */
+#include <string>
+using namespace std;
 
 #ifndef CALCULATOR_H_
 #define CALCULATOR_H_
 
+
 class Calculator {
+private:
+	const static bool trace = true;
 public:
 	Calculator();
 	virtual ~Calculator();
@@ -21,6 +26,8 @@ public:
 	void printSampleInteraction() const;
 	void printMenu() const;
 	void exit();
+
+
 
 };
 
