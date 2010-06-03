@@ -24,12 +24,16 @@ public:
 	Sequence(char* characterInput);
 	Sequence(const Sequence& source);//copy constructor
 	Sequence& operator=(const Sequence& source); //assignment operator overload
-	Sequence();
+	explicit Sequence(int n=10);
+
+	//Sequence();
 	virtual ~Sequence();
 
 	char* getAsString();//TBD
 	int getSize();
 	char* getOriginalString();
+	void setElement(int i, int newValue);
+	int getElement(int i);
 
 	int cStringLength ( const char* input);
 

@@ -32,7 +32,7 @@ void Calculator::run(){
 	//Calculator::printMenu();
 
 	runTests();
-	runInteractively();
+	//runInteractively();
 
 	exit();
 }
@@ -145,7 +145,7 @@ void Calculator::runTests(){
 
 	cout<<endl<<"Creating some largeints."<<endl;
 	 LargeInt x("1123");
-	 LargeInt y("0034");
+	 LargeInt y("0064");
 	 LargeInt z("-2032");
 	 LargeInt w("27");
 

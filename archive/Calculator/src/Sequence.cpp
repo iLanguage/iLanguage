@@ -11,6 +11,18 @@
 #include <sstream>
 using namespace std;
 
+
+Sequence::Sequence (int n){
+	if (trace) cout<<"Created an empty Sequence of size "<<n<<endl;
+
+	size = n;
+	originalString='\0';
+	negative = false;
+
+	store = new int[size];
+	if (trace) cout <<"Memory was allocated here is the ref"<< &store <<endl;
+}
+
 Sequence::Sequence(char* characterInput){
 	size= init(characterInput);
 
@@ -110,10 +122,10 @@ int Sequence::init(char* characterInput){
 	return size;//size didnt seem to remain set after control leaves the init function.
 }
 
-Sequence::Sequence() {
+//Sequence::Sequence() {
 	// TODO Auto-generated constructor stub
 
-}
+//}
 
 Sequence::~Sequence() {
 	delete[] store;
@@ -121,23 +133,27 @@ Sequence::~Sequence() {
 }
 
 char* Sequence::getAsString(){
-	if (trace) cout<<"Size is "<<size<<endl;
-	/*
-	 * if( size < 0)
+	//if (trace) cout<<"Size is "<<size<<endl;
+
+	char* asString2;
+	 if( size < 0)
 			throw std::string("The size is negative, something is wrong.");
 	    else
-	        asString = new char[size];
+	        asString2 = new char[size];
 
 
 	if(negative)
-		asString[0]='-';
+		asString2[0]='-';
 	for(int i=0; i<size; i++){
 
-		asString[i+1] = 'x';
+		asString2[i+1] = store[i]+'0';//add the position of 0 in the ascii table to get the int as a char
 	}
-	asString[size+2]='\0';
-	*/
-	return "xxx";
+	asString2[size+2]='\0';
+
+	if (trace) cout<<"This is the string: "<<asString2<<endl;
+
+	asString = asString2;
+	return asString;
 }
 
 int Sequence::getSize(){
@@ -155,4 +171,12 @@ int Sequence::cStringLength ( const char* input){
 	while (input[i] != '\0');
 		i++;
 	return i;
+}
+
+void Sequence::setElement(int i, int newValue){
+	store[i] = newValue;
+}
+
+int Sequence::getElement(int i){
+	return store[i];
 }
