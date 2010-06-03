@@ -145,22 +145,31 @@ void Calculator::runTests(){
 
 	cout<<endl<<"Creating some largeints."<<endl;
 	 LargeInt x("1123");
+	 cout<<"\t x is "<<x.getOriginalString()<<" should match: "<<x.getAsStringy()<<endl;
 	 LargeInt y("0064");
+	 cout<<"\t y is "<<y.getOriginalString()<<" should match: "<<y.getAsStringy()<<endl;
 	 LargeInt z("-2032");
+	 cout<<"\t z is "<<z.getOriginalString()<<" should match: "<<z.getAsStringy()<<endl;
 	 LargeInt w("27");
+	 cout<<"\t w is "<<w.getOriginalString()<<" should match: "<<w.getAsStringy()<<endl;
 
-	 cout<<endl<<"Copying a LargeInt to a new one"<<endl;
+	 cout<<endl<<"Testing the copy constructor\n\tCopying a LargeInt to a new one"<<endl;
 	 LargeInt p(z);
-
+	 cout<<"\t p is copied from z "<<p.getOriginalString()<<" should match: "<<p.getAsStringy()<<endl;
 
 	 LargeInt x2("11123");
-	 cout<<endl<<"Overwriting what was in x "<<x.getOriginalString()<<" with what's in x2 "<<x2.getOriginalString()<<endl;
+	 cout<<endl<<"Testing the assignment overloading =\n\tOverwriting what was in x "<<x.getOriginalString()<<" with what's in x2 "<<x2.getOriginalString()<<endl;
 	 x=x2;
+	 cout<<"\t x is "<<x.getOriginalString()<<" should match: "<<x.getAsStringy()<<endl;
+
 
 
 	 cout<<endl<<"Testing arithmatical operations."<<endl;
 	 LargeInt result(x.Add(y));
-	 cout<<"This is the result: "<<result.getAsStringy()<<endl;
+	 cout<<"This is the result: "<<result.getAsStringy()<<endl;//TBD interesting values printed here
+
+
+
 
 	cout<<"====+++=====Tests Completed====++++====="<<endl;
 }

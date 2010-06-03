@@ -14,7 +14,7 @@ class LargeInt {
 private:
 	Sequence value;
 	const static int baseSystem =10;
-	const static bool trace = true;
+	const static bool trace = false;
 
 public:
 	//LargeInt();

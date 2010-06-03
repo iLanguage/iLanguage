@@ -68,8 +68,6 @@ int Sequence::init(char* characterInput){
 	negative = false;
 	originalString = characterInput;
 
-	//For grading purposes turn trace on to follow the procedure of turning an character string into the internal data structure
-	bool trace=true;
 
 
 	size = strlen(characterInput);//TBD: make a function to find the end of a char*
@@ -140,18 +138,23 @@ char* Sequence::getAsString(){
 	 if( size < 0)
 			throw std::string("The size is negative, something is wrong.");
 	    else
-	        asString2 = new char[size];
+	        asString2 = new char[size+2];
 
 
 	if(negative)
 		asString2[0]='-';
+	else
+		asString2[0]=' ';
+
 	for(int i=0; i<size; i++){
 
 		asString2[i+1] = store[i]+'0';//add the position of 0 in the ascii table to get the int as a char
+		//cout<<asString2[i+1]; //put the char out to the screen
 	}
-	asString2[size+2]='\0';
+	//apend the string terminator on the end
+	asString2[size+1]='\0';
 
-	if (trace) cout<<"This is the string: "<<asString2<<endl;
+	//if (trace) cout<<"This is the c-string from the getAsString method: "<<asString2<<endl;
 
 	asString = asString2;
 	return asString;

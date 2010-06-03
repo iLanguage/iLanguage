@@ -44,7 +44,7 @@ LargeInt& LargeInt::Add( LargeInt &input){
 
 	char* holder = value.getAsString();
 	char* anotherHolder = input.value.getAsString();
-	if (trace) cout<<"Adding \n " <<holder<<endl<<"+"<<anotherHolder<<endl;
+	cout<<"Adding \n " <<holder<<endl<<"+"<<anotherHolder<<endl;
 
 
 	int maxsize = 0;
@@ -74,7 +74,15 @@ LargeInt& LargeInt::Add( LargeInt &input){
 			if(carry>baseSystem){
 				if (trace) cout<<"In this base system ("<<baseSystem<<") The addition of "<<x.getElement(x.getSize()-i)<<"+"<<y.getElement(y.getSize()-i)<<" results in a carry, here is the value: "<<carry<<endl;
 				int plusOne = x.getElement(x.getSize()-i)+1;
-				x.setElement(x.getSize()-i+1,plusOne);//equivalent to x.store[size-i+1]+=1; //add 1 to the higher place in the x, to be used in the next itteration of addition
+				if(plusOne<baseSystem){
+					x.setElement(x.getSize()-i-1,plusOne);//equivalent to x.store[size-i+1]+=1; //add 1 to the higher place in the x, to be used in the next itteration of addition
+				}else{
+					plusOne = x.getElement(x.getSize()-i-1)+1;
+					if (plusOne<baseSystem)
+						x.setElement(x.getSize()-i-2,plusOne);
+					else
+						cout<<"The carry procedure needs to continue in while, TBD";
+				}
 				result.value.setElement(result.getSize()-i, carry-baseSystem); //remove the base system from the carry eg, if the carry is 13 and base is 10, then its 13-13=3
 
 			}else{
@@ -95,9 +103,7 @@ LargeInt& LargeInt::Add( LargeInt &input){
 	result.value.setElement(0, 0);
 
 
-	holder = result.getAsStringy();
-	cout<<"Addition Completed, result: "<<holder<<" For some reason it doesnt print. "<<endl<<endl;//TBD question make it print, something with the way im making a cstring
-
+	cout<<"="<<result.getAsStringy()<<endl;
 
 	return result;//question, why isnt this *result
 
