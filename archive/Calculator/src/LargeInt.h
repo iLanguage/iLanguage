@@ -19,7 +19,7 @@ private:
 public:
 	LargeInt();
 	LargeInt(char* characterInput);
-	explicit LargeInt (int n=10);
+	//explicit LargeInt (int n=10);
 	virtual ~LargeInt();
 	char* toString();
 
@@ -27,6 +27,7 @@ public:
 
 	int getSize();
 	char* getOriginalString();
+	char* getAsStringy();
 };
 
 #endif /* LARGEINT_H_ */

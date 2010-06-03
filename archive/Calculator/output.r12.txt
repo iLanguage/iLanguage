@@ -1,0 +1,111 @@
+The Calculator is turned on.
+==========Welcome to the Calculator=================Advanced Programming
+Assignment 1 : Calculator
+Description: A calculator demonstrating
+	*the use of classes in C++
+	*manipulation of pointers
+	*algorithm for manipulating arbitrarily large integers in any base system (decimal, binary, hexidecimal etc) 
+	*dynamic memory allocation and destruction ===================================================
+====+++=====Running Tests======++++=====
+
+Creating some largeints.
+Creating a Sequence using input:  1123 of size 4
+Memory was allocated here is the reference: 0xbffffa08
+1 these values should match 1
+1 these values should match 1
+2 these values should match 2
+3 these values should match 3
+Size is 4
+Size is 4
+Creating a largeint
+Creating a Sequence using input:  0064 of size 4
+this leading zero is being ignored, size is now 3
+this leading zero is being ignored, size is now 2
+Memory was allocated here is the reference: 0xbffff9ec
+6 these values should match 6
+4 these values should match 4
+Size is 2
+Size is 2
+Creating a largeint
+Creating a Sequence using input:  -2032 of size 5
+its a negative number, size is now 4
+Memory was allocated here is the reference: 0xbffff9d0
+2 these values should match 2
+0 these values should match 0
+3 these values should match 3
+2 these values should match 2
+Size is 4
+Size is 4
+Creating a largeint
+Creating a Sequence using input:  27 of size 2
+Memory was allocated here is the reference: 0xbffff9b4
+2 these values should match 2
+7 these values should match 7
+Size is 2
+Size is 2
+Creating a largeint
+
+Copying a LargeInt to a new one
+Copying a sequence to a new object: -2032
+Deep copying 2 to 2
+Deep copying 0 to 0
+Deep copying 3 to 3
+Deep copying 2 to 2
+Creating a Sequence using input:  11123 of size 5
+Memory was allocated here is the reference: 0xbffff97c
+1 these values should match 1
+1 these values should match 1
+1 these values should match 1
+2 these values should match 2
+3 these values should match 3
+Size is 5
+Size is 5
+Creating a largeint
+
+Overwriting what was in x 1123 with what's in x2 11123
+Assigning from an existing sequence to another existing sequence
+Deep copying 1 to 1
+Deep copying 1 to 1
+Deep copying 1 to 1
+Deep copying 2 to 2
+Deep copying 3 to 3
+
+Testing arithmatical operations.
+
+Checking the size of the accumulator...5
+Checking the size of the input...		2
+
+Checking the originalstring of the accumulator...11123
+Checking the originalstring of the input...		0064
+This is the string: 11123
+This is the string: 
+Adding 
+ 11123
++
+Created an empty Sequence of size 10
+Memory was allocated here is the ref0xbffff8fc
+Created an empty Sequence of size 10
+Memory was allocated here is the ref0xbffff8e4
+The accumulator is longer than the input.
+Assigning from an existing sequence to another existing sequence
+Deep copying 1 to 1
+Deep copying 1 to 1
+Deep copying 1 to 1
+Deep copying 2 to 2
+Deep copying 3 to 3
+Assigning from an existing sequence to another existing sequence
+Deep copying 6 to 6
+Deep copying 4 to 4
+
+Created an empty Sequence of size 6
+Memory was allocated here is the ref0xbffff8cc
+Adding 3 to 4
+This is the new value in the 0 place: 7
+Adding 2 to 6
+This is the new value in the 1 place: 8
+This is the string: 
+Addition Completed, result:  For some reason it doesnt print. 
+
+====+++=====Tests Completed====++++=====
+---------Thanks for using the calculator.----------
+ The calculator has now powered down.
