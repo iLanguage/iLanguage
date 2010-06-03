@@ -17,13 +17,15 @@ private:
 	const static bool trace = true;
 
 public:
-	LargeInt();
+	//LargeInt();
 	LargeInt(char* characterInput);
-	//explicit LargeInt (int n=10);
+	explicit LargeInt (int n=10);
+	LargeInt(const LargeInt& source);//copy constructor
+	LargeInt& operator=(const LargeInt& source); //assignment operator overload
 	virtual ~LargeInt();
 	char* toString();
 
-	void Add(LargeInt &input);
+	LargeInt& Add(LargeInt &input);
 
 	int getSize();
 	char* getOriginalString();

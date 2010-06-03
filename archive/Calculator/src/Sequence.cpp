@@ -135,6 +135,7 @@ Sequence::~Sequence() {
 char* Sequence::getAsString(){
 	//if (trace) cout<<"Size is "<<size<<endl;
 
+	//question, why does this sometimes work? problem with the localness of the string?
 	char* asString2;
 	 if( size < 0)
 			throw std::string("The size is negative, something is wrong.");
