@@ -9,7 +9,7 @@
 #define SEQUENCE_H_
 
 class Sequence {
-	const static bool trace = true;
+	const static bool trace = false;
 	bool negative;
 	char* originalString;
 	int size;
