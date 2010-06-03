@@ -159,7 +159,8 @@ void Calculator::runTests(){
 
 
 	 cout<<endl<<"Testing arithmatical operations."<<endl;
-	 x.Add(y);
+	 LargeInt result(x.Add(y));
+	 cout<<"This is the result: "<<result.getAsStringy()<<endl;
 
 	cout<<"====+++=====Tests Completed====++++====="<<endl;
 }
