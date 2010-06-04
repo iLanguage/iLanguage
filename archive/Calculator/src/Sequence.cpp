@@ -22,6 +22,10 @@ Sequence::Sequence (int n){
 	asString= new char[size+2];
 	originalString= new char[size+2];
 
+	//zero out the space
+	for (int i=0;i<size;i++){
+		store[0]='0';
+	}
 
 	if (trace) cout <<"Memory was allocated here is the ref"<< &store <<endl;
 }
