@@ -70,33 +70,58 @@ LargeInt& LargeInt::Add( LargeInt &input){
 	//for the places starting at zero, going until the size of the smaller operand
 	for(int i=1; i<=y.getSize();i++){
 		if (trace) cout<<"Adding "<<x.getElement(x.getSize()-i)<< " to "<<y.getElement(y.getSize()-i)<<endl;
-			carry = x.getElement(x.getSize()-i)+y.getElement(y.getSize()-i);
-			if(carry>baseSystem){
-				if (trace) cout<<"In this base system ("<<baseSystem<<") The addition of "<<x.getElement(x.getSize()-i)<<"+"<<y.getElement(y.getSize()-i)<<" results in a carry, here is the value: "<<carry<<endl;
-				int plusOne = x.getElement(x.getSize()-i)+1;
-				if(plusOne<baseSystem){
-					x.setElement(x.getSize()-i-1,plusOne);//equivalent to x.store[size-i+1]+=1; //add 1 to the higher place in the x, to be used in the next itteration of addition
-				}else{
-					plusOne = x.getElement(x.getSize()-i-1)+1;
-					if (plusOne<baseSystem)
-						x.setElement(x.getSize()-i-2,plusOne);
-					else
-						cout<<"The carry procedure needs to continue in while, TBD";
-				}
-				result.value.setElement(result.getSize()-i, carry-baseSystem); //remove the base system from the carry eg, if the carry is 13 and base is 10, then its 13-13=3
 
-			}else{
+		//calculate the addition in that position
+		carry = x.getElement(x.getSize()-i) + y.getElement(y.getSize()-i);
+
+		if(carry>baseSystem){
+				if (trace) cout<<"In this base system ("<<baseSystem<<") The addition of "<<x.getElement(x.getSize()-i)<<"+"<<y.getElement(y.getSize()-i)<<" results in a carry, here is the value: "<<carry<<endl;
+				//put the remainder into this position of the result
+				result.value.setElement(result.getSize()-i, carry-baseSystem);
+
+				//add one to the position to the left
+				int plusOne = 0;
+				plusOne =x.getElement(x.getSize()-i)+1;
+
+				int keepCarrying=0;
+				//while the plusone is too big to fit in the position, send the carry further along to a higher position in x
+				while(plusOne>baseSystem && (x.getSize()-keepCarrying-i > 0) )
+				{
+					if (trace) cout<<"Need to carry to the next position to the left."<<endl;
+					//put the remainder into the postion higher to the left
+					x.setElement(result.getSize()-i-keepCarrying, plusOne-baseSystem);
+					if (trace) cout<<"\t Now x looks like this: "<<x.getAsString()<<endl;
+
+					//carry again, add one to the next higher position
+					plusOne = x.getElement(x.getSize()-i-keepCarrying-1)+1;//move over to the left one spot each iteration
+					if (trace) cout<<"\t\t New carry: "<<plusOne<<endl;
+
+					//increment the number of times you carried
+					keepCarrying++;
+				}
+
+				//if on the last position of x, put the carry into the result instead of putting it in x.
+				if( plusOne<baseSystem && x.getSize()-keepCarrying-i <= 0 ){
+					result.value.setElement(0, plusOne); //remove the base system from the carry eg, if the carry is 13 and base is 10, then its 13-13=3
+					if(trace) cout<<"Putting the carry into the extra digit of the result (created for this purpose) result is currently:"<<result.getAsStringy()<<endl;
+				}else{
+					x.setElement(x.getSize()-i-keepCarrying-1, plusOne);//equivalent to x.store[size-i+1]+=1; //add 1 to the higher place in the x, to be used in the next itteration of addition
+					if (trace) cout<<"Done carrying the result of this addition, \nCarried "<<keepCarrying
+							<<" times. Putting the carry into the next higher position to the left in x."<<endl;
+				}
+		}else{
 				result.value.setElement(result.getSize()-i, carry);
-			}
-			if(trace) cout<<"This is the new value in the "<<i-1<<" place: "<<result.value.getElement(result.getSize()-i)<<endl;
+		}
+		if(trace) cout<<"This is the new value in the "<<i-1<<" place: "<<result.value.getElement(result.getSize()-i)<<endl;
 	}
 
 	//for the higher digits of the longer opperand, copy the digits.
 	for(int k=y.getSize()+1; k<=x.getSize(); k++)
 	{
-		if (trace) cout<<"Just copying "<<x.getElement(x.getSize()-k)<< " to place "<<k-1<<endl;
 		//TBD if the element is bigger thanthe carry, carry again.
 		result.value.setElement( result.getSize()-k , x.getElement(x.getSize()-k) );
+		if (trace) cout<<"Just copying "<<x.getElement(x.getSize()-k)<< " (should match "<< result.value.getElement(result.getSize()-k)<<") to place "<<k-1<<endl;
+
 	}
 
 	//if the extra place value is not needed, set it to 0

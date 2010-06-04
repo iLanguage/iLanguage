@@ -16,10 +16,13 @@ Sequence::Sequence (int n){
 	if (trace) cout<<"Created an empty Sequence of size "<<n<<endl;
 
 	size = n;
-	originalString='\0';
 	negative = false;
 
 	store = new int[size];
+	asString= new char[size+2];
+	originalString= new char[size+2];
+
+
 	if (trace) cout <<"Memory was allocated here is the ref"<< &store <<endl;
 }
 
@@ -33,8 +36,10 @@ Sequence::Sequence(const Sequence & source){
 
 	size=source.size;
 	originalString=source.originalString;
+
 	negative=source.negative;
 	store = new int[size];
+	asString= new char[size+2];
 
 	//deep copying
 	for(int i=0; i<size; i++){
@@ -50,10 +55,12 @@ Sequence& Sequence::operator =(const Sequence & source){
 	if (this != &source){
 		size=source.size;
 		originalString=source.originalString;
+
 		negative=source.negative;
 		delete[] store;
 
 		store = new int[size];
+		asString= new char[size+2];
 
 			//deep copying
 			for(int i=0; i<size; i++){
@@ -71,6 +78,8 @@ int Sequence::init(char* characterInput){
 
 
 	size = strlen(characterInput);//TBD: make a function to find the end of a char*
+	asString= new char[size+2];
+
 	int originalSize =size;
 	if (trace)cout<<"Creating a Sequence using input:  "<< characterInput<<" of size "<<size<<endl;
 
@@ -127,6 +136,8 @@ int Sequence::init(char* characterInput){
 
 Sequence::~Sequence() {
 	delete[] store;
+	//delete[] asString;
+	//delete[] originalString;
 	// TODO Auto-generated destructor stub
 }
 
@@ -134,29 +145,29 @@ char* Sequence::getAsString(){
 	//if (trace) cout<<"Size is "<<size<<endl;
 
 	//question, why does this sometimes work? problem with the localness of the string?
-	char* asString2;
-	 if( size < 0)
+	//char* asString2;
+	 if(size < 0)
 			throw std::string("The size is negative, something is wrong.");
 	    else
-	        asString2 = new char[size+2];
+	    	asString = new char[size+2];
 
 
 	if(negative)
-		asString2[0]='-';
+		asString[0]='-';
 	else
-		asString2[0]=' ';
+		asString[0]=' ';
 
 	for(int i=0; i<size; i++){
 
-		asString2[i+1] = store[i]+'0';//add the position of 0 in the ascii table to get the int as a char
+		asString[i+1] = store[i]+'0';//add the position of 0 in the ascii table to get the int as a char
 		//cout<<asString2[i+1]; //put the char out to the screen
 	}
 	//apend the string terminator on the end
-	asString2[size+1]='\0';
+	asString[size+1]='\0';
 
 	//if (trace) cout<<"This is the c-string from the getAsString method: "<<asString2<<endl;
 
-	asString = asString2;
+	//asString = asString2;
 	return asString;
 }
 
