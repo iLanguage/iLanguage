@@ -165,8 +165,20 @@ void Calculator::runTests(){
 
 
 	 cout<<endl<<"Testing arithmatical operations."<<endl;
-	 LargeInt result(x.Add(y));
-	 cout<<"This is the result: "<<result.getAsStringy()<<endl;//TBD interesting values printed here
+
+	 LargeInt accumulator = x.Add(y);
+	 cout<<"This is the result: "<<accumulator.getAsStringy()<<endl;//TBD interesting values printed here
+
+
+	 LargeInt accumulator2 = accumulator.Add(w);
+	 cout<<"This is the result: "<<accumulator2.getAsStringy()<<endl;//TBD interesting values printed here
+
+
+	 LargeInt carryAlot("999");
+	 LargeInt q("3");
+	 LargeInt result2 = carryAlot.Add(q);
+	 cout<<"This is the result: "<<result2.getAsStringy()<<endl;//TBD interesting values printed here
+
 
 
 
