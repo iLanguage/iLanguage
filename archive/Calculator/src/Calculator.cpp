@@ -166,21 +166,25 @@ void Calculator::runTests(){
 
 	 cout<<endl<<"Testing arithmatical operations."<<endl;
 
-	 LargeInt accumulator = x.Add(y);
+	 LargeInt accumulator = x;//the value that gets returned into this accumulator is screwed up. so isntead, i put the result value into the callers value
+	 accumulator.Add(y);
 	 cout<<"This is the result: "<<accumulator.getAsStringy()<<endl;//TBD interesting values printed here
 
 
-	 LargeInt accumulator2 = accumulator.Add(w);
-	 cout<<"This is the result: "<<accumulator2.getAsStringy()<<endl;//TBD interesting values printed here
+	 accumulator.Add(w);
+	 cout<<"This is the result: "<<accumulator.getAsStringy()<<endl;//TBD interesting values printed here
 
 
 	 LargeInt carryAlot("999");
 	 LargeInt q("3");
-	 LargeInt result2 = carryAlot.Add(q);
-	 cout<<"This is the result: "<<result2.getAsStringy()<<endl;//TBD interesting values printed here
+	 carryAlot.Add(q);
+	 cout<<"This is the result: "<<carryAlot.getAsStringy()<<endl;//TBD interesting values printed here
 
 
-
+	 LargeInt carryMore("9879");
+	 LargeInt g("89878");
+	 carryMore.Add(g);
+	 cout<<"This is the result: "<<carryMore.getAsStringy()<<endl;//TBD interesting values printed here
 
 
 	cout<<"====+++=====Tests Completed====++++====="<<endl;
