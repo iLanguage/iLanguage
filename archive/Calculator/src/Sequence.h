@@ -9,7 +9,7 @@
 #define SEQUENCE_H_
 
 class Sequence {
-	const static bool trace = false;
+	const static bool trace=false;
 	bool negative;
 	char* originalString;
 	int size;
@@ -39,7 +39,6 @@ public:
 
 	void setPosition(int i, int newValue);
 	int getValueAtPosition(int i);
-
 
 	int cStringLength ( const char* input);
 

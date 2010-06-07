@@ -29,8 +29,12 @@ void Calculator::run(){
 
 
 	Calculator::printBackgroundInfo();
-	//Calculator::printSampleInteraction();
-	//Calculator::printMenu();
+	Calculator::printSampleInteraction();
+	Calculator::printMenu();
+
+	//initalize the trace boolians
+	//Sequence::setTrace =true;
+	//LargeInt::setTrace =true;
 
 	//runTests();
 	runInteractively();
@@ -54,7 +58,7 @@ void Calculator::printBackgroundInfo() const{
 
 
 void Calculator::printSampleInteraction() const{
-	cout<<"-------Sample interaction (as specified in the assignment requirements):\n--------"
+	cout<<"-------Sample interaction (as specified in the assignment requirements):--------\n"
 			"Accumulator: +0\t\t\tCalculator starts with 0 value\n"
 			"Enter input: +2\t\t\tUser inputs an operation (+,-,*,/,%) and an arbitrarily large integer (2)\n\n"
 			"Accumulator: +2\t\t\tCalculator performs (0+2)\n"
@@ -75,7 +79,13 @@ void Calculator::printMenu() const{
 			"\tn        Negate \n"
 			"\tc        Clear (reset) to zero\n"
 			"\tq        Quit\n"
-			"\th        Help" <<endl;
+			"\th        Help\n\n"
+
+			"\tt        Run tests\n\n"
+
+			"\ts        Trace Sequence class. Use this to trace how the data structure works (for TA to grade)\n"
+			"\tl        Trace LargeInt class. Use this to trace how the arithmetic works (for the TA to grade)\n"
+			"\to        Trace off\n"<<endl;
 }
 
 
@@ -134,16 +144,37 @@ void Calculator::runInteractively(){
 				resultTest = 5;
 				break;
 			case '-':
+				cout<<"Subtraction is not implemented"<<endl;
 				resultTest = 6;
 				break;
 			case '*':
+				cout<<"Multiplication is not implemented"<<endl;
 				resultTest = 7;
 				break;
 			case '/':
+				cout<<"Division is not implemented"<<endl;
 				resultTest = 8;
 				break;
 			case '%':
+				cout<<"Modulus is not implemented"<<endl;
 				resultTest = 9;
+				break;
+			case 't' :
+				runTests();
+				break;
+			case 's':
+				//Sequence::setTrace = true;
+				cout<<"Problem setting the trace static data member, please do it manually in the headers."<<endl;
+				break;
+			case 'l':
+				//LargeInt::setTrace(true);
+				cout<<"Problem setting the trace static data member, please do it manually in the headers."<<endl;
+				break;
+			case 'o':
+				//Sequence::setTrace(false);
+				//LargeInt::setTrace(false);
+				cout<<"Problem setting the trace static data member, please do it manually in the headers."<<endl;
+				break;
 			default:
 				cout<<"Please try again (something is wrong with your input)."<<endl;
 		}
