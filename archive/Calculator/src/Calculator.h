@@ -14,6 +14,7 @@ using namespace std;
 class Calculator {
 private:
 	const static bool trace = true;
+	char* toCstring(string stringIn);
 public:
 	Calculator();
 	virtual ~Calculator();

@@ -34,6 +34,12 @@ public:
 	char* getOriginalString();
 	void setElement(int i, int newValue);
 	int getElement(int i);
+	void printEach();
+	void printValue();
+
+	void setPosition();
+	int getValueAtPosition();
+
 
 	int cStringLength ( const char* input);
 

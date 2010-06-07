@@ -150,11 +150,13 @@ char* Sequence::getAsString(){
 
 	//question, why does this sometimes work? problem with the localness of the string?
 	//char* asString2;
-	 if(size < 0)
-			throw std::string("The size is negative, something is wrong.");
-	    else
+	 if(size < 0){
+			throw std::string("The size is negative, something is wrong.\n");
+	 }else if (size >100000000){
+			 throw std::string("The size of the largeint is really big, something might be wrong.\n");
+	 }else{
 	    	asString = new char[size+2];
-
+	 }
 
 	if(negative)
 		asString[0]='-';
@@ -165,6 +167,10 @@ char* Sequence::getAsString(){
 
 		asString[i+1] = store[i]+'0';//add the position of 0 in the ascii table to get the int as a char
 		//cout<<asString2[i+1]; //put the char out to the screen
+	}
+
+	if(size==0){
+		asString[0]='0';
 	}
 	//apend the string terminator on the end
 	asString[size+1]='\0';
@@ -196,6 +202,54 @@ void Sequence::setElement(int i, int newValue){
 	store[i] = newValue;
 }
 
+/*
+ * A function designed to simplify accessing elements by their decimal/binary position
+ */
+void Sequence::setPosition(int i, int newValue){
+	return store[size-i-1];
+}
+
 int Sequence::getElement(int i){
 	return store[i];
+}
+/*
+ * A function to find out what is the integer at a decimal/binary position
+ */
+int Sequence::getValueAtPosition(int i){
+	return store[size-i-1];
+}
+
+void Sequence::printEach(){
+	cout<<"Index:\t";
+	for (int k=0; k<size;k++){
+		cout<<k;
+	}
+	cout<<endl<<"Place:\t";
+	for (int k=0; k<size;k++){
+		cout<<size-k-1;
+	}
+	cout<<"\t\tsize-i-1"<<endl;
+
+	cout<<"Value\t";
+	for (int k=0; k<size; k++){
+		cout<<store[k];
+	}
+	cout<<endl;
+}
+
+void Sequence::printValue(){
+
+	if(negative)
+		cout<<'-';
+	else
+		cout<<' ';
+
+	for(int i=0; i<size; i++){
+
+		cout<<store[i]; //put the char out to the screen
+	}
+
+	if(size==0){
+		cout<<"0";
+	}
 }

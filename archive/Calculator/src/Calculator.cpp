@@ -8,6 +8,7 @@
 #include "Calculator.h"
 #include <iostream>
 #include <string>
+#include <cstring>
 #include "LargeInt.h"
 
 using namespace std;
@@ -31,8 +32,8 @@ void Calculator::run(){
 	//Calculator::printSampleInteraction();
 	//Calculator::printMenu();
 
-	runTests();
-	//runInteractively();
+	//runTests();
+	runInteractively();
 
 	exit();
 }
@@ -40,12 +41,13 @@ void Calculator::run(){
 
 
 void Calculator::printBackgroundInfo() const{
-	cout <<"==========Welcome to the Calculator================="
+	cout <<"==========Welcome to the Calculator=================\n"
 			"Advanced Programming\nAssignment 1 : Calculator\nDescription: A calculator demonstrating\n\t"
-			"*the use of classes in C++\n\t"
+			"*the use of classes and objects in C++\n\t"
 			"*manipulation of pointers\n\t"
+			"*understanding of cstring and ascii table representation of characters\n\t"
 			"*algorithm for manipulating arbitrarily large integers in any base system (decimal, binary, hexidecimal etc) \n\t"
-			"*dynamic memory allocation and destruction "
+			"*dynamic memory allocation and destruction \n"
 			"==================================================="<<endl;
 
 }
@@ -80,21 +82,35 @@ void Calculator::printMenu() const{
 void Calculator::runInteractively(){
 
 	bool keepCalculating=true;
-	int result = 0;
+	int resultTest = 0;
 
-	string userInput;
+	string userInputString;
+
+	LargeInt accumulator("0"); //declare outside the while loop to retain the value
+
 
 	while(keepCalculating){
 
 
-		cout<<"Accumulator: "<<result<<
-			"\nEnter input: ";
-		getline(cin,userInput);
-		cerr<<"\t\tUserInput: "<<userInput<<endl;
 
-		char operation = userInput[0];
-		userInput[0]='0';
-		cerr<<"\tOperation: "<<operation<<endl;
+		cout<<"Accumulator: "<<accumulator.getAsStringy()<<//<resultTest<<
+			"\nEnter input: ";
+		getline(cin,userInputString);
+		//cerr<<"\t\tUserInput: "<<userInputString<<endl;
+
+		char operation = userInputString[0];
+		userInputString[0]='0';
+		//cerr<<"\tOperation: "<<operation<<endl;
+
+		//my function from string to cstring
+		char* userInputCstring= toCstring(userInputString);
+
+		//builtin function from string to cstring, requires constant casting
+		const char* userInputCstringConst = userInputString.c_str();
+		userInputCstring = const_cast <char*>(userInputCstringConst);
+
+		LargeInt userInput(userInputCstring);
+		LargeInt result("0");
 
 		switch (operation){
 			case 'q' :
@@ -108,23 +124,26 @@ void Calculator::runInteractively(){
 				//accumulator.Negate();
 				break;
 			case 'c':
-				//accumulator(0);
+				accumulator.setValue("0");
+				break;
+			case '=':
+				accumulator.setValue(userInputCstring);
 				break;
 			case '+':
-				//accumulator.Add(userInput);
-				result = 5;
+				accumulator.Add(userInput);
+				resultTest = 5;
 				break;
 			case '-':
-				result = 6;
+				resultTest = 6;
 				break;
 			case '*':
-				result = 7;
+				resultTest = 7;
 				break;
 			case '/':
-				result = 8;
+				resultTest = 8;
 				break;
 			case '%':
-				result = 9;
+				resultTest = 9;
 			default:
 				cout<<"Please try again (something is wrong with your input)."<<endl;
 		}
@@ -164,15 +183,15 @@ void Calculator::runTests(){
 
 
 
-	 cout<<endl<<"Testing arithmatical operations."<<endl;
+	 cout<<endl<<"Testing mathematic operations."<<endl;
 
-	 LargeInt accumulator = x;//the value that gets returned into this accumulator is screwed up. so isntead, i put the result value into the callers value
-	 accumulator.Add(y);
-	 cout<<"This is the result: "<<accumulator.getAsStringy()<<endl;//TBD interesting values printed here
+	 LargeInt accumulator2 = x;//the value that gets returned into this accumulator is screwed up. so isntead, i put the result value into the callers value
+	 accumulator2.Add(y);
+	 cout<<"This is the result: "<<accumulator2.getAsStringy()<<endl;//TBD interesting values printed here
 
 
-	 accumulator.Add(w);
-	 cout<<"This is the result: "<<accumulator.getAsStringy()<<endl;//TBD interesting values printed here
+	 accumulator2.Add(w);
+	 cout<<"This is the result: "<<accumulator2.getAsStringy()<<endl;//TBD interesting values printed here
 
 
 	 LargeInt carryAlot("999");
@@ -190,4 +209,19 @@ void Calculator::runTests(){
 	cout<<"====+++=====Tests Completed====++++====="<<endl;
 }
 
+char* Calculator::toCstring(string stringIn){
+/*
+	  // Convert to a char*
+	    const size_t newsize = 100;
+	    char nstring[newsize];
+	    strcpy_s(nstring, orig.c_str());
+	    strcat_s(nstring, " (char *)");
+	    cout << nstring << endl;
+	    */
+	int stringSize = stringIn.length();
+	char* temp;
+	temp = new char[stringSize];
 
+	temp[0] = '4';
+	return temp;
+}
