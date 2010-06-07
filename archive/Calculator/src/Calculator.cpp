@@ -36,7 +36,7 @@ void Calculator::run(){
 	//Sequence::setTrace =true;
 	//LargeInt::setTrace =true;
 
-	//runTests();
+	runTests();
 	runInteractively();
 
 	exit();
