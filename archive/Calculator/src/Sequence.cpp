@@ -12,6 +12,7 @@
 using namespace std;
 
 
+
 Sequence::Sequence (int n){
 	if (trace) cout<<"Created an empty Sequence of size "<<n<<endl;
 
