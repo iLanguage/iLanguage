@@ -10,7 +10,7 @@
  * 			Demonstrate understanding of pointers and pointer manipulation in C++
  *
  * Included Files:
- * 	CalculatorProject.cpp - User Interface and Presentation Logic
+ * 	Calculator.cpp and .h - User Interface and Presentation Logic
  * 	LargeInt.cpp and .h - Class for arithmetic operations for use by the Calculator user interface
  *  Sequence.cpp and .h - Class for dynamically allocating an arbitrarily large integer for use by the LargeInt class
  */
@@ -22,12 +22,6 @@
 #include "Calculator.h"
 using namespace std;
 
-
-
-void runInteractively();
-void runTests();
-
-void exit();
 
 
 int main() {
