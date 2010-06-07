@@ -87,86 +87,63 @@ LargeInt& LargeInt::Add( LargeInt &input){
 
 	int carry=0;
 	//for the places starting at zero, going until the size of the smaller operand
-	for(int i=1; i<=y.getSize();i++){
-		if (trace) cout<<"Adding "<<x.getElement(x.getSize()-i)<< " to "<<y.getElement(y.getSize()-i)<<endl;
+	for(int i=0; i<y.getSize();i++){
+		if (trace) cout<<"Adding "<<x.getValueAtPosition(i)<< " to "<<y.getValueAtPosition(i)<<endl;
 
 		//calculate the addition in that position
-		carry = x.getElement(x.getSize()-i) + y.getElement(y.getSize()-i);
+		carry = x.getValueAtPosition(i)+ y.getValueAtPosition(i);
 
-		if(carry>=baseSystem){
-				if (trace) cout<<"In this base system ("<<baseSystem<<") The addition of "<<x.getElement(x.getSize()-i)<<"+"<<y.getElement(y.getSize()-i)<<" \tresults in a carry: "<<carry<<"\n\t(Note: "
-						"\n\tthe carries are added to the x rather than to the result, so if there are successive carries due to one addition, the x changes, but not the result holder)"<<endl;
-
-
-				result.value.setElement(result.getSize()-i, carry-baseSystem);
-				if(trace) cout<<" "<<i-1<<" place of result: "<<result.value.getElement(result.getSize()-i)<<endl;
-
-				//add one to the position to the left
-				int plusOne = 0;
-				plusOne =x.getElement(x.getSize()-i-1) +1;
-
-				int keepCarrying=0;
-				//while the plusone is too big to fit in the position, send the carry further along to a higher position in x
-				while(plusOne>=baseSystem && (x.getSize()-keepCarrying-i >= 0) )
-				{
-					keepCarrying++;
-					//if (trace) cout<<"Need to carry to the next position to the left."<<endl;
-					//put the remainder into the postion higher to the left
-					if(trace) cout<<" "<<i-1+keepCarrying<<" place of x was: "<<x.getElement(result.getSize()-i+1-keepCarrying)<<endl;
-					x.setElement(x.getSize()-i+1-keepCarrying, plusOne-baseSystem);
-					if(trace) cout<<" "<<i-1+keepCarrying<<" place of x is now: "<<x.getElement(result.getSize()-i+1-keepCarrying)<<endl;
-
-					//if (trace) cout<<"\t Now x looks like this: "<<x.getAsString()<<endl;
-
-					//carry again, add one to the next higher position
-					plusOne = x.getElement(x.getSize()-i+1-keepCarrying)+1;//move over to the left one spot each iteration
-					if(trace) cout<<" "<<i-1+keepCarrying<<" place of x plus 1 would be: "<<plusOne<<endl;
-
-					//increment the number of times you carried
-
-				}
-
-				//if on the last position of x, put the carry into the result instead of putting it in x.
-
-				if( plusOne<baseSystem)// && x.getSize()-keepCarrying-i <= 0 ){
-				{
-					if(x.getSize()-keepCarrying-i <=0)
-					{
-						//put the carry in the result so you dont have an array over load.
-						result.value.setElement(result.getSize()-i-keepCarrying, plusOne);
-						if(trace) cout<<"Reached the end of x\n\tPutting the carry into the padded area of the result instead.\n"
-								" "<<i-1+keepCarrying<<" place of the result: "<<result.value.getElement(result.getSize()-i-keepCarrying)<<endl;
-
-						//if (trace) cout <<"Putting the carry into the next higher position to the left in result. ["<<result.getSize()-i-keepCarrying<<"] "<<result.value.getElement(x.getSize()-i-keepCarrying)<<endl;
-					}
-
-					x.setElement(x.getSize()-i-keepCarrying, plusOne);//equivalent to x.store[size-i+1]+=1; //add 1 to the higher place in the x, to be used in the next itteration of addition
-					if(trace) cout<<"This is the value now in the "<<i+keepCarrying<<" place of x: "<<x.getElement(result.getSize()-i-keepCarrying)<<endl;
-					//if (trace) cout <<"Putting the carry into the next higher position to the left in x. ["<<x.getSize()-i-keepCarrying<<"] "<<x.getElement(x.getSize()-i-keepCarrying)<<endl;
-
-
-				}
-				if (trace) cout<<"\tCarried "<<keepCarrying<<" times."<<endl;
-		}else{
-				result.value.setElement(result.getSize()-i, carry);
+		//put the carry into the result.
+		if(trace) cout<<" "<<i<<" place of result was: "<<result.value.getValueAtPosition(i)<<endl;
+		if(carry<baseSystem){//if the carry fits in the base system, put it in the result.
+			result.value.setPosition(i, carry);
+		}else{//if the carry is too big substract the basesystem and star the whileloop below
+			result.value.setPosition(i, carry-baseSystem);
 		}
-		//if(trace) cout<<"This is the new value in the "<<i-1<<" place: "<<result.value.getElement(result.getSize()-i)<<endl;
-	}
+		if(trace) cout<<" "<<i<<" place of result is now: "<<result.value.getValueAtPosition(i)<<endl;
+
+		/*
+		 * While loop to do multiple carries as the result of 1 addition. eg, 999+1 results in 1 addition that causes 2 carrys.
+		 * Part 1: put the carry-baseSystem into x
+		 * Part 2: add one to the next higher position
+		 *
+		 * Repeat until the carry fits.
+		 */
+		int keepCarrying=0;
+		while(carry>=baseSystem){
+				//put the remainder into the position higher to the left
+				if(trace) cout<<" "<<i+keepCarrying<<" place of x was: "<<x.getValueAtPosition(i+keepCarrying)<<endl;
+				x.setPosition(i+keepCarrying, carry-baseSystem);
+				if(trace) cout<<" "<<i+keepCarrying<<" place of x is now: "<<x.getValueAtPosition(i+keepCarrying)<<endl;
+
+				//now add one to the next higher position of x as long as youre not at the end of x
+				keepCarrying++;
+				if(i+keepCarrying >= x.getSize()){
+					if (trace)cout<<"Ran out of x to carry over, setting the carry to 0+1"<<endl;
+					carry=0+1;
+
+				}else{
+					carry = x.getValueAtPosition(i+keepCarrying)+1;
+				}
+				if(trace) cout<<" "<<i+keepCarrying<<" place of x plus 1 would be: "<<carry<<endl; //if carry is too big this will loop again
+				if (carry<baseSystem){ //if carry fits in x, put it in, if it doesnt fit the loop will break it up into a carry and a remainder
+					x.setPosition(i+keepCarrying, carry);
+				}
+		}
+
+	}//end for loop for size of y
 
 	//for the higher digits of the longer opperand, copy the digits.
-	for(int k=y.getSize()+1; k<=x.getSize(); k++)
+	for(int k=y.getSize(); k<=x.getSize(); k++)
 	{
-		//TBD if the element is bigger thanthe carry, carry again.
-		result.value.setElement( result.getSize()-k , x.getElement(x.getSize()-k) );
-		if (trace) cout<<"Just copying "<<x.getElement(x.getSize()-k)<< " (should match "<< result.value.getElement(result.getSize()-k)<<") to place "<<k-1<<endl;
+		//TBD if the element is bigger than the carry, carry again.
+		if(trace) cout<<" "<<k<<" place of x: "<<x.getValueAtPosition(k)<<endl;
+		result.value.setPosition(k, x.getValueAtPosition(k));
+		if(trace) cout<<" "<<k<<" copied to place of result is now: "<<result.value.getValueAtPosition(k)<<endl;
 
 	}
 
-
-
-
 	cout<<"="<<result.getAsStringy()<<endl;
-
 	value = result.value;
 
 	return result;//question, why isnt this *result

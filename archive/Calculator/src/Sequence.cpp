@@ -206,11 +206,12 @@ void Sequence::setElement(int i, int newValue){
  * A function designed to simplify accessing elements by their decimal/binary position
  */
 void Sequence::setPosition(int i, int newValue){
-	return store[size-i-1];
+	store[size-i-1] = newValue;
 }
 
 int Sequence::getElement(int i){
-	return store[i];
+	int temp =store[i];
+	return temp;
 }
 /*
  * A function to find out what is the integer at a decimal/binary position

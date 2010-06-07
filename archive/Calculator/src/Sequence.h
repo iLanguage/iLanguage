@@ -37,8 +37,8 @@ public:
 	void printEach();
 	void printValue();
 
-	void setPosition();
-	int getValueAtPosition();
+	void setPosition(int i, int newValue);
+	int getValueAtPosition(int i);
 
 
 	int cStringLength ( const char* input);
