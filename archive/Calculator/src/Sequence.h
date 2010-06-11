@@ -9,7 +9,7 @@
 #define SEQUENCE_H_
 
 class Sequence {
-	const static bool trace=false;
+
 	bool negative;
 	char* originalString;
 	int size;
@@ -18,7 +18,8 @@ class Sequence {
 
 
 public:
-
+	static bool trace;
+	static void setTrace(bool newTrace);
 
 	int init(char* characterInput);
 	Sequence(char* characterInput);

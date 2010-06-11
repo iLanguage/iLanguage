@@ -11,6 +11,11 @@
 #include <sstream>
 using namespace std;
 
+bool Sequence::trace=true;
+void Sequence::setTrace(bool newTrace){
+	trace= newTrace;
+}
+
 
 
 Sequence::Sequence (int n){
