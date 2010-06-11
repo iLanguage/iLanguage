@@ -33,7 +33,7 @@ void Calculator::run(){
 	Calculator::printMenu();
 
 	//initalize the trace boolians
-	//Sequence::setTrace =true;
+	Sequence::setTrace(true);
 	//LargeInt::setTrace =true;
 
 	runTests();
@@ -163,7 +163,7 @@ void Calculator::runInteractively(){
 				runTests();
 				break;
 			case 's':
-				//Sequence::setTrace = true;
+				Sequence::setTrace(true);
 				cout<<"Problem setting the trace static data member, please do it manually in the headers."<<endl;
 				break;
 			case 'l':
@@ -171,7 +171,7 @@ void Calculator::runInteractively(){
 				cout<<"Problem setting the trace static data member, please do it manually in the headers."<<endl;
 				break;
 			case 'o':
-				//Sequence::setTrace(false);
+				Sequence::setTrace(false);
 				//LargeInt::setTrace(false);
 				cout<<"Problem setting the trace static data member, please do it manually in the headers."<<endl;
 				break;
