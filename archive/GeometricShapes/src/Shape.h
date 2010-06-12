@@ -13,22 +13,22 @@
 class Shape {
 public:
 
-	int getID() const;
-	std::string getName() const;
+	virtual int getID() const;
+	virtual std::string getName() const;
 
-	int getHeight() const;
-	int getWidth() const;
+	virtual int getHeight() const;
+	virtual int getWidth() const;
 
-	double geoArea() const;
-	int scrArea() const;
-	double geoPerimeter() const;
-	int scrPerimeter() const;
+	virtual double geoArea() const;
+	virtual int scrArea() const;
+	virtual double geoPerimeter() const;
+	virtual int scrPerimeter() const;
 
-	std::string toStringInfo() const;
-	std::string toStringFilled(char forground = '*', char background = ' ') const;
-	std::string toStringHollow(char forground = '*', char background = ' ') const;
+	virtual std::string toStringInfo() const;
+	virtual std::string toStringFilled(char forground = '*', char background = ' ') const;
+	virtual std::string toStringHollow(char forground = '*', char background = ' ') const;
 
-	Shape();
+	Shape(int x);
 	virtual ~Shape();
 private:
 	int id;

@@ -6,6 +6,9 @@
  */
 
 #include "ShapeDisplayManager.h"
+#include "Shape.h"
+#include "ShapeView.h"
+#include "Rectangle.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -89,6 +92,7 @@ void ShapeDisplayManager::runInteractively(){
 		}
 	}//end while
 	return;
+
 }
 void ShapeDisplayManager::createShape(){
 	cout<<"Choose one of the following Shapes: \n\n"
@@ -101,7 +105,6 @@ void ShapeDisplayManager::createShape(){
 
 	bool keepRunning=true;
 	string userInputString;
-
 
 	while(keepRunning){
 		cout<<"\nEnter input: ";
@@ -125,8 +128,7 @@ void ShapeDisplayManager::createShape(){
 				break;
 			case '4':
 				cout<<"Creating a rectangle"<<endl;
-				Shape rectangle1();
-
+				Shape rectangle2(4); // error:   crosses initialization of 'Shape rectangle2'
 				//shapeList.push_back(rectangle1); //error: no matching function for call to 'std::vector<Shape*, std::allocator<Shape*> >::push_back(Shape (&)())'
 				keepRunning=false;
 				break;
@@ -134,6 +136,7 @@ void ShapeDisplayManager::createShape(){
 				break;
 			default:
 				cout<<"Please try again."<<endl;
+				break;
 		}
 	}//end while
 	return;

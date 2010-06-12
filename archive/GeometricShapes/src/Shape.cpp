@@ -17,16 +17,13 @@ int Shape::getHeight()const {
 	return temp;
 }
 
-Shape::Shape() {
+Shape::Shape(int x) {
 	id = autoIncrement;
 	autoIncrement++;
 	name = "Shape";
-	height = 4;
-	width = 4;
+	height = x;
+	width = x;
 	cout<<"A shape was created."<<endl;
-
-	// TODO Auto-generated constructor stub
-
 }
 
 Shape::~Shape() {

@@ -11,7 +11,7 @@
 #include <string>
 #include "Shape.h"
 #include "ShapeView.h"
-#include "Rectangle.h"
+using namespace std;
 
 
 class ShapeDisplayManager {
