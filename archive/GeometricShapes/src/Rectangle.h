@@ -12,7 +12,7 @@
 
 class Rectangle: public Shape {
 public:
-	Rectangle();
+	Rectangle(int x);
 	virtual ~Rectangle();
 };
 
