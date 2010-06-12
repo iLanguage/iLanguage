@@ -18,7 +18,9 @@ int Shape::getHeight()const {
 }
 
 Shape::Shape() {
+	id = autoIncrement;
 	autoIncrement++;
+	name = "Shape";
 	height = 4;
 	width = 4;
 	cout<<"A shape was created."<<endl;

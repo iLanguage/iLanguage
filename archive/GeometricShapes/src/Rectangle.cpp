@@ -6,11 +6,11 @@
  */
 
 #include "Rectangle.h"
-#include <ostream>
+#include <iostream>
 using namespace std;
 
 Rectangle::Rectangle() {
-	//cout<<"A rectangle was created."<<endl;
+	cout<<"A rectangle was created."<<endl;
 	// TODO Auto-generated constructor stub
 
 }

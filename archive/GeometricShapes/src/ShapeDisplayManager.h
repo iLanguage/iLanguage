@@ -8,6 +8,7 @@
 #ifndef SHAPEDISPLAYMANAGER_H_
 #define SHAPEDISPLAYMANAGER_H_
 #include <vector>
+#include <string>
 #include "Shape.h"
 #include "ShapeView.h"
 #include "Rectangle.h"
@@ -22,6 +23,7 @@ public:
 	void createShape();
 	void displayShape();
 	void listShapes();
+	int getInt(std::string userPrompt);
 
 	ShapeDisplayManager();
 	virtual ~ShapeDisplayManager();

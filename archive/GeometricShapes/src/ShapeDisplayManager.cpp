@@ -7,6 +7,8 @@
 
 #include "ShapeDisplayManager.h"
 #include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
 
 ShapeDisplayManager::ShapeDisplayManager() {
@@ -41,11 +43,11 @@ void ShapeDisplayManager::runInteractively(){
 	while(keepRunning){
 		cout<<"\nEnter input: ";
 		getline(cin,userInputString);
-		cerr<<"\t\tUserInput: "<<userInputString<<endl;
+		//cerr<<"\t\tUserInput: "<<userInputString<<endl;
 
 		char operation = userInputString[0];
 		userInputString[0]='0';
-		cerr<<"\tOperation: "<<operation<<endl;
+		//cerr<<"\t\tOperation: "<<operation<<endl;
 
 		switch (operation){
 			case 'q' :
@@ -104,12 +106,12 @@ void ShapeDisplayManager::createShape(){
 	while(keepRunning){
 		cout<<"\nEnter input: ";
 		getline(cin,userInputString);
-		cerr<<"\t\tUserInput: "<<userInputString<<endl;
+		//cerr<<"\t\tUserInput: "<<userInputString<<endl;
 
 		char operation = userInputString[0];
-		operation = operation+'0';
+		operation = operation;
 		userInputString[0]='0';
-		cerr<<"\tOperation: "<<operation<<endl;
+		//cerr<<"\tOperation: "<<operation<<endl;
 
 		switch (operation){
 			case 'q' :
@@ -122,13 +124,37 @@ void ShapeDisplayManager::createShape(){
 			case '3':
 				break;
 			case '4':
+				cout<<"Creating a rectangle"<<endl;
 				Shape rectangle1();
+
+				//shapeList.push_back(rectangle1); //error: no matching function for call to 'std::vector<Shape*, std::allocator<Shape*> >::push_back(Shape (&)())'
+				keepRunning=false;
 				break;
 			case '5':
 				break;
 			default:
-				cout<<"Please try again (something is wrong with your input)."<<endl;
+				cout<<"Please try again."<<endl;
 		}
 	}//end while
 	return;
+}
+int ShapeDisplayManager::getInt(string prompt) // definition of getInt(string) from FAQ
+{
+	cout << prompt;
+	int x;
+	cin >> x;
+	while ( ! cin )
+	{
+		cin.clear();
+		string badinput;
+		getline(cin, badinput);
+		cerr << "Expected an integer but found " << badinput << endl << prompt;
+		cin >> x;
+	}
+	// Optionally clear the remaining characters in the input stream;
+	// for example, for a user input '123xyz', 123 is extracted to x and,
+	// here we choose to discard 'xyz' which is still in the input stream
+	string leftover;
+	getline(cin, leftover);
+	return x; // ignore leftover
 }
