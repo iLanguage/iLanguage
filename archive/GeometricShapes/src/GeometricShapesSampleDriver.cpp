@@ -1,9 +1,9 @@
 //============================================================================
-// Name        : GeometricShapes.cpp
+// Name        : GeometricShapesSampleDriver.cpp
 // Author      : gina
 // Version     :
 // Copyright   : 
-// Description : Hello World in C++, Ansi-style
+// Description :
 //============================================================================
 
 #include <iostream>
