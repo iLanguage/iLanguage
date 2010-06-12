@@ -13,7 +13,6 @@
 class Shape {
 public:
 
-
 	int getID() const;
 	std::string getName() const;
 

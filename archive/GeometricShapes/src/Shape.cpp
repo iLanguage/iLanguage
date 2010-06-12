@@ -6,8 +6,23 @@
  */
 
 #include "Shape.h"
+#include <string>
+#include <iostream>
+using namespace std;
+
+int Shape::getHeight()const {
+	int temp= 1;
+	cout<<"Height: ";
+	//cin<<(getline,temp);
+	return temp;
+}
 
 Shape::Shape() {
+	autoIncrement++;
+	height = 4;
+	width = 4;
+	cout<<"A shape was created."<<endl;
+
 	// TODO Auto-generated constructor stub
 
 }

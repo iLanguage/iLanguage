@@ -10,6 +10,7 @@
 #include <vector>
 #include "Shape.h"
 #include "ShapeView.h"
+#include "Rectangle.h"
 
 
 class ShapeDisplayManager {
