@@ -58,13 +58,7 @@ void ShapeDisplayManager::runInteractively(){
 				printMenu();
 				break;
 			case 'c':
-				cout<<"Choose one of the following Shapes: \n\n"
-						"1: Isosceles Triangle \n"
-						"2: Right Triangle \n"
-						"3: Rhombus \n"
-						"4: Rectangle\n"
-						"5: Square\n\n"
-						"Enter your choice:";
+				createShape();
 				break;
 			case 'r':
 				cout<<"The shape list is empty, try adding a shape."<<endl;
@@ -106,6 +100,7 @@ void ShapeDisplayManager::createShape(){
 	bool keepRunning=true;
 	string userInputString;
 
+
 	while(keepRunning){
 		cout<<"\nEnter input: ";
 		getline(cin,userInputString);
@@ -127,6 +122,7 @@ void ShapeDisplayManager::createShape(){
 			case '3':
 				break;
 			case '4':
+				Shape rectangle1();
 				break;
 			case '5':
 				break;
