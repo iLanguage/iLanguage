@@ -19,6 +19,7 @@ public:
 	void run();
 	void printMenu();
 	void runInteractively();
+	void runTests();
 	void removeShape();
 	void createShape();
 	void displayShape();

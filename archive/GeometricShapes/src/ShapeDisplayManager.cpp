@@ -9,6 +9,7 @@
 #include "Shape.h"
 #include "ShapeView.h"
 #include "Rectangle.h"
+#include "RightTriangle.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -26,7 +27,8 @@ ShapeDisplayManager::~ShapeDisplayManager() {
 void ShapeDisplayManager::run(){
 	cout<< "Shape Interactive Management System"<<endl;
 	printMenu();
-	runInteractively();
+	runTests();
+	//runInteractively();
 }
 
 void ShapeDisplayManager::printMenu(){
@@ -39,6 +41,20 @@ void ShapeDisplayManager::printMenu(){
 			"q: quit \n";
 
 }
+void ShapeDisplayManager::runTests(){
+	cout<<endl<<"Performing tests on the Shape class"<<endl;
+	Shape myShape();
+
+	Rectangle myRectangle(4,5);
+	cout<<myRectangle.toStringInfo()<<endl;
+	Rectangle anotherRectangle(6,8);
+	cout<<anotherRectangle.toStringInfo()<<endl;
+
+	RightTriangle myRightTriangle(3);
+	cout<<myRightTriangle.toStringInfo()<<endl;
+}
+
+
 void ShapeDisplayManager::runInteractively(){
 	bool keepRunning=true;
 	string userInputString;

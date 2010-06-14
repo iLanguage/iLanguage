@@ -12,7 +12,12 @@
 
 class Rectangle: public Shape {
 public:
-	Rectangle(int x);
+	double geoArea() const;
+	int scrArea() const;
+	double geoPerimeter() const;
+	int scrPerimeter() const;
+
+	Rectangle(int inHeight,int inWidth);
 	virtual ~Rectangle();
 };
 
