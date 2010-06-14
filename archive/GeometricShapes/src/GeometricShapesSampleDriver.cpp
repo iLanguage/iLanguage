@@ -18,6 +18,11 @@ using namespace std;
 
 int main() {
 
+	//how to call the cute test suit?
+	//cute::suite s;
+	//s.push_back(CUTE(ShapeTest::ginasTest));
+	//ShapeTest::runSuite();
+
 
 	ShapeDisplayManager sdm;
 	sdm.run();

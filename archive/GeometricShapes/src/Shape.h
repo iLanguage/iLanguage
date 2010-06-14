@@ -29,14 +29,18 @@ public:
 	string toStringFilled(char forground = '*', char background = ' ') const;
 	string toStringHollow(char forground = '*', char background = ' ') const;
 
-	Shape(int x);
+	static void setTrace(bool newValue);
+	static bool trace;
+	Shape();
 	virtual ~Shape();
-private:
+protected:
 	int id;
-	int autoIncrement;
+
 	string name;
 	int height;
 	int width;
+private:
+	static int autoIncrement;
 
 };
 
