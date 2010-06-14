@@ -7,33 +7,34 @@
 
 #ifndef SHAPE_H_
 #define SHAPE_H_
-
 #include <string>
+
+using namespace std;
 
 class Shape {
 public:
 
-	virtual int getID() const;
-	virtual std::string getName() const;
+	int getID() const;
+	string getName() const;
 
-	virtual int getHeight() const;
-	virtual int getWidth() const;
+	int getHeight() const;
+	int getWidth() const;
 
-	virtual double geoArea() const;
-	virtual int scrArea() const;
-	virtual double geoPerimeter() const;
-	virtual int scrPerimeter() const;
+	double geoArea() const;
+	int scrArea() const;
+	double geoPerimeter() const;
+	int scrPerimeter() const;
 
-	virtual std::string toStringInfo() const;
-	virtual std::string toStringFilled(char forground = '*', char background = ' ') const;
-	virtual std::string toStringHollow(char forground = '*', char background = ' ') const;
+	string toStringInfo() const;
+	string toStringFilled(char forground = '*', char background = ' ') const;
+	string toStringHollow(char forground = '*', char background = ' ') const;
 
 	Shape(int x);
 	virtual ~Shape();
 private:
 	int id;
 	int autoIncrement;
-	std::string name;
+	string name;
 	int height;
 	int width;
 

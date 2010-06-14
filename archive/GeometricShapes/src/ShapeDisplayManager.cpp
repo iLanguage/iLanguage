@@ -128,7 +128,7 @@ void ShapeDisplayManager::createShape(){
 				break;
 			case '4':
 				cout<<"Creating a rectangle"<<endl;
-				Shape rectangle2(4); // error:   crosses initialization of 'Shape rectangle2'
+				//Shape rectangle2(4); // error:   crosses initialization of 'Shape rectangle2'
 				//shapeList.push_back(rectangle1); //error: no matching function for call to 'std::vector<Shape*, std::allocator<Shape*> >::push_back(Shape (&)())'
 				keepRunning=false;
 				break;
