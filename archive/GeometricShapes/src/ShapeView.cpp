@@ -21,7 +21,7 @@ std::string ShapeView::drawBorders(){
 }
 
 
-ShapeView::ShapeView(Shape shapeToDraw) {
+ShapeView::ShapeView(Rectangle shapeToDraw) {
 	// TODO Auto-generated constructor stub
 
 }

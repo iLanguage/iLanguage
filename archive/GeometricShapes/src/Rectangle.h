@@ -12,10 +12,10 @@
 
 class Rectangle: public Shape {
 public:
-	double geoArea() const;
-	int scrArea() const;
-	double geoPerimeter() const;
-	int scrPerimeter() const;
+	virtual double geoArea() const;
+	virtual int scrArea() const;
+	virtual double geoPerimeter() const;
+	virtual int scrPerimeter() const;
 
 	Rectangle(int inHeight,int inWidth);
 	virtual ~Rectangle();

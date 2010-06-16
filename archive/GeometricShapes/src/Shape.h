@@ -20,10 +20,10 @@ public:
 	int getHeight() const;
 	int getWidth() const;
 
-	double geoArea() const;
-	int scrArea() const;
-	double geoPerimeter() const;
-	int scrPerimeter() const;
+	virtual double geoArea() const=0;
+	virtual int scrArea() const=0;
+	virtual double geoPerimeter() const=0;
+	virtual int scrPerimeter() const=0;
 
 	string toStringInfo() const;
 	string toStringFilled(char forground = '*', char background = ' ') const;

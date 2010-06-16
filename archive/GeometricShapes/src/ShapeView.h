@@ -11,6 +11,7 @@
 
 #include <string>
 #include "Shape.h"
+#include "Rectangle.h"
 
 class ShapeView {
 public:
@@ -37,8 +38,8 @@ public:
 	 * Constructors
 	 */
 	//The ShapeView class should have two constructors and should store a const pointer to the shape object it receives;
-	void setShape(Shape shapeToDraw);
-	ShapeView(Shape shapeToDraw);
+	void setShape(Rectangle shapeToDraw);
+	ShapeView(Rectangle shapeToDraw);
 	virtual ~ShapeView();
 private:
 	std::string fillType;
