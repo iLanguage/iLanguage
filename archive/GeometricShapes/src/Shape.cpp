@@ -46,10 +46,10 @@ string Shape::toStringInfo() const{
 			"\nname: "<<name<<
 			"\nwidth: "<<width<<
 			"\nheight: "<<height<<
-			//"\nscreen area: "<<scrArea()<<
-			//"\ngeographic area: "<<geoArea()<<
-			//"\nscreen perimeter: "<<scrPerimeter()<<
-			//"\ngeographic perimeter: "<<geoPerimeter()<<
+			"\nscreen area: "<<scrArea()<<
+			"\ngeographic area: "<<geoArea()<<
+			"\nscreen perimeter: "<<scrPerimeter()<<
+			"\ngeographic perimeter: "<<geoPerimeter()<<
 			endl;
 	return info.str();
 }

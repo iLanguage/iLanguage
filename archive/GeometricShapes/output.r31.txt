@@ -1,0 +1,48 @@
+Shape Interactive Management System
+Choose one of the following operations:
+
+c: create a shape 
+r: remove a shape 
+d: display a shape 
+t: total number of shapes 
+l: list all shape id numbers 
+q: quit 
+
+Performing tests on the Shape class
+A shape was created.
+A rectangle was created.
+Shape Information
+id: 0
+name: Rectangle
+width: 5
+height: 4
+screen area: 20
+geographic area: 20
+screen perimeter: 36
+geographic perimeter: 40
+
+A shape was created.
+A rectangle was created.
+Shape Information
+id: 1
+name: Rectangle
+width: 8
+height: 6
+screen area: 48
+geographic area: 48
+screen perimeter: 92
+geographic perimeter: 96
+
+A shape was created.
+A right triangle was created
+Shape Information
+id: 2
+name: Right Triangle
+width: 3
+height: 3
+screen area: 9
+geographic area: 9
+screen perimeter: 14
+geographic perimeter: 18
+
+

@@ -30,15 +30,11 @@ Rectangle::Rectangle(int inHeight,int inWidth) { //page 235: solved error: no ma
 	height = inHeight;
 	width = inWidth;
 	name="Rectangle";
-
 	cout<<"A rectangle was created."<<endl;
-	// TODO Auto-generated constructor stub
-
 }
 
 
 
 
 Rectangle::~Rectangle() {
-	// TODO Auto-generated destructor stub
 }

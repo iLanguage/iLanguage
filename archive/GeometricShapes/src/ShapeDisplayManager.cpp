@@ -43,7 +43,10 @@ void ShapeDisplayManager::printMenu(){
 }
 void ShapeDisplayManager::runTests(){
 	cout<<endl<<"Performing tests on the Shape class"<<endl;
-	Shape myShape();
+	//Shape myShape();
+
+	//Shape* trickyShapePointer = new Rectangle(6,2);//
+	//cout<<trickyShapePointer.toStringInfo()<<endl;
 
 	Rectangle myRectangle(4,5);
 	cout<<myRectangle.toStringInfo()<<endl;
