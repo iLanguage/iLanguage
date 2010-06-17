@@ -31,6 +31,7 @@ public:
 
 	static void setTrace(bool newValue);
 	static bool trace;
+
 	Shape();
 	virtual ~Shape();
 protected:

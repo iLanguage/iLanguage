@@ -30,7 +30,28 @@ RightTriangle::RightTriangle(int inHeight):Shape() {
 	name="Right Triangle";
 	if (Shape::trace) cout<<"A right triangle was created"<<endl;
 }
-
+/*
+ * copy constructor
+ */
+RightTriangle::RightTriangle(const RightTriangle& source){
+		height = source.height;
+		width = source.width;
+		name=source.name;
+		if (Shape::trace) cout << "A RightTriangle was copied to a new RightTriangle."<<endl;
+}
+/*
+ * assignment operator
+ */
+RightTriangle& RightTriangle::operator=(const RightTriangle& source){
+	if (this != &source){
+		height = source.height;
+		width = source.width;
+		id = source.id;
+		name=source.name;
+		if (Shape::trace) cout << "A RightTriangle was copied to an existing RightTriangle."<<endl;
+	}
+	return *this;
+}
 RightTriangle::~RightTriangle() {
 	// TODO Auto-generated destructor stub
 }
