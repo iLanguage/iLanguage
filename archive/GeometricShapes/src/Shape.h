@@ -32,6 +32,9 @@ public:
 	static void setTrace(bool newValue);
 	static bool trace;
 
+
+	Shape(const Shape& source);
+	Shape& operator=(const Shape & source);
 	Shape();
 	virtual ~Shape();
 protected:

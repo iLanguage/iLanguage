@@ -32,7 +32,7 @@ RightTriangle::RightTriangle(int inHeight):Shape() {
 }
 /*
  * copy constructor
- */
+
 RightTriangle::RightTriangle(const RightTriangle& source){
 		height = source.height;
 		width = source.width;
@@ -41,7 +41,7 @@ RightTriangle::RightTriangle(const RightTriangle& source){
 }
 /*
  * assignment operator
- */
+
 RightTriangle& RightTriangle::operator=(const RightTriangle& source){
 	if (this != &source){
 		height = source.height;
@@ -52,6 +52,7 @@ RightTriangle& RightTriangle::operator=(const RightTriangle& source){
 	}
 	return *this;
 }
+*/
 RightTriangle::~RightTriangle() {
 	// TODO Auto-generated destructor stub
 }

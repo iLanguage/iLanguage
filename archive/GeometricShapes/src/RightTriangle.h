@@ -18,8 +18,8 @@ public:
 	int scrPerimeter() const;
 
 
-	RightTriangle(const RightTriangle& rectangleIn);
-	RightTriangle& operator=(const RightTriangle & source);
+	//RightTriangle(const RightTriangle& rectangleIn);
+	//RightTriangle& operator=(const RightTriangle & source);
 	RightTriangle(int inHeight);
 	virtual ~RightTriangle();
 };
