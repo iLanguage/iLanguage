@@ -34,7 +34,7 @@ Rectangle::Rectangle(int inHeight,int inWidth) { //page 235: solved error: no ma
 }
 /*
  * copy constructor
- */
+
 Rectangle::Rectangle(const Rectangle& source){
 		height = source.height;
 		width = source.width;
@@ -43,7 +43,7 @@ Rectangle::Rectangle(const Rectangle& source){
 }
 /*
  * assignment operator
- */
+
 Rectangle& Rectangle::operator=(const Rectangle& source){
 	if (this != &source){
 		height = source.height;
@@ -54,7 +54,7 @@ Rectangle& Rectangle::operator=(const Rectangle& source){
 	}
 	return *this;
 }
-
+*/
 
 
 Rectangle::~Rectangle() {

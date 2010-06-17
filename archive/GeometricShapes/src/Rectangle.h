@@ -18,8 +18,8 @@ public:
 	virtual int scrPerimeter() const;
 
 
-	Rectangle(const Rectangle& rectangleIn);
-	Rectangle& operator=(const Rectangle & source);
+	//Rectangle(const Rectangle& rectangleIn);
+	//Rectangle& operator=(const Rectangle & source);
 	Rectangle(int inHeight,int inWidth);
 	virtual ~Rectangle();
 };
