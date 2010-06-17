@@ -55,6 +55,16 @@ void ShapeDisplayManager::runTests(){
 
 	RightTriangle myRightTriangle(3);
 	cout<<myRightTriangle.toStringInfo()<<endl;
+
+
+	cout<<"Copying a rectangle to a new rectangle"<<endl;
+	Rectangle copiedRectangle(anotherRectangle);
+	cout<<copiedRectangle.toStringInfo()<<endl;
+
+	cout<<"Copying a rectangle to an existing rectangle"<<endl;
+	copiedRectangle = myRectangle;
+	cout<<copiedRectangle.toStringInfo()<<endl;
+
 }
 
 

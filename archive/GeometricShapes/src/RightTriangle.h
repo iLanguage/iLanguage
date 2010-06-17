@@ -17,6 +17,9 @@ public:
 	double geoPerimeter() const;
 	int scrPerimeter() const;
 
+
+	RightTriangle(const RightTriangle& rectangleIn);
+	RightTriangle& operator=(const RightTriangle & source);
 	RightTriangle(int inHeight);
 	virtual ~RightTriangle();
 };

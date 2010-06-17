@@ -32,7 +32,28 @@ Rectangle::Rectangle(int inHeight,int inWidth) { //page 235: solved error: no ma
 	name="Rectangle";
 	cout<<"A rectangle was created."<<endl;
 }
-
+/*
+ * copy constructor
+ */
+Rectangle::Rectangle(const Rectangle& source){
+		height = source.height;
+		width = source.width;
+		name=source.name;
+		if (Shape::trace) cout << "A rectangle was copied to a new rectangle."<<endl;
+}
+/*
+ * assignment operator
+ */
+Rectangle& Rectangle::operator=(const Rectangle& source){
+	if (this != &source){
+		height = source.height;
+		width = source.width;
+		id = source.id;
+		name=source.name;
+		if (Shape::trace) cout << "A rectangle was copied to an existing rectangle."<<endl;
+	}
+	return *this;
+}
 
 
 
