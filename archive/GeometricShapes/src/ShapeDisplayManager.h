@@ -22,9 +22,11 @@ public:
 	void runTests();
 	void removeShape();
 	void createShape();
-	void displayShape();
+	void displayShape(int shapeID);
 	void listShapes();
+	int findShape(int shapeID);
 	int getInt(std::string userPrompt);
+
 
 	ShapeDisplayManager();
 	virtual ~ShapeDisplayManager();

@@ -57,6 +57,8 @@ void ShapeDisplayManager::runTests(){
 	cout<<myRightTriangle.toStringInfo()<<endl;
 
 
+
+
 	cout<<"Copying a rectangle to a new rectangle"<<endl;
 	Rectangle copiedRectangle(anotherRectangle);
 	cout<<copiedRectangle.toStringInfo()<<endl;
@@ -64,6 +66,25 @@ void ShapeDisplayManager::runTests(){
 	cout<<"Copying a rectangle to an existing rectangle"<<endl;
 	copiedRectangle = myRectangle;
 	cout<<copiedRectangle.toStringInfo()<<endl;
+
+
+	cout<<"Putting some shapes into the vector."<<endl;
+	shapeList.push_back(&myRectangle);
+	//shapeList.push_back(&myRightTriangle);
+	//shapeList.push_back(&anotherRectangle);
+
+	RightTriangle anotherRightTriangle(19);
+	shapeList.push_back(&anotherRightTriangle);
+
+	cout << "ShapeList is now size: "<<shapeList.size()<<endl;
+	//if (Shape::trace) listShapes();
+
+	cout << "Finding shape with id 4"<<endl;
+	int foundIDposition = findShape(4);
+	cout <<"\tFound id at position: "<<foundIDposition <<endl;
+
+	cout<<"Displaying shape with id 4"<<endl;
+	displayShape(4);
 
 }
 
@@ -189,4 +210,24 @@ int ShapeDisplayManager::getInt(string prompt) // definition of getInt(string) f
 	string leftover;
 	getline(cin, leftover);
 	return x; // ignore leftover
+}
+
+int ShapeDisplayManager::findShape(int shapeID){
+	  for (int i=0; i<shapeList.size(); i++)
+	  {
+		  if (shapeID == shapeList.at(i)->getID())
+			  return i;
+	  }
+	  return -1;
+}
+
+void ShapeDisplayManager::listShapes(){
+	for (int i=0; i<shapeList.size(); i++)
+		cout << "Shape at "<<i<<" :" << shapeList.at(i)->toStringInfo();
+}
+
+void ShapeDisplayManager::displayShape(int shapeID){
+
+	int positionFound = findShape(shapeID);
+	cout<<shapeList[positionFound]->toStringInfo();
 }
