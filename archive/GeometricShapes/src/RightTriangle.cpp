@@ -7,6 +7,7 @@
 
 #include "RightTriangle.h"
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 
@@ -24,35 +25,23 @@ int RightTriangle::scrPerimeter() const {
 	return (2 * (height * width) ) - 4;
 }
 
+string RightTriangle::toStringFilled(char forground, char background) const{
+	stringstream filled;
+	filled<<" filled";
+	return filled.str();
+}
+string RightTriangle::toStringHollow(char forground, char background) const{
+	stringstream hallow;
+	hallow<<" hallow";
+	return hallow.str();
+}
+
 RightTriangle::RightTriangle(int inHeight):Shape() {
 	height=inHeight;
 	width=inHeight;
 	name="Right Triangle";
 	if (Shape::trace) cout<<"A right triangle was created"<<endl;
 }
-/*
- * copy constructor
-
-RightTriangle::RightTriangle(const RightTriangle& source){
-		height = source.height;
-		width = source.width;
-		name=source.name;
-		if (Shape::trace) cout << "A RightTriangle was copied to a new RightTriangle."<<endl;
-}
-/*
- * assignment operator
-
-RightTriangle& RightTriangle::operator=(const RightTriangle& source){
-	if (this != &source){
-		height = source.height;
-		width = source.width;
-		id = source.id;
-		name=source.name;
-		if (Shape::trace) cout << "A RightTriangle was copied to an existing RightTriangle."<<endl;
-	}
-	return *this;
-}
-*/
 RightTriangle::~RightTriangle() {
 	// TODO Auto-generated destructor stub
 }

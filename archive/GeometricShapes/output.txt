@@ -85,4 +85,32 @@ screen area: 361
 geographic area: 361
 screen perimeter: 718
 geographic perimeter: 722
+Displaying a hollow version of shape 4, using the default fill characters.
+ hallowDisplaying a hollow version of shape 4, using the o as the forground and . as the background.
+ hallowCreating a shape view object.
+Displaying a string with borders drawn around it.
+-----------------------
+Shape Information
+id: 0
+name: Rectangle
+width: 5
+height: 4
+screen area: 20
+geographic area: 20
+screen perimeter: 36
+geographic perimeter: 40
+-----------------------
+Creating a shape view object.
+Displaying a string with borders drawn around it.
+-----------------------
+Shape Information
+id: 4
+name: Right Triangle
+width: 19
+height: 19
+screen area: 361
+geographic area: 361
+screen perimeter: 718
+geographic perimeter: 722
+-----------------------
 

@@ -7,6 +7,7 @@
 
 #include "Rectangle.h"
 #include <iostream>
+#include <sstream>
 #include "Shape.h"
 using namespace std;
 
@@ -24,38 +25,22 @@ int Rectangle::scrPerimeter() const {
 	return (2 * (height * width) ) - 4;
 }
 
-
-
+string Rectangle::toStringFilled(char forground, char background) const{
+	stringstream filled;
+	filled<<" filled";
+	return filled.str();
+}
+string Rectangle::toStringHollow(char forground, char background) const{
+	stringstream hallow;
+	hallow<<" hallow";
+	return hallow.str();
+}
 Rectangle::Rectangle(int inHeight,int inWidth) { //page 235: solved error: no matching function for call to 'Shape::Shape()'
 	height = inHeight;
 	width = inWidth;
 	name="Rectangle";
 	cout<<"A rectangle was created."<<endl;
 }
-/*
- * copy constructor
-
-Rectangle::Rectangle(const Rectangle& source){
-		height = source.height;
-		width = source.width;
-		name=source.name;
-		if (Shape::trace) cout << "A rectangle was copied to a new rectangle."<<endl;
-}
-/*
- * assignment operator
-
-Rectangle& Rectangle::operator=(const Rectangle& source){
-	if (this != &source){
-		height = source.height;
-		width = source.width;
-		id = source.id;
-		name=source.name;
-		if (Shape::trace) cout << "A rectangle was copied to an existing rectangle."<<endl;
-	}
-	return *this;
-}
-*/
-
 
 Rectangle::~Rectangle() {
 }
