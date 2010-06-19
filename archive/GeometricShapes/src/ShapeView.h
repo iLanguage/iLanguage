@@ -18,11 +18,11 @@ public:
 	enum {FILLED, HALLOW, INFO};
 
 	std::string drawBorders() const;
-
+	static void getTextDimensions(int& h, int& w, string textIn);
 	/*
 	 * Mutators
 	 */
-	void setFillType();
+	void setFillType(int ft);
 	void setForground(char fg);
 	void setBackground(char bg);
 
@@ -39,7 +39,7 @@ public:
 	ShapeView(const Shape* shapeToDraw);
 	virtual ~ShapeView();
 private:
-	std::string fillType;
+	int fillType;
 	char forground;
 	char background;
 	const Shape* shapeRecieved;
