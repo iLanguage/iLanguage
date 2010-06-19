@@ -106,9 +106,13 @@ void ShapeDisplayManager::runTests(){
 	cout << "Displaying a string with borders drawn around it."<<endl;
 	cout << svUsingVector.drawBorders();
 
-	cout<<"Displaying a ShapeView by just printing it."<<endl;
-	cout <<svUsingVector;
-
+	cout<<"Displaying a ShapeView by just printing it, \n\tprinting it first as info, \n\tthen filled, \n\tthen hallow"<<endl;
+	svUsingVector.setFillType(ShapeView::INFO);
+	cout<<svUsingVector<<endl;
+	svUsingVector.setFillType(ShapeView::FILLED);
+	cout<<svUsingVector<<endl;
+	svUsingVector.setFillType(ShapeView::HALLOW);
+	cout<<svUsingVector<<endl;
 
 }
 
