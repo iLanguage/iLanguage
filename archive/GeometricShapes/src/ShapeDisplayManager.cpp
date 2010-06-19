@@ -86,6 +86,18 @@ void ShapeDisplayManager::runTests(){
 	cout<<"Displaying shape with id 4"<<endl;
 	displayShape(4);
 
+	cout<<"Displaying a hollow version of shape 4, using the default fill characters."<<endl;
+	cout<<shapeList[foundIDposition]->toStringHollow('o','.');
+	cout<<"Displaying a hollow version of shape 4, using the o as the forground and . as the background."<<endl;
+	cout<<shapeList[foundIDposition]->toStringHollow('o','.');
+
+	ShapeView sv(&myRectangle);
+	cout << "Displaying a string with borders drawn around it."<<endl;
+	cout << sv.drawBorders();
+
+	ShapeView svUsingVector(shapeList[foundIDposition]);
+	cout << "Displaying a string with borders drawn around it."<<endl;
+	cout << svUsingVector.drawBorders();
 }
 
 
@@ -230,4 +242,5 @@ void ShapeDisplayManager::displayShape(int shapeID){
 
 	int positionFound = findShape(shapeID);
 	cout<<shapeList[positionFound]->toStringInfo();
+
 }

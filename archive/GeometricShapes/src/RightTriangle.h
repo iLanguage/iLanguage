@@ -12,12 +12,14 @@
 
 class RightTriangle: public Shape {
 public:
-	double geoArea() const;
-	int scrArea() const;
-	double geoPerimeter() const;
-	int scrPerimeter() const;
+	virtual double geoArea() const;
+	virtual int scrArea() const;
+	virtual double geoPerimeter() const;
+	virtual int scrPerimeter() const;
 
 
+	virtual string toStringFilled(char forground = '*', char background = ' ') const;
+	virtual string toStringHollow(char forground = '*', char background = ' ') const;
 	//RightTriangle(const RightTriangle& rectangleIn);
 	//RightTriangle& operator=(const RightTriangle & source);
 	RightTriangle(int inHeight);

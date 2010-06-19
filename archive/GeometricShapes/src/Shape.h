@@ -26,8 +26,8 @@ public:
 	virtual int scrPerimeter() const=0;
 
 	string toStringInfo() const;
-	string toStringFilled(char forground = '*', char background = ' ') const;
-	string toStringHollow(char forground = '*', char background = ' ') const;
+	virtual string toStringFilled(char forground = '*', char background = ' ') const=0;
+	virtual string toStringHollow(char forground = '*', char background = ' ') const=0;
 
 	static void setTrace(bool newValue);
 	static bool trace;

@@ -6,8 +6,10 @@
  */
 
 #include "ShapeView.h"
+#include "Shape.h"
 #include <string>
 #include <sstream>
+#include <iostream>
 
 std::string ShapeView::drawBorders(){
 	const char VBAR = static_cast<char>(179);// vertical bar
@@ -17,12 +19,26 @@ std::string ShapeView::drawBorders(){
 	const char TR = static_cast<char>(191);// top right
 	const char BL = static_cast<char>(192);// bottom left
 
-	//framedShape ="------\n****\n****\n****\n****\n------";
+	stringstream framedItem;
+
+	framedItem<<"-----------------------\n";
+	framedItem<< shapeRecieved->toStringInfo();
+	framedItem<<"-----------------------\n";
+	return framedItem.str();
 }
 
 
-ShapeView::ShapeView(Rectangle shapeToDraw) {
-	// TODO Auto-generated constructor stub
+//overload << to get this usage: (?)
+//cout << sv << endl;	// display the ShapeView object
+
+void ShapeView::setFillType(){
+	cout<<"The fill type was set."<<endl;
+}
+
+ShapeView::ShapeView(const Shape* shapeToDraw) {
+	if(Shape::trace) cout<<"Creating a shape view object."<<endl;
+
+	shapeRecieved = shapeToDraw;
 
 }
 

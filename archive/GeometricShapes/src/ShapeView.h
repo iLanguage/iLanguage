@@ -28,24 +28,21 @@ public:
 
 
 	/*
-	 * Accesors
+	 * Accessors
 	 */
-
-	//overload << to get this usage: (?)
-	//cout << sv << endl;	// display the ShapeView object
 
 	/*
 	 * Constructors
 	 */
 	//The ShapeView class should have two constructors and should store a const pointer to the shape object it receives;
-	void setShape(Rectangle shapeToDraw);
-	ShapeView(Rectangle shapeToDraw);
+	void setShape(const Rectangle &shapeToDraw);
+	ShapeView(const Shape* shapeToDraw);
 	virtual ~ShapeView();
 private:
 	std::string fillType;
 	char forground;
 	char background;
-	//?std::string framedShape;
+	const Shape* shapeRecieved;
 };
 
 #endif /* SHAPEVIEW_H_ */
