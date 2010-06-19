@@ -15,13 +15,20 @@
 #include <vector>
 using namespace std;
 
-ShapeDisplayManager::ShapeDisplayManager() {
-	// TODO Auto-generated constructor stub
+//overload << to get this usage:
+//cout << sv << endl;	// display the ShapeView object
+//solved by moving it into the source where it is called: error: no match for 'operator<<' in 'std::cout << svUsingVector'
+//solved by putting const on the end of the drawBorders function: error: passing 'const ShapeView' as 'this' argument of 'const std::string ShapeView::drawBorders()' discards qualifiers
+ostream &operator<<(ostream& sout, const ShapeView& num)//can declare it anywhere in your source (anywhere in the file that you use it)
+{
+	sout<< num.drawBorders();
+	return sout;//it comes in as a reference, it goes out as a reference
+}
 
+ShapeDisplayManager::ShapeDisplayManager() {
 }
 
 ShapeDisplayManager::~ShapeDisplayManager() {
-	// TODO Auto-generated destructor stub
 }
 
 void ShapeDisplayManager::run(){
@@ -98,6 +105,11 @@ void ShapeDisplayManager::runTests(){
 	ShapeView svUsingVector(shapeList[foundIDposition]);
 	cout << "Displaying a string with borders drawn around it."<<endl;
 	cout << svUsingVector.drawBorders();
+
+	cout<<"Displaying a ShapeView by just printing it."<<endl;
+	cout <<svUsingVector;
+
+
 }
 
 

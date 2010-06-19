@@ -17,7 +17,7 @@ class ShapeView {
 public:
 	enum {FILLED, HALLOW, INFO};
 
-	std::string drawBorders();
+	std::string drawBorders() const;
 
 	/*
 	 * Mutators

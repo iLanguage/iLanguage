@@ -10,8 +10,9 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+using namespace std;
 
-std::string ShapeView::drawBorders(){
+string ShapeView::drawBorders() const {
 	const char VBAR = static_cast<char>(179);// vertical bar
 	const char HBAR = static_cast<char>(196);// horizontal bar
 	const char BR = static_cast<char>(217);// bottom right
@@ -26,10 +27,6 @@ std::string ShapeView::drawBorders(){
 	framedItem<<"-----------------------\n";
 	return framedItem.str();
 }
-
-
-//overload << to get this usage: (?)
-//cout << sv << endl;	// display the ShapeView object
 
 void ShapeView::setFillType(){
 	cout<<"The fill type was set."<<endl;
