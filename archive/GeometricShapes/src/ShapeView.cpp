@@ -31,38 +31,45 @@ string ShapeView::drawBorders() const {
 		textToFrame = shapeRecieved->toStringInfo();
 	}
 
-	int width =6;
-	int height=7;
+	int width=0;
+	int height=0;
 	getTextDimensions(height, width,textToFrame);
 
 	stringstream framedItem;
+	framedItem<<'+'<<shapeRecieved->getID();
+	for (int i =0; i < width-1; i++)
+		framedItem<<VBAR;
+	framedItem<<'+'<<endl;
 
+	istringstream stringIn(textToFrame);
+	string junk;
+	while(getline(stringIn,junk)){
+		framedItem<<HBAR<<junk;
+		for (int j=junk.length();j<width;j++){
+			framedItem<<" ";
+		}
+		framedItem<<HBAR<<endl;
+	}
+
+	framedItem<<'+';
 	for (int i =0; i < width; i++)
 		framedItem<<VBAR;
-	framedItem<<endl;
+	framedItem<<'+'<<endl;
 
-	for (int k=0;k<height; k++)
-		framedItem<<HBAR<<textToFrame<<HBAR<<endl;
-
-	for (int i =0; i < width; i++)
-		framedItem<<VBAR;
-	framedItem<<endl;
 
 	return framedItem.str();
 }
 void ShapeView::getTextDimensions(int& h, int& w,string textIn){
-	if (Shape::trace) cout<<"Getting the dimensions (height, width) of the text";
+	if (Shape::trace) cout<<"Getting the dimensions (height, width) of the text"<<endl;
 	istringstream stringIn(textIn);
 	h=0;
 	w=0;
-	int maxWidth=0;
-
 	string junk;
 	while (getline(stringIn,junk)){
 		h++;
-		//getwidth
+		if (w<junk.length())
+			w=junk.length();
 	}
-	w=5;
 }
 
 void ShapeView::setFillType(int ft){

@@ -90,121 +90,59 @@ Displaying a hollow version of shape 4, using the default fill characters.
  hallow
 Creating a shape view object.
 Displaying a string with borders drawn around it.
-Getting the dimensions (height, width) of the text-----
+Getting the dimensions (height, width) of the text
++0------+
 | filled|
------
++-------+
 
 Creating a shape view object.
 Displaying a string with borders drawn around it.
-Getting the dimensions (height, width) of the text-----
+Getting the dimensions (height, width) of the text
++4------+
 | filled|
------
++-------+
 Displaying a ShapeView by just printing it, 
 	printing it first as info, 
 	then filled, 
 	then hallow
 The fill type was set to INFO
-Getting the dimensions (height, width) of the text-----
-|Shape Information
-id: 4
-name: Right Triangle
-width: 19
-height: 19
-screen area: 361
-geographic area: 361
-screen perimeter: 718
-geographic perimeter: 722
-|
-|Shape Information
-id: 4
-name: Right Triangle
-width: 19
-height: 19
-screen area: 361
-geographic area: 361
-screen perimeter: 718
-geographic perimeter: 722
-|
-|Shape Information
-id: 4
-name: Right Triangle
-width: 19
-height: 19
-screen area: 361
-geographic area: 361
-screen perimeter: 718
-geographic perimeter: 722
-|
-|Shape Information
-id: 4
-name: Right Triangle
-width: 19
-height: 19
-screen area: 361
-geographic area: 361
-screen perimeter: 718
-geographic perimeter: 722
-|
-|Shape Information
-id: 4
-name: Right Triangle
-width: 19
-height: 19
-screen area: 361
-geographic area: 361
-screen perimeter: 718
-geographic perimeter: 722
-|
-|Shape Information
-id: 4
-name: Right Triangle
-width: 19
-height: 19
-screen area: 361
-geographic area: 361
-screen perimeter: 718
-geographic perimeter: 722
-|
-|Shape Information
-id: 4
-name: Right Triangle
-width: 19
-height: 19
-screen area: 361
-geographic area: 361
-screen perimeter: 718
-geographic perimeter: 722
-|
-|Shape Information
-id: 4
-name: Right Triangle
-width: 19
-height: 19
-screen area: 361
-geographic area: 361
-screen perimeter: 718
-geographic perimeter: 722
-|
-|Shape Information
-id: 4
-name: Right Triangle
-width: 19
-height: 19
-screen area: 361
-geographic area: 361
-screen perimeter: 718
-geographic perimeter: 722
-|
------
+Getting the dimensions (height, width) of the text
++4------------------------+
+|Shape Information        |
+|id: 4                    |
+|name: Right Triangle     |
+|width: 19                |
+|height: 19               |
+|screen area: 361         |
+|geographic area: 361     |
+|screen perimeter: 718    |
+|geographic perimeter: 722|
++-------------------------+
 
 The fill type was set to FILLED
-Getting the dimensions (height, width) of the text-----
+Getting the dimensions (height, width) of the text
++4------+
 | filled|
------
++-------+
 
 The fill type was set to HALLOW
-Getting the dimensions (height, width) of the text-----
+Getting the dimensions (height, width) of the text
++4------+
 | hallow|
------
++-------+
+
+The fill type was set to INFO
+Getting the dimensions (height, width) of the text
++0-----------------------+
+|Shape Information       |
+|id: 0                   |
+|name: Rectangle         |
+|width: 5                |
+|height: 4               |
+|screen area: 20         |
+|geographic area: 20     |
+|screen perimeter: 36    |
+|geographic perimeter: 40|
++------------------------+
 
 

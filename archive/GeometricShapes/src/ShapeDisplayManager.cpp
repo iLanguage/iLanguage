@@ -114,6 +114,9 @@ void ShapeDisplayManager::runTests(){
 	svUsingVector.setFillType(ShapeView::HALLOW);
 	cout<<svUsingVector<<endl;
 
+	sv.setFillType(ShapeView::INFO);
+	cout<<sv<<endl;
+
 }
 
 
