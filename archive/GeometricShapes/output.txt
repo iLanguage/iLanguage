@@ -284,4 +284,22 @@ Getting the dimensions (height, width) of the text
 |ooooooooooooooooooooooooooooooooooo|
 +-----------------------------------+
 
+Testing the square class.
+A shape was created.
+A rectangle was created.
+A square was created.
+Getting the dimensions (height, width) of the text
++7---------+
+|oooooooooo|
+|o........o|
+|o........o|
+|o........o|
+|o........o|
+|o........o|
+|o........o|
+|o........o|
+|o........o|
+|oooooooooo|
++----------+
+
 
