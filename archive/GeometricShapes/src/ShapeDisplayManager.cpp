@@ -11,6 +11,7 @@
 #include "Rectangle.h"
 #include "RightTriangle.h"
 #include "Square.h"
+#include "Framer.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -23,7 +24,7 @@ void ShapeDisplayManager::run(){
 	//runInteractively();
 }
 void ShapeDisplayManager::printMenu(){
-	cout << "Choose one of the following operations:\n"
+	string menu= "Choose one of the following operations:\n"
 			"c: create a shape \n"
 			"r: remove a shape \n"
 			"d: display a shape \n"
@@ -36,6 +37,8 @@ void ShapeDisplayManager::printMenu(){
 			"y: run all the tests\n\n"
 
 			"q: quit \n";
+	Framer framedMenu(menu,"Main Menu","    ");
+	cout<<framedMenu.toString();
 
 }
 /*

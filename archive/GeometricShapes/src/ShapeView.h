@@ -22,7 +22,6 @@ public:
 	enum {FILLED, HALLOW, INFO};
 
 	std::string drawBorders() const;
-	static void getTextDimensions(int& h, int& w, string textIn);
 	/*
 	 * Mutators
 	 */
