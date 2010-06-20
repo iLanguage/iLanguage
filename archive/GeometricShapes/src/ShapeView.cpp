@@ -93,14 +93,33 @@ void ShapeView::setForground(char fg){
 void ShapeView::setBackground(char bg){
 	background = bg;
 }
-
-ShapeView::ShapeView(const Shape* shapeToDraw) {
-	if(Shape::trace) cout<<endl<<"Creating a shape view object."<<endl;
-	shapeRecieved = shapeToDraw;
+void ShapeView::setShape(const Shape* shapeToDraw){
+	shapeRecieved=shapeToDraw;
 	fillType=FILLED;
 	background=' ';
 	forground='*';
 }
+
+ShapeView& ShapeView::operator =(const Shape* shapeToDraw){
+	shapeRecieved=shapeToDraw;
+}
+ShapeView& ShapeView::operator =(const ShapeView &svIn){
+	if(Shape::trace) cout<<endl<<"Resetting a shape view object from an existing shape view object."<<endl;
+	shapeRecieved=svIn.shapeRecieved;
+	fillType=svIn.fillType;
+	background=svIn.background;
+	forground=svIn.forground;
+}
+ShapeView::ShapeView(const ShapeView &svIn){
+	if(Shape::trace) cout<<endl<<"Creating a shape view object from an existing shape view object."<<endl;
+	shapeRecieved=svIn.shapeRecieved;
+	fillType=svIn.fillType;
+	background=svIn.background;
+	forground=svIn.forground;
+}
+ShapeView::ShapeView(const Shape* shapeToDraw) {
+	if(Shape::trace) cout<<endl<<"Creating a shape view object."<<endl;
+	setShape(shapeToDraw);
+}
 ShapeView::~ShapeView() {
-	// TODO Auto-generated destructor stub
 }
