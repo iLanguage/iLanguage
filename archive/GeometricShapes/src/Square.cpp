@@ -1,6 +1,5 @@
 /*
  * Square.cpp
- *
  *  Created on: Jun 20, 2010
  *      Author: gina
  */
@@ -14,6 +13,5 @@ Square::Square(int side) : Rectangle(side,side) {
 	name="Square";
 	if (Shape::trace) cout<<"A square was created."<<endl;
 }
-
 Square::~Square() {
 }

@@ -1,6 +1,5 @@
 /*
  * Square.h
- *
  *  Created on: Jun 20, 2010
  *      Author: gina
  */
