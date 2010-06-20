@@ -1,16 +1,13 @@
 /*
  * Rectangle.cpp
- *
  *  Created on: Jun 12, 2010
  *      Author: gina
  */
-
 #include "Rectangle.h"
 #include <iostream>
 #include <sstream>
 #include "Shape.h"
 using namespace std;
-
 
 double Rectangle::geoArea() const {
 	return height * width;
@@ -59,7 +56,7 @@ Rectangle::Rectangle(int inHeight,int inWidth) { //page 235: solved error: no ma
 	height = inHeight;
 	width = inWidth;
 	name="Rectangle";
-	cout<<"A rectangle was created."<<endl;
+	if (Shape::trace) cout<<"A rectangle was created."<<endl;
 }
 
 Rectangle::~Rectangle() {

@@ -1,6 +1,6 @@
 /*
  * ShapeDisplayManager.cpp
- *
+ *	Console User Interface, contains the meat of the application's logic.
  *  Created on: Jun 10, 2010
  *      Author: gina
  */
@@ -16,6 +16,31 @@
 #include <vector>
 using namespace std;
 
+void ShapeDisplayManager::run(){
+	cout<< "Shape Interactive Management System"<<endl;
+	printMenu();
+	runTests();
+	//runInteractively();
+}
+void ShapeDisplayManager::printMenu(){
+	cout << "Choose one of the following operations:\n"
+			"c: create a shape \n"
+			"r: remove a shape \n"
+			"d: display a shape \n"
+			"t: total number of shapes \n"
+			"l: list all shape id numbers \n\n"
+
+			"Debugging Menu:\n"
+			"s: trace the behavior of the application\n"
+			"o: turn off tracing\n\n"
+			"y: run all the tests\n\n"
+
+			"q: quit \n";
+
+}
+/*
+ * Overloaded << so as to easily print a ShapeView object
+ */
 //overload << to get this usage:
 //cout << sv << endl;	// display the ShapeView object
 //solved by moving it into the source where it is called: error: no match for 'operator<<' in 'std::cout << svUsingVector'
@@ -25,30 +50,11 @@ ostream &operator<<(ostream& sout, const ShapeView& num)//can declare it anywher
 	sout<< num.drawBorders();
 	return sout;//it comes in as a reference, it goes out as a reference
 }
-
-ShapeDisplayManager::ShapeDisplayManager() {
-}
-
-ShapeDisplayManager::~ShapeDisplayManager() {
-}
-
-void ShapeDisplayManager::run(){
-	cout<< "Shape Interactive Management System"<<endl;
-	printMenu();
-	runTests();
-	//runInteractively();
-}
-
-void ShapeDisplayManager::printMenu(){
-	cout << "Choose one of the following operations:\n\n"
-			"c: create a shape \n"
-			"r: remove a shape \n"
-			"d: display a shape \n"
-			"t: total number of shapes \n"
-			"l: list all shape id numbers \n"
-			"q: quit \n";
-
-}
+/*
+ * runTests() serves to regression test the application to ensure that functionality is lost after changes to the application.
+ * 		- runTests can be turned on via the "t" option in the user menu.
+ * 		- runTests can also be used as examples of creating and displaying shapes.
+ */
 void ShapeDisplayManager::runTests(){
 	cout<<endl<<"Performing tests on the Shape class"<<endl;
 	//Shape myShape();
@@ -63,9 +69,6 @@ void ShapeDisplayManager::runTests(){
 
 	RightTriangle myRightTriangle(3);
 	cout<<myRightTriangle.toStringInfo()<<endl;
-
-
-
 
 	cout<<"Copying a rectangle to a new rectangle"<<endl;
 	Rectangle copiedRectangle(anotherRectangle);
@@ -148,11 +151,15 @@ void ShapeDisplayManager::runTests(){
 	cout<<svUsingVector<<endl;
 
 }
-
-
+/*
+ * runInteractively waits for user input to perform the operation that the user requests
+ */
 void ShapeDisplayManager::runInteractively(){
 	bool keepRunning=true;
 	string userInputString;
+
+	Rectangle startingShape(1,1);
+	ShapeView shapeViewer(&startingShape);
 
 	while(keepRunning){
 		cout<<"\nEnter input: ";
@@ -186,17 +193,18 @@ void ShapeDisplayManager::runInteractively(){
 				cout<<"The shape list is empty, try adding a shape."<<endl;
 				break;
 			case 'l':
-				cout<<"The shape list is empty, try adding a shape."<<endl;
+				listShapes();
 				break;
-
 			case 's':
-				//Sequence::setTrace = true;
+				Shape::setTrace(true);
 				cout<<"Tracing is on."<<endl;
 				break;
 			case 'o':
-				//Sequence::setTrace(false);
-				//LargeInt::setTrace(false);
+				Shape::setTrace(false);
 				cout<<"Tracing is off."<<endl;
+				break;
+			case 'y' :
+				runTests();
 				break;
 			default:
 				cout<<"Please try again (something is wrong with your input)."<<endl;
@@ -205,6 +213,10 @@ void ShapeDisplayManager::runInteractively(){
 	return;
 
 }
+
+/*
+ * createShape displays a menu for creating shapes, creates the shape and inserts into the shapeList container.
+ */
 void ShapeDisplayManager::createShape(){
 	cout<<"Choose one of the following Shapes: \n\n"
 			"1: Isosceles Triangle \n"
@@ -252,6 +264,9 @@ void ShapeDisplayManager::createShape(){
 	}//end while
 	return;
 }
+/*
+ * getInt is helper function which serves to get integers from user input, it is used by the interactive functions runInteractively and createShape
+ */
 int ShapeDisplayManager::getInt(string prompt) // definition of getInt(string) from FAQ
 {
 	cout << prompt;
@@ -272,7 +287,10 @@ int ShapeDisplayManager::getInt(string prompt) // definition of getInt(string) f
 	getline(cin, leftover);
 	return x; // ignore leftover
 }
-
+/*
+ * findShape cycles through the shapeList to find a shape with a certian shapeID,
+ * returns: the position in the shapeList container
+ */
 int ShapeDisplayManager::findShape(int shapeID){
 	  for (int i=0; i<shapeList.size(); i++)
 	  {
@@ -281,15 +299,26 @@ int ShapeDisplayManager::findShape(int shapeID){
 	  }
 	  return -1;
 }
-
+/*
+ * listShapes cycles through the shape list and displays the shape information of each shape.
+ */
 void ShapeDisplayManager::listShapes(){
 	for (int i=0; i<shapeList.size(); i++)
 		cout << "Shape at "<<i<<" :" << shapeList.at(i)->toStringInfo();
 }
-
+/*
+ * displayShape displays information about a shape with a particular shapeID
+ *
+ */
 void ShapeDisplayManager::displayShape(int shapeID){
-
 	int positionFound = findShape(shapeID);
 	cout<<shapeList[positionFound]->toStringInfo();
 
+}
+/*
+ * Constructors
+ */
+ShapeDisplayManager::ShapeDisplayManager() {
+}
+ShapeDisplayManager::~ShapeDisplayManager() {
 }

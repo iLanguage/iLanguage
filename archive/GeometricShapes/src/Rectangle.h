@@ -17,13 +17,9 @@ public:
 	virtual double geoPerimeter() const;
 	virtual int scrPerimeter() const;
 
-
-
 	virtual string toStringFilled(char forground = '*', char background = ' ') const;
 	virtual string toStringHollow(char forground = '*', char background = ' ') const;
 
-	//Rectangle(const Rectangle& rectangleIn);
-	//Rectangle& operator=(const Rectangle & source);
 	Rectangle(int inHeight,int inWidth);
 	virtual ~Rectangle();
 };

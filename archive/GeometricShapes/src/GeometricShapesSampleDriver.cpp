@@ -1,9 +1,20 @@
 //============================================================================
-// Name        : GeometricShapesSampleDriver.cpp
+// Name        : GeometricShapes Application
 // Author      : gina
-// Version     :
-// Copyright   : 
-// Description :
+// Version     : 1
+// Copyright   : June 2010
+// Description : Sample driver for a client which uses the GeometricShapes application
+// Contents    : ShapeDisplayManager 	- Console User interface and test engine
+//				 Shape					- Classes which implements mathematical functions and draws shapes
+//					Rectangle
+//						Square
+//					Triangle
+//						RightTriangle
+//						IsocolesTriangle
+//					Rhombus
+//				ShapeView				- Graphical manager which allows the user to
+//											easily change the foreground and background of the shape display, and
+//											reuse the settings for multiple shapes
 //============================================================================
 
 #include <iostream>
@@ -23,7 +34,6 @@ int main() {
 	//cute::suite s;
 	//s.push_back(CUTE(ShapeTest::ginasTest));
 	//ShapeTest::runSuite();
-
 
 	ShapeDisplayManager sdm;
 	sdm.run();
