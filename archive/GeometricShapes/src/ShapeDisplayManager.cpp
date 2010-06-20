@@ -10,6 +10,7 @@
 #include "ShapeView.h"
 #include "Rectangle.h"
 #include "RightTriangle.h"
+#include "Square.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -138,6 +139,14 @@ void ShapeDisplayManager::runTests(){
 	svUsingVector.setBackground('.');
 	svUsingVector.setForground('o');
 	cout<<svUsingVector<<endl;
+
+	cout<<"Testing the square class."<<endl;
+	Square mediumSquare(10);
+	shapeList.push_back(&mediumSquare);
+	foundIDposition =findShape(mediumSquare.getID());
+	svUsingVector = shapeList[foundIDposition];
+	cout<<svUsingVector<<endl;
+
 }
 
 
