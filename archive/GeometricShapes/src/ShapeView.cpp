@@ -7,21 +7,18 @@
 
 #include "ShapeView.h"
 #include "Shape.h"
+#include "Framer.h"
 #include <string>
-#include <sstream>
 #include <iostream>
+
 using namespace std;
 
+/*
+ * drawBorders draws a shape with borders around it. It consists of two steps:
+ * 		1:  Get a text/shape drawing using the current shapeview settings (Filled, Hallow, Info)
+ * 		2:  Draw the text with borders around it
+ */
 string ShapeView::drawBorders() const {
-	char VBAR = static_cast<char>(179);// vertical bar
-	VBAR = '-';//the char codes dont work on my mac, see if it works on other OS or what the problem is later
-	char HBAR = static_cast<char>(196);// horizontal bar
-	HBAR = '|';
-	const char BR = static_cast<char>(217);// bottom right
-	const char TL = static_cast<char>(218);// top left
-	const char TR = static_cast<char>(191);// top right
-	const char BL = static_cast<char>(192);// bottom left
-
 	string textToFrame ="Error";
 	if (fillType == ShapeView::HALLOW){
 		textToFrame = shapeRecieved->toStringHollow(forground, background);
@@ -31,49 +28,11 @@ string ShapeView::drawBorders() const {
 		textToFrame = shapeRecieved->toStringInfo();
 	}
 
-	int width=0;
-	int height=0;
-	getTextDimensions(height, width,textToFrame);
-
-	stringstream framedItem;
-	framedItem<<'+'<<shapeRecieved->getID();
-	for (int i =0; i < width-1; i++)
-		framedItem<<VBAR;
-	framedItem<<'+'<<endl;
-
-	istringstream stringIn(textToFrame);
-	string junk;
-	while(getline(stringIn,junk)){
-		framedItem<<HBAR<<junk;
-		for (int j=junk.length();j<width;j++){
-			framedItem<<" ";
-		}
-		framedItem<<HBAR<<endl;
-	}
-
-	framedItem<<'+';
-	for (int i =0; i < width; i++)
-		framedItem<<VBAR;
-	framedItem<<'+'<<endl;
-
-
-	return framedItem.str();
+	int cornerCode=shapeRecieved->getID();
+	Framer framedText(textToFrame,cornerCode);
+	return framedText.toString();
 }
-void ShapeView::getTextDimensions(int& h, int& w,string textIn){
-	if (Shape::trace) cout<<"Getting the dimensions (height, width) of the text"<<endl;
-	istringstream stringIn(textIn);
-	h=0;
-	w=0;
-	string junk;
-	while (getline(stringIn,junk)){
-		h++;
-		if (w<junk.length())
-			w=junk.length();
-	}
-}
-
 void ShapeView::setFillType(int ft){
-
 	if (ft == ShapeView::HALLOW){
 		if (Shape::trace) cout <<"The fill type was set to HALLOW"<<endl;
 		fillType = ShapeView::HALLOW;
@@ -84,9 +43,7 @@ void ShapeView::setFillType(int ft){
 		if (Shape::trace) cout <<"The fill type was set to INFO"<<endl;
 		fillType = ShapeView::INFO;
 	}
-
 }
-
 void ShapeView::setForground(char fg){
 	forground = fg;
 }
