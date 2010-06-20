@@ -135,6 +135,9 @@ void ShapeDisplayManager::runTests(){
 	cout<<svUsingVector<<endl;
 	svUsingVector.setFillType(ShapeView::HALLOW);
 	cout<<svUsingVector<<endl;
+	svUsingVector.setBackground('.');
+	svUsingVector.setForground('o');
+	cout<<svUsingVector<<endl;
 }
 
 

@@ -24,9 +24,9 @@ string ShapeView::drawBorders() const {
 
 	string textToFrame ="Error";
 	if (fillType == ShapeView::HALLOW){
-		textToFrame = shapeRecieved->toStringHollow();
+		textToFrame = shapeRecieved->toStringHollow(forground, background);
 	}else if(fillType == ShapeView::FILLED){
-		textToFrame = shapeRecieved->toStringFilled();
+		textToFrame = shapeRecieved->toStringFilled(forground, background);
 	}else if(fillType == ShapeView::INFO){
 		textToFrame = shapeRecieved->toStringInfo();
 	}
