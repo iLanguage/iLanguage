@@ -35,7 +35,11 @@ public:
 	 * Constructors
 	 */
 	//The ShapeView class should have two constructors and should store a const pointer to the shape object it receives;
-	void setShape(const Rectangle &shapeToDraw);
+	void setShape(const Shape* shapeToDraw);
+	ShapeView& operator=(const ShapeView & svIn);
+	ShapeView& operator =(const Shape* shapeToDraw);
+
+	ShapeView(const ShapeView & svIn);
 	ShapeView(const Shape* shapeToDraw);
 	virtual ~ShapeView();
 private:

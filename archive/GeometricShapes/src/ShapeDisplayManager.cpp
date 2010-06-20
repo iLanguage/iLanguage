@@ -106,17 +106,35 @@ void ShapeDisplayManager::runTests(){
 	cout << "Displaying a string with borders drawn around it."<<endl;
 	cout << svUsingVector.drawBorders();
 
-	cout<<"Displaying a ShapeView by just printing it, \n\tprinting it first as info, \n\tthen filled, \n\tthen hallow"<<endl;
-	svUsingVector.setFillType(ShapeView::INFO);
-	cout<<svUsingVector<<endl;
+	cout<<"Displaying a ShapeView by just printing it, \n\tprinting it first as\n\tfilled, \n\tthen hallow, \n\tthen info"<<endl;
 	svUsingVector.setFillType(ShapeView::FILLED);
 	cout<<svUsingVector<<endl;
 	svUsingVector.setFillType(ShapeView::HALLOW);
+	cout<<svUsingVector<<endl;
+	svUsingVector.setFillType(ShapeView::INFO);
 	cout<<svUsingVector<<endl;
 
 	sv.setFillType(ShapeView::INFO);
 	cout<<sv<<endl;
 
+	cout<<"Testing the assignment operator in the shapeview class"<<endl;
+	Rectangle tallRectangle(8,3);
+	shapeList.push_back(&tallRectangle);
+	foundIDposition = findShape(tallRectangle.getID());
+	svUsingVector=shapeList[foundIDposition];
+	svUsingVector.setFillType(ShapeView::FILLED);
+	cout<<svUsingVector<<endl;
+	svUsingVector.setFillType(ShapeView::HALLOW);
+	cout<<svUsingVector<<endl;
+
+	Rectangle bigRectangle(30,35);
+	shapeList.push_back(&bigRectangle);
+	foundIDposition = findShape(bigRectangle.getID());
+	svUsingVector=shapeList[foundIDposition];
+	svUsingVector.setFillType(ShapeView::FILLED);
+	cout<<svUsingVector<<endl;
+	svUsingVector.setFillType(ShapeView::HALLOW);
+	cout<<svUsingVector<<endl;
 }
 
 
