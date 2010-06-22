@@ -22,8 +22,8 @@ using namespace std;
 void ShapeDisplayManager::run(){
 	cout<< "Shape Interactive Management System"<<endl;
 	printMenu();
-	runTests();
-	//runInteractively();
+	//runTests();
+	runInteractively();
 }
 void ShapeDisplayManager::printMenu(){
 	string menu= "Choose one of the following operations:\n"
@@ -218,10 +218,10 @@ void ShapeDisplayManager::runInteractively(){
 				createShape();
 				break;
 			case 'r':
-				cout<<"The shape list is empty, try adding a shape."<<endl;
+				removeShape(getInt("Please enter the ID of the shape which you would like to remove."));
 				break;
 			case 'd':
-				cout<<"The shape list is empty, try adding a shape."<<endl;
+				displayShape(getInt("Please enter the ID of the shape which you would like to display."));
 				break;
 			case 't':
 				cout<<"The shape list is empty, try adding a shape."<<endl;
@@ -263,6 +263,12 @@ void ShapeDisplayManager::createShape(){
 	bool keepRunning=true;
 	string userInputString;
 
+	Rectangle myRectangle(2,3);
+	Square mySquare(2);
+	Rhombus myRhombus(3);
+	RightTriangle myRightTriangle(3);
+	IsoscelesTriangle myIsoTriangle(3);
+
 	while(keepRunning){
 		cout<<"\nEnter input: ";
 		getline(cin,userInputString);
@@ -285,9 +291,8 @@ void ShapeDisplayManager::createShape(){
 				break;
 			case '4':
 				cout<<"Creating a rectangle"<<endl;
-				//Shape rectangle2(4); // error:   crosses initialization of 'Shape rectangle2'
+				shapeList.push_back(&myRectangle);//myRectangle=(4); // error:   crosses initialization of 'Shape rectangle2'
 				//shapeList.push_back(rectangle1); //error: no matching function for call to 'std::vector<Shape*, std::allocator<Shape*> >::push_back(Shape (&)())'
-				keepRunning=false;
 				break;
 			case '5':
 				break;
@@ -349,6 +354,16 @@ void ShapeDisplayManager::displayShape(int shapeID){
 	cout<<shapeList[positionFound]->toStringInfo();
 
 }
+void ShapeDisplayManager::removeShape(int shapeID){
+	// erase the 6th element
+	int positionToErase = findShape(shapeID);
+	if (positionToErase > -1)
+		shapeList.erase(shapeList.begin()+positionToErase);
+	else
+		cout<<"Shape "<<shapeID<<" wasn't found so it was not deleted."<<endl;
+}
+
+
 /*
  * Constructors
  */

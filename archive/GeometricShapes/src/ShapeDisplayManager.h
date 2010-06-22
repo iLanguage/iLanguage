@@ -23,6 +23,7 @@ public:
 	void removeShape();
 	void createShape();
 	void displayShape(int shapeID);
+	void removeShape(int shapeID);
 	void listShapes();
 	int findShape(int shapeID);
 	int getInt(std::string userPrompt);
