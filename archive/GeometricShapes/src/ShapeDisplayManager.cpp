@@ -11,6 +11,7 @@
 #include "Rectangle.h"
 #include "RightTriangle.h"
 #include "IsoscelesTriangle.h"
+#include "Rhombus.h"
 #include "Square.h"
 #include "Framer.h"
 #include <iostream>
@@ -174,6 +175,15 @@ void ShapeDisplayManager::runTests(){
 	svUsingVector.setFillType(ShapeView::HALLOW);
 	cout<<svUsingVector<<endl;
 
+	cout<<"Testing the rhombus class."<<endl;
+	Rhombus mediumRhombus(11);
+	shapeList.push_back(&mediumRhombus);
+	foundIDposition = findShape(mediumRhombus.getID());
+	svUsingVector = shapeList[foundIDposition];
+	svUsingVector.setFillType(ShapeView::FILLED);
+	cout<<svUsingVector<<endl;
+	svUsingVector.setFillType(ShapeView::HALLOW);
+	cout<<svUsingVector<<endl;
 }
 /*
  * runInteractively waits for user input to perform the operation that the user requests
