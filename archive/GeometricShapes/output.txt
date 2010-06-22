@@ -56,10 +56,10 @@ id: 2
 name: Right Triangle
 width: 3
 height: 3
-screen area: 9
-geographic area: 9
-screen perimeter: 14
-geographic perimeter: 18
+screen area: 6
+geographic area: 4
+screen perimeter: 6
+geographic perimeter: 6.24264
 
 Copying a rectangle to a new rectangle
 A Shape was copied to a new Shape.
@@ -97,13 +97,51 @@ id: 4
 name: Right Triangle
 width: 19
 height: 19
-screen area: 361
-geographic area: 361
-screen perimeter: 718
-geographic perimeter: 722
+screen area: 190
+geographic area: 180
+screen perimeter: 54
+geographic perimeter: 28.8701
 Displaying a hollow version of shape 4, using the default fill characters.
- hallowDisplaying a hollow version of shape 4, using the o as the forground and . as the background.
- hallow
+o
+oo
+o.o
+o..o
+o...o
+o....o
+o.....o
+o......o
+o.......o
+o........o
+o.........o
+o..........o
+o...........o
+o............o
+o.............o
+o..............o
+o...............o
+o................o
+ooooooooooooooooooo
+Displaying a hollow version of shape 4, using the o as the forground and . as the background.
+o
+oo
+o.o
+o..o
+o...o
+o....o
+o.....o
+o......o
+o.......o
+o........o
+o.........o
+o..........o
+o...........o
+o............o
+o.............o
+o..............o
+o...............o
+o................o
+ooooooooooooooooooo
+
 Creating a shape view object.
 Displaying a string with borders drawn around it.
 +0------+
@@ -117,44 +155,98 @@ Displaying a string with borders drawn around it.
 
 Creating a shape view object.
 Displaying a string with borders drawn around it.
-+4--------+
-|         |
-|  filled |
-|         |
-+---------+
++4--------------------+
+|                     |
+| *                   |
+| **                  |
+| ***                 |
+| ****                |
+| *****               |
+| ******              |
+| *******             |
+| ********            |
+| *********           |
+| **********          |
+| ***********         |
+| ************        |
+| *************       |
+| **************      |
+| ***************     |
+| ****************    |
+| *****************   |
+| ******************  |
+| ******************* |
+|                     |
++---------------------+
 Displaying a ShapeView by just printing it, 
 	printing it first as
 	filled, 
 	then hallow, 
 	then info
 The fill type was set to FILLED
-+4--------+
-|         |
-|  filled |
-|         |
-+---------+
++4--------------------+
+|                     |
+| *                   |
+| **                  |
+| ***                 |
+| ****                |
+| *****               |
+| ******              |
+| *******             |
+| ********            |
+| *********           |
+| **********          |
+| ***********         |
+| ************        |
+| *************       |
+| **************      |
+| ***************     |
+| ****************    |
+| *****************   |
+| ******************  |
+| ******************* |
+|                     |
++---------------------+
 
 The fill type was set to HALLOW
-+4--------+
-|         |
-|  hallow |
-|         |
-+---------+
++4--------------------+
+|                     |
+| *                   |
+| **                  |
+| * *                 |
+| *  *                |
+| *   *               |
+| *    *              |
+| *     *             |
+| *      *            |
+| *       *           |
+| *        *          |
+| *         *         |
+| *          *        |
+| *           *       |
+| *            *      |
+| *             *     |
+| *              *    |
+| *               *   |
+| *                *  |
+| ******************* |
+|                     |
++---------------------+
 
 The fill type was set to INFO
-+4--------------------------+
-|                           |
-| Shape Information         |
-| id: 4                     |
-| name: Right Triangle      |
-| width: 19                 |
-| height: 19                |
-| screen area: 361          |
-| geographic area: 361      |
-| screen perimeter: 718     |
-| geographic perimeter: 722 |
-|                           |
-+---------------------------+
++4------------------------------+
+|                               |
+| Shape Information             |
+| id: 4                         |
+| name: Right Triangle          |
+| width: 19                     |
+| height: 19                    |
+| screen area: 190              |
+| geographic area: 180          |
+| screen perimeter: 54          |
+| geographic perimeter: 28.8701 |
+|                               |
++-------------------------------+
 
 The fill type was set to INFO
 +0-------------------------+
@@ -329,5 +421,79 @@ A square was created.
 | oooooooooo |
 |            |
 +------------+
+
+Testing the right triangle class.
+A shape was created.
+A right triangle was created
+The fill type was set to FILLED
++8-----------+
+|            |
+| o          |
+| oo         |
+| ooo        |
+| oooo       |
+| ooooo      |
+| oooooo     |
+| ooooooo    |
+| oooooooo   |
+| ooooooooo  |
+| oooooooooo |
+|            |
++------------+
+
+The fill type was set to HALLOW
++8-----------+
+|            |
+| o          |
+| oo         |
+| o.o        |
+| o..o       |
+| o...o      |
+| o....o     |
+| o.....o    |
+| o......o   |
+| o.......o  |
+| oooooooooo |
+|            |
++------------+
+
+Testing the isosceles triangle class.
+A shape was created.
+An isoceles IsoscelesTriangle was created
+The fill type was set to FILLED
++9------------------------+
+|                         |
+| ...........o........... |
+| ..........ooo.......... |
+| .........ooooo......... |
+| ........ooooooo........ |
+| .......ooooooooo....... |
+| ......ooooooooooo...... |
+| .....ooooooooooooo..... |
+| ....ooooooooooooooo.... |
+| ...ooooooooooooooooo... |
+| ..ooooooooooooooooooo.. |
+| .ooooooooooooooooooooo. |
+| ooooooooooooooooooooooo |
+|                         |
++-------------------------+
+
+The fill type was set to HALLOW
++9------------------------+
+|                         |
+| ...........o........... |
+| ..........o.o.......... |
+| .........o...o......... |
+| ........o.....o........ |
+| .......o.......o....... |
+| ......o.........o...... |
+| .....o...........o..... |
+| ....o.............o.... |
+| ...o...............o... |
+| ..o.................o.. |
+| .o...................o. |
+| ooooooooooooooooooooooo |
+|                         |
++-------------------------+
 
 

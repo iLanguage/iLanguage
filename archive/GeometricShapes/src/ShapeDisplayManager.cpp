@@ -10,6 +10,7 @@
 #include "ShapeView.h"
 #include "Rectangle.h"
 #include "RightTriangle.h"
+#include "IsoscelesTriangle.h"
 #include "Square.h"
 #include "Framer.h"
 #include <iostream>
@@ -151,6 +152,26 @@ void ShapeDisplayManager::runTests(){
 	shapeList.push_back(&mediumSquare);
 	foundIDposition =findShape(mediumSquare.getID());
 	svUsingVector = shapeList[foundIDposition];
+	cout<<svUsingVector<<endl;
+
+	cout<<"Testing the right triangle class."<<endl;
+	RightTriangle mediumRightTriangle(10);
+	shapeList.push_back(&mediumRightTriangle);
+	foundIDposition = findShape(mediumRightTriangle.getID());
+	svUsingVector = shapeList[foundIDposition];
+	svUsingVector.setFillType(ShapeView::FILLED);
+	cout<<svUsingVector<<endl;
+	svUsingVector.setFillType(ShapeView::HALLOW);
+	cout<<svUsingVector<<endl;
+
+	cout<<"Testing the isosceles triangle class."<<endl;
+	IsoscelesTriangle mediumIsoTriangle(12);
+	shapeList.push_back(&mediumIsoTriangle);
+	foundIDposition = findShape(mediumIsoTriangle.getID());
+	svUsingVector = shapeList[foundIDposition];
+	svUsingVector.setFillType(ShapeView::FILLED);
+	cout<<svUsingVector<<endl;
+	svUsingVector.setFillType(ShapeView::HALLOW);
 	cout<<svUsingVector<<endl;
 
 }
