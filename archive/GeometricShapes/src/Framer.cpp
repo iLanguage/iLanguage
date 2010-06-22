@@ -20,7 +20,7 @@ void Framer::getTextDimensions(){
 		if (width<junk.length())
 			width=junk.length();//find the longest line to get the width
 	}
-	height=height +2*(margin.length());
+	height=height+2*(margin.length());
 	width=width+2*(margin.length());
 }
 void Framer::frameIt(){
@@ -46,14 +46,14 @@ void Framer::frameIt(){
 	framedStream<<'+'<<topCornerCode;
 
 	//print top line
-	for (int i=0; i<adjustedTopWidth+2*(margin.length()); i++)
+	for (int i=0; i<adjustedTopWidth; i++)
 		framedStream<<VBAR;
 	framedStream<<'+'<<std::endl;
 
 	//print top margin, same height as the length of margin itself
 	for(int k=0;k<margin.length(); k++){
 		framedStream<<HBAR;
-		for (int j=0; j<width+2*(margin.length()); j++){
+		for (int j=0; j<width; j++){
 			framedStream<<" ";						//pad the lines to place the HBAR correctly
 		}
 		framedStream<<HBAR<<std::endl;
@@ -63,7 +63,7 @@ void Framer::frameIt(){
 	std::string line;
 	while(std::getline(stringIn,line)){
 		framedStream<<HBAR<<margin<<line;
-		for (int j=line.length(); j<width; j++){
+		for (int j=line.length()+2*margin.length(); j<width; j++){
 			framedStream<<" ";						//pad the lines to place the HBAR correctly
 		}
 		framedStream<<margin<<HBAR<<std::endl;
@@ -72,14 +72,14 @@ void Framer::frameIt(){
 	//print bottom margin, same height as the length of margin itself
 	for(int k=0;k<margin.length(); k++){
 		framedStream<<HBAR;
-		for (int j=0; j<width+2*(margin.length()); j++){
+		for (int j=0; j<width; j++){
 			framedStream<<" ";						//pad the lines to place the HBAR correctly
 		}
 		framedStream<<HBAR<<std::endl;
 	}
 
 	framedStream<<'+';
-	for (int i=0; i<width+2*(margin.length()); i++)
+	for (int i=0; i<width; i++)
 		framedStream<<VBAR;
 	framedStream<<'+'<<std::endl;
 
