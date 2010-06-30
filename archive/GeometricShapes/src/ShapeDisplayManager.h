@@ -20,6 +20,7 @@ public:
 	void printMenu();
 	void runInteractively();
 	void runTests();
+	void runObjectPoolTests();
 	void removeShape();
 	void createShape();
 	void displayShape(int shapeID);

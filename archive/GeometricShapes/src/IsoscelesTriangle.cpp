@@ -78,8 +78,8 @@ string IsoscelesTriangle::toStringHollow(char forground, char background) const{
 IsoscelesTriangle::IsoscelesTriangle(int inHeight):Shape() {
 	height=inHeight;
 	width=2*inHeight-1;
-	name="Isosceles IsoscelesTriangle";
-	if (Shape::trace) cout<<"An isoceles IsoscelesTriangle was created"<<endl;
+	name="Isosceles Triangle";
+	if (Shape::trace) cout<<"An isoceles triangle was created"<<endl;
 }
 
 IsoscelesTriangle::~IsoscelesTriangle() {

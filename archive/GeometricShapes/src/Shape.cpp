@@ -16,6 +16,9 @@ bool Shape::trace = true;
 void Shape::setTrace(bool newTrace){
 	trace = newTrace;
 }
+int Shape::getLastIdUsed(){
+	return autoIncrement;
+}
 
 int Shape::getHeight() const {
 	return height;
