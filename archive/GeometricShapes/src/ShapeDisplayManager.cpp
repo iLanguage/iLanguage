@@ -22,7 +22,9 @@ using namespace std;
 void ShapeDisplayManager::run(){
 	cout<< "Shape Interactive Management System"<<endl;
 	printMenu();
-	//runTests();
+	runObjectPoolTests();
+	runTests();
+	listShapes();
 	runInteractively();
 }
 void ShapeDisplayManager::printMenu(){
@@ -60,15 +62,19 @@ ostream &operator<<(ostream& sout, const ShapeView& num)//can declare it anywher
  * 		- runTests can be turned on via the "t" option in the user menu.
  * 		- runTests can also be used as examples of creating and displaying shapes.
  */
+void ShapeDisplayManager::runObjectPoolTests(){
+	cout<<endl<<"Performing tests on the shapelist object pool."<<endl;
+	shapeList.push_back(new Rectangle(6,2));
+	listShapes();
+}
 void ShapeDisplayManager::runTests(){
 	cout<<endl<<"Performing tests on the Shape class"<<endl;
+	Shape::setTrace(true);
 	//Shape myShape();
 
 	//Shape* trickyShapePointer = new Rectangle(6,2);//
 	//cout<<trickyShapePointer.toStringInfo()<<endl;
 
-	Rectangle myRectangle(4,5);
-	cout<<myRectangle.toStringInfo()<<endl;
 	Rectangle anotherRectangle(6,8);
 	cout<<anotherRectangle.toStringInfo()<<endl;
 
@@ -80,20 +86,19 @@ void ShapeDisplayManager::runTests(){
 	cout<<copiedRectangle.toStringInfo()<<endl;
 
 	cout<<"Copying a rectangle to an existing rectangle"<<endl;
-	copiedRectangle = myRectangle;
-	cout<<copiedRectangle.toStringInfo()<<endl;
+	anotherRectangle = copiedRectangle;
+	cout<<anotherRectangle.toStringInfo()<<endl;
 
 
 	cout<<"Putting some shapes into the vector."<<endl;
-	shapeList.push_back(&myRectangle);
-	//shapeList.push_back(&myRightTriangle);
-	//shapeList.push_back(&anotherRectangle);
-
-	RightTriangle anotherRightTriangle(19);
-	shapeList.push_back(&anotherRightTriangle);
+	shapeList.push_back(new Rectangle(10,6));
+	shapeList.push_back(new RightTriangle(6));
+	shapeList.push_back(new Rectangle(7,8));
+	shapeList.push_back(new RightTriangle(19));
 
 	cout << "ShapeList is now size: "<<shapeList.size()<<endl;
-	//if (Shape::trace) listShapes();
+	if (Shape::trace) listShapes();
+
 
 	cout << "Finding shape with id 4"<<endl;
 	int foundIDposition = findShape(4);
@@ -103,16 +108,16 @@ void ShapeDisplayManager::runTests(){
 	displayShape(4);
 
 	cout<<"Displaying a hollow version of shape 4, using the default fill characters."<<endl;
-	cout<<shapeList[foundIDposition]->toStringHollow('o','.');
+	cout<<shapeList[foundIDposition]->toStringHollow();
 	cout<<"Displaying a hollow version of shape 4, using the o as the forground and . as the background."<<endl;
 	cout<<shapeList[foundIDposition]->toStringHollow('o','.');
 
-	ShapeView sv(&myRectangle);
-	cout << "Displaying a string with borders drawn around it."<<endl;
+	ShapeView sv(&anotherRectangle);
+	cout << "Displaying a rectangle with borders drawn around it."<<endl;
 	cout << sv.drawBorders();
 
 	ShapeView svUsingVector(shapeList[foundIDposition]);
-	cout << "Displaying a string with borders drawn around it."<<endl;
+	cout << "Displaying id 4 with borders drawn around it."<<endl;
 	cout << svUsingVector.drawBorders();
 
 	cout<<"Displaying a ShapeView by just printing it, \n\tprinting it first as\n\tfilled, \n\tthen hallow, \n\tthen info"<<endl;
@@ -127,19 +132,21 @@ void ShapeDisplayManager::runTests(){
 	cout<<sv<<endl;
 
 	cout<<"Testing the assignment operator in the shapeview class"<<endl;
-	Rectangle tallRectangle(8,3);
-	shapeList.push_back(&tallRectangle);
-	foundIDposition = findShape(tallRectangle.getID());
-	svUsingVector=shapeList[foundIDposition];
+	shapeList.push_back(new Rectangle(8,3));
+	foundIDposition = Shape::getLastIdUsed()-1;
+	listShapes();
+	cout<<"Last shape has id: " <<foundIDposition<<endl;
+	svUsingVector=shapeList[findShape(foundIDposition)];
 	svUsingVector.setFillType(ShapeView::FILLED);
 	cout<<svUsingVector<<endl;
 	svUsingVector.setFillType(ShapeView::HALLOW);
 	cout<<svUsingVector<<endl;
 
-	Rectangle bigRectangle(30,35);
-	shapeList.push_back(&bigRectangle);
-	foundIDposition = findShape(bigRectangle.getID());
-	svUsingVector=shapeList[foundIDposition];
+
+	shapeList.push_back(new Rectangle(30,35));
+	foundIDposition = Shape::getLastIdUsed()-1;
+	cout<<"Last shape has id: " <<foundIDposition<<endl;
+	svUsingVector=shapeList[findShape(foundIDposition)];
 	svUsingVector.setFillType(ShapeView::FILLED);
 	cout<<svUsingVector<<endl;
 	svUsingVector.setFillType(ShapeView::HALLOW);
@@ -149,37 +156,30 @@ void ShapeDisplayManager::runTests(){
 	cout<<svUsingVector<<endl;
 
 	cout<<"Testing the square class."<<endl;
-	Square mediumSquare(10);
-	shapeList.push_back(&mediumSquare);
-	foundIDposition =findShape(mediumSquare.getID());
-	svUsingVector = shapeList[foundIDposition];
+	shapeList.push_back(new Square(10));
+	foundIDposition = Shape::getLastIdUsed()-1;
+	svUsingVector=shapeList[findShape(foundIDposition)];
 	cout<<svUsingVector<<endl;
 
 	cout<<"Testing the right triangle class."<<endl;
-	RightTriangle mediumRightTriangle(10);
-	shapeList.push_back(&mediumRightTriangle);
-	foundIDposition = findShape(mediumRightTriangle.getID());
-	svUsingVector = shapeList[foundIDposition];
+	shapeList.push_back(new RightTriangle(10));
+	svUsingVector=shapeList[findShape(Shape::getLastIdUsed()-1)];
 	svUsingVector.setFillType(ShapeView::FILLED);
 	cout<<svUsingVector<<endl;
 	svUsingVector.setFillType(ShapeView::HALLOW);
 	cout<<svUsingVector<<endl;
 
 	cout<<"Testing the isosceles triangle class."<<endl;
-	IsoscelesTriangle mediumIsoTriangle(12);
-	shapeList.push_back(&mediumIsoTriangle);
-	foundIDposition = findShape(mediumIsoTriangle.getID());
-	svUsingVector = shapeList[foundIDposition];
+	shapeList.push_back(new IsoscelesTriangle(12));
+	svUsingVector=shapeList[findShape(Shape::getLastIdUsed()-1)];
 	svUsingVector.setFillType(ShapeView::FILLED);
 	cout<<svUsingVector<<endl;
 	svUsingVector.setFillType(ShapeView::HALLOW);
 	cout<<svUsingVector<<endl;
 
 	cout<<"Testing the rhombus class."<<endl;
-	Rhombus mediumRhombus(11);
-	shapeList.push_back(&mediumRhombus);
-	foundIDposition = findShape(mediumRhombus.getID());
-	svUsingVector = shapeList[foundIDposition];
+	shapeList.push_back(new Rhombus(11));
+	svUsingVector=shapeList[findShape(Shape::getLastIdUsed()-1)];
 	svUsingVector.setFillType(ShapeView::FILLED);
 	cout<<svUsingVector<<endl;
 	svUsingVector.setFillType(ShapeView::HALLOW);
@@ -342,8 +342,10 @@ int ShapeDisplayManager::findShape(int shapeID){
  * listShapes cycles through the shape list and displays the shape information of each shape.
  */
 void ShapeDisplayManager::listShapes(){
+	if (Shape::trace) cout<< "\n\nDisplaying all Shapes:\n"<<endl;
 	for (int i=0; i<shapeList.size(); i++)
-		cout << "Shape at "<<i<<" :" << shapeList.at(i)->toStringInfo();
+		cout << endl<<"Shape at "<<i<<" :"<<endl << shapeList.at(i)->toStringInfo();
+	if (Shape::trace) cout<< "\nAll Shapes were displayed.\n\n"<<endl;
 }
 /*
  * displayShape displays information about a shape with a particular shapeID

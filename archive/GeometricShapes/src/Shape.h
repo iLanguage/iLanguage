@@ -32,7 +32,7 @@ public:
 	/* Tracing the flow of the application*/
 	static void setTrace(bool newValue);
 	static bool trace;
-
+	static int getLastIdUsed();
 	/* Accessors */
 	int getID() const;
 	string getName() const;
