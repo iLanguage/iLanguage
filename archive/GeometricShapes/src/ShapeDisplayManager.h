@@ -26,6 +26,7 @@ public:
 	void displayShape(int shapeID);
 	void removeShape(int shapeID);
 	void listShapes();
+	void listShapeIds();
 	int findShape(int shapeID);
 	int getInt(std::string userPrompt);
 
@@ -40,6 +41,7 @@ private:
 	 * 	Recycle objects to conserve memory
 	 */
 	std::vector<Shape*> shapeList;// http://www.cplusplus.com/reference/stl/vector/
+	ShapeView shapeViewObject;
 };
 
 #endif /* SHAPEDISPLAYMANAGER_H_ */

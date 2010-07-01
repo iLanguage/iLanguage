@@ -38,6 +38,7 @@ public:
 
 	ShapeView(const ShapeView & svIn);
 	ShapeView(const Shape* shapeToDraw);
+	ShapeView();
 	virtual ~ShapeView();
 };
 

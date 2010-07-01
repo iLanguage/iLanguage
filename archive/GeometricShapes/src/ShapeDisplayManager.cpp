@@ -22,9 +22,9 @@ using namespace std;
 void ShapeDisplayManager::run(){
 	cout<< "Shape Interactive Management System"<<endl;
 	printMenu();
-	runObjectPoolTests();
-	runTests();
-	listShapes();
+	//runObjectPoolTests();
+	//runTests();
+	//listShapes();
 	runInteractively();
 }
 void ShapeDisplayManager::printMenu(){
@@ -192,8 +192,6 @@ void ShapeDisplayManager::runInteractively(){
 	bool keepRunning=true;
 	string userInputString;
 
-	Rectangle startingShape(1,1);
-	ShapeView shapeViewer(&startingShape);
 
 	while(keepRunning){
 		cout<<"\nEnter input: ";
@@ -224,10 +222,10 @@ void ShapeDisplayManager::runInteractively(){
 				displayShape(getInt("Please enter the ID of the shape which you would like to display."));
 				break;
 			case 't':
-				cout<<"The shape list is empty, try adding a shape."<<endl;
+				cout<<"The total number of shapes is: "<<shapeList.size()<<endl;
 				break;
 			case 'l':
-				listShapes();
+				listShapeIds();
 				break;
 			case 's':
 				Shape::setTrace(true);
@@ -262,12 +260,8 @@ void ShapeDisplayManager::createShape(){
 
 	bool keepRunning=true;
 	string userInputString;
-
-	Rectangle myRectangle(2,3);
-	Square mySquare(2);
-	Rhombus myRhombus(3);
-	RightTriangle myRightTriangle(3);
-	IsoscelesTriangle myIsoTriangle(3);
+	int userWidth=10;
+	int userHeight=5;
 
 	while(keepRunning){
 		cout<<"\nEnter input: ";
@@ -284,17 +278,29 @@ void ShapeDisplayManager::createShape(){
 				keepRunning=false;
 				break;
 			case '1':
+				cout<<"Creating an Isosceles Triangle"<<endl;
+				shapeList.push_back(new IsoscelesTriangle(userHeight));
+				keepRunning=false;
 				break;
 			case '2':
+				cout<<"Creating a Right Triangle"<<endl;
+				shapeList.push_back(new RightTriangle(userHeight));
+				keepRunning=false;
 				break;
 			case '3':
+				cout<<"Creating a Rhombus"<<endl;
+				shapeList.push_back(new Rhombus(userHeight));
+				keepRunning=false;
 				break;
 			case '4':
-				cout<<"Creating a rectangle"<<endl;
-				shapeList.push_back(&myRectangle);//myRectangle=(4); // error:   crosses initialization of 'Shape rectangle2'
-				//shapeList.push_back(rectangle1); //error: no matching function for call to 'std::vector<Shape*, std::allocator<Shape*> >::push_back(Shape (&)())'
+				cout<<"Creating a Rectangle"<<endl;
+				shapeList.push_back(new Rectangle(userHeight,userWidth));
+				keepRunning=false;
 				break;
 			case '5':
+				cout<<"Creating a Square"<<endl;
+				shapeList.push_back(new Square(userHeight));
+				keepRunning=false;
 				break;
 			default:
 				cout<<"Please try again."<<endl;
@@ -347,14 +353,28 @@ void ShapeDisplayManager::listShapes(){
 		cout << endl<<"Shape at "<<i<<" :"<<endl << shapeList.at(i)->toStringInfo();
 	if (Shape::trace) cout<< "\nAll Shapes were displayed.\n\n"<<endl;
 }
+void ShapeDisplayManager::listShapeIds(){
+	cout <<"The following shapes are available for display: ";
+	for (int i=0; i<shapeList.size(); i++)
+			cout << shapeList.at(i)->getID()<<", ";
+	cout<<endl;
+}
 /*
  * displayShape displays information about a shape with a particular shapeID
  *
  */
 void ShapeDisplayManager::displayShape(int shapeID){
-	int positionFound = findShape(shapeID);
-	cout<<shapeList[positionFound]->toStringInfo();
-
+	if(findShape(shapeID)>-1){
+		shapeViewObject=shapeList[findShape(shapeID)];
+		shapeViewObject.setFillType(ShapeView::INFO);
+		cout<<shapeViewObject;
+		shapeViewObject.setFillType(ShapeView::FILLED);
+		cout<<shapeViewObject;
+		shapeViewObject.setFillType(ShapeView::HALLOW);
+		cout<<shapeViewObject;
+	}else{
+		cout<<"A shape with that ID number was not found. Please try again."<<endl;
+	}
 }
 void ShapeDisplayManager::removeShape(int shapeID){
 	// erase the 6th element
@@ -370,6 +390,16 @@ void ShapeDisplayManager::removeShape(int shapeID){
  * Constructors
  */
 ShapeDisplayManager::ShapeDisplayManager() {
+	Rectangle tempRectangle(5,10);
+	shapeViewObject=&tempRectangle;
+	//shapeViewObject.setBackground('.');
+	//shapeViewObject.setForground('o');
+	/*shapeViewObject.setFillType(ShapeView::INFO);
+	cout<<shapeViewObject;
+	shapeViewObject.setFillType(ShapeView::FILLED);
+	cout<<shapeViewObject;
+	shapeViewObject.setFillType(ShapeView::HALLOW);
+	cout<<shapeViewObject;*/
 }
 ShapeDisplayManager::~ShapeDisplayManager() {
 }
