@@ -78,5 +78,11 @@ ShapeView::ShapeView(const Shape* shapeToDraw) {
 	if(Shape::trace) cout<<endl<<"Creating a shape view object."<<endl;
 	setShape(shapeToDraw);
 }
+ShapeView::ShapeView(){
+	if(Shape::trace) cout<<endl<<"Creating a shape view object."<<endl;
+	background=' ';
+	forground='*';
+	fillType=FILLED;
+}
 ShapeView::~ShapeView() {
 }
