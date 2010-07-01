@@ -279,26 +279,32 @@ void ShapeDisplayManager::createShape(){
 				break;
 			case '1':
 				cout<<"Creating an Isosceles Triangle"<<endl;
+				userHeight=getInt("Please enter the height of the triangle: ");
 				shapeList.push_back(new IsoscelesTriangle(userHeight));
 				keepRunning=false;
 				break;
 			case '2':
 				cout<<"Creating a Right Triangle"<<endl;
+				userHeight=getInt("Please enter the height of the triangle: ");
 				shapeList.push_back(new RightTriangle(userHeight));
 				keepRunning=false;
 				break;
 			case '3':
 				cout<<"Creating a Rhombus"<<endl;
+				userHeight=getInt("Please enter the length of the diagonal: ");
 				shapeList.push_back(new Rhombus(userHeight));
 				keepRunning=false;
 				break;
 			case '4':
 				cout<<"Creating a Rectangle"<<endl;
+				userHeight=getInt("Please enter the height of the rectangle: ");
+				userWidth=getInt("Please enter the width of the rectangle: ");
 				shapeList.push_back(new Rectangle(userHeight,userWidth));
 				keepRunning=false;
 				break;
 			case '5':
 				cout<<"Creating a Square"<<endl;
+				userHeight=getInt("Please enter the side length of the square: ");
 				shapeList.push_back(new Square(userHeight));
 				keepRunning=false;
 				break;
