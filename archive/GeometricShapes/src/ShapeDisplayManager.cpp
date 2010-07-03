@@ -95,6 +95,7 @@ void ShapeDisplayManager::runTests(){
 	shapeList.push_back(new RightTriangle(6));
 	shapeList.push_back(new Rectangle(7,8));
 	shapeList.push_back(new RightTriangle(19));
+	shapeList.push_back(new Rhombus(9));
 
 	cout << "ShapeList is now size: "<<shapeList.size()<<endl;
 	if (Shape::trace) listShapes();
@@ -184,6 +185,7 @@ void ShapeDisplayManager::runTests(){
 	cout<<svUsingVector<<endl;
 	svUsingVector.setFillType(ShapeView::HALLOW);
 	cout<<svUsingVector<<endl;
+	Shape::setTrace(false);
 }
 /*
  * runInteractively waits for user input to perform the operation that the user requests
@@ -370,6 +372,32 @@ void ShapeDisplayManager::listShapeIds(){
  *
  */
 void ShapeDisplayManager::displayShape(int shapeID){
+	bool keepRunning=true;
+	string userInputString;
+	while(keepRunning){
+		cout<<"Would you like to change the foreground or background? \n f: forground\n b: background \n q: display the shape";
+		getline(cin,userInputString);
+		char operation = userInputString[0];
+		switch (operation){
+				case 'f' :
+					cout<<"What character would you like to use for the forground?";
+					getline(cin,userInputString);
+					operation= userInputString[0];
+					shapeViewObject.setForground(operation);
+					break;
+				case 'b':
+					cout<<"What character would you like to use for the background?";
+					getline(cin,userInputString);
+					operation = userInputString[0];
+					shapeViewObject.setBackground(operation);
+				case 'q':
+					keepRunning=false;
+					break;
+				default:
+					keepRunning=false;
+					break;
+			}
+	}
 	if(findShape(shapeID)>-1){
 		shapeViewObject=shapeList[findShape(shapeID)];
 		shapeViewObject.setFillType(ShapeView::INFO);
@@ -385,9 +413,10 @@ void ShapeDisplayManager::displayShape(int shapeID){
 void ShapeDisplayManager::removeShape(int shapeID){
 	// erase the 6th element
 	int positionToErase = findShape(shapeID);
-	if (positionToErase > -1)
+	if (positionToErase > -1){
 		shapeList.erase(shapeList.begin()+positionToErase);
-	else
+		cout<<"Shape "<<shapeID<<" was erased"<<endl;
+	}else
 		cout<<"Shape "<<shapeID<<" wasn't found so it was not deleted."<<endl;
 }
 
@@ -398,14 +427,8 @@ void ShapeDisplayManager::removeShape(int shapeID){
 ShapeDisplayManager::ShapeDisplayManager() {
 	Rectangle tempRectangle(5,10);
 	shapeViewObject=&tempRectangle;
-	//shapeViewObject.setBackground('.');
-	//shapeViewObject.setForground('o');
-	/*shapeViewObject.setFillType(ShapeView::INFO);
-	cout<<shapeViewObject;
-	shapeViewObject.setFillType(ShapeView::FILLED);
-	cout<<shapeViewObject;
-	shapeViewObject.setFillType(ShapeView::HALLOW);
-	cout<<shapeViewObject;*/
 }
 ShapeDisplayManager::~ShapeDisplayManager() {
+	//technically when the vector goes out of scope (here in the ShapeDisplayManager's destructor) the distructor first calls the object's destructor on each element of the vector. S
+	//so doing it manually is not necessary.
 }
