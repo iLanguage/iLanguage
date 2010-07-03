@@ -12,7 +12,7 @@
 using namespace std;
 
 int Shape::autoIncrement = 0;
-bool Shape::trace = true;
+bool Shape::trace = false;
 void Shape::setTrace(bool newTrace){
 	trace = newTrace;
 }
