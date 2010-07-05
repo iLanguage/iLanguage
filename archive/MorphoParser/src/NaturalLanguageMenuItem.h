@@ -8,20 +8,29 @@
 #ifndef NATURALLANGUAGEMENUITEM_H_
 #define NATURALLANGUAGEMENUITEM_H_
 #include <string>
+using namespace std;
 class NaturalLanguageMenuItem {
 private:
-	static int autoincrement;
-	std::string action;
-	std::string arguments;
-	std::string caller;
 
+	string action;
+	string arguments;
+	string caller;
+
+	int useFrequency;
 public:
+	static int autoincrement;
 	static bool trace;
 	static void setTrace(bool value);
 
 	int getLastIdUsed();
+	void setAutoincrement(int newAutoincrement);
+	int getUseFrequency();
+	void setUseFrequency(int newUseFrequency);
 
-	NaturalLanguageMenuItem(std::string actionIn, std::string argumentsIn, std::string callerIn);
+	string toString();
+
+	NaturalLanguageMenuItem(string actionIn, string argumentsIn, string callerIn);
+	NaturalLanguageMenuItem(string actionIn, string callerIn);
 	NaturalLanguageMenuItem();
 	virtual ~NaturalLanguageMenuItem();
 };

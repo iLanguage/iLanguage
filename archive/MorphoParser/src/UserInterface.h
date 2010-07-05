@@ -21,6 +21,7 @@ public:
 	void runInteractively();
 	void printLanguageMenu();
 	void run();
+	int getInt(string prompt);
 	void printMainMenu();
 	UserInterface();
 	virtual ~UserInterface();
