@@ -11,6 +11,11 @@
 #include "Sequence.h"
 using namespace std;
 
+bool LargeInt::trace = false;
+void LargeInt::setTrace(bool newValue){
+	trace = newValue;
+}
+
 LargeInt::LargeInt(int n) : value(n){
 	if (trace) cout<<"Created an empty LargeInt of size "<<n<<endl;
 

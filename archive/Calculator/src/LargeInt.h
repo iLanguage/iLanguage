@@ -14,9 +14,11 @@ class LargeInt {
 private:
 	Sequence value;
 	const static int baseSystem =10;
-	const static bool trace = false;
+
 
 public:
+	static bool trace;
+	static void setTrace(bool newValue);
 	//LargeInt();
 	LargeInt(char* characterInput);
 	void setValue(char* characterInput);//like a copy constructor, but takes only a cstring to reset the value of an existing object
