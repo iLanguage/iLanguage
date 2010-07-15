@@ -18,8 +18,9 @@ private:
 	//store records in a vector
 	vector<Record*>  moveieDatabase;
 	//create indexes on queryable items, using a map from string -> {set of vector indexes in teh db}
+	map<int,set<int> > yearIndex;
+	map<int, set<int> >::iterator yearIterator;
 	/*timeIndex;
-	yearIndex;
 	actorIndex;
 	ratingIndex;
 	genreIndex;*/
@@ -31,7 +32,7 @@ public:
 	void last();
 	void current();
 
-	//queryies will look in index for the vector index and returns a set of hits
+	//queries will look in index for the vector index and returns a set of hits
 	void queryTime();
 	void queryYear();
 	void queryActor();
@@ -39,6 +40,8 @@ public:
 	void queryGenre();
 
 	void buildYearIndex();
+
+	void importRecords(char* filename);
 
 	Database();
 	virtual ~Database();
