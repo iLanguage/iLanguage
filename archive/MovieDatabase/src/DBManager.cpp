@@ -6,15 +6,17 @@
  */
 
 #include "DBManager.h"
+#include "Database.h"
 #include <iostream>
 using namespace std;
+
 void DBManager::run(){
-	cout<<"In the DBManager."<<endl;
+	cout<<"DBManager is turned on."<<endl;
+	movieDB.buildYearIndex();
 }
 
-DBManager::DBManager() {
-	// TODO Auto-generated constructor stub
-
+DBManager::DBManager(){
+	Database movieDB;
 }
 
 DBManager::~DBManager() {

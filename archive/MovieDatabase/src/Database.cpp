@@ -6,9 +6,19 @@
  */
 
 #include "Database.h"
+#include <vector>
+#include <map>
+#include <set>
+#include <string>
+#include <iostream>
+using namespace std;
+
+void Database::buildYearIndex(){
+	cout<<"Building an index on year."<<endl;
+}
 
 Database::Database() {
-	// TODO Auto-generated constructor stub
+	cout<<"Constructing a database."<<endl;
 
 }
 
