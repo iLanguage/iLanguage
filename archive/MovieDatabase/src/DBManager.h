@@ -7,8 +7,12 @@
 
 #ifndef DBMANAGER_H_
 #define DBMANAGER_H_
+#include "Database.h"
+using namespace std;
 
 class DBManager {
+private:
+	Database movieDB;
 public:
 	void run();
 	DBManager();

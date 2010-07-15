@@ -13,6 +13,5 @@ using namespace std;
 int main() {
 	DBManager dbm;
 	dbm.run();
-	cout << "It runs." << endl; // prints It runs.
 	return 0;
 }
