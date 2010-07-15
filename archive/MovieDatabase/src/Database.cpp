@@ -11,10 +11,41 @@
 #include <set>
 #include <string>
 #include <iostream>
+#include <fstream>
+
 using namespace std;
+
+void Database::importRecords(char* filename){
+	fstream fileIn;
+	fileIn.open(filename,fstream::in);
+	while (fileIn){
+		string word;
+		fileIn>>word;
+		cout<<word<<endl;
+	}
+	fileIn.close();
+}
 
 void Database::buildYearIndex(){
 	cout<<"Building an index on year."<<endl;
+	set<int> years;
+	years.insert(2);
+	years.insert(1);
+
+	yearIndex.insert(pair<int,set<int> >(2000,years) );
+	years.insert(3);
+	years.insert(4);
+	yearIndex[1998]=years;
+	yearIndex[1970]=years;
+	cout<<"There are "<<yearIndex.size()<<" years in the database."<<endl;
+
+	set<int> found = years;
+	yearIterator=yearIndex.find(2000);
+	found=yearIndex.find(2000)->second;
+	cout<<"The year 2000 has "<<found.size()<<" records found"<<endl;
+	cout<<"The year 1998 has "<<(yearIndex.find(1998)->second).size()<<" records found"<<endl;
+
+
 }
 
 Database::Database() {

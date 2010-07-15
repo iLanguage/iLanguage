@@ -1,0 +1,7 @@
+Constructing a database.
+Constructing a database.
+DBManager is turned on.
+Building an index on year.
+There are 3 years in the database.
+The year 2000 has 2 records found
+The year 1998 has 4 records found
