@@ -1,17 +1,17 @@
 /*
- * Movie.cpp
+ * Database.cpp
  *
- *  Created on: Jul 14, 2010
+ *  Created on: Jul 15, 2010
  *      Author: gina
  */
 
-#include "Movie.h"
+#include "Database.h"
 
-Movie::Movie() {
+Database::Database() {
 	// TODO Auto-generated constructor stub
 
 }
 
-Movie::~Movie() {
+Database::~Database() {
 	// TODO Auto-generated destructor stub
 }

@@ -1,15 +1,16 @@
 /*
- * Movie.h
+ * Record.h
  *
  *  Created on: Jul 14, 2010
  *      Author: gina
  */
 
-#ifndef MOVIE_H_
-#define MOVIE_H_
+#ifndef RECORD_H_
+#define RECORD_H_
 #include <string>
+using namespace std;
 
-class Movie {
+class Record {
 private:
 	int id;
 	string title;
@@ -39,8 +40,8 @@ public:
 	void setRating(string ratingIn);
 	void setActors(string actorsIn);
 
-	Movie();
-	virtual ~Movie();
+	Record();
+	virtual ~Record();
 };
 
-#endif /* MOVIE_H_ */
+#endif /* RECORD_H_ */
