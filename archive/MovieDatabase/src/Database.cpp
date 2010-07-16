@@ -19,6 +19,7 @@ void Database::importRecords(char* filename){
 	fstream fileIn;
 	fileIn.open(filename,fstream::in);
 	while (fileIn){
+		if(fileIn.fail()) break;
 		string word;
 		fileIn>>word;
 		cout<<word<<endl;
@@ -44,6 +45,16 @@ void Database::buildYearIndex(){
 	found=yearIndex.find(2000)->second;
 	cout<<"The year 2000 has "<<found.size()<<" records found"<<endl;
 	cout<<"The year 1998 has "<<(yearIndex.find(1998)->second).size()<<" records found"<<endl;
+
+
+
+
+}
+
+// The best way to overload the stream operators is not to make them members of any class, but to keep them as friends. i.e., wherever there is a need to use the stream operators, use them as friend functions with the suitable parameters.
+void Database::insertRecord(string recordAsString){
+	cout<<"Inserting a record"<<endl;
+	moveieDatabase.push_back(new Record());
 
 
 }
