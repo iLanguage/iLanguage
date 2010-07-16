@@ -8,6 +8,7 @@
 #ifndef RECORD_H_
 #define RECORD_H_
 #include <string>
+#include <iostream>
 using namespace std;
 
 class Record {
@@ -39,6 +40,9 @@ public:
 	void setRunningTime(int runningTimeIn);
 	void setRating(string ratingIn);
 	void setActors(string actorsIn);
+
+	void readInFromStream();
+	friend istream& operator>>(istream& sin, Record& r);
 
 	Record();
 	virtual ~Record();

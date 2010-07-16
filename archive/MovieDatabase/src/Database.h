@@ -10,6 +10,7 @@
 #include <vector>
 #include <map>
 #include <set>
+#include <string>
 #include "Record.h"
 
 using namespace std;
@@ -42,6 +43,7 @@ public:
 	void buildYearIndex();
 
 	void importRecords(char* filename);
+	void insertRecord(string recordAsString);
 
 	Database();
 	virtual ~Database();
