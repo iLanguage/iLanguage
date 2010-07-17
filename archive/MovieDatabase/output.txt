@@ -5,3 +5,101 @@ Building an index on year.
 There are 3 years in the database.
 The year 2000 has 2 records found
 The year 1998 has 4 records found
+Please enter a database file name: (push enter to use the default file: src/dvdmoviedb.txt)
+Building the movie database.........................................................................
+....................................................................................................
+...........................................
+Database loaded.
+Title: xXx 
+
+Genre:  Adventure; Action 
+
+Movie Release Date: 2002
+
+Plot:
+ Xander Gage is a muscular daredevil who in the beginning of the movie gets into serious trouble wit
+h the law. It seems that there is no way out for him except through the NSA, they offer him a job to
+ track down and stop a Russian madman. In the process he meets the girl of his dreams, who works for
+ the bad guys. She doesn't know he's working for the United States government and neither do any of 
+the other villians. Xander gets caught up in trying to save the world and save the woman he falls in
+ love with. 
+
+Running Time: 124
+
+Audience Rating:  UR (Unrated) 
+
+Actor(s):
+		 Vin Diesel as Xander Cage
+		 Asia Argento as Yelena
+		 Marton Csokas as Yorgi
+		 Tom Everett as Senator Dick Hotchkiss
+		 Michael Roof as Agent Toby Lee Shavers
+		 Samuel L. Jackson as Agent Augustus Gibbons
+		 Jan Pavel Filipensky as Viktor
+		 Danny Trejo as El Jefe
+		 Thomas Ian Griffith as Agent Jim McGrath
+		 Werner D‰hn as Kirill
+		 Petr Jakl as Kolya
+		 Leila Arcieri as Jordan King
+		 William Hope as Agent Roger Donnan
+		 Richy M¸ller as Milan Sova
+		 Ted Maynard as James Tannick
+		 David Asman as Agent Polk
+		 Joe Bucaro III as Virg
+		 Chris Gann as T.J.
+		 Martin Hub as Ivan Podrov
+		 Werner Daehn as Kirill
+		 Eve as J.J.
+		 TeeJay Boyce as Bimbo Intern
+		 Radek Tomecka as Ivan Pedgrag
+		 Mary-Pat Green as Waitress
+		 Tanner Gill as Trucker
+		 Scott Waugh as Stockbroker
+		 Vaclav Chalupa as Nervous Hacker
+		 Martina Smukova as Female Czech Cop
+		 Tony Hawk as Caddy Driver
+		 Mat Hoffman as Extreme Guy
+		 Brian Deegan as Extreme Guy
+		 Mike Vallely as Skater
+		 Mike Escamilla as Ramp Truck Passenger
+		 Rob Wells as Hillside Video Shooter
+		 Rick Thorne as Himself
+		 Carey Hart as Caddy Passenger
+		 W. Colin McKay as Van Driver
+		 Jason Ellis as Van Video Shooter
+		 Marek Vasut as Czech General
+		 Lubos Pospisil as Czech Major
+		 Ivo Niederle as Head Chemist
+		 Vitezslav Bouchner as Head Technician
+		 Esteban Cueto as Gold Tooth Narco
+		 Martin Barta as Male Opera Singer
+		 Martina Bauerova as Female Opera Singer
+		 Rich Wilkes as Tall Guy
+		 F. Valentino Morales as Short Order Cook / NSA Agent
+		 Leonard L. Thomas as NSA Agent
+		 Ivan Rueda as Child Field Worker
+		 Joshua Montero as Child Field Worker
+		 Armando Cantina as Field Worker
+		 Roman Matrka as Czech Agent
+		 Alena Cihalikova as Xander's Bedroom Dancer
+		 Richard Kruspe as Himself
+		 Paul Landers as Himself
+		 Till Lindemann as Himself
+		 Flake Lorenz as Himself
+		 Oliver Riedel as Himself
+		 Christoph Schneider as Himself
+		 Paul Hartnoll as Himself
+		 Phil Hartnoll as Himself
+		 Michal M¸ller as Zither player
+		 Paul Aulicino as Police Officer
+		 James Babson as Technician
+		 Leslie Berger as Airline Passenger
+		 Rob Cohen as Colombian Horseman
+		 Lori Jo Hendrix as Woman in Restaurant
+		 Rob Roy as Navy SEAL
+		 Christopher Eric Ruiz as F.A.R.C. Soldier
+		 Josh Todd as Extra at party with boxing gloves 
+
+ID: 22348
+
+The database contains 215 records.

@@ -17,16 +17,39 @@ using namespace std;
 
 void Database::importRecords(char* filename){
 	fstream fileIn;
-	fileIn.open(filename,fstream::in);
-	while (fileIn){
-		if(fileIn.fail()) break;
-		string word;
-		fileIn>>word;
-		cout<<word<<endl;
+	cout<<"Please enter a database file name: (push enter to use the default file: src/dvdmoviedb.txt)";
+	string temp;
+	getline(cin,temp);
+	if(temp!=""){
+		filename=const_cast<char*>(temp.c_str());
 	}
+	cout<<"Building the movie database.";
+	fileIn.open(filename,fstream::in);
+	if(fileIn.fail()){
+		cout<<"Sorry file not found."<<endl;
+	}
+	string line;
+	while (true){
+		if(fileIn.eof()) break;
+		getline(fileIn,line);
+		//remove the end of line character
+		line= line.substr(0,line.size()-1);
+		if(line.find('|')){
+			//cout<<endl<<"Record "<<endl<<line<<endl;
+			cout<<".";
+			cout.flush();
+			insertRecord(line);
+		}else{
+			cout<<endl<<"No movie record was found on this line\n"<<line<<endl;
+		}
+	}
+	cout<<endl<<"Database loaded."<<endl;
+	cout<<*movieDatabase[movieDatabase.size()-1];
 	fileIn.close();
 }
-
+vecSizeType Database::size(){
+	return movieDatabase.size();
+}
 void Database::buildYearIndex(){
 	cout<<"Building an index on year."<<endl;
 	set<int> years;
@@ -45,18 +68,11 @@ void Database::buildYearIndex(){
 	found=yearIndex.find(2000)->second;
 	cout<<"The year 2000 has "<<found.size()<<" records found"<<endl;
 	cout<<"The year 1998 has "<<(yearIndex.find(1998)->second).size()<<" records found"<<endl;
-
-
-
-
 }
 
 // The best way to overload the stream operators is not to make them members of any class, but to keep them as friends. i.e., wherever there is a need to use the stream operators, use them as friend functions with the suitable parameters.
-void Database::insertRecord(string recordAsString){
-	cout<<"Inserting a record"<<endl;
-	moveieDatabase.push_back(new Record());
-
-
+void Database::insertRecord(string& recordAsString){
+	movieDatabase.push_back(new Record(recordAsString));
 }
 
 Database::Database() {
