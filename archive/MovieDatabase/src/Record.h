@@ -8,6 +8,7 @@
 #ifndef RECORD_H_
 #define RECORD_H_
 #include <string>
+#include <vector>
 #include <iostream>
 using namespace std;
 
@@ -21,6 +22,8 @@ private:
 	int runningTime;
 	string rating;
 	string actors;
+
+	void vectorToRecord(const vector<string>& tokenized);
 
 public:
 	int getId();
@@ -43,7 +46,9 @@ public:
 
 	void readInFromStream();
 	friend istream& operator>>(istream& sin, Record& r);
+	friend ostream& operator<<(ostream& sout, Record& r);
 
+	Record(string& stringRecord);
 	Record();
 	virtual ~Record();
 };

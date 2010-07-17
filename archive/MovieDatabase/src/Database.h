@@ -14,10 +14,12 @@
 #include "Record.h"
 
 using namespace std;
+typedef vector<string>::size_type vecSizeType;
+
 class Database {
 private:
 	//store records in a vector
-	vector<Record*>  moveieDatabase;
+	vector<Record*>  movieDatabase;
 	//create indexes on queryable items, using a map from string -> {set of vector indexes in teh db}
 	map<int,set<int> > yearIndex;
 	map<int, set<int> >::iterator yearIterator;
@@ -32,6 +34,7 @@ public:
 	void previous();
 	void last();
 	void current();
+	vecSizeType size();
 
 	//queries will look in index for the vector index and returns a set of hits
 	void queryTime();
@@ -43,7 +46,7 @@ public:
 	void buildYearIndex();
 
 	void importRecords(char* filename);
-	void insertRecord(string recordAsString);
+	void insertRecord(string& recordAsString);
 
 	Database();
 	virtual ~Database();

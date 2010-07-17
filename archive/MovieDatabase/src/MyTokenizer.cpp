@@ -8,29 +8,37 @@
 #include "MyTokenizer.h"
 #include <iostream>
 #include <string>
-using namespace std;
-void MyTokenizer::tokenizeIt()
+#include <vector>
+using std::string;
+using std::vector;
+void MyTokenizer::tokenizeIt(const string& line)
 {
 	typedef string::size_type StringSize;
-
-	cout<< "tokenizing"<<endl;
 	StringSize pos=0,start=0;
-	pos = s.find(seperator, start);
+	string token;
 
-	while(pos != string::npos)
+	while((pos = line.find(delimitor, start)) != string::npos)
 	{
-		vec.push_back(s.substr(start, pos-1));
+		token =line.substr(start,pos-start);
+		tokens.push_back(token);
 		start = pos+1;
-		pos = s.find(seperator, start);
 	}
-	vec.push_back(s.substr(start));
+	//add last element
+	token = line.substr(start);
+	tokens.push_back(token);
 }
-string MyTokenizer::operator[](int k){
-	return vec[k];
+/*
+ * Returns a reference to the string in position k of the token list
+ * Vector does range checking.
+ */
+string&  MyTokenizer::operator[](vecSizeType k){
+	return tokens[k];
 }
-
-MyTokenizer::MyTokenizer(string str, char seperatorIn): s(str), seperator(seperatorIn){
-	tokenizeIt();
+const string&  MyTokenizer::operator[](vecSizeType k)const{
+	return tokens[k];
+}
+MyTokenizer::MyTokenizer(const string& line, char seperatorIn): delimitor(seperatorIn){
+	tokenizeIt(line);
 }
 
 MyTokenizer::~MyTokenizer() {
