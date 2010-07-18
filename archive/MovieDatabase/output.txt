@@ -5,101 +5,249 @@ Building an index on year.
 There are 3 years in the database.
 The year 2000 has 2 records found
 The year 1998 has 4 records found
-Please enter a database file name: (push enter to use the default file: src/dvdmoviedb.txt)
-Building the movie database.........................................................................
+Please enter a database file name: (push enter to use the default file: src/dvdmoviedb.txt)Building 
+the movie database..................................................................................
 ....................................................................................................
-...........................................
+..................................
 Database loaded.
-Title: xXx 
+The database contains 215 records.0 2 Fast 2 Furious 
+1 The 10th Kingdom 
+2 Aeon Flux 
+3 Ali 
+4 Alias: The Complete Second Series 
+5 Alias: The Complete Third Series 
+6 American Beauty 
+7 American Pie 
+8 American Pie 
 
-Genre:  Adventure; Action 
+This is a duplicate title.
+9 American Pie 2 
+10 American Wedding 
+11 America's Sweethearts 
+12 Anna And The King 
+13 Armageddon 
+14 Austin Powers: Goldmember 
+15 Batman Begins 
+16 Being John Malkovich 
+17 Bicentennial Man 
+18 BloodRayne 
+19 BloodRayne II: Deliverance 
+20 Bones: Season 1 
+21 Bones: The Complete Second Season 
+22 The Boondock Saints 
+23 The Boondock Saints 
 
-Movie Release Date: 2002
+This is a duplicate title.
+24 The Bourne Identity 
+25 The Bourne Supremacy 
+26 Bridget Jones's Diary 
+27 Bring It On 
+28 The Brothers Grimm 
+29 Buffy The Vampire Slayer 
+30 Buffy The Vampire Slayer: The Complete First Season 
+31 Buffy the Vampire Slayer: The Complete Seventh Season 
+32 Buffy the Vampire Slayer: The Complete Sixth Season 
+33 Bulletproof Monk 
+34 Cast Away 
+35 Catwoman 
+36 The Cell 
+37 Center Stage 
+38 Charlie and the Chocolate Factory 
+39 Charlie's Angels 
+40 Charlie's Angels: Full Throttle 
+41 Chicago 
+42 "The Chronicles of Narnia: The Lion, The Witch and The Wardrobe 
+43 Cleopatra 
+44 Click 
+45 Constantine 
+46 Corpse Bride 
+47 The Count Of Monte Cristo 
+48 The Craft 
+49 "Crouching Tiger, Hidden Dragon 
+50 Cruel Intentions 
+51 Cursed 
+52 The Da Vinci Code 
+53 Daredevil 
+54 The Dark Crystal 
+55 The Dark Crystal 
 
-Plot:
- Xander Gage is a muscular daredevil who in the beginning of the movie gets into serious trouble wit
-h the law. It seems that there is no way out for him except through the NSA, they offer him a job to
- track down and stop a Russian madman. In the process he meets the girl of his dreams, who works for
- the bad guys. She doesn't know he's working for the United States government and neither do any of 
-the other villians. Xander gets caught up in trying to save the world and save the woman he falls in
- love with. 
+This is a duplicate title.
+56 Date Movie 
+57 Dexter: The First Season 
+58 Dogma 
+59 Domino 
+60 Don't Say A Word 
+61 The Doors: The Movie 
+62 E.T. the Extra-Terrestrial 
+63 Elektra 
+64 Elektra 
 
-Running Time: 124
+This is a duplicate title.
+65 Ella Enchanted 
+66 Epic Movie 
+67 Eragon 
+68 Erin Brockovich 
+69 The Exorcist 
+70 Fantastic Four 
+71 Fantastic Four: Rise of the Silver Surfer 
+72 The Fast and The Furious 
+73 The Fifth Element 
+74 The Fifth Element 
 
-Audience Rating:  UR (Unrated) 
+This is a duplicate title.
+75 Fight Club 
+76 Final Fantasy: The Spirits Within 
+77 Freaky Friday 
+78 Galaxy Quest 
+79 Garden State 
+80 Gattaca 
+81 Ghost Rider 
+82 "Girl, Interrupted 
+83 Go! 
+84 Gone In 60 Seconds 
+85 Gothika 
+86 The Grudge 
+87 Hackers 
+88 Hannibal 
+89 Happily N'Ever After 
+90 Harry Potter And The Chamber Of Secrets 
+91 Harry Potter And The Goblet Of Fire 
+92 Harry Potter And The Prisoner Of Azkaban 
+93 Harry Potter and The Sorcerer's Stone 
+94 Hellboy 
+95 Highlander 4: Endgame 
+96 The Hitchhiker's Guide To the Galaxy 
+97 House Of Flying Daggers 
+98 I Spit on Your Grave 
+99 "I, Robot 
+100 Independence Day 
+101 Interview With The Vampire: The Vampire Chronicles 
+102 Josie And The Pussycats 
+103 Kill Bill: Volume 1 
+104 Kill Bill: Volume 2 
+105 King Arthur 
+106 A Knight's Tale 
+107 A Knight's Tale 
 
-Actor(s):
-		 Vin Diesel as Xander Cage
-		 Asia Argento as Yelena
-		 Marton Csokas as Yorgi
-		 Tom Everett as Senator Dick Hotchkiss
-		 Michael Roof as Agent Toby Lee Shavers
-		 Samuel L. Jackson as Agent Augustus Gibbons
-		 Jan Pavel Filipensky as Viktor
-		 Danny Trejo as El Jefe
-		 Thomas Ian Griffith as Agent Jim McGrath
-		 Werner D‰hn as Kirill
-		 Petr Jakl as Kolya
-		 Leila Arcieri as Jordan King
-		 William Hope as Agent Roger Donnan
-		 Richy M¸ller as Milan Sova
-		 Ted Maynard as James Tannick
-		 David Asman as Agent Polk
-		 Joe Bucaro III as Virg
-		 Chris Gann as T.J.
-		 Martin Hub as Ivan Podrov
-		 Werner Daehn as Kirill
-		 Eve as J.J.
-		 TeeJay Boyce as Bimbo Intern
-		 Radek Tomecka as Ivan Pedgrag
-		 Mary-Pat Green as Waitress
-		 Tanner Gill as Trucker
-		 Scott Waugh as Stockbroker
-		 Vaclav Chalupa as Nervous Hacker
-		 Martina Smukova as Female Czech Cop
-		 Tony Hawk as Caddy Driver
-		 Mat Hoffman as Extreme Guy
-		 Brian Deegan as Extreme Guy
-		 Mike Vallely as Skater
-		 Mike Escamilla as Ramp Truck Passenger
-		 Rob Wells as Hillside Video Shooter
-		 Rick Thorne as Himself
-		 Carey Hart as Caddy Passenger
-		 W. Colin McKay as Van Driver
-		 Jason Ellis as Van Video Shooter
-		 Marek Vasut as Czech General
-		 Lubos Pospisil as Czech Major
-		 Ivo Niederle as Head Chemist
-		 Vitezslav Bouchner as Head Technician
-		 Esteban Cueto as Gold Tooth Narco
-		 Martin Barta as Male Opera Singer
-		 Martina Bauerova as Female Opera Singer
-		 Rich Wilkes as Tall Guy
-		 F. Valentino Morales as Short Order Cook / NSA Agent
-		 Leonard L. Thomas as NSA Agent
-		 Ivan Rueda as Child Field Worker
-		 Joshua Montero as Child Field Worker
-		 Armando Cantina as Field Worker
-		 Roman Matrka as Czech Agent
-		 Alena Cihalikova as Xander's Bedroom Dancer
-		 Richard Kruspe as Himself
-		 Paul Landers as Himself
-		 Till Lindemann as Himself
-		 Flake Lorenz as Himself
-		 Oliver Riedel as Himself
-		 Christoph Schneider as Himself
-		 Paul Hartnoll as Himself
-		 Phil Hartnoll as Himself
-		 Michal M¸ller as Zither player
-		 Paul Aulicino as Police Officer
-		 James Babson as Technician
-		 Leslie Berger as Airline Passenger
-		 Rob Cohen as Colombian Horseman
-		 Lori Jo Hendrix as Woman in Restaurant
-		 Rob Roy as Navy SEAL
-		 Christopher Eric Ruiz as F.A.R.C. Soldier
-		 Josh Todd as Extra at party with boxing gloves 
+This is a duplicate title.
+108 Labyrinth 
+109 Labyrinth 
 
-ID: 22348
+This is a duplicate title.
+110 Lady in the Water 
+111 The Lake House 
+112 Lara Croft Tomb Raider: The Cradle Of Life 
+113 Lara Croft: Tomb Raider 
+114 The League Of Extraordinary Gentlemen 
+115 Legally Blonde 
+116 "Legally Blonde 2: Red, White & Blonde 
+117 Legend 
+118 The Legend of Zorro 
+119 Legends Of The Fall 
+120 Lemony Snicket's A Series Of Unfortunate Events 
+121 The Lizzie McGuire Movie 
+122 The Lord Of The Rings: The Fellowship Of The Ring 
+123 The Lord Of The Rings: The Fellowship Of The Ring 
 
-The database contains 215 records.
+This is a duplicate title.
+124 The Lord Of The Rings: The Return Of The King 
+125 The Lord Of The Rings: The Two Towers 
+126 The Man In The Iron Mask 
+127 Marie Antoinette 
+128 The Mask Of Zorro 
+129 The Matrix 
+130 The Matrix Reloaded 
+131 The Matrix Revolutions 
+132 Mean Girls 
+133 Meet Joe Black 
+134 Memoirs of a Geisha 
+135 Men In Black 
+136 Men In Black II 
+137 The Mexican 
+138 A Midsummer Night's Dream 
+139 Miss Congeniality 
+140 Miss Congeniality 2: Armed and Fabulous 
+141 Moulin Rouge 
+142 Mr. & Mrs. Smith 
+143 Mr. & Mrs. Smith 
+
+This is a duplicate title.
+144 Mr. Deeds 
+145 The Musketeer 
+146 My Super Ex-Girlfriend 
+147 National Lampoon's Van Wilder 
+148 National Treasure 
+149 Night at the Museum 
+150 The Ninth Gate 
+151 Not Another Teen Movie 
+152 Office Space 
+153 Pan's Labyrinth 
+154 Peter Pan 
+155 The Phantom Of The Opera 
+156 Philadelphia 
+157 Pink Floyd The Wall 
+158 Pirates of the Caribbean: Dead Man's Chest 
+159 Pirates Of The Caribbean: The Curse Of The Black Pearl 
+160 Planet Terror 
+161 Pledge This! 
+162 Practical Magic 
+163 Pride And Prejudice 
+164 The Prince & Me 
+165 The Prince & Me 2 
+166 The Princess Bride 
+167 The Princess Bride 
+
+This is a duplicate title.
+168 The Princess Diaries 
+169 The Princess Diaries 2: Royal Engagement 
+170 Queen Of The Damned 
+171 Queens Of Comedy 
+172 Rent 
+173 Road Trip 
+174 Robin Hood: Men in Tights 
+175 Runaway Bride 
+176 Save The Last Dance 
+177 Scary Movie 
+178 Serenity 
+179 Serenity 
+
+This is a duplicate title.
+180 Shakespeare In Love 
+181 She's the Man 
+182 Shrek 
+183 Shrek 
+
+This is a duplicate title.
+184 Shrek 2 
+185 The Silence Of The Lambs 
+186 The Sixth Sense 
+187 The Skulls 
+188 Sleepy Hollow 
+189 Spaceballs 
+190 Spider-Man 
+191 Spy Game 
+192 Star Wars Trilogy: A New Hope / The Empire Strikes Back / Return Of The Jedi 
+193 Step Up 
+194 Stigmata 
+195 The Covenant 
+196 The Lord Of The Rings: The Motion Picture Trilogy 
+197 Titanic 
+198 Transformers 
+199 Tristan + Isolde 
+200 Troy 
+201 Ultraviolet 
+202 Unbreakable 
+203 Underworld 
+204 Underworld: Evolution 
+205 Van Helsing 
+206 View From The Top 
+207 The Village 
+208 Waiting 
+209 A Walk To Remember 
+210 The Wedding Planner 
+211 X-Men 
+212 X2 
+213 X-Men: The Last Stand 
+214 xXx 
+There are 203 distinct titles.
+There are 26 distinct years.

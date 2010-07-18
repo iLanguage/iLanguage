@@ -48,6 +48,24 @@ void Record::vectorToRecord(const vector<string>& tokenized){
 	id= atoi(tokenized[7].c_str());
 }
 
+int Record::getId(){return id;}
+string Record::getTitle(){return title;}
+string Record::getGenre(){return genre;}
+int Record::getYear(){return year;}
+string Record::getPlot(){return plot;}
+int Record::getRunningTime(){return runningTime;}
+string Record::getRating(){return rating;}
+string Record::getActors(){return actors;}
+
+void Record::setId(int idIn){id=idIn;}
+void Record::setTitle(string titleIn){title=titleIn;}
+void Record::setGenre(string genreIn){genre=genreIn;}
+void Record::setYear(int yearIn){year=yearIn;}
+void Record::setPlot(string plotIn){plot=plotIn;}
+void Record::setRunningTime(int runningTimeIn){runningTime=runningTimeIn;}
+void Record::setRating(string ratingIn){rating=ratingIn;}
+void Record::setActors(string actorsIn){actors=actorsIn;}
+
 Record::Record(){
 
 };
