@@ -20,13 +20,13 @@ class Database {
 private:
 	//store records in a vector
 	vector<Record*>  movieDatabase;
-	//create indexes on queryable items, using a map from string -> {set of vector indexes in teh db}
+	//create indexes on queriable items, using a map from string -> {set of vector indexes in teh db}
+	map<string,set<int> > titleIndex;
 	map<int,set<int> > yearIndex;
-	map<int, set<int> >::iterator yearIterator;
-	/*timeIndex;
-	actorIndex;
-	ratingIndex;
-	genreIndex;*/
+	map<int,set<int> > runningTimeIndex;
+	map<int,set<int> > actorIndex;
+	map<int,set<int> > ratingIndex;
+	map<int,set<int> > genreIndex;
 
 public:
 	void first();
@@ -44,6 +44,7 @@ public:
 	void queryGenre();
 
 	void buildYearIndex();
+	void buildIndices();
 
 	void importRecords(char* filename);
 	void insertRecord(string& recordAsString);
