@@ -6,6 +6,7 @@
  */
 
 #include "MyTokenizer.h"
+#include <boost/algorithm/string/trim.hpp>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -20,7 +21,10 @@ void MyTokenizer::tokenizeIt(const string& line)
 	while((pos = line.find(delimitor, start)) != string::npos)
 	{
 		token =line.substr(start,pos-start);
+		//trim white space off using the boost library
+		boost::algorithm::trim(token);
 		tokens.push_back(token);
+		//std::cout<<"|"<<token<<"|"<<std::endl;
 		start = pos+1;
 	}
 	//add last element
@@ -37,7 +41,7 @@ string&  MyTokenizer::operator[](vecSizeType k){
 const string&  MyTokenizer::operator[](vecSizeType k)const{
 	return tokens[k];
 }
-MyTokenizer::MyTokenizer(const string& line, char seperatorIn): delimitor(seperatorIn){
+MyTokenizer::MyTokenizer(const string& line, string seperatorIn): delimitor(seperatorIn){
 	tokenizeIt(line);
 }
 
