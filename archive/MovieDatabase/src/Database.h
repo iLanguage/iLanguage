@@ -28,6 +28,8 @@ private:
 	map<string,set<int> > ratingIndex;
 	map<string,set<int> > genreIndex;
 
+	static vecSizeType currentPosition;
+
 public:
 	void first();
 	void next();
@@ -43,7 +45,6 @@ public:
 	void queryRating();
 	void queryGenre();
 
-	void buildYearIndex();
 	void buildIndices();
 
 	void importRecords(char* filename);

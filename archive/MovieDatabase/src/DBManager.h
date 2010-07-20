@@ -14,6 +14,7 @@ class DBManager {
 private:
 	Database movieDB;
 public:
+	void testNavigator();
 	void run();
 	DBManager();
 	virtual ~DBManager();

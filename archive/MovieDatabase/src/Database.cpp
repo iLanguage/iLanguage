@@ -15,6 +15,42 @@
 #include <fstream>
 
 using namespace std;
+
+/*
+ * Navigation Implementation
+ * Uses the currentPosition to print out first, last, next, previous and current records in the database.
+ */
+vecSizeType Database::currentPosition=0;
+
+void Database::first(){
+	currentPosition=0;
+	cout<<*movieDatabase[currentPosition];
+}
+void Database::next(){
+	if(currentPosition<movieDatabase.size()-1){
+		currentPosition++;
+		cout<<*movieDatabase[currentPosition];
+	}else{
+		cout<<"Crossed bottom boundary. Try navigating up.";
+	}
+}
+void Database::previous(){
+	if(currentPosition>0){
+		currentPosition--;
+		cout<<*movieDatabase[currentPosition];
+	}else{
+		cout<<"Crossed top boundary. Try navigating down.";
+	}
+}
+void Database::last(){
+	currentPosition=movieDatabase.size()-1;
+	cout<<*movieDatabase[currentPosition];
+}
+void Database::current(){
+	cout<<*movieDatabase[currentPosition];
+}
+
+
 /*
  * Build indicies one by one, indices on fields with multiple data are run through the tokenizer to find the individual items (for example Actors contains many actors, genre contains many genres).
  * The actors and genre's are trimmed (leading and trailing whitespace) using the boost libraries however, this doesn't appear to affect the maps's ability to find and match corresponding entries.
@@ -155,26 +191,6 @@ void Database::importRecords(char* filename){
 vecSizeType Database::size(){
 	return movieDatabase.size();
 }
-void Database::buildYearIndex(){
-	cout<<"Building an index on year."<<endl;
-	set<int> years;
-	years.insert(2);
-	years.insert(1);
-
-	yearIndex.insert(pair<int,set<int> >(2000,years) );
-	years.insert(3);
-	years.insert(4);
-	yearIndex[1998]=years;
-	yearIndex[1970]=years;
-	cout<<"There are "<<yearIndex.size()<<" years in the database."<<endl;
-
-	set<int> found = years;
-	map<int, set<int> >::iterator yearIterator=yearIndex.find(2000);
-	found=yearIndex.find(2000)->second;
-	cout<<"The year 2000 has "<<found.size()<<" records found"<<endl;
-	cout<<"The year 1998 has "<<(yearIndex.find(1998)->second).size()<<" records found"<<endl;
-}
-
 // The best way to overload the stream operators is not to make them members of any class, but to keep them as friends. i.e., wherever there is a need to use the stream operators, use them as friend functions with the suitable parameters.
 void Database::insertRecord(string& recordAsString){
 	movieDatabase.push_back(new Record(recordAsString));
