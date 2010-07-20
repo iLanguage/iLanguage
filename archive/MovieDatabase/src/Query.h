@@ -9,6 +9,9 @@
 #define QUERY_H_
 
 class Query {
+private:
+	//set<int> results;
+	//set<int> previousResults;
 public:
 	Query();
 	virtual ~Query();

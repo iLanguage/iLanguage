@@ -29,6 +29,7 @@ void MyTokenizer::tokenizeIt(const string& line)
 	}
 	//add last element
 	token = line.substr(start);
+	boost::algorithm::trim(token);
 	tokens.push_back(token);
 }
 /*
