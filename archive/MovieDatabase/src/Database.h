@@ -24,9 +24,9 @@ private:
 	map<string,set<int> > titleIndex;
 	map<int,set<int> > yearIndex;
 	map<int,set<int> > runningTimeIndex;
-	map<int,set<int> > actorIndex;
-	map<int,set<int> > ratingIndex;
-	map<int,set<int> > genreIndex;
+	map<string,set<int> > actorIndex;
+	map<string,set<int> > ratingIndex;
+	map<string,set<int> > genreIndex;
 
 public:
 	void first();

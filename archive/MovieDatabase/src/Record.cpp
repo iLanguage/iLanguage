@@ -15,7 +15,7 @@ using namespace std;
 istream& operator>>(istream& istr, Record& r){
 	string line;
 	istr>> line;
-	MyTokenizer tokenized(line, '|');
+	MyTokenizer tokenized(line, "|");
 	r.vectorToRecord(tokenized.tokens);
 	return istr;
 }
@@ -27,7 +27,7 @@ ostream& operator<<(ostream& ostr, Record& r){
 	ostr<<"Running Time: "<<r.runningTime<<endl<<endl;
 	ostr<<"Audience Rating: "<<r.rating<<endl<<endl;
 
-	MyTokenizer actorsList(r.actors, ';');
+	MyTokenizer actorsList(r.actors, ";");
 	ostr<<"Actor(s):"<<endl;
 	for(vecSizeType i=0; i<actorsList.size(); i++){
 		ostr<<"\t\t"<<actorsList[i]<<endl;
@@ -104,7 +104,7 @@ Record::Record(string& stringRecord) {
 			" Marianne M. Arreaga as Police Chopper Pilot; Tamara Jones as Customs Technician | "
 			"542";
 
-	MyTokenizer tokenized(stringRecord, '|');
+	MyTokenizer tokenized(stringRecord, "|");
 	vectorToRecord(tokenized.tokens);
 }
 

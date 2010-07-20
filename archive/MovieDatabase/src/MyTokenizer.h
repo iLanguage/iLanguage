@@ -18,7 +18,7 @@ class MyTokenizer {
 private:
 	string originalstring;
 
-	char delimitor;
+	string delimitor;
 	void tokenizeIt(const string& line);
 
 public:
@@ -38,7 +38,7 @@ public:
 	 * Constructor: accept a string by reference to avoid copying, as well as a delimiting character
 	 * 	by default the delimiter is spaces.
 	 */
-	MyTokenizer(const string& line, char delimitorIn=' ');
+	MyTokenizer(const string& line, string delimitorIn=" ");
 
 	MyTokenizer(){};
 	virtual ~MyTokenizer();
