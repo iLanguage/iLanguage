@@ -18,6 +18,7 @@ typedef vector<string>::size_type vecSizeType;
 
 class Database {
 private:
+	string databaseName;
 	//store records in a vector
 	vector<Record*>  movieDatabase;
 	//create indexes on queriable items, using a map from string -> {set of vector indexes in teh db}
@@ -31,6 +32,9 @@ private:
 	static vecSizeType currentPosition;
 
 public:
+	string getDatabaseName() const;
+	void setDatabaseName(string newName);
+
 	void first();
 	void next();
 	void previous();
@@ -38,17 +42,20 @@ public:
 	void current();
 	vecSizeType size();
 
-	//queries will look in index for the vector index and returns a set of hits
-	void queryTime();
-	void queryYear();
-	void queryActor();
-	void queryRating();
-	void queryGenre();
+	//queries will look in index and returns a set of hits of record positions in the DB's vector
+	void queryTime(int timeQuery, set<int> &resultSet);
+	void queryYear(int yearQuery);
+	void queryActor(string actorQuery);
+	void queryRating(string ratingQuery);
+	void queryGenre(string genreQuery, set<int> &resultSet) const;
 
 	void buildIndices();
 
 	void importRecords(char* filename);
 	void insertRecord(string& recordAsString);
+
+	Record& operator[](int x);
+	const Record& operator[](int x) const;
 
 	Database();
 	virtual ~Database();

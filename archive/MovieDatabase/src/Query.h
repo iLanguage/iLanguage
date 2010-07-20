@@ -8,8 +8,10 @@
 #ifndef QUERY_H_
 #define QUERY_H_
 
+#include "Database.h"
 class Query {
-private:
+protected:
+	 const Database* db;
 	//set<int> results;
 	//set<int> previousResults;
 public:
