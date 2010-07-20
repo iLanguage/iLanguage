@@ -156,6 +156,20 @@ void Database::buildIndices(){
 
 }//end build indices
 
+/*
+ * Query Manager
+ *
+
+ */
+void Database::queryGenre(string genreQuery, set<int> &resultSet) const{
+	cout<<"Querying genres"<<endl;
+	if (genreIndex.count(genreQuery)==0){
+			cout<<"No results found for genre: "<<genreQuery<<endl;
+		}else{
+			//cout<<resultSet.size()<< " Results found for genre. "<<endl;
+			resultSet = genreIndex.find(genreQuery)->second;
+		}
+}
 void Database::importRecords(char* filename){
 	fstream fileIn;
 	cout<<"Please enter a database file name: (push enter to use the default file: src/dvdmoviedb.txt)";
@@ -191,13 +205,29 @@ void Database::importRecords(char* filename){
 vecSizeType Database::size(){
 	return movieDatabase.size();
 }
+void Database::setDatabaseName(string newName){
+	databaseName=newName;
+}
+string Database::getDatabaseName() const{
+	return databaseName;
+}
 // The best way to overload the stream operators is not to make them members of any class, but to keep them as friends. i.e., wherever there is a need to use the stream operators, use them as friend functions with the suitable parameters.
 void Database::insertRecord(string& recordAsString){
 	movieDatabase.push_back(new Record(recordAsString));
 }
 
+Record& Database::operator[](int x){
+	return *movieDatabase[x];
+
+}
+const Record& Database::operator[](int x) const {
+	return *movieDatabase[x];
+
+}
 Database::Database() {
+	databaseName="Unnamed Database";
 	cout<<"Constructing a database."<<endl;
+
 
 }
 

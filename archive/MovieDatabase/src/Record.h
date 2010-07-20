@@ -26,14 +26,14 @@ private:
 	void vectorToRecord(const vector<string>& tokenized);
 
 public:
-	int getId();
-	string getTitle();
-	string getGenre();
-	int getYear();
-	string getPlot();
-	int getRunningTime();
-	string getRating();
-	string getActors();
+	int getId()const ;
+	string getTitle()const;
+	string getGenre()const;
+	int getYear()const;
+	string getPlot()const;
+	int getRunningTime()const;
+	string getRating()const;
+	string getActors()const;
 
 	void setId(int idIn);
 	void setTitle(string titleIn);
@@ -46,7 +46,7 @@ public:
 
 	void readInFromStream();
 	friend istream& operator>>(istream& sin, Record& r);
-	friend ostream& operator<<(ostream& sout, Record& r);
+	friend ostream& operator<<(ostream& sout, Record& r) ;
 
 	Record(string& stringRecord);
 	Record();
