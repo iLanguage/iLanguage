@@ -37,12 +37,15 @@ void Query::intersectResults(const set<int> &firstSet, const set<int> &secondSet
  * Display the first match to a query, then provide the user to display additional results one by one.
  */
 void Query::displayResults(){
+	cout<<"Displaying query results:"<<endl;
 	set<int>::iterator it;
 	string temp;
 	for(it=results.begin(); it!=results.end(); it++)
 	{
 		db->currentPosition=*it;
+		cout<<endl<<endl;
 		db->current();
+		cout<<"-------------------------------------------------------------"<<endl<<endl;
 		cout<<"Next match (y/n)? ";
 		getline(cin,temp);
 		if(temp[0]=='n')

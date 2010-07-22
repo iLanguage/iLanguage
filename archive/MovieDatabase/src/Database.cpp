@@ -177,7 +177,7 @@ void Database::findMatch(string stringToMatch, const map<string,set<int> > &inde
 	{
 		stringToLookIn=me.first;
 		boost::to_lower(stringToLookIn);
-		cout <<"Checking: "<<me.first<<endl;
+		//cout <<"Checking: "<<me.first<<endl;
 		if (stringToLookIn.find(stringToMatch)!=string::npos){
 			//cout<<"Match found: "<<stringToMatch<<" ->"<<stringToLookIn<<endl;
 
@@ -188,7 +188,7 @@ void Database::findMatch(string stringToMatch, const map<string,set<int> > &inde
 			}
 			//cout<<"Number of matching database records: "<<resultsToReturn.size()<<endl;
 		}
-		cout<<"Number of matching database records: "<<resultsToReturn.size()<<endl;
+		//cout<<"Number of matching database records: "<<resultsToReturn.size()<<endl;
 	}//end FOREACH
 }
 void Database::findMatchInt(int intToMatch, const map<int,set<int> > &indexToLookIn, set<int> &resultsToReturn) const{
@@ -197,7 +197,7 @@ void Database::findMatchInt(int intToMatch, const map<int,set<int> > &indexToLoo
 	pair<int,set<int> > me;
 	BOOST_FOREACH(me, indexToLookIn)
 	{
-		cout<<"Checking "<<me.first<<endl;
+		//cout<<"Checking "<<me.first<<endl;
 		if (me.first==intToMatch)
 		{
 			for(itResult=me.second.begin(); itResult!=me.second.end(); itResult++){
@@ -206,7 +206,7 @@ void Database::findMatchInt(int intToMatch, const map<int,set<int> > &indexToLoo
 			}
 			//cout<<"Number of matching database records: "<<resultsToReturn.size()<<endl;
 		}
-		cout<<"Number of matching database records: "<<resultsToReturn.size()<<endl;
+		//cout<<"Number of matching database records: "<<resultsToReturn.size()<<endl;
 	}//end FOREACH
 
 }
@@ -245,6 +245,8 @@ void Database::importRecords(char* filename){
 		filename=const_cast<char*>(temp.c_str());
 	}
 	cout<<"Building the movie database.";
+	setDatabaseName("DVD Movie Database");
+
 	fileIn.open(filename,fstream::in);
 	if(fileIn.fail()){
 		cout<<"Sorry file not found."<<endl;
@@ -272,6 +274,7 @@ vecSizeType Database::size() const{
 	return movieDatabase.size();
 }
 void Database::setDatabaseName(string newName){
+	cout<<"Setting Database name to "<<newName<<endl;
 	databaseName=newName;
 }
 string Database::getDatabaseName() const{

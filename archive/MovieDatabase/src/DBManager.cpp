@@ -11,7 +11,6 @@ using namespace std;
 
 void DBManager::run(){
 	cout<<"DBManager is turned on."<<endl;
-	movieDB.setDatabaseName("My Movie Database");
 
 	char* dvdDatabaseFile="src/dvdmoviedb.txt";
 	movieDB.importRecords(dvdDatabaseFile);
