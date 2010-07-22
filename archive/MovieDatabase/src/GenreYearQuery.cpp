@@ -30,7 +30,7 @@ void GenreYearQuery::query(){
 	intersectResults(genreResults, yearResults);
 }
 GenreYearQuery::GenreYearQuery() {
-	cout<<"Constructing a query for the combo of genre and year."<<endl;
+	//cout<<"Constructing a query for the combo of genre and year."<<endl;
 }
 
 GenreYearQuery::~GenreYearQuery() {
