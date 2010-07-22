@@ -177,7 +177,7 @@ void Database::findMatch(string stringToMatch, const map<string,set<int> > &inde
 	{
 		stringToLookIn=me.first;
 		boost::to_lower(stringToLookIn);
-		//cout <<"Checking: "<<me.first<<endl;
+		cout <<"Checking: "<<me.first<<endl;
 		if (stringToLookIn.find(stringToMatch)!=string::npos){
 			//cout<<"Match found: "<<stringToMatch<<" ->"<<stringToLookIn<<endl;
 
@@ -186,8 +186,9 @@ void Database::findMatch(string stringToMatch, const map<string,set<int> > &inde
 				int foundRecord = *itResult;
 				resultsToReturn.insert(foundRecord);
 			}
-			cout<<"Number of matching database records: "<<resultsToReturn.size()<<endl;
+			//cout<<"Number of matching database records: "<<resultsToReturn.size()<<endl;
 		}
+		cout<<"Number of matching database records: "<<resultsToReturn.size()<<endl;
 	}//end FOREACH
 }
 void Database::findMatchInt(int intToMatch, const map<int,set<int> > &indexToLookIn, set<int> &resultsToReturn) const{
@@ -196,14 +197,16 @@ void Database::findMatchInt(int intToMatch, const map<int,set<int> > &indexToLoo
 	pair<int,set<int> > me;
 	BOOST_FOREACH(me, indexToLookIn)
 	{
+		cout<<"Checking "<<me.first<<endl;
 		if (me.first==intToMatch)
 		{
 			for(itResult=me.second.begin(); itResult!=me.second.end(); itResult++){
 				int foundRecord = *itResult;
 				resultsToReturn.insert(foundRecord);
 			}
-			cout<<"Number of matching database records: "<<resultsToReturn.size()<<endl;
+			//cout<<"Number of matching database records: "<<resultsToReturn.size()<<endl;
 		}
+		cout<<"Number of matching database records: "<<resultsToReturn.size()<<endl;
 	}//end FOREACH
 
 }
@@ -218,10 +221,21 @@ void Database::queryGenre(string genreQuery, set<int> &resultSet) const{
 void Database::queryYear(int yearQuery, set<int> &resultSet) const{
 	findMatchInt(yearQuery, yearIndex, resultSet);
 }
+void Database::queryActor(string actorQuery, set<int> &resultSet) const{
+	findMatch(actorQuery, actorIndex, resultSet);
+}
+void Database::queryRating(string ratingQuery, set<int> &resultSet) const{
+	findMatch(ratingQuery, ratingIndex, resultSet);
+}
+void Database::queryTime(int runningTimeQuery, set<int> &resultSet) const{
+	findMatchInt(runningTimeQuery, runningTimeIndex, resultSet);
+}
 
 
-
-
+/*
+ * Database Manager
+ *
+ */
 void Database::importRecords(char* filename){
 	fstream fileIn;
 	cout<<"Please enter a database file name: (push enter to use the default file: src/dvdmoviedb.txt)";

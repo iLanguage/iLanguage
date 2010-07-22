@@ -47,7 +47,7 @@ public:
 	vecSizeType size() const;
 
 	//queries will look in index and returns a set of hits of record positions in the DB's vector
-	void queryTime(int timeQuery, set<int> &resultSet)  const;
+	void queryTime(int runningTimeQuery, set<int> &resultSet)  const;
 	void queryYear(int yearQuery, set<int> &resultSet) const;
 	void queryActor(string actorQuery, set<int> &resultSet) const;
 	void queryRating(string ratingQuery, set<int> &resultSet) const;

@@ -11,7 +11,12 @@
 #include "Query.h"
 
 class TimeActorQuery: public Query {
+private:
+	std::string actorUserQuery;
+	int timeUserQuery;
+
 public:
+	void query();
 	TimeActorQuery();
 	virtual ~TimeActorQuery();
 };

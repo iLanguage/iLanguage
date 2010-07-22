@@ -10,16 +10,16 @@
 using namespace std;
 
 void GenreYearQuery::query(){
-	cout<<"Enter movie genre: ";
-	getline(cin,genreUserQuery);
+	cout<<"Enter movie genre (eg: myster)";
+	//getline(cin,genreUserQuery);
 
-	cout<<"Enter movie year: ";
-	cin>>yearUserQuery;
+	cout<<"Enter movie year: (eg: 2006)";
+	//cin>>yearUserQuery;
 	string trash;
-	getline(cin, trash);
+	//getline(cin, trash);
 
-	//genreUserQuery="myster";
-	//yearUserQuery=2006;
+	genreUserQuery="myster";
+	yearUserQuery=2006;
 
 	set<int> genreResults;
 	db->queryGenre(genreUserQuery,genreResults);
