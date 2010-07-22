@@ -6,14 +6,15 @@
  */
 
 #include "Database.h"
-#include "MyTokenizer.h"
 #include <vector>
 #include <map>
 #include <set>
 #include <string>
 #include <iostream>
 #include <fstream>
-
+#include <boost/regex.hpp>
+#include <boost/foreach.hpp>
+#include <boost/algorithm/string/case_conv.hpp>
 using namespace std;
 
 /*
@@ -155,21 +156,52 @@ void Database::buildIndices(){
 	cout<<"Finished building indices."<<endl<<endl;
 
 }//end build indices
+/*
+ * Looks in and index's keys for any case insensitive substring match
+ * eg: an matches Animation, fantasy etc
+ */
+void Database::findMatch(string stringToMatch, const map<string,set<int> > &indexToLookIn, set<int> &resultsToReturn) const{
+	//http://www.boost.org/doc/libs/1_37_0/doc/html/string_algo/usage.html
+	boost::to_lower(stringToMatch);
+	//cout<<"Looking for string: "<<stringToMatch<<endl;
+	string stringToLookIn;
+	set<int>::iterator itResult;
 
+	/*
+	 * Foreach algorithm provided by the boost library, sets a pair of type in the map, then loops through each pair in the map
+	 * Refernences: http://stackoverflow.com/questions/110157/how-to-retrieve-all-keys-or-values-from-a-stdmap
+	 */
+	pair<string,set<int> > me;
+	BOOST_FOREACH(me, indexToLookIn)
+	{
+		stringToLookIn=me.first;
+		boost::to_lower(stringToLookIn);
+		//cout <<"Checking: "<<me.first<<endl;
+		if (stringToLookIn.find(stringToMatch)!=string::npos){
+			//cout<<"Match found: "<<stringToMatch<<" ->"<<stringToLookIn<<endl;
+
+			//set_union(resultsToReturn,me.second);//couldnt make it work,might only work with sorted vectors
+			for(itResult=me.second.begin(); itResult!=me.second.end(); itResult++){
+				int foundRecord = *itResult;
+				resultsToReturn.insert(foundRecord);
+			}
+			cout<<"Number of matching database records: "<<resultsToReturn.size()<<endl;
+		}
+	}//end FOREACH
+}
 /*
  * Query Manager
  *
-
  */
 void Database::queryGenre(string genreQuery, set<int> &resultSet) const{
 	cout<<"Querying genres"<<endl;
-	if (genreIndex.count(genreQuery)==0){
-			cout<<"No results found for genre: "<<genreQuery<<endl;
-		}else{
-			//cout<<resultSet.size()<< " Results found for genre. "<<endl;
-			resultSet = genreIndex.find(genreQuery)->second;
-		}
+	findMatch(genreQuery, genreIndex, resultSet);
 }
+
+
+
+
+
 void Database::importRecords(char* filename){
 	fstream fileIn;
 	cout<<"Please enter a database file name: (push enter to use the default file: src/dvdmoviedb.txt)";

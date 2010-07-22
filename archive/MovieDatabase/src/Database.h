@@ -12,6 +12,7 @@
 #include <set>
 #include <string>
 #include "Record.h"
+#include "MyTokenizer.h"
 
 using namespace std;
 typedef vector<string>::size_type vecSizeType;
@@ -34,6 +35,8 @@ private:
 public:
 	string getDatabaseName() const;
 	void setDatabaseName(string newName);
+
+	void findMatch(string stringToMatch, const map<string,set<int> > &indexToLookIn, set<int> &resultsToReturn) const;
 
 	void first();
 	void next();
