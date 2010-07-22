@@ -25,6 +25,7 @@ void DBManager::run(){
 }
 void DBManager::testQuery(){
 	genreYearUserQuery.query();
+	genreYearUserQuery.displayResults();
 }
 void DBManager::testNavigator(){
 	movieDB.last();

@@ -45,4 +45,225 @@ Number of matching database records: 20
 	Thriller; Mystery:	2006:	The Da Vinci Code
 	Drama; Fantasy; Thriller; Mystery:	2006:	Lady in the Water
 	Romance; Mystery:	2006:	The Lake House
+Title: The Da Vinci Code
 
+Genre: Thriller; Mystery
+
+Movie Release Date: 2006
+
+Plot:
+The Da Vinci Code focuses on Robert Langdon (Tom Hanks), a world renowned professor of symbology. La
+ngdon is called by the Paris police to examine the murder scene of Jacques SauniËre. It is at the mu
+rder scene that Langdon meets Sophie Neveu (Audrey Tautou) who helps him to realize that not only is
+ he a suspect for the murder of SauniËre, but his life is in grave danger. Langdon and Neveu subsequ
+ently evade the police and are led on a wild goose chase by the clues surrounding the murder of Saun
+iËre, whom Neveu soon reveals is her grandfather. As Langdon and Neveu attempt to solve the mystery,
+ they are chased through Europe by the Paris police and members of Opus Dei, a religious extremist g
+roup, who also want to find what Langdon and Neveu are seeking.
+
+Running Time: 149
+
+Audience Rating: PG-13 (Parental Guidance)
+
+Actor(s):
+		Tom Hanks as Robert Langdon
+		Audrey Tautou as Sophie Neveu
+		Ian McKellen as Sir Leigh Teabing
+		Alfred Molina as Bishop Aringarosa
+		Paul Bettany as Silas the albino
+		Jean Reno as Bezu Fache
+		Etienne Chicot as Lt. Collet
+		Jean-Pierre Marielle as Jacques Sauniere
+		J¸rgen Prochnow as Andre Vernet
+		Jean-Yves Berteloot as Remy Jean
+		Marie-FranÁoise Audollent as Sister Sandrine
+		Rita Davies as Elegant Woman at Rosslyn
+		Francesco Carnelutti as Prefect
+		Seth Gabel as Michael
+		Shane Zaza as Youth on Bus
+		Andrew Clark as Docent
+		Fausto Maria Sciarappa as Young Church Official
+		Joe Grossi as Old Church Official
+		Denis PodalydËs as Flight Controller
+		Harry Taylor as British Police Captain
+		Clive Carter as Biggin Hill Police Captain
+		Garance Mazureck as Sophie at 13 Years
+		Daisy Doidge-Hill as Sophie at 8 Years
+		Lilli Ella Kelleher as Sophie at 3 Years
+		Crisian Emanuel as Sophie's Mother
+		Charlotte Graham as Mary Magdalene
+		Xavier De Guillebon as Junkie
+		Tonio Descanvelle as Bank Guard
+		David Bark-Jones as Hawker Pilot
+		Serretta Wilson as American Woman
+		Eglantine Rembauville-Nicolle as Student
+		Dan Tondowski as Student
+		Aewia Huillet as Student
+		Roland John-Leopoldie as Student
+		David Saracino as DCPJ Agent
+		Lionel Guy-Bremond as Officer Ledoux
+		Yves Aubert as Louvre Computer Cop
+		Rachael Black as Policewoman
+		Dez Drummond as London Police
+		Mark Roper as London Police
+		Brock Little as American Embassy Cop
+		Matthew Butler as Westminster Cop
+		Roland Menou as DCPJ Technician
+		Hugh Mitchell as Young Silas
+		Tina Maskell as Mother of Silas
+		Peter Pedrero as Father of Silas
+		Sam Mancuso as Pope
+		Andre Lillis as Pope
+		Mario Vernazza as Young Constantine
+		Agathe Natanson as Ritual Priestess
+		Daz Parker as Peasant Mother
+		Andy Robb as Peasant Father
+		Tom Barker as Peasant Boy
+		Maggie McEwan as Peasant Girl
+		Michael Bertenshaw as Priest
+		Sarah Wildor as Priestess
+		David Bertrand as French Newscaster
+		Christopher Fosh as Armed Responce Police Officer
+		Paul Herbert as Sophie's Father
+		Arnaud Klein as French Police Officer
+		Dhaffer L'Abidine as PTS Agent
+		Michael Norton as French Detective
+		Lynn Picknett as Bus Passenger
+		Clive Prince as Bus Passenger
+		Norman Campbell Rees as Passerby
+		Jurgen Prochnow
+
+ID: 2675
+
+Next match (y/n)? y
+Title: Lady in the Water
+
+Genre: Drama; Fantasy; Thriller; Mystery
+
+Movie Release Date: 2006
+
+Plot:
+In 'Lady in the Water,' the main character lives in the apartment complex for which he works as the 
+manager. One night, he finds a strange woman in the pool of the complex. Over the next few days, he 
+comes to believe that she is a member of a mythical race who come to earth for only a brief period t
+o complete a transformative quest. One of the residents in the complex tells him the story of these 
+beings and the humans who they must find in order to complete the quest. As it becomes clear that th
+e young woman's life is in danger, the residents of the complex band together, each fulfilling a uni
+que role, to help her complete her quest.
+
+Running Time: 110
+
+Audience Rating: PG-13 (Parental Guidance)
+
+Actor(s):
+		Paul Giamatti as Cleveland Heep
+		Bryce Dallas Howard as The Lady
+		Jeffrey Wright as Mr. Dury
+		Bob Balaban as Mr. Farber
+		Sarita Choudhury as Anna Ran
+		Cindy Cheung as Young Soon
+		M. Night Shyamalan as Vick
+		Bill Irwin as Mr. Leeds
+		Mary Beth Hurt as Mrs. Bell
+		Freddy RodrÌguez as Reggie
+		Noah Gray-Cabey as Joey Dury
+		Joseph D. Reitman as Long Haired Smoker
+		Jared Harris as Goatee Smoker
+		Grant Monohon as Emaciated Smoker
+		John Boyd as One-Eyebrow Smoker
+		Ethan Cohn as Glasses Smoker
+		June Kyoto Lu as Mrs. Choi
+		Tovah Feldshuh as Mrs. Bubchik
+		Tom Mardirosian as Mr. Bubchik
+		Maricruz Hernandez as Perez de la Torre Sister #1
+		Carla Jimenez as Perez de la Torre Sister #2
+		Natasha Perez as Perez de la Torre Sister #3
+		Monique Curnen as Perez de la Torre Sister #4
+		Marilyn Torres as Perez de la Torre Sister #5
+		George Bass as Mr. Perez de la Torre
+		Joel Garland as Pool Guy
+		James Breen as SPCA Guy
+		Nell Johnson as Phone Message
+		Walter Lafty as Silvertide Band Member
+		Mark Melchiorre Jr. as Silvertide Band Member
+		Kevin Frank as Silvertide Band Member
+		Brian Weaver as Silvertide Band Member
+		Nick Perri as Silvertide Band Member
+		Jeremy Howard as Tartutic #1
+		Brian Steele as Tartutic #2
+		Kurt Carley as Tartutic #3
+		Doug Jones as Tartutic #4
+		Nancy de Zutter as Party Guest
+		Scott Hatfield as Party Guest
+		Mark J. Parker as Party Guest
+		Freddy Rodriguez
+
+ID: 13923
+
+Next match (y/n)? y
+Title: The Lake House
+
+Genre: Romance; Mystery
+
+Movie Release Date: 2006
+
+Plot:
+When Kate decides to move to the big city for her work as a doctor, she leaves a letter for the next
+ resident of her old home on the lake. One day she returns to her old house and finds a new letter i
+n the mailbox. It's from Alex. She writes him back and a romance begins. They keep writing but they 
+can't meet, will they ever find a way to make this love work?
+
+Running Time: 110
+
+Audience Rating: PG (Parental Guidance)
+
+Actor(s):
+		Keanu Reeves as Alex Wyler
+		Sandra Bullock as Kate Forster
+		Christopher Plummer as Simon Wyler
+		Shohreh Aghdashloo as Anna Klyczynski
+		Ebon Moss-Bachrach as Henry Wyler
+		Dylan Walsh as Morgan
+		Lynn Collins as Mona
+		Mike Bacarella as Mulhern
+		Willeke van Ammelrooy as Kate's Mother
+		Kevin Brennan as Waiter
+		Frank Caeti as Cove Patron
+		Aliyah Carr as Girl Patient
+		Jennifer Clark as Nurse Practitioner
+		Jacob D. Dumelle as Patient on Gurney
+		Scott Elias as Doug
+		Tiffini Funches as Young Nurse
+		Lori Ann Gerdisch as ICU Nurse
+		Michael Andrew Gorman as Cove Bartender
+		Jennifer Kern as Nurse
+		Joy Kocay as Party Goer
+		Cynthia Kaye McWilliams as Vanessa
+		India Neilan as Hostess
+		Nora Newbrough as Marjorie
+		Marissa Newton as Hostess #2
+		Mia Park as Receptionist
+		Peggy Roeder as Attendant
+		Jason Wells as Costello
+		Jacqueline Williams as Madhvi Patel
+		Jason Abustan as Ivy League Jr Architect
+		Nathan Adloff as Restaurant Patron
+		Lori Claussen as Dog Walker
+		Sue Durso as Pedestrian
+		Patricia E. Harrington as Businesswoman
+		Bryanna Hartung as Girl at Navy Pier
+		Bob Kolbey as Commuter
+		Ernie Lang as Restaurant Patron
+		John Littlefield as Doctor
+		Alexandra LoRusso as Messenger
+		William Nero Jr. as Boy
+		Jonathan Samuels as Architect
+		January Scarpino as Pediatrician
+		Ron Valdez as Ivy League Jr Architect
+		Andrea N. Winters as Waitress
+		Willeke van Ammelroy
+
+ID: 13924
+
+Next match (y/n)? y
+No additional results.

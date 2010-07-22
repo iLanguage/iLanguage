@@ -11,10 +11,11 @@
 #include "Database.h"
 class Query {
 protected:
-	 const Database* db;
-	//set<int> results;
+	const Database* db;
+	set<int> results;
 	//set<int> previousResults;
 public:
+	void displayResults();
 	Query();
 	virtual ~Query();
 };
