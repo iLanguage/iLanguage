@@ -26,6 +26,10 @@ void DBManager::run(){
 void DBManager::testQuery(){
 	genreYearUserQuery.query();
 	genreYearUserQuery.displayResults();
+	ratingTimeQuery.query();
+	ratingTimeQuery.displayResults();
+	timeActorQuery.query();
+	timeActorQuery.displayResults();
 }
 void DBManager::testNavigator(){
 	movieDB.last();
@@ -33,11 +37,12 @@ void DBManager::testNavigator(){
 	movieDB.first();
 	movieDB.previous();
 	movieDB.next();
-
 }
 
 DBManager::DBManager(){
 	genreYearUserQuery.setDB(movieDB);
+	ratingTimeQuery.setDB(movieDB);
+	timeActorQuery.setDB(movieDB);
 }
 
 DBManager::~DBManager() {

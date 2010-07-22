@@ -11,7 +11,12 @@
 #include "Query.h"
 
 class RatingTimeQuery: public Query {
+private:
+	std::string ratingUserQuery;
+	int timeUserQuery;
+
 public:
+	void query();
 	RatingTimeQuery();
 	virtual ~RatingTimeQuery();
 };

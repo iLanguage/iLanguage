@@ -9,15 +9,17 @@
 #define DBMANAGER_H_
 #include "Database.h"
 #include "GenreYearQuery.h"
+#include "TimeActorQuery.h"
+#include "RatingTimeQuery.h"
 using namespace std;
 
 class DBManager {
 private:
 	Database movieDB;
 	GenreYearQuery genreYearUserQuery;
+	RatingTimeQuery ratingTimeQuery;
+	TimeActorQuery timeActorQuery;
 public:
-
-
 
 	void testNavigator();
 	void testQuery();
