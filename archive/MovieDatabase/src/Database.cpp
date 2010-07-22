@@ -23,11 +23,11 @@ using namespace std;
  */
 vecSizeType Database::currentPosition=0;
 
-void Database::first(){
+void Database::first() const{
 	currentPosition=0;
 	cout<<*movieDatabase[currentPosition];
 }
-void Database::next(){
+void Database::next() const{
 	if(currentPosition<movieDatabase.size()-1){
 		currentPosition++;
 		cout<<*movieDatabase[currentPosition];
@@ -35,7 +35,7 @@ void Database::next(){
 		cout<<"Crossed bottom boundary. Try navigating up.";
 	}
 }
-void Database::previous(){
+void Database::previous()const {
 	if(currentPosition>0){
 		currentPosition--;
 		cout<<*movieDatabase[currentPosition];
@@ -43,7 +43,7 @@ void Database::previous(){
 		cout<<"Crossed top boundary. Try navigating down.";
 	}
 }
-void Database::last(){
+void Database::last()const{
 	currentPosition=movieDatabase.size()-1;
 	cout<<*movieDatabase[currentPosition];
 }
@@ -212,7 +212,7 @@ void Database::findMatchInt(int intToMatch, const map<int,set<int> > &indexToLoo
  *
  */
 void Database::queryGenre(string genreQuery, set<int> &resultSet) const{
-	cout<<"Querying genres"<<endl;
+	//cout<<"Querying genres"<<endl;
 	findMatch(genreQuery, genreIndex, resultSet);
 }
 void Database::queryYear(int yearQuery, set<int> &resultSet) const{
@@ -254,7 +254,7 @@ void Database::importRecords(char* filename){
 	//cout<<*movieDatabase[movieDatabase.size()-1];
 	fileIn.close();
 }
-vecSizeType Database::size(){
+vecSizeType Database::size() const{
 	return movieDatabase.size();
 }
 void Database::setDatabaseName(string newName){
@@ -270,19 +270,14 @@ void Database::insertRecord(string& recordAsString){
 
 Record& Database::operator[](int x){
 	return *movieDatabase[x];
-
 }
 const Record& Database::operator[](int x) const {
 	return *movieDatabase[x];
-
 }
 Database::Database() {
 	databaseName="Unnamed Database";
 	cout<<"Constructing a database."<<endl;
-
-
 }
-
 Database::~Database() {
 	// TODO Auto-generated destructor stub
 }

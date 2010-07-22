@@ -9,13 +9,17 @@
 #define QUERY_H_
 
 #include "Database.h"
+
 class Query {
 protected:
 	const Database* db;
 	set<int> results;
-	//set<int> previousResults;
+	set<int> previousResults;
+
 public:
+	void setDB(const Database &databaseToQuery);
 	void displayResults();
+	void intersectResults(const set<int> &firstSet, const set<int> &secondSet);
 	Query();
 	virtual ~Query();
 };
