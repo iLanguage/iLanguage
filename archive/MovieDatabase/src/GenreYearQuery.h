@@ -9,17 +9,13 @@
 #define GENREYEARQUERY_H_
 
 #include "Query.h"
-#include <string>
-using std::string;
 
 class GenreYearQuery: public Query {
 private:
-	string genreUserQuery;
+	std::string genreUserQuery;
 	int yearUserQuery;
-	//Database db;
 
 public:
-	void setDB(const Database &databaseToQuery);
 	void query();
 	GenreYearQuery();
 	virtual ~GenreYearQuery();

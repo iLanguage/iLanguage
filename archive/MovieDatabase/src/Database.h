@@ -39,18 +39,18 @@ public:
 
 
 	static vecSizeType currentPosition;
-	void first();
-	void next();
-	void previous();
-	void last();
+	void first() const;
+	void next() const;
+	void previous() const;
+	void last() const;
 	void current() const;
-	vecSizeType size();
+	vecSizeType size() const;
 
 	//queries will look in index and returns a set of hits of record positions in the DB's vector
-	void queryTime(int timeQuery, set<int> &resultSet);
+	void queryTime(int timeQuery, set<int> &resultSet)  const;
 	void queryYear(int yearQuery, set<int> &resultSet) const;
-	void queryActor(string actorQuery);
-	void queryRating(string ratingQuery);
+	void queryActor(string actorQuery, set<int> &resultSet) const;
+	void queryRating(string ratingQuery, set<int> &resultSet) const;
 	void queryGenre(string genreQuery, set<int> &resultSet) const;
 
 	void buildIndices();
