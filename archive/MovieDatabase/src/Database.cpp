@@ -159,6 +159,7 @@ void Database::buildIndices(){
 /*
  * Looks in and index's keys for any case insensitive substring match
  * eg: an matches Animation, fantasy etc
+ * takes the union of records which match the substring
  */
 void Database::findMatch(string stringToMatch, const map<string,set<int> > &indexToLookIn, set<int> &resultsToReturn) const{
 	//http://www.boost.org/doc/libs/1_37_0/doc/html/string_algo/usage.html
@@ -189,6 +190,23 @@ void Database::findMatch(string stringToMatch, const map<string,set<int> > &inde
 		}
 	}//end FOREACH
 }
+void Database::findMatchInt(int intToMatch, const map<int,set<int> > &indexToLookIn, set<int> &resultsToReturn) const{
+	set<int>::iterator itResult;
+
+	pair<int,set<int> > me;
+	BOOST_FOREACH(me, indexToLookIn)
+	{
+		if (me.first==intToMatch)
+		{
+			for(itResult=me.second.begin(); itResult!=me.second.end(); itResult++){
+				int foundRecord = *itResult;
+				resultsToReturn.insert(foundRecord);
+			}
+			cout<<"Number of matching database records: "<<resultsToReturn.size()<<endl;
+		}
+	}//end FOREACH
+
+}
 /*
  * Query Manager
  *
@@ -197,7 +215,9 @@ void Database::queryGenre(string genreQuery, set<int> &resultSet) const{
 	cout<<"Querying genres"<<endl;
 	findMatch(genreQuery, genreIndex, resultSet);
 }
-
+void Database::queryYear(int yearQuery, set<int> &resultSet) const{
+	findMatchInt(yearQuery, yearIndex, resultSet);
+}
 
 
 

@@ -15,7 +15,7 @@ using std::string;
 class GenreYearQuery: public Query {
 private:
 	string genreUserQuery;
-	string yearUserQuery;
+	int yearUserQuery;
 	//Database db;
 
 public:

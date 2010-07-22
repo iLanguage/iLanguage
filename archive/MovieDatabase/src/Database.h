@@ -37,6 +37,7 @@ public:
 	void setDatabaseName(string newName);
 
 	void findMatch(string stringToMatch, const map<string,set<int> > &indexToLookIn, set<int> &resultsToReturn) const;
+	void findMatchInt(int intToMatch, const map<int,set<int> > &indexToLookIn, set<int> &resultsToReturn)const;
 
 	void first();
 	void next();
@@ -47,7 +48,7 @@ public:
 
 	//queries will look in index and returns a set of hits of record positions in the DB's vector
 	void queryTime(int timeQuery, set<int> &resultSet);
-	void queryYear(int yearQuery);
+	void queryYear(int yearQuery, set<int> &resultSet) const;
 	void queryActor(string actorQuery);
 	void queryRating(string ratingQuery);
 	void queryGenre(string genreQuery, set<int> &resultSet) const;

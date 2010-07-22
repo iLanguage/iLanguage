@@ -18,113 +18,31 @@ There are 26 distinct genres.
 Finished building indices.
 
 Enter movie genre: Enter movie year: Querying genres
-Number of matching database records: 6
-Number of matching database records: 65
-Number of matching database records: 104
-104 Matches found. Here is a list of titles which match your genre query: An
-	Comedy; Drama; Adventure; Science Fiction; Fantasy; Romance:	The 10th Kingdom
-	Comedy; Romance:	American Pie
-	Comedy; Romance:	American Pie
-	Comedy; Romance:	American Wedding
-	Comedy; Romance:	America's Sweethearts
-	Drama; Romance:	Anna And The King
-	Comedy; Drama; Fantasy:	Being John Malkovich
-	Drama; Science Fiction; Romance:	Bicentennial Man
-	Horror; Fantasy; Action:	BloodRayne
-	Horror; Fantasy:	BloodRayne II: Deliverance
-	Comedy; Romance:	Bridget Jones's Diary
-	Adventure; Horror; Fantasy:	The Brothers Grimm
-	Comedy; Drama; Horror; Fantasy; Action:	Buffy the Vampire Slayer: The Complete Seventh Season
-	Comedy; Drama; Horror; Fantasy; Action:	Buffy the Vampire Slayer: The Complete Sixth Season
-	Fantasy; Crime; Action:	Catwoman
-	Comedy; Adventure; Family; Fantasy:	Charlie and the Chocolate Factory
-	Adventure; Family; Fantasy:	"The Chronicles of Narnia: The Lion, The Witch and The Wardrobe
-	Drama; Romance; History:	Cleopatra
-	Comedy; Drama; Fantasy:	Click
-	Animation; Comedy; Family; Musical; Fantasy; Romance:	Corpse Bride
-	Adventure; Fantasy; Romance; Action; Martial Arts:	"Crouching Tiger, Hidden Dragon
-	Adventure; Family; Science Fiction; Fantasy:	The Dark Crystal
-	Adventure; Family; Science Fiction; Fantasy:	The Dark Crystal
-	Comedy; Romance:	Date Movie
-	Comedy; Adventure; Fantasy:	Dogma
-	Drama; Adventure; Family; Science Fiction; Fantasy:	E.T. the Extra-Terrestrial
-	Comedy; Adventure; Fantasy; Romance:	Ella Enchanted
-	Adventure; Fantasy; Action:	Eragon
-	Drama; Adventure; Science Fiction; Fantasy; Action:	Fantastic Four
-	Science Fiction; Fantasy; Action:	The Fifth Element
-	Science Fiction; Fantasy; Action:	The Fifth Element
-	Fantasy:	Final Fantasy: The Spirits Within
-	Comedy; Drama; Romance:	Garden State
-	Fantasy; Action:	Ghost Rider
-	Animation; Comedy; Family:	Happily N'Ever After
-	Adventure; Family; Fantasy:	Harry Potter And The Chamber Of Secrets
-	Adventure; Family; Fantasy; Thriller; Mystery:	Harry Potter And The Goblet Of Fire
-	Adventure; Family; Fantasy:	Harry Potter And The Prisoner Of Azkaban
-	Adventure; Family; Fantasy:	Harry Potter and The Sorcerer's Stone
-	Adventure; Science Fiction; Fantasy; Action:	Highlander 4: Endgame
-	Drama; Adventure; Romance; Action; Martial Arts:	House Of Flying Daggers
-	Adventure; Fantasy:	King Arthur
-	Adventure; Family; Musical; Fantasy:	Labyrinth
-	Adventure; Family; Musical; Fantasy:	Labyrinth
-	Drama; Fantasy; Thriller; Mystery:	Lady in the Water
-	Romance; Mystery:	The Lake House
-	Adventure; Fantasy; Action:	The League Of Extraordinary Gentlemen
-	Adventure; Fantasy; Romance:	Legend
-	Drama; Western; Romance:	Legends Of The Fall
-	Adventure; Fantasy; Action:	The Lord Of The Rings: The Fellowship Of The Ring
-	Action; Adventure; Fantasy:	The Lord Of The Rings: The Fellowship Of The Ring
-	Adventure; Fantasy; Action:	The Lord Of The Rings: The Return Of The King
-	Adventure; Fantasy; Action:	The Lord Of The Rings: The Two Towers
-	Comedy; Western; Romance:	The Mask Of Zorro
-	Science Fiction; Fantasy; Thriller; Action:	The Matrix
-	Fantasy; Romance; Mystery:	Meet Joe Black
-	Drama; Romance:	Memoirs of a Geisha
-	Comedy; Adventure; Romance; Crime; Action:	The Mexican
-	Comedy; Drama; Fantasy; Romance:	A Midsummer Night's Dream
-	Comedy; Romance; Action:	Miss Congeniality
-	Drama; Musical; Romance:	Moulin Rouge
-	Comedy; Adventure; Thriller; Romance; Action:	Mr. & Mrs. Smith
-	Comedy; Adventure; Thriller; Romance; Action:	Mr. & Mrs. Smith
-	Comedy; Romance:	Mr. Deeds
-	Drama; Adventure; Romance; Action:	The Musketeer
-	Comedy; Fantasy; Romance:	My Super Ex-Girlfriend
-	Comedy; Romance:	National Lampoon's Van Wilder
-	Comedy; Family; Fantasy; Action:	Night at the Museum
-	Drama; Fantasy; Horror; Thriller; War:	Pan's Labyrinth
-	Adventure; Family; Fantasy; Action:	Peter Pan
-	Animation; Drama; Musical; Fantasy; Thriller; Romance:	The Phantom Of The Opera
-	Comedy; Adventure; Fantasy; Action:	Pirates of the Caribbean: Dead Man's Chest
-	Comedy; Adventure; Fantasy; Action:	Pirates Of The Caribbean: The Curse Of The Black Pearl
-	Comedy; Drama; Fantasy; Romance; Mystery:	Practical Magic
-	Drama; Romance:	Pride And Prejudice
-	Comedy; Romance:	The Prince & Me
-	Romance:	The Prince & Me 2
-	Comedy; Adventure; Family; Fantasy; Romance:	The Princess Bride
-	Comedy; Adventure; Family; Fantasy; Romance:	The Princess Bride
-	Comedy; Family; Romance:	The Princess Diaries 2: Royal Engagement
-	Horror; Music; Fantasy:	Queen Of The Damned
-	Comedy; Drama; Musical; Romance:	Rent
-	Comedy; Romance:	Runaway Bride
-	Drama; Romance:	Save The Last Dance
-	Comedy; Drama; Romance:	Shakespeare In Love
-	Comedy; Romance:	She's the Man
-	Animation; Comedy; Adventure; Family:	Shrek
-	Animation; Comedy; Adventure; Family:	Shrek
-	Animation; Comedy; Adventure; Family:	Shrek 2
-	Horror; Fantasy; Thriller:	Sleepy Hollow
-	Adventure; Science Fiction; Fantasy; Action:	Star Wars Trilogy: A New Hope / The Empire Strikes Bac
-k / Return Of The Jedi
-	Drama; Music; Romance:	Step Up
-	Drama; Horror; Fantasy; Thriller; Mystery:	Stigmata
-	Fantasy:	The Lord Of The Rings: The Motion Picture Trilogy
-	Drama; Adventure; Romance:	Titanic
-	Drama; Romance; Action:	Tristan + Isolde
-	Adventure; War; Romance:	Troy
-	Fantasy; Thriller:	Unbreakable
-	Drama; Horror; Fantasy; Thriller; Action:	Underworld
-	Horror; Fantasy; Action:	Underworld: Evolution
-	Comedy; Romance:	View From The Top
-	Drama; Romance:	A Walk To Remember
-	Comedy; Romance:	The Wedding Planner
-	Fantasy; Action:	X2
+Number of matching database records: 20
+20 Matches found. Here is a list of titles which match your genre query: myster
+	Adventure; Thriller; Mystery; Action:	2002:	Alias: The Complete Second Series
+	Drama; Crime; Mystery:	2005:	Bones: Season 1
+	Crime; Drama; Mystery:	2005:	Bones: The Complete Second Season
+	Drama; Adventure; Thriller; Mystery; Action:	2004:	The Bourne Supremacy
+	Thriller; Mystery:	2006:	The Da Vinci Code
+	Thriller; Mystery:	2001:	Don't Say A Word
+	Drama; Science Fiction; Thriller; Mystery:	1997:	Gattaca
+	Horror; Thriller; Mystery:	2003:	Gothika
+	Horror; Thriller; Suspense; Mystery:	2004:	The Grudge
+	Adventure; Family; Fantasy; Thriller; Mystery:	2005:	Harry Potter And The Goblet Of Fire
+	Drama; Fantasy; Thriller; Mystery:	2006:	Lady in the Water
+	Romance; Mystery:	2006:	The Lake House
+	Fantasy; Romance; Mystery:	1998:	Meet Joe Black
+	Adventure; Mystery; Action:	2004:	National Treasure
+	Horror; Thriller; Mystery:	1999:	The Ninth Gate
+	Comedy; Drama; Fantasy; Romance; Mystery:	1998:	Practical Magic
+	Horror; Thriller; Mystery:	1999:	The Sixth Sense
+	Drama; Thriller; Mystery:	2000:	The Skulls
+	Drama; Horror; Fantasy; Thriller; Mystery:	1999:	Stigmata
+	Drama; Thriller; Mystery:	2004:	The Village
+Number of matching database records: 20
+3 Matches found. Here is a list of titles which match your genre and your year query: myster, 2006
+	Thriller; Mystery:	2006:	The Da Vinci Code
+	Drama; Fantasy; Thriller; Mystery:	2006:	Lady in the Water
+	Romance; Mystery:	2006:	The Lake House
 
