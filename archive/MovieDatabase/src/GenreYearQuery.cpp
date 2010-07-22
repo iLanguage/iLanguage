@@ -18,8 +18,8 @@ void GenreYearQuery::query(){
 	cout<<"Enter movie year: ";
 	//getline(cin,yearUserQuery);
 
-	genreUserQuery="An";
-	yearUserQuery="2006";
+	genreUserQuery="myster";
+	yearUserQuery=2006;
 	set<int> results;
 
 	db->queryGenre(genreUserQuery,results);
@@ -31,12 +31,27 @@ void GenreYearQuery::query(){
 	set<int>::iterator it;
 	for(it=results.begin(); it!=results.end(); it++){
 		int foundRecord = *it;
-		cout <<"\t"<<(db->operator[](foundRecord)).getGenre()<<":\t"<<(db->operator[](foundRecord)).getTitle()<<endl;
-		//int position=results.begin();
-		//cout<<db[position];
+		cout <<"\t"<<(db->operator[](foundRecord)).getGenre()<<":\t"<<(db->operator[](foundRecord)).getYear()<<":\t"<<(db->operator[](foundRecord)).getTitle()<<endl;
 	}
 
+	set<int> genreYearResult;
+	set<int> yearResults;
+	set<int>::iterator itYear;
+	db->queryYear(yearUserQuery, yearResults);
+	for(it=results.begin(); it!=results.end(); it++)
+	{
+		for(itYear=yearResults.begin(); itYear!=yearResults.end(); itYear++){
+			if (*itYear==*it){
+				genreYearResult.insert(*it);
+			}
+		}
+	}//end for loop to do the intersection of the genre and the year results
 
+	cout<<genreYearResult.size()<<" Matches found. Here is a list of titles which match your genre and your year query: "<<genreUserQuery<<", "<<yearUserQuery<<endl;
+	for(it=genreYearResult.begin(); it!=genreYearResult.end(); it++){
+		int foundRecord = *it;
+		cout <<"\t"<<(db->operator[](foundRecord)).getGenre()<<":\t"<<(db->operator[](foundRecord)).getYear()<<":\t"<<(db->operator[](foundRecord)).getTitle()<<endl;
+	}
 
 
 }
