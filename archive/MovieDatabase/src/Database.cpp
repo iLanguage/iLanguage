@@ -47,7 +47,7 @@ void Database::last(){
 	currentPosition=movieDatabase.size()-1;
 	cout<<*movieDatabase[currentPosition];
 }
-void Database::current(){
+void Database::current()const {
 	cout<<*movieDatabase[currentPosition];
 }
 

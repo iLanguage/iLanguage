@@ -30,8 +30,6 @@ private:
 	map<string,set<int> > ratingIndex;
 	map<string,set<int> > genreIndex;
 
-	static vecSizeType currentPosition;
-
 public:
 	string getDatabaseName() const;
 	void setDatabaseName(string newName);
@@ -39,11 +37,13 @@ public:
 	void findMatch(string stringToMatch, const map<string,set<int> > &indexToLookIn, set<int> &resultsToReturn) const;
 	void findMatchInt(int intToMatch, const map<int,set<int> > &indexToLookIn, set<int> &resultsToReturn)const;
 
+
+	static vecSizeType currentPosition;
 	void first();
 	void next();
 	void previous();
 	void last();
-	void current();
+	void current() const;
 	vecSizeType size();
 
 	//queries will look in index and returns a set of hits of record positions in the DB's vector
