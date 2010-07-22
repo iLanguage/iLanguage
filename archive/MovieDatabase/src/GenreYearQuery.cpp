@@ -18,17 +18,11 @@ void GenreYearQuery::query(){
 	cout<<"Enter movie year: ";
 	//getline(cin,yearUserQuery);
 
-	genreUserQuery="War";
-	yearUserQuery="2000";
+	genreUserQuery="An";
+	yearUserQuery="2006";
 	set<int> results;
-	//db.first();
+
 	db->queryGenre(genreUserQuery,results);
-	/*Print all indices found
-	 * http://www.java2s.com/Tutorial/Cpp/0500__STL-Algorithms-Non-modifying-sequence-operations/Usestdcopytoprintallelementsinaset.htm
-	 */
-	ostream_iterator< int > output( cout, " " );
-	copy(results.begin(), results.end(), output);
-	cout<<endl;
 
 	/*
 	 * Print out all titles of records found
@@ -37,7 +31,7 @@ void GenreYearQuery::query(){
 	set<int>::iterator it;
 	for(it=results.begin(); it!=results.end(); it++){
 		int foundRecord = *it;
-		cout <<"\t"<<(db->operator[](foundRecord)).getTitle()<<endl;
+		cout <<"\t"<<(db->operator[](foundRecord)).getGenre()<<":\t"<<(db->operator[](foundRecord)).getTitle()<<endl;
 		//int position=results.begin();
 		//cout<<db[position];
 	}
