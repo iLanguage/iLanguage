@@ -8,24 +8,22 @@
 #include "TimeActorQuery.h"
 
 void TimeActorQuery::query(){
-	cout<<"Enter an actor or part of an actor's name (ex: tom) ";
-	//getline(cin,actorUserQuery);
+	actorUserQuery=" ";
+	titleUserQuery=" ";
 
-	cout<<"Enter movie running time (ex:143) ";
-	//cin>>timeUserQuery;
-	string trash;
-	//getline(cin, trash);
+	cout<<"Enter an actor or part of an actor's name (ex: tom, \" \" for all results) ";
+	getline(cin,actorUserQuery);
 
-	actorUserQuery="tom";
-	timeUserQuery=143;
+	cout<<"Enter movie title (ex:da vinci, \" \" for all results) ";
+	getline(cin, titleUserQuery);
 
 	set<int> actorResults;
 	db->queryActor(actorUserQuery,actorResults);
 
-	set<int> timeResults;
-	db->queryTime(timeUserQuery, timeResults);
+	set<int> titleResults;
+	db->queryTitle(titleUserQuery, titleResults);
 
-	intersectResults(actorResults, timeResults);
+	intersectResults(actorResults, titleResults);
 }
 
 TimeActorQuery::TimeActorQuery() {

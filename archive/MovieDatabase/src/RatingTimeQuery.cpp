@@ -9,16 +9,20 @@
 
 
 void RatingTimeQuery::query(){
-	cout<<"Enter movie rating (ex: general) ";
-	//getline(cin,ratingUserQuery);
+	ratingUserQuery=" ";
+	timeUserQuery=-1;
 
-	cout<<"Enter movie running time (ex: 110) ";
-	//cin>>timeUserQuery;
+	cout<<"Enter movie rating (ex: general, \" \" for all results) ";
+	getline(cin,ratingUserQuery);
+
+	cout<<"Enter movie running time,  (ex: 239, -1 for all results) ";
+	cin>>timeUserQuery;
+
 	string trash;
-	//getline(cin, trash);
+	getline(cin, trash);
 
-	ratingUserQuery="General";
-	timeUserQuery=110;
+	//ratingUserQuery="General";
+	//timeUserQuery=110;
 
 	set<int> ratingResults;
 	db->queryRating(ratingUserQuery,ratingResults);
@@ -28,10 +32,8 @@ void RatingTimeQuery::query(){
 
 	intersectResults(ratingResults, timeResults);
 }
-
 RatingTimeQuery::RatingTimeQuery() {
 }
-
 RatingTimeQuery::~RatingTimeQuery() {
 	// TODO Auto-generated destructor stub
 }

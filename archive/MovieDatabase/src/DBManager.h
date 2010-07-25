@@ -21,6 +21,10 @@ private:
 	TimeActorQuery timeActorQuery;
 public:
 
+	void navigateUI();
+	void queryUI();
+	void mainUI();
+
 	void testNavigator();
 	void testQuery();
 	void run();

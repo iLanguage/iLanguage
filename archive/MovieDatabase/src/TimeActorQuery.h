@@ -13,7 +13,7 @@
 class TimeActorQuery: public Query {
 private:
 	std::string actorUserQuery;
-	int timeUserQuery;
+	string titleUserQuery;
 
 public:
 	void query();
