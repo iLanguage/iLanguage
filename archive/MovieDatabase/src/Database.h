@@ -52,6 +52,7 @@ public:
 	void queryActor(string actorQuery, set<int> &resultSet) const;
 	void queryRating(string ratingQuery, set<int> &resultSet) const;
 	void queryGenre(string genreQuery, set<int> &resultSet) const;
+	void queryTitle(string titleQuery, set<int> &resultSet) const;
 
 	void buildIndices();
 

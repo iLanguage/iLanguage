@@ -19,8 +19,106 @@ void DBManager::run(){
 	movieDB.buildIndices();
 
 	//testNavigator();
-	testQuery();
+	//testQuery();
 
+	mainUI();
+}
+
+void DBManager::mainUI(){
+	string line;
+
+	while (true) {
+		cout<<"Please choose one of the following options:\n"
+			"q -> Query\n"
+			"1 -> Test Queries\n"
+			"n -> Navigate\n"
+			"2 -> Test Navigation\n"
+			"e -> Exit\n"
+			"Enter your choice:";
+		getline(cin,line);
+		switch (line[0]){
+			case'1' :
+				testQuery();
+				break;
+			case '2':
+				testNavigator();
+				break;
+			case 'q':
+				queryUI();
+				break;
+			case 'n':
+				navigateUI();
+				break;
+			case 'e':
+				return;
+			default:
+				cout<<"Your choice wasn't recognized please try again."<<endl;
+		}
+	}
+
+}
+void DBManager::navigateUI(){
+	string line;
+	while (true){
+		cout<<"Please choose one of the following navigation operations \n"
+				"f -> First record\n"
+				"n -> Next record\n"
+				"p -> Previous record\n"
+				"l -> Last record\n"
+				"c -> current record\n"
+				"e -> Exit\n\n"
+				"Enter your choice:";
+		getline(cin, line);
+		switch (line[0]){
+		case 'f':
+			movieDB.first();
+			break;
+		case 'n':
+			movieDB.next();
+			break;
+		case 'p' :
+			movieDB.previous();
+			break;
+		case 'l':
+			movieDB.last();
+			break;
+		case 'c':
+			movieDB.current();
+			break;
+		case 'e' :
+			return;
+		default:
+			cout <<"Your choice wasn't recognized please try again."<<endl;
+		}
+	}
+}
+void DBManager::queryUI(){
+	string line;
+	cout<<"Please choose one of the following query types:\n"
+			"a -> Query by title and/or actor\n"
+			"b -> Query by genre and year\n"
+			"c -> Query by rating and running time\n"
+			"e -> Exit\n\n"
+			"Enter your choice: ";
+	getline(cin, line);
+	switch (line[0]){
+	case 'a':
+		timeActorQuery.query();
+		timeActorQuery.displayResults();
+		break;
+	case 'b':
+		genreYearUserQuery.query();
+		genreYearUserQuery.displayResults();
+		break;
+	case 'c':
+		ratingTimeQuery.query();
+		ratingTimeQuery.displayResults();
+		break;
+	case 'e':
+		return;
+	default :
+		cout<<"Your choice wasn't recognized please try again."<<endl;
+	}
 }
 void DBManager::testQuery(){
 	genreYearUserQuery.query();

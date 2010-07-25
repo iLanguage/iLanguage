@@ -193,12 +193,21 @@ void Database::findMatch(string stringToMatch, const map<string,set<int> > &inde
 }
 void Database::findMatchInt(int intToMatch, const map<int,set<int> > &indexToLookIn, set<int> &resultsToReturn) const{
 	set<int>::iterator itResult;
+	bool noIntSpecified=false;
+
+	if (intToMatch==-1){
+		noIntSpecified =true;
+	}
 
 	pair<int,set<int> > me;
 	BOOST_FOREACH(me, indexToLookIn)
 	{
 		//cout<<"Checking "<<me.first<<endl;
-		if (me.first==intToMatch)
+		/*
+		 * If the integer is found as a key in the index, add it to the result set,
+		 * In addition, if the user didnt specify any integer (special case -1) then add all positions to the result set
+		 */
+		if (me.first==intToMatch || noIntSpecified)
 		{
 			for(itResult=me.second.begin(); itResult!=me.second.end(); itResult++){
 				int foundRecord = *itResult;
@@ -230,7 +239,9 @@ void Database::queryRating(string ratingQuery, set<int> &resultSet) const{
 void Database::queryTime(int runningTimeQuery, set<int> &resultSet) const{
 	findMatchInt(runningTimeQuery, runningTimeIndex, resultSet);
 }
-
+void Database::queryTitle(string titleQuery, set<int> &resultSet) const{
+	findMatch(titleQuery, titleIndex, resultSet);
+}
 
 /*
  * Database Manager
