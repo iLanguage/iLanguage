@@ -9,7 +9,7 @@
 #define DBMANAGER_H_
 #include "Database.h"
 #include "GenreYearQuery.h"
-#include "TimeActorQuery.h"
+#include "TitleActorQuery.h"
 #include "RatingTimeQuery.h"
 using namespace std;
 
@@ -18,7 +18,7 @@ private:
 	Database movieDB;
 	GenreYearQuery genreYearUserQuery;
 	RatingTimeQuery ratingTimeQuery;
-	TimeActorQuery timeActorQuery;
+	TitleActorQuery titleActorQuery;
 public:
 
 	void navigateUI();

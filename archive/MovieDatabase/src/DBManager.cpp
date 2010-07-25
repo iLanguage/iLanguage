@@ -103,8 +103,8 @@ void DBManager::queryUI(){
 	getline(cin, line);
 	switch (line[0]){
 	case 'a':
-		timeActorQuery.query();
-		timeActorQuery.displayResults();
+		titleActorQuery.query();
+		titleActorQuery.displayResults();
 		break;
 	case 'b':
 		genreYearUserQuery.query();
@@ -125,8 +125,8 @@ void DBManager::testQuery(){
 	genreYearUserQuery.displayResults();
 	ratingTimeQuery.query();
 	ratingTimeQuery.displayResults();
-	timeActorQuery.query();
-	timeActorQuery.displayResults();
+	titleActorQuery.query();
+	titleActorQuery.displayResults();
 }
 void DBManager::testNavigator(){
 	movieDB.last();
@@ -139,7 +139,7 @@ void DBManager::testNavigator(){
 DBManager::DBManager(){
 	genreYearUserQuery.setDB(movieDB);
 	ratingTimeQuery.setDB(movieDB);
-	timeActorQuery.setDB(movieDB);
+	titleActorQuery.setDB(movieDB);
 }
 
 DBManager::~DBManager() {

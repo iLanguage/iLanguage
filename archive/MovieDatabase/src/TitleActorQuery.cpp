@@ -5,17 +5,17 @@
  *      Author: gina
  */
 
-#include "TimeActorQuery.h"
+#include "TitleActorQuery.h"
 
-void TimeActorQuery::query(){
+void TitleActorQuery::query(){
 	actorUserQuery=" ";
 	titleUserQuery=" ";
 
-	cout<<"Enter an actor or part of an actor's name (ex: tom, \" \" for all results) ";
-	getline(cin,actorUserQuery);
-
 	cout<<"Enter movie title (ex:da vinci, \" \" for all results) ";
 	getline(cin, titleUserQuery);
+
+	cout<<"Enter an actor or part of an actor's name (ex: tom, \" \" for all results) ";
+	getline(cin,actorUserQuery);
 
 	set<int> actorResults;
 	db->queryActor(actorUserQuery,actorResults);
@@ -26,9 +26,9 @@ void TimeActorQuery::query(){
 	intersectResults(actorResults, titleResults);
 }
 
-TimeActorQuery::TimeActorQuery() {
+TitleActorQuery::TitleActorQuery() {
 }
 
-TimeActorQuery::~TimeActorQuery() {
+TitleActorQuery::~TitleActorQuery() {
 	// TODO Auto-generated destructor stub
 }
