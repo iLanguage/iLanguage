@@ -5,20 +5,20 @@
  *      Author: gina
  */
 
-#ifndef TIMEACTORQUERY_H_
-#define TIMEACTORQUERY_H_
+#ifndef TITLEACTORQUERY_H_
+#define TITLEACTORQUERY_H_
 
 #include "Query.h"
 
-class TimeActorQuery: public Query {
+class TitleActorQuery: public Query {
 private:
 	std::string actorUserQuery;
 	string titleUserQuery;
 
 public:
 	void query();
-	TimeActorQuery();
-	virtual ~TimeActorQuery();
+	TitleActorQuery();
+	virtual ~TitleActorQuery();
 };
 
 #endif /* TIMEACTORQUERY_H_ */
