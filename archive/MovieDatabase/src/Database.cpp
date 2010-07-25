@@ -251,7 +251,7 @@ void Database::importRecords(char* filename){
 	fstream fileIn;
 	cout<<"Please enter a database file name: (push enter to use the default file: src/dvdmoviedb.txt)";
 	string temp="";
-	//getline(cin,temp);
+	getline(cin,temp);
 	if(temp!=""){
 		filename=const_cast<char*>(temp.c_str());
 	}
@@ -285,7 +285,7 @@ vecSizeType Database::size() const{
 	return movieDatabase.size();
 }
 void Database::setDatabaseName(string newName){
-	cout<<"Setting Database name to "<<newName<<endl;
+	//cout<<"Setting Database name to "<<newName<<endl;
 	databaseName=newName;
 }
 string Database::getDatabaseName() const{
@@ -304,7 +304,7 @@ const Record& Database::operator[](int x) const {
 }
 Database::Database() {
 	databaseName="Unnamed Database";
-	cout<<"Constructing a database."<<endl;
+	//cout<<"Constructing a database."<<endl;
 }
 Database::~Database() {
 	// TODO Auto-generated destructor stub

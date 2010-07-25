@@ -58,13 +58,11 @@ void Query::displayResults(){
 
 void Query::setDB(const Database &databaseToQuery){
 	db=&databaseToQuery;
-	cout<<"Setting db to "<<databaseToQuery.getDatabaseName()<<endl;
+	//cout<<"Setting db to "<<databaseToQuery.getDatabaseName()<<endl;
 }
 Query::Query() {
 	// TODO Auto-generated constructor stub
-
 }
-
 Query::~Query() {
 	// TODO Auto-generated destructor stub
 }
