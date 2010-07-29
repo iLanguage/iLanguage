@@ -59,13 +59,18 @@ void ShapeView::setShape(const Shape* shapeToDraw){
 
 ShapeView& ShapeView::operator =(const Shape* shapeToDraw){
 	shapeRecieved=shapeToDraw;
+
+	return *this; //dont forget to return a pointer to this
 }
 ShapeView& ShapeView::operator =(const ShapeView &svIn){
-	if(Shape::trace) cout<<endl<<"Resetting a shape view object from an existing shape view object."<<endl;
-	shapeRecieved=svIn.shapeRecieved;
-	fillType=svIn.fillType;
-	background=svIn.background;
-	forground=svIn.forground;
+	if (&svIn != this){
+		if(Shape::trace) cout<<endl<<"Resetting a shape view object from an existing shape view object."<<endl;
+		shapeRecieved=svIn.shapeRecieved;
+		fillType=svIn.fillType;
+		background=svIn.background;
+		forground=svIn.forground;
+	}
+	return *this;
 }
 ShapeView::ShapeView(const ShapeView &svIn){
 	if(Shape::trace) cout<<endl<<"Creating a shape view object from an existing shape view object."<<endl;
