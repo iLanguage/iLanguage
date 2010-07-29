@@ -74,6 +74,7 @@ void ShapeDisplayManager::runTests(){
 
 	//Shape* trickyShapePointer = new Rectangle(6,2);//
 	//cout<<trickyShapePointer.toStringInfo()<<endl;
+	//cout<<trickyShapePointer.toHallow();
 
 	Rectangle anotherRectangle(6,8);
 	cout<<anotherRectangle.toStringInfo()<<endl;
