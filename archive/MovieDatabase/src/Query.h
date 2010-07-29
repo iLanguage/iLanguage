@@ -20,6 +20,7 @@ public:
 	void setDB(const Database &databaseToQuery);
 	void displayResults();
 	void intersectResults(const set<int> &firstSet, const set<int> &secondSet);
+	virtual void query()=0;
 	Query();
 	virtual ~Query();
 };
