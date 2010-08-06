@@ -18,16 +18,11 @@ public:
 
 	/*
 	void operator+();
-	void operator+();
 	void operator-();
-	void operator-();
-	void operator*();
-	void operator/();
-	void operator+=();
+
 	void operator-=();
 	void operator*=();
 	void operator/=();
-	void operator==();
 	void operator<();
 	void operator!=();
 	void operator<=();
@@ -36,26 +31,38 @@ public:
 	void operator++();
 	void operator--();
 
-	void operator()();
-	void operator<<();
 	void operator>>();
 	*/
+
+
+	Fraction& operator*=(const Fraction& f);
+	Fraction& operator+=(const Fraction& f);
+
+	friend const Fraction operator*(const Fraction& f, const Fraction& g);
+	friend const Fraction operator+(const Fraction& f, const Fraction& g);
+	friend const Fraction operator-(const Fraction& f, const Fraction& g);
+	friend const Fraction operator/(const Fraction& f, const Fraction& g);
+	const Fraction operator-() const;
+	const Fraction operator+() const;
+
+	friend bool operator==(const Fraction& f, const Fraction& g);
+
 	int& operator[](int n);
-	const int& operator[](int n);
+	const int& operator[](int n) const;
 	int operator()();
-	Fraction& operator=(Fraction& otherFraction);
+	Fraction& operator=(const Fraction& otherFraction);
+
+	friend ostream& operator<<(ostream& sout, const Fraction& f);
 
 	int gcd(int a, int b);
 	Fraction& reciprocal();
-
 	void normalize();
 	void standardize();
 	void reduce();
 
-	friend ostream& operator<<(ostream& sout, Fraction& f);
-
 	Fraction();
 	Fraction(int a, int b);
+	Fraction(int a);
 	virtual ~Fraction();
 };
 
