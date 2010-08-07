@@ -3,7 +3,7 @@
 // Author      : gina
 // Version     :
 // Copyright   : 
-// Description : Hello World in C++, Ansi-style
+// Description : A driver which tests a number of overloaded operators on the class Fraction
 //============================================================================
 
 #include <iostream>
@@ -13,9 +13,6 @@
 using namespace std;
 
 int main() {
-	cout << "It runs." << endl;
-// prints It runs.
-
 
 	Fraction f(-18, -24);
 	cout << "the reciprocal of "<< f<< " is "<< f.reciprocal() << endl;
@@ -70,6 +67,31 @@ int main() {
 	assert( f6 < 1 + f6);
 
 	cout << "\nf6 - 1 = " << (f6 - 1) << endl;
+/*
+	cout<<endl<<endl<<endl<<"1/12+1"<<endl;
+	Fraction g(1,12);
+	g = g +1;
+	cout<<g<<endl;
+
+	cout<<"13/1-8/12"<<endl;
+	g=g-Fraction(2,3);
+	cout<<g<<endl;
+
+	cout<<"5/12-1"<<endl;
+	Fraction f=Fraction();
+	f=g-1;
+	cout<<f<<endl;
+
+	cout<<"1-5/12"<<endl;
+	f=Fraction(0);
+	f=1-g;
+	cout<<f<<endl;
+
+	cout<<"1+1/12"<<endl;
+	g=Fraction(1,12);
+	f=1+g;
+	cout<<f<<endl;
+*/
 	assert( f6 >= f6 - 1);
 
 	cout << "\n-1 + f6 = " << (-1 + f6) << endl;
@@ -97,6 +119,7 @@ int main() {
 	assert( f9 == Fraction(47,17));
 
 	cout << "\nSuccess at last!" << endl;
+
 	return 0;
 }
 
