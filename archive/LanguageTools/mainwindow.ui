@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>530</width>
+    <height>391</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTabWidget" name="tabWidgetWordlist">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>371</width>
+      <height>231</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Corpus</string>
+     </attribute>
+     <widget class="QTextEdit" name="textEditCorpus">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Wordlist</string>
+     </attribute>
+     <widget class="QTextEdit" name="textEditWordlist">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>10</y>
+        <width>351</width>
+        <height>191</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButtonLoad">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>230</y>
+      <width>114</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&amp;Load...</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>530</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="action_Open"/>
+    <addaction name="actionExport_Wordlist"/>
+    <addaction name="actionExport_Selected_Wordlist"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="action_Open">
+   <property name="text">
+    <string>&amp;Open...</string>
+   </property>
+  </action>
+  <action name="actionExport_Wordlist">
+   <property name="text">
+    <string>Export Wordlist</string>
+   </property>
+  </action>
+  <action name="actionExport_Selected_Wordlist">
+   <property name="text">
+    <string>Export Selected Wordlist</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButtonLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>buttonClickHandler()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>256</x>
+     <y>292</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>317</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_Open</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>264</x>
+     <y>195</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>buttonClickHandler()</slot>
+  <slot>open()</slot>
+ </slots>
+</ui>
