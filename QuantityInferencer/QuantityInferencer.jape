@@ -1,48 +1,21 @@
-Phase: Inference
+Phase: GCJape
 Input: pair h t 
-Options: control=appelt debug=true
+Options: control=appelt
 
-Rule:QuestionAnswering
+Rule: MYRULE
 (
  {pair}
 ):rte
 -->
 {
-       AnnotationSet pairAS = (AnnotationSet)bindings.get("rte");
-       Annotation pairAnno = pairAS.iterator().next();
-       // inputAS is "Original markups"
-       // it is actually risky to use iterator().next() without
-       // validation, but provided the fact that one pair annotation
-       // must cover exactly one h and one t, we are fine
-       AnnotationSet annoInPairAS = inputAS.get(pairAnno.getStartNode().getOffset(), pairAnno.getEndNode().getOffset());
-       Annotation hAnno = annoInPairAS.get("h").iterator().next();
-       Annotation tAnno = annoInPairAS.get("t").iterator().next();
+	gate.AnnotationSet quality = (gate.AnnotationSet)bindings.get("Age");
+	gate.Annotation qualityAnn = (gate.Annotation)quality.iterator().next();
+	gate.FeatureMap features = Factory.newFeatureMap();
 
-       // now I assume the X/Y annotations are located in defaultAS
-       // if not, change it accordingly
-       // I would assume that would be no more than one "X" or "Y" annotation. Change the code accordingly if you have different needs
-
-       AnnotationSet annoInH = outputAS.get(hAnno.get(hAnno.getStartNode().getOffset()),hAnno.getEndNode().getOffset());
-       boolean isXinH = annoInH.get("Age").isEmpty()==true?false:true;
-
-       AnnotationSet annoInT = outputAS.get(tAnno.get(hAnno.getStartNode().getOffset()),hAnno.getEndNode().getOffset());
-       boolean isYinT = annoInT.get("Age").isEmpty()==true?false:true;
-
-
-       // we get the features of "pair" annotation
-       FeatureMap features = pairAnno.getFeatures();
-       if(isXinH && isYinT){
-               // then we throw it our result
-               features.put("entail","true");
-       }else{
-               features.put("entail","false");
-       }
-
-       // or we can create one "entail" annotation covering "pair"
-       if(isXinH && isYinT){
-        outputAS.add(pairAnno.getStartNode().getOffset(),pairanno.getEndNode().getOffset(),"Entail",gate.Factory.newFeatureMap());
-       }
-
-       // if you want something more
-
+	//find out if the exact is unambiguous
+	String exact = "hello";
+	
+	features.put("exact", exact);
+	features.put("rule", "FirstName");
+	outputAS.add(quality.firstNode(), quality.lastNode(), "Age",features);
 }
