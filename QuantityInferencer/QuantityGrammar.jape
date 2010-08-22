@@ -13,24 +13,22 @@ Options: control = appelt
 
 
 //////////////////////////////////////////////////////////////
-
+//Number macros based on ANNIE NE transducer 2001
 
 Macro: MILLION_BILLION
 ({Token.string == "m"}|
 {Token.string == "million"}|
 {Token.string == "b"}|
 {Token.string == "billion"}|
+{Token.string == "trillion"}|
 {Token.string == "bn"}|
 {Token.string == "k"}|
 {Token.string == "K"}
 )
 
-
-
 Macro: NUMBER_WORDS
 // two hundred and thirty five
 // twenty five
-
 (
  (({Lookup.majorType == number} 
    ({Token.string == "-"})?
@@ -61,34 +59,221 @@ Macro: AMOUNT_NUMBER
  (MILLION_BILLION)?
 )
 
+Macro: PERCENT
+({Token.string == "%"} | 
+ {Token.string == "percent"}|
+ ({Token.string == "per"}
+ {Token.string == "cent"})
+)
 
-//Rough Quantity Rules
+
+////////////////////////
+//Macros for detecting different sorts of quantity
+
+Macro: MONEYAMOUNT
+(((AMOUNT_NUMBER) ({Lookup.majorType == currency_unit}))
+|
+(({Token.symbolkind == currency}|{Lookup.majorType == currency_unit})
+ (AMOUNT_NUMBER)
+ ({Lookup.majorType == currency_unit})?
+) )
+
+Macro: PERCENTAGEAMOUNT
+(
+( ({Token.string == "+"}|
+  {Token.string == "-"}|
+  {Token.string == "minus"}  
+ )?
+  ((AMOUNT_NUMBER|NUMBER_WORDS)
+  {Token.string == "point"}
+ )? 
+ (AMOUNT_NUMBER|NUMBER_WORDS)
+ (PERCENT)
+)|
+(
+ (AMOUNT_NUMBER|NUMBER_WORDS)
+ ({Token.string == "-"} |
+  {Token.string == "to"})
+ (AMOUNT_NUMBER|NUMBER_WORDS)
+ (PERCENT)
+)  ({Token.string == "of"}{Token.category == "NNS"})?
+)
 
 
-Macro: ROUGHQUANTITY
-({Token.string == "about"}| 
+//////////////Countability of the noun//////////////////
+//TBD:
+// two atomic bombings
+//many dozens of backyard hens
+
+//NNPS: Cambodians
+Macro: PLURALNOUN
+({Token.category == "NNS"}|{Token.category == "NNPS"}| {Token.string == "policemen"}
+)
+
+// hundreds of thousands of pounds
+Macro: PACKAGESOFCOUNTNOUNS
+( 
+( {Token.category == "NNS"} {Token.string == "of"} )*
+{Token.category == "NNS"}
+)
+Macro: NONCOUNTNOUN
+( {Token.string == "waste"}|
+{Token.string == "rubbish"}|
+{Token.string == "steel"}
+)
+
+
+
+//////////////Qualification of the Quantity//////////////////
+
+Macro: SCOPESHIFTERS
+( {Token.string == "no"}|
+ {Token.string == "not"}
+)
+Macro: APPROXIMATEQUANTITY
+({Token.stem == "about"}| 
+{Token.stem == "around"}| 
  {Token.string == "many"}|
+{Token.string == "over"}|
+{Token.string == "some"}|
+{Token.string == "several"}|
+{Token.string == "nearly"}|
+{Token.string == "roughly"}|
+{Token.string == "approximately"}|
+{Token.string == "only"}|
  ({Token.string == "at"}
  {Token.string == "least"})|
  ({Token.string == "more"}
- {Token.string == "than"})
+ {Token.string == "than"})|
+ ({Token.string == "up"}
+ {Token.string == "to"})|
+ ({Token.string == "a"}
+ {Token.string == "few"})|
+ ({Token.string == "as"}
+ {Token.string == "few"}
+ {Token.string == "as"})|
+ ({Token.string == "as"}
+ {Token.string == "many"}
+ {Token.string == "as"})
 )
-Rule: RoughQuantity
+
+//the world's largest drug company.
+
+Macro: QUANTITYVERBS
+( {Token.stem == "higher"}|
+{Token.stem == "increas"}|
+{Token.stem == "decreas"}|
+{Token.stem == "widespread"}|
+{Token.stem == "gain"}
+)
+
+Macro: COMPARITIVES
+( {Token.stem == "highest"}|
+{Token.stem == "largest"}|
+{Token.stem == "smallest"}|
+{Token.category== "JJS"}
+)
+///////////////////////////////////////////////////////////////
+//Money Rules based on ANNIE NE transducer 2001
+
+Rule:   MoneyCurrencyUnit
+// 30 pounds
+  (        
+      (AMOUNT_NUMBER)
+      ({Lookup.majorType == currency_unit})
+  )
+:number -->
+  :number.Money = {kind = "number", rule = "MoneyCurrencyUnit"}
+
+
+Rule:   MoneySymbolUnit
+// $30 
+// $30 US
+// not $1$21
+// $20US
+
+(   
+ ({Token.symbolkind == currency}|
+  {Lookup.majorType == currency_unit})
+ (AMOUNT_NUMBER)
+ (
+  {Lookup.majorType == currency_unit}
+ )?
+) 
+:number -->
+  :number.Money = {kind = "number", rule = "MoneySymbolUnit"}
+
+//////////////////////////////////////////////////////////////
+// Percentage Rules based on ANNIE NE transducer
+
+Rule: PercentBasic
+// +20%
+// minus 10 percent
+// two point four percent
 (
- (ROUGHQUANTITY)
+ ({Token.string == "+"}|
+  {Token.string == "-"}|
+  {Token.string == "minus"}  
+ )?
+  ((AMOUNT_NUMBER|NUMBER_WORDS)
+  {Token.string == "point"}
+ )? 
+ (AMOUNT_NUMBER|NUMBER_WORDS)
+ (PERCENT)
+)
+:number -->
+  :number.Percent = {rule = "PercentBasic"}
+
+Rule: PercentSpan
+// 20-30%
+// two to four percent
+
+(
+ (AMOUNT_NUMBER|NUMBER_WORDS)
+ ({Token.string == "-"} |
+  {Token.string == "to"})
+ (AMOUNT_NUMBER|NUMBER_WORDS)
+ (PERCENT)
+)
+:number -->
+  :number.Percent = {rule = "PercentSpan"}
+
+
+
+//////////////////////////////////////////////////////////////
+//Quantity Rules
+
+Rule: ApproximateQuantity
+//more than 100 bullets
+//at least two charges
+//over three children
+//over 40 billion dollars
+//several rounds of talks
+//at least half a dozen former Soviet republics 
+(
+(SCOPESHIFTERS)?
+(APPROXIMATEQUANTITY)
+(MONEYAMOUNT|PERCENTAGEAMOUNT|
+( (AMOUNT_NUMBER|NUMBER_WORDS)
+ (PACKAGESOFCOUNTNOUNS|PLURALNOUN)) )
  )
 :number -->
-  :number.Quantity = {rule = "RoughQuantity"}
+  :number.ApproximateQuantity = {rule = "ApproximateQuantity"}
 
 
-Macro: PLURALNOUN
-({Token.category == "NNS"}
+
+Rule: ExactQuantity
+//  100 bullets
+//  two charges
+
+(
+ ( (AMOUNT_NUMBER|NUMBER_WORDS)
+ (PACKAGESOFCOUNTNOUNS|PLURALNOUN) )| 
+MONEYAMOUNT|PERCENTAGEAMOUNT
 )
-Macro: PACKAGESOFCOUNTNOUNS
-({Token.category == "NNS"}
-{Token.string == "of"}
-{Token.category == "NNS"}
-)
+:number -->
+  :number.ExactQuantity = {rule = "ExactQuantity"}
+
 
 
 Rule: Packagesofcountnouns
@@ -102,15 +287,4 @@ Rule: Packagesofcountnouns
   :number.Quantity = {rule = "Packagesofcountnouns"}
 
 
-
-Rule: RoughQuantityBasic
-// more than 100 bullets
-// at least two charges
-
-(
-(ROUGHQUANTITY)?
- (AMOUNT_NUMBER|NUMBER_WORDS)
- (PACKAGESOFCOUNTNOUNS|PLURALNOUN)
- )
-:number -->
-  :number.Quantity = {rule = "RoughQuantityBasic"}
+s
