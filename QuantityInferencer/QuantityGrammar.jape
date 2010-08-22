@@ -1,0 +1,169 @@
+/*
+*
+*  This file is designed to annotate approximate and exact quantities for the use in evaluating etailment
+*
+*  Gina, 17 Aug 2010
+* 
+*/
+
+Phase:   Number
+Input: Token Lookup
+Options: control = appelt
+
+///////////////////////////////////////////////////////////////
+//Money Rules
+
+
+Macro: MILLION_BILLION
+({Token.string == "m"}|
+{Token.string == "million"}|
+{Token.string == "b"}|
+{Token.string == "billion"}|
+{Token.string == "bn"}|
+{Token.string == "k"}|
+{Token.string == "K"}
+)
+
+Macro: NUMBER_WORDS
+// two hundred and thirty five
+// twenty five
+
+(
+ (({Lookup.majorType == number} 
+   ({Token.string == "-"})?
+  )*
+   {Lookup.majorType == number}
+   {Token.string == "and"}
+ )*
+ ({Lookup.majorType == number} 
+  ({Token.string == "-"})?
+ )*
+   {Lookup.majorType == number}
+)
+
+
+Macro: AMOUNT_NUMBER
+// enables commas, decimal points and million/billion
+// to be included in a number
+ 
+(({Token.kind == number}
+  (({Token.string == ","}|
+    {Token.string == "."}
+   )
+   {Token.kind == number}
+  )*
+  |
+  (NUMBER_WORDS)
+ )
+ (MILLION_BILLION)?
+)
+
+
+Rule:   MoneyCurrencyUnit
+// 30 pounds
+  (        
+      (AMOUNT_NUMBER)
+      ({Lookup.majorType == currency_unit})
+  )
+:number -->
+  :number.Money = {kind = "number", rule = "MoneyCurrencyUnit"}
+
+
+Rule:   MoneySymbolUnit
+
+// $30 
+// $30 US
+// not $1$21
+// $20US
+
+
+(   
+ ({Token.symbolkind == currency}|
+  {Lookup.majorType == currency_unit})
+ (AMOUNT_NUMBER)
+ (
+  {Lookup.majorType == currency_unit}
+ )?
+) 
+:number 
+
+ -->
+  :number.Money = {kind = "number", rule = "MoneySymbolUnit"}
+
+//////////////////////////////////////////////////////////////
+
+// Percentage Rules
+
+Macro: PERCENT
+({Token.string == "%"} | 
+ {Token.string == "percent"}|
+ ({Token.string == "per"}
+ {Token.string == "cent"})
+)
+
+
+Rule: PercentBasic
+// +20%
+// minus 10 percent
+// two point four percent
+
+(
+ ({Token.string == "+"}|
+  {Token.string == "-"}|
+  {Token.string == "minus"}  
+ )?
+  ((AMOUNT_NUMBER|NUMBER_WORDS)
+  {Token.string == "point"}
+ )? 
+ (AMOUNT_NUMBER|NUMBER_WORDS)
+ (PERCENT)
+)
+:number -->
+  :number.Percent = {rule = "PercentBasic"}
+
+Rule: PercentSpan
+// 20-30%
+// two to four percent
+
+(
+ (AMOUNT_NUMBER|NUMBER_WORDS)
+ ({Token.string == "-"} |
+  {Token.string == "to"})
+ (AMOUNT_NUMBER|NUMBER_WORDS)
+ (PERCENT)
+)
+:number -->
+  :number.Percent = {rule = "PercentSpan"}
+
+
+//////////////////////////////////////////////////////////////
+
+//Rough Quantity Rules
+
+Macro: ROUGHQUANTITY
+({Token.string == "about"} | 
+ {Token.string == "many"}|
+ ({Token.string == "at"}
+ {Token.string == "least"})|
+ ({Token.string == "more"}
+ {Token.string == "than"})
+)
+Macro: PLURALNOUN
+({Token.category == "NNS"} 
+)
+
+Rule: RoughQuantityBasic
+// +20%
+// minus 10 percent
+// two point four percent
+// more than 100 bullets
+// at least two charges
+
+(
+ (ROUGHQUANTITY )
+ (AMOUNT_NUMBER|NUMBER_WORDS)
+ (PLURALNOUN)
+)
+:number -->
+  :number.Percent = {rule = "RoughQuantityBasic"}
+
