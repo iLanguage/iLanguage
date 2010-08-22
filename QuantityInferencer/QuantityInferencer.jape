@@ -1,8 +1,8 @@
-Phase: GCJape
-Input: pair h t  (note: it is actually OK if you do not list the annotations that you would use in java RHS, but Gate might still warn you about this upon loading the jape grammar, just overlook the warning)
-Options: control=appelt
+Phase: Inference
+Input: pair h t 
+Options: control=appelt debug=true
 
-Rule: MYRULE
+Rule:QuestionAnswering
 (
  {pair}
 ):rte
@@ -22,11 +22,11 @@ Rule: MYRULE
        // if not, change it accordingly
        // I would assume that would be no more than one "X" or "Y" annotation. Change the code accordingly if you have different needs
 
-       AnnotationSet annoInH = outputAS.get(hAnno.get(hAnno.getStartNode().getOffset(),hAnno.getEndNode().getOffset());
-       boolean isXinH = annoInH.get("X").isEmpty()==true?false:true;
+       AnnotationSet annoInH = outputAS.get(hAnno.get(hAnno.getStartNode().getOffset()),hAnno.getEndNode().getOffset());
+       boolean isXinH = annoInH.get("Age").isEmpty()==true?false:true;
 
-       AnnotationSet annoInT = outputAS.get(tAnno.get(hAnno.getStartNode().getOffset(),hAnno.getEndNode().getOffset());
-       boolean isYinT = annoInT.get("Y").isEmpty()==true?false:true;
+       AnnotationSet annoInT = outputAS.get(tAnno.get(hAnno.getStartNode().getOffset()),hAnno.getEndNode().getOffset());
+       boolean isYinT = annoInT.get("Age").isEmpty()==true?false:true;
 
 
        // we get the features of "pair" annotation
