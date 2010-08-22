@@ -1,21 +1,11 @@
-Phase: GCJape
+Phase: Inference
 Input: pair h t 
-Options: control=appelt
+Options: control=brill debug=true
 
-Rule: MYRULE
+Rule:QuestionAnswering
 (
- {pair}
-):rte
+ {pair.task == "QA"}
+)
+:inference
 -->
-{
-	gate.AnnotationSet quality = (gate.AnnotationSet)bindings.get("Age");
-	gate.Annotation qualityAnn = (gate.Annotation)quality.iterator().next();
-	gate.FeatureMap features = Factory.newFeatureMap();
-
-	//find out if the exact is unambiguous
-	String exact = "hello";
-	
-	features.put("exact", exact);
-	features.put("rule", "FirstName");
-	outputAS.add(quality.firstNode(), quality.lastNode(), "Age",features);
-}
+: inference.QuestionAnswering  = {inferresult="entailed"}
