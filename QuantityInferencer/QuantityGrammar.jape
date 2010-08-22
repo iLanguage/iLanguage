@@ -14,25 +14,103 @@ Options: control = appelt
 
 //////////////////////////////////////////////////////////////
 
+
+Macro: MILLION_BILLION
+({Token.string == "m"}|
+{Token.string == "million"}|
+{Token.string == "b"}|
+{Token.string == "billion"}|
+{Token.string == "bn"}|
+{Token.string == "k"}|
+{Token.string == "K"}
+)
+
+
+
+Macro: NUMBER_WORDS
+// two hundred and thirty five
+// twenty five
+
+(
+ (({Lookup.majorType == number} 
+   ({Token.string == "-"})?
+  )*
+   {Lookup.majorType == number}
+   {Token.string == "and"}
+ )*
+ ({Lookup.majorType == number} 
+  ({Token.string == "-"})?
+ )*
+   {Lookup.majorType == number}
+)
+
+
+Macro: AMOUNT_NUMBER
+// enables commas, decimal points and million/billion
+// to be included in a number
+ 
+(({Token.kind == number}
+  (({Token.string == ","}|
+    {Token.string == "."}
+   )
+   {Token.kind == number}
+  )*
+  |
+  (NUMBER_WORDS)
+ )
+ (MILLION_BILLION)?
+)
+
+
 //Rough Quantity Rules
 
+
 Macro: ROUGHQUANTITY
-({Token.string == "a"}
+({Token.string == "about"}| 
+ {Token.string == "many"}|
+ ({Token.string == "at"}
+ {Token.string == "least"})|
+ ({Token.string == "more"}
+ {Token.string == "than"})
 )
+Rule: RoughQuantity
+(
+ (ROUGHQUANTITY)
+ )
+:number -->
+  :number.Quantity = {rule = "RoughQuantity"}
+
 
 Macro: PLURALNOUN
-({Token.category == "VBD"}
+({Token.category == "NNS"}
+)
+Macro: PACKAGESOFCOUNTNOUNS
+({Token.category == "NNS"}
+{Token.string == "of"}
+{Token.category == "NNS"}
 )
 
+
+Rule: Packagesofcountnouns
+//lots of people
+//tons of submarines
+//reports of events
+(
+ (PACKAGESOFCOUNTNOUNS)
+ )
+:number -->
+  :number.Quantity = {rule = "Packagesofcountnouns"}
+
+
+
 Rule: RoughQuantityBasic
-// +20%
-// minus 10 percent
-// two point four percent
 // more than 100 bullets
 // at least two charges
 
 (
- (PLURALNOUN)
+(ROUGHQUANTITY)?
+ (AMOUNT_NUMBER|NUMBER_WORDS)
+ (PACKAGESOFCOUNTNOUNS|PLURALNOUN)
  )
 :number -->
-  :number.Percent = {rule = "RoughQuantityBasic"}
+  :number.Quantity = {rule = "RoughQuantityBasic"}
