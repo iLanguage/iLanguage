@@ -26,9 +26,22 @@ Macro: MILLION_BILLION
 {Token.string == "K"}
 )
 
+Macro: HALF_QUARTER
+(
+({Token.string == "half"}|
+{Token.string == "quarter"}|
+{Token.string == "third"}|
+{Token.string == "fourth"}|
+{Token.string == "fifth"}|
+{Token.string == "sixth"}|
+{Token.string == "tenth"})
+({Token.string == "-"})?
+)
+
 Macro: NUMBER_WORDS
 // two hundred and thirty five
 // twenty five
+//a hundred
 (
  (({Lookup.majorType == number} 
    ({Token.string == "-"})?
@@ -43,6 +56,7 @@ Macro: NUMBER_WORDS
 )
 
 
+
 Macro: AMOUNT_NUMBER
 // enables commas, decimal points and million/billion
 // to be included in a number
@@ -53,7 +67,7 @@ Macro: AMOUNT_NUMBER
    )
    {Token.kind == number}
   )*
-  |
+  |( ({Token.string == "a"} | (NUMBER_WORDS)) (HALF_QUARTER) )|
   (NUMBER_WORDS)
  )
  (MILLION_BILLION)?
@@ -107,13 +121,15 @@ Macro: PERCENTAGEAMOUNT
 
 //NNPS: Cambodians
 Macro: PLURALNOUN
-({Token.category == "NNS"}|{Token.category == "NNPS"}| {Token.string == "policemen"}
+(({Token.category == "JJ"})*({Token.category == "NN"})*
+{Token.category == "NNS"}|{Token.category == "NNPS"}| {Token.string == "policemen"}
 )
 
 // hundreds of thousands of pounds
 Macro: PACKAGESOFCOUNTNOUNS
 ( 
 ( {Token.category == "NNS"} {Token.string == "of"} )*
+({Token.category == "JJ"})*({Token.category == "NN"})*
 {Token.category == "NNS"}
 )
 Macro: NONCOUNTNOUN
@@ -131,8 +147,8 @@ Macro: SCOPESHIFTERS
  {Token.string == "not"}
 )
 Macro: APPROXIMATEQUANTITY
-({Token.stem == "about"}| 
-{Token.stem == "around"}| 
+({Token.string == "about"}| 
+{Token.string == "around"}| 
  {Token.string == "many"}|
 {Token.string == "over"}|
 {Token.string == "some"}|
@@ -258,7 +274,7 @@ Rule: ApproximateQuantity
  (PACKAGESOFCOUNTNOUNS|PLURALNOUN)) )
  )
 :number -->
-  :number.ApproximateQuantity = {rule = "ApproximateQuantity"}
+  :number.ApproximateQuantity = {rule = "ApproximateQuantity", type = :number.Token.string}
 
 
 
@@ -272,7 +288,7 @@ Rule: ExactQuantity
 MONEYAMOUNT|PERCENTAGEAMOUNT
 )
 :number -->
-  :number.ExactQuantity = {rule = "ExactQuantity"}
+  :number.ExactQuantity = {rule = "ExactQuantity", type = :number.Token.string}
 
 
 
@@ -284,7 +300,23 @@ Rule: Packagesofcountnouns
  (PACKAGESOFCOUNTNOUNS)
  )
 :number -->
-  :number.Quantity = {rule = "Packagesofcountnouns"}
+  :number.Quantity = {rule = "Packagesofcountnouns", type = :number.Token.string}
 
 
-s
+
+
+//////////////////////////////////////////////////////////////
+//Age rules
+
+Rule: Age
+//35-year-old
+//35 years old
+// 5-year-olds
+(
+ (AMOUNT_NUMBER|NUMBER_WORDS)
+ ({Token.string == "-"})?
+( ({Token.stem == "year"}{Token.stem == "old"})|
+({Token.string == "year-old"}) )
+)
+:number -->
+  :number.Age = {rule = "Age", type = :number.Token.string}
