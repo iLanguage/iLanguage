@@ -47,13 +47,20 @@ Rule:QuestionAnswering
 
 
         */
+
        
-       
-       //get the anotation for Age in the hypothesis
+       //get the set of annotations in the hypothesis
        AnnotationSet annoInH = outputAS.get(hAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
       
+       Set quantityTypes = new HashSet();
+       quantityTypes.add("Age");
+       quantityTypes.add("ExactQuantity");
+       quantityTypes.add("ApproximateQuantity");
+       
+       
        //here get anything that is in the set of relevant annotations
        boolean isXinH = annoInH.get("Age").isEmpty()==true?false:true;
+       
        
        //for each , get the string to compair
        
@@ -71,7 +78,7 @@ Rule:QuestionAnswering
        //else, say that it is not entailed
        if(isXinH && isYinT){
                // then we throw it our result
-               features.put("entail","true");
+               features.put("entail",quantityTypes);
        }else{
                features.put("entail","false");
        }
