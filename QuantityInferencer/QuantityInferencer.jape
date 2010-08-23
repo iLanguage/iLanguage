@@ -19,13 +19,43 @@ Rule:QuestionAnswering
        Annotation hAnno = annoInPairAS.get("h").iterator().next();
        //get the text in the pair
        Annotation tAnno = annoInPairAS.get("t").iterator().next();
+       
+       /*
+        * Pseudo code for inference engine
+        * for each pair:
+        *	 for each annotation type in the hypothesis {Age, Money, Percent, ExactQuantity, ApproximateQuantity} 
+        * 			for each annotation  {Age, Money, Percent, ExactQuantity, ApproximateQuantity}  in the text
+        * 				compare the string in the "quantity" feature to see if there is a matching string in the text's annotation set. 
+        * 
+        * if true=entail
+        * 
+        * Use HashSet to store the types of annotions {Age, Money, Percent, ExactQuantity, ApproximateQuantity} 
+        * Use JavaDoc for AnnotationSet, Annotation
+        */
+       
+       /*
+        * get
+			
+			AnnotationSet get(Set<String> types)
+			
+			    Select annotations by a set of types.
+			
+			    Parameters:
+			        types - the set of annotation types to search for. 
+			    Returns:
+			        a snapshot copy of all annotations in this set that have one of the requested types. If there are no annotations of the requested types in this set, an empty set is returned. The returned set is immutable.
 
-       //Error: The method get(Long) is undefined for the type Annotation at line 34 in japeactionclasses.InferenceQuestionAnsweringActionClass193
-       //String mentionName = doc.getContent().getContent(mentionAnn.getStartNode().getOffset(), mentionAnn.getEndNode().getOffset()).toString();
+
+        */
+       
        
        //get the anotation for Age in the hypothesis
        AnnotationSet annoInH = outputAS.get(hAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
+      
+       //here get anything that is in the set of relevant annotations
        boolean isXinH = annoInH.get("Age").isEmpty()==true?false:true;
+       
+       //for each , get the string to compair
        
        //get the annotation for Age in the text
        AnnotationSet annoInT = outputAS.get(tAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
