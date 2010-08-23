@@ -52,41 +52,39 @@ Rule:QuestionAnswering
        //get the set of annotations in the hypothesis
        AnnotationSet annoInH = outputAS.get(hAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
       
-       Set quantityTypes = new HashSet();
+       Set<String> quantityTypes = new HashSet<String>();
        quantityTypes.add("Age");
        quantityTypes.add("ExactQuantity");
        quantityTypes.add("ApproximateQuantity");
        
-       
-       //here get anything that is in the set of relevant annotations
-       boolean isXinH = annoInH.get("Age").isEmpty()==true?false:true;
-       
-       
-       //for each , get the string to compair
-       
-       //get the annotation for Age in the text
-       AnnotationSet annoInT = outputAS.get(tAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
-       boolean isYinT = annoInT.get("Age").isEmpty()==true?false:true;
+       for(String quantityType : quantityTypes) {
+    	   //System.out.print(quantityType + " ");
+	       
+	       //here get anything that is in the set of relevant annotations
+	       boolean isXinH = annoInH.get(quantityType).isEmpty()==true?false:true;
+	       
+	       
+	       //for each , get the string to compair
+	       
+	       //get the annotation for Age in the text
+	       AnnotationSet annoInT = outputAS.get(tAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
+	       boolean isYinT = annoInT.get(quantityType).isEmpty()==true?false:true;
+	
+	       
+	       
+	       
+	       
+	       //get the features from that pair annotation to add the new value for whether the pair are entailed
+	       FeatureMap features = pairAnno.getFeatures();
+	       //if an annotation about Age is found in both the hypothesis and the text, then say that the pair is entailed, 
+	       //else, say that it is not entailed
+	       if(isXinH && isYinT){
+	               // then we throw it our result
+	               features.put("entail",quantityType);
+	       }else{
+	               features.put("entail","false");
+	       }
 
-       
-       
-       
-       
-       //get the features from that pair annotation to add the new value for whether the pair are entailed
-       FeatureMap features = pairAnno.getFeatures();
-       //if an annotation about Age is found in both the hypothesis and the text, then say that the pair is entailed, 
-       //else, say that it is not entailed
-       if(isXinH && isYinT){
-               // then we throw it our result
-               features.put("entail",quantityTypes);
-       }else{
-               features.put("entail","false");
        }
-
-       //or if Age is found in both the hypothesis and the text then we could add a new annotation that surrounds the pair
-       //using the start and end points that were found earlier
-	//       if(isXinH && isYinT){
-	//    	   outputAS.add(pairAnno.getStartNode().getOffset(),pairanno.getEndNode().getOffset(),"Entail",gate.Factory.newFeatureMap());
-	//       }
 
 }
