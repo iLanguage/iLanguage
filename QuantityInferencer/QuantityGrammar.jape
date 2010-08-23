@@ -294,3 +294,8 @@ Rule: Age
 )
 :number -->
   :number.Age = {rule = "Age", type = :number.Token.string}
+//55-year-old 55 years old= 55 year
+ //more than 200 tests, more than 200 nuclear tests = 200 tests
+
+// put number and head noun in an array list in java instead of a typical Jape RHS]
+
