@@ -24,11 +24,11 @@ Rule:QuestionAnswering
        //String mentionName = doc.getContent().getContent(mentionAnn.getStartNode().getOffset(), mentionAnn.getEndNode().getOffset()).toString();
        
        //get the anotation for Age in the hypothesis
-       AnnotationSet annoInH = outputAS.get(hAnno.get(hAnno.getStartNode().getOffset()),hAnno.getEndNode().getOffset());
+       AnnotationSet annoInH = outputAS.get(hAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
        boolean isXinH = annoInH.get("Age").isEmpty()==true?false:true;
        
        //get the annotation for Age in the text
-       AnnotationSet annoInT = outputAS.get(tAnno.get(hAnno.getStartNode().getOffset()),hAnno.getEndNode().getOffset());
+       AnnotationSet annoInT = outputAS.get(tAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
        boolean isYinT = annoInT.get("Age").isEmpty()==true?false:true;
 
        
