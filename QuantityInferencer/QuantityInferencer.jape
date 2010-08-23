@@ -8,29 +8,30 @@ Rule:QuestionAnswering
 ):rte
 -->
 {
+		//get the entire annotation set of "pair"
        AnnotationSet pairAS = (AnnotationSet)bindings.get("rte");
+       //create an itterator to itterate through the pairs
        Annotation pairAnno = pairAS.iterator().next();
-       // inputAS is "Original markups"
-       // it is actually risky to use iterator().next() without
-       // validation, but provided the fact that one pair annotation
-       // must cover exactly one h and one t, we are fine
+      
+       //get a pair
        AnnotationSet annoInPairAS = inputAS.get(pairAnno.getStartNode().getOffset(), pairAnno.getEndNode().getOffset());
+       //get a hypotheiss the pair
        Annotation hAnno = annoInPairAS.get("h").iterator().next();
+       //get the text in the pair
        Annotation tAnno = annoInPairAS.get("t").iterator().next();
 
-       // now I assume the X/Y annotations are located in defaultAS
-       // if not, change it accordingly
-       // I would assume that would be no more than one "X" or "Y" annotation. Change the code accordingly if you have different needs
-
+       //get the anotation for Age in the hypothesis
        AnnotationSet annoInH = outputAS.get(hAnno.get(hAnno.getStartNode().getOffset()),hAnno.getEndNode().getOffset());
        boolean isXinH = annoInH.get("Age").isEmpty()==true?false:true;
 
+       //get the annotation for Age in the text
        AnnotationSet annoInT = outputAS.get(tAnno.get(hAnno.getStartNode().getOffset()),hAnno.getEndNode().getOffset());
        boolean isYinT = annoInT.get("Age").isEmpty()==true?false:true;
 
-
-       // we get the features of "pair" annotation
+       //get the features from that pair annotation to add the new value for whether the pair are entailed
        FeatureMap features = pairAnno.getFeatures();
+       //if an annotation about Age is found in both the hypothesis and the text, then say that the pair is entailed, 
+       //else, say that it is not entailed
        if(isXinH && isYinT){
                // then we throw it our result
                features.put("entail","true");
@@ -38,11 +39,10 @@ Rule:QuestionAnswering
                features.put("entail","false");
        }
 
-       // or we can create one "entail" annotation covering "pair"
-       if(isXinH && isYinT){
-        outputAS.add(pairAnno.getStartNode().getOffset(),pairanno.getEndNode().getOffset(),"Entail",gate.Factory.newFeatureMap());
-       }
-
-       // if you want something more
+       //or if Age is found in both the hypothesis and the text then we could add a new annotation that surrounds the pair
+       //using the start and end points that were found earlier
+//       if(isXinH && isYinT){
+//    	   outputAS.add(pairAnno.getStartNode().getOffset(),pairanno.getEndNode().getOffset(),"Entail",gate.Factory.newFeatureMap());
+//       }
 
 }
