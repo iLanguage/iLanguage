@@ -20,14 +20,21 @@ Rule:QuestionAnswering
        //get the text in the pair
        Annotation tAnno = annoInPairAS.get("t").iterator().next();
 
+       //Error: The method get(Long) is undefined for the type Annotation at line 34 in japeactionclasses.InferenceQuestionAnsweringActionClass193
+       //String mentionName = doc.getContent().getContent(mentionAnn.getStartNode().getOffset(), mentionAnn.getEndNode().getOffset()).toString();
+       
        //get the anotation for Age in the hypothesis
        AnnotationSet annoInH = outputAS.get(hAnno.get(hAnno.getStartNode().getOffset()),hAnno.getEndNode().getOffset());
        boolean isXinH = annoInH.get("Age").isEmpty()==true?false:true;
-
+       
        //get the annotation for Age in the text
        AnnotationSet annoInT = outputAS.get(tAnno.get(hAnno.getStartNode().getOffset()),hAnno.getEndNode().getOffset());
        boolean isYinT = annoInT.get("Age").isEmpty()==true?false:true;
 
+       
+       
+       
+       
        //get the features from that pair annotation to add the new value for whether the pair are entailed
        FeatureMap features = pairAnno.getFeatures();
        //if an annotation about Age is found in both the hypothesis and the text, then say that the pair is entailed, 
@@ -41,8 +48,8 @@ Rule:QuestionAnswering
 
        //or if Age is found in both the hypothesis and the text then we could add a new annotation that surrounds the pair
        //using the start and end points that were found earlier
-//       if(isXinH && isYinT){
-//    	   outputAS.add(pairAnno.getStartNode().getOffset(),pairanno.getEndNode().getOffset(),"Entail",gate.Factory.newFeatureMap());
-//       }
+	//       if(isXinH && isYinT){
+	//    	   outputAS.add(pairAnno.getStartNode().getOffset(),pairanno.getEndNode().getOffset(),"Entail",gate.Factory.newFeatureMap());
+	//       }
 
 }
