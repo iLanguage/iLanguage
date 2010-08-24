@@ -63,7 +63,7 @@ Rule:QuestionAnswering
 		       FeatureMap featuresOfH = quantityAnnotationInH.getFeatures();
 		       //System.out.print(featuresOfH + " ");
 		       
-		       String hHeadNoun = featuresOfH.get(headnoun);
+		       String hHeadNoun = featuresOfH.get("headnoun");
 		       System.out.print("Headnoun is"+hHeadNoun+"\n");
 	    	   //get the quantity annotation in the text
 		       AnnotationSet annoInT = outputAS.get(quantityType, tAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
