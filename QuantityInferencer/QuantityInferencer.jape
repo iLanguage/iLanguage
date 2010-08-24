@@ -70,7 +70,7 @@ Rule:QuestionAnswering
 		       AnnotationSet quantityAnnotationInT = outputAS.get(quantityType, tAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
 		       
 		       if ( quantityAnnotationInT.getFeatures().get("headnoun")==quantityAnnotationInH.getFeatures().get("headnoun") ){
-		    	   System.out.print("Found an inference."+quantityAnnotationInT.getFeatures().get("headnoun")+" : "+quantityAnnotationInH.getFeatures().get("headnoun"));
+		    	   System.out.print("Found an inference.");//+quantityAnnotationInT.getFeatures().get("headnoun")+" : "+quantityAnnotationInH.getFeatures().get("headnoun"));
 		       }//boolean isYinT = annoInT.get(quantityType).isEmpty()==true?false:true;
 		       
 	
