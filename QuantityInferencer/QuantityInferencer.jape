@@ -60,7 +60,7 @@ Rule:QuestionAnswering
 	       AnnotationSet quantityAnnotationsInH = outputAS.get(quantityType, hAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
 
 	       for(Annotation quantityAnnotationInH : quantityAnnotationsInH) {
-		       FeatureMap featuresOfH = quantityAnnotationInH.getFeatures();
+		       FeatureMap<String> featuresOfH = quantityAnnotationInH.getFeatures();
 		       //System.out.print(featuresOfH + " ");
 		       
 		       String hHeadNoun = featuresOfH.get("headnoun");
