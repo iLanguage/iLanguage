@@ -60,11 +60,12 @@ Rule:QuestionAnswering
 	       AnnotationSet quantityAnnotationsInH = outputAS.get(quantityType, hAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
 
 	       for(Annotation quantityAnnotationInH : quantityAnnotationsInH) {
-		       FeatureMap<String> featuresOfH = quantityAnnotationInH.getFeatures();
+		       FeatureMap featuresOfH = quantityAnnotationInH.getFeatures();
 		       //System.out.print(featuresOfH + " ");
 		       
-		       String hHeadNoun = featuresOfH.get("headnoun");
-		       System.out.print("Headnoun is"+hHeadNoun+"\n");
+		       //String hHeadNoun = featuresOfH.get(headnoun);
+		       System.out.print(quantityAnnotationInH.getFeatures().get("headnoun"));
+		       //System.out.print("Headnoun is"+hHeadNoun+"\n");
 	    	   //get the quantity annotation in the text
 		       AnnotationSet annoInT = outputAS.get(quantityType, tAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
 		       //boolean isYinT = annoInT.get(quantityType).isEmpty()==true?false:true;
