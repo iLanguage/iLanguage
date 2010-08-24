@@ -67,8 +67,12 @@ Rule:QuestionAnswering
 		       System.out.print(quantityAnnotationInH.getFeatures().get("headnoun"));
 		       //System.out.print("Headnoun is"+hHeadNoun+"\n");
 	    	   //get the quantity annotation in the text
-		       AnnotationSet annoInT = outputAS.get(quantityType, tAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
-		       //boolean isYinT = annoInT.get(quantityType).isEmpty()==true?false:true;
+		       AnnotationSet quantityAnnotationInT = outputAS.get(quantityType, tAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
+		       
+		       if ( quantityAnnotationInT.getFeatures().get("headnoun")==quantityAnnotationInH.getFeatures().get("headnoun") ){
+		    	   System.out.print("Found an inference."+quantityAnnotationInT.getFeatures().get("headnoun")+" : "+quantityAnnotationInH.getFeatures().get("headnoun"));
+		       }//boolean isYinT = annoInT.get(quantityType).isEmpty()==true?false:true;
+		       }
 	
 		       /*
 		       
