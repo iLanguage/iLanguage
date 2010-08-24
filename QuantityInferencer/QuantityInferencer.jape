@@ -72,9 +72,9 @@ Rule:QuestionAnswering
 		       
 		       for (Annotation quantityAnnotationInT : quantityAnnotationsInT){
 			       if ( quantityAnnotationInT.getFeatures().get("headnoun").equals(quantityAnnotationInH.getFeatures().get("headnoun"))) {
-			    	   System.out.print("Found an inference."+quantityAnnotationInT.getFeatures().get("headnoun")+" : "+quantityAnnotationInH.getFeatures().get("headnoun"));
+			    	   System.out.print("Found an inference."+quantityAnnotationInT.getFeatures().get("headnoun")+" : "+quantityAnnotationInH.getFeatures().get("headnoun")+"\n");
 			    	   FeatureMap pairfeatures = pairAnno.getFeatures();
-			    	   pairfeatures.put("entail",quantityType);
+			    	   pairfeatures.put("entail",quantityAnnotationInT.getFeatures().get("headnoun")+"="+quantityAnnotationInH.getFeatures().get("headnoun")+" in "+quantityType);
 			    	   entailmentFound= true;
 			       }//boolean isYinT = annoInT.get(quantityType).isEmpty()==true?false:true;
 		       
