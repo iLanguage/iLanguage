@@ -20,6 +20,7 @@ Rule:QuestionAnswering
        //get the text in the pair
        Annotation tAnno = annoInPairAS.get("t").iterator().next();
        
+       boolean entailmentFound = false;
        /*
         * Pseudo code for inference engine
         * for each pair:
@@ -64,7 +65,7 @@ Rule:QuestionAnswering
 		       //System.out.print(featuresOfH + " ");
 		       
 		       //String hHeadNoun = featuresOfH.get(headnoun);
-		       System.out.print(quantityAnnotationInH.getFeatures().get("headnoun"));
+		       //System.out.print(quantityAnnotationInH.getFeatures().get("headnoun"));
 		       //System.out.print("Headnoun is"+hHeadNoun+"\n");
 	    	   //get the quantity annotation in the text
 		       AnnotationSet quantityAnnotationsInT = outputAS.get(quantityType, tAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
@@ -72,6 +73,9 @@ Rule:QuestionAnswering
 		       for (Annotation quantityAnnotationInT : quantityAnnotationsInT){
 			       if ( quantityAnnotationInT.getFeatures().get("headnoun").equals(quantityAnnotationInH.getFeatures().get("headnoun"))) {
 			    	   System.out.print("Found an inference."+quantityAnnotationInT.getFeatures().get("headnoun")+" : "+quantityAnnotationInH.getFeatures().get("headnoun"));
+			    	   FeatureMap pairfeatures = pairAnno.getFeatures();
+			    	   pairfeatures.put("entail",quantityType);
+			    	   entailmentFound= true;
 			       }//boolean isYinT = annoInT.get(quantityType).isEmpty()==true?false:true;
 		       
 		       }
@@ -90,6 +94,10 @@ Rule:QuestionAnswering
 		               features.put("entail","false");
 		       }
 		       */
+	       }
+	       if (entailmentFound==false){
+	    	   FeatureMap pairfeatures = pairAnno.getFeatures();
+	    	   pairfeatures.put("entail","false");
 	       }
        }
 
