@@ -55,12 +55,16 @@ Rule:QuestionAnswering
        
        // for each of the quantity types of annoation, loop through all hypotheses, checking to see if they have potential matches in their texts
        for(String quantityType : quantityTypes) {
-    	   //System.out.print(quantityType + " ");
+    	   System.out.print(quantityType + " ");
 	       
 	       AnnotationSet quantityAnnotationsInH = outputAS.get(quantityType, hAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
 
 	       for(Annotation quantityAnnotationInH : quantityAnnotationsInH) {
-		       //get the quantity annotation in the text
+		       FeatureMap featuresOfH = quantityAnnotationInH.getFeatures();
+		       System.out.print(featuresOfH + " ");
+		       
+		       
+	    	   //get the quantity annotation in the text
 		       AnnotationSet annoInT = outputAS.get(quantityType, tAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
 		       //boolean isYinT = annoInT.get(quantityType).isEmpty()==true?false:true;
 	
