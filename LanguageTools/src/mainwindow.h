@@ -17,10 +17,17 @@ public:
 public slots:
     void buttonClickHandler();
     void open();
+    void saveAs();
 
 private:
 
+    QStringList sentences;
+    QString corpus;
+    QStringList words;
+
     void loadFile(const QString &filename);
+
+    void findSentences(const QString &text);
     Ui::MainWindow *ui;
 };
 

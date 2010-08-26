@@ -4,15 +4,17 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui webkit
 
 TARGET = NLPTools
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    tokenizer.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    tokenizer.h
 
 FORMS    += mainwindow.ui
