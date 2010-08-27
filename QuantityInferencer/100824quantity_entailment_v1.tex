@@ -1,0 +1,300 @@
+%
+% File acl07.tex
+%
+% Contact: sujian@i2r.a-star.edu.sg
+
+\documentclass{article}
+\usepackage{acl07}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{covington}
+\usepackage{qtree}
+\usepackage{pstricks,pstcol,pst-node}
+\setlength\titlebox{6.5cm}    % Expanding the titlebox
+
+\title{Capturing Quantities in Text}
+\author{Gina Cook\\
+  Engineering and Computer Science\\
+  Concordia University\\
+  Montr\'{e}al, QC Canada\\
+  {\tt gina.c.cook@gmail.ca}
+}
+
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+
+\end{abstract}
+
+\tableofcontents
+%\listoffigures
+
+\section{Introduction}
+
+\section{Textual Entailment}
+
+\subsection{World Knowledge and  Old Information}
+A great deal of context is not stated explicitly in the texts that we read. Texts are usually considered to add to our existing knowledge, connect previously knowledge. While newspaper texts generally fall neatly into background knowledge contexts (criminal acts and sentencing, celebrity gossip, natural disasters, global politics)  and often seem to provide most of the relevant information necessary to understand the context genres which depart toward philosophy (blogs) or humour (witty magazine articles) often leave the obvious required background knowledge unstated for comical effect.
+
+Iftene 2008 developed a module in his Text Entailment system which took Named Entities from the text and searched Wikipedia to construct background knowledge about those named entities to be used in the task. Of course, it is expected that the hypotheses offered in Textual Entailment tasks are expected to be consistent with reality, and thus consistent with Wikipedia over use of background knowledge can claim that true Hypotheses such as Bangladesh is east of India supposedly follow from a text that discusses the exports of Bangladesh and discusses nothing of its geographical position. Thus, misclassifying the hypothesis as entailed by the text incorrectly allows the text to be offered in the justification of a question answering system which provides the users the information which it used to arrive at its answer. 
+
+\subsection{Expectations and ``Normality"}
+
+In addition to background knowledge a sense of what is ``normal" or what follows expectedly from a previous event is used by humans when building inferences from text. For example, the hypothesis that \textit{11 troops were deployed} in Example~\ref{normality} below violates the sense of normality and would cause a human to double-read the text to be sure this was indeed the fact. 
+
+\begin{example}{\bf Eleven troops is an unexpectedly small number of troops, and therefore unlikely}\\
+\label{normality}
+Britain deployed troops to Afghanistan shortly after the attacks of
+		11 September, 2001. Few then thought that British forces would still
+		be in Afghanistan in far larger numbers seven years on, nor that they
+		would be involved in some of the fiercest fighting British forces have
+		seen in decades, as part of Nato's International Security and
+		Assistance Force (ISAF).
+	
+Britain has {\bf 11 troops} that take part in Nato's International
+		Security and Assistance Force.
+\end{example}
+
+Resources such as VerbOcean 2004 identifies relations between verbs such as \textit{enablement} and \textit{happens-before} as shown in Table~\ref{verbocean} below.
+
+\begin{example}
+\label{verbocean}
+VerbOcean provides relations between verbs such as Enablement and Happens-Before\\
+\includegraphics[width=250px]{verbocean.pdf}
+VerbOcean 2004, cited in Iftene 2008:46.
+\end{example} 
+
+
+\subsection{New Information and Discourse Representation}
+
+Generally considered the main source of information, the text itself presents new information which can be represented in the Discourse Representation framework of linguists Kamp and Reyle 1996.
+
+\subsubsection{Entities and Named Entities} 
+
+Noun phrases differ in their specificity and their definiteness. The secificity and definiteness of noun phrases can usually be deduced from the articles, quantifiers or plurality of the nouns. In order to add information about entities and named entities in the discourse representation of a text it is important to resolve pronouns according to gender as shown in Example~\ref{gendercoreference} below. 
+
+\begin{example}Co-reference resolution with gendered discourse referents:\\
+\label{gendercoreference}
+{\bf She} was finally found at 10.35am the next day by PC David Lloyd
+		George. Something had caught his eye in the undergrowth - {\bf her} blue
+		school coat or the deep red of the gloves that {\bf she} had been wearing -
+		and he stepped off the forestry track. {\bf  Muriel Drinkwater} was lying on
+		{\bf her} back, one arm outstretched by {\bf her} side, the other slightly raised
+		but with the gloved hand limp. {\bf Her} eyes were open, but there was no
+		doubt that {\bf she} was dead. {\bf She} was just a few weeks short of {\bf her} 13th
+		birthday. The constable blew sharply on his whistle. The year was
+		1946, when murder was supposedly less commonplace than now. The
+		killing of {\bf Muriel Drinkwater} was to make headlines for months and
+		would vex Detective Chief Inspector William "Bulldog" Chapman, the
+		Scotland Yard detective who led the inquiry, until his death nine
+		years later.
+		
+	{\bf Muriel Drinkwater} was killed in 1946.
+\end{example}
+
+Creating co-reference chains is more complicated when there are multiple possible references, and worse still when the references are very similar as the two skyscrapers discussed in Example~\ref{skyscrapers} below. 
+
+\begin{example}Co-reference chain with highly similar discourse referents:\\
+\label{skyscrapers}
+Seoul City said Monday {\bf a 690-meter-tall, 133-story multifunctional
+		skyscraper} will be constructed in Sangam-dong. Once built, it will be
+		{\bf the second highest} after  \textit{the 800-meter-high Burj Dubai}, which is under
+		construction, by South Korean developer Samsung C\&T.  {\bf The
+		construction} will cost more than 3.3 trillion won (\$2.37 billion), the
+		city estimates. To raise funds, 23 local developers signed an MOU at a
+		Seoul hotel Monday with Seoul Mayor Oh Se-hoon attending. "{\bf The
+		landmark building} will help make Seoul more attractive and become a
+		new tourist attraction here," Oh said.  {\bf The multifunctional building}
+		will have hotels, offices, department stores, convention centers and
+		various recreational facilities including an aquarium and movie
+		theaters.
+		
+	\textit{The highest skyscraper} in the world is being built in Dubai.
+\end{example}
+
+%\subsubsection{Event Sequencing}
+%\subsubsection{Relations between Events}
+%\subsection{Inferencing}
+\subsubsection{Closure and Disjoint Sets, exaustive}
+
+\begin{example}
+Los Angeles County probation officials say they are now studying how
+		other counties recover juvenile detention costs, after admitting they
+		mistakenly billed parents for days when youths were held in probation
+		camps and halls. By law, California counties can bill parents and
+		legal guardians for some daily costs of detaining youths, but {\bf only
+		those whose parents can afford to pay}. Last year, more than 20,000
+		youths were admitted to probation camps and halls, and L.A. County
+		billed parents a daily charge of \$11.94 for camps, \$23.63 for halls.
+	
+	In Los Angeles County {\bf all parents} have to pay the detention costs of
+		their children.
+\end{example}
+
+\subsection{Certainty and Probability}
+
+We are rarely certain of what we conclude, when doing automatic inferences from text certainty must be dealt with. Iftene 2008 determines that infinitives which follow verbs/predicates such as \textit{glad, believe, claim, necessary, compulsory, free, attempt, trial, refuse, deny, ignore, plan, intend, propose, be able} are often less certain than verbs/predicates in other contexts. 
+
+This observation by Iftene mirrors the \textit{epistemic} syntactic feature in linguistics. It is generally accepted that embedded verbs such as infinitives do have the same truth conditional semantics as main verbs. The semantics of modals, epistemic verbs and other verbs which take embedded verbs is often captured in the framework of Intensional Semantics (von Fintel and Hiem 2002).
+
+
+Ultimately the degree of certainty of a verb/predicate depends on syntactic factors such as whether it is embedded, whether it is negated, whether it is qualified with an adverb, and of course whether it is typically used by speakers in an uncertain or certain fashion in that particular context (as can be seen in Example~\ref{verbs} below). It is difficult to capture the certainty of a verb simply by comparing the verb/predicates in the text and hypothesis without doing a deeper analysis and dealing with the logical form underneath the text. Fortunately in many genre's which favour objectivity clear factual active sentences are more frequent then sentences which express uncertainty or hint at uncertainty. 
+
+
+\begin{example}Sentences are rarely simple facts\\
+\label{verbs}
+\begin{description}
+\item [Simple verbs] speed, speak, spend,  reach, raise, held, fled, lost, knew, paid \textit{Tata {\bf paid} investors 608 pence a share}
+\item [Mental verbs] tried, believed, expected, thought, planned, intended, proposed, enjoyed, glad \textit{Sepulcher, traditionally {\bf believed to mark} the site where Jesus was crucified, buried and then resurrected.}
+\item [Raising verbs] seemed, looked like \textit{Those who want to save Acre's forest {\bf seem to be winning}.}
+\item [Control verbs] 	promised, tried \textit{But an O2 insider said there had been problems with a companies {\bf trying to sell} the pass codes.}
+\item [Acc+Inf or ECM verbs] asked, wanted, enabled, expected, encouraged, pushed, forced, made, let, allowed \textit{The government now {\bf wants to use} the 450 MHz band to create a new digital wireless network that {\bf would cover} the entire country.}
+\item [Modal verbs] might, can/could, will/would, ought to should \textit{The voluntary recall is considered a Class II recall since it covers products that {\bf might cause} a temporary health problem or {\bf pose} only a slight threat of a serious nature, the FDA said.}
+\item [Epistemic verbs] must, has to \textit{In Los Angeles County all parents {\bf have to pay} the detention costs of their children.}
+\item [Counterfactuals] would, might, attempted, denied \textit{A teenager slashed a woman to death as he {\bf attempted to steal} \$6 off her--to buy beer.}
+\item [Evidential verbs] heard, saw, said, mentioned, reported \textit{The nephew of Elio Amato, an Italian mafia boss, is {\bf reported to have undergone training} at a paramilitary camp in Bulgaria.}
+\item [Aspectual verbs] started, finished, kept on, continued to \textit{Kaplinsky first {\bf started to work} for the BBC in 2002 after a two year tenure with Sky News.} 
+\textit{The US government {\bf wants to keep} drug prices {\bf down}.}
+\end{description}
+\end{example}
+
+\section{Recognizing Textual Entailment Challenge}
+
+The RTE challenge began in 2005 and was in its fifth year in 2009. Sammons et al 2010 identify RTE and other similar `grand' challenges as the key to identifying the components needed in more complex tasks which are ultimately more useful than simple search engines and improved word counting and indexing algorithms. 
+
+The RTE challenge has evolved to use longer texts which require co-reference resolution, identification of contradiction, implicit and explicit negation and more advanced inferencing techniques which mirror closer the real world needs in inferencing. Four tasks which serve to benefit from inferencing services are listed in \S~\ref{uses} below. The RTE challenge originally began with rather shallow processing recources which relied on bag of word models and became gradualy more complex as exemplified by the paraphrasing system in Iftene 2008 in \S~\ref{ifteneparaphrasing} and the discourse system in Hickl and Bensely in \S~\ref{hicklbensely}. 
+
+\subsection{Uses of Textual Entailment}
+
+\label{uses}
+As one of the most linguistically challenging tasks in natural language processing recognizing textual entailments is part of tasks such as question answering and information retrieval where information must be extracted and summarized. 
+
+\subsubsection{Question Answering}
+\label{qa}
+Question answering is the task of retrieving information from a single or a variety of sources to satisfy a user's question. Question answering show in Example~\ref{qaexample} below can be as simple as finding an appropriate sentence which answers the question, or as complex as compiling the information from multiple sentences in multiple documents. Question Answering essentially is one service which can be provided if information retrieval \S~\ref{retrieval}, information extraction \S~\ref{extraction}, and summarization \S~\ref{summarization} can be provided. 
+\begin{example}How many employees does Kaiser have?\\
+\label{qaexample}
+\hspace{-.4in}\includegraphics[width=270px]{qa_example.pdf}
+\end{example}
+
+\subsubsection{Information Retrieval}
+\label{retrieval}
+ Information Retrieval is a task where relevant information is sorted and retrieved for the user. The text in Example~\ref{irexample} might be retrieved for a query string of \textit{detain days terror suspect}.
+  
+ \begin{example}Retrieve texts relevant to user queries\\
+\label{irexample}
+\hspace{-.4in}\includegraphics[width=270px]{ir_example.pdf}
+\end{example}
+
+\subsubsection{Information Extraction}
+\label{extraction}
+Information Extraction is a task which can be used to process unstructured text to build a knowledge base. In Example~\ref{ieexample} below the fact \textit{Kingston is 90 miles north of New York City} is extracted from a more general text which discusses a shopping mall in Kingston, and happens to mention the city's location with respect to New York City.
+
+\begin{example}Extract facts/data from unstructured text\\
+\label{ieexample}
+\hspace{-.4in}\includegraphics[width=270px]{ie_example.pdf}
+\end{example}
+
+\subsubsection{Summarization}
+\label{summarization}
+
+Summarization is a task which can take as input one document or multiple document and produce a summary of the documents contents. At its simplest summarization can be extracting key sentences from teh document. Summarization is often considered more useful if it uses natural langauge generation and actually summarizes the information in the document(s) as shown in Example ~\ref{sumexample} below. 
+
+\begin{example}Summarization can provide a more concise and objective statement.\\
+\label{sumexample}
+\hspace{-.4in}\includegraphics[width=270px]{sum_example.pdf}
+\end{example}
+
+
+\subsection{Paraphrasing Resources - Iftene 2008}
+\label{ifteneparaphrasing}
+ Iftene used a variety of resources to develop paraphrasing functionality for his textual entailment system. In a Grid computing paradigm he used a 
+ \begin{itemize}
+\item Lemmatizing service which found the lemmas of the words,
+\item Synonym service which used WordNet, eXtended WordNet to find a set of synonyms for the verbs
+\item Antonym service which used WordNet and verb ocean to find a set of antonyms to allow for passive-like transformations over the verbs
+\item Dirt service which used Dirt to find a list of similar verbs for paraphrasing
+\item Acronym service which finds potential full forms for acronyms
+\item Background Knowledge service which starts with a Named Entity and searches Wikipedia for sentences that contain the Named Entity to build a network of Ideas about that entity.  
+\end{itemize}
+
+Iftene found that the WordNet resource, negation rules, Named Entity rules, and Contradiction rules accounted for most of his system's success as 2nd position  in the two-way task (72.1\% accuracy) and first position (68.5\% accuracy) in the three-way task of RTE4 challenge in 2008.
+
+\subsection{Discourse Commitments - Hickl \& Bensley 2007}
+\label{hicklbensely}
+
+	
+%\section{Approaches to Textual Inferencing}
+
+%\subsection{Word Overlap}
+
+%\subsection{Logic and Discourse}
+
+\section{Quantity Annotator}
+
+\subsection{Exact Quantity}
+
+\subsection{Approximate Quantity}
+
+\subsection{Downward Entailing Contexts}
+
+
+\section{Simple Inferencer}
+
+
+
+\section{Results}
+
+\section{Discussion}
+
+
+%\bibliographystyle{acl}
+%\bibliography{eacl2006}
+
+\begin{thebibliography}{}
+\bibitem{hickl}Hickl, A. and Bensley, J. 2007. A Discourse Commitment-Based Framework for Recognising Textual Entailment. In \textit{Proceedings of the ACL-PASCAL Workshop on Textual Entailment and Paraphrasing}. Pages 185-190. 28-29 June, Prague, Czech Republic.
+
+\bibitem{kamp}Kamp, H \& U Reyle, 1996 `A Calculus for First Order DiscourseRepresentation Structures,' \textit{Journal of Logic, Language and Information},5, 297Ð348.
+\bibitem{heim}von Fintel, K and I Heim. 2002. \textit{Lecture Notes on Intensional Semantics}. Ms. Massachusetts Institute of Technology. 
+%\bibitem{zweig}Zweig, E. 2004. Nouns and Adjectives in Numeral NPs, in {\textit Proceedings of NELS 35}.
+\bibitem{zweig}Zweig, E. 2009. Number-Neutral Bare plurals and the MultiplicityImplicature. \textit{Linguistics and Philosophy} Volume 32, Number 4, 353-407.
+\end{thebibliography}
+
+\appendix
+\section{Gate Implementation - Quantity Grammar}
+
+\section{Gate Implementation - Quantity Inferencer}
+
+\end{document}
+
+\bibitem{brent} Brent, Michael R and Xiaopeng Tao. 2001. ``Chinese text segmentation with mbdp-1: Making the most of training corpora.'' In \textit{39th Annual Meeting of the ACL}, pages 82–89.
+
+\bibitem{creutz} Creutz, Mathias and Krista Lagus. 2005. ``Inducing the Morphological
+Lexicon of a Natural Language from Unannotated Text.'' In \textit{Proceedings
+of the International and Interdisciplinary Conference on Adaptive
+Knowledge Representation and Reasoning (AKRR'05)}, pages 106-113,
+Espoo, June. http://www.cis.hut.fi/projects/morpho/
+
+
+\bibitem(deMarken)	de Marcken, Carl. 1995. ``Acquiring a lexicon from unsegmented speech.'' In \textit{33rd Annual Meeting of the ACL}, pages 311–313.
+
+\bibitem{goldsmith} Goldsmith, J.A. 2001. ``Unsupervised Learning of the Morphology of a Natural Language.'' \textit{Computational Linguistics}, 27:2 pp. 153-198.
+
+\bibitem{johnson} Johnson, Mark. 2008a. ``Unsupervised word segmentation for Sesotho using adaptor grammars.'' In \textit{Tenth Meeting of ACL SIGMORPHON, pages 20–27}. ACL, Morristown, NJ.
+\bibitem{johnson2008} Johnson, Mark. 2008b. ``Using adaptor grammars to identify synergies in the unsupervised acquisition of linguistic structure.'' In \textit{46th Annual Meeting of the ACL}, pages 398–406. ACL, Morristown, NJ.
+\bibitem{kanungo} Kanungo, Tapas. 1999. ``UMDHMM: Hidden Markov Model Toolkit,'' in \textit{Extended Finite State Models of Language,} A. Kornai (editor), Cambridge University Press. http://www.kanungo.com/software/software.html. \\
+	http://www.umiacs.umd.edu/~resnik/nlstat\_tutorial\_summer1998
+	/Lab\_hmm.html
+	
+\bibitem{resnik}	Resnik, Phillip. 1999. \textit{Using a Hidden Markov Model.} http://umiacs.umd.edu/~resnik/ling773\_sp2009/assignments/hmm.html
+	
+%\bibitem{shone} Schone, P., & Jurafsky, D. 2000. Knowledge-free induction of morphology using latent semantic analysis. In Proceedings of CoNLL-2000 and LLL-2000, pp. 67--72 Lisbon, Portugal.
+
+
+\end{thebibliography}
+
+
+\end{document}
