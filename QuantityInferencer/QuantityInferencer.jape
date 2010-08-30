@@ -15,11 +15,15 @@ Rule:QuestionAnswering
       
        //get a pair
        AnnotationSet annoInPairAS = inputAS.get(pairAnno.getStartNode().getOffset(), pairAnno.getEndNode().getOffset());
-       //get a hypotheiss the pair
+       //get a hypothesis the pair
        Annotation hAnno = annoInPairAS.get("h").iterator().next();
+       long startOfTheAnnotationInH=hAnno.getStartNode().getOffset();
+	   long endOfTheAnnotationInH=hAnno.getEndNode().getOffset();
        //get the text in the pair
        Annotation tAnno = annoInPairAS.get("t").iterator().next();
-       
+       long startOfTheAnnotationInT=tAnno.getStartNode().getOffset();
+	   long endOfTheAnnotationInT=tAnno.getEndNode().getOffset();
+	   
        boolean entailmentFound = false;
        /*
         * Pseudo code for inference engine
@@ -54,25 +58,30 @@ Rule:QuestionAnswering
        quantityTypes.add("ExactQuantity");
        quantityTypes.add("ApproximateQuantity");
        
+       String compaired="";
+       
        // for each of the quantity types of annoation, loop through all hypotheses, checking to see if they have potential matches in their texts
        for(String quantityType : quantityTypes) {
     	   //System.out.print(quantityType + " ");
-	       
-	       AnnotationSet quantityAnnotationsInH = outputAS.get(quantityType, hAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
+	           	   
+	       AnnotationSet quantityAnnotationsInH = outputAS.get(quantityType, startOfTheAnnotationInH, endOfTheAnnotationInH);
 
 	       for(Annotation quantityAnnotationInH : quantityAnnotationsInH) {
 		       FeatureMap featuresOfH = quantityAnnotationInH.getFeatures();
-		       //System.out.print(featuresOfH + " ");
-		       
-		       //String hHeadNoun = featuresOfH.get(headnoun);
-		       //System.out.print(quantityAnnotationInH.getFeatures().get("headnoun"));
-		       //System.out.print("Headnoun is"+hHeadNoun+"\n");
-	    	   //get the quantity annotation in the text
-		       AnnotationSet quantityAnnotationsInT = outputAS.get(quantityType, tAnno.getStartNode().getOffset(), hAnno.getEndNode().getOffset());
-		       
+
+		       AnnotationSet quantityAnnotationsInT = outputAS.get(quantityType,  startOfTheAnnotationInT,  endOfTheAnnotationInT);
 		       for (Annotation quantityAnnotationInT : quantityAnnotationsInT){
-			       if ( quantityAnnotationInT.getFeatures().get("headnoun").equals(quantityAnnotationInH.getFeatures().get("headnoun"))) {
-			    	   System.out.print("Found an inference."+quantityAnnotationInT.getFeatures().get("headnoun")+" : "+quantityAnnotationInH.getFeatures().get("headnoun")+"\n");
+		    	   FeatureMap featuresOfT = quantityAnnotationInT.getFeatures();
+		    	   
+		    	   String x=(String)featuresOfT.get("headnoun");
+		    	   String y=(String)featuresOfH.get("headnoun");
+		    	   
+		    	   if (x==null || y==null){
+		    		   //throw new NullPointerException();
+		    		   System.out.print("No headnoun found in pair t:"+featuresOfT+" , h: "+featuresOfH);
+		    	   } else if( x.equals(y) ) {
+		    		   compaired =" "+x+":"+y;
+			    	  // System.out.print("Found an inference."+quantityAnnotationInT.getFeatures().get("headnoun")+" : "+quantityAnnotationInH.getFeatures().get("headnoun")+"\n");
 			    	   FeatureMap pairfeatures = pairAnno.getFeatures();
 			    	   pairfeatures.put("entail",quantityAnnotationInT.getFeatures().get("headnoun")+"="+quantityAnnotationInH.getFeatures().get("headnoun")+" in "+quantityType);
 			    	   entailmentFound= true;
@@ -97,7 +106,7 @@ Rule:QuestionAnswering
 	       }
 	       if (entailmentFound==false){
 	    	   FeatureMap pairfeatures = pairAnno.getFeatures();
-	    	   pairfeatures.put("entail","false");
+	    	   pairfeatures.put("entail",compaired);
 	       }
        }
 
