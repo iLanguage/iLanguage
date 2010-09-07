@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!--
+ *  Copyright (c) 2005, The University of Sheffield.
+ *
+ *  This file is part of the GATE/UIMA integration layer, and is free
+ *  software, released under the terms of the GNU Lesser General Public
+ *  Licence, version 2.1 (or any later version).  A copy of this licence
+ *  is provided in the file LICENCE in the distribution.
+ *
+ *  UIMA is a product of IBM, details are available from
+ *  http://alphaworks.ibm.com/tech/uima
+-->
+
+<!-- Descriptor for the example TokenPrinterAnnotator. -->
+
+<taeDescription xmlns="http://uima.apache.org/resourceSpecifier">
+<frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+<primitive>false</primitive>
+<delegateAnalysisEngineSpecifiers>
+  <delegateAnalysisEngine key="printer">
+    <import location="TokenPrinterAnnotator.xml"/>
+  </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="counter">
+    <import location="CountLowercaseAnnotator.xml"/>
+  </delegateAnalysisEngine>
+</delegateAnalysisEngineSpecifiers>
+
+<analysisEngineMetaData>
+  <name>Token Handler</name>
+  <description>Prints the features of tokens and counts their lower case letters</description>
+
+  <flowConstraints>
+    <fixedFlow>
+      <node>printer</node>
+      <node>counter</node>
+    </fixedFlow>
+  </flowConstraints>
+
+  <capabilities>
+    <capability>
+      <inputs>
+        <type allAnnotatorFeatures="true">gate.uima.cas.Token</type>
+      </inputs>
+      <outputs>
+        <feature>gate.uima.cas.Token:LowerCaseLetters</feature>
+        <!--<type allAnnotatorFeatures="true">gate.uima.mapping.AnnotationSource</type>-->
+      </outputs>
+    </capability>
+  </capabilities>
+</analysisEngineMetaData>
+</taeDescription>
