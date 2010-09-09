@@ -13,6 +13,11 @@ Input: Token Lookup Number
 Options: control = appelt
 
 //////////////////////////////////////////////////////////////
+//1.4 million prize 
+//12,500 tons
+//Skips correctly: Aug. 6, 1945
+//TBD: 83,5 km 
+
 
 Rule:   Comma
 (	 {Number}	( {Token.string == ","}	{Number} )+
