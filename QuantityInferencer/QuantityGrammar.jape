@@ -6,22 +6,11 @@
 * 
 */
 Phase:   Quantity
-Input: Token Lookup
+Input: Token Lookup Number NounPackage
 Options: control = appelt
 
 //////////////////////////////////////////////////////////////
 //Number macros based on ANNIE NE transducer 2001
-
-Macro: MILLION_BILLION
-(	{Token.string == "m"}|
-	{Token.string == "million"}|
-	{Token.string == "b"}|
-	{Token.string == "billion"}|
-	{Token.string == "trillion"}|
-	{Token.string == "bn"}|
-	{Token.string == "k"}|
-	{Token.string == "K"}
-)
 
 Macro: HALF_QUARTER
 (
@@ -41,30 +30,16 @@ Macro: NUMBER_WORDS
 // twenty five
 //a hundred
 (
- ( ({Lookup.majorType == number}({Token.string == "-"} )? )*
-   {Lookup.majorType == number}
-   {Token.string == "and"}
- )*
- (	{Lookup.majorType == number} 
- 	({Token.string == "-"})?
- )*
-   {Lookup.majorType == number}
+	{Number}
 )
 
 Macro: AMOUNT_NUMBER
 // enables commas, decimal points and million/billion
 // to be included in a number 
-( (	{Token.kind == number}
-  	(
-  		({Token.string == ","} | {Token.string == "."} )
-  		{Token.kind == number}
-  	)*
-  |( ({Token.string == "a"} | (NUMBER_WORDS)) 
-	 (HALF_QUARTER) )|
-	 (NUMBER_WORDS)
- 	)
- (MILLION_BILLION)?
+(
+	{Number}
 )
+
 
 Macro: PERCENT
 (	{Token.string == "%"} | 
@@ -100,28 +75,6 @@ Macro: PERCENTAGEAMOUNT
 	({Token.string == "of"}{Token.category == "NNS"})?
 )
 
-//////////////Countability of the noun//////////////////
-// two atomic bombings
-//many dozens of backyard hens
-//NNPS: Cambodians
-Macro: PLURALNOUN
-(	({Token.category == "JJ"})*
-	({Token.category == "NN"})*
-	({Token.category == "NNS"} | {Token.category == "NNPS"}|{Token.string == "policemen"} )
-)
-// hundreds of thousands of pounds
-Macro: PACKAGESOFCOUNTNOUNS
-( 
-	( {Token.category == "NNS"} {Token.string == "of"} )*
-	({Token.category == "JJ"})*
-	({Token.category == "NN"})*
-	{Token.category == "NNS"}
-)
-Macro: NONCOUNTNOUN
-( 	{Token.string == "waste"}|
-	{Token.string == "rubbish"}|
-	{Token.string == "steel"}
-)
 
 //////////////Qualification of the Quantity//////////////////
 
@@ -245,13 +198,13 @@ Rule: ApproximateQuantity
 (APPROXIMATEQUANTITY)
 (MONEYAMOUNT|PERCENTAGEAMOUNT|
 ( (AMOUNT_NUMBER|NUMBER_WORDS):quantity
- (PACKAGESOFCOUNTNOUNS|PLURALNOUN):headnoun) )
+ ({NounPackage}):headnoun) )
  )
 :number -->
   :number.ApproximateQuantity = 
   {	rule = "ApproximateQuantity", 
-	quantity = :quantity.Token.string, 
-	headnoun = :headnoun.Token.string}
+	quantity = :quantity.Number.value, 
+	headnoun = :headnoun.NounPackage.headnoun}
 
 
 
@@ -261,25 +214,13 @@ Rule: ExactQuantity
 
 (
  ( (AMOUNT_NUMBER|NUMBER_WORDS):quantity
- (PACKAGESOFCOUNTNOUNS|PLURALNOUN):headnoun )| 
+ ({NounPackage}):headnoun )| 
 MONEYAMOUNT|PERCENTAGEAMOUNT
 )
 :number -->
   :number.ExactQuantity = {rule = "ExactQuantity", 
-			quantity = :quantity.Token.string, 
-			headnoun = :headnoun.Token.string}
-
-
-
-Rule: Packagesofcountnouns
-//lots of people
-//tons of submarines
-//reports of events
-(
- (PACKAGESOFCOUNTNOUNS)
- )
-:number -->
-  :number.Quantity = {rule = "Packagesofcountnouns", type = :number.Token.string}
+			quantity = :quantity.Number.value, 
+			headnoun = :headnoun.NounPackage.headnoun}
 
 
 
@@ -299,7 +240,7 @@ Rule: Age
 )
 :number -->
   :number.Age = {rule = "Age", 
-			quantity = :quantity.Token.string, 
+			quantity = :quantity.Number.value, 
 			headnoun = "year"}
 //55-year-old 55 years old= 55 year
  //more than 200 tests, more than 200 nuclear tests = 200 tests
