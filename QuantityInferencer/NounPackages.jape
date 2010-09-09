@@ -1,0 +1,47 @@
+/*
+*
+*  This file is designed to annotate approximate and exact quantities for the use in evaluating etailment
+*
+*  Gina, 17 Aug 2010
+* 
+*/
+Phase:   NounPackages
+Input: Token Lookup Number
+Options: control = appelt
+
+//////////////Countability of the noun//////////////////
+// two atomic bombings
+//many dozens of backyard hens
+//NNPS: Cambodians
+Macro: PLURALNOUN
+(	({Token.category == "JJ"})*
+	({Token.category == "NN"})*
+	({Token.category == "NNS"} | {Token.category == "NNPS"}|{Token.string == "policemen"} )
+)
+// hundreds of thousands of pounds
+Macro: PACKAGESOFCOUNTNOUNS
+( 
+	( {Token.category == "NNS"} {Token.string == "of"} )*
+	({Token.category == "JJ"})*
+	({Token.category == "NN"})*
+	{Token.category == "NNS"}
+)
+Macro: NONCOUNTNOUN
+( 	{Token.string == "waste"}|
+	{Token.string == "rubbish"}|
+	{Token.string == "steel"}
+)
+
+
+
+Rule: Packagesofcountnouns
+//lots of people
+//tons of submarines
+//reports of events
+(
+ (PACKAGESOFCOUNTNOUNS)
+ )
+:number -->
+  :number.NounPackage = {rule = "Packagesofcountnouns", headnoun = :number.Token.string}
+
+
