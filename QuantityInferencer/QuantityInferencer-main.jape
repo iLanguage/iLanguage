@@ -13,5 +13,6 @@ NumberNormalizer
 CombineNumbers
 CombineDecimals
 CombineNumberSequences
+NounClusters
 NounPackages
 QuantityGrammar

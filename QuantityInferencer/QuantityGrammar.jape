@@ -1,83 +1,30 @@
 /*
-*
-*  This file is designed to annotate approximate and exact quantities for the use in evaluating etailment
+*  This file is designed to annotate approximate and exact quantities for the use in evaluating entailment
 *
 *  Gina, 17 Aug 2010
-* 
 */
 Phase:   Quantity
-Input: Token Lookup Number NounPackage
+Input: Token Lookup Number NounPackage NP
 Options: control = appelt
 
 //////////////////////////////////////////////////////////////
 //Number macros based on ANNIE NE transducer 2001
-
-Macro: HALF_QUARTER
-(
-	(	{Token.string == "half"}|
-		{Token.string == "quarter"}|
-		{Token.string == "third"}|
-		{Token.string == "fourth"}|
-		{Token.string == "fifth"}|
-		{Token.string == "sixth"}|
-		{Token.string == "tenth"}
-	)
-	(	{Token.string == "-"})?
-)
-
-Macro: NUMBER_WORDS
+Macro: NUMERICALVALUE
 // two hundred and thirty five
 // twenty five
 //a hundred
+//at least half a dozen former Soviet republics
 (
+	( {Token.string == "a"} | {Token.string == "one"} )?
 	{Number}
 )
 
-Macro: AMOUNT_NUMBER
-// enables commas, decimal points and million/billion
-// to be included in a number 
-(
-	{Number}
+Macro: NOUNCLUSTER
+( {NounPackage}|{CollectionNounCluster}
+//( {NP}
 )
-
-
-Macro: PERCENT
-(	{Token.string == "%"} | 
-	{Token.string == "percent"}|
-	({Token.string == "per"} {Token.string == "cent"})
-)
-
-////////////////////////
-//Macros for detecting different sorts of quantity
-Macro: MONEYAMOUNT
-(
-	( 	(AMOUNT_NUMBER) 
-		({Lookup.majorType == currency_unit})
-	)
-	|(	({Token.symbolkind == currency}|{Lookup.majorType == currency_unit})
-		(AMOUNT_NUMBER)
-		({Lookup.majorType == currency_unit})?
-	) 
-)
-
-Macro: PERCENTAGEAMOUNT
-(
-	(	( {Token.string == "+"} | {Token.string == "-"} | {Token.string == "minus"} )?
-		( (AMOUNT_NUMBER|NUMBER_WORDS) {Token.string == "point"} )? 
-		(AMOUNT_NUMBER|NUMBER_WORDS)
-		(PERCENT)
-	)
-	|(	(AMOUNT_NUMBER|NUMBER_WORDS)
-		({Token.string == "-"} | {Token.string == "to"})
-		(AMOUNT_NUMBER|NUMBER_WORDS)
-		(PERCENT)
-	)
-	({Token.string == "of"}{Token.category == "NNS"})?
-)
-
 
 //////////////Qualification of the Quantity//////////////////
-
 Macro: SCOPESHIFTERS
 ( {Token.string == "no"}|
  {Token.string == "not"}
@@ -101,87 +48,21 @@ Macro: APPROXIMATEQUANTITY
 	( {Token.string == "as"} {Token.string == "many"} {Token.string == "as"})
 )
 
-//the world's largest drug company.
-
 Macro: QUANTITYVERBS
 ( 	{Token.stem == "higher"}|
-	{Token.stem == "increas"}|
+	{Token.stem == "increase"}|
 	{Token.stem == "decreas"}|
 	{Token.stem == "widespread"}|
 	{Token.stem == "gain"}
 )
 
 Macro: COMPARITIVES
-( {Token.stem == "highest"}|
-{Token.stem == "largest"}|
-{Token.stem == "smallest"}|
-{Token.category== "JJS"}
+//the world's largest drug company.
+( 	{Token.stem == "highest"}|
+	{Token.stem == "largest"}|
+	{Token.stem == "smallest"}|
+	{Token.category== "JJS"}
 )
-///////////////////////////////////////////////////////////////
-//Money Rules based on ANNIE NE transducer 2001
-
-Rule:   MoneyCurrencyUnit
-// 30 pounds
-  (        
-      (AMOUNT_NUMBER)
-      ({Lookup.majorType == currency_unit})
-  )
-:number -->
-  :number.Money = {kind = "number", rule = "MoneyCurrencyUnit"}
-
-
-Rule:   MoneySymbolUnit
-// $30 
-// $30 US
-// not $1$21
-// $20US
-(   
- ({Token.symbolkind == currency}|
-  {Lookup.majorType == currency_unit})
- (AMOUNT_NUMBER)
- (
-  {Lookup.majorType == currency_unit}
- )?
-) 
-:number -->
-  :number.Money = {kind = "number", rule = "MoneySymbolUnit"}
-
-//////////////////////////////////////////////////////////////
-// Percentage Rules based on ANNIE NE transducer
-
-Rule: PercentBasic
-// +20%
-// minus 10 percent
-// two point four percent
-(
- ({Token.string == "+"}|
-  {Token.string == "-"}|
-  {Token.string == "minus"}  
- )?
-  ((AMOUNT_NUMBER|NUMBER_WORDS)
-  {Token.string == "point"}
- )? 
- (AMOUNT_NUMBER|NUMBER_WORDS)
- (PERCENT)
-)
-:number -->
-  :number.Percent = {rule = "PercentBasic"}
-
-Rule: PercentSpan
-// 20-30%
-// two to four percent
-
-(
- (AMOUNT_NUMBER|NUMBER_WORDS)
- ({Token.string == "-"} |
-  {Token.string == "to"})
- (AMOUNT_NUMBER|NUMBER_WORDS)
- (PERCENT)
-)
-:number -->
-  :number.Percent = {rule = "PercentSpan"}
-
-
 
 //////////////////////////////////////////////////////////////
 //Quantity Rules
@@ -193,18 +74,18 @@ Rule: ApproximateQuantity
 //over 40 billion dollars
 //several rounds of talks
 //at least half a dozen former Soviet republics 
+//more than 200 tests, more than 200 nuclear tests = 200 tests
+
 (
-(SCOPESHIFTERS)?
-(APPROXIMATEQUANTITY)
-(MONEYAMOUNT|PERCENTAGEAMOUNT|
-( (AMOUNT_NUMBER|NUMBER_WORDS):quantity
- ({NounPackage}):headnoun) )
+	(SCOPESHIFTERS)?
+	(APPROXIMATEQUANTITY)
+	(  (NUMERICALVALUE):quantity  (NOUNCLUSTER):noun  )
  )
 :number -->
   :number.ApproximateQuantity = 
   {	rule = "ApproximateQuantity", 
 	quantity = :quantity.Number.value, 
-	headnoun = :headnoun.NounPackage.headnoun}
+	headnoun = :noun.NounPackage.headnoun}
 
 
 
@@ -213,37 +94,30 @@ Rule: ExactQuantity
 //  two charges
 
 (
- ( (AMOUNT_NUMBER|NUMBER_WORDS):quantity
- ({NounPackage}):headnoun )| 
-MONEYAMOUNT|PERCENTAGEAMOUNT
+ (NUMERICALVALUE):quantity  (NOUNCLUSTER):headnoun  
 )
 :number -->
-  :number.ExactQuantity = {rule = "ExactQuantity", 
+  :number.ExactQuantity = 
+  			{rule = "ExactQuantity", 
 			quantity = :quantity.Number.value, 
 			headnoun = :headnoun.NounPackage.headnoun}
 
 
-
-
 //////////////////////////////////////////////////////////////
 //Age rules
-
 Rule: Age
 //35-year-old
 //35 years old
 // 5-year-olds
+//55-year-old 55 years old= 55 year
+
 (
- (AMOUNT_NUMBER|NUMBER_WORDS):quantity
+ (NUMERICALVALUE):quantity
  ({Token.string == "-"})?
-( ({Token.stem == "year"}{Token.stem == "old"})|
-({Token.string == "year-old"}) ):headnoun
+( ({Token.stem == "year"}{Token.stem == "old"})| ({Token.string == "year-old"}) )
 )
 :number -->
-  :number.Age = {rule = "Age", 
+  :number.ExactQuantity = 
+  			{rule = "Age", 
 			quantity = :quantity.Number.value, 
 			headnoun = "year"}
-//55-year-old 55 years old= 55 year
- //more than 200 tests, more than 200 nuclear tests = 200 tests
-
-// put number and head noun in an array list in java instead of a typical Jape RHS]
-

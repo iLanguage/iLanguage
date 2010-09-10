@@ -6,42 +6,23 @@
 * 
 */
 Phase:   NounPackages
-Input: Token Lookup Number
+Input: Token Lookup Number NounCluster
 Options: control = appelt
 
-//////////////Countability of the noun//////////////////
-// two atomic bombings
-//many dozens of backyard hens
-//NNPS: Cambodians
-Macro: PLURALNOUN
-(	({Token.category == "JJ"})*
-	({Token.category == "NN"})*
-	({Token.category == "NNS"} | {Token.category == "NNPS"}|{Token.string == "policemen"} )
-)
+
 // hundreds of thousands of pounds
-Macro: PACKAGESOFCOUNTNOUNS
-( 
-	( {Token.category == "NNS"} {Token.string == "of"} )*
-	({Token.category == "JJ"})*
-	({Token.category == "NN"})*
-	{Token.category == "NNS"}
-)
-Macro: NONCOUNTNOUN
-( 	{Token.string == "waste"}|
-	{Token.string == "rubbish"}|
-	{Token.string == "steel"}
-)
-
-
-
-Rule: Packagesofcountnouns
 //lots of people
 //tons of submarines
 //reports of events
-(
- (PACKAGESOFCOUNTNOUNS)
- )
-:number -->
-  :number.NounPackage = {rule = "Packagesofcountnouns", headnoun = :number.Token.string}
+//both of the American atomic bombs
+Rule: packageofnouns
+( 
+	( ( {Token.category == "NNS"} | {Number} ):packages {Token.string == "of"} ({Token.string == "the"})? )+
+	( {CollectionNounCluster} ):noun 
+):pack -->
+	:pack.NounPackage = {
+			rule = "countable packages of nouns", 
+			value = :packages.Token.string, 
+			headnoun= :noun.CollectionNounCluster.headnoun }
 
 
