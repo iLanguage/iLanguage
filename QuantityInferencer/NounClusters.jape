@@ -55,7 +55,7 @@ Rule: CollectionNounClusters
 	( (NONCOUNTNOUN) | {Token.category == "NNS"} | {Token.category == "NNPS"} | {Token.string == "policemen"} ):head
 )
 :number -->
-  :number.CollectionNounCluster = {rule = "CollectionNounCluster", headnoun = :head.Token.string}
+  :number.CollectionNounCluster = {rule = "CollectionNounCluster", value = "UNKNOWN", headnoun = :head.Token.string}
 
 
 Rule: SingularNounClusters
@@ -65,4 +65,4 @@ Rule: SingularNounClusters
 	( {Token.category == "NN"} | {Token.category == "NNP"} ):head
 )
 :number -->
-  :number.SingularNounCluster = {rule = "SingularNounCluster", headnoun = :head.Token.string}
+  :number.SingularNounCluster = {rule = "SingularNounCluster", value = "1", headnoun = :head.Token.string}

@@ -6,7 +6,7 @@
 * 
 */
 Phase:   NounPackages
-Input: Token Lookup Number NounCluster
+Input: Token Lookup Number CollectionNounCluster
 Options: control = appelt
 
 
@@ -17,12 +17,18 @@ Options: control = appelt
 //both of the American atomic bombs
 Rule: packageofnouns
 ( 
-	( ( {Token.category == "NNS"} | {Number} ):packages {Token.string == "of"} ({Token.string == "the"})? )+
+	( 		( {Token.category == "NNS"} | {Number.kind == "string_number"} ):packages 
+			{Token.string == "of"} 
+			( {Token.string == "the"}|{Token.string == "its"} )? 
+			)+
 	( {CollectionNounCluster} ):noun 
 ):pack -->
-	:pack.NounPackage = {
-			rule = "countable packages of nouns", 
-			value = :packages.Token.string, 
-			headnoun= :noun.CollectionNounCluster.headnoun }
+//	:pack.NounPackage = {
+//			rule = "countable packages of nouns", 
+//			value = :packages.Token.string, 
+//			headnoun= :noun.CollectionNounCluster.headnoun }
 
-
+	:pack.CollectionNounCluster = {
+					rule = "countable packages of nouns", 
+					value = :packages.Token.string, 
+					headnoun= :noun.CollectionNounCluster.headnoun }

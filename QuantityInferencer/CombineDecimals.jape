@@ -25,7 +25,7 @@ Rule:   Period
 	FeatureMap fm = Factory.newFeatureMap();
 	fm.put("kind","decimal_number");
 	String text = stringFor(doc, numberAnnots);
-	System.out.print("This will be a combined number: "+text+"\n");
+	//System.out.print("This will be a combined number: "+text+"\n");
 	fm.put("value",text);
 	fm.put("string",text);
 	try{
@@ -33,7 +33,7 @@ Rule:   Period
 			outputAS.add(start(numberAnnots),end(numberAnnots),"Number",fm);
 
 			AnnotationSet as = bindings.get("number");
-			System.out.print("Here are the matched bindings:\n"+as);
+			//System.out.print("Here are the matched bindings:\n"+as);
 			inputAS.removeAll(as);
 		}else{
 			System.out.print("\tThis might not be a number, not including it.\n");
