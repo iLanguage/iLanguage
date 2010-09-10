@@ -19,19 +19,6 @@ Rule: TokensNumber
 	:number.Number = { string = :number.Token.string, kind = "token_digit_number", value = :number.Token.string}
 
 
-Macro: HALF_QUARTER
-(
-	(	{Token.string == "half"}|
-		{Token.string == "quarter"}|
-		{Token.string == "third"}|
-		{Token.string == "fourth"}|
-		{Token.string == "fifth"}|
-		{Token.string == "sixth"}|
-		{Token.string == "tenth"}
-	)
-	(	{Token.string == "-"})?
-)
-
 Rule: Half
 ( {Token.string == "Half"}|{Token.string == "half"}|{Token.string == "halves"} ):number 
 -->
@@ -106,7 +93,7 @@ Rule: Two
   :number.Number = {string = :number.Token.string, kind = "string_number", value = "2"}
 
 Rule: Three
-( {Token.string == "Three"}|{Token.string == "tree"}|({Token.string == "a"} {Token.string == "few"}) ):number 
+( {Token.string == "Three"}|{Token.string == "three"}|{Token.string == "few"} ):number 
 -->
   :number.Number = {string = :number.Token.string, kind = "string_number", value = "3"}
 

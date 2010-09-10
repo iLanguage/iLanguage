@@ -25,7 +25,7 @@ Rule:   Period
 	fm.put("kind","combined_number");
 	
 	String text = stringFor(doc, numberAnnots);
-	System.out.print("This will be a combined number: "+text+"\n");
+	//System.out.print("This will be a combined number: "+text+"\n");
 	fm.put("string",text);
 	
 	AnnotationSet as = bindings.get("number");
@@ -42,7 +42,7 @@ Rule:   Period
 			
 			DecimalFormat myFormatter = new DecimalFormat("0.0000");
 			String output = myFormatter.format(valueAmount);
-			System.out.print("The value is: "+output+"\n");
+			//System.out.print("The value is: "+output+"\n");
 		}
 	}
 	//Long valueAmount = 0.0;
