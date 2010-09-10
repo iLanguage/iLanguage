@@ -16,7 +16,7 @@ Options: control = appelt
 //////////////////////////////////////////////////////////////
 
 Rule:   Period
-( {Number} ( ({Token.string == "-"}|{Token.string == "and"})? {Number.kind == "string_number"} )+
+( {Number} ( ({Token.string == "-"}|{Token.string == "and"}|{Token.string == "a"})? {Number.kind == "string_number"} )+
 ):number 
 -->
 :number{
