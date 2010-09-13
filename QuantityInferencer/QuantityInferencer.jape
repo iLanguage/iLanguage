@@ -1,11 +1,11 @@
 Imports: {
 	import static gate.Utils.*;//to use the start and end functions
 }
-Phase: Inference
+Phase: QuantityInferencer
 Input: pair h t 
 Options: control=appelt debug=true
 
-Rule:QuestionAnswering
+Rule: QuantityInferencer
 (
  {pair}
 ):rte
@@ -60,6 +60,7 @@ Rule:QuestionAnswering
        quantityTypes.add("Age");
        quantityTypes.add("ExactQuantity");
        quantityTypes.add("ApproximateQuantity");
+       quantityTypes.add("ApproximateQuantityInCollection");
        
        String compaired="";
        String quantityString="";
@@ -83,12 +84,12 @@ Rule:QuestionAnswering
 		    	   
 		    	   if (x==null || y==null){
 		    		   //throw new NullPointerException();
-		    		   System.out.print("No headnoun found in pair t:"+featuresOfT+" , h: "+featuresOfH);
+		    		   System.out.print("No headnoun found for pair in either t:"+featuresOfT+" , h: "+featuresOfH);
 		    	   } else if( x.equals(y) ) {
 		    		   compaired =" "+x+":"+y;
-			    	  // System.out.print("Found an inference."+quantityAnnotationInT.getFeatures().get("headnoun")+" : "+quantityAnnotationInH.getFeatures().get("headnoun")+"\n");
+			    	   System.out.print("Found an inference."+quantityAnnotationInT.getFeatures().get("headnoun")+" : "+quantityAnnotationInH.getFeatures().get("headnoun")+"\n");
 			    	   FeatureMap pairfeatures = pairAnno.getFeatures();
-			    	   pairfeatures.put("entail",quantityAnnotationInT.getFeatures().get("headnoun")+"="+quantityAnnotationInH.getFeatures().get("headnoun")+" in "+quantityType);
+			    	   pairfeatures.put("entailResult","ENTAILMENT");
 			    	   entailmentFound= true;
 			       }//boolean isYinT = annoInT.get(quantityType).isEmpty()==true?false:true;
 		       
@@ -111,10 +112,13 @@ Rule:QuestionAnswering
 	       }
 	       if (entailmentFound==false){
 	    	   FeatureMap pairfeatures = pairAnno.getFeatures();
-	    	   pairfeatures.put("entail",compaired);
+	    	   pairfeatures.put("entailResult","UNKNOWN");
 	       }
 	       
        }
        FeatureMap pairfeatures = pairAnno.getFeatures();
-       pairfeatures.put("quantitiesInPair",quantityString);
-}
+       pairfeatures.put("aquantitiesInPair",quantityString);
+       System.out.println("Quanties in this pair:"+quantityString+"\n");
+       System.out.println("\tCorrect Answer: "+pairfeatures.get("entailment")+"\n" );
+       System.out.println("\tSystem's Conclusion: "+pairfeatures.get("entailResult")+"\n" );
+    }
