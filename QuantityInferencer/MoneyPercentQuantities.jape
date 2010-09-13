@@ -1,0 +1,102 @@
+/*
+*  This file is designed to annotate approximate and exact quantities for the use in evaluating entailment
+*
+*  Gina, 17 Aug 2010
+*/
+Phase:   MoneyPercentQuantities
+Input: Token Lookup Number CollectionNounCluster
+Options: control = appelt
+
+//Number macros based on ANNIE NE transducer 2001
+
+Rule:	MoneyCurrencyUnit
+// 30 pounds
+  (        
+		{Number}
+     	({Lookup.majorType == currency_unit})
+  )
+:number -->
+  :number.ExactQuantity = {
+     			rule = "Money", 
+     			headnoun="money",
+     			quantity = :number.Number.value}
+
+
+Rule:	MoneySymbolUnit
+
+// $30 
+// $30 US
+// not $1$21
+// $20US
+(   
+ ({Token.symbolkind == currency}|
+  {Lookup.majorType == currency_unit})
+ {Number}
+ (
+  {Lookup.majorType == currency_unit}
+ )?
+) 
+:number 
+
+ -->
+ :number.ExactQuantity = {
+			rule = "Money", 
+			headnoun="money",
+			quantity = :number.Number.value}
+
+//////////////////////////////////////////////////////////////
+
+// Percentage Rules
+
+Macro: PERCENT
+({Token.string == "%"} | 
+ {Token.string == "percent"}|
+ ({Token.string == "per"}
+ {Token.string == "cent"})
+)
+
+
+Rule: PercentBasic
+// +20%
+// minus 10 percent
+// two point four percent
+//TBD: decide if to turn percent into a 1/100 value would be useful for combinations with other numbers
+//TBD: handle the -/+ sign
+(
+ ( {Token.string == "+"}|{Token.string == "-"}|{Token.string == "minus"} )?
+   ( {Number}
+  	 {Token.string == "point"}
+   )? 
+ {Number}
+ (PERCENT)
+)
+:number -->
+ :number.ExactQuantity = {
+			rule = "Percent", 
+			headnoun="percent",
+			quantity = :number.Number.value}
+
+
+Rule: PercentSpan
+// 20-30%
+// two to four percent
+
+(
+ ({Number}):first
+ ({Token.string == "-"} |
+  {Token.string == "to"})
+  ({Number}):second
+ (PERCENT)
+)
+:number -->
+ :number.ExactQuantity = {
+			rule = "PercentRange", 
+			headnoun="percent",
+			quantity = :number.Number.value,
+			quantitylow = :first.Number.value,
+			quantityhight = :second.Number.value}
+
+
+
+
+

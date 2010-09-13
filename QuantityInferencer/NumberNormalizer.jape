@@ -130,7 +130,7 @@ Rule: Nine
   :number.Number = {string = :number.Token.string, kind = "string_number", value = "9"}
 
 Rule: Ten
-( {Token.string == "Ten"}|{Token.string == "ten"} ):number 
+( {Token.string == "Ten"}|{Token.string == "ten"}|{Token.string == "decade"}|{Token.string == "decades"} ):number 
 -->
   :number.Number = {string = :number.Token.string, kind = "string_number", value = "10"}
 
