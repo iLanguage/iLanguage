@@ -21,7 +21,7 @@
       <docList>
         <gate.util.persistence.LRPersistence>
           <resourceType>gate.corpora.DocumentImpl</resourceType>
-          <resourceName>quantitiesRTEdata.xml_0001D</resourceName>
+          <resourceName>quantitiesRTEdata.xml_00029</resourceName>
           <initParams class="gate.util.persistence.MapPersistence">
             <mapType>gate.util.SimpleFeatureMapImpl</mapType>
             <localMap>
@@ -35,7 +35,7 @@
               </entry>
               <entry>
                 <string>encoding</string>
-                <string>MacRoman</string>
+                <string>UTF-8</string>
               </entry>
               <entry>
                 <string>sourceUrlStartOffset</string>
@@ -279,6 +279,44 @@
             <localMap/>
           </features>
         </gate.util.persistence.LanguageAnalyserPersistence>
+        <gate.util.persistence.PRPersistence>
+          <runtimeParams class="gate.util.persistence.MapPersistence">
+            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+            <localMap>
+              <entry>
+                <string>document</string>
+                <null/>
+              </entry>
+              <entry>
+                <string>annotationSetName</string>
+                <null/>
+              </entry>
+              <entry>
+                <string>annotationType</string>
+                <string>Token</string>
+              </entry>
+              <entry>
+                <string>annotationFeature</string>
+                <string>string</string>
+              </entry>
+            </localMap>
+          </runtimeParams>
+          <resourceType>stemmer.SnowballStemmer</resourceType>
+          <resourceName>Stemmer PR_00025</resourceName>
+          <initParams class="gate.util.persistence.MapPersistence">
+            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+            <localMap>
+              <entry>
+                <string>language</string>
+                <string>english</string>
+              </entry>
+            </localMap>
+          </initParams>
+          <features class="gate.util.persistence.MapPersistence">
+            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+            <localMap/>
+          </features>
+        </gate.util.persistence.PRPersistence>
         <gate.util.persistence.LanguageAnalyserPersistence>
           <runtimeParams class="gate.util.persistence.MapPersistence">
             <mapType>gate.util.SimpleFeatureMapImpl</mapType>

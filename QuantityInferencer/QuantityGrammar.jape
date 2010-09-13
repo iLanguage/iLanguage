@@ -4,12 +4,11 @@
 *  Gina, 17 Aug 2010
 */
 Phase:   Quantity
-Input: Token Lookup Number CollectionNounCluster
+Input: Token Lookup Number CollectionNounCluster Verb
 Options: control = brill 
 //appelt
 
 //////////////////////////////////////////////////////////////
-//Number macros based on ANNIE NE transducer 2001
 Macro: NUMERICALVALUE
 // two hundred and thirty five
 // twenty five
@@ -114,6 +113,7 @@ Rule: ApproximateQuantity
   :number.ApproximateQuantity = 
   {	rule = "ApproximateQuantity", 
 	quantity = :quantity.Number.value, 
+	quantityrange = :quantity.Number.value, 
 	headnoun = :noun.CollectionNounCluster.headnoun}
 	
 
@@ -126,7 +126,7 @@ Rule: ApproximateQuantityInCollection
   :number.ApproximateQuantityInCollection = 
   {	rule = "ApproximateQuantity", 
 	quantity = :noun.CollectionNounCluster.value, 
-	quantity_range = :quantity.Number.value,
+	quantityrange = :quantity.Number.value,
 	headnoun = :noun.CollectionNounCluster.headnoun}
 	
 
@@ -144,13 +144,13 @@ Rule: ExactQuantity
 			( {Token.string == "the"}| {Token.string == "its"} )? 
 			( {Number} )?
 	)?
-	({CollectionNounCluster}):headnoun  
+	({CollectionNounCluster}):noun  
 )
 :number -->
   :number.ExactQuantity = 
   			{rule = "ExactQuantity", 
 			quantity = :quantity.Number.value, 
-			quantity_range = :quantity.Number.value,
+			quantityrange = :quantity.Number.value,
 			headnoun = :noun.CollectionNounCluster.headnoun}
 
 
@@ -178,4 +178,29 @@ Rule: Age
 			quantity = :quantity.Number.value, 
 			headnoun = "year"}
 
- 
+Rule: SimpleQuantity
+(
+	(NUMERICALVALUE):quantity
+	{Token.string == "-"}
+	({Token.category == "NN"}):noun
+)
+:number -->
+  :number.ExactQuantity = 
+  			{rule = "SimpleQuantity", 
+			quantity = :quantity.Number.value, 
+			headnoun = :noun.Token.string}
+
+	
+Rule: MissingHeadNoun
+//100 were wounded
+//100 died
+	(
+		(NUMERICALVALUE):quantity
+		({Token.category == "VBD"} | {Token.category == "VBZ"} | {Verb} ):verb
+	)
+	:number -->
+	  :number.ExactQuantity = 
+	  			{rule = "MissingHeadNounAssumePeople", 
+				quantity = :quantity.Number.value, 
+				headnoun = "people",
+				verb = :verb.Token.string}

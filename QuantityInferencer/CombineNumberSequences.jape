@@ -15,8 +15,11 @@ Options: control = appelt
 
 //////////////////////////////////////////////////////////////
 
-Rule:   Period
-( {Number} ( ({Token.string == "-"}|{Token.string == "and"}|{Token.string == "a"})? {Number.kind == "string_number"} )+
+Rule:   NumberSequence
+( {Number} 
+	( 	( {Token.string == "-"}|{Token.string == "and"}|{Token.string == "a"} )? 
+		{Number.kind == "string_number"} 
+	)+
 ):number 
 -->
 :number{
@@ -57,6 +60,7 @@ Rule:   Period
 			//System.out.print("Here are the matched bindings:\n"+as);
 			inputAS.removeAll(as);
 		}else{
+			System.out.print("The value is: "+output+"\n");
 			System.out.print("\tThis might not be a number, not including it.\n");
 		}
 	}catch(InvalidOffsetException e){

@@ -1,0 +1,79 @@
+/*
+*
+*  This file is designed to annotate approximate and exact quantities for the use in evaluating etailment
+*
+*  Gina, 17 Aug 2010
+* 
+*/
+Imports: {
+	import static gate.Utils.*;//to use the start and end functions
+	import java.text.DecimalFormat;
+}
+Phase:   CombineFractions
+Input: Token Lookup Number
+Options: control = appelt
+
+//////////////////////////////////////////////////////////////
+
+
+
+Rule:   Fraction
+//3 1/2 
+//20/25
+//ten out of 30
+(	( ({Number}):whole 	)?
+	({Number}):first 	
+	( 	{Token.string == "/"}| 
+		( {Token.string == "out"} {Token.string == "of"} )
+	)
+	({Number}):second
+):number 
+-->
+:number{
+	
+	FeatureMap fm = Factory.newFeatureMap();
+	fm.put("kind","fraction_number");
+	String text = stringFor(doc, numberAnnots);
+	System.out.print("This will be a combined number: "+text+"\n");
+	fm.put("string",text);
+	
+	double valueAmount =1.0;
+	
+	AnnotationSet as = bindings.get("first");
+	String firstValue = "getting value ";
+	for(Annotation a : as){
+		firstValue = a.getFeatures().get("value").toString();
+	}
+	
+	as = bindings.get("second");
+	String secondValue = "getting value ";
+	for(Annotation a : as){
+		secondValue = a.getFeatures().get("value").toString();
+	}
+	
+	String wholeValue = "0";
+	as = bindings.get("whole");
+	if( as != null ){
+		for(Annotation a : as){
+				wholeValue = a.getFeatures().get("value").toString();
+		}
+	}
+	
+	
+	try{
+		valueAmount = ( Double.parseDouble(wholeValue) + ( Double.parseDouble(firstValue) / Double.parseDouble(secondValue) ) );
+
+		DecimalFormat myFormatter = new DecimalFormat("0.0000");
+		String output = myFormatter.format(valueAmount);
+		System.out.print("This will be a fraction number: "+output+"\n");
+		
+		fm.put("value",output);
+		outputAS.add(start(numberAnnots),end(numberAnnots),"Number",fm);
+		
+		as = bindings.get("number");
+		inputAS.removeAll(as);
+	}catch(InvalidOffsetException e){
+		//the exception wont happen
+		System.out.print("Caught an exception "+e);
+	}	
+}

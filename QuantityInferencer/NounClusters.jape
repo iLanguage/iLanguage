@@ -44,14 +44,16 @@ Rule: Preposition
 Macro: NONCOUNTNOUN
 ( 	{Token.string == "waste"}|
 	{Token.string == "rubbish"}|
-	{Token.string == "steel"}
+	{Token.string == "steel"}|
+	{Token.string == "media"}
 )
 
 Rule: CollectionNounClusters
+//media workers
 (
 	( {Token.category == "JJ"} | {Token.category == "JJR"} )* 
 	( { Token.category == "JJ"} {Token.category == "VBG"} )?
-	( {Token.category == "NN"}|{Token.category == "NNP"} )*
+	( {Token.category == "NN"} | {Token.category == "NNP"} | (NONCOUNTNOUN) )*
 	( (NONCOUNTNOUN) | {Token.category == "NNS"} | {Token.category == "NNPS"} | {Token.string == "policemen"} ):head
 )
 :number -->
