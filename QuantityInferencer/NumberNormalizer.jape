@@ -16,7 +16,8 @@ Rule: TokensNumber
 	{Token.kind == "number"}
 ):number
 -->
-	:number.Number = { string = :number.Token.string, kind = "token_digit_number", value = :number.Token.string}
+	:number.Number = { length = :number.Token.length, string = :number.Token.string, kind = "token_digit_number", value = :number.Token.string}
+
 
 
 Rule: Half
@@ -78,6 +79,7 @@ Rule: Thousandth
 ( {Token.string == "Thousandth"}|{Token.string == "thousandth"}|{Token.string == "thousandths"} ):number 
 -->
   :number.Number = {string = :number.Token.string, kind = "string_number", value = "0.001"}
+
 
 
 
