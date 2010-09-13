@@ -17,7 +17,7 @@ Options: control = appelt
 //both of the American atomic bombs
 Rule: packageofnouns
 ( 
-	( 		( {Token.category == "NNS"} | {Number.kind == "string_number"} ):packages 
+	( 		( {Token.category == "NNS"} ):packages 
 			{Token.string == "of"} 
 			( {Token.string == "the"}|{Token.string == "its"} )? 
 			)+
@@ -30,5 +30,5 @@ Rule: packageofnouns
 
 	:pack.CollectionNounCluster = {
 					rule = "countable packages of nouns", 
-					value = :packages.Token.string, 
+					value = "fuzzy", 
 					headnoun= :noun.CollectionNounCluster.headnoun }

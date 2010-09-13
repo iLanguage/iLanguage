@@ -20,7 +20,7 @@ Options: control = appelt
 
 
 Rule:   Comma
-(	 {Number}	( {Token.string == ","}	{Number} )+
+(	 {Number}	( {Token.string == ","}	{Number.length == "3" } )+
 ):number 
 -->
 :number{
@@ -38,6 +38,7 @@ Rule:   Comma
 			//System.out.print("Here are the matched bindings:\n"+as);
 			inputAS.removeAll(as);
 		}else{
+			System.out.print("This will be a combined number: "+text+"\n");
 			System.out.print("\tThis might not be a number, not including it.\n");
 		}
 	}catch(InvalidOffsetException e){

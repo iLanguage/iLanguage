@@ -5,7 +5,8 @@
 */
 Phase:   Quantity
 Input: Token Lookup Number CollectionNounCluster
-Options: control = appelt
+Options: control = brill 
+//appelt
 
 //////////////////////////////////////////////////////////////
 //Number macros based on ANNIE NE transducer 2001
@@ -40,12 +41,28 @@ Macro: APPROXIMATEQUANTITY
 	{Token.string == "roughly"}|
 	{Token.string == "approximately"}|
 	{Token.string == "only"}|
-	( {Token.string == "at"} {Token.string == "least"})|
-	( {Token.string == "more"} {Token.string == "than"})|
-	( {Token.string == "up"} {Token.string == "to"})|
-	( {Token.string == "a"} {Token.string == "few"})|
-	( {Token.string == "as"} {Token.string == "few"} {Token.string == "as"})|
-	( {Token.string == "as"} {Token.string == "many"} {Token.string == "as"})
+	( ( {Token.string == "up"} | {Token.string == "Up"} ) {Token.string == "to"})|
+	( ( {Token.string == "a"} | {Token.string == "A"} ) {Token.string == "few"})|
+	{Token.string == "About"}| 
+	{Token.string == "Around"}| 
+	{Token.string == "Many"}|
+	{Token.string == "Over"}|
+	{Token.string == "Some"}|
+	{Token.string == "Several"}|
+	{Token.string == "Nearly"}|
+	{Token.string == "Roughly"}|
+	{Token.string == "Approximately"}|
+	{Token.string == "Only"}|
+	( 	( {Token.string == "more"} | {Token.string == "More"} | {Token.string == "less"} | {Token.string == "Less"} | {Token.category == "JJR"} ) 
+		{Token.string == "than"} 
+	)|
+	( {Token.string == "at"} 
+		( {Token.string == "least"} | {Token.string == "most"} | {Token.category == "JJS"} )
+	)|
+	( 
+			( {Token.string == "as"} |{Token.string == "As"} )
+			( {Token.string == "few"} | {Token.string == "many"} )
+			{Token.string == "as"})
 )
 
 Macro: QUANTITYVERBS
@@ -57,6 +74,16 @@ Macro: QUANTITYVERBS
 )
 
 Macro: COMPARITIVES
+//the world's largest drug company.
+( 	{Token.stem == "more"}|
+	{Token.stem == "fewer"}|
+	{Token.stem == "higher"}|
+	{Token.category== "additional"}|
+	{Token.category== "extra"}
+)
+
+
+Macro: SUPERLATIVES
 //the world's largest drug company.
 ( 	{Token.stem == "highest"}|
 	{Token.stem == "largest"}|
@@ -78,7 +105,10 @@ Rule: ApproximateQuantity
 (
 	(SCOPESHIFTERS)?
 	(APPROXIMATEQUANTITY)
-	(  (NUMERICALVALUE):quantity  ({CollectionNounCluster}):noun  )
+	( NUMERICALVALUE ):quantity 
+	({Token.string == "of"})? 
+	({Token.string == "the"}| {Token.string == "its"})? 
+	( {CollectionNounCluster} ):noun  
  )
 :number -->
   :number.ApproximateQuantity = 
@@ -96,23 +126,31 @@ Rule: ApproximateQuantityInCollection
   :number.ApproximateQuantityInCollection = 
   {	rule = "ApproximateQuantity", 
 	quantity = :noun.CollectionNounCluster.value, 
+	quantity_range = :quantity.Number.value,
 	headnoun = :noun.CollectionNounCluster.headnoun}
 	
 
-	
-	
 
 Rule: ExactQuantity
 //  100 bullets
 //  two charges
-
+//One of the three people who were still missing from the accident was found, while there is yet no sign of the other two persons. = 
+//	one of the three people
+// three people
+// two persons
 (
- (NUMERICALVALUE):quantity  ({CollectionNounCluster}):headnoun  
+	(NUMERICALVALUE):quantity
+	( 	 {Token.string == "of"} 
+			( {Token.string == "the"}| {Token.string == "its"} )? 
+			( {Number} )?
+	)?
+	({CollectionNounCluster}):headnoun  
 )
 :number -->
   :number.ExactQuantity = 
   			{rule = "ExactQuantity", 
 			quantity = :quantity.Number.value, 
+			quantity_range = :quantity.Number.value,
 			headnoun = :noun.CollectionNounCluster.headnoun}
 
 
@@ -123,14 +161,21 @@ Rule: Age
 //35 years old
 // 5-year-olds
 //55-year-old 55 years old= 55 year
+//15-year mission
+//TBD: add month, day, week, decade etc
 
 (
  (NUMERICALVALUE):quantity
  ({Token.string == "-"})?
-( ({Token.stem == "year"}{Token.stem == "old"})| ({Token.string == "year-old"}) )
+	( 	({Token.stem == "year"}{Token.stem == "old"}) | 
+		({Token.string == "year-old"} ) |
+		{Token.stem == "year"} 
+	)
 )
 :number -->
   :number.ExactQuantity = 
   			{rule = "Age", 
 			quantity = :quantity.Number.value, 
 			headnoun = "year"}
+
+ 

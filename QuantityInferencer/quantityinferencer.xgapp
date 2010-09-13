@@ -21,7 +21,7 @@
       <docList>
         <gate.util.persistence.LRPersistence>
           <resourceType>gate.corpora.DocumentImpl</resourceType>
-          <resourceName>quantitiesRTEdata.xml_0002C</resourceName>
+          <resourceName>quantitiesRTEdata.xml_0001D</resourceName>
           <initParams class="gate.util.persistence.MapPersistence">
             <mapType>gate.util.SimpleFeatureMapImpl</mapType>
             <localMap>
@@ -68,7 +68,7 @@
         </gate.util.persistence.LRPersistence>
       </docList>
       <resourceType>gate.corpora.CorpusImpl</resourceType>
-      <resourceName>Corpus for quantitiesRTEdata.xml_00018</resourceName>
+      <resourceName>Corpus for quantitiesRTEdata.xml_0001D</resourceName>
       <initParams class="gate.util.persistence.MapPersistence">
         <mapType>gate.util.SimpleFeatureMapImpl</mapType>
         <localMap>
@@ -279,6 +279,62 @@
             <localMap/>
           </features>
         </gate.util.persistence.LanguageAnalyserPersistence>
+        <gate.util.persistence.LanguageAnalyserPersistence>
+          <runtimeParams class="gate.util.persistence.MapPersistence">
+            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+            <localMap>
+              <entry>
+                <string>outputASName</string>
+                <null/>
+              </entry>
+              <entry>
+                <string>document</string>
+                <null/>
+              </entry>
+              <entry>
+                <string>ontology</string>
+                <null/>
+              </entry>
+              <entry>
+                <string>inputASName</string>
+                <null/>
+              </entry>
+            </localMap>
+          </runtimeParams>
+          <resourceType>gate.creole.Transducer</resourceType>
+          <resourceName>Quantity Extractor</resourceName>
+          <initParams class="gate.util.persistence.MapPersistence">
+            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+            <localMap>
+              <entry>
+                <string>encoding</string>
+                <string>UTF-8</string>
+              </entry>
+              <entry>
+                <string>annotationAccessors</string>
+                <null/>
+              </entry>
+              <entry>
+                <string>operators</string>
+                <null/>
+              </entry>
+              <entry>
+                <string>grammarURL</string>
+                <gate.util.persistence.PersistenceManager-URLHolder>
+                  <urlString>$relpath$QuantityInferencer-main.jape</urlString>
+                </gate.util.persistence.PersistenceManager-URLHolder>
+              </entry>
+              <entry>
+                <string>binaryGrammarURL</string>
+                <null/>
+              </entry>
+            </localMap>
+          </initParams>
+          <features class="gate.util.persistence.MapPersistence">
+            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+            <localMap/>
+          </features>
+        </gate.util.persistence.LanguageAnalyserPersistence>
         <gate.util.persistence.PRPersistence>
           <runtimeParams class="gate.util.persistence.MapPersistence">
             <mapType>gate.util.SimpleFeatureMapImpl</mapType>
@@ -352,62 +408,6 @@
             </localMap>
           </runtimeParams>
           <resourceType>gate.creole.Transducer</resourceType>
-          <resourceName>MuNPEx lemma</resourceName>
-          <initParams class="gate.util.persistence.MapPersistence">
-            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-            <localMap>
-              <entry>
-                <string>encoding</string>
-                <string>UTF-8</string>
-              </entry>
-              <entry>
-                <string>annotationAccessors</string>
-                <null/>
-              </entry>
-              <entry>
-                <string>operators</string>
-                <null/>
-              </entry>
-              <entry>
-                <string>grammarURL</string>
-                <gate.util.persistence.PersistenceManager-URLHolder>
-                  <urlString>$relpath$lib/MuNPEx-1.0/optional/en-lemma.jape</urlString>
-                </gate.util.persistence.PersistenceManager-URLHolder>
-              </entry>
-              <entry>
-                <string>binaryGrammarURL</string>
-                <null/>
-              </entry>
-            </localMap>
-          </initParams>
-          <features class="gate.util.persistence.MapPersistence">
-            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-            <localMap/>
-          </features>
-        </gate.util.persistence.LanguageAnalyserPersistence>
-        <gate.util.persistence.LanguageAnalyserPersistence>
-          <runtimeParams class="gate.util.persistence.MapPersistence">
-            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-            <localMap>
-              <entry>
-                <string>outputASName</string>
-                <null/>
-              </entry>
-              <entry>
-                <string>document</string>
-                <null/>
-              </entry>
-              <entry>
-                <string>ontology</string>
-                <null/>
-              </entry>
-              <entry>
-                <string>inputASName</string>
-                <null/>
-              </entry>
-            </localMap>
-          </runtimeParams>
-          <resourceType>gate.creole.Transducer</resourceType>
           <resourceName>MuNPEx</resourceName>
           <initParams class="gate.util.persistence.MapPersistence">
             <mapType>gate.util.SimpleFeatureMapImpl</mapType>
@@ -441,39 +441,6 @@
             <localMap/>
           </features>
         </gate.util.persistence.LanguageAnalyserPersistence>
-        <gate.util.persistence.PRPersistence>
-          <runtimeParams class="gate.util.persistence.MapPersistence">
-            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-            <localMap>
-              <entry>
-                <string>document</string>
-                <null/>
-              </entry>
-              <entry>
-                <string>resolveIt</string>
-                <boolean>false</boolean>
-              </entry>
-              <entry>
-                <string>inanimatedEntityTypes</string>
-                <string>Organization;Location</string>
-              </entry>
-              <entry>
-                <string>annotationSetName</string>
-                <null/>
-              </entry>
-            </localMap>
-          </runtimeParams>
-          <resourceType>gate.creole.coref.Coreferencer</resourceType>
-          <resourceName>ANNIE Pronominal Coreferencer_0003A</resourceName>
-          <initParams class="gate.util.persistence.MapPersistence">
-            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-            <localMap/>
-          </initParams>
-          <features class="gate.util.persistence.MapPersistence">
-            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-            <localMap/>
-          </features>
-        </gate.util.persistence.PRPersistence>
         <gate.util.persistence.LanguageAnalyserPersistence>
           <runtimeParams class="gate.util.persistence.MapPersistence">
             <mapType>gate.util.SimpleFeatureMapImpl</mapType>
@@ -497,7 +464,7 @@
             </localMap>
           </runtimeParams>
           <resourceType>gate.creole.Transducer</resourceType>
-          <resourceName>Quantity Extractor</resourceName>
+          <resourceName>MuNPEx lemma</resourceName>
           <initParams class="gate.util.persistence.MapPersistence">
             <mapType>gate.util.SimpleFeatureMapImpl</mapType>
             <localMap>
@@ -516,63 +483,7 @@
               <entry>
                 <string>grammarURL</string>
                 <gate.util.persistence.PersistenceManager-URLHolder>
-                  <urlString>$relpath$QuantityInferencer-main.jape</urlString>
-                </gate.util.persistence.PersistenceManager-URLHolder>
-              </entry>
-              <entry>
-                <string>binaryGrammarURL</string>
-                <null/>
-              </entry>
-            </localMap>
-          </initParams>
-          <features class="gate.util.persistence.MapPersistence">
-            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-            <localMap/>
-          </features>
-        </gate.util.persistence.LanguageAnalyserPersistence>
-        <gate.util.persistence.LanguageAnalyserPersistence>
-          <runtimeParams class="gate.util.persistence.MapPersistence">
-            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-            <localMap>
-              <entry>
-                <string>outputASName</string>
-                <null/>
-              </entry>
-              <entry>
-                <string>document</string>
-                <null/>
-              </entry>
-              <entry>
-                <string>ontology</string>
-                <null/>
-              </entry>
-              <entry>
-                <string>inputASName</string>
-                <null/>
-              </entry>
-            </localMap>
-          </runtimeParams>
-          <resourceType>gate.creole.Transducer</resourceType>
-          <resourceName>NounCluster</resourceName>
-          <initParams class="gate.util.persistence.MapPersistence">
-            <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-            <localMap>
-              <entry>
-                <string>encoding</string>
-                <string>UTF-8</string>
-              </entry>
-              <entry>
-                <string>annotationAccessors</string>
-                <null/>
-              </entry>
-              <entry>
-                <string>operators</string>
-                <null/>
-              </entry>
-              <entry>
-                <string>grammarURL</string>
-                <gate.util.persistence.PersistenceManager-URLHolder>
-                  <urlString>$relpath$NounClusters.jape</urlString>
+                  <urlString>$relpath$lib/MuNPEx-1.0/optional/en-lemma.jape</urlString>
                 </gate.util.persistence.PersistenceManager-URLHolder>
               </entry>
               <entry>
