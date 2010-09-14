@@ -1,6 +1,20 @@
 def defaultannots = docs[0].getAnnotations();
 def pairs = docs[0].annotations.get('pair');
-System.out.println("Pairs found: "+pairs.size());
+pairs = pairs.findAll{ it.features.quantitiesInHypothesis != "" };
+System.out.println("Pairs which have a quantity in the hypothesis: "+pairs.size());
+
+new File("/Users/gina/Documents/workspace2/QuantityInferencer/output.csv").withWriter {out ->
+
+    out.writeLine "Reason"+"\tQuantities in H"+"\tQuantities in Pair"+"\tGoldStandard"+"\tSystemResults";
+    pairs.each{
+        out.writeLine it.features.aReasoning +
+        "\t" + it.features.quantitiesInHypothesis +
+        "\t"+ it.features.quantitiesInBoth+
+        "\t"+ it.features.entailment+
+        "\t"+ it.features.entailResult
+        };
+}
+
 System.out.println(" ");
 
 System.out.println("\nGold standard:");
@@ -100,7 +114,7 @@ System.out.println("\tPrecision\t"+precisionUnknown2+"\t(correctly identified/to
 System.out.println("\tRecall\t"+recallUnknown2+"\t(correctly identified/total gold)");
 
 
-
 System.out.println("   Average:");
 System.out.println("      Precision\t"+((precisionUnknown2+precision2)/2)+"\t(correctly identified/total identified)");
 System.out.println("      Recall\t"+((recallUnknown2+recall2)/2)+"\t(correctly identified/total gold)");
+System.out.println("   F score: "+( ((precisionUnknown2+precision2)/2)+((recallUnknown2+recall2)/2) )/2);
