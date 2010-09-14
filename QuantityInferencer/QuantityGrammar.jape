@@ -5,8 +5,8 @@
 */
 Phase:   Quantity
 Input: Token Lookup Number CollectionNounCluster Verb
-Options: control = brill 
-//appelt
+Options: control = appelt
+//when appelt "one of the three people" is only 1 people, rather than 1 people, and 3 people
 
 //////////////////////////////////////////////////////////////
 Macro: NUMERICALVALUE
@@ -141,7 +141,7 @@ Rule: ExactQuantity
 (
 	(NUMERICALVALUE):quantity
 	( 	 {Token.string == "of"} 
-			( {Token.string == "the"}| {Token.string == "its"} )? 
+			( {Token.string == "the"} | {Token.string == "its"} )? 
 			( {Number} )?
 	)?
 	({CollectionNounCluster}):noun  
@@ -188,7 +188,7 @@ Rule: SimpleQuantity
   :number.ExactQuantity = 
   			{rule = "SimpleQuantity", 
 			quantity = :quantity.Number.value, 
-			headnoun = :noun.Token.string}
+			headnoun = :noun.Token.stem}
 
 	
 Rule: MissingHeadNoun

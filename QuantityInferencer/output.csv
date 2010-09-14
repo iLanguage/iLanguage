@@ -1,0 +1,266 @@
+Reason	Quantities in H	Quantities in Pair	GoldStandard	SystemResults
+null	; 6 members	 ;h: 6 members t: 74 individuals	ENTAILMENT	UNKNOWN
+null	; more than 700,000 gallons	 ;h: more than 700,000 gallons	ENTAILMENT	UNKNOWN
+31year <-- 31year	null	null	ENTAILMENT	ENTAILMENT
+150000money <-- 150000money	null	null	CONTRADICTION	ENTAILMENT
+3600000000.0000money <-- 3600000000.0000money	null	null	ENTAILMENT	ENTAILMENT
+38year <-- 38year	null	null	UNKNOWN	ENTAILMENT
+80percent <-- 80percent	null	null	NO	ENTAILMENT
+1000000000.0000money <-- 1000000000.0000money	null	null	UNKNOWN	ENTAILMENT
+null	; 16 policemen	 ;h: 16 policemen	ENTAILMENT	UNKNOWN
+1200deacon <-- 1200deacon	null	null	UNKNOWN	ENTAILMENT
+null	; 292 crashed	 ;h: 292 crashed	UNKNOWN	UNKNOWN
+54000centrifug <-- 54000centrifug	null	null	YES	ENTAILMENT
+null	; 87 people	 ;h: 87 people t: two years	UNKNOWN	UNKNOWN
+18month <-- 18month	null	null	NO	ENTAILMENT
+null	; two Cambodians	 ;h: two Cambodians t: two sides t: two countries	UNKNOWN	UNKNOWN
+20train <-- 20train	null	null	ENTAILMENT	ENTAILMENT
+null	; 25 people	 ;h: 25 people	CONTRADICTION	UNKNOWN
+3peopl <-- 3peopl	null	null	ENTAILMENT	ENTAILMENT
+null	; 1980's	 ;h: 1980's t: 80% t: two years	UNKNOWN	UNKNOWN
+5masterpiec <-- 5masterpiec	null	null	UNKNOWN	ENTAILMENT
+null	; 44 years	 ;h: 44 years	UNKNOWN	UNKNOWN
+null	; one of 119 universities	 ;h: one of 119 universities t: 119 universities	ENTAILMENT	UNKNOWN
+40percent <-- 40percent	null	null	UNKNOWN	ENTAILMENT
+1500000000.0000money <-- 1500000000.0000money	null	null	CONTRADICTION	ENTAILMENT
+3nurs <-- 3nurs	null	null	YES	ENTAILMENT
+27state <-- 27state	null	null	ENTAILMENT	ENTAILMENT
+null	; Two people	 ;h: Two people t: two attacks t: six men t: two days	CONTRADICTION	UNKNOWN
+null	; 70 percent	 ;h: 70 percent t: 80 percent	ENTAILMENT	UNKNOWN
+null	; 11 people	 ;h: 11 people	UNKNOWN	UNKNOWN
+129day <-- 129day	null	null	ENTAILMENT	ENTAILMENT
+null	; 45 m is	 ;h: 45 m is t: 1932 Olympic Games t: 80-meter	UNKNOWN	UNKNOWN
+null	; 30 workers	 ;h: 30 workers t: Û17230m t: 15 years	UNKNOWN	UNKNOWN
+8586meter <-- 8586meter	null	null	UNKNOWN	ENTAILMENT
+null	; 80 tonnes of drugs	 ;h: 80 tonnes of drugs	UNKNOWN	UNKNOWN
+null	; Four boy scouts	 ;h: Four boy scouts t: Four people	UNKNOWN	UNKNOWN
+null	; 730 troops	 ;h: 730 troops t: three Romanian journalists	UNKNOWN	UNKNOWN
+433soldier <-- 433soldier	null	null	UNKNOWN	ENTAILMENT
+null	; 100%	 ;h: 100%	ENTAILMENT	UNKNOWN
+null	; one of the major shareholders	 ;h: one of the major shareholders	UNKNOWN	UNKNOWN
+380people <-- 380people	null	null	CONTRADICTION	ENTAILMENT
+800000000.0000money <-- 800000000.0000money	null	null	ENTAILMENT	ENTAILMENT
+null	; Over 100 people	 ;h: Over 100 people	UNKNOWN	UNKNOWN
+40year <-- 40year	null	null	UNKNOWN	ENTAILMENT
+1998olymp <-- 1998olymp	null	null	UNKNOWN	ENTAILMENT
+null	; 35 minutes	 ;h: 35 minutes t: a 35-minute	ENTAILMENT	UNKNOWN
+null	; 80 tonnes of drugs	 ;h: 80 tonnes of drugs t: 80 metric tonnes	ENTAILMENT	UNKNOWN
+null	; ten thousand metres	 ;h: ten thousand metres t: 800 metres	NO	UNKNOWN
+null	; 300 passengers	 ;h: 300 passengers t: 200 tons t: 17 crew members	UNKNOWN	UNKNOWN
+64000money <-- 64000money	null	null	CONTRADICTION	ENTAILMENT
+null	; 16 members	 ;h: 16 members t: 16 NATO member countries	YES	UNKNOWN
+140000000000.0000money <-- 140000000000.0000money	null	null	ENTAILMENT	ENTAILMENT
+null	; 100 have; 18 women	 ;h: 100 have t: 54% t: 18 months ;h: 18 women t: 54% t: 18 months	UNKNOWN	UNKNOWN
+48year <-- 48year	null	null	ENTAILMENT	ENTAILMENT
+null	; 19 gorillas	 ;h: 19 gorillas t: 26 gorillas	ENTAILMENT	UNKNOWN
+24people <-- 24people	null	null	ENTAILMENT	ENTAILMENT
+null	; 80 tonnes of drugs	 ;h: 80 tonnes of drugs t: six years t: £1m	UNKNOWN	UNKNOWN
+null	; hundreds of thousands of pounds	 ;h: hundreds of thousands of pounds t: hundreds of thousands of pounds	UNKNOWN	UNKNOWN
+27500000000.0000money <-- 27500000000.0000money	null	null	NO	ENTAILMENT
+100meter <-- 100meter	null	null	ENTAILMENT	ENTAILMENT
+null	; 59 federal counts	 ;h: 59 federal counts t: $70,000 t: $42,000	UNKNOWN	UNKNOWN
+4315000children <-- 4315000children	null	null	ENTAILMENT	ENTAILMENT
+null	; ten thousand metres	 ;h: ten thousand metres	NO	UNKNOWN
+200000money <-- 200000money	null	null	YES	ENTAILMENT
+2bomb <-- 2bomb	null	null	ENTAILMENT	ENTAILMENT
+null	; Seven other GM executives	 ;h: Seven other GM executives t: three associates	UNKNOWN	UNKNOWN
+2000000000.0000money <-- 2000000000.0000money	null	null	ENTAILMENT	ENTAILMENT
+null	; 200 gains	 ;h: 200 gains	ENTAILMENT	UNKNOWN
+null	; Two submarines	 ;h: Two submarines	ENTAILMENT	UNKNOWN
+null	; Five people	 ;h: Five people t: Five prisoners	ENTAILMENT	UNKNOWN
+null	; 24 is	 ;h: 24 is	ENTAILMENT	UNKNOWN
+7state <-- 7state	null	null	UNKNOWN	ENTAILMENT
+11peopl <-- 11peopl	null	null	CONTRADICTION	ENTAILMENT
+2borrow <-- 2borrow	null	null	YES	ENTAILMENT
+15peopl <-- 15peopl	null	null	ENTAILMENT	ENTAILMENT
+2motorist <-- 2motorist	null	null	ENTAILMENT	ENTAILMENT
+200test <-- 200test	null	null	ENTAILMENT	ENTAILMENT
+null	; Three parties	 ;h: Three parties	YES	UNKNOWN
+null	; more than 600,000 vehicles	 ;h: more than 600,000 vehicles t: more than 600,000 cars	UNKNOWN	UNKNOWN
+null	; 100 died	 ;h: 100 died t: 168 people t: ten of thousands	CONTRADICTION	UNKNOWN
+6quark <-- 6quark	null	null	YES	ENTAILMENT
+null	; 18 days	 ;h: 18 days t: 20%	UNKNOWN	UNKNOWN
+null	; 74 members; 6 consists	 ;h: 74 members t: 74 individuals ;h: 6 consists t: 74 individuals	UNKNOWN	UNKNOWN
+null	; 90 miles	 ;h: 90 miles	ENTAILMENT	UNKNOWN
+5worker <-- 5worker	null	null	YES	ENTAILMENT
+null	; 600 times	 ;h: 600 times	UNKNOWN	UNKNOWN
+null	; 45-year-old	 ;h: 45-year-old t: 55-year-old	CONTRADICTION	UNKNOWN
+2percent <-- 2percent	null	null	ENTAILMENT	ENTAILMENT
+null	; a dozen works	 ;h: a dozen works	UNKNOWN	UNKNOWN
+14300000000.0000money <-- 14300000000.0000money	null	null	UNKNOWN	ENTAILMENT
+3war <-- 3war	null	null	YES	ENTAILMENT
+6money <-- 6money	null	null	ENTAILMENT	ENTAILMENT
+null	; about 4,000 people	 ;h: about 4,000 people t: more than 90,000 cholera cases	ENTAILMENT	UNKNOWN
+null	; Over 100 people	 ;h: Over 100 people t: More than a hundred protestors	ENTAILMENT	UNKNOWN
+null	; 2,500 languages	 ;h: 2,500 languages t: 900 languages t: 6,900 languages t: 2,500 are	ENTAILMENT	UNKNOWN
+null	; Five government officials	 ;h: Five government officials t: Seven civilians t: two provincial government officials t: 13 people t: Five suicide bombers t: two of the militants t: 20-minute t: six police officers	CONTRADICTION	UNKNOWN
+null	; 45 minutes	 ;h: 45 minutes	UNKNOWN	UNKNOWN
+3year <-- 3year	null	null	ENTAILMENT	ENTAILMENT
+6.3magnitude <-- 6.3magnitude	null	null	ENTAILMENT	ENTAILMENT
+null	; 80 tonnes of drugs	 ;h: 80 tonnes of drugs	UNKNOWN	UNKNOWN
+130year <-- 130year	null	null	ENTAILMENT	ENTAILMENT
+null	; 250 employees	 ;h: 250 employees t: 10 percent t: 74 jobs	CONTRADICTION	UNKNOWN
+null	; Millions of dollars	 ;h: Millions of dollars	NO	UNKNOWN
+7peopl <-- 7peopl	null	null	ENTAILMENT	ENTAILMENT
+null	; 1980s; 1950s	 ;h: 1980s ;h: 1950s	UNKNOWN	UNKNOWN
+null	; 2002 Al-Qaida militants	 ;h: 2002 Al-Qaida militants	YES	UNKNOWN
+25mile <-- 25mile	null	null	ENTAILMENT	ENTAILMENT
+null	; 3746 kilometers	 ;h: 3746 kilometers	UNKNOWN	UNKNOWN
+10000000.0000money <-- 10000000.0000money	null	null	UNKNOWN	ENTAILMENT
+42day <-- 42day	null	null	ENTAILMENT	ENTAILMENT
+null	; 45 years old	 ;h: 45 years old t: four other children	ENTAILMENT	UNKNOWN
+null	; pair of skaters	 ;h: pair of skaters	CONTRADICTION	UNKNOWN
+null	; 6,000 mine accidents	 ;h: 6,000 mine accidents	UNKNOWN	UNKNOWN
+50year <-- 50year	null	null	ENTAILMENT	ENTAILMENT
+null	; 1990s	 ;h: 1990s	UNKNOWN	UNKNOWN
+6month <-- 6month	null	null	CONTRADICTION	ENTAILMENT
+null	; more than 100 bullets	 ;h: more than 100 bullets	UNKNOWN	UNKNOWN
+null	; Three parties	 ;h: Three parties t: seven months	UNKNOWN	UNKNOWN
+null	; kinds of events	 ;h: kinds of events	UNKNOWN	UNKNOWN
+8586meter <-- 8586meter	null	null	YES	ENTAILMENT
+35year <-- 35year	null	null	ENTAILMENT	ENTAILMENT
+null	; 5100 kilometers	 ;h: 5100 kilometers t: 13 years	UNKNOWN	UNKNOWN
+497000000.0000money <-- 497000000.0000money	null	null	UNKNOWN	ENTAILMENT
+null	; Three people	 ;h: Three people t: three inmates	ENTAILMENT	UNKNOWN
+3percent <-- 3percent	null	null	UNKNOWN	ENTAILMENT
+null	; 300 people	 ;h: 300 people t: 5 people	CONTRADICTION	UNKNOWN
+38.5percent <-- 38.5percent	null	null	YES	ENTAILMENT
+null	; three people	 ;h: three people t: one of three people	YES	UNKNOWN
+null	; 80 tonnes of drugs	 ;h: 80 tonnes of drugs t: 80 tonnes of cannabis t: three vehicles	ENTAILMENT	UNKNOWN
+null	; 200 Palestinians	 ;h: 200 Palestinians t: a six year old t: 15 bystanders t: five Hamas operatives t: five Hamas militants	UNKNOWN	UNKNOWN
+null	; 15 million tonnes of rubbish	 ;h: 15 million tonnes of rubbish t: 10 years t: 4,000 tonnes of waste t: one of the northern districts	CONTRADICTION	UNKNOWN
+null	; Three people	 ;h: Three people t: two persons t: 6 has t: One of the three people	UNKNOWN	UNKNOWN
+null	; About 11,000 physicians	 ;h: About 11,000 physicians	CONTRADICTION	UNKNOWN
+3month <-- 3month	null	null	YES	ENTAILMENT
+null	; Thousands of blank British passports	 ;h: Thousands of blank British passports	ENTAILMENT	UNKNOWN
+null	; 10 feet	 ;h: 10 feet t: two weeks t: 14 eggs t: 1980s t: 150 pounds t: 150 pounds	ENTAILMENT	UNKNOWN
+500000money <-- 500000money	null	null	ENTAILMENT	ENTAILMENT
+1950people <-- 1950people	null	null	UNKNOWN	ENTAILMENT
+200pill <-- 200pill	null	null	NO	ENTAILMENT
+null	; nine children	 ;h: nine children t: three homes t: eight people	UNKNOWN	UNKNOWN
+52600000.0000money <-- 52600000.0000money	null	null	ENTAILMENT	ENTAILMENT
+2shoe <-- 2shoe	null	null	ENTAILMENT	ENTAILMENT
+500milligram <-- 500milligram	null	null	YES	ENTAILMENT
+null	; one trillion pages	 ;h: one trillion pages t: 10 years	CONTRADICTION	UNKNOWN
+null	; at least 156,000 workers	 ;h: at least 156,000 workers	ENTAILMENT	UNKNOWN
+null	; 1800 is	 ;h: 1800 is	ENTAILMENT	UNKNOWN
+null	; As many as 103 people	 ;h: As many as 103 people	ENTAILMENT	UNKNOWN
+null	; two countries	 ;h: two countries t: 1980s t: one of 17 countries	UNKNOWN	UNKNOWN
+6year <-- 6year	null	null	ENTAILMENT	ENTAILMENT
+40000000000.0000money <-- 40000000000.0000money	null	null	UNKNOWN	ENTAILMENT
+16peopl <-- 16peopl	null	null	CONTRADICTION	ENTAILMENT
+null	; 49 media workers	 ;h: 49 media workers t: 40% t: 49 casualties t: 129 cases	ENTAILMENT	UNKNOWN
+null	; over 25 militants	 ;h: over 25 militants	UNKNOWN	UNKNOWN
+null	; fifty years	 ;h: fifty years	ENTAILMENT	UNKNOWN
+null	; three spokesmen	 ;h: three spokesmen	UNKNOWN	UNKNOWN
+null	; three years	 ;h: three years	UNKNOWN	UNKNOWN
+null	; $7.5 million	 ;h: $7.5 million	CONTRADICTION	UNKNOWN
+1800000000.0000money <-- 1800000000.0000money	null	null	YES	ENTAILMENT
+null	; two students; 13 persons	 ;h: two students t: 12 students t: 23 others ;h: 13 persons t: 12 students t: 23 others	ENTAILMENT	UNKNOWN
+11children <-- 11children	null	null	ENTAILMENT	ENTAILMENT
+null	; 70 national parks	 ;h: 70 national parks t: two dozen of the 70 national parks t: 100-degree	ENTAILMENT	UNKNOWN
+null	; 24 people	 ;h: 24 people t: Four people t: seven children t: 26 passengers t: a 9-year-old t: 50 miles t: two crew members t: 80 kilometers	ENTAILMENT	UNKNOWN
+null	; About 240 people	 ;h: About 240 people t: around 240 inmates	ENTAILMENT	UNKNOWN
+3swede <-- 3swede	null	null	YES	ENTAILMENT
+33seat <-- 33seat	null	null	UNKNOWN	ENTAILMENT
+null	; 500 small companies	 ;h: 500 small companies t: $1.8 billion t: 500 active partnerships	UNKNOWN	UNKNOWN
+null	; 5100 kilometers	 ;h: 5100 kilometers t: 2,870,972,200 kilometers t: 4,498,252,900 kilometers	UNKNOWN	UNKNOWN
+62week <-- 62week	null	null	UNKNOWN	ENTAILMENT
+null	; 81 Andy Warhol lithographs	 ;h: 81 Andy Warhol lithographs t: $1 million	UNKNOWN	UNKNOWN
+10000money <-- 10000money	null	null	NO	ENTAILMENT
+hundredsvolunt <-- hundredsvolunt	null	null	UNKNOWN	ENTAILMENT
+null	; 11 judges	 ;h: 11 judges t: eight judges	NO	UNKNOWN
+1500000.0000peopl <-- 1500000.0000peopl	null	null	YES	ENTAILMENT
+null	; 45 m is	 ;h: 45 m is t: 21 3/4 inches	UNKNOWN	UNKNOWN
+null	; three Russian factories	 ;h: three Russian factories	UNKNOWN	UNKNOWN
+7peopl <-- 7peopl	null	null	ENTAILMENT	ENTAILMENT
+null	; 3 policemen	 ;h: 3 policemen t: three police officers	ENTAILMENT	UNKNOWN
+null	; 18 year-old	 ;h: 18 year-old t: ten years	ENTAILMENT	UNKNOWN
+null	; Three parties	 ;h: Three parties	UNKNOWN	UNKNOWN
+15year <-- 15year	null	null	ENTAILMENT	ENTAILMENT
+null	; 42 days	 ;h: 42 days	CONTRADICTION	UNKNOWN
+66year <-- 66year	null	null	ENTAILMENT	ENTAILMENT
+null	; Millions of dollars	 ;h: Millions of dollars t: millions of dollars	YES	UNKNOWN
+1979game <-- 1979game	null	null	YES	ENTAILMENT
+null	; 113 people	 ;h: 113 people t: four workers t: 109 people	ENTAILMENT	UNKNOWN
+null	; 86 years old	 ;h: 86 years old	UNKNOWN	UNKNOWN
+null	; 8%	 ;h: 8% t: 1996 completed t: 64,000 students t: 77.8%	CONTRADICTION	UNKNOWN
+null	; 300 passengers	 ;h: 300 passengers t: 205 people	UNKNOWN	UNKNOWN
+null	; 201 billion cigarettes	 ;h: 201 billion cigarettes	UNKNOWN	UNKNOWN
+6minist <-- 6minist	null	null	YES	ENTAILMENT
+null	; 50-mile	 ;h: 50-mile	YES	UNKNOWN
+null	; six flavors of quarks	 ;h: six flavors of quarks	UNKNOWN	UNKNOWN
+null	; 27 member states	 ;h: 27 member states	UNKNOWN	UNKNOWN
+null	; 1793 are	 ;h: 1793 are	ENTAILMENT	UNKNOWN
+null	; 3.3 million years	 ;h: 3.3 million years	CONTRADICTION	UNKNOWN
+null	; 16 per cent	 ;h: 16 per cent t: One per cent	CONTRADICTION	UNKNOWN
+37percent <-- 37percent	null	null	CONTRADICTION	ENTAILMENT
+390000000.0000money <-- 390000000.0000money	null	null	YES	ENTAILMENT
+15year <-- 15year	null	null	ENTAILMENT	ENTAILMENT
+null	; Two submarines	 ;h: Two submarines	CONTRADICTION	UNKNOWN
+null	; 1793 are	 ;h: 1793 are t: 1792 banned	ENTAILMENT	UNKNOWN
+null	; Three rebels	 ;h: Three rebels t: 11 casualties t: three casualties	YES	UNKNOWN
+4bomber <-- 4bomber	null	null	YES	ENTAILMENT
+null	; Five of the six people	 ;h: Five of the six people t: three company executives	UNKNOWN	UNKNOWN
+null	; Two officers	 ;h: Two officers t: $70 million	UNKNOWN	UNKNOWN
+374000000.0000money <-- 374000000.0000money	null	null	NO	ENTAILMENT
+null	; more than 50,000 Struggling Members	 ;h: more than 50,000 Struggling Members t: more than 50,000 beggars	YES	UNKNOWN
+null	; 4 children	 ;h: 4 children	UNKNOWN	UNKNOWN
+8terrorist <-- 8terrorist	null	null	ENTAILMENT	ENTAILMENT
+33year <-- 33year	null	null	ENTAILMENT	ENTAILMENT
+118sailor <-- 118sailor	null	null	ENTAILMENT	ENTAILMENT
+null	; 1,000 are; Five of the six people	 ;h: 1,000 are t: Five of the six defendants t: 98 have ;h: Five of the six people t: Five of the six defendants t: 98 have	ENTAILMENT	UNKNOWN
+null	; 59 federal counts	 ;h: 59 federal counts	UNKNOWN	UNKNOWN
+null	; 46 passengers	 ;h: 46 passengers	UNKNOWN	UNKNOWN
+null	; 15 hostages	 ;h: 15 hostages t: six years t: 14 other hostages	ENTAILMENT	UNKNOWN
+null	; two calves	 ;h: two calves t: a nine year old	UNKNOWN	UNKNOWN
+3000000.0000money <-- 3000000.0000money	null	null	ENTAILMENT	ENTAILMENT
+null	; $77,000	 ;h: $77,000 t: $700,000	CONTRADICTION	UNKNOWN
+30year <-- 30year	null	null	YES	ENTAILMENT
+2022game <-- 2022game	null	null	UNKNOWN	ENTAILMENT
+null	; nine years	 ;h: nine years	UNKNOWN	UNKNOWN
+null	; 10 years	 ;h: 10 years t: Û1 million	UNKNOWN	UNKNOWN
+null	; three elementary particles	 ;h: three elementary particles	YES	UNKNOWN
+60percent <-- 60percent	null	null	YES	ENTAILMENT
+2worshipp <-- 2worshipp	null	null	YES	ENTAILMENT
+67year <-- 67year	null	null	UNKNOWN	ENTAILMENT
+null	; 30 were	 ;h: 30 were	ENTAILMENT	UNKNOWN
+null	; 730 troops	 ;h: 730 troops	NO	UNKNOWN
+11attack <-- 11attack	null	null	UNKNOWN	ENTAILMENT
+null	; at least 113 people	 ;h: at least 113 people	ENTAILMENT	UNKNOWN
+null	; 200,000 shanties	 ;h: 200,000 shanties t: 62 percent	UNKNOWN	UNKNOWN
+null	; Two nuclear leaks	 ;h: Two nuclear leaks	ENTAILMENT	UNKNOWN
+21record <-- 21record	null	null	YES	ENTAILMENT
+70year <-- 70year	null	null	UNKNOWN	ENTAILMENT
+null	; 17 other states	 ;h: 17 other states t: three years t: one of 18 states t: Six states	ENTAILMENT	UNKNOWN
+75year <-- 75year	null	null	ENTAILMENT	ENTAILMENT
+null	; 7 championships	 ;h: 7 championships t: 1990s t: two different sports t: six were	YES	UNKNOWN
+17seat <-- 17seat	null	null	ENTAILMENT	ENTAILMENT
+null	; Two people	 ;h: Two people t: two lives	ENTAILMENT	UNKNOWN
+null	; Two submarines	 ;h: Two submarines	ENTAILMENT	UNKNOWN
+10member <-- 10member	null	null	NO	ENTAILMENT
+null	; 12 members	 ;h: 12 members t: 25-member	UNKNOWN	UNKNOWN
+22400000.0000money <-- 22400000.0000money	null	null	ENTAILMENT	ENTAILMENT
+3children <-- 3children	null	null	ENTAILMENT	ENTAILMENT
+null	; one of the three bombings	 ;h: one of the three bombings t: 30 died t: 10 people t: Three major bombings	ENTAILMENT	UNKNOWN
+null	; 36 years old	 ;h: 36 years old	UNKNOWN	UNKNOWN
+100day <-- 100day	null	null	ENTAILMENT	ENTAILMENT
+100000000.0000money <-- 100000000.0000money	null	null	UNKNOWN	ENTAILMENT
+null	; at least 164 lives	 ;h: at least 164 lives t: up to 5,000 commuters t: at least 164 people	ENTAILMENT	UNKNOWN
+null	; Three parties	 ;h: Three parties	YES	UNKNOWN
+4000000.0000peopl <-- 4000000.0000peopl	null	null	ENTAILMENT	ENTAILMENT
+null	; 42 days	 ;h: 42 days	UNKNOWN	UNKNOWN
+null	; 200 patients	 ;h: 200 patients t: three times t: 10 centres t: 240 patients	NO	UNKNOWN
+null	; 28 million tons of steel	 ;h: 28 million tons of steel t: $12 billion t: £6.7 billion t: 47,300 people t: 603 pence t: 28 million tons t: 608 pence t: 70-year-old	UNKNOWN	UNKNOWN
+90year <-- 90year	null	null	YES	ENTAILMENT
+null	; 2002 Olympic Winter games	 ;h: 2002 Olympic Winter games t: 10 days	UNKNOWN	UNKNOWN
+2portrait <-- 2portrait	null	null	NO	ENTAILMENT
+null	; 1980s; 1950s	 ;h: 1980s t: 10,340 fugitives ;h: 1950s t: 10,340 fugitives	UNKNOWN	UNKNOWN
+8586meter <-- 8586meter	null	null	YES	ENTAILMENT
+null	; 22 years old	 ;h: 22 years old t: six years	ENTAILMENT	UNKNOWN
+5children <-- 5children	null	null	UNKNOWN	ENTAILMENT
+null	; More than 200,000 people	 ;h: More than 200,000 people	UNKNOWN	UNKNOWN
+null	; 11 troops	 ;h: 11 troops t: seven years	UNKNOWN	UNKNOWN
+null	; 72 million euros; more than 72 million euros	 ;h: 72 million euros t: 6 numbers t: $93 million t: Û72.090 ;h: more than 72 million euros	ENTAILMENT	UNKNOWN
+null	; 3746 kilometers	 ;h: 3746 kilometers t: 3,598 kilometers t: 2,236 miles	UNKNOWN	UNKNOWN
+null	; 16 members	 ;h: 16 members t: 19 members	NO	UNKNOWN
