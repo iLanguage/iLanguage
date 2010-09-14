@@ -40,21 +40,6 @@ Rule: QuantityInferencer
         * Use HashSet to store the types of annotions {Age, Money, Percent, ExactQuantity, ApproximateQuantity} 
         * Use JavaDoc for AnnotationSet, Annotation
         */
-       
-       /*
-        * get
-			
-			AnnotationSet get(Set<String> types)
-			
-			    Select annotations by a set of types.
-			
-			    Parameters:
-			        types - the set of annotation types to search for. 
-			    Returns:
-			        a snapshot copy of all annotations in this set that have one of the requested types. If there are no annotations of the requested types in this set, an empty set is returned. The returned set is immutable.
-
-
-        */
 
        Set<String> quantityTypes = new HashSet<String>();
        quantityTypes.add("Age");
@@ -73,52 +58,39 @@ Rule: QuantityInferencer
 
 	       for(Annotation quantityAnnotationInH : quantityAnnotationsInH) {
 		       FeatureMap featuresOfH = quantityAnnotationInH.getFeatures();
-		       quantityString+=","+stringFor(doc,quantityAnnotationInH);
+		       quantityString+=" ;h: "+stringFor(doc,quantityAnnotationInH);
 		       
 		       AnnotationSet quantityAnnotationsInT = outputAS.get(quantityType,  startOfTheAnnotationInT,  endOfTheAnnotationInT);
 		       for (Annotation quantityAnnotationInT : quantityAnnotationsInT){
 		    	   FeatureMap featuresOfT = quantityAnnotationInT.getFeatures();
-		    	   quantityString+=","+stringFor(doc,quantityAnnotationInT);
+		    	   quantityString+=" t: "+stringFor(doc,quantityAnnotationInT);
+		    	   
 		    	   String x=(String)featuresOfT.get("headnoun");
 		    	   String y=(String)featuresOfH.get("headnoun");
+		    	   String z=(String)featuresOfT.get("quantity");
+		    	   String w=(String)featuresOfH.get("quantity");
 		    	   
-		    	   if (x==null || y==null){
+		    	   if (x==null || y==null || z==null || w==null){
 		    		   //throw new NullPointerException();
-		    		   System.out.print("No headnoun found for pair in either t:"+featuresOfT+" , h: "+featuresOfH);
+		    		   System.out.print("A headnoun or quantity was missing in pair t:"+featuresOfT+" , h: "+featuresOfH);
 		    	   } else if( x.equals(y) ) {
-		    		   compaired =" "+x+":"+y;
-			    	   System.out.print("Found an inference."+quantityAnnotationInT.getFeatures().get("headnoun")+" : "+quantityAnnotationInH.getFeatures().get("headnoun")+"\n");
-			    	   FeatureMap pairfeatures = pairAnno.getFeatures();
-			    	   pairfeatures.put("entailResult","ENTAILMENT");
-			    	   entailmentFound= true;
-			       }//boolean isYinT = annoInT.get(quantityType).isEmpty()==true?false:true;
-		       
-		       }
-		       /*
-		       
-		       
-		       
-		       //get the features from that pair annotation to add the new value for whether the pair are entailed
-		       FeatureMap features = pairAnno.getFeatures();
-		       //if an annotation about Age is found in both the hypothesis and the text, then say that the pair is entailed, 
-		       //else, say that it is not entailed
-		       if(isXinH && isYinT){
-		               // then we throw it our result
-		               features.put("entail",quantityType);
-		       }else{
-		               features.put("entail","false");
-		       }
-		       */
-	       }
-	       if (entailmentFound==false){
-	    	   FeatureMap pairfeatures = pairAnno.getFeatures();
-	    	   pairfeatures.put("entailResult","UNKNOWN");
-	       }
-	       
+		    		  // if( z.equals(w)){
+			    		   compaired =" "+x+":"+y;
+			    		   String reasoning =w+y+" <-- "+z+x;
+//				    	   System.out.print("Found an inference."+
+//				    			   featuresOfT.get("quantity") + featuresOfT.get("headnoun")+" : " +
+//				    			   featuresOfH.get("quantity") + featuresOfH.get("headnoun")+"\n");
+				    	   FeatureMap pairfeatures = pairAnno.getFeatures();
+				    	   pairfeatures.put("entailResult","ENTAILMENT");
+				    	   pairfeatures.put("aReasoning",reasoning);
+				    	   entailmentFound= true;
+		    		   //}
+			       }//end if sequence to find a matching quantity (matchign headnouns and matching quantities)
+		       }//end for to cycle through the text annotations
+	       }//end for to cycle through the hypothesis annotations       
+       }//end loop to check all types of quantity annotations     
+       if (entailmentFound==false){
+    	   FeatureMap pairfeatures = pairAnno.getFeatures();
+    	   pairfeatures.put("entailResult","UNKNOWN");
        }
-       FeatureMap pairfeatures = pairAnno.getFeatures();
-       pairfeatures.put("aquantitiesInPair",quantityString);
-       System.out.println("Quanties in this pair:"+quantityString+"\n");
-       System.out.println("\tCorrect Answer: "+pairfeatures.get("entailment")+"\n" );
-       System.out.println("\tSystem's Conclusion: "+pairfeatures.get("entailResult")+"\n" );
-    }
+}//end RHS java block
