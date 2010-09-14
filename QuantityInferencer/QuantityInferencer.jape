@@ -15,7 +15,8 @@ Rule: QuantityInferencer
        AnnotationSet pairAS = (AnnotationSet)bindings.get("rte");
        //create an itterator to itterate through the pairs
        Annotation pairAnno = pairAS.iterator().next();
-      
+       FeatureMap pairfeatures = pairAnno.getFeatures();
+       
        //get a pair
        AnnotationSet annoInPairAS = inputAS.get(pairAnno.getStartNode().getOffset(), pairAnno.getEndNode().getOffset());
        //get a hypothesis the pair
@@ -49,14 +50,16 @@ Rule: QuantityInferencer
        
        String compaired="";
        String quantityString="";
+       String quantitiesInHypothesis="";
        
        // for each of the quantity types of annoation, loop through all hypotheses, checking to see if they have potential matches in their texts
        for(String quantityType : quantityTypes) {
     	   //System.out.print(quantityType + " ");
 	           	   
 	       AnnotationSet quantityAnnotationsInH = outputAS.get(quantityType, startOfTheAnnotationInH, endOfTheAnnotationInH);
-
 	       for(Annotation quantityAnnotationInH : quantityAnnotationsInH) {
+
+	    	   quantitiesInHypothesis += "; "+stringFor(doc,quantityAnnotationInH);
 		       FeatureMap featuresOfH = quantityAnnotationInH.getFeatures();
 		       quantityString+=" ;h: "+stringFor(doc,quantityAnnotationInH);
 		       
@@ -74,23 +77,23 @@ Rule: QuantityInferencer
 		    		   //throw new NullPointerException();
 		    		   System.out.print("A headnoun or quantity was missing in pair t:"+featuresOfT+" , h: "+featuresOfH);
 		    	   } else if( x.equals(y) ) {
-		    		  // if( z.equals(w)){
+		    		   if( z.equals(w) ){
 			    		   compaired =" "+x+":"+y;
 			    		   String reasoning =w+y+" <-- "+z+x;
 //				    	   System.out.print("Found an inference."+
 //				    			   featuresOfT.get("quantity") + featuresOfT.get("headnoun")+" : " +
 //				    			   featuresOfH.get("quantity") + featuresOfH.get("headnoun")+"\n");
-				    	   FeatureMap pairfeatures = pairAnno.getFeatures();
 				    	   pairfeatures.put("entailResult","ENTAILMENT");
 				    	   pairfeatures.put("aReasoning",reasoning);
 				    	   entailmentFound= true;
-		    		   //}
+		    		   }
 			       }//end if sequence to find a matching quantity (matchign headnouns and matching quantities)
 		       }//end for to cycle through the text annotations
 	       }//end for to cycle through the hypothesis annotations       
        }//end loop to check all types of quantity annotations     
        if (entailmentFound==false){
-    	   FeatureMap pairfeatures = pairAnno.getFeatures();
     	   pairfeatures.put("entailResult","UNKNOWN");
        }
-}//end RHS java block
+       pairfeatures.put("quantitiesInHypothesis",quantitiesInHypothesis);
+       pairfeatures.put("quantitiesInBoth",quantityString);
+}
