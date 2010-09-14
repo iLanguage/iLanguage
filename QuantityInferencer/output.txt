@@ -1,4 +1,3 @@
-
 Pairs which have a quantity in the hypothesis: 265
  
 
@@ -8,48 +7,49 @@ Contradictions total: 26
 Unknowns total: 110 (of which some are the 'no' from RTE4)
 
 System's results:
-System's identified entailments total: 109
-System's identified unknowns total: 156
+System's identified entailments total: 144
+System's identified unknowns total: 121
 System's identified contradictions total: 0
 
 Three Way System:
-	Correctly found entailments: 68
-	Correctly found unknown: 77
+	Correctly found entailments: 86
+	Correctly found unknown: 68
 	Correctly found contradiction: 0
-	Total Correct: 145
-	Unknown wrongly marked as entailments: 33
-	Contradictions wrongly marked as entailments: 8
-	Entailments incorrectly marked as unknown: 61
-	Contradictions (wrongly) marked as unknown: 18
+	Total Correct: 154
+	Unknown wrongly marked as entailments: 42
+	Contradictions wrongly marked as entailments: 16
+	Entailments incorrectly marked as unknown: 43
+	Contradictions (wrongly) marked as unknown: 10
 	Entailments wrongly marked as contradiction: 0
 	Unknowns (wrongly) marked as contradiction: 0
-	Total Incorrect: 120
+	Total Incorrect: 111
       Entailments:
-	Precision	0.623853211	(correctly identified/total identified)
-	Recall	0.5271317829	(correctly identified/total gold)
+	Precision	0.5972222222	(correctly identified/total identified)
+	Recall	0.6666666667	(correctly identified/total gold)
       Unknowns:
-	Precision	0.4935897436	(correctly identified/total identified)
-	Recall	0.7	(correctly identified/total gold)
+	Precision	0.5619834711	(correctly identified/total identified)
+	Recall	0.6181818182	(correctly identified/total gold)
       Contradictions:
 	Precision	0	(correctly identified/total identified)
 	Recall	0	(correctly identified/total gold)
    Average:
-      Precision	0.3724809849	(correctly identified/total identified)
-      Recall	0.4090439276	(correctly identified/total gold)
+      Precision	0.3864018978	(correctly identified/total identified)
+      Recall	0.4282828283	(correctly identified/total gold)
 
 Two Way System:
-	Entailment/Yes correctly found entailments: 68
-	Unknown/No/Contradiction correctly found unknown: 95
-	Total Correct: 163
-	Unknown/No/Contradiction wrongly marked as entailments: 41
-	Entailment/Yes wrongly marked as unknown: 61
-	Total Incorrect: 102
+	Entailment/Yes correctly found entailments: 86
+	Unknown/No/Contradiction correctly found unknown: 78
+	Total Correct: 164
+	Unknown/No/Contradiction wrongly marked as entailments: 58
+	Entailment/Yes wrongly marked as unknown: 43
+	Total Incorrect: 101
       Entailments:
-	Precision	0.623853211	(correctly identified/total identified)
-	Recall	0.5271317829	(correctly identified/total gold)
+	Precision	0.5972222222	(correctly identified/total identified)
+	Recall	0.6666666667	(correctly identified/total gold)
       Unknowns:
-	Precision	0.608974359	(correctly identified/total identified)
-	Recall	0.6985294118	(correctly identified/total gold)
+	Precision	0.6446280992	(correctly identified/total identified)
+	Recall	0.5735294118	(correctly identified/total gold)
    Average:
-      Precision	0.616413785	(correctly identified/total identified)
-      Recall	0.6128305974	(correctly identified/total gold)
+      Precision	0.6209251607	(correctly identified/total identified)
+      Recall	0.6200980393	(correctly identified/total gold)
+   F score: 0.6205116

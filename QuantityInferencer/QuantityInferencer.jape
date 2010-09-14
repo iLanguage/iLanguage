@@ -77,7 +77,7 @@ Rule: QuantityInferencer
 		    		   //throw new NullPointerException();
 		    		   System.out.print("A headnoun or quantity was missing in pair t:"+featuresOfT+" , h: "+featuresOfH);
 		    	   } else if( x.equals(y) ) {
-		    		   if( z.equals(w) ){
+		    		   //if( z.equals(w) ){
 			    		   compaired =" "+x+":"+y;
 			    		   String reasoning =w+y+" <-- "+z+x;
 //				    	   System.out.print("Found an inference."+
@@ -86,7 +86,7 @@ Rule: QuantityInferencer
 				    	   pairfeatures.put("entailResult","ENTAILMENT");
 				    	   pairfeatures.put("aReasoning",reasoning);
 				    	   entailmentFound= true;
-		    		   }
+		    		   //}
 			       }//end if sequence to find a matching quantity (matchign headnouns and matching quantities)
 		       }//end for to cycle through the text annotations
 	       }//end for to cycle through the hypothesis annotations       
