@@ -5,7 +5,7 @@
 */
 Phase:   Quantity
 Input: Token Lookup Number CollectionNounCluster Verb
-Options: control = appelt
+Options: control = brill
 //when appelt "one of the three people" is only 1 people, rather than 1 people, and 3 people
 
 //////////////////////////////////////////////////////////////
