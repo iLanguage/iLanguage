@@ -11,7 +11,7 @@ MultiPhase: NumberNormalization
 Phases:
 NumberNormalizer
 CombineNumbers
-CombineDecimals
+CombineDecimals		
 CombineNumberSequences
 CombineFractions
 NounClusters
