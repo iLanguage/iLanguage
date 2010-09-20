@@ -34,18 +34,22 @@
 
 \section{Introduction}
 
+This paper discusses a natural language processing pipeline which uses a cyclic derivational approach to annotate quantity in a textual entailment task \S~\ref{quantityannotator}. To test the implementation of the quantity annotations a simple inferencer \S~\ref{inferencer} was built which used only the annotated quantities to determine if a hypothesis was entailed by the text. The text/hypothesis pairs were taken from gold standard data used in the RTE4 and RTE5 challenges \S~\ref{rte}. The inferencer achieved a 62.9\% F score on the pairs where quantity was needed to determine the textual entailment. 
+
+This paper largely serves to document some of the considerations needed when working with Noun Phrases and locating quantities and head nouns inside of them. In addition, many examples which are relevant to quantity annotating are provided. 
+
 \section{Textual Entailment}
 
 \subsection{World Knowledge and  Old Information}
-A great deal of context is not stated explicitly in the texts that we read. Texts are usually considered to add to our existing knowledge, connect previously knowledge. While newspaper texts generally fall neatly into background knowledge contexts (criminal acts and sentencing, celebrity gossip, natural disasters, global politics)  and often seem to provide most of the relevant information necessary to understand the context genres which depart toward philosophy (blogs) or humour (witty magazine articles) often leave the obvious required background knowledge unstated for comical effect.
+A great deal of context is not stated explicitly in the texts that we read. Texts are usually considered a tool  to add to our existing knowledge, or to connect previously existing knowledge. Newspaper texts could be considered as an excellent starting genre as the texts will generally fall neatly into background knowledge contexts (criminal acts and sentencing, celebrity gossip, natural disasters, global politics)  and often seem to provide most of the relevant information necessary to draw infernces and build knowledge. However, context genres which depart toward humour (witty magazine articles) or  opinions (blogs) often leave the obvious required background knowledge unstated for comical effect or to draw the interest of their readers. 
 
-Iftene 2008 developed a module in his Text Entailment system which took Named Entities from the text and searched Wikipedia to construct background knowledge about those named entities to be used in the task. Of course, it is expected that the hypotheses offered in Textual Entailment tasks are expected to be consistent with reality, and thus consistent with Wikipedia over use of background knowledge can claim that true Hypotheses such as Bangladesh is east of India supposedly follow from a text that discusses the exports of Bangladesh and discusses nothing of its geographical position. Thus, misclassifying the hypothesis as entailed by the text incorrectly allows the text to be offered in the justification of a question answering system which provides the users the information which it used to arrive at its answer. 
+To deal with the additional background knowledge needed when analyzing a text, such as the fact that France is a country which is located in Europe, Iftene 2008 developed a module in his Text Entailment system which took Named Entities from the text and searched Wikipedia to construct background knowledge about those named entities to be used in the task. Of course, the hypotheses offered in Textual Entailment tasks are expected to be consistent with reality, and thus consistent with Wikipedia. However, over use of background knowledge can claim that true Hypotheses such as Bangladesh is east of India supposedly follow from a text that discusses the exports of Bangladesh and discusses nothing of its geographical position. Thus, misclassifying the hypothesis as entailed by the text, incorrectly allows the text to be offered in the justification of a question answering system which provides the users the information which it used to arrive at its answer. 
 
 \subsection{Expectations and ``Normality"}
 
-In addition to background knowledge a sense of what is ``normal" or what follows expectedly from a previous event is used by humans when building inferences from text. For example, the hypothesis that \textit{11 troops were deployed} in Example~\ref{normality} below violates the sense of normality and would cause a human to double-read the text to be sure this was indeed the fact. 
+In addition to background knowledge, a sense of what is ``normal",  "relative" or what follows expectedly from a previous event is used by humans when building inferences from text. For example, the hypothesis that \textit{11 troops were deployed} in Example~\ref{normality} below violates the sense of normality and would cause a human to double-read the text to be sure this was indeed the fact that the text wanted to communicate.
 
-\begin{example}{\bf Eleven troops is an unexpectedly small number of troops, and therefore unlikely}\\
+\begin{example}{\bf Eleven troops is an unexpectedly/relatively small number of troops, and therefore unlikely}\\
 \label{normality}
 Britain deployed troops to Afghanistan shortly after the attacks of
 		11 September, 2001. Few then thought that British forces would still
@@ -58,7 +62,8 @@ Britain has {\bf 11 troops} that take part in Nato's International
 		Security and Assistance Force.
 \end{example}
 
-Resources such as VerbOcean 2004 identifies relations between verbs such as \textit{enablement} and \textit{happens-before} as shown in Table~\ref{verbocean} below.
+
+In addition to relative size, knowing that one event (mariage) is a precondition to other events (divorce) might also be useful in textual entailment. VerbOcean 2004 is a resource which identifies relations between verbs such as \textit{enablement} and \textit{happens-before} as shown in Table~\ref{verbocean} below.
 
 \begin{example}
 \label{verbocean}
@@ -70,11 +75,11 @@ VerbOcean 2004, cited in Iftene 2008:46.
 
 \subsection{New Information and Discourse Representation}
 
-Generally considered the main source of information, the text itself presents new information which can be represented in the Discourse Representation framework of linguists Kamp and Reyle 1996.
+Generally considered the main source of information, the text itself presents new information which can be represented in the Discourse Representation framework of linguists Kamp and Reyle 1996.  
 
 \subsubsection{Entities and Named Entities} 
 
-Noun phrases differ in their specificity and their definiteness. The secificity and definiteness of noun phrases can usually be deduced from the articles, quantifiers or plurality of the nouns. In order to add information about entities and named entities in the discourse representation of a text it is important to resolve pronouns according to gender as shown in Example~\ref{gendercoreference} below. 
+Noun phrases differ in their specificity and their definiteness. The specificity and definiteness of noun phrases can usually be deduced from the articles/determiners, quantifiers or plurality of the nouns. In order to add information about entities and named entities in the discourse representation of a text it is important to resolve pronouns according to gender as shown in Example~\ref{gendercoreference} below. 
 
 \begin{example}Co-reference resolution with gendered discourse referents:\\
 \label{gendercoreference}
@@ -95,7 +100,7 @@ Noun phrases differ in their specificity and their definiteness. The secificity 
 	{\bf Muriel Drinkwater} was killed in 1946.
 \end{example}
 
-Creating co-reference chains is more complicated when there are multiple possible references, and worse still when the references are very similar as the two skyscrapers discussed in Example~\ref{skyscrapers} below. 
+Creating co-reference chains is more complicated when there are multiple possible references, and worse still (even for humans) when the references are very similar as the two skyscrapers discussed in Example~\ref{skyscrapers} below. 
 
 \begin{example}Co-reference chain with highly similar discourse referents:\\
 \label{skyscrapers}
@@ -118,7 +123,10 @@ Seoul City said Monday {\bf a 690-meter-tall, 133-story multifunctional
 %\subsubsection{Event Sequencing}
 %\subsubsection{Relations between Events}
 %\subsection{Inferencing}
-\subsubsection{Closure and Disjoint Sets, exaustive}
+\subsubsection{Closure and Disjoint Sets, exhaustiveness}
+
+Disjoint sets in graph based logical deduction systems such as semantic web can cause very long branching before the system arrives at a conclusion of whether a statement is true or false given a certain knowledge. In addition, in order to conclude that x is a y, when give evidence that x is not a z or a w, you must know that z w and y constitute the entire domain and that the universe of discourse is closed with respect to that predicate. This is also a complexity which can increase the calculation time of entailment. Below is a more straightforward example where much of the information is present in the syntactic structure of the sentences. Knowing that only the parents who can afford to pay is a contradiction with all parents must pay is sometimes tricky to calculate if it is not explicitly stated. 
+
 
 \begin{example}
 Los Angeles County probation officials say they are now studying how
@@ -136,12 +144,12 @@ Los Angeles County probation officials say they are now studying how
 
 \subsection{Certainty and Probability}
 
-We are rarely certain of what we conclude, when doing automatic inferences from text certainty must be dealt with. Iftene 2008 determines that infinitives which follow verbs/predicates such as \textit{glad, believe, claim, necessary, compulsory, free, attempt, trial, refuse, deny, ignore, plan, intend, propose, be able} are often less certain than verbs/predicates in other contexts. 
+We as humans are rarely certain of what we conclude, thus when doing automatic inferences from text certainty must be dealt with. Iftene 2008 determines that infinitives which follow verbs/predicates such as \textit{glad, believe, claim, necessary, compulsory, free, attempt, trial, refuse, deny, ignore, plan, intend, propose, be able} are often less certain than verbs/predicates in other contexts. 
 
 This observation by Iftene mirrors the \textit{epistemic} syntactic feature in linguistics. It is generally accepted that embedded verbs such as infinitives do have the same truth conditional semantics as main verbs. The semantics of modals, epistemic verbs and other verbs which take embedded verbs is often captured in the framework of Intensional Semantics (von Fintel and Hiem 2002).
 
 
-Ultimately the degree of certainty of a verb/predicate depends on syntactic factors such as whether it is embedded, whether it is negated, whether it is qualified with an adverb, and of course whether it is typically used by speakers in an uncertain or certain fashion in that particular context (as can be seen in Example~\ref{verbs} below). It is difficult to capture the certainty of a verb simply by comparing the verb/predicates in the text and hypothesis without doing a deeper analysis and dealing with the logical form underneath the text. Fortunately in many genre's which favour objectivity clear factual active sentences are more frequent then sentences which express uncertainty or hint at uncertainty. 
+Ultimately the degree of certainty of a verb/predicate depends on syntactic factors such as whether it is embedded, whether it is negated, whether it is qualified with an adverb, and of course whether it is typically used by speakers in an uncertain or certain fashion in that particular context (as can be seen in Example~\ref{verbs} below). It is difficult to capture the certainty of a verb simply by comparing the verb/predicates in the text and hypothesis without doing a deeper analysis and dealing with the logical form underneath the text. Fortunately in many genre's which favour objectivity, clear factual active sentences are more frequent then sentences which express uncertainty or hint at uncertainty. 
 
 
 \begin{example}Sentences are rarely simple facts\\
@@ -162,10 +170,10 @@ Ultimately the degree of certainty of a verb/predicate depends on syntactic fact
 \end{example}
 
 \section{Recognizing Textual Entailment Challenge}
-
+\label{rte}
 The RTE challenge began in 2005 and was in its fifth year in 2009. Sammons et al 2010 identify RTE and other similar `grand' challenges as the key to identifying the components needed in more complex tasks which are ultimately more useful than simple search engines and improved word counting and indexing algorithms. 
 
-The RTE challenge has evolved to use longer texts which require co-reference resolution, identification of contradiction, implicit and explicit negation and more advanced inferencing techniques which mirror closer the real world needs in inferencing. Four tasks which serve to benefit from inferencing services are listed in \S~\ref{uses} below. The RTE challenge originally began with rather shallow processing recources which relied on bag of word models and became gradualy more complex as exemplified by the paraphrasing system in Iftene 2008 in \S~\ref{ifteneparaphrasing} and the discourse system in Hickl and Bensely in \S~\ref{hicklbensely}. 
+The RTE challenge has evolved to use longer texts which require co-reference resolution, identification of contradiction, implicit and explicit negation and more advanced inferencing techniques which mirror closer the real world needs in inferencing. Four tasks which serve to benefit from inferencing services are listed in \S~\ref{uses} below. The RTE challenge originally began with rather shallow processing resources which relied on bag of word models and became gradualy more complex as exemplified by the paraphrasing system in Iftene 2008 in \S~\ref{ifteneparaphrasing} and the discourse system in Hickl and Bensely in \S~\ref{hicklbensely}. 
 
 \subsection{Uses of Textual Entailment}
 
@@ -226,6 +234,7 @@ Iftene found that the WordNet resource, negation rules, Named Entity rules, and 
 \subsection{Discourse Commitments - Hickl \& Bensley 2007}
 \label{hicklbensely}
 
+Hickl and Bensley 2007 use  a framework which incorporates what they call discourse commitments into the inferencing procedure. As it is a proprietary system they do not elaborate in detail on the mechanics of their system or how they extract the discourse commitments. As their results are promising (around 80\%) they indicate that incorporating discourse structure may be a profitable approach to textual entailment. 
 	
 %\section{Approaches to Textual Inferencing}
 
@@ -234,21 +243,146 @@ Iftene found that the WordNet resource, negation rules, Named Entity rules, and 
 %\subsection{Logic and Discourse}
 
 \section{Quantity Annotator}
+\label{quantityannotator}
+
+This section and the sections which follow focus on a quantity submodule which may be used to determine textual entailment. 
+
+In order to reason over quantities a system must know both the quantity and the entitity which is quantified. Thus,  two preprocessing pipelines, number normalization \S~\ref{numbernormalization} and head noun identification \S~\ref{headnoun} were built. After these two elements have been identified quantities both exact \S~\ref{exact} and approximate \ref{approximate} are annotated as discussed.
+
+\subsection{Number Normalization}
+
+
+Out of the 46,672 word corpus, 2141 numbers were identified. Of the numbers found about half were easy to extract digits  1256 (58.7\%) , and a little less than half were more complex and required the number normalization to extract their values, 885 (41.3\%).
+
+
+In development the number normalizer was compared to the CLaC number normalizer to see if an existing normalizer could be adopted. The ClaC number normalizer found 3412 numbers, many of  which were the determiner "a" and irrelevant for method of dividing plural and singleton quantities from the text. The CLaC number normalizer relied on number words and determiners to find number, where as the system described in this paper uses a cyclic derivational approach to annotate numbers and match them with noun phrases as denoting collections or denoting singletons.
+
+\label{numbernormalization}
+\subsubsection{Convert strings to values}
+
+Using a finite state transducer all digits (9, 34, 100) which have been identified by the ANNIE tokenizer as a number are annotated as a number and their digit sequence is stored as the value which the number represents. 
+
+String numbers (three, fourty, twenty five, couple, tr) are mapped to their values using a list of string,value pairs. 
+
+String fractional denominators (half, quarter, thirds) are mapped to their decimal values.
+
+
+\begin{example} Examples of string to value transduction
+\begin{tabular}{lll}
+& String & Value\\
+Digits & 90 & 90\\
+Strings & tr & 1000000000\\
+Fractions & half & 0.5\\
+Commas &  2,870,972,200 &  2870972200\\
+Decimals &  7,447.55 & 7449.55\\
+Sequences & half a dozen & 6\\
+& ten thousand & 10000\\
+& three quarters & 0.75\\
+&  9.3m & 9300000\\
+\end{tabular}
+\end{example}
+
+Using a finite state transducer comma separated number sequences (10,000) which are defined as a number followed by any number of a comma and 3 digit number are unified into a single number annotation with a value (10000). 
+
+Using a finite state transducer decimal numbers (7,447.55) which are defined a number followed by a period followed by a number are unified into a single number annotation with the value taken from the value of the two numbers on either side of the period using the period as the decimal point. 
+
+\subsubsection{Combine number sequences}
+
+After the digit and string numbers have been given values the numbers are then combined via addtion, for example the sequence of "half a dozen" which has values \textit{0.5} and \textit{12} are multipled \textit{0.5*12= 6.0000}, " ten thousand " is calculated as \textit{10 * 1000=10000}, "three quarters" is calcualted as \textit{3*0.35=0.75}, "9.3m" is calculated as \textit{9.3*1000000=9300000}.
+
+\subsubsection{Combine fractions}
+
+Finally compound fractions which are defined as two numbers separated by / or "out of" are  converted into a value, for example the string "21 3/4" is converted into \textit{21 + 0.75}. This wrongly identifies dates such as ``2001/2002" as a fraction but an additional date extractor could be used to convert 2001 and 2002 into dates rather than numbers so that they would be unseen by the fraction transducer. 
+
+\subsection{Head Noun Identification}
+\label{headnoun}
+
+After development the head noun identification pipeline was compared with MuNPEx Noun Phrase extractor.  The head noun identification looks to be very similar, which could be tested by using the head noun information from MuNPEx to see whether there would be a change in the results. 
+
+\subsubsection{Clustering nouns with their modifiers}
+
+Clusters of nouns and noun modifiers ("surprising secondary school dropout rate") were defined as any number of adjectives, potentially followed by a gerund (rising food prices) , followed by any number of nouns.  The system was able to identify some interesting noun groups such as "additional six-car metro trains" show in~(\ref{nouncluster}) below. The identification of this noun cluster allowed the system to recognize train as the head noun and 20 as the quantity. Thus yielding the information needed to conclude that the hypothesis "Metrorex bought 20 trains from Bombardier" is entailed by the text "Metrorex.. signed ... contract with Bombardier for... 20 additional six-car metro trains."
+
+\begin{example}Complex noun modifiers are detected and clustered together\\
+\gll additional six-car metro trains
+adjective {complex measure} {modifying noun} headnoun
+\glt ~
+\glend
+
+\label{nouncluster}
+\hspace{-.4in}\includegraphics[width=270px]{nounclusters.pdf}
+\end{example}
+
+
+
+\subsubsection{Packages of Nouns}
+
+Packages/groups of nouns defined as a plural noun followed by of followed by a non-count/mass noun or plural noun were also annotated. This identified many phrases such as "Large scores of Disney fans," "hundreds of thousands of pounds" and "tens of thousands of dollars" which are essentially approximate quantities, but also packages of nouns such as  "rounds of talks"  where "talks" is the semantic head noun and arguably more important for inference than "rounds" which is the syntactic head noun. 
+ 
+While infrequent, (3 in the corpus) a pattern built to recognize packages of nouns can be useful in text-hypothesis pairs where information such as an increase in  "sales of adult party supplies"  in the text yields a contradiction with a hypothesis about an increase in  "children party supply sales." Given the way that the RTE data is constructed along entailments which are recognizable by extensions of existing NLP algorithms and against naive bag of words approaches entailments which rest on packages of nouns are very infrequent  in the RTE data. This may or may not be representative of the larger corpus of text-hypothesis pairs which are relevant to future textual entailment tasks. 
+
+
+\subsubsection{Money Identification}
+
+In addition to other packages of nouns special transducers must be made to deal with monetary amounts as they are not written in the typcial english word order of quantity noun, but rather monetary symbol quantity. 
+
+One possible way of dealing with this is to add a token after the quantity which contains no string in the document but contains the annotaitons to indicate that it is indeed a noun and has an appropriate string (e.g. \$10 $\rightarrow$ \$ 10 dollars) 
+
+Transducers to identify money and percent were taken from the ANNIE NE transducers and modified to add the head noun of "money" and the number's value as the quantity. 
+
 
 \subsection{Exact Quantity}
+\label{exact}
+
+Exact quantities were identified as a number followed by a noun cluster which denoted a collection rather than a singleton (as defined in the noun cluster transducer).
 
 \subsection{Approximate Quantity}
+\label{approximate}
 
-\subsection{Downward Entailing Contexts}
+Approximate quantities were identified as potentially an downward entailment inducer (only, no, not) a qualifier (roughly, approximately, at least, less than, some, about, around, over ), a number and a noun cluster which denoted a collection. Some sample exact and approximate quantities which the system can recognize are shown in the highlighted examples throughout the document and more specifically in the examples "over 100 thousand," "168 people, "tens of thousands," "100 died" in~(\ref{approxexample}) and "About 3,000 blank passports" and "thousands of blank British passports" in~(\ref{exactexample}). 
+
+\begin{example}Approximate quantities in the text entail exact quantities in the hypothesis.t\\
+\label{approxexample}
+
+\hspace{-.4in}\includegraphics[width=270px]{approximatetoexact.pdf}
+\end{example}
+
+\begin{example}Exact quantities in the text entail approximate quantities in the hypothesis.t\\
+\label{exactexample}
+\hspace{-.4in}\includegraphics[width=270px]{exactoapproximate.pdf}
+\end{example}
 
 
 \section{Simple Inferencer}
+\label{inferencer}
+To test the usability of the quantity extracting system a naive inferencing annotator was written in Java and ran over the types of quantity annotations (ExactQuantity, ApproximateQuantities, ApproximateQuantitieinCollection, Age), if  the text and hypothesis had compatible neadnouns (matching stem, or people combined with a list of people denoting headnouns such as inmates, officers, officials etc) and had compatible quantities, the pair was deemed as entailed, if not the pair was annotated as unknown. Sample inferences for ~(\ref{approxexample}) and  (\ref{exactexample}) are shown in the table in~(\ref{entailexamples}).
+
+\begin{example}Simple inferencer\\
+\label{entailexamples}
+\begin{tabular}{lllll}\hline
+ "over 100" &  &"100" \\
+  ($100 \leq x <200$) & $\rightarrow$ &  ($100$)\\\hline
+ "about 3,000" &   & "thousands"\\
+ ($2500 \leq x \leq 3500$) & $\rightarrow$  & ($2000 < x < 1000000 $ )\\\hline
+   
+\end{tabular}
+\end{example}
 
 
 
 \section{Results}
 
-\section{Discussion}
+A script in Groovy was written to extract statistics and calculate the F score of the system. A total of 265 pairs contained a quantity in the hypothesis, and thus would need information about quantity in order to determine if the hypothesis was entailed by the text. Among the pairs, 129 were considered Entailments according to the gold standard, 26 were contradictions and 110 were unknown/no entailments. 
+
+The simple inferencing system \S~\ref{inferencer} was used to evaluate the quantity annotator discussed in \S \ref{quantityannotator}. The inferencer did not look for contradictions, if an entailment was not found it marked the pair as unknown. The inferencer identified 115 entailments,  of which 73 were correct and 42 were incorrect. The inferencer identified 150 unknowns, of which 94 were correct and 56 were incorrect. 
+
+The precision for the entailments was 63.5\%, the recall was 56.6\%. The recall was initially 30\% until additional rules were added for determining that "100 died" referred to "100 people." This is an example where a better discourse representation would allow the headnouns of the quantity in the text and the quantity in the hypothesis to be linked together. 
+
+The precision for the unknowns was 62.6\%, the recall was 69.9\%. One would expect the recall for the unknowns to be higher given that this was the default if the inferencer found no connection between the text and the hypothesis. 
+
+The overall F score was 62.9\%, given that this is rather similar to the precision and recalls of both rule outputs for entailment and unknowns it indicates that the simile inferencer is not capturing the core of how to detect entailment. A more sophisticated inferencer which takes into account what the verb is for the quantities, and also the subject for this verb, essentially an inferencer which uses some representation of the text as a set or graph of facts would probably show better how the quantity annotations can be used in a textual entailment task. 
+
+
 
 
 %\bibliographystyle{acl}
@@ -257,18 +391,29 @@ Iftene found that the WordNet resource, negation rules, Named Entity rules, and 
 \begin{thebibliography}{}
 \bibitem{hickl}Hickl, A. and Bensley, J. 2007. A Discourse Commitment-Based Framework for Recognising Textual Entailment. In \textit{Proceedings of the ACL-PASCAL Workshop on Textual Entailment and Paraphrasing}. Pages 185-190. 28-29 June, Prague, Czech Republic.
 
-\bibitem{kamp}Kamp, H \& U Reyle, 1996 `A Calculus for First Order DiscourseRepresentation Structures,' \textit{Journal of Logic, Language and Information},5, 297Ð348.
+\bibitem{iftene}Iftene, A. 2008. \textit{Textual Entailment}. PhD Thesis, University of Iasi, Romania.
+
+\bibitem{kamp}Kamp, H \& U Reyle, 1996 `A Calculus for First Order Discourse
+Representation Structures,' \textit{Journal of Logic, Language and Information},
+5, 297Ð348.
 \bibitem{heim}von Fintel, K and I Heim. 2002. \textit{Lecture Notes on Intensional Semantics}. Ms. Massachusetts Institute of Technology. 
 %\bibitem{zweig}Zweig, E. 2004. Nouns and Adjectives in Numeral NPs, in {\textit Proceedings of NELS 35}.
-\bibitem{zweig}Zweig, E. 2009. Number-Neutral Bare plurals and the MultiplicityImplicature. \textit{Linguistics and Philosophy} Volume 32, Number 4, 353-407.
+
+
+\bibitem{sammons} Sammons, M. 2010. "Ask not what Textual Entailment can do for you." RTE Challenge 5.
+
+\bibitem{zweig}Zweig, E. 2009. Number-Neutral Bare plurals and the Multiplicity
+Implicature. \textit{Linguistics and Philosophy} Volume 32, Number 4, 353-407.
 \end{thebibliography}
+
+\end{document}
+
 
 \appendix
 \section{Gate Implementation - Quantity Grammar}
 
 \section{Gate Implementation - Quantity Inferencer}
 
-\end{document}
 
 \bibitem{brent} Brent, Michael R and Xiaopeng Tao. 2001. ``Chinese text segmentation with mbdp-1: Making the most of training corpora.'' In \textit{39th Annual Meeting of the ACL}, pages 82–89.
 

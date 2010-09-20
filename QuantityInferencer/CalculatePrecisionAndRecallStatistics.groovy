@@ -118,3 +118,16 @@ System.out.println("   Average:");
 System.out.println("      Precision\t"+((precisionUnknown2+precision2)/2)+"\t(correctly identified/total identified)");
 System.out.println("      Recall\t"+((recallUnknown2+recall2)/2)+"\t(correctly identified/total gold)");
 System.out.println("   F score: "+( ((precisionUnknown2+precision2)/2)+((recallUnknown2+recall2)/2) )/2);
+
+
+def tokencount = docs[0].annotations.get('Token').size()
+System.out.println("The corpus is "+tokencount+"  words.")
+
+def numbers = docs[0].annotations.get('Number')
+def numbercount = numbers.size()
+System.out.println("There were "+numbercount+"  numbers identified.")
+
+def easynumbercount = numbers.findAll{ it.features.kind =="token_digit_number" }.size()
+def hardnumbercount = numbercount - easynumbercount
+System.out.println(easynumbercount +" "+(easynumbercount/numbercount)+" were already found by the ANNIE English tokenizer, " + hardnumbercount + " "+ (hardnumbercount/numbercount)+" were assembled and annotated by the Quantity inferencer system.") 
+
