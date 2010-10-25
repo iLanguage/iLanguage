@@ -1,5 +1,5 @@
 #include "tokenizer.h"
-#include <boost/algorithm/string/trim.hpp>
+#include <lib/boost/boost/algorithm/string/trim.hpp>
 #include <iostream>
 #include <QString>
 #include <vector>

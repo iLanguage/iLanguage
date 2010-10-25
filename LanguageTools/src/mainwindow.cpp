@@ -7,6 +7,7 @@
 #include "tokenizer.h"
 #include <QString>
 #include <QtWebKit>
+#include <phonon>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -25,6 +26,14 @@ MainWindow::~MainWindow()
 void MainWindow::buttonClickHandler(){
     ui->textEditCorpus->setText("Corpus here");
     QString collocation=ui->comboBoxCollocation->currentText();
+
+    //execl("/usr/bin/text2wave","hello.txt  -o /home/gina/searching.wave");
+    //execl("/usr/bin/play","/home/gina/searching.wave");
+    Phonon::MediaObject *music =
+            Phonon::createPlayer(Phonon::MusicCategory,
+                                 Phonon::MediaSource("/home/gina/searching.wav"));
+    music->play();
+
     collocation = "\""+collocation+"\"";
     ui->webViewWordList->load(QUrl("http://www.google.ca/search?&q="+collocation+"+site:gc.ca"));
 }
@@ -50,6 +59,7 @@ void MainWindow::saveAs(){
 
 void MainWindow::loadFile(const QString &filename)
 {
+
     QFile file(filename);
     if (!file.open(QFile::ReadOnly | QFile::Text)){
         QMessageBox::warning(this, tr("Tools"),tr("Cannot read file %1:\n%2.").arg(filename).arg(file.errorString()));
