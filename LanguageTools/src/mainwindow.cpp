@@ -16,6 +16,27 @@ MainWindow::MainWindow(QWidget *parent) :
     //ui->webViewWordList = new QWebView(this);
     //ui->webViewWordList->load(QUrl("http://www.google.com/ncr"));
     //ui->comboBoxCollocation->addItem("according to");
+
+    //setting up phonon
+    /*audioOutput object we're creating is known as an audio sink in Phonon terms,
+        MusicCategory is for an equalizer or something liekt that that depends on the file
+        being listened to.
+        it communicates with the audio driver directly.
+      */
+    audioOutput = new Phonon::AudioOutput(Phonon::MusicCategory, this);
+    /* MediaObject adds functionality that would be needed from an objet of media, ie play, pause rewind.
+     */
+    mediaObject = new Phonon::MediaObject(this);
+    /* meta information resolver points to the current file
+     */
+    metaInformationResolver = new Phonon::MediaObject(this);
+    /* Phonon uses a graph framework, so that objects are nodes in a graph and have to be connected to create a stream.
+       this line connects the mediaobjet above to the audiooutput that drives the actual audio drivers
+     */
+    Phonon::createPath(mediaObject, audioOutput);
+
+    //launch the gui for the application
+
     ui->setupUi(this);
 }
 
@@ -29,11 +50,12 @@ void MainWindow::buttonClickHandler(){
 
     //execl("/usr/bin/text2wave","hello.txt  -o /home/gina/searching.wave");
     //execl("/usr/bin/play","/home/gina/searching.wave");
+    /*
     Phonon::MediaObject *music =
             Phonon::createPlayer(Phonon::MusicCategory,
                                  Phonon::MediaSource("/home/gina/searching.wav"));
     music->play();
-
+    */
     collocation = "\""+collocation+"\"";
     ui->webViewWordList->load(QUrl("http://www.google.ca/search?&q="+collocation+"+site:gc.ca"));
 }

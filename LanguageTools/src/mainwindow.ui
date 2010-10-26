@@ -19,31 +19,16 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>731</width>
+      <width>751</width>
       <height>451</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="movable">
      <bool>true</bool>
     </property>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>Corpus</string>
-     </attribute>
-     <widget class="QTextEdit" name="textEditCorpus">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>411</width>
-        <height>251</height>
-       </rect>
-      </property>
-     </widget>
-    </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
       <string>Wordlist</string>
@@ -51,23 +36,23 @@
      <widget class="QTextEdit" name="textEditWordlist">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>70</y>
-        <width>201</width>
-        <height>341</height>
+        <x>1</x>
+        <y>87</y>
+        <width>256</width>
+        <height>301</height>
        </rect>
       </property>
      </widget>
-     <widget class="QWebView" name="webViewWordList">
+     <widget class="QWebView" name="webViewWordList" native="true">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>270</x>
         <y>20</y>
-        <width>511</width>
-        <height>391</height>
+        <width>451</width>
+        <height>371</height>
        </rect>
       </property>
-      <property name="url">
+      <property name="url" stdset="0">
        <url>
         <string>about:blank</string>
        </url>
@@ -76,10 +61,10 @@
      <widget class="QComboBox" name="comboBoxCollocation">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>40</y>
-        <width>191</width>
-        <height>21</height>
+        <x>1</x>
+        <y>21</y>
+        <width>241</width>
+        <height>27</height>
        </rect>
       </property>
       <property name="editable">
@@ -102,20 +87,69 @@
        <string>Type a word or expresion and then press Collect Examples. You can drag and drop sentences to your wordlist.</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="pushButtonLoad">
+      <property name="geometry">
+       <rect>
+        <x>1</x>
+        <y>54</y>
+        <width>145</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Collect Examples...</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonPlaySentences">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>390</y>
+        <width>191</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Listen to Sentences</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../../../../../usr/share/icons/gnome/32x32/actions/gtk-media-play-ltr.png</normaloff>../../../../../../usr/share/icons/gnome/32x32/actions/gtk-media-play-ltr.png</iconset>
+      </property>
+     </widget>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="pushButtonLoad">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>450</y>
-      <width>191</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Collect Examples...</string>
-    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Corpus</string>
+     </attribute>
+     <widget class="QTextEdit" name="textEditCorpus">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>411</width>
+        <height>251</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonAdd">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>280</y>
+        <width>97</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Load File ...</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../../../../../usr/share/icons/gnome/32x32/actions/add.png</normaloff>../../../../../../usr/share/icons/gnome/32x32/actions/add.png</iconset>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -124,7 +158,7 @@
      <x>0</x>
      <y>0</y>
      <width>739</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -160,6 +194,9 @@
    <class>QWebView</class>
    <extends>QWidget</extends>
    <header>QtWebKit/QWebView</header>
+   <slots>
+    <slot>playPause()</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>
@@ -171,8 +208,8 @@
    <slot>buttonClickHandler()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>256</x>
-     <y>292</y>
+     <x>19</x>
+     <y>110</y>
     </hint>
     <hint type="destinationlabel">
      <x>317</x>
@@ -196,9 +233,42 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButtonPlaySentences</sender>
+   <signal>clicked()</signal>
+   <receiver>webViewWordList</receiver>
+   <slot>playPause()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>156</x>
+     <y>464</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>273</x>
+     <y>441</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonAdd</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>addFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>350</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>63</x>
+     <y>-15</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>buttonClickHandler()</slot>
   <slot>open()</slot>
+  <slot>addFile()</slot>
  </slots>
 </ui>

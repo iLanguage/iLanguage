@@ -29,6 +29,20 @@ private:
 
     void findSentences(const QString &text);
     Ui::MainWindow *ui;
+
+
+private slots:
+    void playPause();
+    void addFile();
+    void nextFile();
+    void aboutToFinish();
+    void finished();
+
+private:
+    QList<Phonon::MediaSource> sources;
+    Phonon::MediaObject *mediaObject;
+    Phonon::AudioOutput *audioOutput;
+    Phonon::MediaObject *metaInformationResolver;
 };
 
 #endif // MAINWINDOW_H
