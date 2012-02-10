@@ -1,0 +1,12 @@
+{
+  "name": "Wordcloud",
+  "version": "1.6",
+  "description": "Wordcloud webapp.",
+  "app": {
+    "launch": {
+      "local_path": "wordcloud.html"
+    }
+  },
+  "offline_enabled": true
+  
+}
