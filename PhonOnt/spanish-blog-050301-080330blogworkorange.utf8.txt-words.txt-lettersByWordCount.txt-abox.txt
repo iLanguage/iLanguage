@@ -1,0 +1,828 @@
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-a-Letter -->
+	<owl:Thing rdf:about="#Spanish-a-Letter">
+		<rdf:type rdf:resource="#Orthographic-a-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-a-Letter -->
+	<owl:Class rdf:about="#Orthographic-a-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-e-Letter -->
+	<owl:Thing rdf:about="#Spanish-e-Letter">
+		<rdf:type rdf:resource="#Orthographic-e-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-e-Letter -->
+	<owl:Class rdf:about="#Orthographic-e-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-o-Letter -->
+	<owl:Thing rdf:about="#Spanish-o-Letter">
+		<rdf:type rdf:resource="#Orthographic-o-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-o-Letter -->
+	<owl:Class rdf:about="#Orthographic-o-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-r-Letter -->
+	<owl:Thing rdf:about="#Spanish-r-Letter">
+		<rdf:type rdf:resource="#Orthographic-r-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-r-Letter -->
+	<owl:Class rdf:about="#Orthographic-r-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-i-Letter -->
+	<owl:Thing rdf:about="#Spanish-i-Letter">
+		<rdf:type rdf:resource="#Orthographic-i-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-i-Letter -->
+	<owl:Class rdf:about="#Orthographic-i-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-n-Letter -->
+	<owl:Thing rdf:about="#Spanish-n-Letter">
+		<rdf:type rdf:resource="#Orthographic-n-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-n-Letter -->
+	<owl:Class rdf:about="#Orthographic-n-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-s-Letter -->
+	<owl:Thing rdf:about="#Spanish-s-Letter">
+		<rdf:type rdf:resource="#Orthographic-s-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-s-Letter -->
+	<owl:Class rdf:about="#Orthographic-s-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-t-Letter -->
+	<owl:Thing rdf:about="#Spanish-t-Letter">
+		<rdf:type rdf:resource="#Orthographic-t-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-t-Letter -->
+	<owl:Class rdf:about="#Orthographic-t-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-c-Letter -->
+	<owl:Thing rdf:about="#Spanish-c-Letter">
+		<rdf:type rdf:resource="#Orthographic-c-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-c-Letter -->
+	<owl:Class rdf:about="#Orthographic-c-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-d-Letter -->
+	<owl:Thing rdf:about="#Spanish-d-Letter">
+		<rdf:type rdf:resource="#Orthographic-d-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-d-Letter -->
+	<owl:Class rdf:about="#Orthographic-d-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-l-Letter -->
+	<owl:Thing rdf:about="#Spanish-l-Letter">
+		<rdf:type rdf:resource="#Orthographic-l-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-l-Letter -->
+	<owl:Class rdf:about="#Orthographic-l-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-u-Letter -->
+	<owl:Thing rdf:about="#Spanish-u-Letter">
+		<rdf:type rdf:resource="#Orthographic-u-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-u-Letter -->
+	<owl:Class rdf:about="#Orthographic-u-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-m-Letter -->
+	<owl:Thing rdf:about="#Spanish-m-Letter">
+		<rdf:type rdf:resource="#Orthographic-m-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-m-Letter -->
+	<owl:Class rdf:about="#Orthographic-m-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-p-Letter -->
+	<owl:Thing rdf:about="#Spanish-p-Letter">
+		<rdf:type rdf:resource="#Orthographic-p-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-p-Letter -->
+	<owl:Class rdf:about="#Orthographic-p-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-b-Letter -->
+	<owl:Thing rdf:about="#Spanish-b-Letter">
+		<rdf:type rdf:resource="#Orthographic-b-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-b-Letter -->
+	<owl:Class rdf:about="#Orthographic-b-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-g-Letter -->
+	<owl:Thing rdf:about="#Spanish-g-Letter">
+		<rdf:type rdf:resource="#Orthographic-g-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-g-Letter -->
+	<owl:Class rdf:about="#Orthographic-g-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-v-Letter -->
+	<owl:Thing rdf:about="#Spanish-v-Letter">
+		<rdf:type rdf:resource="#Orthographic-v-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-v-Letter -->
+	<owl:Class rdf:about="#Orthographic-v-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-h-Letter -->
+	<owl:Thing rdf:about="#Spanish-h-Letter">
+		<rdf:type rdf:resource="#Orthographic-h-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-h-Letter -->
+	<owl:Class rdf:about="#Orthographic-h-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-f-Letter -->
+	<owl:Thing rdf:about="#Spanish-f-Letter">
+		<rdf:type rdf:resource="#Orthographic-f-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-f-Letter -->
+	<owl:Class rdf:about="#Orthographic-f-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-ó-Letter -->
+	<owl:Thing rdf:about="#Spanish-ó-Letter">
+		<rdf:type rdf:resource="#Orthographic-ó-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-ó-Letter -->
+	<owl:Class rdf:about="#Orthographic-ó-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-í-Letter -->
+	<owl:Thing rdf:about="#Spanish-í-Letter">
+		<rdf:type rdf:resource="#Orthographic-í-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-í-Letter -->
+	<owl:Class rdf:about="#Orthographic-í-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-j-Letter -->
+	<owl:Thing rdf:about="#Spanish-j-Letter">
+		<rdf:type rdf:resource="#Orthographic-j-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-j-Letter -->
+	<owl:Class rdf:about="#Orthographic-j-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-á-Letter -->
+	<owl:Thing rdf:about="#Spanish-á-Letter">
+		<rdf:type rdf:resource="#Orthographic-á-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-á-Letter -->
+	<owl:Class rdf:about="#Orthographic-á-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-y-Letter -->
+	<owl:Thing rdf:about="#Spanish-y-Letter">
+		<rdf:type rdf:resource="#Orthographic-y-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-y-Letter -->
+	<owl:Class rdf:about="#Orthographic-y-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-A-Letter -->
+	<owl:Thing rdf:about="#Spanish-A-Letter">
+		<rdf:type rdf:resource="#Orthographic-A-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-A-Letter -->
+	<owl:Class rdf:about="#Orthographic-A-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-z-Letter -->
+	<owl:Thing rdf:about="#Spanish-z-Letter">
+		<rdf:type rdf:resource="#Orthographic-z-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-z-Letter -->
+	<owl:Class rdf:about="#Orthographic-z-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-C-Letter -->
+	<owl:Thing rdf:about="#Spanish-C-Letter">
+		<rdf:type rdf:resource="#Orthographic-C-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-C-Letter -->
+	<owl:Class rdf:about="#Orthographic-C-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-S-Letter -->
+	<owl:Thing rdf:about="#Spanish-S-Letter">
+		<rdf:type rdf:resource="#Orthographic-S-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-S-Letter -->
+	<owl:Class rdf:about="#Orthographic-S-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-E-Letter -->
+	<owl:Thing rdf:about="#Spanish-E-Letter">
+		<rdf:type rdf:resource="#Orthographic-E-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-E-Letter -->
+	<owl:Class rdf:about="#Orthographic-E-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-é-Letter -->
+	<owl:Thing rdf:about="#Spanish-é-Letter">
+		<rdf:type rdf:resource="#Orthographic-é-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-é-Letter -->
+	<owl:Class rdf:about="#Orthographic-é-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-M-Letter -->
+	<owl:Thing rdf:about="#Spanish-M-Letter">
+		<rdf:type rdf:resource="#Orthographic-M-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-M-Letter -->
+	<owl:Class rdf:about="#Orthographic-M-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-P-Letter -->
+	<owl:Thing rdf:about="#Spanish-P-Letter">
+		<rdf:type rdf:resource="#Orthographic-P-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-P-Letter -->
+	<owl:Class rdf:about="#Orthographic-P-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-q-Letter -->
+	<owl:Thing rdf:about="#Spanish-q-Letter">
+		<rdf:type rdf:resource="#Orthographic-q-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-q-Letter -->
+	<owl:Class rdf:about="#Orthographic-q-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-T-Letter -->
+	<owl:Thing rdf:about="#Spanish-T-Letter">
+		<rdf:type rdf:resource="#Orthographic-T-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-T-Letter -->
+	<owl:Class rdf:about="#Orthographic-T-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-D-Letter -->
+	<owl:Thing rdf:about="#Spanish-D-Letter">
+		<rdf:type rdf:resource="#Orthographic-D-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-D-Letter -->
+	<owl:Class rdf:about="#Orthographic-D-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-R-Letter -->
+	<owl:Thing rdf:about="#Spanish-R-Letter">
+		<rdf:type rdf:resource="#Orthographic-R-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-R-Letter -->
+	<owl:Class rdf:about="#Orthographic-R-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-O-Letter -->
+	<owl:Thing rdf:about="#Spanish-O-Letter">
+		<rdf:type rdf:resource="#Orthographic-O-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-O-Letter -->
+	<owl:Class rdf:about="#Orthographic-O-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-k-Letter -->
+	<owl:Thing rdf:about="#Spanish-k-Letter">
+		<rdf:type rdf:resource="#Orthographic-k-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-k-Letter -->
+	<owl:Class rdf:about="#Orthographic-k-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-I-Letter -->
+	<owl:Thing rdf:about="#Spanish-I-Letter">
+		<rdf:type rdf:resource="#Orthographic-I-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-I-Letter -->
+	<owl:Class rdf:about="#Orthographic-I-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-N-Letter -->
+	<owl:Thing rdf:about="#Spanish-N-Letter">
+		<rdf:type rdf:resource="#Orthographic-N-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-N-Letter -->
+	<owl:Class rdf:about="#Orthographic-N-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-ñ-Letter -->
+	<owl:Thing rdf:about="#Spanish-ñ-Letter">
+		<rdf:type rdf:resource="#Orthographic-ñ-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-ñ-Letter -->
+	<owl:Class rdf:about="#Orthographic-ñ-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-B-Letter -->
+	<owl:Thing rdf:about="#Spanish-B-Letter">
+		<rdf:type rdf:resource="#Orthographic-B-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-B-Letter -->
+	<owl:Class rdf:about="#Orthographic-B-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-L-Letter -->
+	<owl:Thing rdf:about="#Spanish-L-Letter">
+		<rdf:type rdf:resource="#Orthographic-L-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-L-Letter -->
+	<owl:Class rdf:about="#Orthographic-L-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-w-Letter -->
+	<owl:Thing rdf:about="#Spanish-w-Letter">
+		<rdf:type rdf:resource="#Orthographic-w-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-w-Letter -->
+	<owl:Class rdf:about="#Orthographic-w-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-x-Letter -->
+	<owl:Thing rdf:about="#Spanish-x-Letter">
+		<rdf:type rdf:resource="#Orthographic-x-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-x-Letter -->
+	<owl:Class rdf:about="#Orthographic-x-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-—-Letter -->
+	<owl:Thing rdf:about="#Spanish-—-Letter">
+		<rdf:type rdf:resource="#Orthographic-—-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-—-Letter -->
+	<owl:Class rdf:about="#Orthographic-—-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-H-Letter -->
+	<owl:Thing rdf:about="#Spanish-H-Letter">
+		<rdf:type rdf:resource="#Orthographic-H-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-H-Letter -->
+	<owl:Class rdf:about="#Orthographic-H-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-G-Letter -->
+	<owl:Thing rdf:about="#Spanish-G-Letter">
+		<rdf:type rdf:resource="#Orthographic-G-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-G-Letter -->
+	<owl:Class rdf:about="#Orthographic-G-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-V-Letter -->
+	<owl:Thing rdf:about="#Spanish-V-Letter">
+		<rdf:type rdf:resource="#Orthographic-V-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-V-Letter -->
+	<owl:Class rdf:about="#Orthographic-V-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-F-Letter -->
+	<owl:Thing rdf:about="#Spanish-F-Letter">
+		<rdf:type rdf:resource="#Orthographic-F-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-F-Letter -->
+	<owl:Class rdf:about="#Orthographic-F-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-U-Letter -->
+	<owl:Thing rdf:about="#Spanish-U-Letter">
+		<rdf:type rdf:resource="#Orthographic-U-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-U-Letter -->
+	<owl:Class rdf:about="#Orthographic-U-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish---Letter -->
+	<owl:Thing rdf:about="#Spanish---Letter">
+		<rdf:type rdf:resource="#Orthographic---Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic---Letter -->
+	<owl:Class rdf:about="#Orthographic---Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-1-Letter -->
+	<owl:Thing rdf:about="#Spanish-1-Letter">
+		<rdf:type rdf:resource="#Orthographic-1-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-1-Letter -->
+	<owl:Class rdf:about="#Orthographic-1-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-J-Letter -->
+	<owl:Thing rdf:about="#Spanish-J-Letter">
+		<rdf:type rdf:resource="#Orthographic-J-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-J-Letter -->
+	<owl:Class rdf:about="#Orthographic-J-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-ú-Letter -->
+	<owl:Thing rdf:about="#Spanish-ú-Letter">
+		<rdf:type rdf:resource="#Orthographic-ú-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-ú-Letter -->
+	<owl:Class rdf:about="#Orthographic-ú-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-2-Letter -->
+	<owl:Thing rdf:about="#Spanish-2-Letter">
+		<rdf:type rdf:resource="#Orthographic-2-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-2-Letter -->
+	<owl:Class rdf:about="#Orthographic-2-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-W-Letter -->
+	<owl:Thing rdf:about="#Spanish-W-Letter">
+		<rdf:type rdf:resource="#Orthographic-W-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-W-Letter -->
+	<owl:Class rdf:about="#Orthographic-W-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-Y-Letter -->
+	<owl:Thing rdf:about="#Spanish-Y-Letter">
+		<rdf:type rdf:resource="#Orthographic-Y-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Y-Letter -->
+	<owl:Class rdf:about="#Orthographic-Y-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-0-Letter -->
+	<owl:Thing rdf:about="#Spanish-0-Letter">
+		<rdf:type rdf:resource="#Orthographic-0-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-0-Letter -->
+	<owl:Class rdf:about="#Orthographic-0-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-)-Letter -->
+	<owl:Thing rdf:about="#Spanish-)-Letter">
+		<rdf:type rdf:resource="#Orthographic-)-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-)-Letter -->
+	<owl:Class rdf:about="#Orthographic-)-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-4-Letter -->
+	<owl:Thing rdf:about="#Spanish-4-Letter">
+		<rdf:type rdf:resource="#Orthographic-4-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-4-Letter -->
+	<owl:Class rdf:about="#Orthographic-4-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-3-Letter -->
+	<owl:Thing rdf:about="#Spanish-3-Letter">
+		<rdf:type rdf:resource="#Orthographic-3-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-3-Letter -->
+	<owl:Class rdf:about="#Orthographic-3-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-5-Letter -->
+	<owl:Thing rdf:about="#Spanish-5-Letter">
+		<rdf:type rdf:resource="#Orthographic-5-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-5-Letter -->
+	<owl:Class rdf:about="#Orthographic-5-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-(-Letter -->
+	<owl:Thing rdf:about="#Spanish-(-Letter">
+		<rdf:type rdf:resource="#Orthographic-(-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-(-Letter -->
+	<owl:Class rdf:about="#Orthographic-(-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-K-Letter -->
+	<owl:Thing rdf:about="#Spanish-K-Letter">
+		<rdf:type rdf:resource="#Orthographic-K-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-K-Letter -->
+	<owl:Class rdf:about="#Orthographic-K-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-Q-Letter -->
+	<owl:Thing rdf:about="#Spanish-Q-Letter">
+		<rdf:type rdf:resource="#Orthographic-Q-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Q-Letter -->
+	<owl:Class rdf:about="#Orthographic-Q-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-8-Letter -->
+	<owl:Thing rdf:about="#Spanish-8-Letter">
+		<rdf:type rdf:resource="#Orthographic-8-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-8-Letter -->
+	<owl:Class rdf:about="#Orthographic-8-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-9-Letter -->
+	<owl:Thing rdf:about="#Spanish-9-Letter">
+		<rdf:type rdf:resource="#Orthographic-9-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-9-Letter -->
+	<owl:Class rdf:about="#Orthographic-9-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-6-Letter -->
+	<owl:Thing rdf:about="#Spanish-6-Letter">
+		<rdf:type rdf:resource="#Orthographic-6-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-6-Letter -->
+	<owl:Class rdf:about="#Orthographic-6-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-7-Letter -->
+	<owl:Thing rdf:about="#Spanish-7-Letter">
+		<rdf:type rdf:resource="#Orthographic-7-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-7-Letter -->
+	<owl:Class rdf:about="#Orthographic-7-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-Z-Letter -->
+	<owl:Thing rdf:about="#Spanish-Z-Letter">
+		<rdf:type rdf:resource="#Orthographic-Z-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Z-Letter -->
+	<owl:Class rdf:about="#Orthographic-Z-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-“-Letter -->
+	<owl:Thing rdf:about="#Spanish-“-Letter">
+		<rdf:type rdf:resource="#Orthographic-“-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-“-Letter -->
+	<owl:Class rdf:about="#Orthographic-“-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-”-Letter -->
+	<owl:Thing rdf:about="#Spanish-”-Letter">
+		<rdf:type rdf:resource="#Orthographic-”-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-”-Letter -->
+	<owl:Class rdf:about="#Orthographic-”-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-Ó-Letter -->
+	<owl:Thing rdf:about="#Spanish-Ó-Letter">
+		<rdf:type rdf:resource="#Orthographic-Ó-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Ó-Letter -->
+	<owl:Class rdf:about="#Orthographic-Ó-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-ü-Letter -->
+	<owl:Thing rdf:about="#Spanish-ü-Letter">
+		<rdf:type rdf:resource="#Orthographic-ü-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-ü-Letter -->
+	<owl:Class rdf:about="#Orthographic-ü-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-Á-Letter -->
+	<owl:Thing rdf:about="#Spanish-Á-Letter">
+		<rdf:type rdf:resource="#Orthographic-Á-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Á-Letter -->
+	<owl:Class rdf:about="#Orthographic-Á-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-É-Letter -->
+	<owl:Thing rdf:about="#Spanish-É-Letter">
+		<rdf:type rdf:resource="#Orthographic-É-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-É-Letter -->
+	<owl:Class rdf:about="#Orthographic-É-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-è-Letter -->
+	<owl:Thing rdf:about="#Spanish-è-Letter">
+		<rdf:type rdf:resource="#Orthographic-è-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-è-Letter -->
+	<owl:Class rdf:about="#Orthographic-è-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-X-Letter -->
+	<owl:Thing rdf:about="#Spanish-X-Letter">
+		<rdf:type rdf:resource="#Orthographic-X-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-X-Letter -->
+	<owl:Class rdf:about="#Orthographic-X-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-Ñ-Letter -->
+	<owl:Thing rdf:about="#Spanish-Ñ-Letter">
+		<rdf:type rdf:resource="#Orthographic-Ñ-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Ñ-Letter -->
+	<owl:Class rdf:about="#Orthographic-Ñ-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-Í-Letter -->
+	<owl:Thing rdf:about="#Spanish-Í-Letter">
+		<rdf:type rdf:resource="#Orthographic-Í-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Í-Letter -->
+	<owl:Class rdf:about="#Orthographic-Í-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-$-Letter -->
+	<owl:Thing rdf:about="#Spanish-$-Letter">
+		<rdf:type rdf:resource="#Orthographic-$-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-$-Letter -->
+	<owl:Class rdf:about="#Orthographic-$-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-Ú-Letter -->
+	<owl:Thing rdf:about="#Spanish-Ú-Letter">
+		<rdf:type rdf:resource="#Orthographic-Ú-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Ú-Letter -->
+	<owl:Class rdf:about="#Orthographic-Ú-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-ò-Letter -->
+	<owl:Thing rdf:about="#Spanish-ò-Letter">
+		<rdf:type rdf:resource="#Orthographic-ò-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-ò-Letter -->
+	<owl:Class rdf:about="#Orthographic-ò-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-’-Letter -->
+	<owl:Thing rdf:about="#Spanish-’-Letter">
+		<rdf:type rdf:resource="#Orthographic-’-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-’-Letter -->
+	<owl:Class rdf:about="#Orthographic-’-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-–-Letter -->
+	<owl:Thing rdf:about="#Spanish-–-Letter">
+		<rdf:type rdf:resource="#Orthographic-–-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-–-Letter -->
+	<owl:Class rdf:about="#Orthographic-–-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-û-Letter -->
+	<owl:Thing rdf:about="#Spanish-û-Letter">
+		<rdf:type rdf:resource="#Orthographic-û-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-û-Letter -->
+	<owl:Class rdf:about="#Orthographic-û-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-﻿-Letter -->
+	<owl:Thing rdf:about="#Spanish-﻿-Letter">
+		<rdf:type rdf:resource="#Orthographic-﻿-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-﻿-Letter -->
+	<owl:Class rdf:about="#Orthographic-﻿-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-+-Letter -->
+	<owl:Thing rdf:about="#Spanish-+-Letter">
+		<rdf:type rdf:resource="#Orthographic-+-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-+-Letter -->
+	<owl:Class rdf:about="#Orthographic-+-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-´-Letter -->
+	<owl:Thing rdf:about="#Spanish-´-Letter">
+		<rdf:type rdf:resource="#Orthographic-´-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-´-Letter -->
+	<owl:Class rdf:about="#Orthographic-´-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-Ü-Letter -->
+	<owl:Thing rdf:about="#Spanish-Ü-Letter">
+		<rdf:type rdf:resource="#Orthographic-Ü-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Ü-Letter -->
+	<owl:Class rdf:about="#Orthographic-Ü-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Spanish-=-Letter -->
+	<owl:Thing rdf:about="#Spanish-=-Letter">
+		<rdf:type rdf:resource="#Orthographic-=-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-=-Letter -->
+	<owl:Class rdf:about="#Orthographic-=-Letter">
+		<rdfs:subClassOf rdf:resource="#Spanish-Orthographic-NotCore"/>
+	</owl:Class>
+

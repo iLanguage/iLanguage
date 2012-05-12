@@ -1,0 +1,576 @@
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-a-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-a-Letter">
+		<rdf:type rdf:resource="#Orthographic-a-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-a-Letter -->
+	<owl:Class rdf:about="#Orthographic-a-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-h-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-h-Letter">
+		<rdf:type rdf:resource="#Orthographic-h-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-h-Letter -->
+	<owl:Class rdf:about="#Orthographic-h-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-e-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-e-Letter">
+		<rdf:type rdf:resource="#Orthographic-e-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-e-Letter -->
+	<owl:Class rdf:about="#Orthographic-e-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-i-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-i-Letter">
+		<rdf:type rdf:resource="#Orthographic-i-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-i-Letter -->
+	<owl:Class rdf:about="#Orthographic-i-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-r-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-r-Letter">
+		<rdf:type rdf:resource="#Orthographic-r-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-r-Letter -->
+	<owl:Class rdf:about="#Orthographic-r-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-n-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-n-Letter">
+		<rdf:type rdf:resource="#Orthographic-n-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-n-Letter -->
+	<owl:Class rdf:about="#Orthographic-n-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-o-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-o-Letter">
+		<rdf:type rdf:resource="#Orthographic-o-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-o-Letter -->
+	<owl:Class rdf:about="#Orthographic-o-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-t-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-t-Letter">
+		<rdf:type rdf:resource="#Orthographic-t-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-t-Letter -->
+	<owl:Class rdf:about="#Orthographic-t-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-y-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-y-Letter">
+		<rdf:type rdf:resource="#Orthographic-y-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-y-Letter -->
+	<owl:Class rdf:about="#Orthographic-y-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-k-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-k-Letter">
+		<rdf:type rdf:resource="#Orthographic-k-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-k-Letter -->
+	<owl:Class rdf:about="#Orthographic-k-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-s-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-s-Letter">
+		<rdf:type rdf:resource="#Orthographic-s-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-s-Letter -->
+	<owl:Class rdf:about="#Orthographic-s-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-l-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-l-Letter">
+		<rdf:type rdf:resource="#Orthographic-l-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-l-Letter -->
+	<owl:Class rdf:about="#Orthographic-l-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-d-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-d-Letter">
+		<rdf:type rdf:resource="#Orthographic-d-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-d-Letter -->
+	<owl:Class rdf:about="#Orthographic-d-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-b-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-b-Letter">
+		<rdf:type rdf:resource="#Orthographic-b-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-b-Letter -->
+	<owl:Class rdf:about="#Orthographic-b-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-m-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-m-Letter">
+		<rdf:type rdf:resource="#Orthographic-m-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-m-Letter -->
+	<owl:Class rdf:about="#Orthographic-m-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-u-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-u-Letter">
+		<rdf:type rdf:resource="#Orthographic-u-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-u-Letter -->
+	<owl:Class rdf:about="#Orthographic-u-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-g-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-g-Letter">
+		<rdf:type rdf:resource="#Orthographic-g-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-g-Letter -->
+	<owl:Class rdf:about="#Orthographic-g-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-c-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-c-Letter">
+		<rdf:type rdf:resource="#Orthographic-c-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-c-Letter -->
+	<owl:Class rdf:about="#Orthographic-c-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-j-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-j-Letter">
+		<rdf:type rdf:resource="#Orthographic-j-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-j-Letter -->
+	<owl:Class rdf:about="#Orthographic-j-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-p-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-p-Letter">
+		<rdf:type rdf:resource="#Orthographic-p-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-p-Letter -->
+	<owl:Class rdf:about="#Orthographic-p-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-w-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-w-Letter">
+		<rdf:type rdf:resource="#Orthographic-w-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-w-Letter -->
+	<owl:Class rdf:about="#Orthographic-w-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-A-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-A-Letter">
+		<rdf:type rdf:resource="#Orthographic-A-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-A-Letter -->
+	<owl:Class rdf:about="#Orthographic-A-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-z-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-z-Letter">
+		<rdf:type rdf:resource="#Orthographic-z-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-z-Letter -->
+	<owl:Class rdf:about="#Orthographic-z-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-H-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-H-Letter">
+		<rdf:type rdf:resource="#Orthographic-H-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-H-Letter -->
+	<owl:Class rdf:about="#Orthographic-H-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-K-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-K-Letter">
+		<rdf:type rdf:resource="#Orthographic-K-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-K-Letter -->
+	<owl:Class rdf:about="#Orthographic-K-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-f-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-f-Letter">
+		<rdf:type rdf:resource="#Orthographic-f-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-f-Letter -->
+	<owl:Class rdf:about="#Orthographic-f-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-O-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-O-Letter">
+		<rdf:type rdf:resource="#Orthographic-O-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-O-Letter -->
+	<owl:Class rdf:about="#Orthographic-O-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-R-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-R-Letter">
+		<rdf:type rdf:resource="#Orthographic-R-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-R-Letter -->
+	<owl:Class rdf:about="#Orthographic-R-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-D-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-D-Letter">
+		<rdf:type rdf:resource="#Orthographic-D-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-D-Letter -->
+	<owl:Class rdf:about="#Orthographic-D-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-B-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-B-Letter">
+		<rdf:type rdf:resource="#Orthographic-B-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-B-Letter -->
+	<owl:Class rdf:about="#Orthographic-B-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-E-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-E-Letter">
+		<rdf:type rdf:resource="#Orthographic-E-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-E-Letter -->
+	<owl:Class rdf:about="#Orthographic-E-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-S-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-S-Letter">
+		<rdf:type rdf:resource="#Orthographic-S-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-S-Letter -->
+	<owl:Class rdf:about="#Orthographic-S-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-G-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-G-Letter">
+		<rdf:type rdf:resource="#Orthographic-G-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-G-Letter -->
+	<owl:Class rdf:about="#Orthographic-G-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-I-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-I-Letter">
+		<rdf:type rdf:resource="#Orthographic-I-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-I-Letter -->
+	<owl:Class rdf:about="#Orthographic-I-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-M-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-M-Letter">
+		<rdf:type rdf:resource="#Orthographic-M-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-M-Letter -->
+	<owl:Class rdf:about="#Orthographic-M-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-P-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-P-Letter">
+		<rdf:type rdf:resource="#Orthographic-P-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-P-Letter -->
+	<owl:Class rdf:about="#Orthographic-P-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-N-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-N-Letter">
+		<rdf:type rdf:resource="#Orthographic-N-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-N-Letter -->
+	<owl:Class rdf:about="#Orthographic-N-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-Y-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-Y-Letter">
+		<rdf:type rdf:resource="#Orthographic-Y-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Y-Letter -->
+	<owl:Class rdf:about="#Orthographic-Y-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-T-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-T-Letter">
+		<rdf:type rdf:resource="#Orthographic-T-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-T-Letter -->
+	<owl:Class rdf:about="#Orthographic-T-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-q-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-q-Letter">
+		<rdf:type rdf:resource="#Orthographic-q-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-q-Letter -->
+	<owl:Class rdf:about="#Orthographic-q-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-)-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-)-Letter">
+		<rdf:type rdf:resource="#Orthographic-)-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-)-Letter -->
+	<owl:Class rdf:about="#Orthographic-)-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-L-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-L-Letter">
+		<rdf:type rdf:resource="#Orthographic-L-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-L-Letter -->
+	<owl:Class rdf:about="#Orthographic-L-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-U-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-U-Letter">
+		<rdf:type rdf:resource="#Orthographic-U-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-U-Letter -->
+	<owl:Class rdf:about="#Orthographic-U-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-(-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-(-Letter">
+		<rdf:type rdf:resource="#Orthographic-(-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-(-Letter -->
+	<owl:Class rdf:about="#Orthographic-(-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-C-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-C-Letter">
+		<rdf:type rdf:resource="#Orthographic-C-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-C-Letter -->
+	<owl:Class rdf:about="#Orthographic-C-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-v-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-v-Letter">
+		<rdf:type rdf:resource="#Orthographic-v-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-v-Letter -->
+	<owl:Class rdf:about="#Orthographic-v-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-W-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-W-Letter">
+		<rdf:type rdf:resource="#Orthographic-W-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-W-Letter -->
+	<owl:Class rdf:about="#Orthographic-W-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized---Letter -->
+	<owl:Thing rdf:about="#UrduRomanized---Letter">
+		<rdf:type rdf:resource="#Orthographic---Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic---Letter -->
+	<owl:Class rdf:about="#Orthographic---Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-J-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-J-Letter">
+		<rdf:type rdf:resource="#Orthographic-J-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-J-Letter -->
+	<owl:Class rdf:about="#Orthographic-J-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-5-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-5-Letter">
+		<rdf:type rdf:resource="#Orthographic-5-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-5-Letter -->
+	<owl:Class rdf:about="#Orthographic-5-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-F-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-F-Letter">
+		<rdf:type rdf:resource="#Orthographic-F-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-F-Letter -->
+	<owl:Class rdf:about="#Orthographic-F-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-Q-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-Q-Letter">
+		<rdf:type rdf:resource="#Orthographic-Q-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Q-Letter -->
+	<owl:Class rdf:about="#Orthographic-Q-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-_-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-_-Letter">
+		<rdf:type rdf:resource="#Orthographic-_-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-_-Letter -->
+	<owl:Class rdf:about="#Orthographic-_-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-x-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-x-Letter">
+		<rdf:type rdf:resource="#Orthographic-x-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-x-Letter -->
+	<owl:Class rdf:about="#Orthographic-x-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-+-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-+-Letter">
+		<rdf:type rdf:resource="#Orthographic-+-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-+-Letter -->
+	<owl:Class rdf:about="#Orthographic-+-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-1-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-1-Letter">
+		<rdf:type rdf:resource="#Orthographic-1-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-1-Letter -->
+	<owl:Class rdf:about="#Orthographic-1-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-V-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-V-Letter">
+		<rdf:type rdf:resource="#Orthographic-V-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-V-Letter -->
+	<owl:Class rdf:about="#Orthographic-V-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-0-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-0-Letter">
+		<rdf:type rdf:resource="#Orthographic-0-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-0-Letter -->
+	<owl:Class rdf:about="#Orthographic-0-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-2-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-2-Letter">
+		<rdf:type rdf:resource="#Orthographic-2-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-2-Letter -->
+	<owl:Class rdf:about="#Orthographic-2-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-4-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-4-Letter">
+		<rdf:type rdf:resource="#Orthographic-4-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-4-Letter -->
+	<owl:Class rdf:about="#Orthographic-4-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-8-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-8-Letter">
+		<rdf:type rdf:resource="#Orthographic-8-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-8-Letter -->
+	<owl:Class rdf:about="#Orthographic-8-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-=-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-=-Letter">
+		<rdf:type rdf:resource="#Orthographic-=-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-=-Letter -->
+	<owl:Class rdf:about="#Orthographic-=-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-[-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-[-Letter">
+		<rdf:type rdf:resource="#Orthographic-[-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-[-Letter -->
+	<owl:Class rdf:about="#Orthographic-[-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#UrduRomanized-]-Letter -->
+	<owl:Thing rdf:about="#UrduRomanized-]-Letter">
+		<rdf:type rdf:resource="#Orthographic-]-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-]-Letter -->
+	<owl:Class rdf:about="#Orthographic-]-Letter">
+		<rdfs:subClassOf rdf:resource="#UrduRomanized-Orthographic-NotCore"/>
+	</owl:Class>
+

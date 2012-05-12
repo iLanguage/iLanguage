@@ -1,0 +1,16 @@
+set boxwidth 1 # Probably 3-5.
+set xlabel "Letters"
+set ylabel "Count"
+#set term postscript eps enhanced
+set term svg # Create an SVG image
+set output 'lettershist.svg'
+set key off # Unless you really want a key
+# For this next line, lw is linewidth (2-4)?
+#plot "engletters" using 2:xticlabels(1)
+#plot "assembly.nu.news-eng-utf8.txt-letters.txt" using 2:xticlabels(1)
+plot "letters" using 2:xticlabels(1)
+#plot "engletters2" using xticlabels(1):2 with histograms 
+	#http://newsgroups.derkeiler.com/Archive/Comp/comp.graphics.apps.gnuplot/2005-10/msg00103.html
+#plot [0:87] 'goldstandard-morphlength-frequency-tester' with boxes lw 5
+#plot binom(x), normal(x - 0.5)
+

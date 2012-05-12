@@ -1,0 +1,333 @@
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-t -->
+	<owl:Thing rdf:about="#English-t">
+		<rdf:type rdf:resource="#Phonemic-t"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-t -->
+	<owl:Class rdf:about="#Phonemic-t">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-a -->
+	<owl:Thing rdf:about="#English-a">
+		<rdf:type rdf:resource="#Phonemic-a"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-a -->
+	<owl:Class rdf:about="#Phonemic-a">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-s -->
+	<owl:Thing rdf:about="#English-s">
+		<rdf:type rdf:resource="#Phonemic-s"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-s -->
+	<owl:Class rdf:about="#Phonemic-s">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-n -->
+	<owl:Thing rdf:about="#English-n">
+		<rdf:type rdf:resource="#Phonemic-n"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-n -->
+	<owl:Class rdf:about="#Phonemic-n">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-ɪ -->
+	<owl:Thing rdf:about="#English-ɪ">
+		<rdf:type rdf:resource="#Phonemic-ɪ"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-ɪ -->
+	<owl:Class rdf:about="#Phonemic-ɪ">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-l -->
+	<owl:Thing rdf:about="#English-l">
+		<rdf:type rdf:resource="#Phonemic-l"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-l -->
+	<owl:Class rdf:about="#Phonemic-l">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-k -->
+	<owl:Thing rdf:about="#English-k">
+		<rdf:type rdf:resource="#Phonemic-k"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-k -->
+	<owl:Class rdf:about="#Phonemic-k">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-i -->
+	<owl:Thing rdf:about="#English-i">
+		<rdf:type rdf:resource="#Phonemic-i"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-i -->
+	<owl:Class rdf:about="#Phonemic-i">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-d -->
+	<owl:Thing rdf:about="#English-d">
+		<rdf:type rdf:resource="#Phonemic-d"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-d -->
+	<owl:Class rdf:about="#Phonemic-d">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-z -->
+	<owl:Thing rdf:about="#English-z">
+		<rdf:type rdf:resource="#Phonemic-z"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-z -->
+	<owl:Class rdf:about="#Phonemic-z">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-ɹ -->
+	<owl:Thing rdf:about="#English-ɹ">
+		<rdf:type rdf:resource="#Phonemic-ɹ"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-ɹ -->
+	<owl:Class rdf:about="#Phonemic-ɹ">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-r -->
+	<owl:Thing rdf:about="#English-r">
+		<rdf:type rdf:resource="#Phonemic-r"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-r -->
+	<owl:Class rdf:about="#Phonemic-r">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-m -->
+	<owl:Thing rdf:about="#English-m">
+		<rdf:type rdf:resource="#Phonemic-m"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-m -->
+	<owl:Class rdf:about="#Phonemic-m">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-p -->
+	<owl:Thing rdf:about="#English-p">
+		<rdf:type rdf:resource="#Phonemic-p"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-p -->
+	<owl:Class rdf:about="#Phonemic-p">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-æ -->
+	<owl:Thing rdf:about="#English-æ">
+		<rdf:type rdf:resource="#Phonemic-æ"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-æ -->
+	<owl:Class rdf:about="#Phonemic-æ">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-j -->
+	<owl:Thing rdf:about="#English-j">
+		<rdf:type rdf:resource="#Phonemic-j"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-j -->
+	<owl:Class rdf:about="#Phonemic-j">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-b -->
+	<owl:Thing rdf:about="#English-b">
+		<rdf:type rdf:resource="#Phonemic-b"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-b -->
+	<owl:Class rdf:about="#Phonemic-b">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-o -->
+	<owl:Thing rdf:about="#English-o">
+		<rdf:type rdf:resource="#Phonemic-o"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-o -->
+	<owl:Class rdf:about="#Phonemic-o">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-ɛ -->
+	<owl:Thing rdf:about="#English-ɛ">
+		<rdf:type rdf:resource="#Phonemic-ɛ"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-ɛ -->
+	<owl:Class rdf:about="#Phonemic-ɛ">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-e -->
+	<owl:Thing rdf:about="#English-e">
+		<rdf:type rdf:resource="#Phonemic-e"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-e -->
+	<owl:Class rdf:about="#Phonemic-e">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-w -->
+	<owl:Thing rdf:about="#English-w">
+		<rdf:type rdf:resource="#Phonemic-w"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-w -->
+	<owl:Class rdf:about="#Phonemic-w">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-ŋ -->
+	<owl:Thing rdf:about="#English-ŋ">
+		<rdf:type rdf:resource="#Phonemic-ŋ"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-ŋ -->
+	<owl:Class rdf:about="#Phonemic-ŋ">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-f -->
+	<owl:Thing rdf:about="#English-f">
+		<rdf:type rdf:resource="#Phonemic-f"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-f -->
+	<owl:Class rdf:about="#Phonemic-f">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-ə -->
+	<owl:Thing rdf:about="#English-ə">
+		<rdf:type rdf:resource="#Phonemic-ə"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-ə -->
+	<owl:Class rdf:about="#Phonemic-ə">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-g -->
+	<owl:Thing rdf:about="#English-g">
+		<rdf:type rdf:resource="#Phonemic-g"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-g -->
+	<owl:Class rdf:about="#Phonemic-g">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-h -->
+	<owl:Thing rdf:about="#English-h">
+		<rdf:type rdf:resource="#Phonemic-h"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-h -->
+	<owl:Class rdf:about="#Phonemic-h">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-u -->
+	<owl:Thing rdf:about="#English-u">
+		<rdf:type rdf:resource="#Phonemic-u"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-u -->
+	<owl:Class rdf:about="#Phonemic-u">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-v -->
+	<owl:Thing rdf:about="#English-v">
+		<rdf:type rdf:resource="#Phonemic-v"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-v -->
+	<owl:Class rdf:about="#Phonemic-v">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-ɑ -->
+	<owl:Thing rdf:about="#English-ɑ">
+		<rdf:type rdf:resource="#Phonemic-ɑ"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-ɑ -->
+	<owl:Class rdf:about="#Phonemic-ɑ">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-ʤ -->
+	<owl:Thing rdf:about="#English-ʤ">
+		<rdf:type rdf:resource="#Phonemic-ʤ"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-ʤ -->
+	<owl:Class rdf:about="#Phonemic-ʤ">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-ʃ -->
+	<owl:Thing rdf:about="#English-ʃ">
+		<rdf:type rdf:resource="#Phonemic-ʃ"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-ʃ -->
+	<owl:Class rdf:about="#Phonemic-ʃ">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-ʧ -->
+	<owl:Thing rdf:about="#English-ʧ">
+		<rdf:type rdf:resource="#Phonemic-ʧ"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-ʧ -->
+	<owl:Class rdf:about="#Phonemic-ʧ">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-ʊ -->
+	<owl:Thing rdf:about="#English-ʊ">
+		<rdf:type rdf:resource="#Phonemic-ʊ"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-ʊ -->
+	<owl:Class rdf:about="#Phonemic-ʊ">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-θ -->
+	<owl:Thing rdf:about="#English-θ">
+		<rdf:type rdf:resource="#Phonemic-θ"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-θ -->
+	<owl:Class rdf:about="#Phonemic-θ">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-ɚ -->
+	<owl:Thing rdf:about="#English-ɚ">
+		<rdf:type rdf:resource="#Phonemic-ɚ"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-ɚ -->
+	<owl:Class rdf:about="#Phonemic-ɚ">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-ð -->
+	<owl:Thing rdf:about="#English-ð">
+		<rdf:type rdf:resource="#Phonemic-ð"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-ð -->
+	<owl:Class rdf:about="#Phonemic-ð">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#English-ʒ -->
+	<owl:Thing rdf:about="#English-ʒ">
+		<rdf:type rdf:resource="#Phonemic-ʒ"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Phonemic-ʒ -->
+	<owl:Class rdf:about="#Phonemic-ʒ">
+		<rdfs:subClassOf rdf:resource="#English-Phonemic-NotCore"/>
+	</owl:Class>
+
