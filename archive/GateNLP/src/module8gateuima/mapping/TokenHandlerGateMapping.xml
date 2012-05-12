@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!--
+ *  Copyright (c) 2005, The University of Sheffield.
+ *
+ *  This file is part of the GATE/UIMA integration layer, and is free
+ *  software, released under the terms of the GNU Lesser General Public
+ *  Licence, version 2.1 (or any later version).  A copy of this licence
+ *  is provided in the file LICENCE in the distribution.
+ *
+ *  UIMA is a product of IBM, details are available from
+ *  http://alphaworks.ibm.com/tech/uima
+-->
+<uimaGateMapping>
+  <inputs>
+    <uimaAnnotation type="gate.uima.cas.Token" gateType="Token" indexed="true">
+      <feature name="String" kind="string">
+        <gateAnnotFeatureValue name="string" />
+      </feature>
+      <feature name="Kind" kind="string">
+        <gateAnnotFeatureValue name="kind" />
+      </feature>
+      <feature name="Orth" kind="string">
+        <gateAnnotFeatureValue name="orth" />
+      </feature>
+    </uimaAnnotation>
+  </inputs>
+  <outputs>
+    <updated>
+      <gateAnnotation type="Token" uimaType="gate.uima.cas.Token">
+        <feature name="numLower">
+          <uimaFSFeatureValue name="gate.uima.cas.Token:LowerCaseLetters"
+                              kind="int" />
+        </feature>
+      </gateAnnotation>
+    </updated>
+  </outputs>
+</uimaGateMapping>

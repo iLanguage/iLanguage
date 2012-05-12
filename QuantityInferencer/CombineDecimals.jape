@@ -1,0 +1,46 @@
+/*
+*
+*  This file is designed to annotate approximate and exact quantities for the use in evaluating etailment
+*
+*  Gina, 17 Aug 2010
+* 
+*/
+Imports: {
+	import static gate.Utils.*;//to use the start and end functions
+}
+Phase:   CombineDecimals
+Input: Token Lookup Number
+Options: control = appelt
+
+//////////////////////////////////////////////////////////////
+
+
+
+Rule:   Period
+(	{Number} 	{Token.string == "."}	{Number}
+):number 
+-->
+:number{
+	
+	FeatureMap fm = Factory.newFeatureMap();
+	fm.put("kind","decimal_number");
+	String text = stringFor(doc, numberAnnots);
+	//System.out.print("This will be a combined number: "+text+"\n");
+	fm.put("value",text);
+	fm.put("string",text);
+	try{
+		if( text.matches("[0-9,]+.[0-9]+") ){
+			outputAS.add(start(numberAnnots),end(numberAnnots),"Number",fm);
+
+			AnnotationSet as = bindings.get("number");
+			//System.out.print("Here are the matched bindings:\n"+as);
+			inputAS.removeAll(as);
+		}else{
+			System.out.print("This would have been a decimal number: "+text+"\n");
+			System.out.print("\tThis might not be a number, not including it.\n");
+		}
+	}catch(InvalidOffsetException e){
+		//the exception wont happen
+		System.out.print("Caught an exception "+e);
+	}	
+}

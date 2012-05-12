@@ -1,0 +1,245 @@
+/*
+*
+*  This file is designed to annotate approximate and exact quantities for the use in evaluating etailment
+*
+*  Gina, 17 Aug 2010
+* 
+*/
+Phase:   GetValues
+Input: Token Lookup
+Options: control = appelt
+
+//////////////////////////////////////////////////////////////
+
+Rule: TokensNumber
+(
+	{Token.kind == "number"}
+):number
+-->
+	:number.Number = { length = :number.Token.length, string = :number.Token.string, kind = "token_digit_number", value = :number.Token.string}
+
+
+
+Rule: Half
+( {Token.string == "Half"}|{Token.string == "half"}|{Token.string == "halves"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "0.5"}
+
+Rule: Third
+( {Token.string == "Third"}|{Token.string == "third"}|{Token.string == "thirds"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "0.33333333"}
+
+Rule: Fourth
+( {Token.string == "Fourth"}|{Token.string == "fourth"}|{Token.string == "fourths"}|{Token.string == "quarter"}|{Token.string == "Quarter"}|{Token.string == "quarters"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "0.25"}
+
+Rule: Fifth
+( {Token.string == "Fifth"}|{Token.string == "fifth"}|{Token.string == "fifths"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "0.2"}
+
+Rule: Sixth
+( {Token.string == "Sixth"}|{Token.string == "sixth"}|{Token.string == "sixths"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "0.166666666"}
+
+Rule: Seventh
+( {Token.string == "Seventh"}|{Token.string == "seventh"}|{Token.string == "sevenths"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "0.142857"}
+
+Rule: Eighth
+( {Token.string == "Eighth"}|{Token.string == "eighth"}|{Token.string == "eights"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "0.125"}
+
+Rule: Ninth
+( {Token.string == "Ninth"}|{Token.string == "ninth"}|{Token.string == "ninths"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "0.1111111111"}
+
+Rule: Tenth
+( {Token.string == "Tenth"}|{Token.string == "tenth"}|{Token.string == "tenths"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "0.142857"}
+
+Rule: Sixtieth
+( {Token.string == "Sixtieth"}|{Token.string == "sixtieth"}|{Token.string == "sixtieths"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "0.0166666666"}
+
+Rule: Hundredth
+( {Token.string == "Hundredth"}|{Token.string == "hundredth"}|{Token.string == "hundredths"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "0.01"}
+
+Rule: Thousandth
+( {Token.string == "Thousandth"}|{Token.string == "thousandth"}|{Token.string == "thousandths"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "0.001"}
+
+
+
+
+
+Rule: One
+( {Token.string == "one"}|{Token.string == "One"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "1"}
+
+Rule: Two
+( {Token.string == "Two"}|{Token.string == "two"}|{Token.string == "both"}|{Token.string == "couple"}|{Token.string == "pair"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "2"}
+
+Rule: Three
+( {Token.string == "Three"}|{Token.string == "three"}|{Token.string == "few"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "3"}
+
+Rule: Four
+( {Token.string == "Four"}|{Token.string == "four"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "4"}
+
+Rule: Five
+( {Token.string == "Five"}|{Token.string == "five"}|{Token.string == "handful"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "5"}
+
+Rule: Six
+( {Token.string == "Six"}|{Token.string == "six"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "6"}
+
+Rule: Seven
+( {Token.string == "Seven"}|{Token.string == "seven"}|{Token.string == "several"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "7"}
+
+Rule: Eight
+( {Token.string == "Eight"}|{Token.string == "eight"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "8"}
+
+Rule: Nine
+( {Token.string == "Nine"}|{Token.string == "nine"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "9"}
+
+Rule: Ten
+( {Token.string == "Ten"}|{Token.string == "ten"}|{Token.string == "decade"}|{Token.string == "decades"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "10"}
+
+Rule: Eleven
+( {Token.string == "Eleven"}|{Token.string == "eleven"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "11"}
+
+Rule: Twelve
+( {Token.string == "Twelve"}|{Token.string == "twelve"}|{Token.string == "dozen"}|{Token.string == "Dozen"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "12"}
+
+Rule: Thirteen
+( {Token.string == "Thirteen"}|{Token.string == "thirteen"} ):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "13"}
+
+Rule: Fourteen
+	( {Token.string == "Fourteen"}|{Token.string == "fourteen"} ):number 
+	-->
+	  :number.Number = {string = :number.Token.string, kind = "string_number", value = "14"}
+
+Rule: Fifteen
+	( {Token.string == "Fifteen"}|{Token.string == "fifteen"} ):number 
+	-->
+	:number.Number = {string = :number.Token.string, kind = "string_number", value = "15"}
+	
+	Rule: Sixteen
+		( {Token.string == "Sixteen"}|{Token.string == "sixteen"} ):number 
+		-->
+		:number.Number = {string = :number.Token.string, kind = "string_number", value = "16"}
+	Rule: Seventeen
+		( {Token.string == "Seventeen"}|{Token.string == "seventeen"} ):number 
+		-->
+		:number.Number = {string = :number.Token.string, kind = "string_number", value = "17"}
+	Rule: Eighteen
+		( {Token.string == "Eighteen"}|{Token.string == "eighteen"} ):number 
+		-->
+		:number.Number = {string = :number.Token.string, kind = "string_number", value = "18"}
+	Rule: Ninteen
+		( {Token.string == "Nineteen"}|{Token.string == "nineteen"}|{Token.string == "ninteen"}|{Token.string == "Ninteen"} ):number 
+		-->
+		:number.Number = {string = :number.Token.string, kind = "string_number", value = "19"}
+	Rule: Twenty
+		( {Token.string == "Twenty"}|{Token.string == "twenty"} ):number 
+		-->
+		:number.Number = {string = :number.Token.string, kind = "string_number", value = "20"}
+	Rule: Thirty
+		( {Token.string == "Thirty"}|{Token.string == "thirty"} ):number 
+		-->
+		:number.Number = {string = :number.Token.string, kind = "string_number", value = "30"}
+
+		Rule: Fourty
+			( {Token.string == "Fourty"}|{Token.string == "fourty"} ):number 
+			-->
+			:number.Number = {string = :number.Token.string, kind = "string_number", value = "40"}
+		Rule: Fifty
+			( {Token.string == "Fifty"}|{Token.string == "fifty"} ):number 
+			-->
+			:number.Number = {string = :number.Token.string, kind = "string_number", value = "50"}
+		Rule: Sixty
+			( {Token.string == "Sixty"}|{Token.string == "sixty"} ):number 
+			-->
+			:number.Number = {string = :number.Token.string, kind = "string_number", value = "60"}
+		Rule: Seventy
+			( {Token.string == "Seventy"}|{Token.string == "seventy"} ):number 
+			-->
+			:number.Number = {string = :number.Token.string, kind = "string_number", value = "70"}
+		Rule: Eighty
+			( {Token.string == "Eighty"}|{Token.string == "eighty"} ):number 
+			-->
+			:number.Number = {string = :number.Token.string, kind = "string_number", value = "80"}
+		Rule: Ninety
+			( {Token.string == "Ninety"}|{Token.string == "ninety"} ):number 
+			-->
+			:number.Number = {string = :number.Token.string, kind = "string_number", value = "90"}
+		Rule: Hundred
+			( {Token.string == "Hundred"}|{Token.string == "hundred"} ):number 
+			-->
+			:number.Number = {string = :number.Token.string, kind = "string_number", value = "100"}
+		Rule: Thousand
+			( {Token.string == "Thousand"}|{Token.string == "thousand"}|{Token.string == "k"}|{Token.string == "K"} ):number 
+			-->
+			:number.Number = {string = :number.Token.string, kind = "string_number", value = "1000"}
+
+
+Rule:   Million
+(	{Token.string == "m"}|
+	{Token.string == "million"}
+):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "1000000"}
+
+
+Rule:   Billion
+(	
+		{Token.string == "b"}|
+		{Token.string == "billion"}|
+		{Token.string == "trillion"}|
+		{Token.string == "bn"}
+):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "1000000000"}
+
+
+Rule:   Trllion
+(	
+		{Token.string == "trillion"}
+):number 
+-->
+  :number.Number = {string = :number.Token.string, kind = "string_number", value = "1000000000000"}

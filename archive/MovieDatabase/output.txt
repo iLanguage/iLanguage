@@ -1,0 +1,823 @@
+DBManager is turned on.
+Please enter a database file name: (push enter to use the default file: src/dvdmoviedb.txt)
+Building the movie database.........................................................................
+....................................................................................................
+...........................................
+Database loaded.
+The database contains 215 records.
+Building indices. 
+There are 203 distinct titles.
+There are 25 distinct years.
+There are 85 distinct running times.
+There are 9317 distinct actors.
+There are 11 distinct ratings.
+There are 26 distinct genres.
+Finished building indices.
+
+Please choose one of the following options:
+q -> Query
+1 -> Test Queries
+n -> Navigate
+2 -> Test Navigation
+e -> Exit
+Enter your choice:2
+Title: xXx
+
+Genre: Adventure; Action
+
+Movie Release Date: 2002
+
+Plot:
+Xander Gage is a muscular daredevil who in the beginning of the movie gets into serious trouble with
+ the law. It seems that there is no way out for him except through the NSA, they offer him a job to 
+track down and stop a Russian madman. In the process he meets the girl of his dreams, who works for 
+the bad guys. She doesn't know he's working for the United States government and neither do any of t
+he other villians. Xander gets caught up in trying to save the world and save the woman he falls in 
+love with.
+
+Running Time: 124
+
+Audience Rating: UR (Unrated)
+
+Actor(s):
+		Vin Diesel as Xander Cage
+		Asia Argento as Yelena
+		Marton Csokas as Yorgi
+		Tom Everett as Senator Dick Hotchkiss
+		Michael Roof as Agent Toby Lee Shavers
+		Samuel L. Jackson as Agent Augustus Gibbons
+		Jan Pavel Filipensky as Viktor
+		Danny Trejo as El Jefe
+		Thomas Ian Griffith as Agent Jim McGrath
+		Werner D‰hn as Kirill
+		Petr Jakl as Kolya
+		Leila Arcieri as Jordan King
+		William Hope as Agent Roger Donnan
+		Richy M¸ller as Milan Sova
+		Ted Maynard as James Tannick
+		David Asman as Agent Polk
+		Joe Bucaro III as Virg
+		Chris Gann as T.J.
+		Martin Hub as Ivan Podrov
+		Werner Daehn as Kirill
+		Eve as J.J.
+		TeeJay Boyce as Bimbo Intern
+		Radek Tomecka as Ivan Pedgrag
+		Mary-Pat Green as Waitress
+		Tanner Gill as Trucker
+		Scott Waugh as Stockbroker
+		Vaclav Chalupa as Nervous Hacker
+		Martina Smukova as Female Czech Cop
+		Tony Hawk as Caddy Driver
+		Mat Hoffman as Extreme Guy
+		Brian Deegan as Extreme Guy
+		Mike Vallely as Skater
+		Mike Escamilla as Ramp Truck Passenger
+		Rob Wells as Hillside Video Shooter
+		Rick Thorne as Himself
+		Carey Hart as Caddy Passenger
+		W. Colin McKay as Van Driver
+		Jason Ellis as Van Video Shooter
+		Marek Vasut as Czech General
+		Lubos Pospisil as Czech Major
+		Ivo Niederle as Head Chemist
+		Vitezslav Bouchner as Head Technician
+		Esteban Cueto as Gold Tooth Narco
+		Martin Barta as Male Opera Singer
+		Martina Bauerova as Female Opera Singer
+		Rich Wilkes as Tall Guy
+		F. Valentino Morales as Short Order Cook / NSA Agent
+		Leonard L. Thomas as NSA Agent
+		Ivan Rueda as Child Field Worker
+		Joshua Montero as Child Field Worker
+		Armando Cantina as Field Worker
+		Roman Matrka as Czech Agent
+		Alena Cihalikova as Xander's Bedroom Dancer
+		Richard Kruspe as Himself
+		Paul Landers as Himself
+		Till Lindemann as Himself
+		Flake Lorenz as Himself
+		Oliver Riedel as Himself
+		Christoph Schneider as Himself
+		Paul Hartnoll as Himself
+		Phil Hartnoll as Himself
+		Michal M¸ller as Zither player
+		Paul Aulicino as Police Officer
+		James Babson as Technician
+		Leslie Berger as Airline Passenger
+		Rob Cohen as Colombian Horseman
+		Lori Jo Hendrix as Woman in Restaurant
+		Rob Roy as Navy SEAL
+		Christopher Eric Ruiz as F.A.R.C. Soldier
+		Josh Todd as Extra at party with boxing gloves
+
+ID: 22348
+
+Crossed bottom boundary. Try navigating up.Title: 2 Fast 2 Furious
+
+Genre: Adventure; Thriller; Crime; Action
+
+Movie Release Date: 2003
+
+Plot:
+Brain O'Conner (Paul Walker) runs from LA, ensuing criminal actions from the previous Fast and the F
+urious installment. He runs to Miami where he earns money and respect by street racing. However, he 
+is caught by the police. Agent Bilkins, another familiar face from the first movie, offers Brian a d
+eal. Rather than going to jail he can go undercover, working for Carter Verone. Verone is a drug lor
+d with a high bankroll. Brian accepts under the pretence that he can pick his own partner. He travel
+s back to his (assumably) once home and recruits childhood friend Roman Pierce (Tyrese). O'Conner an
+d Pierce work with Monica Clemente (Eva Mendes) to try and bring down Verone.
+
+Running Time: 108
+
+Audience Rating: PG-13 (Parental Guidance)
+
+Actor(s):
+		Tyrese Gibson as Roman Pearce
+		Paul Walker as Brian O'Conner
+		Cole Hauser as Carter Verone
+		Ludacris as Tej
+		Eva Mendes as Monica Fuentes
+		Devon Aoki as Suki
+		James Remar as Agent Markham
+		John Cenatiempo as Korpi
+		Corey Michael Eubanks as Max Campisi
+		Thom Barry as Agent Bilkins
+		Amaury Nolasco as Orange Julius
+		Michael Ealy as Slap Jack
+		Jin Auyeung as Jimmy
+		Edward Finlay as Agent Dunn
+		Mark Boone Junior as Detective Whitworth
+		Matt Gallini as Enrique
+		Roberto Sanchez as Roberto
+		Eric Etebari as Darden
+		Troy Brown as Paul Hackett
+		Sam Maloof as Joe Osborne
+		Roberto 'Sanz' Sanchez as Roberto
+		Troy Robinson as Feliz Vispone
+		Jose Perez as Jose
+		Sincerely A. Ward as Slap Jack's Girlfriend
+		Nievecita Dubuque as Suki's Girl
+		Tequilla Hill as Suki's Girl
+		Bettina Huffer as Suki's Girl
+		Phuong Tuyet Vo as Suki's Girl
+		Felecia Rafield as Detective
+		Mateo Herreros as Detective
+		Walter 'Duke' Foster as Detective
+		Zachary L. Mann as US Customs Lead Agent
+		Marc Macaulay as Agent
+		Cobette Harper as Agent
+		Limary Agosto as Waitress
+		Tony Bolano as Gardener
+		Tara Carroll as Seductress
+		Neal H. Moritz as Swerving Cop
+		Marianne M. Arreaga as Police Chopper Pilot
+		Tamara Jones as Customs Technician
+
+ID: 542
+
+Crossed top boundary. Try navigating down.Title: The 10th Kingdom
+
+Genre: Comedy; Drama; Adventure; Science Fiction; Fantasy; Romance
+
+Movie Release Date: 2000
+
+Plot:
+The 10th Kingdom is a 10 hour miniseries that wove the story of fairytales. Virginia (Kimberly Willi
+ams) is a waitress who still lives with her father (John Larroquette). She spends long hours of the 
+day dreaming of something more magical. Well, her wish gets granted and they both get transported to
+ another world. In this world all the fairytales are real and alive! They team up with all sorts of 
+characters and search to put an end to the evil queen who has usurped Snow White's grandson! Along t
+he way they get chased by a troll king and Virginia falls in love. They even meet Snow White and Cin
+derella themselves. But will they be able to put the king back on his throne in time?
+
+Running Time: 417
+
+Audience Rating: PG (Parental Guidance)
+
+Actor(s):
+		Kimberly Williams as Virginia Lewis
+		Scott Cohen as Wolf
+		John Larroquette as Tony Lewis
+		Daniel Lapaine as Prince Wendell
+		Dianne Wiest as Queen
+		Ed O'Neill as Relish the Troll King
+		Jeremiah Birkett as Blue Bell
+		Hugh O'Gorman as Burly
+		Warwick Davis as Acorn
+		Camryn Manheim as Snow White
+		Timothy Bateson as Tooth Fairy
+		Robert Hardy as Chancellor Griswold
+		Rutger Hauer as Huntsman
+		Ann Margret as Queen Cinderella
+		Dawnn Lewis as Blabberwort the Troll
+		Kim Thomson as Queen Riding Hood III
+		Lucy Whybrow as Leaf Fall
+		Ann-Margret as Queen Cinderella
+		Christopher Crooks as Elf King
+		Moira Lister as Grandmother
+		John Shrapnel as Governor of Prison
+		Jimmy Nail as Clayface the Goblin
+		Aden Gillett as Viscount Lansky
+		William Osborne as Lord Rupert
+		Edward Jewesbury as Old Retainer
+		Jeffrey Wickham as Giles
+		Sheila Steafel as Dr. Horowitz
+		James Carroll Jordan as Mr. Murray
+		Deborah Sheridan-Taylor as Candy
+		Katherine Hogarth as Mrs. Murray
+		Dylan Bell as Murray Jnr.
+		Gudrun Ure as Mrs. Murray Snr.
+		Johnny Myers as Hank Murray
+		Sam Douglas as Restaurant Diner
+		Briony Glassco as Stallholder
+		Arthur Cox as Mayor of Beantown
+		Cliff Barry as Prison Warder
+		John Axon as Local Craftsman
+		Adam James as Beantown Local
+		Paul McNeilly as Prison Warder
+		William Marsh as SWAT Team
+		Nigel Whitmey as SWAT Team
+		Leon Herbert as SWAT Team
+		Len Collin as Bald Convict
+		Charles Cork as Old Convict
+		Michael M¸ller as Beantown Local
+		Peter Mandell as Dwarf
+		John Hallam as Queen's Talking Mirror
+		James Cosmo as Blind Woodsman / Juliet
+		Luke Healy as Queen's Servant
+		Edward Highmore as Queen's Servant
+		Eve Pearce as The Gypsy Queen
+		Michael McCarthy as Gypsy
+		Al Ashton as Villainous Convict
+		Adam Levy as Gypsy
+		Paul Sax as Fiddle Gypsy
+		Vince De Cicco as Accordian Gypsy
+		Tony Vogel as Boatman
+		Calum MacPherson as The Village Idiot
+		Anne Firbank as Old Woman
+		Michael Elliot as Farmer Morris
+		Amelda Brown as Mrs. Morris
+		Frank Middlemass as Judge
+		Peter Vaughan as Wilfred Peep
+		Lucy Punch as Sally Peep
+		Gabrielle Lloyd as Barbara Peep
+		Natasha Collins as Betty Peep
+		Craig Purnell as Filbert Peep
+		Edward Woodall as Fairfax Peep
+		Liz May Brice as Mary Ramley
+		Richard Syms as Defeated Farmer
+		Jacqueline Tong as Farmer's Wife
+		Bruce McGregor as Distraught Farmer
+		Caroline Hayes as Shepherdess
+		Helen Latham as Shepherdess
+		Christopher Tune as Frightened Servant
+		Donald Pelmear as Court Clerk
+		Ben Bailey as Young Servant
+		Adam Christopher as Armed Troll
+		Graham Crowden as Elderly Elf
+		Tom Chadbon as Auctioneer
+		Poppy Rogers as Little Cupid Girl
+		Bob Barrett as Farmer John
+		John Cater as Restaurant Owner
+		Patrick Marley as Jeweller
+		Roger Sloman as Kissing Town Sheriff
+		Gordon Milne as Barman
+		Bob Curtiss as News Vendor
+		Maria Charles as Old Lady Gambler
+		Heidi Monsen as Lady Croupier
+		Tim Killick as Poker Playing Man
+		Arturo Venegas as Casino Manager
+		Kate Robbins as Singing Ring
+		John Blakey as Gambler
+		Charlotte Weston as High Roll Croupier
+		Ruth Arnold as Local Woman
+		Jeremy Peters as Evil Coachman
+		Bill Thomas as Excited Man
+		Tim Hudson as Angry Man
+		Jennifer Croxton as Angry Woman
+
+ID: 541
+
+Please choose one of the following options:
+q -> Query
+1 -> Test Queries
+n -> Navigate
+2 -> Test Navigation
+e -> Exit
+Enter your choice:1
+Enter movie genre (eg: myster, " " for all results)myster
+Enter movie year: (eg: 2006, -1 for all results)2006
+Displaying query results:
+
+
+Title: The Da Vinci Code
+
+Genre: Thriller; Mystery
+
+Movie Release Date: 2006
+
+Plot:
+The Da Vinci Code focuses on Robert Langdon (Tom Hanks), a world renowned professor of symbology. La
+ngdon is called by the Paris police to examine the murder scene of Jacques SauniËre. It is at the mu
+rder scene that Langdon meets Sophie Neveu (Audrey Tautou) who helps him to realize that not only is
+ he a suspect for the murder of SauniËre, but his life is in grave danger. Langdon and Neveu subsequ
+ently evade the police and are led on a wild goose chase by the clues surrounding the murder of Saun
+iËre, whom Neveu soon reveals is her grandfather. As Langdon and Neveu attempt to solve the mystery,
+ they are chased through Europe by the Paris police and members of Opus Dei, a religious extremist g
+roup, who also want to find what Langdon and Neveu are seeking.
+
+Running Time: 149
+
+Audience Rating: PG-13 (Parental Guidance)
+
+Actor(s):
+		Tom Hanks as Robert Langdon
+		Audrey Tautou as Sophie Neveu
+		Ian McKellen as Sir Leigh Teabing
+		Alfred Molina as Bishop Aringarosa
+		Paul Bettany as Silas the albino
+		Jean Reno as Bezu Fache
+		Etienne Chicot as Lt. Collet
+		Jean-Pierre Marielle as Jacques Sauniere
+		J¸rgen Prochnow as Andre Vernet
+		Jean-Yves Berteloot as Remy Jean
+		Marie-FranÁoise Audollent as Sister Sandrine
+		Rita Davies as Elegant Woman at Rosslyn
+		Francesco Carnelutti as Prefect
+		Seth Gabel as Michael
+		Shane Zaza as Youth on Bus
+		Andrew Clark as Docent
+		Fausto Maria Sciarappa as Young Church Official
+		Joe Grossi as Old Church Official
+		Denis PodalydËs as Flight Controller
+		Harry Taylor as British Police Captain
+		Clive Carter as Biggin Hill Police Captain
+		Garance Mazureck as Sophie at 13 Years
+		Daisy Doidge-Hill as Sophie at 8 Years
+		Lilli Ella Kelleher as Sophie at 3 Years
+		Crisian Emanuel as Sophie's Mother
+		Charlotte Graham as Mary Magdalene
+		Xavier De Guillebon as Junkie
+		Tonio Descanvelle as Bank Guard
+		David Bark-Jones as Hawker Pilot
+		Serretta Wilson as American Woman
+		Eglantine Rembauville-Nicolle as Student
+		Dan Tondowski as Student
+		Aewia Huillet as Student
+		Roland John-Leopoldie as Student
+		David Saracino as DCPJ Agent
+		Lionel Guy-Bremond as Officer Ledoux
+		Yves Aubert as Louvre Computer Cop
+		Rachael Black as Policewoman
+		Dez Drummond as London Police
+		Mark Roper as London Police
+		Brock Little as American Embassy Cop
+		Matthew Butler as Westminster Cop
+		Roland Menou as DCPJ Technician
+		Hugh Mitchell as Young Silas
+		Tina Maskell as Mother of Silas
+		Peter Pedrero as Father of Silas
+		Sam Mancuso as Pope
+		Andre Lillis as Pope
+		Mario Vernazza as Young Constantine
+		Agathe Natanson as Ritual Priestess
+		Daz Parker as Peasant Mother
+		Andy Robb as Peasant Father
+		Tom Barker as Peasant Boy
+		Maggie McEwan as Peasant Girl
+		Michael Bertenshaw as Priest
+		Sarah Wildor as Priestess
+		David Bertrand as French Newscaster
+		Christopher Fosh as Armed Responce Police Officer
+		Paul Herbert as Sophie's Father
+		Arnaud Klein as French Police Officer
+		Dhaffer L'Abidine as PTS Agent
+		Michael Norton as French Detective
+		Lynn Picknett as Bus Passenger
+		Clive Prince as Bus Passenger
+		Norman Campbell Rees as Passerby
+		Jurgen Prochnow
+
+ID: 2675
+
+-------------------------------------------------------------
+
+Next match (y/n)? y
+
+
+Title: Lady in the Water
+
+Genre: Drama; Fantasy; Thriller; Mystery
+
+Movie Release Date: 2006
+
+Plot:
+In 'Lady in the Water,' the main character lives in the apartment complex for which he works as the 
+manager. One night, he finds a strange woman in the pool of the complex. Over the next few days, he 
+comes to believe that she is a member of a mythical race who come to earth for only a brief period t
+o complete a transformative quest. One of the residents in the complex tells him the story of these 
+beings and the humans who they must find in order to complete the quest. As it becomes clear that th
+e young woman's life is in danger, the residents of the complex band together, each fulfilling a uni
+que role, to help her complete her quest.
+
+Running Time: 110
+
+Audience Rating: PG-13 (Parental Guidance)
+
+Actor(s):
+		Paul Giamatti as Cleveland Heep
+		Bryce Dallas Howard as The Lady
+		Jeffrey Wright as Mr. Dury
+		Bob Balaban as Mr. Farber
+		Sarita Choudhury as Anna Ran
+		Cindy Cheung as Young Soon
+
+		M. Night Shyamalan as Vick
+		Bill Irwin as Mr. Leeds
+		Mary Beth Hurt as Mrs. Bell
+		Freddy RodrÌguez as Reggie
+		Noah Gray-Cabey as Joey Dury
+		Joseph D. Reitman as Long Haired Smoker
+		Jared Harris as Goatee Smoker
+		Grant Monohon as Emaciated Smoker
+		John Boyd as One-Eyebrow Smoker
+		Ethan Cohn as Glasses Smoker
+		June Kyoto Lu as Mrs. Choi
+		Tovah Feldshuh as Mrs. Bubchik
+		Tom Mardirosian as Mr. Bubchik
+		Maricruz Hernandez as Perez de la Torre Sister #1
+		Carla Jimenez as Perez de la Torre Sister #2
+		Natasha Perez as Perez de la Torre Sister #3
+		Monique Curnen as Perez de la Torre Sister #4
+		Marilyn Torres as Perez de la Torre Sister #5
+		George Bass as Mr. Perez de la Torre
+		Joel Garland as Pool Guy
+		James Breen as SPCA Guy
+		Nell Johnson as Phone Message
+		Walter Lafty as Silvertide Band Member
+		Mark Melchiorre Jr. as Silvertide Band Member
+		Kevin Frank as Silvertide Band Member
+		Brian Weaver as Silvertide Band Member
+		Nick Perri as Silvertide Band Member
+		Jeremy Howard as Tartutic #1
+		Brian Steele as Tartutic #2
+		Kurt Carley as Tartutic #3
+		Doug Jones as Tartutic #4
+		Nancy de Zutter as Party Guest
+		Scott Hatfield as Party Guest
+		Mark J. Parker as Party Guest
+		Freddy Rodriguez
+
+ID: 13923
+
+-------------------------------------------------------------
+
+Next match (y/n)? y
+
+
+Title: The Lake House
+
+Genre: Romance; Mystery
+
+Movie Release Date: 2006
+
+Plot:
+When Kate decides to move to the big city for her work as a doctor, she leaves a letter for the next
+ resident of her old home on the lake. One day she returns to her old house and finds a new letter i
+n the mailbox. It's from Alex. She writes him back and a romance begins. They keep writing but they 
+can't meet, will they ever find a way to make this love work?
+
+Running Time: 110
+
+Audience Rating: PG (Parental Guidance)
+
+Actor(s):
+		Keanu Reeves as Alex Wyler
+		Sandra Bullock as Kate Forster
+		Christopher Plummer as Simon Wyler
+		Shohreh Aghdashloo as Anna Klyczynski
+		Ebon Moss-Bachrach as Henry Wyler
+		Dylan Walsh as Morgan
+		Lynn Collins as Mona
+		Mike Bacarella as Mulhern
+		Willeke van Ammelrooy as Kate's Mother
+		Kevin Brennan as Waiter
+		Frank Caeti as Cove Patron
+		Aliyah Carr as Girl Patient
+		Jennifer Clark as Nurse Practitioner
+		Jacob D. Dumelle as Patient on Gurney
+		Scott Elias as Doug
+		Tiffini Funches as Young Nurse
+		Lori Ann Gerdisch as ICU Nurse
+		Michael Andrew Gorman as Cove Bartender
+		Jennifer Kern as Nurse
+		Joy Kocay as Party Goer
+		Cynthia Kaye McWilliams as Vanessa
+		India Neilan as Hostess
+		Nora Newbrough as Marjorie
+		Marissa Newton as Hostess #2
+		Mia Park as Receptionist
+		Peggy Roeder as Attendant
+		Jason Wells as Costello
+		Jacqueline Williams as Madhvi Patel
+		Jason Abustan as Ivy League Jr Architect
+		Nathan Adloff as Restaurant Patron
+		Lori Claussen as Dog Walker
+		Sue Durso as Pedestrian
+		Patricia E. Harrington as Businesswoman
+		Bryanna Hartung as Girl at Navy Pier
+		Bob Kolbey as Commuter
+		Ernie Lang as Restaurant Patron
+		John Littlefield as Doctor
+		Alexandra LoRusso as Messenger
+		William Nero Jr. as Boy
+		Jonathan Samuels as Architect
+		January Scarpino as Pediatrician
+		Ron Valdez as Ivy League Jr Architect
+		Andrea N. Winters as Waitress
+		Willeke van Ammelroy
+
+ID: 13924
+
+-------------------------------------------------------------
+
+Next match (y/n)? y
+No additional results.
+Enter movie rating (ex: general, " " for all results) general
+Enter movie running time,  (ex: 239, -1 for all results) 239
+Displaying query results:
+
+
+Title: Cleopatra
+
+Genre: Drama; Romance; History
+
+Movie Release Date: 1963
+
+Plot:
+The life of Cleopatra (Elisabeth Taylor) last pharaoh of Egypt, from the age of 18 when she succeeds
+ in meeting Julius Caesar (Rex Harrison) by being delivered wrapped up in a rug in 48 BCE, until her
+ suicide (the result of being bitten by an asp in 30 BCE) after Octavian, the nephew of Caesar and f
+uture Augustus, (Roddy McDowall) defeats her and her lover and subsequently husband Mark Antony (Ric
+hard Burton). The most dramatic moments of her life, including her entrance in Rome, her seduction o
+f Antony, then master of the Roman East, and the battle of Actium which largely sealed her fate are 
+lavishly portrayed.
+
+Running Time: 239
+
+Audience Rating: G (General Audience)
+
+Actor(s):
+		Elizabeth Taylor as Cleopatra
+		Richard Burton as Marc Antony
+		George Cole as Flavius
+		Rex Harrison as Julius Caesar
+		Hume Cronyn as Sosigenes
+		Pamela Brown as High Priestess
+		Cesare Danova as Apollodorus
+		Kenneth Haigh as Brutus
+		Andrew Keir as Agrippa
+		Martin Landau as Rufio
+		Roddy McDowall as Caesar Augustus
+		Robert Stephens as Germanicus
+		Francesca Annis as Eiras
+		Gregoire Aslan as Pothinus
+		Martin Benson as Ramos
+		Herbert Berghof as Theodotos
+		John Cairney as Phoebus
+		Jacqui Chan as Lotos
+		Isabel Cooley as Charmian
+		John Doucette as Achillas
+		Andrew Faulds as Canidius
+		Michael Gwynn as Cimber
+		Michael Hordern as Cicero
+		John Hoyt as Cassius
+		Marne Maitland as Euphranor
+
+ID: 2666
+
+-------------------------------------------------------------
+
+Next match (y/n)? y
+No additional results.
+Enter movie title (ex:da vinci, " " for all results) da vin
+Enter an actor or part of an actor's name (ex: tom, " " for all results) tom
+Displaying query results:
+
+
+Title: The Da Vinci Code
+
+Genre: Thriller; Mystery
+
+Movie Release Date: 2006
+
+Plot:
+The Da Vinci Code focuses on Robert Langdon (Tom Hanks), a world renowned professor of symbology. La
+ngdon is called by the Paris police to examine the murder scene of Jacques SauniËre. It is at the mu
+rder scene that Langdon meets Sophie Neveu (Audrey Tautou) who helps him to realize that not only is
+ he a suspect for the murder of SauniËre, but his life is in grave danger. Langdon and Neveu subsequ
+ently evade the police and are led on a wild goose chase by the clues surrounding the murder of Saun
+iËre, whom Neveu soon reveals is her grandfather. As Langdon and Neveu attempt to solve the mystery,
+ they are chased through Europe by the Paris police and members of Opus Dei, a religious extremist g
+roup, who also want to find what Langdon and Neveu are seeking.
+
+Running Time: 149
+
+Audience Rating: PG-13 (Parental Guidance)
+
+Actor(s):
+		Tom Hanks as Robert Langdon
+		Audrey Tautou as Sophie Neveu
+		Ian McKellen as Sir Leigh Teabing
+		Alfred Molina as Bishop Aringarosa
+		Paul Bettany as Silas the albino
+		Jean Reno as Bezu Fache
+		Etienne Chicot as Lt. Collet
+		Jean-Pierre Marielle as Jacques Sauniere
+		J¸rgen Prochnow as Andre Vernet
+		Jean-Yves Berteloot as Remy Jean
+		Marie-FranÁoise Audollent as Sister Sandrine
+		Rita Davies as Elegant Woman at Rosslyn
+		Francesco Carnelutti as Prefect
+		Seth Gabel as Michael
+		Shane Zaza as Youth on Bus
+		Andrew Clark as Docent
+		Fausto Maria Sciarappa as Young Church Official
+		Joe Grossi as Old Church Official
+		Denis PodalydËs as Flight Controller
+		Harry Taylor as British Police Captain
+		Clive Carter as Biggin Hill Police Captain
+		Garance Mazureck as Sophie at 13 Years
+		Daisy Doidge-Hill as Sophie at 8 Years
+		Lilli Ella Kelleher as Sophie at 3 Years
+		Crisian Emanuel as Sophie's Mother
+		Charlotte Graham as Mary Magdalene
+		Xavier De Guillebon as Junkie
+		Tonio Descanvelle as Bank Guard
+		David Bark-Jones as Hawker Pilot
+		Serretta Wilson as American Woman
+		Eglantine Rembauville-Nicolle as Student
+		Dan Tondowski as Student
+		Aewia Huillet as Student
+		Roland John-Leopoldie as Student
+		David Saracino as DCPJ Agent
+		Lionel Guy-Bremond as Officer Ledoux
+		Yves Aubert as Louvre Computer Cop
+		Rachael Black as Policewoman
+		Dez Drummond as London Police
+		Mark Roper as London Police
+		Brock Little as American Embassy Cop
+		Matthew Butler as Westminster Cop
+		Roland Menou as DCPJ Technician
+		Hugh Mitchell as Young Silas
+		Tina Maskell as Mother of Silas
+		Peter Pedrero as Father of Silas
+		Sam Mancuso as Pope
+		Andre Lillis as Pope
+		Mario Vernazza as Young Constantine
+		Agathe Natanson as Ritual Priestess
+		Daz Parker as Peasant Mother
+		Andy Robb as Peasant Father
+		Tom Barker as Peasant Boy
+		Maggie McEwan as Peasant Girl
+		Michael Bertenshaw as Priest
+		Sarah Wildor as Priestess
+		David Bertrand as French Newscaster
+		Christopher Fosh as Armed Responce Police Officer
+		Paul Herbert as Sophie's Father
+		Arnaud Klein as French Police Officer
+		Dhaffer L'Abidine as PTS Agent
+		Michael Norton as French Detective
+		Lynn Picknett as Bus Passenger
+		Clive Prince as Bus Passenger
+		Norman Campbell Rees as Passerby
+		Jurgen Prochnow
+
+ID: 2675
+
+-------------------------------------------------------------
+
+Next match (y/n)? y
+No additional results.
+Please choose one of the following options:
+q -> Query
+1 -> Test Queries
+n -> Navigate
+2 -> Test Navigation
+e -> Exit
+Enter your choice:q
+Please choose one of the following query types:
+a -> Query by title and/or actor
+b -> Query by genre and year
+c -> Query by rating and running time
+e -> Exit
+
+Enter your choice: a
+Enter movie title (ex:da vinci, " " for all results) da vinci
+Enter an actor or part of an actor's name (ex: tom, " " for all results)  
+Displaying query results:
+
+
+Title: The Da Vinci Code
+
+Genre: Thriller; Mystery
+
+Movie Release Date: 2006
+
+Plot:
+The Da Vinci Code focuses on Robert Langdon (Tom Hanks), a world renowned professor of symbology. La
+ngdon is called by the Paris police to examine the murder scene of Jacques SauniËre. It is at the mu
+rder scene that Langdon meets Sophie Neveu (Audrey Tautou) who helps him to realize that not only is
+ he a suspect for the murder of SauniËre, but his life is in grave danger. Langdon and Neveu subsequ
+ently evade the police and are led on a wild goose chase by the clues surrounding the murder of Saun
+iËre, whom Neveu soon reveals is her grandfather. As Langdon and Neveu attempt to solve the mystery,
+ they are chased through Europe by the Paris police and members of Opus Dei, a religious extremist g
+roup, who also want to find what Langdon and Neveu are seeking.
+
+Running Time: 149
+
+Audience Rating: PG-13 (Parental Guidance)
+
+Actor(s):
+		Tom Hanks as Robert Langdon
+		Audrey Tautou as Sophie Neveu
+		Ian McKellen as Sir Leigh Teabing
+		Alfred Molina as Bishop Aringarosa
+		Paul Bettany as Silas the albino
+		Jean Reno as Bezu Fache
+		Etienne Chicot as Lt. Collet
+		Jean-Pierre Marielle as Jacques Sauniere
+		J¸rgen Prochnow as Andre Vernet
+		Jean-Yves Berteloot as Remy Jean
+		Marie-FranÁoise Audollent as Sister Sandrine
+		Rita Davies as Elegant Woman at Rosslyn
+		Francesco Carnelutti as Prefect
+		Seth Gabel as Michael
+		Shane Zaza as Youth on Bus
+		Andrew Clark as Docent
+		Fausto Maria Sciarappa as Young Church Official
+		Joe Grossi as Old Church Official
+		Denis PodalydËs as Flight Controller
+		Harry Taylor as British Police Captain
+		Clive Carter as Biggin Hill Police Captain
+		Garance Mazureck as Sophie at 13 Years
+		Daisy Doidge-Hill as Sophie at 8 Years
+		Lilli Ella Kelleher as Sophie at 3 Years
+		Crisian Emanuel as Sophie's Mother
+		Charlotte Graham as Mary Magdalene
+		Xavier De Guillebon as Junkie
+		Tonio Descanvelle as Bank Guard
+		David Bark-Jones as Hawker Pilot
+		Serretta Wilson as American Woman
+		Eglantine Rembauville-Nicolle as Student
+		Dan Tondowski as Student
+		Aewia Huillet as Student
+		Roland John-Leopoldie as Student
+		David Saracino as DCPJ Agent
+		Lionel Guy-Bremond as Officer Ledoux
+		Yves Aubert as Louvre Computer Cop
+		Rachael Black as Policewoman
+		Dez Drummond as London Police
+		Mark Roper as London Police
+		Brock Little as American Embassy Cop
+		Matthew Butler as Westminster Cop
+		Roland Menou as DCPJ Technician
+		Hugh Mitchell as Young Silas
+		Tina Maskell as Mother of Silas
+		Peter Pedrero as Father of Silas
+		Sam Mancuso as Pope
+		Andre Lillis as Pope
+		Mario Vernazza as Young Constantine
+		Agathe Natanson as Ritual Priestess
+		Daz Parker as Peasant Mother
+		Andy Robb as Peasant Father
+		Tom Barker as Peasant Boy
+		Maggie McEwan as Peasant Girl
+		Michael Bertenshaw as Priest
+		Sarah Wildor as Priestess
+		David Bertrand as French Newscaster
+		Christopher Fosh as Armed Responce Police Officer
+		Paul Herbert as Sophie's Father
+		Arnaud Klein as French Police Officer
+		Dhaffer L'Abidine as PTS Agent
+		Michael Norton as French Detective
+		Lynn Picknett as Bus Passenger
+		Clive Prince as Bus Passenger
+		Norman Campbell Rees as Passerby
+		Jurgen Prochnow
+
+ID: 2675
+
+-------------------------------------------------------------
+
+Next match (y/n)? y
+No additional results.
+Please choose one of the following options:
+q -> Query
+1 -> Test Queries
+n -> Navigate
+2 -> Test Navigation
+e -> Exit
+Enter your choice:e
+

@@ -1,0 +1,484 @@
+The Calculator is turned on.
+==========Welcome to the Calculator=================
+Advanced Programming
+Assignment 1 : Calculator
+Description: A calculator demonstrating
+	*the use of classes and objects in C++
+	*manipulation of pointers
+	*understanding of cstring and ascii table representation of characters
+	*algorithm for manipulating arbitrarily large integers in any base system (decimal, binary, hexidecimal etc) 
+	*dynamic memory allocation and destruction 
+===================================================
+Creating a largeint
+Accumulator: 0
+Enter input: =8737
+Creating a largeint
+Creating a largeint
+Resetting the value to 08737
+Accumulator:  8737
+Enter input: +1503
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...4
+Checking the size of the input...		4
+
+Checking the originalstring of the accumulator...01503
+Checking the originalstring of the input...		01503
+The accumulator is longer than the input.
+Adding 
+  8737
++ 1503
+Making a longer result array in case there is a carry.
+Created an empty LargeInt of size 5
+Adding 7 to 3
+ 0 place of result was: 0
+ 0 place of result is now: 0
+ 0 place of x was: 7
+ 0 place of x is now: 0
+ 1 place of x plus 1 would be: 4
+Adding 4 to 0
+ 1 place of result was: 0
+ 1 place of result is now: 4
+Adding 7 to 5
+ 2 place of result was: 0
+ 2 place of result is now: 2
+ 2 place of x was: 7
+ 2 place of x is now: 2
+ 3 place of x plus 1 would be: 9
+Adding 9 to 1
+ 3 place of result was: 0
+ 3 place of result is now: 0
+ 3 place of x was: 9
+ 3 place of x is now: 0
+Ran out of x to carry over, setting the carry to 0+1
+ 4 place of x plus 1 would be: 1
+ 4 place of x: 1
+ 4 copied to place of result is now: 1
+= 10240
+Accumulator:  10240
+Enter input: =1503
+Creating a largeint
+Creating a largeint
+Resetting the value to 01503
+Accumulator:  1503
+Enter input: +8737
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...4
+Checking the size of the input...		4
+
+Checking the originalstring of the accumulator...08737
+Checking the originalstring of the input...		08737
+The accumulator is longer than the input.
+Adding 
+  1503
++ 8737
+Making a longer result array in case there is a carry.
+Created an empty LargeInt of size 5
+Adding 3 to 7
+ 0 place of result was: 0
+ 0 place of result is now: 0
+ 0 place of x was: 3
+ 0 place of x is now: 0
+ 1 place of x plus 1 would be: 1
+Adding 1 to 3
+ 1 place of result was: 0
+ 1 place of result is now: 4
+Adding 5 to 7
+ 2 place of result was: 0
+ 2 place of result is now: 2
+ 2 place of x was: 5
+ 2 place of x is now: 2
+ 3 place of x plus 1 would be: 2
+Adding 2 to 8
+ 3 place of result was: 0
+ 3 place of result is now: 0
+ 3 place of x was: 2
+ 3 place of x is now: 0
+Ran out of x to carry over, setting the carry to 0+1
+ 4 place of x plus 1 would be: 1
+ 4 place of x: 1
+ 4 copied to place of result is now: 1
+= 10240
+Accumulator:  10240
+Enter input: =503
+Creating a largeint
+Creating a largeint
+Resetting the value to 0503
+Accumulator:  503
+Enter input: +8737
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...3
+Checking the size of the input...		4
+
+Checking the originalstring of the accumulator...08737
+Checking the originalstring of the input...		08737
+The input is longer than the accumulator.
+Adding 
+  8737
++ 503
+Making a longer result array in case there is a carry.
+Created an empty LargeInt of size 5
+Adding 7 to 3
+ 0 place of result was: 0
+ 0 place of result is now: 0
+ 0 place of x was: 7
+ 0 place of x is now: 0
+ 1 place of x plus 1 would be: 4
+Adding 4 to 0
+ 1 place of result was: 0
+ 1 place of result is now: 4
+Adding 7 to 5
+ 2 place of result was: 0
+ 2 place of result is now: 2
+ 2 place of x was: 7
+ 2 place of x is now: 2
+ 3 place of x plus 1 would be: 9
+ 3 place of x: 9
+ 3 copied to place of result is now: 9
+ 4 place of x: 0
+ 4 copied to place of result is now: 0
+= 09240
+Accumulator:  09240
+Enter input: =987654321
+Creating a largeint
+Creating a largeint
+Resetting the value to 0987654321
+Accumulator:  987654321
+Enter input: +12345678
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...9
+Checking the size of the input...		8
+
+Checking the originalstring of the accumulator...012345678
+Checking the originalstring of the input...		012345678
+The accumulator is longer than the input.
+Adding 
+  987654321
++ 12345678
+Making a longer result array in case there is a carry.
+Created an empty LargeInt of size 10
+Adding 1 to 8
+ 0 place of result was: 0
+ 0 place of result is now: 9
+Adding 2 to 7
+ 1 place of result was: 0
+ 1 place of result is now: 9
+Adding 3 to 6
+ 2 place of result was: 0
+ 2 place of result is now: 9
+Adding 4 to 5
+ 3 place of result was: 0
+ 3 place of result is now: 9
+Adding 5 to 4
+ 4 place of result was: 0
+ 4 place of result is now: 9
+Adding 6 to 3
+ 5 place of result was: 0
+ 5 place of result is now: 9
+Adding 7 to 2
+ 6 place of result was: 0
+ 6 place of result is now: 9
+Adding 8 to 1
+ 7 place of result was: 0
+ 7 place of result is now: 9
+ 8 place of x: 9
+ 8 copied to place of result is now: 9
+ 9 place of x: 0
+ 9 copied to place of result is now: 0
+= 0999999999
+Accumulator:  0999999999
+Enter input: +9
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...10
+Checking the size of the input...		1
+
+Checking the originalstring of the accumulator...
+Checking the originalstring of the input...		09
+The accumulator is longer than the input.
+Adding 
+  0999999999
++ 9
+The longest operand already has enough space to absorb a carry, creating a result of the same size.
+Created an empty LargeInt of size 10
+Adding 9 to 9
+ 0 place of result was: 0
+ 0 place of result is now: 8
+ 0 place of x was: 9
+ 0 place of x is now: 8
+ 1 place of x plus 1 would be: 10
+ 1 place of x was: 9
+ 1 place of x is now: 0
+ 2 place of x plus 1 would be: 10
+ 2 place of x was: 9
+ 2 place of x is now: 0
+ 3 place of x plus 1 would be: 10
+ 3 place of x was: 9
+ 3 place of x is now: 0
+ 4 place of x plus 1 would be: 10
+ 4 place of x was: 9
+ 4 place of x is now: 0
+ 5 place of x plus 1 would be: 10
+ 5 place of x was: 9
+ 5 place of x is now: 0
+ 6 place of x plus 1 would be: 10
+ 6 place of x was: 9
+ 6 place of x is now: 0
+ 7 place of x plus 1 would be: 10
+ 7 place of x was: 9
+ 7 place of x is now: 0
+ 8 place of x plus 1 would be: 10
+ 8 place of x was: 9
+ 8 place of x is now: 0
+ 9 place of x plus 1 would be: 1
+ 1 place of x: 0
+ 1 copied to place of result is now: 0
+ 2 place of x: 0
+ 2 copied to place of result is now: 0
+ 3 place of x: 0
+ 3 copied to place of result is now: 0
+ 4 place of x: 0
+ 4 copied to place of result is now: 0
+ 5 place of x: 0
+ 5 copied to place of result is now: 0
+ 6 place of x: 0
+ 6 copied to place of result is now: 0
+ 7 place of x: 0
+ 7 copied to place of result is now: 0
+ 8 place of x: 0
+ 8 copied to place of result is now: 0
+ 9 place of x: 1
+ 9 copied to place of result is now: 1
+ 10 place of x: 0
+ 10 copied to place of result is now: 0
+= 1000000008
+Accumulator:  1000000008
+Enter input: +3
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...10
+Checking the size of the input...		1
+
+Checking the originalstring of the accumulator...
+Checking the originalstring of the input...		03
+The accumulator is longer than the input.
+Adding 
+  1000000008
++ 3
+Making a longer result array in case there is a carry.
+Created an empty LargeInt of size 11
+Adding 8 to 3
+ 0 place of result was: 0
+ 0 place of result is now: 1
+ 0 place of x was: 8
+ 0 place of x is now: 1
+ 1 place of x plus 1 would be: 1
+ 1 place of x: 1
+ 1 copied to place of result is now: 1
+ 2 place of x: 0
+ 2 copied to place of result is now: 0
+ 3 place of x: 0
+ 3 copied to place of result is now: 0
+ 4 place of x: 0
+ 4 copied to place of result is now: 0
+ 5 place of x: 0
+ 5 copied to place of result is now: 0
+ 6 place of x: 0
+ 6 copied to place of result is now: 0
+ 7 place of x: 0
+ 7 copied to place of result is now: 0
+ 8 place of x: 0
+ 8 copied to place of result is now: 0
+ 9 place of x: 1
+ 9 copied to place of result is now: 1
+ 10 place of x: 0
+ 10 copied to place of result is now: 0
+= 01000000011
+Accumulator:  01000000011
+Enter input: =987654321
+Creating a largeint
+Creating a largeint
+Resetting the value to 0987654321
+Accumulator:  987654321
+Enter input: +123456789
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...9
+Checking the size of the input...		9
+
+Checking the originalstring of the accumulator...0123456789
+Checking the originalstring of the input...		0123456789
+The accumulator is longer than the input.
+Adding 
+  987654321
++ 123456789
+Making a longer result array in case there is a carry.
+Created an empty LargeInt of size 10
+Adding 1 to 9
+ 0 place of result was: 0
+ 0 place of result is now: 0
+ 0 place of x was: 1
+ 0 place of x is now: 0
+ 1 place of x plus 1 would be: 3
+Adding 3 to 8
+ 1 place of result was: 0
+ 1 place of result is now: 1
+ 1 place of x was: 3
+ 1 place of x is now: 1
+ 2 place of x plus 1 would be: 4
+Adding 4 to 7
+ 2 place of result was: 0
+ 2 place of result is now: 1
+ 2 place of x was: 4
+ 2 place of x is now: 1
+ 3 place of x plus 1 would be: 5
+Adding 5 to 6
+ 3 place of result was: 0
+ 3 place of result is now: 1
+ 3 place of x was: 5
+ 3 place of x is now: 1
+ 4 place of x plus 1 would be: 6
+Adding 6 to 5
+ 4 place of result was: 0
+ 4 place of result is now: 1
+ 4 place of x was: 6
+ 4 place of x is now: 1
+ 5 place of x plus 1 would be: 7
+Adding 7 to 4
+ 5 place of result was: 0
+ 5 place of result is now: 1
+ 5 place of x was: 7
+ 5 place of x is now: 1
+ 6 place of x plus 1 would be: 8
+Adding 8 to 3
+ 6 place of result was: 0
+ 6 place of result is now: 1
+ 6 place of x was: 8
+ 6 place of x is now: 1
+ 7 place of x plus 1 would be: 9
+Adding 9 to 2
+ 7 place of result was: 0
+ 7 place of result is now: 1
+ 7 place of x was: 9
+ 7 place of x is now: 1
+ 8 place of x plus 1 would be: 10
+ 8 place of x was: 9
+ 8 place of x is now: 0
+Ran out of x to carry over, setting the carry to 0+1
+ 9 place of x plus 1 would be: 1
+Adding 0 to 1
+ 8 place of result was: 0
+ 8 place of result is now: 1
+ 9 place of x: 1
+ 9 copied to place of result is now: 1
+= 1111111110
+Accumulator:  1111111110
+Enter input: +555
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...10
+Checking the size of the input...		3
+
+Checking the originalstring of the accumulator...
+Checking the originalstring of the input...		0555
+The accumulator is longer than the input.
+Adding 
+  1111111110
++ 555
+Making a longer result array in case there is a carry.
+Created an empty LargeInt of size 11
+Adding 0 to 5
+ 0 place of result was: 0
+ 0 place of result is now: 5
+Adding 1 to 5
+ 1 place of result was: 0
+ 1 place of result is now: 6
+Adding 1 to 5
+ 2 place of result was: 0
+ 2 place of result is now: 6
+ 3 place of x: 1
+ 3 copied to place of result is now: 1
+ 4 place of x: 1
+ 4 copied to place of result is now: 1
+ 5 place of x: 1
+ 5 copied to place of result is now: 1
+ 6 place of x: 1
+ 6 copied to place of result is now: 1
+ 7 place of x: 1
+ 7 copied to place of result is now: 1
+ 8 place of x: 1
+ 8 copied to place of result is now: 1
+ 9 place of x: 1
+ 9 copied to place of result is now: 1
+ 10 place of x: 0
+ 10 copied to place of result is now: 0
+= 01111111665
+Accumulator:  01111111665
+Enter input: +1372
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...11
+Checking the size of the input...		4
+
+Checking the originalstring of the accumulator...
+Checking the originalstring of the input...		01372
+The accumulator is longer than the input.
+Adding 
+  01111111665
++ 1372
+The longest operand already has enough space to absorb a carry, creating a result of the same size.
+Created an empty LargeInt of size 11
+Adding 5 to 2
+ 0 place of result was: 0
+ 0 place of result is now: 7
+Adding 6 to 7
+ 1 place of result was: 0
+ 1 place of result is now: 3
+ 1 place of x was: 6
+ 1 place of x is now: 3
+ 2 place of x plus 1 would be: 7
+Adding 7 to 3
+ 2 place of result was: 0
+ 2 place of result is now: 0
+ 2 place of x was: 7
+ 2 place of x is now: 0
+ 3 place of x plus 1 would be: 2
+Adding 2 to 1
+ 3 place of result was: 0
+ 3 place of result is now: 3
+ 4 place of x: 1
+ 4 copied to place of result is now: 1
+ 5 place of x: 1
+ 5 copied to place of result is now: 1
+ 6 place of x: 1
+ 6 copied to place of result is now: 1
+ 7 place of x: 1
+ 7 copied to place of result is now: 1
+ 8 place of x: 1
+ 8 copied to place of result is now: 1
+ 9 place of x: 1
+ 9 copied to place of result is now: 1
+ 10 place of x: 0
+ 10 copied to place of result is now: 0
+ 11 place of x: 0
+ 11 copied to place of result is now: 0
+= 01111113037
+Accumulator:  01111113037
+Enter input: q
+Creating a largeint
+Creating a largeint
+---------Thanks for using the calculator.----------
+ The calculator has now powered down.
+

@@ -1,0 +1,70 @@
+/*
+*
+*  This file is designed to annotate approximate and exact quantities for the use in evaluating etailment
+*
+*  Gina, 17 Aug 2010
+* 
+*/
+Imports: {
+	import static gate.Utils.*;//to use the start and end functions
+	import java.text.DecimalFormat;
+}
+Phase:   CombineNumberSequences
+Input: Token Lookup Number
+Options: control = appelt
+
+//////////////////////////////////////////////////////////////
+
+Rule:   NumberSequence
+( {Number} 
+	( 	( {Token.string == "-"}|{Token.string == "and"}|{Token.string == "a"} )? 
+		{Number.kind == "string_number"} 
+	)+
+):number 
+-->
+:number{
+	
+	FeatureMap fm = Factory.newFeatureMap();
+	fm.put("kind","combined_number");
+	
+	String text = stringFor(doc, numberAnnots);
+	//System.out.print("This will be a combined number: "+text+"\n");
+	fm.put("string",text);
+	
+	AnnotationSet as = bindings.get("number");
+	String value = "getting value ";
+	double valueAmount =1.0;
+	for(Annotation a : as){
+		//value=(String)a.getFeatures().get("value");
+		
+		//System.out.print("Here is an annotation:\n"+a);
+		//System.out.print( "Here is the value\n"+a.getFeatures().get("value") );
+		if(a.getType()=="Number"){
+			value = a.getFeatures().get("value").toString();
+			valueAmount = valueAmount * ( Double.parseDouble(value) );
+			
+			DecimalFormat myFormatter = new DecimalFormat("0.0000");
+			String output = myFormatter.format(valueAmount);
+			//System.out.print("The value is: "+output+"\n");
+		}
+	}
+	//Long valueAmount = 0.0;
+	DecimalFormat myFormatter = new DecimalFormat("0.0000");
+	String output = myFormatter.format(valueAmount);
+	fm.put("value",output);
+	try{
+		if( text.matches("[0-9A-z -.]+") ){
+			outputAS.add(start(numberAnnots),end(numberAnnots),"Number",fm);
+			
+			//AnnotationSet as = bindings.get("number");
+			//System.out.print("Here are the matched bindings:\n"+as);
+			inputAS.removeAll(as);
+		}else{
+			System.out.print("The value is: "+output+"\n");
+			System.out.print("\tThis might not be a number, not including it.\n");
+		}
+	}catch(InvalidOffsetException e){
+		//the exception wont happen
+		System.out.print("Caught an exception "+e);
+	}	
+}
