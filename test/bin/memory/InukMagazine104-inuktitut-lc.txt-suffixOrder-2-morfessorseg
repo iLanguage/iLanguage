@@ -1,0 +1,346 @@
+# ./morfessor1.0.pl, Wed Apr 15 18:41:32 2009
+# Working dir: /home/gina/classes/COMP6781StatisticalNLP/inuktitut_morphology/openfieldworker0.1/bin
+# -data 'InukMagazine104-inuktitut-lc.txt-suffixOrder-2'
+# -finish 0.005
+# -rand 0
+# -savememory: OFF
+# -gammalendistr 5 1
+# -zipffreqdistr: OFF
+# -load: OFF
+# -trace 3
+# Number of letters in corpus (excl. word breaks): 6604
+# Letter logprobs (log2):
+# a -> 2.67510
+# b -> 11.68912
+# c -> 9.68912
+# d -> 10.10416
+# e -> 7.78223
+# f -> 11.68912
+# g -> 4.85623
+# h -> 9.10416
+# i -> 2.49683
+# j -> 4.96120
+# k -> 4.05977
+# l -> 4.78223
+# m -> 4.70044
+# n -> 3.38992
+# o -> 8.88177
+# p -> 6.83114
+# q -> 4.84363
+# r -> 4.53938
+# s -> 4.81876
+# t -> 3.37624
+# u -> 2.98522
+# v -> 6.47967
+# w -> 9.36720
+# y -> 10.10416
+#
+# OVERALL logprob: 17016
+# NMorphTokens: 554, NMorphTypes: 277, NVirtualMorphTypes: 277
+# NWordTokens: 554, NWordTypes: 277
+# CORPUS: 4495
+# LEXICON: 12521; Str: 11891, LenD: 1924, FreqD: 554, FreeO: -1848
+#
+# OVERALL logprob: 16367
+# NMorphTokens: 642, NMorphTypes: 277, NVirtualMorphTypes: 321
+# NWordTokens: 554, NWordTypes: 277
+# CORPUS: 5101
+# LEXICON: 11266; Str: 10794, LenD: 1687, FreqD: 634, FreeO: -1848
+#
+# OVERALL logprob: 16186
+# NMorphTokens: 668, NMorphTypes: 277, NVirtualMorphTypes: 334
+# NWordTokens: 554, NWordTypes: 277
+# CORPUS: 5285
+# LEXICON: 10901; Str: 10470, LenD: 1625, FreqD: 654, FreeO: -1848
+#
+# OVERALL logprob: 16171
+# NMorphTokens: 678, NMorphTypes: 277, NVirtualMorphTypes: 339
+# NWordTokens: 554, NWordTypes: 277
+# CORPUS: 5350
+# LEXICON: 10822; Str: 10389, LenD: 1619, FreqD: 662, FreeO: -1848
+#
+# OVERALL logprob: 16171
+# NMorphTokens: 678, NMorphTypes: 277, NVirtualMorphTypes: 339
+# NWordTokens: 554, NWordTypes: 277
+# CORPUS: 5350
+# LEXICON: 10822; Str: 10389, LenD: 1619, FreqD: 662, FreeO: -1848
+# Done...
+# Vocabulary:
+2 isumaa
+2 immaqaa
+2 piqujarjuanga
+2 taatsuminga
+2 uqausi + nga
+2 sivuliurtinga
+2 tamatumunga
+2 taakkununga
+2 uqaqpunga
+2 ika
+2 manna
+2 imanna
+2 angajuqqaangata
+2 amisualuummata
+2 kanata
+2 ukiurtartuata
+2 gavamangit + a
+2 pijunnautingita
+2 inungita
+2 sunauvva
+2 article
+2 danish
+2 gi
+2 katujji
+2 akinnami
+2 sivuniksami
+2 kuujjuami
+2 huptailimi
+2 nainimi
+2 laapatuarimi
+2 sitimi
+2 karultanmi
+2 ilangani
+2 taikani
+2 ukunani
+2 ikarrani
+2 katimajjutiksani
+2 ukiurtartuani
+2 tavani
+2 tavivani
+2 angiqatigiigutini
+2 uqammariutini
+2 nunanganni
+2 katimaninginni
+2 asinginni
+2 nunaqutinginni
+2 allasimajuni
+2 aviktursimajuni
+2 katimajuni
+2 pijjutaulluni
+2 amisuni
+2 atursuni
+2 tuuni
+2 ri
+2 nuvipiri
+2 uktupiri
+2 katimajinginniti
+2 aaqqiksui
+2 allaak
+2 taimaak
+2 tunngaviksamik
+2 sukkajualummik
+2 inuusi + lirinirmik
+2 avati + lirinirmik
+2 uqausi + rmik
+2 inuusi + rmik
+2 inunnuangajumik
+2 iliqqusianik
+2 gavamanik
+2 ilisaigusiksanik
+2 ikajurtaujjutiksanik
+2 ikajuqutiksanik
+2 aaqqigiarutiksanik
+2 kiinaujaliurutiksanik
+2 tukisingiarviksanik
+2 akaunaarnirsanik
+2 piunirsanik
+2 katimajirjuanik
+2 nunaminik
+2 atulaurtaminik
+2 imminik
+2 ilisaigutinik
+2 pinnguarutinik
+2 nginnik
+2 nuna + nginnik
+2 inuusi + liriji + nginnik
+2 uqausi + vini + nginnik
+2 aulataugajarni + nginnik
+2 uqausi + nginnik
+2 inu + nginnik
+2 nunalinnik
+2 arraagugijattinnik
+2 uvattinnik
+2 iqqanaijar + nilirijikkunnik
+2 uqausi + rnik
+2 aivirnik
+2 kanata + miunik
+2 aaqqiktausimajunik
+2 suliju + nik
+2 isumagijaujunik
+2 isumaa + lugijaujunik
+2 atuinnaujunik
+2 lugutaujunik
+2 timiujunik
+2 atuinnaugajartunik
+2 immikkuurtunik
+2 taimaittunik
+2 tukisia + lutik
+2 aaqqiksui + lutik
+2 amiaril + lutik
+2 ikajurtaul + lutik
+2 atur + lutik
+2 uqausi + qaqsutik
+2 ilinniarsutik
+2 atursutik
+2 inuk
+2 marruuk
+2 national
+2 william
+2 jean
+2 human
+2 kekerten
+2 constitution
+2 silarjuap
+2 avatiup
+2 aajuup
+2 aaq
+2 ullutamaaq
+2 nanilimaaq
+2 kajungiqsuigiaq
+2 ilinniariaq
+2 aturiaq
+2 tunngaviksaq
+2 akuniunirsaq
+2 niq
+2 katimarjuarniq
+2 atausiq
+2 asingittauq
+2 ajjiungittumittauq
+2 kisianittauq
+2 nunavummiuq
+2 titiraqsimajuq
+2 taijaujuq
+2 kajungiqsuijjutaujuq
+2 piviksatsiavaulaurtuq
+2 katimaniulaurtuq
+2 year
+2 aanniar
+2 qaujisar
+2 charter
+2 for
+2 hummocks
+2 nations
+2 maligat
+2 taimanngat
+2 amialikkat
+2 tisamat
+2 it
+2 uqalimaagait
+2 maligait
+2 tuurngait
+2 gavamait
+2 qaqqait
+2 uqalimaagaksait
+2 atuagaksait
+2 ikajurutiksait
+2 makkunnirsait
+2 isumaa + lugutigijangit
+2 gavamangit
+2 uqausi + qtangit
+2 ajjingit
+2 ilautitaujariaqaningit
+2 iliqqusingit
+2 ikajurpallugit
+2 pijjutigillugit
+2 katillugit
+2 katimarjuarniq + aqtillugit
+2 atangirlugit
+2 qaujisar + timmariit
+2 unikkaaliuqtiit
+2 sivuliurtiit
+2 angiqatigiigutiit
+2 uqammariutiit
+2 kingullirpaarsiutiit
+2 ilinniarviit
+2 nunamit
+2 kupaikmit
+2 nunavummit
+2 nunanganit
+2 katujji + qatigiinginnit
+2 atunit
+2 ilinniartit
+2 ikajurpallutit
+2 inuvialuit
+2 student
+2 agreement
+2 development
+2 ikajurtaujjutiksangitigut
+2 maligaqtigut
+2 lapatuarimiut
+2 ukiurtartumualingajut
+2 aaqqiksui + simajut
+2 qaqqaaq + simajut
+2 saqqitau + simajut
+2 titiraqtau + simajut
+2 pilirijut
+2 iksivautaqaqataujut
+2 kiggarturtaujut
+2 isumaa + lugutaujut
+2 akaungiliutaujut
+2 umiarjuakut
+2 qanga + kkut
+2 qaritauja + kkut
+2 iqqanaijar + nilirijikkut
+2 qaujisar + nilirijikkut
+2 timi + kkut
+2 kiinaujaliurasuarniliri + nikkut
+2 kajusivalliatitsi + nikkut
+2 aaqqiksui + nikkut
+2 pinasuaqatigiin + nikkut
+2 katimallattaar + nikkut
+2 ilisar + nikkut
+2 pilimmaksar + nikkut
+2 titirariursar + nikkut
+2 inuusi + kkut
+2 kativi + kkut
+2 suliju + kkut
+2 siku + kkut
+2 angajuqqaamut
+2 nunamut
+2 mirnguirsivimmut
+2 pijunnautiqanirmut
+2 sapumminirmut
+2 iqqanaijar + ni + lirinirmut
+2 inuusi + lirinirmut
+2 nunatsiavu + lirinirmut
+2 katimaarnirmut
+2 katimaniulaurtumut
+2 makkunnirsanut
+2 ilisaijinut
+2 qaujisar + tinut
+2 angajuqqaangujuu + tinut
+2 tamainnut
+2 nunanginnut
+2 katimajinginnut
+2 asinginnut
+2 iqalliartinginnut
+2 kunnut
+2 amisualunnut
+2 qaqqaaq + simajunut
+2 kiggarturput
+2 pingasut
+2 pijunnautiqatut
+2 qallunaatitut
+2 nunaqaqtut
+2 ilisar + tut
+2 katimarjuarniq + arataalaurtut
+2 ilauqataummarilaurtut
+2 kajusititsilaurtut
+2 isumaliuqataulaurtut
+2 kiggarturtut
+2 qanuittut
+2 niriuttut
+2 tukisia + jaujuksauvut
+2 iksivaqatauvut
+2 lau
+2 uqau
+2 kajusinginnaqunagu
+2 malillugu
+2 gutillugu
+2 takugiarlugu
+2 ilinniarsutillu
+2 inuillu
+2 new
+2 www
+2 bay
+2 hilary
+# Time used (secs): 7

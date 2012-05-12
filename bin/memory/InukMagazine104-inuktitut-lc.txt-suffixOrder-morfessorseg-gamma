@@ -1,0 +1,3893 @@
+# ./morfessor1.0.pl, Wed Apr 15 18:44:10 2009
+# Working dir: /home/gina/classes/COMP6781StatisticalNLP/inuktitut_morphology/openfieldworker0.1/bin
+# -data 'InukMagazine104-inuktitut-lc.txt-suffixOrder'
+# -finish 0.005
+# -rand 0
+# -savememory: OFF
+# -gammalendistr 5 1
+# -zipffreqdistr: OFF
+# -load: OFF
+# -trace 3
+# Number of letters in corpus (excl. word breaks): 76358
+# Letter logprobs (log2):
+# a -> 2.52864
+# b -> 11.82817
+# c -> 9.76106
+# d -> 10.22049
+# e -> 8.63553
+# f -> 11.89856
+# g -> 4.83733
+# h -> 10.31360
+# i -> 2.58262
+# j -> 5.34551
+# k -> 4.52352
+# l -> 4.50068
+# m -> 4.39355
+# n -> 3.40731
+# o -> 9.10155
+# p -> 6.35940
+# q -> 4.82764
+# r -> 4.35785
+# s -> 4.81482
+# t -> 3.39892
+# u -> 2.98912
+# v -> 6.66974
+# w -> 11.97256
+# x -> 13.22049
+# y -> 11.26630
+# z -> 15.22049
+#
+# OVERALL logprob: 276722
+# NMorphTokens: 5994, NMorphTypes: 3786, NVirtualMorphTypes: 3786
+# NWordTokens: 5994, NWordTypes: 3786
+# CORPUS: 64961
+# LEXICON: 211761; Str: 207310, LenD: 38299, FreqD: 5692, FreeO: -39540
+#
+# OVERALL logprob: 207325
+# NMorphTokens: 11345, NMorphTypes: 3259, NVirtualMorphTypes: 8114
+# NWordTokens: 5994, NWordTypes: 3786
+# CORPUS: 116341
+# LEXICON: 90983; Str: 99955, LenD: 14545, FreqD: 9815, FreeO: -33331
+#
+# OVERALL logprob: 188919
+# NMorphTokens: 13125, NMorphTypes: 2371, NVirtualMorphTypes: 8534
+# NWordTokens: 5994, NWordTypes: 3786
+# CORPUS: 130071
+# LEXICON: 58848; Str: 63674, LenD: 9393, FreqD: 8944, FreeO: -23161
+#
+# OVERALL logprob: 185376
+# NMorphTokens: 13591, NMorphTypes: 2143, NVirtualMorphTypes: 8580
+# NWordTokens: 5994, NWordTypes: 3786
+# CORPUS: 133387
+# LEXICON: 51989; Str: 55853, LenD: 8214, FreqD: 8544, FreeO: -20621
+#
+# OVERALL logprob: 184170
+# NMorphTokens: 13785, NMorphTypes: 2044, NVirtualMorphTypes: 8595
+# NWordTokens: 5994, NWordTypes: 3786
+# CORPUS: 134686
+# LEXICON: 49484; Str: 52881, LenD: 7787, FreqD: 8346, FreeO: -19529
+#
+# OVERALL logprob: 183359
+# NMorphTokens: 13903, NMorphTypes: 1989, NVirtualMorphTypes: 8608
+# NWordTokens: 5994, NWordTypes: 3786
+# CORPUS: 135478
+# LEXICON: 47881; Str: 51044, LenD: 7530, FreqD: 8232, FreeO: -18926
+#
+# OVERALL logprob: 182977
+# NMorphTokens: 13926, NMorphTypes: 1965, NVirtualMorphTypes: 8609
+# NWordTokens: 5994, NWordTypes: 3786
+# CORPUS: 135624
+# LEXICON: 47353; Str: 50406, LenD: 7435, FreqD: 8175, FreeO: -18663
+#
+# OVERALL logprob: 182828
+# NMorphTokens: 13933, NMorphTypes: 1961, NVirtualMorphTypes: 8610
+# NWordTokens: 5994, NWordTypes: 3786
+# CORPUS: 135753
+# LEXICON: 47075; Str: 50137, LenD: 7391, FreqD: 8166, FreeO: -18619
+#
+# OVERALL logprob: 182779
+# NMorphTokens: 13941, NMorphTypes: 1956, NVirtualMorphTypes: 8610
+# NWordTokens: 5994, NWordTypes: 3786
+# CORPUS: 135831
+# LEXICON: 46948; Str: 49985, LenD: 7373, FreqD: 8155, FreeO: -18564
+#
+# OVERALL logprob: 182748
+# NMorphTokens: 13953, NMorphTypes: 1953, NVirtualMorphTypes: 8614
+# NWordTokens: 5994, NWordTypes: 3786
+# CORPUS: 135922
+# LEXICON: 46826; Str: 49853, LenD: 7355, FreqD: 8149, FreeO: -18532
+#
+# OVERALL logprob: 182744
+# NMorphTokens: 13951, NMorphTypes: 1953, NVirtualMorphTypes: 8613
+# NWordTokens: 5994, NWordTypes: 3786
+# CORPUS: 135910
+# LEXICON: 46833; Str: 49861, LenD: 7355, FreqD: 8149, FreeO: -18532
+# Done...
+# Vocabulary:
+2 isuma + a
+2 immaqaa
+1 mik + saa
+1 iksivauta + kut + aa
+1 ca
+1 canada
+1 cornoyea
+1 ga
+1 qikaqtiagutuinnatutsau + mata + taga
+1 taima + it + tui + taga
+1 unikkaa + tau + gaja + qtu + taga
+1 angajuqqaa + nga
+1 qirli + rtu + lia + nga
+1 isuma + gi + simaja + nga
+1 gavama + nga
+1 puigutjai + sima + gunna + ni + tuinna + nga
+1 nunanga
+1 sivuniksanga
+1 tunngaviksa + nga
+1 ajjigi + ni + uja + runna + irta + nga
+1 gavama + ri + lirtanga
+1 rilaurtanga
+1 quviana + rni + rpa + a + rilaurtanga
+1 ingirra + ni + rilaurtanga
+1 katimarjuar + ni + rilaurtanga
+1 umiarjuakk + uur + ni + rilaurtanga
+1 katima + qatau + ni + rilaurtanga
+1 minista + nga
+2 piqujarjuanga
+1 tuki + nga
+1 taak + suminga
+2 taat + suminga
+3 tamatuminga
+1 ninga
+1 asijir + pallia + ninga
+4 asijjirpallia + ninga
+1 kajusi + sima + ninga
+1 qanui + sima + ninga
+1 killi + liur + tau + sima + ninga
+1 tukisi + giarv + iks + arta + qa + riaqa + ninga
+1 inu + qa + riaqa + ninga
+1 gavama + taar + ninga
+1 ilinniar + ninga
+1 ivalliq + utau + niar + ninga
+1 aktuiniq + arajar + ninga
+1 ta + r + ninga
+1 atulirtit + au + llattaar + asuar + ninga
+1 katima + laalir + ninga
+1 angiqatigii + gas + u + alaur + ninga
+1 piviksa + qaqtita + ulaur + ninga
+1 u + ninga
+1 sunng + ilua + rutau + ninga
+1 taak + ku + ninga
+7 tamakkuninga
+1 taikku + ninga
+6 ukuninga
+2 uqausi + nga
+1 titirauj + a + rusi + nga
+1 alla + vi + nga + ti + nga
+2 sivuliurti + nga
+1 iqqanaijar + tu + liri + vi + nga
+1 pig + iammarigum + alaqi + si + maju + nga
+1 pu + ijju + sima + llu + nga
+1 nanisi + qatigii + gunnar + asug + i + llu + nga
+1 kiggar + turlu + nga
+1 angajuqqaa + ngu + lu + nga
+1 tama + mu + nga
+2 tamatumunga
+1 qanuittut + sa + unu + nga
+2 taakkununga
+1 tama + kku + nu + nga
+3 ukununga
+1 pu + nga
+2 uqaqpunga
+1 unikkaa + r + niar + pu + nga
+1 alla + pallia + guma + liqsunga
+1 allaniaga + liu + suugu + liqsunga
+1 iqqauma + niali + rsu + nga
+1 umia + rjuami + i + sima + li + rsu + nga
+1 ilinniar + i + alla + lau + rsu + nga
+1 asiu + ji + juu + jaaqataut + su + nga
+1 ingirra + kata + laar + tu + nga
+1 niriu + nniq + aqsi + a + rtu + nga
+1 ukiurtart + u + nga
+1 iqqauma + jaqa + langa + lir + tu + nga
+1 tiki + gunnar + si + ratalau + rtu + nga
+1 ilikkann + ilau + rtu + nga
+1 ilanna + liu + lau + rtu + nga
+1 tusartau + titsinasua + langa + vu + nga
+1 na + amma + vi + qaq + attasimavu + nga
+1 mari + uvu + nga
+1 mak + igia + lla + gia
+1 austra + lia
+1 tulli + a
+1 asijjirpalliania
+1 pi + rsirnia
+1 ria
+1 ilinniar + ia
+1 jaria
+1 attana + jjaikk + uti + qaria
+1 aaqqi + sur + ia
+1 russia
+1 qatigii + tsia
+1 kiinauja + lirivia
+1 nuna + lirivia
+1 quvia
+1 ja
+1 ilinniar + ija
+2 ika
+1 turaa + q + nga + kka
+1 uqausi + kka
+1 saala
+1 sheila
+1 atuuti + qa + ngi + la
+1 sila
+1 alla
+1 saqqititsi + laur + sima + ga + ma
+1 naluga + ma
+1 qaujima + galaannginama
+4 taima
+1 qaujima
+1 katima
+403 amma
+1 suuqaimma
+1 tukisinatsia + ngimma
+1 angajuqqaa + q + ma
+1 qaujima + mmangaa + r + ma
+1 tamatuma
+1 na
+1 pina
+1 pit + sangurunnatummarialuujurina
+18 taanna
+2 manna
+25 tamanna
+2 i + manna
+1 taima + nna
+1 ta + ppa + nna
+1 ipira + inna
+1 taima + tta + ur + inna
+1 una
+1 taak + kut + igu + na
+9 nuna
+1 su + mu + nuna
+1 tav + ivuuna
+1 uvu + una
+1 maanituupa
+5 qa
+1 ilau + qatta + riaqa
+1 gu + qa + qa
+1 tiqa
+1 iqqa
+1 kiuj + uqa
+1 qati + gi + simaja + ra
+1 ilanna + arijara
+1 ikajur + unna + galaalauqsimanngitara
+1 ingirra + tau + niri + laurta + ra
+1 laur + a
+1 sa
+1 timitin + ilisa
+1 ruqiqalunguki + ngu + tin + ilisa
+1 vanessa
+1 usa
+1 allaniaga + nngu + tita + ugunna + mangaata
+1 asijjirpallia + giaqa + mangaata
+1 atu + riaqa + mangaata
+1 inuu + gusi + qa + mangaata
+1 pijunnau + tiqa + mangaata
+1 ili + gu + tiqa + mangaata
+1 ak + turtau + niqaq + sima + m + mangaata
+1 aaqqik + silau + r + sima + m + mangaata
+1 akau + naangim + mangaata
+1 taima + ittu + lir + igiaq + vi + saum + mangaata
+1 matuinga + juksau + m + mangaata
+1 kamagijau + juksau + m + mangaata
+1 pimmariu + titau + m + mangaata
+1 ilagij + au + tita + unia + rmangaata
+1 ikpigija + uqqaa + raja + rmangaata
+1 unikkaa + liuqtiu + sa + raja + rmangaata
+1 nunalinni + arta + u + qatta + raja + rmangaata
+1 pinasua + rmangaata
+1 niuvia + ksa + qarunn + ali + rmangaata
+1 isuma + gija + qamaa + ngata
+2 angajuqqaa + ngata
+1 nappanga + ta
+1 ilinniar + ta + ngata
+1 nuna + rjua + ngata
+1 uqausi + ngata
+1 annaumag + usi + ngata
+1 iliqqusinga + ta
+1 inuusi + ngata
+1 tariu + ngata
+3 asijjirpalliania + ta
+1 angi + niata
+1 ingirra + qa + tau + laur + niata
+1 parnak + tau + niata
+1 attii + gusi + ata
+1 atiliu + rusi + ata
+1 katimavigjuarvi + ata
+1 tukisi + giaq + qa + ar + titau + kata
+1 mali + giaqa + mata
+1 na + amma + lir + titau + nirsau + giaqa + mata
+1 kajusinginn + a + riaqa + mata
+1 turaaga + ksaqa + mata
+1 aktui + niqa + mata
+1 i + suli + tta + r + niqa + mata
+1 kiggarturt + au + niqa + mata
+1 pijunnau + tiqa + mata
+1 pig + ianngilaqi + qatta + mata
+1 nuktirt + auju + nnarsi + langa + mmata
+1 kanata + limaa + muanga + mmata
+1 tiki + tau + vallia + mmata
+1 qaujima + mmata
+1 kati + gia + tsi + aqatta + sima + mmata
+1 tunngavi + qaq + sima + mmata
+1 kamagijau + sima + mmata
+1 aaqqiktau + sima + mmata
+1 unikkausi + qa + rutau + sima + mmata
+1 asuru + rpa + mmata
+1 ikajur + sijj + usa + tau + gaja + ngi + mmata
+1 piru + qsatau + giaq + vi + saq + aqatta + ngi + mmata
+1 ajjiu + ngi + mmata
+1 milian + ginnii + mmata
+1 i + niqa + qtu + samaa + ngulau + rni + mi + mmata
+1 atuinnau + gunna + i + rmi + mmata
+1 pija + saq + aru + t + ausima + mmari + mmata
+1 iliq + t + aqsi + mmata
+1 niriugija + u + mmata
+1 ilitarija + ksa + u + mmata
+1 atulirta + uj + uksau + mmata
+1 atuinnaqa + runna + r + t + uksau + mmata
+1 aturtau + ggu + mmata
+1 uqausi + qa + inna + uja + suugu + mmata
+1 timiu + mmata
+1 ami + gar + sart + ummariu + mmata
+1 atiliu + r + ilau + ju + mmata
+1 piusi + li + tu + qa + mmari + aluu + mmata
+2 amisualuu + mmata
+1 amisuu + mmata
+1 ikpigija + u + jaria + qaq + mata
+1 kamagi + jaqa + nirsau + laar + mata
+1 tukisia + niar + mata
+1 niqa + mmari + k + k + ajar + mata
+1 atuuti + qar + ajar + mata
+1 tusauma + titau + nirsau + qattar + ajar + mata
+1 uqausi + rija + uni + ujar + mata
+1 uqalimaar + uminar + mata
+1 sanngi + lir + titsi + gialla + gunnar + mata
+1 aturtau + junna + r + mata
+1 isuma + juksau + galuar + mata
+1 imialu + giall + alirmata
+1 angirutausim + alirmata
+1 ji + lir + mata
+1 arvi + niar + pal + au + r + nir + mata
+1 ta + qa + laur + mata
+1 kiggar + tu + tiqa + laur + mata
+1 kiinauja + liu + qatta + laur + mata
+1 ilau + laur + mata
+2 kanata
+1 ilau + gas + uaqattarnirsauk + pata
+1 naamman + aangip + pata
+1 kati + tita + up + pata
+1 ikpigija + uj + unna + i + rniq + pata
+1 atulirtit + au + vallia + llattaar + niar + pata
+1 qa + ngikkaluar + pata
+1 mali + giaqa + ngikkaluar + pata
+1 isuma + liu + lir + pata
+2 ukiurtart + uata
+1 ilinnia + qati + limaa + ngita
+1 uqalima + aga + ngita
+1 unikkaa + ri + simaja + ngita
+1 pinnarija + ngita
+1 annirija + ngita
+1 ukpir + ija + ngita
+2 gavama + ngita
+1 uqausi + tuqa + ngita
+1 sapummi + utiksa + ngita
+1 katimajirjua + ngita
+1 qatigii + ngita
+4 katujjiqatigii + ngita
+1 asijjirpallia + ni + ngita
+1 sivu + ni + vi + ni + ngita
+1 inuu + gunnar + asug + i + jau + ni + ngita
+1 unikkausi + ngita
+1 iliqqu + siq + a + rusi + ngita
+2 pijunnautingit + a
+1 sigja + quti + ngita
+1 gavamakku + ngita
+1 aanniarnanginni + li + rijikku + ngita
+2 inu + ngita
+1 pi + ita
+1 pijunnau + ti + taar + is + imajamita
+1 sivulli + r + is + imajamita
+1 pijunnar + ni + rija + mi + ta
+1 anaa + natsi + akkumita
+1 ataatatsi + akkumita
+1 pita
+1 minista
+1 qanuiliur + uma + mmangaa + tta
+1 qa + ngata + juu + mi + lau + ju + ga + tta
+1 pijjuti + gija + tta
+1 tiki + kka + tta
+1 tama + tta
+1 nuit + atitsisiarnirsauqataugajara + tta
+1 turaaga + qaratta
+1 nanisi + gia + qaratta
+1 qimirru + gia + qaratta
+1 kiunasuara + tta
+1 qittuksaliurasuara + tta
+1 kajusititsi + gia + tuara + tta
+1 titira + rii + ra + tta
+1 ikajuq + pallia + gunnar + si + niali + ra + tta
+1 tusartit + ausima + ju + inna + ulira + tta
+1 unikkausi + ngit + ta
+1 qaujima + jaqa + rusi + ngit + ta
+1 ingirra + ni + tta
+1 asi + tta
+1 avati + tta
+1 piliria + qa + si + tua + rutta
+1 uqalima + li + rutta
+1 iksivauta
+1 gavamakku + ta
+1 tusartau + niqa + luta
+1 aqvitaqti + luta
+1 ikigiartuliril + luta
+1 ingirra + kata + t + til + luta
+1 ilinniar + tit + au + til + luta
+1 niri + titaulluta
+1 ilinniar + titaulluta
+1 takujartur + titaulluta
+1 inuu + l + luta
+1 taak + kut + uul + luta
+1 gialla + gasuar + luta
+1 atur + luta
+1 uti + r + u + nnaq + suta
+1 nuna + quti + qaq + suta
+1 parna + lir + suta
+1 qa + ngata + su + ulaur + suta
+1 usi + kattau + tikk + uur + suta
+1 inuu + t + suta
+1 aiua
+1 kua
+1 suurlu + i + kua
+50 taakkua
+11 tamakkua
+6 takkua
+3 taikkua
+7 ukua
+1 qaujisar + tuksau + nir + mua
+1 pan + nir + tuu + mua
+1 su + a
+1 pinasua
+1 g + ava
+1 nilli + ngit + tuq + alaur + sima + va
+1 pimmariu + va
+1 pi + mmari + alu + uva
+3 tavva
+2 sunauvva
+3 quebec
+1 public
+1 historic
+8 arctic
+1 obed
+1 insured
+3 united
+1 david
+1 child
+6 and
+1 land
+1 zea + land
+1 po + land
+4 island
+1 collingwood
+1 award
+1 third
+1 hrsd
+1 knud
+1 peace
+1 france
+1 excellence
+1 resource
+1 age
+1 pass + age
+1 change
+1 george
+1 rouge
+8 the
+1 ber + the
+1 nellie
+1 ipellie
+1 malaurie
+1 alexie
+1 mackenzie
+1 duke
+1 honourable
+1 table
+2 arti + cle
+3 circle
+1 principle
+1 home
+1 duane
+1 elaine
+1 centre
+1 exposure
+1 future
+1 monte
+1 institute
+1 f
+7 of
+1 g
+1 solberg
+1 org
+1 research
+1 edinburgh
+1 ruptash
+1 fish
+2 danish
+1 smith
+1 health
+1 i
+1 aliana + i
+2 gi
+4 angi
+1 aul + ata + uni + ngi
+1 ti + gii
+1 angiqatigii
+1 katujjiqatigii
+1 iii
+1 ilinnia + rii
+1 ji
+1 maliga + liriji
+2 katuj + ji
+1 tuki
+4 li
+1 ila + ali
+1 va + ali
+1 taga + li
+1 qauji + sima + li + qtu + nga + li
+1 mali
+1 uqa + li
+3 ullumi + li
+1 pili
+1 ainsili
+1 ikajur + niq + arajar + tillugilli
+1 titiraqta + u + sima + ngi + llu + til + li
+1 allaniaga + llar + iutsutilli
+1 inuilli
+1 uvan + nulli
+1 qa + nurli
+1 i + lu + li
+16 suli
+29 mi
+1 ami
+1 kanata + limaa + mi
+1 sila + qjua + limaa + mi
+1 nuna + vu + limaa + mi
+10 sivullirpaami
+3 sivullirp + aatsiami
+1 amialikkami
+1 sila + mi
+2 akinnami
+4 nunami
+1 aulaji + jaung + unnar + ami
+1 nunanga + nnuarunnarsituar + ami
+1 ilinnia + riaq + alirami
+4 angirrami
+2 sivuniksami
+43 kanatami
+1 alpurt + ami
+2 kuujjuami
+1 piq + uja + rjuami
+29 silarjuami
+1 katimani + rjuami
+1 silau + rjuami
+1 la + atu + ami
+4 lapatuami
+1 ukiurtart + u + ami
+1 aatuvua + mi
+1 pa + imi
+2 huptail + imi
+2 naini + mi
+2 laapatuarimi
+18 lapatuarimi
+2 sitimi
+1 ukiurtart + imi
+1 laikmi
+1 vuinipaik + mi
+1 kupaik + mi
+1 nuna + tsia + mmi
+1 q + ila + mmi
+1 katima + vimmi
+7 nunavimmi
+1 kati + tta + vimmi
+1 iqqartuivi + mmi
+1 ujaranniar + vimmi
+1 ilinniar + vimmi
+1 maliga + liur + vimmi
+1 vu + mmi
+8 nunatsiavummi
+5 nunavummi
+2 karultanmi
+1 ilinniar + vi + tuinna + rmi
+1 kingul + lir + mi
+1 sivulli + rmi
+1 sivu + lir + mi
+3 katima + nirmi
+1 angiqatigiigut + iqar + asua + riaqa + nirmi
+1 katimarjuar + nirmi
+1 akiraq + turtau + nirmi
+1 sirmi
+1 atausir + mi
+1 pinasua + rusi + rmi
+1 ri + vu + rmi
+1 kal + ing + vut + mi
+1 ikullaumi
+1 pau + mi
+1 aan + ti + ariu + mi
+1 sukkajumi
+1 angirutausim + aju + mi
+22 ullumi
+1 ukiurta + tumi
+1 inugianni + qaq + tumi
+1 nirua + rni + u + laar + tumi
+1 anigur + a + taar + tumi
+1 katimani + unia + rtu + mi
+1 ukirtar + tumi
+20 ukiurtartumi
+1 kingullirpa + a + ngu + lir + tumi
+1 katimani + rjua + ngulau + rtu + mi
+1 uqau + tau + gajusuu + mi
+15 ni
+1 ma + ani
+1 kingullirpa + ani
+1 ata + ani
+1 gia + liqqitaa + ni
+1 ngani
+1 saa + ngani
+2 ila + ngani
+1 sivuniksanga + ni
+1 sivu + ni + riniarta + ngani
+1 ingirra + qa + tta + nirigajarta + ngani
+1 ukiurtart + u + rilirta + ngani
+1 naluna + ikkuta + ngani
+1 ilinniar + vigjua + ngani
+1 iqqa + rtu + vigjua + ngani
+1 tulli + ngani
+1 pijarii + lau + nginni + ngani
+1 tiki + uti + nna + su + arni + ngani
+1 kinguni + ngani
+1 katimavigjuarvi + ngani
+1 pi + llu + a + tau + ngani
+1 tariu + ngani
+1 ullu + ngani
+1 saniani
+1 sivu + ni + ani
+1 asia + ni
+15 kisiani
+1 katima + vi + ani
+1 katimavigjuarvi + ani
+1 maliga + liur + vi + ani
+2 taikani
+1 tisama + ni
+1 tallimani
+1 taisumani
+4 taitsumani
+1 taak + nani
+5 taakkunani
+1 taikku + nani
+2 ukunani
+1 qaq + qa + ni
+2 ikarrani
+1 uqalimaagaksa + ni
+2 katimajjuti + ksa + ni
+1 mik + inirsani
+1 tiki + ggarnan + ginnirsani
+1 unun + ginnirsani
+1 uqalima + agatsani
+1 lu + ani
+1 gutau + jaria + liu + galua + ni
+1 isuan + i
+2 ukiurtart + uani
+1 vani
+2 ta + vani
+2 tavivani
+1 tau + vani
+6 tavvani
+1 naini
+1 ajjingua + li + ni
+1 qu + li + ni
+1 nuna + gija + mi + ni
+1 ila + mi + ni
+1 angirrami + ni
+1 ingirra + ni + rmi + ni
+1 inuusi + rmi + ni
+1 iliqqu + si + ni
+1 piqqusi + ni
+1 pijunnautini
+2 angiqatigiigut + i + ni
+2 uqammariutini
+2 nunanga + nni
+1 qul + iquagal + anni
+3 arraagu + gasanni
+1 arragu + gasanni
+1 ni + uvi + r + vi + jjua + limaa + kasanni
+1 avati + kasanni
+1 tavva + nni
+1 nginni
+1 katimani + limaa + nginni
+1 ma + aga + nginni
+1 sigja + nginni
+1 ima + nginni
+3 nuna + nginni
+1 qaq + qa + nginni
+1 piusi + tuqa + nginni
+1 iliqqu + si + tuqa + nginni
+1 tau + sa + nginni
+1 ilinniar + ta + nginni
+1 piliri + vi + gi + vatta + nginni
+1 allaniaga + liri + vi + galua + nginni
+1 katujjiqatigii + nginni
+5 nunali + nginni
+2 katimani + nginni
+1 isuma + liuru + tau + lau + ngin + ni + nginni
+3 akunninginni
+1 pigiar + ni + nginni
+2 asinginni
+1 inu + tuinna + u + gusi + nginni
+1 nuqqariarusi + nginni
+1 inuusi + nginni
+1 illu + tama + aqsi + uti + nginni
+2 nuna + quti + nginni
+1 uti + ruti + nginni
+1 ilisar + vi + nginni
+3 arraagu + nginni
+1 akinnaalu + nginni
+1 li + nni
+25 nunalinni
+1 ukiaksaarirataalaurtati + nni
+1 inuu + vi + gija + ttinni
+1 nuna + ttinni
+1 sivu + nik + sa + ttinni
+4 ilinniarvinni
+1 akinnaalu + nni
+1 inu + vi + alu + nni
+3 iqalunni
+1 uqalima + aga + rni
+1 iqqanaijar + ni
+1 qaujisar + ni
+1 uqausi + rni
+1 atausir + ni
+1 pinasua + rusi + rni
+1 staitsni
+1 katima + qatau + ni
+9 arraaguni
+1 nunali + ngin + nuangaj + uni
+1 pingasu + ulingaj + uni
+2 allasimaju + ni
+2 aviktursimaj + uni
+1 uqammariuta + usimajuni
+4 angirutausimajuni
+1 suunguniq + pa + ang + usimajuni
+2 katimajuni
+1 ilitaqsi + gutau + ju + ni
+1 nunali + ujun + i
+1 katujjiqatigii + tta + qa + luni
+1 kajusinginn + a + langa + lluni
+1 nuit + si + gutau + gialla + lluni
+1 titiqaqsi + ma + lluni
+1 ikajur + utiksa + qaqpa + lluni
+1 tuni + uqqai + sima + gi + lluni
+1 ulluni
+1 aaqqiksui + ji + gija + ulluni
+1 ullu + rija + ulluni
+1 katut + ija + ulluni
+1 mumi + qa + taulluni
+1 nirua + ra + ksa + uqa + taulluni
+1 kajusitit + a + ulluni
+1 angajuqqaa + ruqti + taulluni
+1 minista + ruqti + taulluni
+1 minista + ulluni
+2 pijju + taulluni
+1 angiqatigii + gasuar + u + taulluni
+1 surusi + ulluni
+1 kativi + ulluni
+1 makkuttu + kulu + ulluni
+1 taanna + tu + ulluni
+1 ilisaiguti + ksaqa + tsiar + luni
+1 annauma + titsinasua + r + luni
+1 saqqititsi + gutau + luni
+1 sanngi + niqa + rutau + luni
+1 uqalima + gia + rtu + luni
+1 ni + uvi + r + u + maju + qar + uni
+1 i + nga + suni
+2 ami + suni
+1 ila + qaqsuni
+1 tukisi + titsi + gasuar + uti + qta + qaqsuni
+1 pinasuaqati + qaqsuni
+1 mali + k + ti + qaqsuni
+1 aqquti + qaqsuni
+1 u + qaqsuni
+1 unikkaa + rija + ugunna + nginna + araluaq + suni
+1 taitsumani + tammariviniujaaliq + suni
+1 pi + vallia + niali + q + suni
+1 parna + iliq + suni
+1 taku + vallia + llattaar + suni
+1 piruqsar + suni
+1 irngira + qattar + suni
+1 qimai + giaqa + laur + sima + galuar + suni
+1 guutimii + lir + suni
+1 surusi + ulaur + suni
+2 atur + suni
+1 kuu + r + suni
+1 titirauj + arpa + t + suni
+1 ingirra + kata + t + suni
+1 inutt + ituulirtiri + vat + suni
+1 ajjingua + qaq + tit + si + vat + suni
+1 a + uva + u + vat + suni
+1 asiu + ji + t + suni
+1 nal + ulitjaisimagunnarutaut + suni
+1 kakkalaan + gut + suni
+1 angi + lijualuut + suni
+1 angi + niqa + qtu + ni
+1 pijjutiqa + qtu + ni
+1 aniguqsimali + qtu + ni
+1 arraagu + u + sima + lir + tuni
+1 arraagu + u + lir + tuni
+1 akukit + tuni
+1 juu + ni
+1 taga + uvi + gijau + su + uni
+2 tuu + ni
+1 hapi
+1 rangukiqi
+2 ri
+3 januari
+1 vi + vuari
+1 qanuin + niri
+6 tisipiri
+3 sitipiri
+2 nuvipiri
+2 uktupiri
+4 si
+1 asi
+1 nunaqaqqaaqsi
+1 ikajuq + si
+1 ajji + liari + tsiar + si
+3 uqausi
+1 pitsi + angi + tta + qa + qpanian + ngit + usi
+1 ti
+1 kati
+1 i + liri + qati
+1 piliriqati
+1 li + kaqikisamaqisati
+1 ruqikaqilulij + imaqisati
+1 gut + ukiqiq + imaqisati
+1 avati
+2 katimaji + nginni + ti
+1 akuninitar + niar + ti
+1 annuraaliurti
+1 sivuliurti
+1 piju + qalauqsi + maguti
+1 angiqatigiigut + i
+1 ang + uti
+1 sivullirp + a + arsi + uti
+1 kitturia + jjaikk + uti
+1 mali + qujau + ngi + kkut + i
+1 angiruti
+2 aaqqiksui
+1 aktui
+1 asi + j
+1 katuj
+1 iggaak
+1 ilaak
+2 alla + ak
+11 imaak
+2 ta + imaak
+1 taak
+1 udloriak
+1 it + ju + ju + nngu + sima + julak
+1 mak
+1 gavama + k
+1 nick
+1 chuck
+4 kupaik
+1 illu + jjaikk + uti + ik
+1 okalik
+1 tuki + li + k
+3 mik
+1 qallunaa + mik
+1 nutaa + mik
+1 taima + ima + ittu + ksa + u + ga + mik
+1 apiqsu + pallia + nga + jaria + mik
+1 arna + mik
+4 nuna + mik
+1 suna + mik
+1 ilinniar + unna + i + tuara + mik
+1 pijarii + ra + mik
+1 qaujima + liramik
+1 ilinniar + uti + qaq + titau + liramik
+1 akau + ksa + ngitt + ummariu + laur + a + mik
+1 uqalimaagaksa + mik
+1 niq + i + ksa + mik
+1 isumaksarsiuru + ti + ksa + mik
+2 tunngaviksa + mik
+3 piunirsamik
+1 nuna + qjua + mik
+1 sukkaittu + u + galua + mik
+1 macdonald + mik
+1 pitsi + a + pa + giaq + arni + mik
+1 saniqvajuum + igiaq + arni + mik
+3 unikkaa + liurnimik
+1 pa + si + mik
+3 avati + mik
+1 quvia + su + gviksi + uti + mik
+3 arraagu + tamaarsiutimik
+3 angiruti + mik
+3 imialummik
+1 su + kka + jummar + ialummik
+1 angi + jummar + ialummik
+2 sukkajualummik
+1 imiulum + mik
+1 kinau + mmangaa + rmik
+1 kama + juksau + mmangaa + rmik
+1 qanuili + ukan + nir + tuksau + mmangaa + rmik
+1 qanuiliur + tuksau + mmangaa + rmik
+1 maliga + rmik
+4 tamarmik
+1 ima + rmik
+1 pijunnau + tiqa + ni + tuinna + rmik
+1 su + katturata + rmik
+1 nirmik
+1 gavama + liur + pallia + nirmik
+1 katima + nirmik
+1 pinasuaqati + gii + tsiar + uma + nirmik
+1 unikkaa + runna + nirmik
+1 qa + nirmik
+1 katirsui + sima + g + iaqa + nirmik
+1 pinasuaqati + gii + giaqani + rmik
+1 ujjirusun + nirsa + uja + riaqa + nirmik
+1 ikpigija + qa + riaqa + nirmik
+1 qaujisar + iaqa + nirmik
+1 gavama + qa + nirmik
+1 sivuliurti + qa + nirmik
+1 annaumag + asua + nirmik
+1 siq + i + nirmik
+1 inuusi + ji + ri + nirmik
+1 lirinirmik
+1 maliga + lirinirmik
+1 qaritauja + lirinirmik
+1 nuna + lirinirmik
+1 tariu + rjua + lirinirmik
+1 ni + lirinirmik
+1 aanniarnanginni + lirinirmik
+1 ilinniar + ni + lirinirmik
+3 kiinaujaliurasu + arni + lirinirmik
+2 inuusi + lirinirmik
+2 avati + lirinirmik
+1 ingirra + uti + lirinirmik
+1 uumaju + lirinirmik
+1 aivi + vi + nirmik
+1 qinir + pan + nirmik
+1 aaqqiksui + g + unnar + nirmik
+1 laisansi + taar + unnar + nirmik
+1 aaqqiksui + kkannir + unnar + nirmik
+1 katimarjuar + nirmik
+1 imialu + luar + nirmik
+1 kajusititsi + sia + nginnar + asuar + nirmik
+1 kiinaujaliurasu + arni + rmik
+1 akau + nirmik
+1 ilisar + tuksau + nirmik
+1 atur + asuar + tuksau + nirmik
+1 niuvia + rijauju + mmari + liu + qatau + nirmik
+1 sivuliurti + u + nirmik
+2 uqausi + rmik
+1 atausir + mik
+2 inuusi + rmik
+1 arraagu + gijau + langa + jumik
+2 inunnuanga + jumik
+1 aviktursimaj + unua + nga + jumik
+1 marrui + li + nga + jumik
+1 atausiulinga + jumik
+1 unikkaa + tuat + uinnanguq + pa + lia + jumik
+1 sukkajumi + k
+1 la + jumik
+1 uuktura + utigi + sima + jumik
+1 atiliurtau + laur + sima + jumik
+1 pi + jumik
+1 nalauts + i + jumik
+3 taijau + jumik
+1 atuqqau + jumik
+1 angiqatigiigut + au + jumik
+1 siku + mik
+1 katimarjuar + niu + laa + rtumik
+1 piliriqati + giip + pallia + niu + gaja + rtumik
+1 nurral + ija + rtumik
+3 ukiurtartumi + k
+6 piluartumik
+1 qanui + llu + a + rtumik
+1 atu + rtumik
+1 sukkaittu + mik
+1 pijarii + qsim + angi + ttu + mik
+1 kajusi + ngi + a + qa + mmari + ttu + mik
+17 nik
+1 kakkalaan + ik
+1 sunalimaa + nik
+1 iqqa + naija + saa + nik
+8 nutaanik
+1 piusi + ri + vallia + simaja + nga + nik
+1 nunataar + i + simaja + nga + nik
+1 nunanga + nik
+1 ni + arta + nga + nik
+1 lirtanga + nik
+1 si + tama + gi + lirtanga + nik
+1 tisama + ngi + lirtanga + nik
+1 gavama + taar + asuar + niri + laurta + nga + nik
+1 ima + rjua + nga + nik
+1 pita + qa + llu + agala + angi + ninga + nik
+1 nammini + nga + nik
+1 asijjirpallia + simalir + ninga + nik
+1 pimmariu + ninga + nik
+10 uqausinganik
+3 iliqqusinga + nik
+1 timmia + nik
+4 asijjirpalliania + nik
+1 titiraqsim + a + nianik
+1 qanuili + sima + lir + nianik
+1 aktui + r + nillu + lir + nianik
+1 pimmariu + nianik
+1 annaumag + uti + qa + mmari + a + nik
+1 piru + q + sia + nik
+2 iliqqu + sia + nik
+1 avati + a + nik
+1 katimavigjuarvi + a + nik
+1 sa + tsi + raja + nik
+1 tupiksaja + nik
+1 kiinauja + nik
+1 iqqauma + ja + kka + nik
+2 gavama + nik
+3 tallimani + k
+3 nuna + nik
+1 suna + nik
+1 ilisaigusi + tuqa + nik
+1 inutuqa + nik
+1 uqalimaagaksa + nik
+1 up + aga + ksanik
+5 maliga + ksanik
+4 piliria + ksanik
+1 sanaja + ksanik
+1 ujaranniar + a + ksanik
+1 sananngua + ksanik
+1 katimajirjua + ksanik
+1 katimaji + ksanik
+2 ilisaigusi + ksanik
+1 aulatsi + gusi + ksanik
+4 pilirijjusiksanik
+1 usi + kata + utiksanik
+1 ilisaiguti + ksanik
+1 aanni + asi + utiksanik
+1 jurtaujj + utiksanik
+2 ika + jurtaujj + utiksanik
+2 ikajuq + utiksanik
+2 aaqqi + giar + utiksanik
+1 aaqqiksui + giar + utiksanik
+1 ilinniar + utiksanik
+1 ika + ju + kkannir + utiksanik
+2 kiinaujaliur + utiksanik
+4 ikajur + utiksanik
+1 aanni + a + vi + ksanik
+1 pairivi + ksanik
+1 piliri + vi + ksanik
+2 tukisi + ngi + arvi + ksanik
+1 takuksau + ju + ksanik
+1 timiuju + ksanik
+1 nirsanik
+2 akaunaar + nirsanik
+1 atuuti + qar + nirsanik
+2 piu + nirsanik
+1 uqau + limaa + gatsa + nik
+1 aulaji + gatsa + nik
+1 ikirngua + tsa + nik
+4 nunamiutanik
+1 imarm + i + uta + nik
+1 naluna + ikkuta + nik
+1 nunangua + nik
+2 katimajirjua + nik
+1 qaq + iqqua + nik
+1 ukiurtart + uani + k
+1 katujjiqatigii + nik
+1 ajjiliur + iji + nik
+3 mailinik
+1 iqqa + naija + a + minik
+1 allasimaju + liari + simaja + limaa + minik
+1 angajuqqaa + minik
+1 akinnami + ittu + ksa + lia + minik
+1 unikkausi + liari + vallia + ja + minik
+1 alla + pallia + simaja + minik
+1 arsa + arta + u + g + utigi + simaja + minik
+1 qauji + simaja + minik
+1 unikkaa + liari + simaja + minik
+1 pinasua + r + simaja + minik
+1 taku + jumaja + minik
+4 isumagijaminik
+1 mat + u + irsi + guti + gija + minik
+1 pijjuti + gija + minik
+1 niriugija + minik
+1 ila + minik
+1 gavama + minik
+1 arna + minik
+2 nuna + minik
+3 uqau + situqaminik
+1 iliqqu + situqaminik
+1 pijunnau + ti + tuqa + minik
+1 akau + gi + ngita + minik
+1 uqausi + ri + ngita + minik
+1 titirauj + aqta + minik
+1 ilinniar + ta + minik
+1 atur + ni + arta + minik
+2 atulaurta + minik
+1 aulatsi + vi + llar + i + minik
+1 asi + minik
+1 pilirijju + si + minik
+1 iliqqu + si + minik
+1 piqqusi + minik
+1 pijunnau + ti + minik
+1 pit + jusiqau + ruti + minik
+2 imminik
+1 pinasua + gar + minik
+1 najuga + r + minik
+1 piara + r + minik
+1 pijunnau + tiqa + nirminik
+1 pitsi + at + igin + ngita + vi + nirminik
+1 qanuiliur + iaqa + lir + nirminik
+1 sanasitiu + nirminik
+1 inngi + r + tiu + nirminik + inngi + usi + liur + tiu + nirminik
+1 sirmi + nik
+1 uqausi + r + minik
+1 quvia + sugu + sirmi + nik
+1 inuusi + liri + nik
+1 natsi + nik
+1 qa + tsi + nik
+1 iqqanaijar + ti + nik
+1 kiinaujaliurasu + arti + nik
+1 uqalima + vi + gija + t + ti + nik
+1 naala + utinik
+3 pijunnautini + k
+1 marluk + uqa + utinik
+1 ilisa + utinik
+1 tukisi + vallia + qatta + utinik
+2 ilisaiguti + nik
+1 inngi + utinik
+1 aaqqiksui + jiqsi + utinik
+1 ullu + taar + si + utinik
+1 ilitaqsi + jjuti + nik
+2 pinnguar + utinik
+1 kiinaujaliurasu + aruti + nik
+1 ilisar + vi + nik
+1 pu + igu + laur + sima + langa + gunna + ita + nnik
+1 ilanna + a + rilirta + nnik
+5 tamainnik
+2 nginnik
+1 pita + limaa + nginnik
+1 ilitars + ija + ugutitaa + nginnik
+1 najuga + nginnik
+1 qaujima + simaja + nginnik
+1 unikkausi + ri + simaja + nginnik
+1 sigja + nginnik
+1 isuma + gija + nginnik
+1 isumaalugutigija + nginnik
+1 niriugija + nginnik
+1 asiu + ji + ja + nginnik
+1 pinnarija + nginnik
+1 nammini + rija + nginnik
+1 annirija + nginnik
+2 nuna + nginnik
+1 maliga + ksa + nginnik
+1 nammini + ksa + nginnik
+1 ikajurtau + kkannir + utiksa + nginnik
+1 tunngaviksa + nginnik
+1 ikajuq + si + jaung + ut + igigunnata + nginnik
+1 ikajuq + si + giaq + tau + vi + tsa + ri + gunna + ta + nginnik
+1 piru + qpali + alaqi + titau + gut + igin + gunna + ta + nginnik
+1 inigiju + nnasi + aqta + nginnik
+1 saqqi + tig + unnar + ta + nginnik
+1 pigiar + tisimalirta + nginnik
+1 uqausi + rta + nginnik
+1 niri + laurta + nginnik
+1 naju + rta + nginnik
+1 atur + t + a + nginnik
+1 kiggarturt + a + nginnik
+1 qaujisar + utigi + vatta + nginnik
+1 nappallua + nginnik
+1 katsungaisautigigunnatai + nginnik
+3 katujjiqatigii + nginnik
+1 katimaji + nginnik
+1 naija + rni + liriji + nginnik
+1 iqqa + naija + rni + liriji + nginnik
+2 inuusi + liriji + nginnik
+1 nunali + nginnik
+3 ninginnik
+1 qanuili + nga + ninginnik
+1 qanuiliur + pallia + ninginnik
+1 qanuiluur + pallia + ninginnik
+1 naluliq + qaq + sima + ninginnik
+1 kati + qsuarij + ausima + ninginnik
+1 nalauts + i + sima + tsiaq + unna + ninginnik
+1 qa + ninginnik
+1 iqqanaijar + ti + taar + nirsau + gia + qa + ninginnik
+1 ilitarija + u + jaria + qa + ninginnik
+1 quvia + gija + qaria + qa + ninginnik
+1 ikajur + utiksa + qaria + qa + ninginnik
+1 asijji + ria + qa + ninginnik
+1 sanngi + ninginnik
+1 qanuiliur + iaqa + qtu + gi + ninginnik
+1 sanaja + vi + ninginnik
+1 pinasua + qta + vi + ninginnik
+1 qanui + qati + qar + niri + lauq + ta + vi + ninginnik
+2 uqausi + vi + ninginnik
+1 katimajjuti + vi + ninginnik
+1 ang + uti + quti + vi + ninginnik
+1 allasimaju + quti + vi + ninginnik
+1 atur + lir + tau + tit + silau + ngin + ninginnik
+1 attana + rtu + mi + in + ninginnik
+1 kinnguuma + tsi + llar + in + ninginnik
+1 qanuin + ninginnik
+1 nani + jau + guma + ar + ninginnik
+1 unikkaa + tau + sima + g + inna + siar + ninginnik
+1 asi + nngu + r + pal + liag + ajar + ninginnik
+2 aulataugajar + ninginnik
+1 nuqqatuinn + arajar + ninginnik
+1 saqqi + nni + ujar + ninginnik
+1 aktui + simalir + ninginnik
+1 su + gialla + r + it + simalir + ninginnik
+1 kajusi + sima + ti + gi + lir + ninginnik
+1 arsuru + qatigiin + nirsau + lir + ninginnik
+1 arsuru + r + ninginnik
+1 ilau + ninginnik
+1 pinasuaqati + giip + pallia + juksau + ninginnik
+1 pijunnar + niqaq + titau + ninginnik
+1 arsuru + titau + ninginnik
+1 pimmariu + ninginnik
+1 ki + kkuu + ninginnik
+11 asinginnik
+1 unikkausi + nginnik
+2 uqausi + nginnik
+1 tunngasuk + titsi + g + usi + nginnik
+1 ta + i + sijj + usi + nginnik
+1 ilisar + sijj + usi + nginnik
+1 qusi + nginnik
+1 iliq + qusi + nginnik
+1 piqqusi + nginnik
+1 pinnguar + usi + nginnik
+9 pijunnautinginnik
+1 unikkaa + saq + uti + nginnik
+1 piliri + vi + nginnik
+3 uumaju + nginnik
+1 gavamakku + nginnik
+1 tapiriikku + nginnik
+1 niq + i + tsiav + aalu + nginnik
+2 inu + nginnik
+1 pili + usi + aqta + arisuu + nginnik
+1 att + arna + ngit + tumi + igia + linnik
+1 aaqqik + surtau + jaria + linnik
+2 nunalinni + k
+1 unikkausi + qta + linnik
+1 kisit + si + guti + linnik
+1 a + tuara + tsa + mari + nnik
+1 amisugal + aa + mmari + nnik
+1 allaniaga + liri + vi + mmari + nnik
+1 saqqititsi + giaqani + r + ti + nnik
+2 arraagu + gija + ttinnik
+1 atur + uma + ngita + ttinnik
+1 atulirta + ttinnik
+2 uva + ttinnik
+1 uqausi + ttinnik
+1 anaulli + gar + vi + nnik
+1 qaujisar + vi + nnik
+1 silattursar + vi + nnik
+1 pinnguar + vi + nnik
+1 na + liangu + nnik
+2 iqqanaijar + nilirijikku + nnik
+1 pal + iisi + kku + nnik
+1 ajjigi + inngi + t + up + aalu + nnik
+1 akuninitar + ju + ar + aalu + nnik
+1 amisummar + ialu + nnik
+5 amisualunnik
+1 ma + m + artualu + nnik
+9 inunnik
+1 marruunn + ik
+6 maligarnik
+1 qanuittut + uinnar + nik
+1 iliqqu + si + tuqa + rnik
+1 taima + nnganiqjuaninita + rnik
+1 saqqitau + simalir + nik
+1 nir + nik
+1 kajusi + tsiar + si + mani + rnik
+1 ijuqa + rutau + sima + ju + vi + nir + nik
+1 pijuqarut + ausima + llar + it + uvi + nir + nik
+1 aqq + usaalauqt + uvi + nir + nik
+1 unikkausi + rnik
+2 uqausi + rnik
+1 ilisaigusi + rnik
+1 piqqusi + rnik
+1 su + qusi + rnik
+1 attii + rusi + rnik
+1 atiliu + rusi + rnik
+4 surusi + rnik
+1 inuusi + rnik
+2 aivi + rnik
+1 na + u + nik
+2 kanatami + u + nik
+1 silarjuami + u + nik
+5 turaangajunik
+1 gavama + liur + nir + tuksau + nir + muanga + junik
+1 kiggarturt + i + u + nir + mua + nga + junik
+1 ukiurtart + u + muanga + junik
+1 sunalimaa + nuangajunik
+1 iliqqusinga + nuangajunik
+1 inuusi + r + nuangajunik
+1 nunaqaqqaaqsi + maju + nuangajunik
+1 lingajunik
+1 silarjua + mua + lingajunik
+1 silarjuami + unua + lingajunik
+1 unikkaa + liuru + nna + nir + mu + u + lingajunik
+1 simajunik
+8 allasimaju + nik
+1 pi + simajunik
+1 unikkaa + liari + simajunik
+1 parnak + simajunik
+1 nunaqaqqaaqsi + maju + nik
+1 titiraq + simajunik
+1 pijuqarut + au + lauq + simajunik
+1 arsururut + au + laur + simajunik
+1 saqqitau + simajunik
+2 aaqqiktau + simajunik
+1 angiqatigiigut + au + simajunik
+1 aaqqi + gutau + simajunik
+1 angi + q + utau + simajunik
+1 pi + mmari + q + utau + simajunik
+3 angirutausimajuni + k
+1 piqqusi + u + simajunik
+1 turaaga + rija + uva + lliagu + maju + nik
+1 uumaju + nik
+2 suli + junik
+1 niri + junik
+1 ila + gi + uti + junik
+1 iliaqju + nik
+1 qaujima + jaujunik
+2 isuma + gi + jaujunik
+1 niriu + ngi + jaujunik
+1 piu + gi + jaujunik
+2 isumaalugi + jaujunik
+1 niri + jaujunik
+1 anaanauju + nik
+2 atuinnau + junik
+1 pijuqarut + auqq + aujunik
+1 atuinnau + titau + junik
+1 pimmariu + titau + junik
+1 tuni + uqqart + aujunik
+1 kiggarturt + aujunik
+1 angiqatigiigut + aujunik
+2 lugutaujunik
+1 isuma + a + lugutaujunik
+1 akaungiliutauju + nik
+1 pijju + t + aujunik
+2 timiuju + nik
+1 piuju + nik
+1 uumaju + aru + nik
+1 su + nik
+1 pingasu + nik
+4 amisunik
+1 atunik
+1 kati + t + sima + tsi + atunik
+1 piuliaqar + usi + u + gunn + atunik
+1 atu + inna + si + vi + u + gunn + atunik
+1 pijuqarut + auqatt + atunik
+1 sunalimaa + gujaa + qtunik
+1 nalauts + i + sia + qtunik
+1 aktuiniq + a + qtunik
+1 pijjutiqa + qtunik
+1 pillarigasu + aruti + qa + qtunik
+1 piru + qtunik
+3 akaunaartunik
+1 ikajur + utiksa + u + ni + a + rtunik
+1 titira + utaunia + rtunik
+1 akaunaar + ia + rtunik
+1 atuuti + qatsia + rtunik
+2 atuinnau + gaja + rtunik
+1 kingullirpa + arsi + uti + u + gaja + rtunik
+1 uqa + qviujunn + aqatta + raja + rtunik
+1 atu + raja + rtunik
+1 angana + rtunik
+1 takumina + rtunik
+1 pinasua + mmari + gunna + rtunik
+1 pigiursa + uti + gija + ugunna + rtunik
+1 saqqi + ta + ugunna + rtunik
+1 ikajuusi + arijau + junnartunik
+1 piviksa + u + junnartunik
+1 atuuti + qatsia + r + nirsau + junnartunik
+1 unguma + gutau + junnartunik
+1 tilisi + gutau + junnartunik
+1 kama + tsia + rutau + junnartunik
+1 pivallirutau + junnartunik
+1 kiinaujaliur + utau + junnartunik
+1 arsururut + au + junnartunik
+1 sanngi + niu + junnartunik
+1 arsururna + rtunik
+1 naamman + g + ilua + rtunik
+1 ikajur + utaunas + u + a + rtunik
+1 atuinnau + gii + rtunik
+1 atur + sima + li + rtunik
+2 immikkuu + rtunik
+1 pi + raja + ttu + nik
+1 na + amma + ttu + nik
+1 ullapa + ttu + nik
+1 kama + vattu + nik
+1 nuit + si + vattu + nik
+1 tulurta + rutau + vattu + nik
+2 taima + ittunik
+1 isuma + nagalaannij + ang + ittunik
+1 tapana + nngu + ang + ittunik
+1 akitulu + ang + ittunik
+6 ajjigiingittu + nik
+1 ajjigi + jaung + ittunik
+1 pit + uinnaung + ittunik
+1 ilua + ni + ittunik
+1 uqammariutini + ittunik
+1 hannalan + ginn + ittunik
+3 qanuittunik
+1 makkuttu + nik
+1 sup + u + u + juu + nik
+1 sivu + nik
+1 aaqqik
+1 ittarnisali + r + iji + mmari + k
+1 akaunaar + tu + mmari + k
+1 qauji + tsaruqtitau + lauq + si + mani + ajjag + atik
+1 atiliu + ruti + qa + laur + timamm + atik
+1 ikajur + sijau + natik
+1 tusauma + titau + natik
+1 nalli + ukkumaa + qa + rutau + natik
+1 su + ngi + unnar + atik
+1 nipi + qar + atik
+1 kiinaujaliur + utau + nasuar + atik
+1 ili + laur + atik
+1 nirsau + ju + maguti + k
+1 uq + aru + maguti + k
+1 uqa + mmari + uti + k
+1 turaa + nga + lutik
+2 tukisia + lutik
+1 qa + lutik
+1 katimajirjua + qa + lutik
+4 pijjutiqa + lutik
+1 angi + rutau + ta + lutik
+1 ukpir + i + jauquji + lutik
+1 apiri + lutik
+1 tuki + liur + i + lutik
+1 uumakkai + gunna + si + lutik
+1 nirua + r + si + lutik
+1 pigiar + titsi + lutik
+1 uti + r + titsi + lutik
+1 qiksui + lutik
+2 aaqqiksui + lutik
+1 katirsui + lutik
+1 atausiulinga + llutik
+1 katima + titsi + qattar + sima + llutik
+1 tuni + j + ausima + llutik
+1 akausi + giar + tit + ausima + llutik
+1 arsururut + ausima + llutik
+1 qatigii + g + uma + llutik
+1 kajungiqsu + ig + uma + llutik
+1 sapummi + guta + ujuma + llutik
+1 ikajur + uta + ujuma + llutik
+1 uqausi + rni + pa + llutik
+1 pinasua + qatau + giar + pa + llutik
+1 atur + pa + llutik
+1 titiraqsim + ava + llutik
+1 uqa + qati + gija + uva + llutik
+1 saqqitau + tita + uva + llutik
+1 naluna + ijai + llutik
+1 parna + i + llutik
+1 ajaursigutausim + angi + llutik
+1 aki + lir + turtau + ngi + llutik
+1 kappiasaartaunginnaujaqqu + uji + llutik
+2 amiari + llutik
+1 nunangua + liri + llutik
+1 unguma + tsi + llutik
+1 tunnganar + titsi + llutik
+1 tauq + si + i + qatta + uti + llutik
+1 aaqqiksui + llutik
+1 kamagijau + llutik
+1 isumaalugi + jau + llutik
+1 unikkaa + qu + jau + llutik
+1 pijjutiqa + qtu + inna + kasau + llutik
+1 ikajur + utiksa + u + llutik
+1 mali + gutau + juksau + llutik
+1 ikpigija + u + tsia + r + tuksau + llutik
+1 unu + ngin + nirsau + llutik
+1 uqalimaagaksa + qa + titau + llutik
+1 qaq + titau + llutik
+1 iqalliar + titau + llutik
+3 ilinniar + titau + llutik
+1 katima + qatau + titau + llutik
+1 ilisar + tau + llutik
+1 naluna + ikkusir + tau + llutik
+2 ikajurtau + llutik
+1 ilitaqsi + gutau + llutik
+1 iglumi + utau + llutik
+1 ilisar + utau + llutik
+1 tunngavi + liur + utau + llutik
+1 pimmariu + llutik
+1 niqaq + tumm + ariu + llutik
+1 ikpi + nar + tumm + ariu + llutik
+1 isuma + rtu + juu + llutik
+1 inu + tuu + llutik
+1 pigiar + lutik
+1 kiggarturt + iqa + niar + lutik
+1 ilau + titau + n + iarlutik
+1 atur + iarlutik
+1 naluna + jaits + iarlutik
+1 taku + jumaja + uts + iarlutik
+1 atu + arta + uts + iarlutik
+1 katimajjuti + qa + lu + arajar + lutik
+1 piviksa + qaq + att + ajar + lutik
+1 quvia + gija + qar + unnar + lutik
+1 taima + igiaq + ataujuqtaqar + lutik
+1 qaq + ataujuqtaqar + lutik
+1 piruqsar + lutik
+1 gasuar + lutik
+1 ikajur + utaunas + u + ar + lutik
+1 atangir + lutik
+1 tukisi + nirsau + lu + lir + lutik
+1 tukisi + gialla + guta + u + kkannir + lutik
+1 atausir + ur + lutik
+2 atur + lutik
+1 asijji + qujau + lutik
+1 sivulli + pau + lutik
+1 ikajur + utiksa + u + lutik
+1 qauji + giarv + iks + au + lutik
+1 pinasua + qatsia + r + tuksau + lutik
+1 tsia + tau + lutik
+1 gavama + quq + ti + tau + lutik
+1 kiinauja + rta + arti + tau + lutik
+1 ilau + ti + tau + lutik
+1 aaqqiktau + lutik
+1 ikajurtau + lutik
+1 ikajur + utau + lutik
+1 ilinnia + titsi + guti + nngu + lutik
+1 isuil + liu + lutik
+1 rutik
+1 iliqqu + s + iqaraluarutik
+1 arsururut + iqaraluarutik
+1 atu + rutik
+1 qanuq + tuu + rutik
+1 aaqqi + sur + sima + tsia + sutik
+1 kasu + qati + qatsia + sutik
+1 ujun + iksiagu + tuinna + sutik
+1 inna + vi + qaqpa + sutik
+1 suli + niq + sijau + guma + aq + sutik
+1 allaniaga + nngu + qunarajaq + sutik
+1 piju + majaugajaqturi + naq + sutik
+1 naluliq + qa + utau + lir + pa + q + sutik
+1 qaqsutik
+1 ilisa + uti + nngu + inna + ria + qaqsutik
+1 unikkausi + qaqsutik
+2 uqausi + qaqsutik
+1 pinasuaqati + qaqsutik
+1 piliriqati + qaqsutik
+3 pijjuti + qaqsutik
+1 katimavigjuarvi + qaqsutik
+1 u + qaqsutik
+1 unikkaa + r + si + maju + qaqsutik
+1 qaiqujausi + maju + qaqsutik
+1 namminiq + aniraq + sutik
+1 na + ti + on + namminiq + aniraq + sutik
+1 nanisi + ngi + aqaqtuujaaliq + sutik
+1 ilagij + augunnaliq + sutik
+1 inikuuliq + sutik
+1 ajjingua + qa + uq + sutik
+1 pigiar + sutik
+2 ilinniar + sutik
+1 ilitars + ija + uni + qatsia + rsutik
+1 ilinnia + tui + nna + rsutik
+1 qauji + sa + tui + nna + rsutik
+1 ullaaru + mit + aru + nna + rsutik
+1 mi + rsu + riursa + rsutik
+1 turaaga + qal + uarsutik
+1 ikpigija + qal + uarsutik
+1 pijarii + qsiqujaunginnaral + uarsutik
+1 nirua + rsutik
+1 ikajur + utaunas + uarsutik
+1 kinguv + a + rsutik
+1 laalir + sutik
+1 ili + niar + i + ali + rsutik
+1 saqqijaar + simalir + sutik
+1 ikajurtau + kkannir + sutik
+1 amiangiti + qatau + t + ilau + rsutik
+1 suli + ri + vi + ksa + liu + rsutik
+1 piu + sa + uti + liu + rsutik
+1 uumaju + rsiur + sutik
+1 mi + rsu + rsutik
+2 atur + sutik
+1 isuju + gia + rtu + rsutik
+1 akirartu + rsutik
+1 ni + aqurmiutai + nnaa + runna + sima + tsutik
+1 saaptaliuq + sima + tsutik
+1 vaasiliuq + sima + tsutik
+1 taga + ugunna + pa + tsutik
+1 ikajur + pa + tsutik
+1 nunguutsikasa + tsutik
+1 pu + ijju + kata + tsutik
+1 tusarnijaa + rtitsiva + tsutik
+1 angi + rrauti + tita + uva + tsutik
+1 mali + tsutik
+1 kama + na + mmari + tsutik
+1 allaniaga + liuqtiu + qatau + gunna + si + tsutik
+1 kaivalla + igiaq + tu + si + tsutik
+1 kati + tsutik
+1 utullutulauqt + uvi + niu + tsutik
+1 unikkaa + liuqtiu + sutik
+1 uqat + si + asimaju + liuqtiu + sutik
+1 tulnga + vik
+1 nuna + vik
+1 aanniarnanginni + liri + vik
+1 pinasua + r + vik
+1 maqqu + vik
+8 alootook
+1 denmark
+1 park
+1 it + k
+1 ajjigi + lau + ngimma + uk
+1 sivullirp + aa + rimmauk
+1 piqqusi + rimmauk
+1 kati + qatigiin + nirsau + guti + gi + junna + rsigajarmauk
+1 riluarmauk
+1 tukisi + giar + tit + augutigilaurmauk
+1 kamagi + gia + li + gija + aqta + ngani + uk
+1 upigusu + gut + igilluniuk
+1 tukisi + val + lir + ut + igilluniuk
+1 inuu + vi + giniarluniuk
+1 arsururut + igigiallagiaqalirluniuk
+1 anigur + sima + lir + suni + uk
+1 kaujjajuk
+1 nirua + r + utigi + jaria + qa + majjuk
+1 iliaqju + k
+1 imialu + k
+1 akuni + aluk
+1 uvan + ngani + mmari + aluk
+1 akuni + mmari + aluk
+1 piuju + mmari + aluk
+1 piuju + aluk
+1 ungaanu + aluk
+10 aksualuk
+1 nunatsiav + amma + riakluk
+1 ilinniar + utiksa + nuk
+2 inuk
+1 arsururna + rtu + k
+1 aarlu + tuk
+1 iksivauta + ujuuk
+1 atung + akkuuk
+1 t + akkuuk
+2 marruuk
+1 inutuqa + ruliumilaurningittuuk
+1 social
+1 territorial
+1 pusvial
+1 kal
+2 national
+1 inter + national
+1 transitio + nal
+1 val
+1 nobel
+1 huptail
+1 ikajur + utigil
+1 til
+1 russell
+1 pau + l
+2 william
+4 program
+1 lir + juam
+1 kingdom
+4 asm
+1 htm
+1 upigusu + ttu + m
+1 aan
+1 niuvaunlaan
+2 jean
+4 angajuqqaangan
+1 canadian
+1 milian
+2 human
+1 ja + pan
+1 kuapuriisa + n
+3 aantursan
+1 natan
+1 sweden
+1 green
+1 queen
+5 andersen
+1 rasmussen
+2 kekerten
+1 in
+1 spain
+1 qa + ngin
+1 ti + ngin
+1 uuktin
+1 martin
+3 on
+1 declarati + on
+1 generati + on
+1 corporati + on
+1 conventi + on
+2 constitution
+1 sa + l + on
+5 simon
+1 huds + on
+1 hans + on
+1 lyon
+1 northern
+1 inu + vi + aluk + tun
+1 inuvialuttun
+2 silarjua + p
+1 lapatuap
+1 lapartuap
+1 aip
+3 kupaip
+1 develop
+3 irpp
+1 up
+1 pullauja + up
+16 silaup
+1 ki + na + tuinna + up
+24 kanataup
+1 qikirta + up
+1 ipellie + up
+1 malaurie + up
+1 tulli + up
+1 pinasuaqati + gii + giaqani + up
+1 qaujisar + ni + up
+1 gavama + liur + ni + up
+1 inu + llar + i + up
+1 uqausi + up
+2 avati + up
+1 guti + up
+1 ta + llu + ruti + up
+1 ilinniar + vi + up
+1 sup
+2 aaju + up
+1 qallunaa + gumimju + up
+1 kuujjuar + aalu + up
+1 qikirta + alu + up
+1 ullu + up
+1 inu + up
+1 inuk + su + up
+1 tuk + tu + uja + rtu + up
+7 ukiurtartuup
+1 katimarjuar + niu + lau + rtu + up
+1 tut + tu + up
+2 aaq
+2 ullutamaa + q
+1 avungalim + aaq
+2 nanilimaaq
+4 qanulimaaq
+1 uva + ttinnulim + aaq
+1 sivullirp + aaq
+1 pivallirutau + junna + rni + rpa + aq
+1 angajuqqaa + q
+1 nut + aaq
+1 uqalima + agaq
+1 atung + aq
+1 nailli + nga + giaq
+1 uqalima + giaq
+1 naala + ppa + giaq
+1 parna + igiaq
+1 ilisa + igiaq
+1 arsururut + ig + igiaq
+1 akiraq + turt + ang + igiaq
+1 tuq + urart + aungigiaq
+1 aanni + rtirt + aungigiaq
+1 ajaurt + aungigiaq
+1 attana + ngit + tumi + igiaq
+1 saummigiaq
+1 sapummi + giaq
+1 taitsumani + giaq
+1 kiinauja + lir + igiaq
+1 saqqitiri + giaq
+1 aaqqik + sigiaq
+1 nalunaiq + sigiaq
+1 ikajur + sigiaq
+1 aulatsi + giaq
+1 tusartit + sigiaq
+1 aaqqiksui + giaq
+2 kajungiqsu + igiaq
+1 uqautijau + sima + ngi + aq
+1 aturtau + qujin + giaq
+1 atur + asuar + nirsau + giaq
+1 atur + nirsau + giaq
+1 kajungiqsu + i + qatau + giaq
+1 qa + nuk + iaq
+1 riaq
+1 saqqititsi + laa + riaq
+1 makigiar + iaq
+1 piusi + tit + si + gia + riaq
+2 ilinnia + riaq
+1 uqalima + gunna + riaq
+1 aulatsi + gunna + riaq
+1 ilau + gunna + riaq
+1 tig + umia + runnariaq
+1 pinasuaqati + qatsia + runnariaq
+1 angiqatigii + gasuar + utiqarunna + riaq
+1 atuinnaqa + tta + runnariaq
+1 nirua + runnariaq
+1 nilli + runnariaq
+1 apiqsu + runnariaq
+1 isuma + rsu + runnariaq
+1 atu + runnariaq
+1 aaqqi + uma + titsi + giaqa + riaq
+1 pijunnau + tiqariaq + a + riaq
+1 nuna + qa + riaq
+1 pijunnar + niqa + riaq
+1 uqausi + qa + riaq
+1 pina + a + qa + tiqariaq
+1 isuma + liuru + tiqariaq
+1 isumaksarsiuru + tiqariaq
+1 titira + riaq
+1 ilisa + riaq
+1 sanau + ti + liur + iuqsa + riaq
+1 piusi + tit + si + gia + lla + g + asua + riaq
+1 aturtau + ti + nginnar + titsinasua + riaq
+1 uti + r + titsinasua + riaq
+1 atur + titsinasua + riaq
+1 inngi + riaq
+1 qini + riaq
+1 tunngaviksa + liuriaq
+1 qa + mut + i + liuriaq
+1 irsi + vi + liuriaq
+1 illu + liuriaq
+1 isuma + rsu + riaq
+2 atu + riaq
+1 ilinniar + vi + limaa + tsiaq
+1 tamarmik + a + saa + tsiaq
+1 tama + rmi + tsiaq
+1 suunguniq + angi + la + q
+1 aktui + mm + aq
+1 avungai + nnaq
+1 qanui + nnaq
+1 taitsumani + gia + tui + nnaq
+1 nakitui + nnaq
+4 nanituinnaq
+1 inuk + ti + tui + nnaq
+1 inutt + i + tui + nnaq
+4 qanutuinnaq
+1 arna + q
+1 atuinnaqa + q
+1 nuna + qaq
+1 inutuqa + q
+1 akiraq
+1 saq
+1 ajaurt + aungigiak + saq
+2 tunngaviksa + q
+1 angi + nirsa + q
+2 akuniunirsaq
+1 sila + qjua + q
+1 silarjua + q
+1 ima + rjua + q
+1 tariu + rjua + q
+1 nillirajuittuu + laur + tuugaluaq
+1 nalunaiq
+1 allasimaju + nuuqqainginnapattuviniiq
+2 niq
+1 nunalinni + ak + atalaa + niq
+1 mak + i + ppa + lliagu + nnarsi + vallia + niq
+1 ilinnia + niq
+1 piu + liang + inna + si + aq + sima + niq
+1 katima + niq
+1 unikkaa + runna + niq
+1 ilinniar + tuq + u + tiqa + runna + niq
+1 kajusititsi + la + ta + ariaqaniq
+1 tusauma + qatigiin + ginn + ariaqaniq
+1 illu + qarunn + ariaqaniq
+1 maliga + q + ariaqaniq
+1 iqqanaijaaksaq + ariaqaniq
+1 namminiq + ariaqaniq
+1 qaujisar + iaqa + niq
+1 ikajur + utiksa + liur + iaqa + niq
+1 ruti + qa + niq
+1 unikkaa + tuuti + qatta + niq
+1 jauquji + niq
+16 namminiq
+1 ili + nni + arniliri + niq
+1 kiinaujaliurasu + arniliri + niq
+1 inuusi + liri + niq
+1 tusauma + titsi + niq
+1 nunanga + nni + mi + utsaja + vi + niq
+1 sukkujia + rija + vi + niq
+1 arvi + nni + arvi + u + vat + vi + niq
+1 nulalauqt + uvi + niq
+1 aqvitalauqt + uvi + niq
+1 ning + iuraaluulilauqt + uvi + niq
+1 amma + lu + gia + kka + nniq
+1 imminii + rpa + nniq
+1 aulla + kata + nniq
+1 iqqanaijaaksaq + angi + nniq
+1 quvia + su + ngi + nniq
+1 niurr + uk + atalaa + rniq
+6 ilinniar + niq
+1 ingirra + qa + ttarajar + niq
+1 aulatsi + gunnar + niq
+1 gavama + qa + runna + rniq
+1 arsururut + iqa + runna + rniq
+1 illu + ki + ksa + rniq
+1 pigiursa + rniq
+2 katimarjuar + niq
+1 atulua + rniq
+1 nuna + ta + aq + asua + rniq
+1 aqquti + qaria + lla + li + rniq
+1 umia + rtu + lau + rniq
+1 pijunnau + ti + liur + niq
+1 allasimaju + liur + niq
+1 ikajur + niq
+1 atur + niq
+1 pinirl + uk + tau + niq
+1 piq
+2 atausiq
+1 atiri + jau + lauq
+1 taima + atsain + nar + tauq
+1 allasimaju + liu + qpali + agut + iqar + uma + liqsunga + ttauq
+1 asia + ttauq
+1 taima + ttauq
+2 asingit + tauq
+1 unikkausi + liu + qsigialuug + ami + ttauq
+2 ajjiu + ngit + tumi + ttauq
+2 kisiani + ttauq
+1 nammini + ttauq
+1 asinginni + ttauq
+1 atjiqarmigati + ttauq
+1 pan + ingagguq
+1 piqqusi + mit + igu + q
+1 nuna + tsia + mi + uq
+1 inu + jjua + mi + uq
+1 nunavimmi + uq
+1 iqa + lummiuq
+2 nunavummi + uq
+1 juu + kanmiuq
+1 unikkaa + tuuti + nnasi + uq
+1 pi + niar + niqa + r + utigi + jau + gialla + langa + juq
+1 pija + ksa + ja + rija + uja + aqatta + simajuq
+1 uiguqagg + aju + qatta + simajuq
+1 ilitarija + uqat + isiuti + simajuq
+1 aktui + simajuq
+1 niurr + uti + qaq + simajuq
+2 titiraq + simajuq
+1 kinguv + vi + uti + kainnar + simajuq
+1 kinnguv + vi + uti + kainnar + simajuq
+1 apiqsu + qattar + simajuq
+1 ta + ta + tsia + laursimajuq
+1 aaqqik + s + ijuqa + laursimajuq
+1 nuqqariarusi + laursimajuq
+1 taikani + i + qatau + laursimajuq
+1 angi + q + titau + laursimajuq
+1 tunngavi + liangu + laursimajuq
+1 piru + laursimajuq
+1 unikkausi + u + liur + simajuq
+1 unikkaa + tau + vat + simajuq
+1 ila + gijau + simajuq
+1 pi + llar + ialu + gijau + simajuq
+1 parnak + tau + simajuq
+1 qatigiigutau + simajuq
+3 angi + qatigiigutau + simajuq
+1 ilisaiji + u + simajuq
+1 piusi + u + simajuq
+1 akuni + utigi + juq
+1 ang + ummatiumajaugun + nailli + juq
+1 atiliurtau + li + lauq + sima + mmi + juq
+1 inngi + uti + liur + sima + mmi + juq
+1 piu + li + aqsi + maju + qalauqsi + maju + mmi + juq
+1 naluna + runna + ilau + rmi + juq
+2 taijau + juq
+1 niriugija + ujuq
+1 minista + ujuq
+1 qatigiigutau + juq
+1 angi + qatigiigutau + juq
+2 kajungiqsu + ijjutaujuq
+1 atu + tsiar + uta + ujuq
+4 angirutaujuq
+1 piliri + ji + ujuq
+1 pigiar + utau + jut + salari + ujuq
+21 qanuq
+1 pimmariu + nuq
+1 apiqqutiksaqaqpuq
+1 taima + alannatuqtaqaqpuq
+1 piru + qsalauqpuq
+1 pimmariu + gialla + laar + pu + q
+1 niriu + nnarpuq
+1 qaujima + lirpuq
+1 aul + a + qatau + lirpuq
+1 niriu + nna + tsia + laurpuq
+1 piviksa + qatsia + laurpuq
+1 aliana + laurpuq
+1 quviana + laurpuq
+1 niriu + tsi + arutaujunna + laurpuq
+1 nalli + nni + qa + laurpuq
+1 pig + iaq + qa + aruti + qa + laurpuq
+1 uqausi + qa + tuqa + laurpuq
+1 kajusitit + au + qatta + laurpuq
+1 kajusitit + aunginnali + laurpuq
+1 pivallirutau + mmari + laurpuq
+1 pau + qatau + laurpuq
+1 gutau + laurpuq
+1 pimmariu + laurpuq
+1 aki + tu + laurpuq
+1 nillirajuittuu + laurpuq
+1 pijunnau + tiqa + quq
+1 tuq
+1 isuan + ngit + u + u + gialla + tuq
+1 qikauj + jau + tuinna + tuq
+1 pi + mmari + aluu + li + runna + tuq
+1 pijjutiqa + tuq
+1 ullasimajuniun + ngi + tuq
+1 kisiani + tuq
+1 isuma + naq + tuq
+1 kinguvaa + qaq + tuq
+1 ngi + li + utau + tuinna + ria + qaq + tuq
+1 angi + niqa + q + tuq
+1 arvi + qaq + tuq
+1 titiraq + tuq
+1 liqtuq
+1 sukkuaqij + uvi + niu + liqtuq
+1 titirauj + aqsi + ma + lauq + tuq
+1 titiraq + pa + lauq + tuq
+1 ilinniar + niu + lau + q + tuq
+1 arraagu + laar + tuq
+1 katimani + u + laar + tuq
+1 ikullaumi + niar + tuq
+1 unikkaa + r + niar + tuq
+1 aaqqik + surtau + sima + tsia + r + tuq
+1 ilitars + i + sima + g + ajar + tuq
+1 gavama + qa + lir + ajar + tuq
+1 ilinnar + tuq
+1 isuma + liu + qu + ta + junna + r + tuq
+1 kajusititsi + giar + utau + junna + r + tuq
+1 ukiurtart + uq
+1 nalunaiqsig + utau + llar + ik + sima + lir + tuq
+1 kamagijau + juksau + lir + tuq
+1 natsi + siurna + ngin + nirsa + ulirtuq
+1 ullumi + ulirtuq
+1 mi + rnguiq + si + vi + ulirtuq
+1 akau + ngi + liur + utau + kkannir + tuq
+1 iqqauma + tsia + laurtuq
+1 kajusitit + ausima + laurtuq
+1 aliana + laurtuq
+1 quviana + laurtuq
+1 kama + na + laurtuq
+1 aturtau + junna + laurtuq
+1 unikkaa + liur + pa + laurtuq
+1 qilaluga + qalaurtuq
+1 nanu + rta + qalaurtuq
+1 taijani + qalaurtuq
+1 aktui + ni + qalaurtuq
+1 uqausi + qalaurtuq
+1 nuqqariarusi + qalaurtuq
+1 pijjuti + qalaurtuq
+1 ilitarija + uq + qalaurtuq
+6 u + qalaurtuq
+1 va + laurtuq
+1 saqqititsi + riva + laurtuq
+1 atiliurtau + qatta + li + laurtuq
+1 qaujima + jau + qatau + niq + pau + li + laurtuq
+1 u + qaria + kkanni + laurtuq
+1 uqa + kkanni + laurtuq
+1 kajusi + laurtuq
+1 tisama + gija + ulaurtuq
+1 ikpigija + ulaurtuq
+1 aliana + rni + pa + ulaurtuq
+1 quviana + rni + rpa + ulaurtuq
+1 unikkaa + tsiar + unnar + ni + rpa + ulaurtuq
+1 ta + ulaurtuq
+1 saqqitau + laurtuq
+1 ilinniar + unna + uta + ulaurtuq
+1 akausi + gialla + guta + ulaurtuq
+2 piviksats + iavau + laurtuq
+1 tuki + mua + r + utiksa + liang + ulaurtuq
+1 piviksats + i + ang + ulaurtuq
+1 arraani + ulaurtuq
+2 katimani + ulaurtuq
+1 saqqitiri + junna + rtu + mmari + ulaurtuq
+1 surusi + ulaurtuq
+1 qu + nga + ttuq
+1 aturtau + vat + tuq
+1 ikajur + tiu + vat + tuq
+1 titiraqsim + angi + ttuq
+1 naluna + ngit + tuq
+1 saqqititsi + gutau + ngit + tuq
+1 ilua + ni + ikpi + gus + u + gutau + ngit + tuq
+1 mali + giaqa + rutau + ngit + tuq
+1 akuni + u + ngit + tuq
+1 qaujima + jaagu + mmari + ttuq
+1 auju + i + ttuq
+1 mak + tu + ttuq
+1 aarlu + tuq
+1 sunalimaa + guuq
+1 pimmariu + mm + a + guuq
+1 taguuq
+1 aulatsi + nirsau + lir + pa + taguuq
+1 ataatatsi + a + vi + nirmi + taguuq
+1 makkuttu + u + tillugilli + guuq
+1 kisiani + guuq
+1 matuinga + vuq
+1 unikkaa + rsimavuq
+1 i + suli + ratalau + rsimavuq
+1 ikpi + nammar + ilau + rsimavuq
+1 piuliaqar + u + u + sima + vuq
+1 saqqititsi + gunna + laurivuq
+1 arsururna + qtu + kkuu + laurivuq
+1 ilagij + auvuq
+1 mann + auvuq
+1 taanna + sainn + auvuq
+1 tuki + qaq + tit + auvuq
+1 nalunaiq + si + n + gutau + vuq
+1 niriu + gutau + vuq
+1 uuktura + uti + tsiav + auvuq
+1 atuinnau + juq + ta + qatsia + suugu + vuq
+1 pi + mm + arialuuvuq
+1 akau + ngi + liu + ti + mm + arialuuvuq
+1 piuju + mm + arialuuvuq
+1 tapaiq + sima + naq + tuu + vuq
+1 akaunaar
+2 year
+1 ilau + giar
+1 niar
+1 pi + niar
+2 aanniar
+5 ilinniar
+1 gavama + qa + tsiar
+1 iqqanaijar
+1 kiinauja + r
+3 polar
+1 nar
+1 pijunnar
+1 unguma + tsi + gasuar + unnar
+2 qaujisar
+1 katimarjuar
+1 angiqatigii + gasuar
+1 frobisher
+1 premier
+1 cloutier
+1 peter
+1 inter
+2 charter
+1 po + ster
+3 nir
+1 pimmariu + nir
+1 ambassador
+2 for
+1 qa + ulaur
+1 taku + laur
+3 skuviur
+1 ikajur
+1 unur
+1 atur
+1 s
+3 orcas
+1 award + s
+1 hrds
+3 a + hrds
+1 resource + s
+1 davies
+1 james
+1 murres
+1 states
+1 diggs
+1 vuis + is
+1 vuis
+2 hummocks
+1 freedoms
+1 mountains
+1 begins
+2 nations
+1 aspirations
+1 pa + rtnerships
+1 producers
+1 vurs
+3 rights
+1 benefits
+1 events
+1 indigenous
+1 walrus
+1 kuu + s
+1 at
+1 kiuj + a + riaq + amangaat
+1 aktuiniq + amangaat
+1 aktui + vallia + mmangaa + t
+1 ak + turtau + vallia + mmangaa + t
+4 allaat
+1 ma + at
+1 taqqit + amaat
+1 pinasua + rusi + t + amaat
+1 ullaatt + amaat
+4 arraagutamaat
+6 ullutamaat
+1 sunalimaa + t
+1 tamakkua + limaa + t
+1 kanatami + u + limaa + t
+5 qallunaat
+4 nutaat
+1 atuaga + t
+2 maliga + t
+3 taakkunangat
+1 tama + kku + nangat
+1 qimalauqtaviningat
+2 taimanngat
+1 torngat
+1 umia + t
+1 niviar + siat
+1 sunalimaa + t + siat
+1 ami + alikat
+2 amialikkat
+1 pi + lauq + si + mani + aqtuujaaqsimanngilat
+1 nuit + allurilluagalaaratanngilat
+1 mat
+1 turaaga + qaria + qa + mat
+1 tuki + qa + mat
+1 atuuti + qa + mat
+2 tisama + t
+1 qinaajaqtuqagalaan + ngi + mat
+1 talli + mat
+1 tunuvai + sima + vi + ugunna + suugu + nni + mat
+1 asijji + rallia + mmat
+1 ikpigija + u + gi + alla + sima + mmat
+1 atiliu + r + vi + ulaur + sima + mmat
+3 taimaimmat
+1 akaunaar + nirpaa + ngimmat
+1 sivulli + uti + jau + sima + ngimmat
+1 qanui + ngimmat
+1 ta + qa + lau + ngimmat
+1 uqalima + aga + liu + kka + u + mmat
+1 i + liri + qatau + mmat
+1 piviksats + iavau + mmat
+1 a + kuu + nirpaa + ngu + mmat
+1 tusartit + si + niu + mmat
+1 akau + ngitt + ummariu + mmat
+1 quvia + gija + qaq + mat
+1 akaunaar + ni + pa + uja + armat
+1 kajusi + laar + mat
+1 tusartau + ni + armat
+1 saqqititsi + lla + taar + niu + gajarmat
+1 ikajur + t + ummariu + gajarmat
+1 ilinnar + mat
+1 aki + ttu + rpa + lliatuinn + armat
+1 isumaalugutigija + uva + lliatuinn + armat
+1 asijjirpallia + lla + tta + a + lir + mat
+1 saqqititsi + gutau + laur + simalir + mat
+1 tau + gi + qa + lir + mat
+1 ausarain + nirsaulirmat
+1 natsi + qa + ngin + nirsaulirmat
+1 ukiukin + nirsaulirmat
+1 atu + lir + mat
+1 makigiar + titsi + nasuar + nir + mat
+1 titira + u + siqalaurmat
+1 piu + siqalaurmat
+1 ujjirna + tsa + utigil + aurmat
+1 sivullirp + aul + aurmat
+1 akau + jummar + iul + aurmat
+1 ilau + vi + u + l + aurmat
+1 qa + up + parur + mat
+1 aaqqik + surtau + tsiar + si + mappat
+1 aju + rnangippat
+1 ajjigi + igu + tiqaqpat
+1 isumaksarsiuru + tiqaqpat
+1 sujuqa + lirpat
+1 quviasuqatigiit + tuqa + lirpat
+1 ikarrat
+1 tapirisat
+1 ikajur + tuksat
+1 uqalima + agatsat
+1 junaitat
+1 aivi + ngu + at
+1 arsa + nnguat
+1 natsi + nnguat
+1 nanu + nnguat
+1 qallunaa + qjua + t
+1 piqujarjuat
+1 katimajirjua + t
+1 nunali + rjua + t
+1 luat
+1 tau + tun + ngu + ariarutiviniuga + luat
+1 lia + juuga + luat
+1 amisugal + aagu + lir + mi + juuga + luat
+1 aulatjaatir + igiaq + tusa + uliqtuuga + luat
+1 pilirijju + siq + auqtuuga + luat
+1 nuat
+1 qu + pa + nuat
+1 unikkaa + tuat
+1 unikkaa + r + tuat
+1 ikpi + gus + uk + tuksau + vat
+1 project
+1 net
+9 arcticnet
+1 thought
+2 it
+2 uqalima + agait
+1 qimirru + agait
+4 atuagait
+2 maliga + it
+2 tuurngait
+1 qiturnga + uja + it
+1 kiinauja + it
+1 inu + uja + it
+3 tisama + it
+1 si + tama + it
+2 gavama + it
+1 suna + tuinna + it
+1 katimaji + tuinna + it
+1 kinakkut + uinnait
+3 kikkutuinnait
+1 qanuittut + uinnait
+1 arna + it
+1 nuna + it
+3 sunait
+2 qaq + qa + it
+5 inutuqait
+1 sait
+2 uqalimaagaksa + it
+2 atuagaksait
+1 maliga + ksa + it
+1 uqa + qqatigijak + sait
+1 uqalima + ang + ujar + ak + sait
+1 qaujisar + ta + k + sait
+1 aulatsi + gus + iksait
+1 akilii + gut + iksait
+1 aulatsi + gut + iksait
+2 ikajur + utiksa + it
+1 arsururut + iksait
+1 giarv + iksait
+1 naamman + nirsa + it
+2 makkun + nirsa + it
+1 pija + tsa + it
+1 minista + it
+1 pa + tta + it
+1 sinaa + nirmi + utait
+1 ukiurtartumi + utait
+1 pina + il + utait
+1 uqalimaagaksa + tsiavait
+1 uuktura + uti + tsiavait
+1 ilisaiguti + tsiavait
+1 git
+1 atiliu + rnarvigilaursim + amma + git
+1 isuma + rsu + titau + gut + igin + a + git
+1 taima + itaigiaqaqt + inna + git
+1 sapiliuq + qa + tuinna + qunagit
+1 qanui + qunagit
+1 kati + rsu + r + sima + llunigit
+1 mali + llunigit
+1 titirauj + aru + mmari + llunigit
+1 qa + nut + i + git
+1 ikajur + ajar + a + vi + git
+1 pijarii + r + uvi + git
+1 ngit
+1 annungaa + ngit
+1 naju + qta + limaa + ngit
+1 angajuqqaa + ngit
+1 qiturnga + ngit
+1 qaujima + gia + ngit
+1 takugia + ngit
+1 tau + tu + gia + ngit
+1 uqalimaar + ia + ngit
+1 isuma + gi + simaja + ngit
+1 pilirijju + si + liari + simaja + ngit
+1 alla + sima + lauq + simaja + ngit
+1 kinnguuma + laur + simaja + ngit
+1 aaqqik + sur + simaja + ngit
+1 turaaga + ri + jumaja + ngit
+1 qaujima + ji + gija + ngit
+1 piliriqati + gija + ngit
+2 isumaalugutigija + ngit
+1 arsururut + i + gija + ngit
+1 uqausi + rija + ngit
+5 ilangit
+2 gavama + ngit
+1 inna + ngit
+1 ila + inna + ngit
+1 nuna + ngit
+1 piusi + tuqa + ngit
+1 ikajur + utiksa + ngit
+2 uqausi + qta + ngit
+1 aturtau + nirigajarta + ngit
+1 titirauj + arta + ngit
+1 ajjigi + llar + ilaursima + gunna + irta + ngit
+1 kajusi + tisimalirta + ngit
+1 titirauj + arpa + laurta + ngit
+1 annaumautig + ivalaurta + ngit
+1 mani + rpa + ar + ivalaurta + ngit
+1 pingaju + gi + laurta + ngit
+1 kiggarturt + a + ngit
+1 kamagi + jaria + qa + mmari + tta + ngit
+1 nunangua + ngit
+1 katimajirjua + ngit
+1 pursin + lu + a + ngit
+1 ila + inna + riva + ngit
+1 ji + qatigii + ngit
+9 katujjiqatigii + ngit
+1 ku + rii + ngit
+5 katimaji + ngit
+1 parna + iji + ngit
+1 kiinaujaliurasu + ar + utiksa + liriji + ngit
+1 iqqanaijar + ni + liriji + ngit
+2 ajji + ngit
+1 tuki + ngit
+1 ikajurtau + jjuti + gigiali + ngit
+1 nalli + ngit
+1 turaa + nga + ningit
+1 nuqqatuinn + a + langa + ningit
+1 na + a + vallia + ningit
+1 a + ggu + tuq + sima + ningit
+1 titiraqta + u + sima + ningit
+2 ilautitauja + riaqa + ningit
+1 unu + riaqa + ningit
+1 allaniaga + lia + vi + ningit
+1 ajji + lia + vi + ningit
+1 unikkausi + liarija + vi + ningit
+1 titiraqta + vi + ningit
+1 aulla + qati + gi + qatt + arta + vi + ningit
+1 inugianni + ngit
+1 n + ajji + lir + pan + ningit
+1 aanni + r + tiriqattautivan + ningit
+1 qanuili + nga + niar + ningit
+1 ikajur + si + gunnar + ningit
+1 inuu + gunnar + ningit
+1 pi + vallia + simalir + ningit
+1 ki + vi + lir + ningit
+1 suna + nngua + ngu + ningit
+1 inu + mmari + ngit
+8 asingit
+1 uqausi + ngit
+1 inngi + usi + ngit
+2 iliqqusingit
+1 surusi + ngit
+4 pijunnautingit
+1 angiqatigiigut + i + ngit
+1 nunali + quti + ngit
+1 pinasua + r + vi + ngit
+5 gavamakku + ngit
+1 iqqanaijar + tu + li + rijikku + ngit
+1 anni + naq + tuq + uti + gas + aalu + ngit
+1 uqa + rvigilu + ngit
+1 tukisi + tig + asuar + lu + ngit
+1 atuqsu + ngit
+1 naatsu + ngit
+1 lugit
+1 iqqauma + lugit
+1 isurrigi + lugit
+1 ullutamaa + r + si + utigi + lugit
+1 pijjuti + gi + lugit
+1 aqquti + gi + lugit
+1 taku + guma + vi + gi + lugit
+1 nal + auqatiqaqti + lugit
+1 naasimaliraluaqti + lugit
+1 nuit + aqatauvannialiqti + lugit
+1 pita + qa + tpagiaqsimaliqti + lugit
+1 piq + asiuti + lugit
+1 parna + l + lugit
+2 ikajur + pal + lugit
+1 apiri + val + lugit
+1 ta + il + lugit
+1 pigiursa + utigil + lugit
+2 pijjuti + gil + lugit
+1 kiinaujaliur + utigil + lugit
+5 malillugit
+1 taku + gatsa + uvannia + tillugit
+1 tiguuqq + asia + tillugit
+2 katil + lugit
+1 unikkaa + r + sima + tillugit
+1 nipi + qa + ngi + luar + sima + tillugit
+1 uuktura + l + ilaursima + tillugit
+5 katima + tillugit
+1 ami + sur + ur + pallia + tuinna + tillugit
+1 aakigi + arvi + qa + tillugit
+1 ta + ta + tillugit
+1 inuu + ruutari + tillugit
+1 saqqititsi + tillugit
+3 aaqqiksui + tillugit
+1 katima + niqaq + tillugit
+2 katimarjuar + niqaq + tillugit
+1 si + qaq + tillugit
+1 pigiar + uti + qaq + tillugit
+1 tig + umia + rtituinnaujaar + tillugit
+1 gavama + taasaar + tillugit
+1 na + amma + giar + tillugit
+1 aktuiniq + a + niar + tillugit
+1 ilinniar + tillugit
+1 ikajur + utau + niar + tillugit
+1 tunnganar + tillugit
+1 saqqi + ppalli + at + uinnar + tillugit
+1 uuktura + r + tillugit
+1 qaujisar + tillugit
+1 asijji + k + alla + qattar + sima + galuar + tillugit
+1 aulatsi + gunnar + utau + ngikkaluar + tillugit
+1 nirua + r + tillugit
+1 angiqatigii + gasuar + tillugit
+1 aturtau + titsi + gasuar + tillugit
+1 kiinaujaliur + pallia + lir + tillugit
+1 asijji + rtu + r + pallia + lir + tillugit
+1 nunataar + iiq + simalir + tillugit
+1 aniguqsimali + r + tillugit
+1 qauji + sa + mmari + lir + tillugit
+1 tamakkua + ngu + lir + tillugit
+1 amiangiti + laur + tillugit
+1 anigur + tillugit
+1 quviasuqatigiit + tillugit
+1 taijau + tillugit
+1 ilau + tillugit
+1 ikajur + tuksau + tillugit
+1 tusa + rsau + tillugit
+1 titiraqta + u + tillugit
+1 angiqatigii + gasuar + utau + tillugit
+1 angiqatigii + gusuar + utau + tillugit
+1 pimmariu + tillugit
+1 piq + asiu + tillugit
+1 piusi + u + tillugit
+1 inuusi + qatsia + qullugit
+1 tusauma + qullugit
+1 ilinnia + nginna + qullugit
+1 kajusi + nginna + qullugit
+1 nilli + runna + qullugit
+1 mali + qullugit
+1 ilinnia + kkanni + qullugit
+1 naju + uti + litsiaru + nnasi + qullugit
+1 ikajuusi + arni + rsagu + nnarsi + qullugit
+1 ilitarija + u + qullugit
+1 sivulli + ujjauq + asiuti + jau + qullugit
+1 isuma + ksa + r + si + uq + asiuti + jau + qullugit
+1 ilau + qullugit
+1 atuuti + qar + nirsau + qullugit
+1 ikajur + utau + qullugit
+1 pimmariu + tinirpaagi + giar + lugit
+1 ilagiliuti + giar + lugit
+1 tit + iqar + lugit
+1 atur + nirsau + ti + gasuar + lugit
+2 atangir + lugit
+1 tig + ulaur + lugit
+1 tukisia + qu + lugit
+1 saviqsu + lugit
+1 aulaji + jainnasiari + gunna + sugit
+1 piu + liarija + ugunna + si + ti + mmi + sugit
+1 taku + tui + nnaq + sugit
+1 takumina + r + ti + giar + sugit
+1 aaqqik + su + gialla + giaqa + ra + luar + sugit
+1 ajjiliur + sugit
+1 alla + sima + tsugit
+1 killi + gi + tsugit
+1 inuu + qatigii + gusi + gi + tsugit
+1 kati + ti + tsugit
+3 ilagiit
+3 katujjiqatigii + t
+1 nuna + qqatigiit
+1 uqalima + jiit
+3 ilisaiji + it
+1 maliga + liriji + it
+1 piusi + qsiuri + jiit
+1 saipaaqi + tsi + jiit
+1 maqai + titsi + jiit
+1 tusarnijaa + q + titsi + jiit
+1 iqa + lugasuaq + tit + jiit
+8 nunaliit
+1 alla + pallia + guti + viniit
+1 ijuqa + ruti + viniit
+1 taikku + nani + i + qatau + lauq + tu + viniit
+1 atausir + mi + unniit
+1 pinirl + unniit
+1 amma + lu + unniit
+25 uvvaluunniit
+1 kinam + illu + unniit
+1 ajjingua + nillu + unniit
+1 uqausi + rija + riaqa + ngit + turlu + unniit
+1 ajugai + ngit + turlu + unniit
+1 atiliu + rni + it
+1 qaujisar + tuksau + ni + it
+1 ila + jaariit
+1 atuaga + liuqtimari + it
+1 allasimaju + liuqtimari + it
+1 avati + liriji + mmari + it
+2 qaujisar + ti + mmari + it
+1 aippariit
+3 tapiriit
+4 kuriit
+1 pal + iisi + it
+1 ang + aju + ksiit
+1 si + katsiit
+1 natsi + it
+1 unikkausi + it
+1 uqausi + it
+5 surusiit
+1 kata + j + ja + tiit
+1 qilaujja + tiit
+1 sananngua + tiit
+1 qauji + saq + tiit
+1 inngi + ngu + aq + tiit
+2 unikkaa + liuqtiit
+1 allaniaga + liuqtiit
+1 ajjingua + liuqtiit
+1 takumina + qtu + liuqtiit
+1 titirauj + arti + it
+1 sananngua + r + tiit
+1 unikkaa + liur + tiit
+1 maliga + liur + tiit
+1 tusagaksa + liur + tiit
+2 sivuliurti + it
+1 ilisaiguti + it
+2 angiqatigiigut + iit
+1 inuu + g + utiit
+2 uqammariutiit
+1 ullumi + si + utiit
+2 kingullirpa + arsi + utiit
+1 piq + utiit
+6 angirutiit
+1 niu + rtu + utiit
+1 qimaa + vi + it
+1 aivi + it
+2 ilinniar + vi + it
+1 kal + aalit
+1 kal + aallit
+1 rikulit
+1 r + asia + mit
+1 nuna + tsia + mit
+1 intia + mit
+1 saina + mit
+2 nuna + mit
+1 kanatami + t
+3 silarjuami + t
+1 aatuvua + mit
+1 ju + mani + mit
+1 sitimi + t
+2 kupaik + mit
+1 kingtam + mit
+3 nunavimmi + t
+1 kuujjuar + aalu + mmi + t
+2 nunavummi + t
+1 niuvaunlaan + mit
+1 imarm + it
+1 lapatuar + mit
+1 cle + ment + mit
+1 inuu + su + ttu + mit
+4 nit
+3 taimanganit
+2 nunanga + nit
+1 nappanga + nit
+1 tarranga + nit
+1 taima + n + nga + nit
+1 silaktursarvi + a + nit
+1 tisama + nit
+1 tallimani + t
+1 aviktursimani + t
+1 ikajur + ti + ksaqa + riaqa + nit
+1 kanatami + ut + a + nit
+1 kinguvaa + rii + nit
+1 ujaranniar + ti + nit
+1 ingirra + sima + ni + limaa + nnit
+1 nuna + anni + t
+1 tamain + nit
+1 nginnit
+1 nuna + nginnit
+1 kuapurisa + nginnit
+2 katujjiqatigii + nginnit
+1 najju + vi + ni + nginnit
+1 asinginni + t
+1 silaktursarvi + nginnit
+1 ku + nginnit
+1 nunali + aru + nginnit
+1 asittin + nit
+1 tapiriikku + nnit
+1 kativi + kku + nnit
+1 qaujisar + nit
+1 sivulli + vi + nir + nit
+1 kajusi + tsiar + si + maju + nit
+1 aviktursimaj + uni + t
+1 katimajuni + t
+1 piliria + ngu + ju + nit
+1 pingasu + nit
+2 atu + nit
+1 nunataar + simalirtu + nit
+1 pingasu + ujurtu + nit
+1 ajjigiingittu + nit
+1 makkuttu + nit
+1 benoit
+1 taqqit
+1 ikajur + iakkannirutigij + unnar + ta + tit
+1 uqalimaar + ija + ksa + riva + tit
+1 akausi + tit
+2 ilinniar + tit
+1 akau + nar + tit
+1 qaujisar + tit
+1 atulirtit
+1 ikajurtau + jumalu + tit
+1 pallutit
+1 pinasua + qatau + mmari + p + pallutit
+1 inngi + qati + qaq + pallutit
+1 uqalimaar + pallutit
+1 qinir + pallutit
+2 ikajur + pallutit
+1 atur + pallutit
+1 atu + arsi + va + llu + tit
+1 ijju + araksats + iavau + qatau + lu + tit
+1 angajuqqaa + juu + tit
+1 qaujima + vut + it
+4 arraagu + it
+1 kinguvaa + nngu + pallia + ju + it
+1 anni + nal + auqsimajuit
+1 aittutuuta + usimajuit
+1 allasimaju + liang + usimajuit
+1 uumaju + it
+1 tiki + lau + ju + it
+1 nipi + liur + tau + nik + u + it
+1 timmia + gasaaluit
+1 aivi + gasaaluit
+1 pi + mmari + aluit
+1 ik + ilua + qtu + mari + aluit
+2 inuvialuit
+1 ami + su + aluit
+1 u + rsu + aluit
+1 su + qusi + kulu + it
+1 surusi + kulu + it
+170 inuit
+1 amma + inuit
+1 t + inuit
+1 unammi + sugu + nnasi + gaja + qtu + it
+1 unammi + gija + qa + qtu + it
+1 mak + kut + u + it
+1 qaujima + guvit
+1 inuu + guvit
+1 ilinniar + uvi + t
+1 tusa + a + guma + nniruvit
+1 tukisi + gia + kka + nniruma + nniruvit
+2 student
+1 ment
+2 agreement
+2 develop + ment
+1 charest
+1 northwest
+1 watt
+1 qaujima + ji + mmari + it + t
+1 arraagu + t
+1 tarranga + gut
+1 piusi + riniarta + nga + gut
+1 nunataar + pallia + mau + r + sima + ninga + gut
+1 qatigiigutau + sima + ninga + gut
+1 iliqqusinga + gut
+1 kuu + nga + gut
+1 ikajuq + att + arsi + mani + agut
+1 aviktursimani + agut
+1 gavama + qa + ni + agut
+3 kinguni + agut
+1 turaa + ruti + agut
+1 aanniar + tiriqattautivan + ningigut
+1 pinasuaqati + giin + ningigut
+1 atulirtit + au + ningigut
+1 asing + igut
+1 titira + using + igut
+1 angiqatigiigut
+1 migut
+1 atulaurta + migut
+1 unikkaa + lia + rusi + migut
+1 titira + rusi + migut
+1 tigut
+1 unikkaa + tigut
+1 maliga + tigut
+1 kuapuriisa + nga + tigut
+1 ikajur + utiksa + lia + tigut
+1 pullauja + tigut
+1 qaritauja + tigut
+1 taak + kunuuna + tigut
+1 kuapuriisa + tigut
+1 tusagaksa + tigut
+1 ikajur + utiksa + tigut
+1 alla + vi + ksa + tigut
+1 nutaa + ngu + nirsa + tigut
+1 piqujarjuat + igut
+1 katujjiqatigii + rjua + tigut
+1 makpiga + ngitigut
+1 uqausi + lia + ngitigut
+2 ikajurtau + jjuti + ksa + ngitigut
+1 titirauj + arta + ngitigut
+1 qatigii + ngitigut
+6 aviktursimani + ngitigut
+1 nal + auksaart + ausima + ningitigut
+1 qa + ningitigut
+1 aturtau + jaria + qa + ningitigut
+1 aaqqik + surtau + q + asiuti + ningitigut
+1 pinasuaqati + giin + ningitigut
+1 ili + uq + qatau + gia + qar + ningitigut
+1 titirariursar + ningitigut
+1 saqqitau + simalir + ningitigut
+1 tusartau + ningitigut
+1 asi + ngitigut
+1 piusi + ngitigut
+1 iliqqusingit + igut
+1 aanniarnanginni + liri + jjuti + ngitigut
+1 iqqanaijar + ni + li + rijikku + ngitigut
+1 tau + ttuq + arni + mi + tigut
+1 iliqqu + si + mi + tigut
+1 titirauj + arni + rmi + tigut
+1 piu + sirmi + tigut
+1 iliqqu + sirmi + tigut
+1 pinasua + rni + tigut
+1 niq + i + tigut
+1 usi + kata + uti + tigut
+1 angiqatigiigut + i + tigut
+1 iqqartuivi + tigut
+2 maliga + q + tigut
+1 piq + uja + q + tigut
+1 iliqqu + si + tuqa + q + tigut
+5 maligartigut
+1 uqausi + r + tigut
+1 inutt + igut
+1 arsururut + igiinnarniarut + tigut
+1 saqqi + ppalli + aju + tigut
+1 allasimaju + tigut
+1 titiraqsimajut + igut
+3 aviktursimaj + u + tigut
+1 ikajur + tiu + ju + tigut
+1 kut + igut
+1 iqqanaijar + nilirijikku + t + igut
+1 ikajuusi + arutaujunna + rtu + tigut
+1 ilagiit + tu + tigut
+1 maliga + q + tin + gut
+1 aatsiviulauqsimagivun + gut
+1 qaujima + jugut
+1 mit + ainn + alaur + sima + jugut
+1 mak + ilaursima + jugut
+1 tiki + laur + sima + mmi + jugut
+1 li + laur + mi + jugut
+1 ilau + laur + mi + jugut
+1 pinasua + qpali + aqatiqaru + nnarsi + jugut
+1 pursin + tuinna + u + jugut
+1 inuu + jugut
+1 turaaga + qaq + pugut
+1 uqalima + vi + u + qatta + laur + pugut
+1 qa + nik + sart + ummariu + laur + pugut
+1 nuna + qaq + tugut
+1 utaqqi + tuinna + r + niar + tugut
+1 unikkaa + qatta + q + ajar + tugut
+1 atur + pa + lliagu + nnarsi + laalir + tugut
+1 ilinnia + laurtugut
+1 uqalima + gunna + laurtugut
+1 tiki + laurtugut
+1 ingirra + li + laurtugut
+1 quvia + su + mmari + laurtugut
+1 uqautijau + laurtugut
+1 aq + u + gunnar + titau + laurtugut
+1 takujartur + titau + laurtugut
+1 upat + titau + laurtugut
+1 aviktu + laurtugut
+1 q + unn + gia + ria + rtu + laurtugut
+1 ami + alikamiut
+1 amialikkami + ut
+4 kanatami + ut
+2 lapatuarimi + ut
+1 nunavimmi + ut
+1 sinaa + nga + nirmiut
+1 nunanga + nirmiut
+1 ukiurtart + u + nga + nirmiut
+1 akutitturmiut
+1 ukiurtartumi + ut
+1 ni + igia + liqtitaa + jut
+1 turaa + nga + jut
+1 piliria + nga + jut
+1 sivulli + nginni + langa + jut
+1 kiinaujaliurasu + arni + lirinirmuangajut
+1 niuvia + ksa + liuru + nna + uti + lirinirmuangajut
+1 iliqqusinga + nuangaj + ut
+2 ukiurtart + umualingajut
+1 parna + i + vallia + jut
+1 atulirtit + au + vallia + jut
+1 atur + t + au + vallia + jut
+1 kiinauja + lianguvalli + a + jut
+1 kama + jut
+1 allasimaju + t
+1 piq + a + utau + gunna + si + simajut
+1 titiraqta + ulaqti + simajut
+2 aaqqiksui + simajut
+2 qaqqaaq + simajut
+12 nunaqaqqaaqsimajut
+1 aqq + usa + ar + igia + qaq + simajut
+5 titiraqsimajut
+1 uuktura + q + simajut
+1 lauq + simajut
+1 qa + lauq + simajut
+1 tau + lauq + simajut
+1 taku + gumin + aqtualuu + lauq + simajut
+1 rsimajut
+4 unikkaa + rsimajut
+1 nuqqainna + rsimajut
+1 katima + qatta + rsimajut
+1 pijarii + runna + qatta + rsimajut
+1 ikajur + asua + qatta + rsimajut
+1 atur + asua + qatta + rsimajut
+1 att + arijau + qatta + rsimajut
+1 katima + qatau + qatta + rsimajut
+1 atur + asuar + simajut
+1 kappianarsijuujaa + laursimajut
+1 saqqi + ta + uqqaa + laursimajut
+1 kama + giaqa + laursimajut
+1 angiruti + qa + laursimajut
+1 atiliu + rtu + ni + i + laursimajut
+1 aaqqik + silau + rsimajut
+1 saqqititsi + laursimajut
+1 aaqqiktau + laursimajut
+1 atiliurtau + laursimajut
+1 katima + ja + rtu + rsimajut
+1 mit + simajut
+1 unikkaa + rija + usimajut
+2 saqqitau + simajut
+1 naluna + ija + qta + usimajut
+2 titiraqta + usimajut
+1 ijju + arta + usimajut
+1 uuttura + utau + simajut
+6 angiqatigiigutausimajut
+1 nalunaiqsig + utau + simajut
+1 saqqititsi + gutau + simajut
+1 uqammariuta + usimajut
+1 qaujisar + utau + simajut
+4 angirutausimajut
+1 ikajur + utau + simajut
+1 tunngavi + liangu + simajut
+1 uqausi + usimajut
+4 katima + jut
+1 qaujima + naq + qu + uji + jut
+1 qauji + mammijut
+1 titiqaqsi + mammijut
+1 katimajjuti + qaq + att + arsi + mammijut
+1 pig + ganangittuapiusimangim + mijut
+1 makigiar + titsi + gunnar + mijut
+1 angiqatigii + gasuar + uti + qar + uma + a + lir + mijut
+1 kajusititsi + vallia + lir + mijut
+1 uqausi + qa + laur + mijut
+1 sanau + gar + iursar + tit + auqatt + alaur + mijut
+2 piliri + jut
+1 aulatsigunnarsi + jut
+1 qallunaa + q + jut
+3 taijau + jut
+1 uqalima + ji + gija + ujut
+1 qaujisar + tigijaujut
+1 pijunnau + tigijaujut
+1 pijarii + qta + ulaaqtugij + aujut
+3 anaanauju + t
+1 atuinnau + jut
+1 uqalimaar + tau + juks + aujut
+1 uqalima + agaq + autiniilaartuks + aujut
+3 ataataujut
+2 iksivauta + qaqataujut
+1 ikpi + gus + uqat + aujut
+1 qaqtita + ujut
+1 sanngi + ni + qaqtita + ujut
+2 kiggarturt + aujut
+2 isuma + alugutaujut
+2 akaungiliutauju + t
+6 uqammariutaujut
+1 pijju + t + aujut
+1 ilitaqsi + j + jut + aujut
+1 piviksa + qa + rutau + jut
+1 ikajur + uti + tsiav + aujut
+3 ngujut
+1 katujjiqatigii + ngujut
+3 katimaji + ujut
+5 nunaliujut
+4 timiuju + t
+1 piuju + t
+1 nipi + ujut
+1 pija + ksaqa + rutau + jummar + iujut
+1 amisummar + iujut
+1 ilinniar + ni + liri + jjus + iujut
+1 kiggarturt + iujut
+12 kut
+1 uqausi + inna + kut
+2 umiarjuakut
+1 inuusi + liriji + kut
+1 titirauj + arni + kut
+1 alla + ngu + arni + kut
+1 ilaak + kut
+3 ullaakkut
+1 pijunnar + niqa + nilimaakkut
+1 pijunnar + nilimaakkut
+1 maliga + kkut
+2 qangakkut
+2 qaritauja + kkut
+1 qa + mut + a + uja + kkut
+4 gavamakku + t
+1 kinakkut
+1 nuna + kkut
+1 qa + kkut
+1 gavama + tu + qa + kkut
+1 inu + liriji + tu + qa + kkut
+1 sanngi + nirsa + kkut
+1 a + arta + kkut
+3 umiarjuakk + ut
+6 tapiriikku + t
+1 ittarnisali + rijikku + t
+2 iqqanaijar + nilirijikku + t
+2 qaujisar + nilirijikku + t
+1 kiinaujaliurasu + arni + liriji + kkut
+2 timikkut
+8 immikkut
+1 nikkut
+1 saqqitiri + vallia + nikkut
+1 aaqqiksui + vallia + nikkut
+1 tukisia + nikkut
+1 uqalima + nikkut
+1 angi + qati + qati + sima + nikkut
+1 aviktu + sima + nikkut
+1 katima + nikkut
+1 atu + nna + qa + nikkut
+1 namminiq + a + nikkut
+1 ilisa + i + nikkut
+1 nilirinikkut
+1 aanniar + nilirinikkut
+4 iqqanaijar + nilirinikkut
+1 qaujisar + nilirinikkut
+1 qanuin + gitsiarasu + arniliri + nikkut
+2 kiinaujaliurasu + arniliri + nikkut
+1 si + liri + nikkut
+1 iliqqu + si + liri + nikkut
+1 inuu + si + liri + nikkut
+1 qiju + liri + nikkut
+1 si + nikkut
+1 mat + u + ri + si + nikkut
+1 kiinaujaliur + unnar + si + nikkut
+1 atangir + si + nikkut
+1 ikajur + si + nikkut
+1 titsi + nikkut
+2 kajusi + vallia + titsi + nikkut
+1 aaqqi + uma + titsi + nikkut
+1 piviksa + qaq + titsi + nikkut
+1 pigiar + titsi + nikkut
+1 takuksau + titsi + nikkut
+1 tusauma + uti + qatta + uti + nikkut
+2 aaqqiksui + nikkut
+1 kajungiqsu + i + nikkut
+4 ilaannikkut
+1 aaqqiksui + g + iallan + nikkut
+1 aturtau + titsi + gasuar + iallan + nikkut
+1 kama + tsia + nginnik + kut
+1 kiinaujaliurasu + aruti + ksaqa + nginnik + kut
+1 ila + giin + nikkut
+1 ikpigusut + sia + qatigiin + nikkut
+1 tusauma + qatigiin + nikkut
+2 pinasua + qatigiin + nikkut
+1 piliri + qatigiin + nikkut
+3 nunataar + nikkut
+1 uuktura + llar + taar + nikkut
+2 katima + llattaar + nikkut
+1 uuktura + llattaar + nikkut
+1 pigiursa + llattaar + nikkut
+1 taku + llattaar + nikkut
+1 iqalliar + nikkut
+3 ilinniar + nikkut
+1 iqalunni + ar + nikkut
+1 tu + si + ar + nikkut
+1 apiqsu + rta + uqa + ttarajar + nikkut
+1 iqqanaijar + nikkut
+1 aulla + kainnar + nikkut
+1 iqa + lutsiur + unnar + nikkut
+1 ukpir + ni + qar + nikkut
+1 uuktura + r + nikkut
+5 qaujisar + nikkut
+2 ilisar + nikkut
+2 pilimmaksar + nikkut
+1 pili + mm + arsa + r + nikkut
+1 sanag + iursar + nikkut
+6 pigiursarnikkut
+2 titirariursar + nikkut
+1 nunami + qattar + nikkut
+1 mak + ita + titsi + g + asuar + nikkut
+1 nunataar + asuar + nikkut
+1 ingngir + nikkut
+1 gavama + qa + lir + nikkut
+1 ukpir + nikkut
+1 niuvia + ksa + liur + nikkut
+1 iqqa + naija + ksa + liur + nikkut
+1 qanuiliur + nikkut
+1 uumaju + rsiur + nikkut
+1 nuqqainna + ngin + nirsau + nikkut
+1 qanuq + tuu + qatau + nikkut
+1 aulla + r + titau + nikkut
+1 iqqa + nar + iursar + titau + nikkut
+1 katimaji + u + nikkut
+1 ajjiliur + iji + u + nikkut
+1 sukkaittu + mmari + kkut
+1 pa + si + kkut
+1 qimuk + si + kkut
+2 inuusi + kkut
+1 ku + ki + tta + pa + uti + kkut
+1 piq + uji + vu + nga + aruti + kkut
+1 pau + k + tuuti + kkut
+1 mak + i + vi + kkut
+2 kativi + kkut
+1 na + ukkut
+1 u + ki + ukkut
+1 aviktursimaj + ukkut
+1 nuitaj + ukkut
+2 suli + j + ukkut
+1 tisama + uj + ukkut
+2 siku + kkut
+1 unn + ukkut
+1 akaunaar + t + ukkut
+1 tukisinatsia + rtu + kkut
+1 tuavirna + rtu + kkut
+1 naittu + kkut
+1 akau + ngitt + ukkut
+1 nalunaiq + sima + llar + it + tau + ngitt + ukkut
+1 ajjiu + ngitt + ukkut
+1 akuttuju + uti + aluu + ngitt + ukkut
+1 suli + llar + it + t + ukkut
+1 nunatsiav + ukkut
+1 piviksa + qatsia + rtu + mari + ullu + til + lut
+10 mut
+1 ukiurtart + u + limaa + mut
+2 angajuqqaa + mut
+1 na + mut
+1 maanna + mut
+2 nuna + mut
+1 maanituupa + mut
+4 sivuniksamut
+1 kintukaata + mut
+3 kanata + mut
+1 qikirta + mut
+1 aatuvua + mi + uta + mut
+1 aatuvua + mut
+1 blake + mut
+1 pi + vi + tsa + si + uq + tau + ngi + mut
+1 tiki + siq + uji + mut
+1 piliria + ksaqa + mi + mut
+1 att + ami + mut
+1 ar + guti + mut
+1 strahl + mut
+1 nuna + vi + m + mut
+2 mirnguirsivimmut
+1 kujjuara + alummut
+1 mari + alummut
+3 nunatsiav + ummut
+1 copeman + mut
+1 simon + mut
+3 kinatuinnarmut
+1 ukiurta + r + mut
+1 pelletier + mut
+1 nirmut
+1 nuna + ta + a + nirmut
+1 aaqqiksui + vallia + gunna + langa + nirmut
+1 upigi + lir + pallia + nirmut
+1 nuktiri + vallia + nirmut
+1 unguma + nirmut
+1 katima + qatigii + giaqa + nirmut
+1 saummigiaq + a + nirmut
+1 si + nirsau + giaqa + nirmut
+1 piusi + tit + si + nirsau + giaqa + nirmut
+1 kajusititsi + sia + riaqa + nirmut
+1 laisansi + qa + riaq + a + nirmut
+1 silarjua + q + a + nirmut
+1 namminiq + a + nirmut
+2 pijunnau + tiqa + nirmut
+1 angiqatigii + gusuar + u + tiqa + nirmut
+1 ilinnia + riaq + uji + nirmut
+1 iqqanaijar + tulirili + nirmut
+2 sapummi + nirmut
+3 lirinirmut
+1 gavama + lirinirmut
+1 kiinaujaliurasu + ar + utiksa + lirinirmut
+1 ukiurtartumi + uta + lirinirmut
+1 na + nginni + lirinirmut
+5 aanniarnanginni + lirinirmut
+1 aanni + r + ar + na + nginni + lirinirmut
+5 ilinniarnilirinirmut
+2 iqqanaijar + ni + lirinirmut
+1 qaujisar + ni + lirinirmut
+1 uqausi + lirinirmut
+2 inuusi + lirinirmut
+1 avati + lirinirmut
+1 pairivi + lirinirmut
+1 iqqartuivi + lirinirmut
+1 nunaqaqqaaqsi + maju + lirinirmut
+1 piju + qalauqsi + maju + lirinirmut
+1 iqqanaijar + tu + lirinirmut
+1 qinir + tu + lirinirmut
+2 nunatsiav + u + lirinirmut
+1 naluna + irsi + nirmut
+1 kajungiqsu + i + nirmut
+1 akiraq + tauq + attaut + igia + qa + ngin + nirmut
+1 piliriqati + giin + nirmut
+1 imialu + giaqa + ngi + llar + in + nirmut
+2 katima + ar + nirmut
+1 nunataar + nirmut
+1 aippariit + siar + nirmut
+1 ikpigusut + siar + nirmut
+1 iqqanaijar + nirmut
+1 ilinniar + unnar + nirmut
+1 ilinnia + kkannir + unnar + nirmut
+7 isumarsurunnarnirmut
+7 qaujisar + nirmut
+1 nasuar + nirmut
+1 atulirtit + si + nasuar + nirmut
+1 inuu + tsiaq + asuar + nirmut
+5 qanuingitsiarasuarnirmut
+1 sapummi + tsiar + asuar + nirmut
+1 gavama + qar + unna + lir + nirmut
+1 gavama + liur + nirmut
+1 isuma + liur + nirmut
+1 ikajur + utiksa + liur + nirmut
+1 ni + rsiur + nirmut
+1 arna + u + nirmut
+1 gavama + liur + pallia + juksau + nirmut
+1 ilisa + i + juksau + nirmut
+1 namminiq + aqpalli + juksau + nirmut
+1 pi + vallia + titsi + juksau + nirmut
+1 pijunnar + niqaq + titau + nirmut
+1 ang + utau + nirmut
+1 alla + tiu + nirmut
+1 atausir + mut
+1 inuusi + r + mut
+1 tariu + r + mut
+1 kimmirur + mut
+1 qatta + qujau + mut
+1 arsururut + au + mut
+1 nunatsiavummi + u + mut
+1 naluga + rijauju + mut
+1 ullu + mut
+3 su + mut
+1 ikpigija + qa + qtu + mut
+1 uqalimaar + tumut
+5 ukiurtartumut
+1 iksivauta + uqa + ta + ulaur + tumut
+2 katimani + ulaur + tumut
+1 akianiit + tumut
+1 inuk + it + tumut
+1 amisuu + mut
+1 nut
+1 silarjuami + uta + limaa + nut
+1 anirtiriju + limaa + nut
+19 miksaanut
+1 mirsaa + nut
+5 ungataanut
+1 nutaa + nut
+1 gavama + nga + nut
+1 tunngaviksa + nga + nut
+3 minista + nga + nut
+1 naluna + ikkuta + nga + nut
+1 qanuin + gitsiarasu + arni + nga + nut
+1 iliqqusinga + nut
+1 maliga + liur + tin + ga + nut
+1 iqqa + rtu + iji + a + nut
+1 angiqatigiigut + i + qaq + pallia + nianut
+1 gavama + qar + pallia + nianut
+1 asijjirpalliania + nut
+1 u + ali + nianut
+1 titirauj + a + kka + u + nianut
+1 pi + si + tiu + nianut
+1 katima + vianut
+1 silattursar + vianut
+1 mi + rnguirsir + vianut
+3 tisama + nut
+3 gavama + nut
+1 nunaqaqqaaqsi + ma + nut
+1 arna + nut
+1 nuna + nut
+1 suna + nut
+1 inutuqa + nut
+1 up + aga + ksa + nut
+1 una + ta + rtu + ksa + nut
+1 pi + a + nirsa + nut
+2 makkun + nirsa + nut
+1 akaunaar + nirsa + nut
+1 qikirta + nut
+1 ilua + nut
+1 aivi + gaja + rsu + a + nut
+1 katujjiqatigii + nut
+1 kinguvaa + rii + nut
+2 ilisaiji + nut
+1 ilanna + rija + mi + nut
+1 ila + mi + nut
+1 piusi + r + ilau + qsim + anni + ngit + ta + mi + nut
+1 takumina + rtitsigi + arni + mi + nut
+1 asi + mi + nut
+1 sanaja + rmi + nut
+1 inuusi + rmi + nut
+1 uqalima + si + tinut
+1 iqqanaijar + tinut
+2 qaujisar + tinut
+1 sananngua + r + tinut
+1 sivulli + ur + tinut
+1 pijunnau + tinut
+2 angajuqqaa + ngujuutinut
+1 marrui + nut
+1 qaujisar + nik + nut
+1 angajuqqaangan + nut
+2 tamain + nut
+1 nunali + limaa + nginnut
+1 aviktursimani + limaa + nginnut
+1 turaaga + nginnut
+1 qiturnga + nginnut
+1 turaa + rumaja + nginnut
+1 kinnguuma + ja + nginnut
+1 gavama + nginnut
+2 nuna + nginnut
+1 qaujima + ja + tuqa + nginnut
+1 inutuqa + uniqsa + nginnut
+1 allaniaga + mmari + nngu + ni + tsa + nginnut
+1 iliqqu + si + ri + ngita + nginnut
+1 uqalima + aga + liari + vatta + nginnut
+1 nunami + uta + nginnut
+3 katujjiqatigii + nginnut
+2 katimaji + nginnut
+1 nunali + nginnut
+1 pi + vallia + giaqani + nginnut
+1 qanui + ngin + nirsau + giaqani + nginnut
+1 surai + ni + nginnut
+1 qanuin + ni + nginnut
+1 kajusi + tsiar + ni + nginnut
+1 ilau + tigigaj + arni + nginnut
+1 akitulu + arni + nginnut
+1 unur + ni + nginnut
+1 pitsi + arsi + maju + mmari + uni + nginnut
+1 nunaqaqqaaqsi + maju + uni + nginnut
+1 akitulu + artualu + uni + nginnut
+2 asi + nginnut
+1 inuusi + nginnut
+2 iqalliar + ti + nginnut
+1 pijunnau + ti + nginnut
+4 gavamakku + nginnut
+1 tapiriikku + nginnut
+3 inu + nginnut
+3 nunali + nnut
+1 qaujima + ji + mmari + nnut
+3 qaujisar + timmarinnut
+1 umia + rjua + ti + nnut
+1 akau + ngi + liur + uti + gija + ttinnut
+1 inuusi + rilirta + ttinnut
+1 upat + ta + ttinnut
+1 silarjua + ttinnut
+1 mit + tarvimmu + arni + arni + ttinnut
+1 asittin + nut
+1 iliqqu + si + ttinnut
+2 kunnut
+1 makkun + nut
+1 gavamakku + nnut
+1 tapiriikku + nnut
+1 kinnguuma + ja + m + marialunnut
+1 pisitim + marialunnut
+2 amisualunnut
+19 inunnut
+1 iuqu + nnut
+1 inuvialuttun + nut
+1 qanuittut + uinnar + nut
+1 gavama + tuqa + r + nut
+1 ukiurtart + uvi + nir + nut
+1 arsa + r + nir + nut
+3 surusirnut
+1 inuusi + r + nut
+1 na + unut
+1 arraagu + nut
+1 amialikkami + unut
+1 kanatami + unut
+1 silarjuami + unut
+1 lapatuami + unut
+1 nunavimmi + unut
+1 unikkaa + runna + tut + samaa + nngu + pallia + junut
+1 allasimaju + nut
+1 surai + sima + junut
+1 parnak + sima + junut
+1 qa + aq + sima + junut
+1 nuna + q + qa + aq + sima + junut
+2 qaqqaaqsimajunut
+6 nuna + qaqqaaqsimajunut
+1 aviktursimaj + unut
+1 titiraqta + u + sima + junut
+3 katima + junut
+1 ajjiliur + ta + unguma + junut
+1 suaqat + iqar + uma + junut
+1 suli + junut
+1 piliri + junut
+1 aaqqiksui + junut
+1 kiggar + tui + junut
+1 minista + u + junut
+1 angajuqqaa + ngu + junut
+1 nunali + u + junut
+1 timiuju + nut
+4 amisunut
+1 atuaga + liarija + ulaqiigu + nnatunut
+1 inillatir + igu + nnatunut
+1 aulatjaatir + itsiaqu + nnatunut
+1 allaniaga + liuru + nnatunut
+1 tusa + agiursat + unut
+1 aul + ani + qaqtunut
+1 katimajjuti + qaqtunut
+1 aju + ruti + qaqtunut
+1 pillarigasu + aq + tu + nut
+1 naluna + ijai + niu + gaja + rtunut
+1 a + angana + rtunut
+1 ikajurtau + kkannir + iaqa + tuinna + rtunut
+1 ilisa + rtunut
+1 pinasua + rtunut
+1 arsuru + rtunut
+1 mik + nirsa + niip + pattunut
+1 iqqartuivi + kkuu + ria + qaq + pattunut
+1 pular + aq + pattunut
+1 uqalimaar + pattunut
+1 tulurta + utau + vattu + nut
+1 katsungaitt + unut
+1 kiinauja + liulua + ngitt + unut
+1 ajjigiingittu + nut
+1 inuu + ngitt + unut
+1 quviasuqatigiit + tu + nut
+12 makkuttunut
+1 pija + qaqtut + a + qa + riaqa + nginna + put
+1 makpiga + qaqput
+1 ilisa + uti + qaria + qaqput
+1 pija + ksaqa + q + put
+1 nammini + qaqput
+6 pijunnautiqaqput
+1 isumaksarsiuru + tiqariaq + qaqput
+1 ilinniar + unnar + put
+1 ilinnia + kkannir + unnar + put
+1 pimmariu + luar + put
+1 pinasua + rput
+1 aaqqiksui + nasuar + put
+1 ilitarija + u + llar + igia + qa + li + rput
+1 qar + ata + alaurput
+1 kajusititsi + si + alaurput
+1 ikajur + sijau + t + si + alaurput
+1 qarunn + alaurput
+1 katima + niq + alaurput
+1 uqausi + q + alaurput
+1 ilinniar + unna + qatt + alaurput
+1 ikpigija + qa + lu + alaurput
+1 gavama + taar + unnar + si + laurput
+1 katimarjuar + titsi + laurput
+1 atiliurtau + laurput
+1 annai + gutau + laurput
+1 ilinniar + t + ummariu + laurput
+1 su + u + ngu + juu + laurput
+2 kiggar + tu + rput
+1 pigiar + titau + niali + ta + inna + qut
+1 aaqqik + siar + sima + giaqa + qut
+1 inuu + gas + uani + qut
+1 kimmirut
+2 pingasu + t
+3 amisut
+1 unikkaa + tut
+1 qallunaat + ut
+1 uqausi + nga + tut
+1 qaujima + jau + sima + tsia + tut
+2 pijunnau + tiqa + tut
+1 titirauj + aqtiuqatim + itut
+1 taisumani + tut
+1 titut
+2 qallunaat + itut
+1 asingit + itut
+1 piusi + ri + laurta + mi + titut
+1 tainis + titut
+14 inuttitut
+1 titiraqsimajut + itut
+1 ijju + ju + ni + ittu + titut
+1 ajjingua + qa + u + tsia + qtut
+1 isuma + gija + uqa + si + ut + igia + qaqtut
+1 tukisia + jau + tsia + ria + qaqtut
+1 asijjirpallia + tuinna + ria + qaqtut
+2 nuna + qaqtut
+1 aki + qaqtut
+1 aaqqik + sima + ni + qaqtut
+5 pijunnarniqaqtut
+4 pijunnautiqaqtut
+1 pijjuti + qaqtut
+1 angiruti + qaqtut
+1 alla + vi + qaqtut
+1 arsururut + iqa + niar + niraqtut
+1 qaujima + ji + mmari + u + niraqtut
+1 aaqqiksui + vallia + liri + i + qtut
+1 aqq + usi + uqtutituuq + sima + li + qtut
+1 ngulau + qtut
+1 nunali + nginni + nga + a + rtut
+1 saqqi + r + atalaa + rtut
+1 at + uinnar + usi + qtitaulaa + rtut
+1 nakitui + nnaa + rtut
+1 parna + gialla + nniartut
+14 ilinniartut
+1 arsururut + iqa + mmari + nniartut
+1 aul + ajjag + utaunia + rtut
+1 uqausi + qaq + sima + tsia + rtut
+1 uqa + runna + tsia + rtut
+1 aulatsi + gaja + rtut
+1 tunngasuk + titsi + gaja + rtut
+1 talli + mau + gaja + rtut
+1 tukisi + gutau + gaja + rtut
+1 tukisinatsia + raja + rtut
+1 titiraqsim + aqatta + raja + rtut
+1 iqqanaijar + tut
+1 qiturnga + li + ja + rtut
+1 nal + langa + uja + rtut
+1 nuqqainna + uja + rtut
+1 aaqqiksui + gutau + la + rtut
+1 a + angana + rtut
+1 qa + inna + rtut
+3 inuinnartut
+1 ti + mmi + kata + tuinna + rtut
+1 ju + r + sijj + utau + junnartut
+1 pivallirutau + junnartut
+1 kiinaujaliur + utau + junnartut
+1 imialu + vviu + junnartut
+1 taku + junnartut
+1 tulurta + utiqarunna + rtut
+1 nuq + qar + umairna + rtut
+2 ilisa + rtut
+1 mak + kulu + a + rtut
+1 tusauma + uti + gasuar + tut
+1 pinasua + rtut
+1 nu + nga + li + rtut
+1 arsururut + i + qaq + simalirtu + t
+1 atur + simalirtu + t
+1 saqqitau + simalirtu + t
+1 atiliurtau + simalirtu + t
+1 nuna + qa + li + rtut
+1 nungunniuj + atu + gijau + li + rtut
+1 atu + qatta + ngin + nirsau + li + rtut
+1 unur + nirsau + li + rtut
+1 mumi + rtut
+1 qini + rtut
+2 katimarjuar + niqarataa + laurtut
+1 aaqqik + si + gia + laurtut
+1 aq + qiksui + gialla + laurtut
+1 uqalima + laurtut
+1 p + isuju + tuinna + laurtut
+1 ilitaqsi + tsa + utigi + junna + laurtut
+1 kajja + arna + laurtut
+1 ikpi + nna + qaqpa + laurtut
+1 ikajur + i + arpa + laurtut
+1 uqalima + ji + qa + laurtut
+6 uqausiqalaurtut
+1 ingirra + laurtut
+1 saniqqu + kata + laurtut
+1 nuat + sigiaq + aqatta + laurtut
+1 uqausi + q + aqatta + laurtut
+1 pular + aqatta + laurtut
+1 unikkaa + r + titau + qatta + laurtut
+1 aturtau + qatta + laurtut
+1 illu + liu + qatta + laurtut
+1 qut + si + ni + rpa + ang + anua + laurtut
+1 nirua + laurtut
+1 kajusitit + aun + asua + laurtut
+1 annauma + va + laurtut
+1 sanava + laurtut
+1 qimai + laurtut
+1 tiki + laurtut
+1 amiari + laurtut
+1 quvia + sugu + tiqa + mmari + laurtut
+2 ilau + qatau + mmari + laurtut
+1 ilitaqsi + laurtut
+1 aulatsigunnarsi + laurtut
+2 kajusititsi + laurtut
+1 tulnga + su + k + titsi + laurtut
+1 quvia + su + k + titsi + laurtut
+1 saqqijaar + titsi + laurtut
+1 kati + laurtut
+1 apiri + jau + laurtut
+1 tuni + sijau + laurtut
+1 ilau + laurtut
+1 uqalima + ji + qa + u + laurtut
+1 ilau + qatau + laurtut
+2 isuma + liu + qatau + laurtut
+1 piviksa + qaqtita + u + laurtut
+1 ilinniar + ta + ujuma + ggu + laurtut
+1 ngu + laurtut
+1 maliga + liur + tin + ngu + laurtut
+1 piu + laurtut
+1 sivu + liur + i + j + ummariu + laurtut
+1 amisummar + ialu + u + laurtut
+1 titiraqsim + au + rtut
+1 qaujisar + i + u + rtut
+1 pingasu + ujurtu + t
+1 ilinniar + iirutitaara + su + rtut
+1 kigaa + rtu + rtut
+2 kiggarturt + ut
+1 akirartu + rtut
+1 qu + nga + ttut
+1 a + lia + ttut
+1 pinasuaqati + giip + pa + ttut
+1 qaqpa + ttut
+1 ilinniar + i + arpa + ttut
+1 pa + ava + ttut
+1 tusartit + a + uva + ttut
+1 uqalima + ji + uva + ttut
+1 pit + uinnaulaa + ngittut
+1 kiinauja + liu + tsia + ngittut
+1 nilli + ani + uja + ngittut
+1 uqausi + qaq + sima + ngittut
+1 i + suli + si + gunn + arpa + ngittut
+1 sanngi + niqa + ngittut
+1 it + ju + ata + ulauqsimania + nngua + ngittut
+1 nirua + ngittut
+1 ajjigiingittu + t
+1 naluna + lau + ngittut
+3 iluaniittut
+1 takuksau + titsi + simalir + iit + tut
+1 silattursar + vimmi + ttut
+1 ili + na + mmari + ttut
+2 qanuittut
+1 ilagiliuti + jau + lau + ttut
+2 niriu + ttut
+1 kut + tut
+9 makkuttut
+1 qallunaa + nirmiut + ut
+1 ukiurtartumi + ut + ut
+1 mak + kut + ut
+1 qaiqujausi + malaujuut
+1 angajuqqaa + vut
+1 parna + r + siar + sima + nirsau + qatta + langa + vut
+12 nunatsiavut
+1 pijjuti + gija + vut
+1 pinnarija + vut
+1 annirija + vut
+1 tunngaviksa + liur + asuar + ni + rija + vut
+1 asijji + r + tauq + uja + vut
+1 alla + simavut
+1 piu + liag + ugunna + simavut
+1 si + simavut
+1 qaujima + naq + si + simavut
+1 ilitaqsi + simavut
+1 nalunaiq + si + simavut
+1 parnak + simavut
+1 qiktau + simavut
+1 piju + nnasi + aqtualuu + simavut
+6 nunavut
+1 kajusi + ti + nna + su + arpa + vut
+1 giaqa + qta + vut
+1 inuusi + rilirta + vut
+1 pular + alaur + ta + vut
+1 tiki + laur + ta + vut
+1 ingirra + ni + ri + laurta + vut
+1 m + atulaurta + vut
+1 aulatsigunnarsi + guti + gigalaa + tta + vut
+1 silarjua + vut
+1 quvia + gijau + q + uva + vut
+1 inugianni + vut
+1 kajusititsi + si + alaur + i + vut
+1 uqausi + qa + laur + i + vut
+1 kati + qsui + gunna + si + vut
+1 iliqqu + si + vut
+1 inuusi + vut
+1 nunali + quti + vut
+1 taikkua + sainn + au + vut
+1 atuinnau + vut
+1 kingullirpa + u + vut
+2 tukisia + jaujuksauvut
+1 qimirru + jaujuksauvut
+2 iksivaqatauvut
+1 pijunnau + ti + qaq + titau + vut
+1 ilitaqsi + gutau + vut
+1 nalunaiqsig + utau + vut
+1 naluna + irsi + gutau + vut
+1 saqqititsi + gutau + vut
+1 isuil + utau + vut
+1 apiqsu + rutau + vut
+1 tapaiq + sima + tsia + liu + mijaa + suugu + vut
+1 tusa + attuatits + igut + auqatt + asimaju + vut
+1 nunatsiav + aalu + vut
+1 taijau
+1 utaqqi + jau
+1 akau
+2 lau
+1 kiqiqiqulimau
+1 pijunnau
+2 uqau
+1 ralisau
+1 ata + qatau
+1 atiliurtau
+1 surtau
+1 turtau
+3 arraagu
+1 tuq + ulaur + tinnagu
+2 kajusinginn + aqunagu
+1 qanuq + tuurutj + igu
+1 qauji + gaja + r + attigu
+1 kajusi + vallia + tikk + ajar + attigu
+1 kamagi + jaria + qa + laur + attigu
+1 saqqi + tig + iarniarutt + igu
+1 angiqatigiigutausimajut + igu
+1 na + amma + tuinna + naaria + rmi + lungu
+1 atung + inna + riaq + pal + lungu
+1 pijjuti + gil + lungu
+1 akuni + alu + nngu + rataqsu + ngu
+1 ilinniar + gu
+1 lugu
+1 iqqauma + lugu
+1 pijjuti + gi + lugu
+1 uutt + utigi + lugu
+1 asiu + ji + ti + tta + ili + lugu
+1 piq + asiuti + lugu
+1 atuaga + galail + lugu
+1 parna + i + l + lugu
+1 pijjuti + gil + lugu
+2 malillugu
+1 piqqusi + l + lugu
+1 asijjirpallia + tillugu
+1 katil + lugu
+1 nuq + qar + uj + j + ilaursima + tillugu
+1 sujuqa + q + tillugu
+1 pijjutiqa + q + tu + qaq + tillugu
+1 qaujisar + tu + qaq + tillugu
+1 ilagij + aulla + ar + tillugu
+1 nipi + gijau + niar + tillugu
+1 ilinnia + nar + tillugu
+1 ili + vi + ujun + nar + tillugu
+1 saala + ksa + r + tillugu
+1 asijjirpallia + lir + tillugu
+1 nuq + qaria + lir + tillugu
+1 anigur + sima + lir + tillugu
+1 ikpigija + ugiaqammarit + tillugu
+1 taijau + tillugu
+1 piara + u + tillugu
+1 saqqitau + tillugu
+2 gu + tillugu
+1 taitsumani + u + tillugu
+1 pit + satali + aluu + tillugu
+1 kajusi + qul + lugu
+1 akausi + nirsau + qul + lugu
+1 atu + llattaar + lugu
+2 takugia + r + lugu
+1 qivia + nga + jau + juu + mi + gunna + si + ti + gasuar + lugu
+1 pinasua + gatuarika + inna + lir + lugu
+1 atur + lugu
+1 kaivalla + sugu
+1 ippigijaalug + iliq + sugu
+1 aaqqik + sur + sugu
+1 git + sugu
+1 si + tama + vi + t + sugu
+1 tiqisasa + niu
+1 lqilijiluqiu
+1 inngi + si + tiu
+1 aaju
+1 pingaju
+1 maju
+1 qiju
+1 ajjingua + kku
+1 makkuttu + ku
+1 lu
+1 nga + lu
+1 atuuti + qaq + vi + ginn + g + igia + nga + lu
+1 arna + nga + lu
+1 ilisa + laursungalu
+1 kati + si + laursungalu
+1 mantip + ialu
+3 amma + lu
+1 tamatuma + lu
+1 nani + mi + utau + ga + lu + arpa + t + alu
+1 i + q + qusi + ngit + alu
+1 ilisaiji + qatsia + suta + lu
+1 unikkaa + tuinna + i + lu
+1 gullamilu
+1 sivuniksami + lu
+1 pinasua + gatuarijaunngusutsim + agala + aga + ni + lu
+1 nginni + lu
+1 kiinauja + qaqtita + u + gut + igigunnata + nginni + lu
+1 taku + tsaruqtitau + si + maguti + nginni + lu
+1 su + ju + vi + nir + ni + lu
+1 kinau + niqa + rusi + rni + lu
+1 aki + ni + aqtualuu + liqs + unilu
+1 qaujima + nar + unna + irs + unilu
+1 qaujima + guma + tsunilu
+1 titirauj + aq + pa + tsunilu
+1 qaujima + jaagu + titsi + mari + tsunilu
+1 niuvia + tsa + qaq + vi + ugunna + t + unilu
+1 nuna + nngua + llu
+1 annaumautig + illu
+1 alla + sima + ning + illu
+1 asing + illu
+1 nunali + taar + pallia + lir + tillug + illu
+1 taimungaqtar + unn + asug + illu
+1 ila + gi + illu
+1 sila + qqijaariaqtuka + iji + illu
+1 ilisaiji + illu
+1 qanuiluur + uti + vi + ni + illu
+1 qa + nurluu + nni + illu
+1 unikkaa + liuqtimari + illu
+1 katimaji + rusi + illu
+1 imarm + illu
+1 timmia + nillu
+1 unikkaa + tua + nillu
+1 ni + nngu + uma + j + angi + nillu
+1 qu + ki + uti + nillu
+1 tusarnijaa + ruti + nillu
+1 qanuili + sima + ni + nginni + llu
+1 asinginni + llu
+1 iqalunni + llu
+1 marruunn + illu
+1 nanu + r + nillu
+1 pitsi + asimaju + nillu
+1 alla + ngu + aqsi + maju + nillu
+1 titirauj + arta + usimajuni + llu
+1 inuusi + rijauju + nillu
+1 a + taat + auju + nillu
+1 ami + su + nillu
+1 naittu + nillu
+1 surusi + llu
+1 niriugija + uni + qaq + sima + juu + jaarat + illu
+1 ikajur + pa + llutillu
+1 atuinnau + llutillu
+1 aaktur + titau + llutillu
+1 asiu + llutillu
+1 aaqqik + surtau + vallia + nginnar + lut + illu
+1 ili + uqqai + vi + u + lut + illu
+1 piju + nnasi + arni + qaq + sutillu
+1 uqausi + qaq + sutillu
+1 nipi + liur + igut + i + qaq + sutillu
+2 ilinniar + sutillu
+1 pitsi + aqatta + qujau + nginnar + sutillu
+1 annaumag + iursar + sutillu
+1 ava + lu + liur + sutillu
+1 ingirra + vat + sutillu
+1 si + nna + sa + uti + gijau + vat + sutillu
+1 allasimaju + liuqtimari + ut + sutillu
+1 unikkaa + lianguvalli + asimaju + illu
+2 inu + illu
+1 kanata + ullu
+1 tigullu
+1 piliria + tigullu
+1 unikkaa + tuat + igu + llu
+1 aviktursimani + ngi + tigullu
+1 atulirtit + au + giaqani + ngi + tigullu
+1 inngi + riursa + rni + ngi + tigullu
+1 iliqqu + siq + arni + mi + tigullu
+1 ingirra + ni + ullu
+1 umiarjuakk + ullu
+1 nginni + liri + nikkullu
+1 na + nginni + liri + nikkullu
+1 avati + liri + nikkullu
+1 tunngasuk + titsi + nikkullu
+1 uqalima + a + g + iursar + nikkullu
+1 qa + limaa + r + iursar + nikkullu
+1 aliisikk + ullu
+1 imarm + ullu
+1 inuusi + liri + nir + m + ullu
+1 in + unn + ullu
+1 surusi + r + n + ullu
+1 kingujaag + uvannia + tun + ullu
+1 takugia + qta + ulaqiigu + nna + tun + ullu
+1 qallunaat + it + ullu
+1 inutt + it + ullu
+1 titsi + nanguart + ullu
+1 ukiurtart + u + ullu
+1 atung + ar + lu
+1 kata + k + tit + ausima + nir + lu
+1 nammini + r + lu
+1 asug + uur + lu
+19 suurlu
+1 iqqauma + lugu + lu
+1 taima + igaluaqti + lugu + lu
+1 si + kulu
+1 qaujisar + nik + mu
+1 amma + nu
+1 lnguk + inu
+1 katimarjuar + niq + alaur + pu
+1 likiqu
+4 guqaqalikiqu
+1 gasuar + u
+1 su
+1 gavama + tu
+1 atutatu
+1 niqa + ggu + sima + lau + rtu
+1 ajjigiingittu
+1 lu + u
+1 inuu
+1 qanui + ttu + u
+1 tav
+2 new
+2 www
+1 index
+4 fox
+2 bay
+1 day
+1 norway
+1 lullaby
+1 po + licy
+1 voisey
+1 strategy
+1 anthony
+1 tony
+1 ipy
+2 hilary
+6 mary
+1 new + ber + y
+1 henry
+1 parry
+3 terry
+1 uni + versity
+1 sovereignty
+# Time used (secs): 422

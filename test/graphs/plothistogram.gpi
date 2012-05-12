@@ -1,0 +1,11 @@
+set boxwidth 1 # Probably 3-5.
+set xlabel "Morpheme Length"
+set ylabel "Count"
+set term postscript eps enhanced
+#set term svg # Create an SVG image
+set output 'morphlength.svg'
+set key off # Unless you really want a key
+# For this next line, lw is linewidth (2-4)?
+plot [0:17] 'goldstandard-morphlength-frequency' with boxes lw 5
+#plot binom(x), normal(x - 0.5)
+

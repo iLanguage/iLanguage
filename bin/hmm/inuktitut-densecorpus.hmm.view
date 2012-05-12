@@ -1,0 +1,67 @@
+
+Transitions from State 1:
+  7 	 0.999998
+
+Transitions from State 2:
+  8 	 0.999996
+
+Transitions from State 3:
+  1 	 0.333997
+  4 	 0.666995
+
+Transitions from State 4:
+  9 	 0.999991
+
+Transitions from State 5:
+  2 	 0.999968
+
+Transitions from State 6:
+  2 	 0.999987
+
+Transitions from State 7:
+  5 	 0.084688
+  6 	 0.916310
+
+Transitions from State 8:
+  3 	 0.600403
+  8 	 0.400595
+
+Transitions from State 9:
+  2 	 0.012713
+  5 	 0.083075
+  6 	 0.405710
+  7 	 0.501496
+
+Symbols emitted at State 1:
+  0.999991 	 9 	 tu
+
+Symbols emitted at State 2:
+  0.999992 	 1 	 @
+
+Symbols emitted at State 3:
+  0.666994 	 8 	 laur
+  0.333997 	 3 	 rsui
+
+Symbols emitted at State 4:
+  0.999997 	 4 	 sima
+
+Symbols emitted at State 5:
+  0.999986 	 1 	 @
+
+Symbols emitted at State 6:
+  0.999997 	 1 	 @
+
+Symbols emitted at State 7:
+  0.999002 	 6 	 mik
+
+Symbols emitted at State 8:
+  0.600400 	 2 	 kati
+  0.200799 	 7 	 maniu
+  0.200799 	 10 	 jimmaringu
+
+Symbols emitted at State 9:
+  0.500501 	 5 	 giaqanir
+  0.500496 	 11 	 juq
+
+Initial probability of State 2: 0.999998
+

@@ -1,0 +1,32 @@
+#! /bin/bash
+
+rm densecorpus-$1
+
+
+initials="isuma"
+for i in kati tusaa mali tiki nuna
+do
+	initials="$i|$initials"
+	echo $initials
+done
+
+medials="sima"
+for m in laur lauq nngit vallia
+do
+	medials="$m|$medials"
+	echo $medials
+done
+
+
+finals="juq"
+for f in tugut mik
+do
+	finals="$f|$finals"
+	echo $finals
+done
+
+
+#grep $i.*$m. $1 >> densecorpus-$1
+echo "[$initials].*[$medials].*[$finals]" $1 #| sed "s/$initials/\+\t\+&\+\t\+/"  >> densecorpus-$1
+#egrep "kati|isuma" $1 > densecorpus-$1
+

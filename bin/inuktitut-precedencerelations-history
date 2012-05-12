@@ -1,0 +1,30 @@
+
+@ > prefix
+prefix > root
+
+@ > root
+root > suffix
+suffix > @
+
+
+root > medial
+medial > suffix
+
+isuma = root
+kati = root
+tusaa = root
+mali = root
+tiki = root
+nuna = root
+
+sima = medial
+laur = medial
+lauq = medial
+nngit = medial
+vallia = medial
+
+juk = suffix
+tugut = suffix
+mik = suffix
+
+

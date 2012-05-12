@@ -1,0 +1,342 @@
+Removing all files and memories...
+Creating a wordlist...
+Creating  rankedpossiblemorpheme lists...
+Creating initial precedence relations...
+   Initially assuming an optional prefix and obligatory root+suffix...
+       Underlying representation @prefix+root+suffix@ or @root+suffix@
+                (this corresponds to argument+head assumptions about language)
+   Creating precedence rules for seed morphemes...
+
+@ > prefix
+prefix > root
+
+@ > root
+root > suffix
+suffix > @
+
+
+root > medial
+medial > suffix
+
+isuma = root
+kati = root
+tusaa = root
+mali = root
+tiki = root
+nuna = root
+
+sima = medial
+laur = medial
+lauq = medial
+nngit = medial
+vallia = medial
+
+juk = suffix
+tugut = suffix
+mik = suffix
+
+
+
+A history of the precedence rules are kept in inuktitut-precedencerelations-history. 
+   This file is kept to gather probabilty information. It serves as a longterm memory, 
+   is not used as input to later steps.
+
+The generalized frequency information for the precedence rules are in 
+   inuktitut-precedencerelations-frequency. This is the file which is used 
+   as input in later steps.
+      9 
+      1 isuma = root
+      1 juk = suffix
+      1 kati = root
+      1 lauq = medial
+      1 laur = medial
+      1 mali = root
+      1 medial > suffix
+      1 mik = suffix
+      1 nngit = medial
+      1 nuna = root
+      1 @ > prefix
+      1 prefix > root
+      1 @ > root
+      1 root > medial
+      1 root > suffix
+      1 sima = medial
+      1 suffix > @
+      1 tiki = root
+      1 tugut = suffix
+      1 tusaa = root
+      1 vallia = medial
+Creating an initial dense corpus...
+1 +	+kati+	+rsui+	+sima+	+giaqanir+	+mik+	+
+1 +	+kati+	+maniu+	+laur+	+tu+	+mik+	+
+1 +	+tusaa+	+jimmaringulaur+	+sima+	++	+juq+	+
+1 +	+tusaa+	+jimmaringu+	+laur+	+sima+	+juq+	+
+1 +	+mali+	+tsiariaqa+	+laur+	++	+tugut+	+
+1 +	+tiki+	++	+laur+	++	+tugut+	+
+Creating precedence relations between morphemes...
+
+Taking in an aligned corpus, calculating precedence relations between morphemes for each (informative) word
+
+Remove digits and +
+@ kati rsui sima giaqanir mik @
+@ > kati
+kati > rsui
+rsui > sima
+sima > giaqanir
+giaqanir > mik
+mik > @
+Remove digits and +
+@ kati maniu laur tu mik @
+@ > kati
+kati > maniu
+maniu > laur
+laur > tu
+tu > mik
+mik > @
+ This line has an empty morph  ++ in it so its not the most informative for a new template
+	1 +	+tusaa+	+jimmaringulaur+	+sima+	++	+juq+	+
+
+Remove digits and +
+@ tusaa jimmaringulaur sima juq @
+@ > tusaa
+tusaa > jimmaringulaur
+jimmaringulaur > sima
+sima > juq
+juq > @
+Remove digits and +
+@ tusaa jimmaringu laur sima juq @
+@ > tusaa
+tusaa > jimmaringu
+jimmaringu > laur
+laur > sima
+sima > juq
+juq > @
+ This line has an empty morph  ++ in it so its not the most informative for a new template
+	1 +	+mali+	+tsiariaqa+	+laur+	++	+tugut+	+
+
+Remove digits and +
+@ mali tsiariaqa laur tugut @
+@ > mali
+mali > tsiariaqa
+tsiariaqa > laur
+laur > tugut
+tugut > @
+ This line has an empty morph  ++ in it so its not the most informative for a new template
+	1 +	+tiki+	++	+laur+	++	+tugut+	+
+
+Remove digits and +
+@ tiki laur tugut @
+@ > tiki
+tiki > laur
+laur > tugut
+tugut > @
+    A memory of all encountered precedence relations between individual morphemes is kept in inuktitut-morphrelations-history
+    Precedence information between individual morphemes was generalized with frequnecy counts in the inuktitut-morphrelations-frequency file.
+      1 giaqanir > mik
+      1 jimmaringu > laur
+      1 jimmaringulaur > sima
+      2 juq > @
+      2 @ > kati
+      1 kati > maniu
+      1 kati > rsui
+      1 laur > sima
+      1 laur > tu
+      2 laur > tugut
+      1 @ > mali
+      1 mali > tsiariaqa
+      1 maniu > laur
+      2 mik > @
+      1 rsui > sima
+      1 sima > giaqanir
+      2 sima > juq
+      1 @ > tiki
+      1 tiki > laur
+      1 tsiariaqa > laur
+      2 tugut > @
+      1 tu > mik
+      2 @ > tusaa
+      1 tusaa > jimmaringu
+      1 tusaa > jimmaringulaur
+
+Creating a list of permissible morpheme boundaries ie, z > a, in xyz > abc ...
+Working on this line       1 giaqanir > mik
+Remove frequency information giaqanir > mik
+This r  is the last char of the first word giaqanir
+This m  is the first char of the  second word mik
+
+r > m
+Working on this line       1 jimmaringu > laur
+Remove frequency information jimmaringu > laur
+This u  is the last char of the first word jimmaringu
+This l  is the first char of the  second word laur
+
+u > l
+Working on this line       1 jimmaringulaur > sima
+Remove frequency information jimmaringulaur > sima
+This r  is the last char of the first word jimmaringulaur
+This s  is the first char of the  second word sima
+
+r > s
+Working on this line       2 juq > @
+Remove frequency information juq > @
+This q  is the last char of the first word juq
+This @  is the first char of the  second word @
+
+q > @
+Working on this line       2 @ > kati
+Remove frequency information @ > kati
+This @  is the last char of the first word @
+This k  is the first char of the  second word kati
+
+@ > k
+Working on this line       1 kati > maniu
+Remove frequency information kati > maniu
+This i  is the last char of the first word kati
+This m  is the first char of the  second word maniu
+
+i > m
+Working on this line       1 kati > rsui
+Remove frequency information kati > rsui
+This i  is the last char of the first word kati
+This r  is the first char of the  second word rsui
+
+i > r
+Working on this line       1 laur > sima
+Remove frequency information laur > sima
+This r  is the last char of the first word laur
+This s  is the first char of the  second word sima
+
+r > s
+Working on this line       1 laur > tu
+Remove frequency information laur > tu
+This r  is the last char of the first word laur
+This t  is the first char of the  second word tu
+
+r > t
+Working on this line       2 laur > tugut
+Remove frequency information laur > tugut
+This r  is the last char of the first word laur
+This t  is the first char of the  second word tugut
+
+r > t
+Working on this line       1 @ > mali
+Remove frequency information @ > mali
+This @  is the last char of the first word @
+This m  is the first char of the  second word mali
+
+@ > m
+Working on this line       1 mali > tsiariaqa
+Remove frequency information mali > tsiariaqa
+This i  is the last char of the first word mali
+This t  is the first char of the  second word tsiariaqa
+
+i > t
+Working on this line       1 maniu > laur
+Remove frequency information maniu > laur
+This u  is the last char of the first word maniu
+This l  is the first char of the  second word laur
+
+u > l
+Working on this line       2 mik > @
+Remove frequency information mik > @
+This k  is the last char of the first word mik
+This @  is the first char of the  second word @
+
+k > @
+Working on this line       1 rsui > sima
+Remove frequency information rsui > sima
+This i  is the last char of the first word rsui
+This s  is the first char of the  second word sima
+
+i > s
+Working on this line       1 sima > giaqanir
+Remove frequency information sima > giaqanir
+This a  is the last char of the first word sima
+This g  is the first char of the  second word giaqanir
+
+a > g
+Working on this line       2 sima > juq
+Remove frequency information sima > juq
+This a  is the last char of the first word sima
+This j  is the first char of the  second word juq
+
+a > j
+Working on this line       1 @ > tiki
+Remove frequency information @ > tiki
+This @  is the last char of the first word @
+This t  is the first char of the  second word tiki
+
+@ > t
+Working on this line       1 tiki > laur
+Remove frequency information tiki > laur
+This i  is the last char of the first word tiki
+This l  is the first char of the  second word laur
+
+i > l
+Working on this line       1 tsiariaqa > laur
+Remove frequency information tsiariaqa > laur
+This a  is the last char of the first word tsiariaqa
+This l  is the first char of the  second word laur
+
+a > l
+Working on this line       2 tugut > @
+Remove frequency information tugut > @
+This t  is the last char of the first word tugut
+This @  is the first char of the  second word @
+
+t > @
+Working on this line       1 tu > mik
+Remove frequency information tu > mik
+This u  is the last char of the first word tu
+This m  is the first char of the  second word mik
+
+u > m
+Working on this line       2 @ > tusaa
+Remove frequency information @ > tusaa
+This @  is the last char of the first word @
+This t  is the first char of the  second word tusaa
+
+@ > t
+Working on this line       1 tusaa > jimmaringu
+Remove frequency information tusaa > jimmaringu
+This a  is the last char of the first word tusaa
+This j  is the first char of the  second word jimmaringu
+
+a > j
+Working on this line       1 tusaa > jimmaringulaur
+Remove frequency information tusaa > jimmaringulaur
+This a  is the last char of the first word tusaa
+This j  is the first char of the  second word jimmaringulaur
+
+a > j
+a > g
+a > j
+a > l
+i > l
+i > m
+i > r
+i > s
+i > t
+@ > k
+k > @
+@ > m
+q > @
+r > m
+r > s
+r > t
+@ > t
+t > @
+u > l
+u > m
+Welcome 1 times
+Creating a (new) template by generalizing individual morphs to their class...
+Creating a new dense corpus...
+
+    To implement: Take a list of morphemes for each category in the template, and create nested for loops or a flat structure to find words which contain at least 1 element of every category.
+
+    Although enlarging the list by many morphemes per category could increase the size of the dense corpus, the size is restricted to ever increasingly long words (which contain all elements in the category. Once there are no more longer words for the dense corpus the template is complete.
+
+    The next step is to use a portion of trustable existing morphemes (thos that appear in their template spot frequently with many differnet neighbors) to work on words in the corpus which do not fill the template. 
+
+    Care must be taken at all steps to notice if allophone garbage between morphemes is being created. This is why it's important to consider reliable morphemes for cutting, morphemes which do not include part of their neighbors as their neighbors have changed to phonotacitcally comply *this is why a compression strategy which works on predictability of letters will ecode the junction of two allomorphs as a morpheme, rather than morphemes themsleves!!
+
