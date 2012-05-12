@@ -1,0 +1,891 @@
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-a-Letter -->
+	<owl:Thing rdf:about="#Romanian-a-Letter">
+		<rdf:type rdf:resource="#Orthographic-a-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-a-Letter -->
+	<owl:Class rdf:about="#Orthographic-a-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-i-Letter -->
+	<owl:Thing rdf:about="#Romanian-i-Letter">
+		<rdf:type rdf:resource="#Orthographic-i-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-i-Letter -->
+	<owl:Class rdf:about="#Orthographic-i-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-e-Letter -->
+	<owl:Thing rdf:about="#Romanian-e-Letter">
+		<rdf:type rdf:resource="#Orthographic-e-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-e-Letter -->
+	<owl:Class rdf:about="#Orthographic-e-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-r-Letter -->
+	<owl:Thing rdf:about="#Romanian-r-Letter">
+		<rdf:type rdf:resource="#Orthographic-r-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-r-Letter -->
+	<owl:Class rdf:about="#Orthographic-r-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-t-Letter -->
+	<owl:Thing rdf:about="#Romanian-t-Letter">
+		<rdf:type rdf:resource="#Orthographic-t-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-t-Letter -->
+	<owl:Class rdf:about="#Orthographic-t-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-n-Letter -->
+	<owl:Thing rdf:about="#Romanian-n-Letter">
+		<rdf:type rdf:resource="#Orthographic-n-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-n-Letter -->
+	<owl:Class rdf:about="#Orthographic-n-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-l-Letter -->
+	<owl:Thing rdf:about="#Romanian-l-Letter">
+		<rdf:type rdf:resource="#Orthographic-l-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-l-Letter -->
+	<owl:Class rdf:about="#Orthographic-l-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-o-Letter -->
+	<owl:Thing rdf:about="#Romanian-o-Letter">
+		<rdf:type rdf:resource="#Orthographic-o-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-o-Letter -->
+	<owl:Class rdf:about="#Orthographic-o-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-u-Letter -->
+	<owl:Thing rdf:about="#Romanian-u-Letter">
+		<rdf:type rdf:resource="#Orthographic-u-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-u-Letter -->
+	<owl:Class rdf:about="#Orthographic-u-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-c-Letter -->
+	<owl:Thing rdf:about="#Romanian-c-Letter">
+		<rdf:type rdf:resource="#Orthographic-c-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-c-Letter -->
+	<owl:Class rdf:about="#Orthographic-c-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-s-Letter -->
+	<owl:Thing rdf:about="#Romanian-s-Letter">
+		<rdf:type rdf:resource="#Orthographic-s-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-s-Letter -->
+	<owl:Class rdf:about="#Orthographic-s-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-m-Letter -->
+	<owl:Thing rdf:about="#Romanian-m-Letter">
+		<rdf:type rdf:resource="#Orthographic-m-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-m-Letter -->
+	<owl:Class rdf:about="#Orthographic-m-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-p-Letter -->
+	<owl:Thing rdf:about="#Romanian-p-Letter">
+		<rdf:type rdf:resource="#Orthographic-p-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-p-Letter -->
+	<owl:Class rdf:about="#Orthographic-p-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-d-Letter -->
+	<owl:Thing rdf:about="#Romanian-d-Letter">
+		<rdf:type rdf:resource="#Orthographic-d-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-d-Letter -->
+	<owl:Class rdf:about="#Orthographic-d-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-g-Letter -->
+	<owl:Thing rdf:about="#Romanian-g-Letter">
+		<rdf:type rdf:resource="#Orthographic-g-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-g-Letter -->
+	<owl:Class rdf:about="#Orthographic-g-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-v-Letter -->
+	<owl:Thing rdf:about="#Romanian-v-Letter">
+		<rdf:type rdf:resource="#Orthographic-v-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-v-Letter -->
+	<owl:Class rdf:about="#Orthographic-v-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-b-Letter -->
+	<owl:Thing rdf:about="#Romanian-b-Letter">
+		<rdf:type rdf:resource="#Orthographic-b-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-b-Letter -->
+	<owl:Class rdf:about="#Orthographic-b-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-z-Letter -->
+	<owl:Thing rdf:about="#Romanian-z-Letter">
+		<rdf:type rdf:resource="#Orthographic-z-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-z-Letter -->
+	<owl:Class rdf:about="#Orthographic-z-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-f-Letter -->
+	<owl:Thing rdf:about="#Romanian-f-Letter">
+		<rdf:type rdf:resource="#Orthographic-f-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-f-Letter -->
+	<owl:Class rdf:about="#Orthographic-f-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-h-Letter -->
+	<owl:Thing rdf:about="#Romanian-h-Letter">
+		<rdf:type rdf:resource="#Orthographic-h-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-h-Letter -->
+	<owl:Class rdf:about="#Orthographic-h-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-C-Letter -->
+	<owl:Thing rdf:about="#Romanian-C-Letter">
+		<rdf:type rdf:resource="#Orthographic-C-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-C-Letter -->
+	<owl:Class rdf:about="#Orthographic-C-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-A-Letter -->
+	<owl:Thing rdf:about="#Romanian-A-Letter">
+		<rdf:type rdf:resource="#Orthographic-A-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-A-Letter -->
+	<owl:Class rdf:about="#Orthographic-A-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-S-Letter -->
+	<owl:Thing rdf:about="#Romanian-S-Letter">
+		<rdf:type rdf:resource="#Orthographic-S-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-S-Letter -->
+	<owl:Class rdf:about="#Orthographic-S-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-P-Letter -->
+	<owl:Thing rdf:about="#Romanian-P-Letter">
+		<rdf:type rdf:resource="#Orthographic-P-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-P-Letter -->
+	<owl:Class rdf:about="#Orthographic-P-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-M-Letter -->
+	<owl:Thing rdf:about="#Romanian-M-Letter">
+		<rdf:type rdf:resource="#Orthographic-M-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-M-Letter -->
+	<owl:Class rdf:about="#Orthographic-M-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-)-Letter -->
+	<owl:Thing rdf:about="#Romanian-)-Letter">
+		<rdf:type rdf:resource="#Orthographic-)-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-)-Letter -->
+	<owl:Class rdf:about="#Orthographic-)-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-j-Letter -->
+	<owl:Thing rdf:about="#Romanian-j-Letter">
+		<rdf:type rdf:resource="#Orthographic-j-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-j-Letter -->
+	<owl:Class rdf:about="#Orthographic-j-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-(-Letter -->
+	<owl:Thing rdf:about="#Romanian-(-Letter">
+		<rdf:type rdf:resource="#Orthographic-(-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-(-Letter -->
+	<owl:Class rdf:about="#Orthographic-(-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-R-Letter -->
+	<owl:Thing rdf:about="#Romanian-R-Letter">
+		<rdf:type rdf:resource="#Orthographic-R-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-R-Letter -->
+	<owl:Class rdf:about="#Orthographic-R-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-I-Letter -->
+	<owl:Thing rdf:about="#Romanian-I-Letter">
+		<rdf:type rdf:resource="#Orthographic-I-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-I-Letter -->
+	<owl:Class rdf:about="#Orthographic-I-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-D-Letter -->
+	<owl:Thing rdf:about="#Romanian-D-Letter">
+		<rdf:type rdf:resource="#Orthographic-D-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-D-Letter -->
+	<owl:Class rdf:about="#Orthographic-D-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-B-Letter -->
+	<owl:Thing rdf:about="#Romanian-B-Letter">
+		<rdf:type rdf:resource="#Orthographic-B-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-B-Letter -->
+	<owl:Class rdf:about="#Orthographic-B-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-T-Letter -->
+	<owl:Thing rdf:about="#Romanian-T-Letter">
+		<rdf:type rdf:resource="#Orthographic-T-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-T-Letter -->
+	<owl:Class rdf:about="#Orthographic-T-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-x-Letter -->
+	<owl:Thing rdf:about="#Romanian-x-Letter">
+		<rdf:type rdf:resource="#Orthographic-x-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-x-Letter -->
+	<owl:Class rdf:about="#Orthographic-x-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-„-Letter -->
+	<owl:Thing rdf:about="#Romanian-„-Letter">
+		<rdf:type rdf:resource="#Orthographic-„-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-„-Letter -->
+	<owl:Class rdf:about="#Orthographic-„-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-E-Letter -->
+	<owl:Thing rdf:about="#Romanian-E-Letter">
+		<rdf:type rdf:resource="#Orthographic-E-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-E-Letter -->
+	<owl:Class rdf:about="#Orthographic-E-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-F-Letter -->
+	<owl:Thing rdf:about="#Romanian-F-Letter">
+		<rdf:type rdf:resource="#Orthographic-F-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-F-Letter -->
+	<owl:Class rdf:about="#Orthographic-F-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-N-Letter -->
+	<owl:Thing rdf:about="#Romanian-N-Letter">
+		<rdf:type rdf:resource="#Orthographic-N-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-N-Letter -->
+	<owl:Class rdf:about="#Orthographic-N-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-G-Letter -->
+	<owl:Thing rdf:about="#Romanian-G-Letter">
+		<rdf:type rdf:resource="#Orthographic-G-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-G-Letter -->
+	<owl:Class rdf:about="#Orthographic-G-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-L-Letter -->
+	<owl:Thing rdf:about="#Romanian-L-Letter">
+		<rdf:type rdf:resource="#Orthographic-L-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-L-Letter -->
+	<owl:Class rdf:about="#Orthographic-L-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-V-Letter -->
+	<owl:Thing rdf:about="#Romanian-V-Letter">
+		<rdf:type rdf:resource="#Orthographic-V-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-V-Letter -->
+	<owl:Class rdf:about="#Orthographic-V-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-î-Letter -->
+	<owl:Thing rdf:about="#Romanian-î-Letter">
+		<rdf:type rdf:resource="#Orthographic-î-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-î-Letter -->
+	<owl:Class rdf:about="#Orthographic-î-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-â-Letter -->
+	<owl:Thing rdf:about="#Romanian-â-Letter">
+		<rdf:type rdf:resource="#Orthographic-â-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-â-Letter -->
+	<owl:Class rdf:about="#Orthographic-â-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-k-Letter -->
+	<owl:Thing rdf:about="#Romanian-k-Letter">
+		<rdf:type rdf:resource="#Orthographic-k-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-k-Letter -->
+	<owl:Class rdf:about="#Orthographic-k-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-y-Letter -->
+	<owl:Thing rdf:about="#Romanian-y-Letter">
+		<rdf:type rdf:resource="#Orthographic-y-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-y-Letter -->
+	<owl:Class rdf:about="#Orthographic-y-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-O-Letter -->
+	<owl:Thing rdf:about="#Romanian-O-Letter">
+		<rdf:type rdf:resource="#Orthographic-O-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-O-Letter -->
+	<owl:Class rdf:about="#Orthographic-O-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-H-Letter -->
+	<owl:Thing rdf:about="#Romanian-H-Letter">
+		<rdf:type rdf:resource="#Orthographic-H-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-H-Letter -->
+	<owl:Class rdf:about="#Orthographic-H-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-U-Letter -->
+	<owl:Thing rdf:about="#Romanian-U-Letter">
+		<rdf:type rdf:resource="#Orthographic-U-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-U-Letter -->
+	<owl:Class rdf:about="#Orthographic-U-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-Core"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-1-Letter -->
+	<owl:Thing rdf:about="#Romanian-1-Letter">
+		<rdf:type rdf:resource="#Orthographic-1-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-1-Letter -->
+	<owl:Class rdf:about="#Orthographic-1-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-0-Letter -->
+	<owl:Thing rdf:about="#Romanian-0-Letter">
+		<rdf:type rdf:resource="#Orthographic-0-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-0-Letter -->
+	<owl:Class rdf:about="#Orthographic-0-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-2-Letter -->
+	<owl:Thing rdf:about="#Romanian-2-Letter">
+		<rdf:type rdf:resource="#Orthographic-2-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-2-Letter -->
+	<owl:Class rdf:about="#Orthographic-2-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-J-Letter -->
+	<owl:Thing rdf:about="#Romanian-J-Letter">
+		<rdf:type rdf:resource="#Orthographic-J-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-J-Letter -->
+	<owl:Class rdf:about="#Orthographic-J-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-w-Letter -->
+	<owl:Thing rdf:about="#Romanian-w-Letter">
+		<rdf:type rdf:resource="#Orthographic-w-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-w-Letter -->
+	<owl:Class rdf:about="#Orthographic-w-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-ã-Letter -->
+	<owl:Thing rdf:about="#Romanian-ã-Letter">
+		<rdf:type rdf:resource="#Orthographic-ã-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-ã-Letter -->
+	<owl:Class rdf:about="#Orthographic-ã-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-5-Letter -->
+	<owl:Thing rdf:about="#Romanian-5-Letter">
+		<rdf:type rdf:resource="#Orthographic-5-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-5-Letter -->
+	<owl:Class rdf:about="#Orthographic-5-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-9-Letter -->
+	<owl:Thing rdf:about="#Romanian-9-Letter">
+		<rdf:type rdf:resource="#Orthographic-9-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-9-Letter -->
+	<owl:Class rdf:about="#Orthographic-9-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-K-Letter -->
+	<owl:Thing rdf:about="#Romanian-K-Letter">
+		<rdf:type rdf:resource="#Orthographic-K-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-K-Letter -->
+	<owl:Class rdf:about="#Orthographic-K-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-4-Letter -->
+	<owl:Thing rdf:about="#Romanian-4-Letter">
+		<rdf:type rdf:resource="#Orthographic-4-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-4-Letter -->
+	<owl:Class rdf:about="#Orthographic-4-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-3-Letter -->
+	<owl:Thing rdf:about="#Romanian-3-Letter">
+		<rdf:type rdf:resource="#Orthographic-3-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-3-Letter -->
+	<owl:Class rdf:about="#Orthographic-3-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-7-Letter -->
+	<owl:Thing rdf:about="#Romanian-7-Letter">
+		<rdf:type rdf:resource="#Orthographic-7-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-7-Letter -->
+	<owl:Class rdf:about="#Orthographic-7-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-Z-Letter -->
+	<owl:Thing rdf:about="#Romanian-Z-Letter">
+		<rdf:type rdf:resource="#Orthographic-Z-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Z-Letter -->
+	<owl:Class rdf:about="#Orthographic-Z-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-W-Letter -->
+	<owl:Thing rdf:about="#Romanian-W-Letter">
+		<rdf:type rdf:resource="#Orthographic-W-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-W-Letter -->
+	<owl:Class rdf:about="#Orthographic-W-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-6-Letter -->
+	<owl:Thing rdf:about="#Romanian-6-Letter">
+		<rdf:type rdf:resource="#Orthographic-6-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-6-Letter -->
+	<owl:Class rdf:about="#Orthographic-6-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-8-Letter -->
+	<owl:Thing rdf:about="#Romanian-8-Letter">
+		<rdf:type rdf:resource="#Orthographic-8-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-8-Letter -->
+	<owl:Class rdf:about="#Orthographic-8-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-$-Letter -->
+	<owl:Thing rdf:about="#Romanian-$-Letter">
+		<rdf:type rdf:resource="#Orthographic-$-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-$-Letter -->
+	<owl:Class rdf:about="#Orthographic-$-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-­-Letter -->
+	<owl:Thing rdf:about="#Romanian-­-Letter">
+		<rdf:type rdf:resource="#Orthographic-­-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-­-Letter -->
+	<owl:Class rdf:about="#Orthographic-­-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-’-Letter -->
+	<owl:Thing rdf:about="#Romanian-’-Letter">
+		<rdf:type rdf:resource="#Orthographic-’-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-’-Letter -->
+	<owl:Class rdf:about="#Orthographic-’-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-Î-Letter -->
+	<owl:Thing rdf:about="#Romanian-Î-Letter">
+		<rdf:type rdf:resource="#Orthographic-Î-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Î-Letter -->
+	<owl:Class rdf:about="#Orthographic-Î-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-q-Letter -->
+	<owl:Thing rdf:about="#Romanian-q-Letter">
+		<rdf:type rdf:resource="#Orthographic-q-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-q-Letter -->
+	<owl:Class rdf:about="#Orthographic-q-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-X-Letter -->
+	<owl:Thing rdf:about="#Romanian-X-Letter">
+		<rdf:type rdf:resource="#Orthographic-X-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-X-Letter -->
+	<owl:Class rdf:about="#Orthographic-X-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-‘-Letter -->
+	<owl:Thing rdf:about="#Romanian-‘-Letter">
+		<rdf:type rdf:resource="#Orthographic-‘-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-‘-Letter -->
+	<owl:Class rdf:about="#Orthographic-‘-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-Q-Letter -->
+	<owl:Thing rdf:about="#Romanian-Q-Letter">
+		<rdf:type rdf:resource="#Orthographic-Q-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Q-Letter -->
+	<owl:Class rdf:about="#Orthographic-Q-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-Y-Letter -->
+	<owl:Thing rdf:about="#Romanian-Y-Letter">
+		<rdf:type rdf:resource="#Orthographic-Y-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Y-Letter -->
+	<owl:Class rdf:about="#Orthographic-Y-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-+-Letter -->
+	<owl:Thing rdf:about="#Romanian-+-Letter">
+		<rdf:type rdf:resource="#Orthographic-+-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-+-Letter -->
+	<owl:Class rdf:about="#Orthographic-+-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-é-Letter -->
+	<owl:Thing rdf:about="#Romanian-é-Letter">
+		<rdf:type rdf:resource="#Orthographic-é-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-é-Letter -->
+	<owl:Class rdf:about="#Orthographic-é-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-Â-Letter -->
+	<owl:Thing rdf:about="#Romanian-Â-Letter">
+		<rdf:type rdf:resource="#Orthographic-Â-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Â-Letter -->
+	<owl:Class rdf:about="#Orthographic-Â-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-ü-Letter -->
+	<owl:Thing rdf:about="#Romanian-ü-Letter">
+		<rdf:type rdf:resource="#Orthographic-ü-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-ü-Letter -->
+	<owl:Class rdf:about="#Orthographic-ü-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-ö-Letter -->
+	<owl:Thing rdf:about="#Romanian-ö-Letter">
+		<rdf:type rdf:resource="#Orthographic-ö-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-ö-Letter -->
+	<owl:Class rdf:about="#Orthographic-ö-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-™-Letter -->
+	<owl:Thing rdf:about="#Romanian-™-Letter">
+		<rdf:type rdf:resource="#Orthographic-™-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-™-Letter -->
+	<owl:Class rdf:about="#Orthographic-™-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-–-Letter -->
+	<owl:Thing rdf:about="#Romanian-–-Letter">
+		<rdf:type rdf:resource="#Orthographic-–-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-–-Letter -->
+	<owl:Class rdf:about="#Orthographic-–-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-<-Letter -->
+	<owl:Thing rdf:about="#Romanian-<-Letter">
+		<rdf:type rdf:resource="#Orthographic-<-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-<-Letter -->
+	<owl:Class rdf:about="#Orthographic-<-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-ó-Letter -->
+	<owl:Thing rdf:about="#Romanian-ó-Letter">
+		<rdf:type rdf:resource="#Orthographic-ó-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-ó-Letter -->
+	<owl:Class rdf:about="#Orthographic-ó-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian->-Letter -->
+	<owl:Thing rdf:about="#Romanian->-Letter">
+		<rdf:type rdf:resource="#Orthographic->-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic->-Letter -->
+	<owl:Class rdf:about="#Orthographic->-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-=-Letter -->
+	<owl:Thing rdf:about="#Romanian-=-Letter">
+		<rdf:type rdf:resource="#Orthographic-=-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-=-Letter -->
+	<owl:Class rdf:about="#Orthographic-=-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-©-Letter -->
+	<owl:Thing rdf:about="#Romanian-©-Letter">
+		<rdf:type rdf:resource="#Orthographic-©-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-©-Letter -->
+	<owl:Class rdf:about="#Orthographic-©-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-á-Letter -->
+	<owl:Thing rdf:about="#Romanian-á-Letter">
+		<rdf:type rdf:resource="#Orthographic-á-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-á-Letter -->
+	<owl:Class rdf:about="#Orthographic-á-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-Ã-Letter -->
+	<owl:Thing rdf:about="#Romanian-Ã-Letter">
+		<rdf:type rdf:resource="#Orthographic-Ã-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Ã-Letter -->
+	<owl:Class rdf:about="#Orthographic-Ã-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-ë-Letter -->
+	<owl:Thing rdf:about="#Romanian-ë-Letter">
+		<rdf:type rdf:resource="#Orthographic-ë-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-ë-Letter -->
+	<owl:Class rdf:about="#Orthographic-ë-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-|-Letter -->
+	<owl:Thing rdf:about="#Romanian-|-Letter">
+		<rdf:type rdf:resource="#Orthographic-|-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-|-Letter -->
+	<owl:Class rdf:about="#Orthographic-|-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-﻿-Letter -->
+	<owl:Thing rdf:about="#Romanian-﻿-Letter">
+		<rdf:type rdf:resource="#Orthographic-﻿-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-﻿-Letter -->
+	<owl:Class rdf:about="#Orthographic-﻿-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-´-Letter -->
+	<owl:Thing rdf:about="#Romanian-´-Letter">
+		<rdf:type rdf:resource="#Orthographic-´-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-´-Letter -->
+	<owl:Class rdf:about="#Orthographic-´-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-Ð-Letter -->
+	<owl:Thing rdf:about="#Romanian-Ð-Letter">
+		<rdf:type rdf:resource="#Orthographic-Ð-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Ð-Letter -->
+	<owl:Class rdf:about="#Orthographic-Ð-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-[-Letter -->
+	<owl:Thing rdf:about="#Romanian-[-Letter">
+		<rdf:type rdf:resource="#Orthographic-[-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-[-Letter -->
+	<owl:Class rdf:about="#Orthographic-[-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-Ž-Letter -->
+	<owl:Thing rdf:about="#Romanian-Ž-Letter">
+		<rdf:type rdf:resource="#Orthographic-Ž-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Ž-Letter -->
+	<owl:Class rdf:about="#Orthographic-Ž-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-í-Letter -->
+	<owl:Thing rdf:about="#Romanian-í-Letter">
+		<rdf:type rdf:resource="#Orthographic-í-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-í-Letter -->
+	<owl:Class rdf:about="#Orthographic-í-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-¦-Letter -->
+	<owl:Thing rdf:about="#Romanian-¦-Letter">
+		<rdf:type rdf:resource="#Orthographic-¦-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-¦-Letter -->
+	<owl:Class rdf:about="#Orthographic-¦-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-¶-Letter -->
+	<owl:Thing rdf:about="#Romanian-¶-Letter">
+		<rdf:type rdf:resource="#Orthographic-¶-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-¶-Letter -->
+	<owl:Class rdf:about="#Orthographic-¶-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-Ö-Letter -->
+	<owl:Thing rdf:about="#Romanian-Ö-Letter">
+		<rdf:type rdf:resource="#Orthographic-Ö-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-Ö-Letter -->
+	<owl:Class rdf:about="#Orthographic-Ö-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Romanian-]-Letter -->
+	<owl:Thing rdf:about="#Romanian-]-Letter">
+		<rdf:type rdf:resource="#Orthographic-]-Letter"/>
+	</owl:Thing>
+<!-- http://openlanguage.ca/ontologies/phonont.v1#Orthographic-]-Letter -->
+	<owl:Class rdf:about="#Orthographic-]-Letter">
+		<rdfs:subClassOf rdf:resource="#Romanian-Orthographic-NotCore"/>
+	</owl:Class>
+
