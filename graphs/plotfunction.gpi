@@ -1,0 +1,11 @@
+#set boxwidth 1 # Probably 3-5.
+set xlabel "Number of Types in the Corpus"
+set ylabel "Probability prior"
+set term svg # Create an SVG image
+set output 'function.svg'
+set key off # Unless you really want a key
+set nozeroaxis
+
+# For this next line, lw is linewidth (2-4)?
+f(x)= (6/(pi**2))*((1/x)**2)
+plot [0:5][0:5] f(x)

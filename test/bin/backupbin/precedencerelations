@@ -1,0 +1,31 @@
+#Initially assume optional prefixes and obligatory roots and suffixes
+@ > prefix
+prefix > root
+
+@ > root
+root > suffix
+suffix > @
+
+#insert medial
+root > medial
+medial > suffix
+
+#insert seed list
+isuma = root
+kati = root
+tusaa = root
+mali = root
+tiki = root
+nuna = root
+
+sima = medial
+laur = medial
+lauq = medial
+nngit = medial
+vallia = medial
+
+juk = suffix
+tugut = suffix
+mik = suffix
+
+

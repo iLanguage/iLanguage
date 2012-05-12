@@ -1,0 +1,8 @@
+#!/bin/csh 
+
+foreach x (`ls ../esthmm ../genseq ../testvit ../*.pl`)
+  echo "Linking $x"
+  ln -s $x
+end
+echo "Done."
+

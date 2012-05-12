@@ -1,0 +1,12 @@
+----------------------------------------------------------------
+
+Code for demonstrating HMM-based part of speech
+tagging using Tapas Kanungo's HMM package.
+
+Author:  Philip Resnik, July 3, 1998
+
+----------------------------------------------------------------
+
+See Lab.html for instructions.
+
+

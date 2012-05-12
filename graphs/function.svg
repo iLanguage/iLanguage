@@ -1,0 +1,102 @@
+<?xml version="1.0"  standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="600" height="480" viewBox="0 0 600 480"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+<desc>Produced by GNUPLOT 4.1 patchlevel 0 </desc>
+
+<defs>
+
+
+	<circle id='gpDot' r='1'/>
+	<path id='gpPt0' style='stroke-width:0.222' d='M-1,0 h2 M0,-1 v2'/>
+	<path id='gpPt1' style='stroke-width:0.222' d='M-1,-1 L1,1 M1,-1 L-1,1'/>
+	<path id='gpPt2' style='stroke-width:0.222' d='M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1'/>
+	<rect id='gpPt3' style='stroke-width:0.222' x='-1' y='-1' width='2' height='2'/>
+	<use xlink:href='#gpPt3' id='gpPt4' style='fill:currentColor; stroke:none'/>
+	<circle id='gpPt5' style='stroke-width:0.222' cx='0' cy='0' r='1'/>
+	<use xlink:href='#gpPt5' id='gpPt6' style='fill:currentColor; stroke:none'/>
+	<path id='gpPt7' style='stroke-width:0.222' d='M0,-1.33 L-1.33,0.67 L1.33,0.67 z'/>
+	<use xlink:href='#gpPt7' id='gpPt8' style='fill:currentColor; stroke:none'/>
+	<use xlink:href='#gpPt7' id='gpPt9' transform='rotate(180)'/>
+	<use xlink:href='#gpPt9' id='gpPt10' style='fill:currentColor; stroke:none'/>
+	<use xlink:href='#gpPt3' id='gpPt11' transform='rotate(45)'/>
+	<use xlink:href='#gpPt11' id='gpPt12' style='fill:currentColor; stroke:none'/>
+</defs>
+<g style="fill:none; color:white; stroke:currentColor; stroke-width:1.00">
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00">
+	<path d='M60.2,426.0 L69.2,426.0 M574.4,426.0 L565.4,426.0 '></path>
+	<g transform="translate(51.9,430.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:end">
+		<text> 0</text>
+	</g>
+	<path d='M60.2,344.1 L69.2,344.1 M574.4,344.1 L565.4,344.1 '></path>
+	<g transform="translate(51.9,348.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:end">
+		<text> 1</text>
+	</g>
+	<path d='M60.2,262.2 L69.2,262.2 M574.4,262.2 L565.4,262.2 '></path>
+	<g transform="translate(51.9,266.7)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:end">
+		<text> 2</text>
+	</g>
+	<path d='M60.2,180.4 L69.2,180.4 M574.4,180.4 L565.4,180.4 '></path>
+	<g transform="translate(51.9,184.9)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:end">
+		<text> 3</text>
+	</g>
+	<path d='M60.2,98.5 L69.2,98.5 M574.4,98.5 L565.4,98.5 '></path>
+	<g transform="translate(51.9,103.0)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:end">
+		<text> 4</text>
+	</g>
+	<path d='M60.2,16.6 L69.2,16.6 M574.4,16.6 L565.4,16.6 '></path>
+	<g transform="translate(51.9,21.1)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:end">
+		<text> 5</text>
+	</g>
+	<path d='M60.2,426.0 L60.2,417.0 M60.2,16.6 L60.2,25.6 '></path>
+	<g transform="translate(60.2,448.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text> 0</text>
+	</g>
+	<path d='M163.0,426.0 L163.0,417.0 M163.0,16.6 L163.0,25.6 '></path>
+	<g transform="translate(163.0,448.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text> 1</text>
+	</g>
+	<path d='M265.9,426.0 L265.9,417.0 M265.9,16.6 L265.9,25.6 '></path>
+	<g transform="translate(265.9,448.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text> 2</text>
+	</g>
+	<path d='M368.7,426.0 L368.7,417.0 M368.7,16.6 L368.7,25.6 '></path>
+	<g transform="translate(368.7,448.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text> 3</text>
+	</g>
+	<path d='M471.6,426.0 L471.6,417.0 M471.6,16.6 L471.6,25.6 '></path>
+	<g transform="translate(471.6,448.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text> 4</text>
+	</g>
+	<path d='M574.4,426.0 L574.4,417.0 M574.4,16.6 L574.4,25.6 '></path>
+	<g transform="translate(574.4,448.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text> 5</text>
+	</g>
+	<path d='M60.2,426.0 L574.4,426.0 L574.4,16.6 L60.2,16.6 L60.2,426.0 '></path>
+	<g transform="translate(22.5,221.3) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text>Probability prior</text>
+	</g>
+	<g transform="translate(317.3,475.5)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text>Number of Types in the Corpus</text>
+	</g>
+</g>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.00">
+	<path d='M96.2,16.6 L96.6,27.7 L101.8,121.1 L106.9,185.1 L112.1,230.9 L117.3,264.7 L122.5,290.5 L127.7,310.5 L132.9,326.4 L138.1,339.3 
+		L143.3,349.8 L148.5,358.5 L153.7,365.8 L158.9,371.9 L164.1,377.2 L169.3,381.7 L174.5,385.7 L179.7,389.1 L184.9,392.1 L190.0,394.8 
+		L195.2,397.1 L200.4,399.2 L205.6,401.1 L210.8,402.8 L216.0,404.3 L221.2,405.7 L226.4,406.9 L231.6,408.1 L236.8,409.1 L242.0,410.1 
+		L247.2,410.9 L252.4,411.7 L257.6,412.5 L262.8,413.2 L268.0,413.8 L273.2,414.4 L278.3,414.9 L283.5,415.4 L288.7,415.9 L293.9,416.4 
+		L299.1,416.8 L304.3,417.2 L309.5,417.5 L314.7,417.9 L319.9,418.2 L325.1,418.5 L330.3,418.8 L335.5,419.1 L340.7,419.3 L345.9,419.5 
+		L351.1,419.8 L356.3,420.0 L361.4,420.2 L366.6,420.4 L371.8,420.6 L377.0,420.8 L382.2,420.9 L387.4,421.1 L392.6,421.2 L397.8,421.4 
+		L403.0,421.5 L408.2,421.7 L413.4,421.8 L418.6,421.9 L423.8,422.0 L429.0,422.1 L434.2,422.2 L439.4,422.3 L444.6,422.4 L449.7,422.5 
+		L454.9,422.6 L460.1,422.7 L465.3,422.8 L470.5,422.9 L475.7,423.0 L480.9,423.0 L486.1,423.1 L491.3,423.2 L496.5,423.2 L501.7,423.3 
+		L506.9,423.4 L512.1,423.4 L517.3,423.5 L522.5,423.5 L527.7,423.6 L532.8,423.6 L538.0,423.7 L543.2,423.7 L548.4,423.8 L553.6,423.8 
+		L558.8,423.9 L564.0,423.9 L569.2,424.0 L574.4,424.0 '></path>
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00">
+	<path d='M60.2,426.0 L574.4,426.0 L574.4,16.6 L60.2,16.6 L60.2,426.0 '></path>
+</g>
+</svg>
+

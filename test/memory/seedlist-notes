@@ -1,0 +1,31 @@
+#suffixes
+tunga .v 'I do something' [junga]
+jara .v 'I do it' /tara/
+mik .n 'unspecific noun' [mii, miik, mi] (starts with a nasal, so nasalizes preceding conson)
+
+#medials
+sima 'result state'
+laur 'past' allophone of  lauq eg [tarrijar+ta+u+laur+sima+juq] /tarrijaq+taq+uq+lauq+sima+juq/ attend.movie+repetitively+frequently+previously+perfect+he 'he has often gone to the movies, he used to go to the movies often.'
+lauq 'past'
+nngit 'negation' (starts with long conson, so deletes preceding  consonant)
+vallia 'probably'
+
+# from full morphessor processing of inuk102-1-4
+#259    +       sima    +  'to be in a state acquired through a completed action (the word can be active, or passive)' (sometimes deletes the preceding t)
+#...
+##160    +       liri    + 'to work with, on'
+##132    +       mmari   + mmarik 'certainly' (starts with double conson so it deletes preceding conson)
+##121    +       liur    + liuq 'to be building s.t.' (combination of li+uq) (deletes preceding k or q)
+##118    +       vallia  + 'probably'
+##116    +       ngit    + nngit 'negation'  (starts with a double conson so it deletes precedign conson)
+#From a grammar website
+#24	+	lauq	+ 'happened yesterday or in the not too distant past'
+
+
+#roots
+isuma .v 'think'
+kati  .v 'gather'
+tusaa .v 'listen' /tusaa/ or /tusaq/
+mali .v 'follow' /malik/
+tiki .v 'arrive' /tikit/
+nuna .n 'land'

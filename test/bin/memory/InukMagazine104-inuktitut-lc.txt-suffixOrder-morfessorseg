@@ -1,0 +1,51 @@
+# ./morfessor1.0.pl, Wed Apr 15 21:15:18 2009
+# Working dir: /home/gina/classes/COMP6781StatisticalNLP/inuktitut_morphology/openfieldworker0.1/bin
+# -data 'InukMagazine104-inuktitut-lc.txt-suffixOrder'
+# -finish 0.005
+# -rand 0
+# -savememory: OFF
+# -gammalendistr: OFF
+# -zipffreqdistr: OFF
+# -load: OFF
+# -trace 3
+# Number of letters in corpus (incl. word breaks): 82352
+# Letter logprobs (log2):
+#   -> 3.78021
+# a -> 2.63766
+# b -> 11.93720
+# c -> 9.87008
+# d -> 10.32952
+# e -> 8.74455
+# f -> 12.00759
+# g -> 4.94635
+# h -> 10.42263
+# i -> 2.69165
+# j -> 5.45453
+# k -> 4.63255
+# l -> 4.60970
+# m -> 4.50257
+# n -> 3.51634
+# o -> 9.21057
+# p -> 6.46843
+# q -> 4.93666
+# r -> 4.46688
+# s -> 4.92384
+# t -> 3.50794
+# u -> 3.09814
+# v -> 6.77877
+# w -> 12.08159
+# x -> 13.32952
+# y -> 11.37532
+# z -> 15.32952
+#
+# OVERALL logprob: 259045
+# NMorphTokens: 5994, NMorphTypes: 3786, NVirtualMorphTypes: 3786
+# NWordTokens: 5994, NWordTypes: 3786
+# CORPUS: 64961
+# LEXICON: 194085; Str: 213621, LenD: 14312, FreqD: 5692, FreeO: -39540
+#
+# OVERALL logprob: 214709
+# NMorphTokens: 9971, NMorphTypes: 3099, NVirtualMorphTypes: 6701
+# NWordTokens: 5994, NWordTypes: 3786
+# CORPUS: 100773
+# LEXICON: 113936; Str: 124776, LenD: 11715, FreqD: 8915, FreeO: -31470

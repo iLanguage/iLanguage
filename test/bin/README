@@ -1,0 +1,19 @@
+#!/bin/cat
+
+
+Order of run:
+
+Create a wordlist with freqencies	
+	corpus2wordlist
+Create a seedlist of possible morphs
+	 create a manual seedlist
+	or
+	 wordlist2rankedpossiblemorphs 
+	 rankedpossiblemorphs2seedlist
+Create a densecorpus
+	create intialprecedencerelations (@root+suffix@)
+	create seedlistprecedencerelations (add @root+medial+suffix@, and replacement classes for each sed morph)
+	seedlist2initialdensecorpus
+Extract template categories and precedience relations from the dense corpus
+	initialdensecorpus2newprecedenceinformation
+

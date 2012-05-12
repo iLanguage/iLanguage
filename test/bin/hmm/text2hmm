@@ -1,0 +1,24 @@
+#!/bin/bash
+
+echo "
+   For more information about Resnik's HMM tutorial see the Hidden_markov_model_part_of_speech_tagger-ubuntu.html 
+
+   I used this script to create HMM representations for the dense corpus. It will treat the list of words as a corpus, calculating frequencies accross word boundaries although this innapropriate at this stage of the analysis. 
+
+   On the other hand this software can be used to create an HMM for each word, increasing the number of states until the transitions are deterministic at 1.0 or around 0.9 but this seems like a waste of processing time."
+
+
+rm $1.key
+
+echo "Turning a text into a numbered (encoded) sequence using the .key This also creates the alphabet for the HMM..."
+./create_key.pl $1.key < $1.train  > $1.seq
+
+wc $1.key
+
+echo "You have to insert the number of lines in the .key (the first number that wc printed) for the -M value (the size of the alphabet). The -N is the number of expected states."
+
+./esthmm -N 7  -M 17 $1.seq > $1.hmm
+
+echo "Creating a human readable version the model, showing the states transitions and the strings between the states..."
+./viewhmm.pl $1.hmm $1.key 0.01 0.01 > $1.hmm.view
+
