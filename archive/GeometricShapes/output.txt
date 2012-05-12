@@ -1,0 +1,1755 @@
+Shape Interactive Management System
++Main Menu---------------------------------------+
+|                                                |
+|                                                |
+|                                                |
+|                                                |
+|    Choose one of the following operations:     |
+|    c: create a shape                           |
+|    r: remove a shape                           |
+|    d: display a shape                          |
+|    t: total number of shapes                   |
+|    l: list all shape id numbers                |
+|                                                |
+|    Debugging Menu:                             |
+|    s: trace the behavior of the application    |
+|    o: turn off tracing                         |
+|                                                |
+|    y: run all the tests                        |
+|                                                |
+|    q: quit                                     |
+|                                                |
+|                                                |
+|                                                |
+|                                                |
++------------------------------------------------+
+
+Enter input: y
+
+Performing tests on the Shape class
+A shape was created.
+A rectangle was created.
+Shape Information
+id: 1
+name: Rectangle
+width: 8
+height: 6
+screen area: 48
+geographic area: 48
+screen perimeter: 92
+geographic perimeter: 96
+
+A shape was created.
+A right triangle was created
+Shape Information
+id: 2
+name: Right Triangle
+width: 3
+height: 3
+screen area: 6
+geographic area: 4
+screen perimeter: 6
+geographic perimeter: 6.24264
+
+Copying a rectangle to a new rectangle
+A Shape was copied to a new Shape.
+Shape Information
+id: 3
+name: Rectangle
+width: 8
+height: 6
+screen area: 48
+geographic area: 48
+screen perimeter: 92
+geographic perimeter: 96
+
+Copying a rectangle to an existing rectangle
+A Shape was copied to an existing Shape.
+Shape Information
+id: 3
+name: Rectangle
+width: 8
+height: 6
+screen area: 48
+geographic area: 48
+screen perimeter: 92
+geographic perimeter: 96
+
+Putting some shapes into the vector.
+A shape was created.
+A rectangle was created.
+A shape was created.
+A right triangle was created
+A shape was created.
+A rectangle was created.
+A shape was created.
+A right triangle was created
+A shape was created.
+A rhombus was created
+ShapeList is now size: 5
+
+
+Displaying all Shapes:
+
+
+Shape at 0 :
+Shape Information
+id: 4
+name: Rectangle
+width: 6
+height: 10
+screen area: 60
+geographic area: 60
+screen perimeter: 116
+geographic perimeter: 120
+
+Shape at 1 :
+Shape Information
+id: 5
+name: Right Triangle
+width: 6
+height: 6
+screen area: 21
+geographic area: 18
+screen perimeter: 15
+geographic perimeter: 10.4853
+
+Shape at 2 :
+Shape Information
+id: 6
+name: Rectangle
+width: 8
+height: 7
+screen area: 56
+geographic area: 56
+screen perimeter: 108
+geographic perimeter: 112
+
+Shape at 3 :
+Shape Information
+id: 7
+name: Right Triangle
+width: 19
+height: 19
+screen area: 190
+geographic area: 180
+screen perimeter: 54
+geographic perimeter: 28.8701
+
+Shape at 4 :
+Shape Information
+id: 8
+name: Rhombus
+width: 9
+height: 9
+screen area: 41
+geographic area: 40
+screen perimeter: 16
+geographic perimeter: 8.48528
+
+All Shapes were displayed.
+
+
+Finding shape with id 4
+	Found id at position: 0
+Displaying shape with id 4
+Would you like to change the foreground or background? 
+ f: forground
+ b: background 
+ q: display the shapeg
+The fill type was set to INFO
++4--------------------------+
+|                           |
+| Shape Information         |
+| id: 4                     |
+| name: Rectangle           |
+| width: 6                  |
+| height: 10                |
+| screen area: 60           |
+| geographic area: 60       |
+| screen perimeter: 116     |
+| geographic perimeter: 120 |
+|                           |
++---------------------------+
+The fill type was set to FILLED
++4-------+
+|        |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+|        |
++--------+
+The fill type was set to HALLOW
++4-------+
+|        |
+| ****** |
+| *    * |
+| *    * |
+| *    * |
+| *    * |
+| *    * |
+| *    * |
+| *    * |
+| *    * |
+| ****** |
+|        |
++--------+
+Displaying a hollow version of shape 4, using the default fill characters.
+******
+*    *
+*    *
+*    *
+*    *
+*    *
+*    *
+*    *
+*    *
+******
+Displaying a hollow version of shape 4, using the o as the forground and . as the background.
+oooooo
+o....o
+o....o
+o....o
+o....o
+o....o
+o....o
+o....o
+o....o
+oooooo
+
+Creating a shape view object.
+Displaying a rectangle with borders drawn around it.
++3---------+
+|          |
+| ******** |
+| ******** |
+| ******** |
+| ******** |
+| ******** |
+| ******** |
+|          |
++----------+
+
+Creating a shape view object.
+Displaying id 4 with borders drawn around it.
++4-------+
+|        |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+|        |
++--------+
+Displaying a ShapeView by just printing it, 
+	printing it first as
+	filled, 
+	then hallow, 
+	then info
+The fill type was set to FILLED
++4-------+
+|        |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+|        |
++--------+
+
+The fill type was set to HALLOW
++4-------+
+|        |
+| ****** |
+| *    * |
+| *    * |
+| *    * |
+| *    * |
+| *    * |
+| *    * |
+| *    * |
+| *    * |
+| ****** |
+|        |
++--------+
+
+The fill type was set to INFO
++4--------------------------+
+|                           |
+| Shape Information         |
+| id: 4                     |
+| name: Rectangle           |
+| width: 6                  |
+| height: 10                |
+| screen area: 60           |
+| geographic area: 60       |
+| screen perimeter: 116     |
+| geographic perimeter: 120 |
+|                           |
++---------------------------+
+
+The fill type was set to INFO
++3-------------------------+
+|                          |
+| Shape Information        |
+| id: 3                    |
+| name: Rectangle          |
+| width: 8                 |
+| height: 6                |
+| screen area: 48          |
+| geographic area: 48      |
+| screen perimeter: 92     |
+| geographic perimeter: 96 |
+|                          |
++--------------------------+
+
+Testing the assignment operator in the shapeview class
+A shape was created.
+A rectangle was created.
+
+
+Displaying all Shapes:
+
+
+Shape at 0 :
+Shape Information
+id: 4
+name: Rectangle
+width: 6
+height: 10
+screen area: 60
+geographic area: 60
+screen perimeter: 116
+geographic perimeter: 120
+
+Shape at 1 :
+Shape Information
+id: 5
+name: Right Triangle
+width: 6
+height: 6
+screen area: 21
+geographic area: 18
+screen perimeter: 15
+geographic perimeter: 10.4853
+
+Shape at 2 :
+Shape Information
+id: 6
+name: Rectangle
+width: 8
+height: 7
+screen area: 56
+geographic area: 56
+screen perimeter: 108
+geographic perimeter: 112
+
+Shape at 3 :
+Shape Information
+id: 7
+name: Right Triangle
+width: 19
+height: 19
+screen area: 190
+geographic area: 180
+screen perimeter: 54
+geographic perimeter: 28.8701
+
+Shape at 4 :
+Shape Information
+id: 8
+name: Rhombus
+width: 9
+height: 9
+screen area: 41
+geographic area: 40
+screen perimeter: 16
+geographic perimeter: 8.48528
+
+Shape at 5 :
+Shape Information
+id: 9
+name: Rectangle
+width: 3
+height: 8
+screen area: 24
+geographic area: 24
+screen perimeter: 44
+geographic perimeter: 48
+
+All Shapes were displayed.
+
+
+Last shape has id: 9
+The fill type was set to FILLED
++9----+
+|     |
+| *** |
+| *** |
+| *** |
+| *** |
+| *** |
+| *** |
+| *** |
+| *** |
+|     |
++-----+
+
+The fill type was set to HALLOW
++9----+
+|     |
+| *** |
+| * * |
+| * * |
+| * * |
+| * * |
+| * * |
+| * * |
+| *** |
+|     |
++-----+
+
+A shape was created.
+A rectangle was created.
+Last shape has id: 10
+The fill type was set to FILLED
++10-----------------------------------+
+|                                     |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+|                                     |
++-------------------------------------+
+
+The fill type was set to HALLOW
++10-----------------------------------+
+|                                     |
+| *********************************** |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *********************************** |
+|                                     |
++-------------------------------------+
+
++10-----------------------------------+
+|                                     |
+| ooooooooooooooooooooooooooooooooooo |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| ooooooooooooooooooooooooooooooooooo |
+|                                     |
++-------------------------------------+
+
+Testing the square class.
+A shape was created.
+A rectangle was created.
+A square was created.
++11----------+
+|            |
+| oooooooooo |
+| o........o |
+| o........o |
+| o........o |
+| o........o |
+| o........o |
+| o........o |
+| o........o |
+| o........o |
+| oooooooooo |
+|            |
++------------+
+
+Testing the right triangle class.
+A shape was created.
+A right triangle was created
+The fill type was set to FILLED
++12----------+
+|            |
+| o          |
+| oo         |
+| ooo        |
+| oooo       |
+| ooooo      |
+| oooooo     |
+| ooooooo    |
+| oooooooo   |
+| ooooooooo  |
+| oooooooooo |
+|            |
++------------+
+
+The fill type was set to HALLOW
++12----------+
+|            |
+| o          |
+| oo         |
+| o.o        |
+| o..o       |
+| o...o      |
+| o....o     |
+| o.....o    |
+| o......o   |
+| o.......o  |
+| oooooooooo |
+|            |
++------------+
+
+Testing the isosceles triangle class.
+A shape was created.
+An isoceles triangle was created
+The fill type was set to FILLED
++13-----------------------+
+|                         |
+| ...........o........... |
+| ..........ooo.......... |
+| .........ooooo......... |
+| ........ooooooo........ |
+| .......ooooooooo....... |
+| ......ooooooooooo...... |
+| .....ooooooooooooo..... |
+| ....ooooooooooooooo.... |
+| ...ooooooooooooooooo... |
+| ..ooooooooooooooooooo.. |
+| .ooooooooooooooooooooo. |
+| ooooooooooooooooooooooo |
+|                         |
++-------------------------+
+
+The fill type was set to HALLOW
++13-----------------------+
+|                         |
+| ...........o........... |
+| ..........o.o.......... |
+| .........o...o......... |
+| ........o.....o........ |
+| .......o.......o....... |
+| ......o.........o...... |
+| .....o...........o..... |
+| ....o.............o.... |
+| ...o...............o... |
+| ..o.................o.. |
+| .o...................o. |
+| ooooooooooooooooooooooo |
+|                         |
++-------------------------+
+
+Testing the rhombus class.
+A shape was created.
+A rhombus was created
+The fill type was set to FILLED
++14---------------------+
+|                       |
+| ..........o.......... |
+| .........ooo......... |
+| ........ooooo........ |
+| .......ooooooo....... |
+| ......ooooooooo...... |
+| .....ooooooooooo..... |
+| ......ooooooooo...... |
+| .......ooooooo....... |
+| ........ooooo........ |
+| .........ooo......... |
+| ..........o.......... |
+|                       |
++-----------------------+
+
+The fill type was set to HALLOW
++14---------------------+
+|                       |
+| ..........o.......... |
+| .........o.o......... |
+| ........o...o........ |
+| .......o.....o....... |
+| ......o.......o...... |
+| .....o.........o..... |
+| ......o.......o...... |
+| .......o.....o....... |
+| ........o...o........ |
+| .........o.o......... |
+| ..........o.......... |
+|                       |
++-----------------------+
+
+
+Enter input: l
+The following shapes are available for display: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 
+
+Enter input: d
+Please enter the ID of the shape which you would like to display.14
+Would you like to change the foreground or background? 
+ f: forground
+ b: background 
+ q: display the shapef
+What character would you like to use for the forground?8
+Would you like to change the foreground or background? 
+ f: forground
+ b: background 
+ q: display the shapek
+The fill type was set to INFO
++14-----------------------------+
+|                               |
+| Shape Information             |
+| id: 14                        |
+| name: Rhombus                 |
+| width: 11                     |
+| height: 11                    |
+| screen area: 61               |
+| geographic area: 60           |
+| screen perimeter: 20          |
+| geographic perimeter: 9.38083 |
+|                               |
++-------------------------------+
+The fill type was set to FILLED
++14---------------------+
+|                       |
+|           8           |
+|          888          |
+|         88888         |
+|        8888888        |
+|       888888888       |
+|      88888888888      |
+|       888888888       |
+|        8888888        |
+|         88888         |
+|          888          |
+|           8           |
+|                       |
++-----------------------+
+The fill type was set to HALLOW
++14---------------------+
+|                       |
+|           8           |
+|          8 8          |
+|         8   8         |
+|        8     8        |
+|       8       8       |
+|      8         8      |
+|       8       8       |
+|        8     8        |
+|         8   8         |
+|          8 8          |
+|           8           |
+|                       |
++-----------------------+
+
+Enter input: d
+Please enter the ID of the shape which you would like to display.16
+Would you like to change the foreground or background? 
+ f: forground
+ b: background 
+ q: display the shapeb
+What character would you like to use for the background?_
+A shape with that ID number was not found. Please try again.
+
+Enter input: l
+The following shapes are available for display: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 
+
+Enter input: d
+Please enter the ID of the shape which you would like to display.14
+Would you like to change the foreground or background? 
+ f: forground
+ b: background 
+ q: display the shapeb
+What character would you like to use for the background?-
+The fill type was set to INFO
++14-----------------------------+
+|                               |
+| Shape Information             |
+| id: 14                        |
+| name: Rhombus                 |
+| width: 11                     |
+| height: 11                    |
+| screen area: 61               |
+| geographic area: 60           |
+| screen perimeter: 20          |
+| geographic perimeter: 9.38083 |
+|                               |
++-------------------------------+
+The fill type was set to FILLED
++14---------------------+
+|                       |
+| ----------8---------- |
+| ---------888--------- |
+| --------88888-------- |
+| -------8888888------- |
+| ------888888888------ |
+| -----88888888888----- |
+| ------888888888------ |
+| -------8888888------- |
+| --------88888-------- |
+| ---------888--------- |
+| ----------8---------- |
+|                       |
++-----------------------+
+The fill type was set to HALLOW
++14---------------------+
+|                       |
+| ----------8---------- |
+| ---------8-8--------- |
+| --------8---8-------- |
+| -------8-----8------- |
+| ------8-------8------ |
+| -----8---------8----- |
+| ------8-------8------ |
+| -------8-----8------- |
+| --------8---8-------- |
+| ---------8-8--------- |
+| ----------8---------- |
+|                       |
++-----------------------+
+
+Enter input: d
+Please enter the ID of the shape which you would like to display.14
+Would you like to change the foreground or background? 
+ f: forground
+ b: background 
+ q: display the shapef
+What character would you like to use for the forground?*
+Would you like to change the foreground or background? 
+ f: forground
+ b: background 
+ q: display the shapeb
+What character would you like to use for the background?-
+The fill type was set to INFO
++14-----------------------------+
+|                               |
+| Shape Information             |
+| id: 14                        |
+| name: Rhombus                 |
+| width: 11                     |
+| height: 11                    |
+| screen area: 61               |
+| geographic area: 60           |
+| screen perimeter: 20          |
+| geographic perimeter: 9.38083 |
+|                               |
++-------------------------------+
+The fill type was set to FILLED
++14---------------------+
+|                       |
+| ----------*---------- |
+| ---------***--------- |
+| --------*****-------- |
+| -------*******------- |
+| ------*********------ |
+| -----***********----- |
+| ------*********------ |
+| -------*******------- |
+| --------*****-------- |
+| ---------***--------- |
+| ----------*---------- |
+|                       |
++-----------------------+
+The fill type was set to HALLOW
++14---------------------+
+|                       |
+| ----------*---------- |
+| ---------*-*--------- |
+| --------*---*-------- |
+| -------*-----*------- |
+| ------*-------*------ |
+| -----*---------*----- |
+| ------*-------*------ |
+| -------*-----*------- |
+| --------*---*-------- |
+| ---------*-*--------- |
+| ----------*---------- |
+|                       |
++-----------------------+
+
+Enter input: y
+
+Performing tests on the Shape class
+A shape was created.
+A rectangle was created.
+Shape Information
+id: 15
+name: Rectangle
+width: 8
+height: 6
+screen area: 48
+geographic area: 48
+screen perimeter: 92
+geographic perimeter: 96
+
+A shape was created.
+A right triangle was created
+Shape Information
+id: 16
+name: Right Triangle
+width: 3
+height: 3
+screen area: 6
+geographic area: 4
+screen perimeter: 6
+geographic perimeter: 6.24264
+
+Copying a rectangle to a new rectangle
+A Shape was copied to a new Shape.
+Shape Information
+id: 17
+name: Rectangle
+width: 8
+height: 6
+screen area: 48
+geographic area: 48
+screen perimeter: 92
+geographic perimeter: 96
+
+Copying a rectangle to an existing rectangle
+A Shape was copied to an existing Shape.
+Shape Information
+id: 17
+name: Rectangle
+width: 8
+height: 6
+screen area: 48
+geographic area: 48
+screen perimeter: 92
+geographic perimeter: 96
+
+Putting some shapes into the vector.
+A shape was created.
+A rectangle was created.
+A shape was created.
+A right triangle was created
+A shape was created.
+A rectangle was created.
+A shape was created.
+A right triangle was created
+A shape was created.
+A rhombus was created
+ShapeList is now size: 16
+
+
+Displaying all Shapes:
+
+
+Shape at 0 :
+Shape Information
+id: 4
+name: Rectangle
+width: 6
+height: 10
+screen area: 60
+geographic area: 60
+screen perimeter: 116
+geographic perimeter: 120
+
+Shape at 1 :
+Shape Information
+id: 5
+name: Right Triangle
+width: 6
+height: 6
+screen area: 21
+geographic area: 18
+screen perimeter: 15
+geographic perimeter: 10.4853
+
+Shape at 2 :
+Shape Information
+id: 6
+name: Rectangle
+width: 8
+height: 7
+screen area: 56
+geographic area: 56
+screen perimeter: 108
+geographic perimeter: 112
+
+Shape at 3 :
+Shape Information
+id: 7
+name: Right Triangle
+width: 19
+height: 19
+screen area: 190
+geographic area: 180
+screen perimeter: 54
+geographic perimeter: 28.8701
+
+Shape at 4 :
+Shape Information
+id: 8
+name: Rhombus
+width: 9
+height: 9
+screen area: 41
+geographic area: 40
+screen perimeter: 16
+geographic perimeter: 8.48528
+
+Shape at 5 :
+Shape Information
+id: 9
+name: Rectangle
+width: 3
+height: 8
+screen area: 24
+geographic area: 24
+screen perimeter: 44
+geographic perimeter: 48
+
+Shape at 6 :
+Shape Information
+id: 10
+name: Rectangle
+width: 35
+height: 30
+screen area: 1050
+geographic area: 1050
+screen perimeter: 2096
+geographic perimeter: 2100
+
+Shape at 7 :
+Shape Information
+id: 11
+name: Square
+width: 10
+height: 10
+screen area: 100
+geographic area: 100
+screen perimeter: 196
+geographic perimeter: 200
+
+Shape at 8 :
+Shape Information
+id: 12
+name: Right Triangle
+width: 10
+height: 10
+screen area: 55
+geographic area: 50
+screen perimeter: 27
+geographic perimeter: 16.1421
+
+
+Shape at 9 :
+Shape Information
+id: 13
+name: Isosceles Triangle
+width: 23
+height: 12
+screen area: 144
+geographic area: 138
+screen perimeter: 44
+geographic perimeter: 34.5832
+
+Shape at 10 :
+Shape Information
+id: 14
+name: Rhombus
+width: 11
+height: 11
+screen area: 61
+geographic area: 60
+screen perimeter: 20
+geographic perimeter: 9.38083
+
+Shape at 11 :
+Shape Information
+id: 18
+name: Rectangle
+width: 6
+height: 10
+screen area: 60
+geographic area: 60
+screen perimeter: 116
+geographic perimeter: 120
+
+Shape at 12 :
+Shape Information
+id: 19
+name: Right Triangle
+width: 6
+height: 6
+screen area: 21
+geographic area: 18
+screen perimeter: 15
+geographic perimeter: 10.4853
+
+Shape at 13 :
+Shape Information
+id: 20
+name: Rectangle
+width: 8
+height: 7
+screen area: 56
+geographic area: 56
+screen perimeter: 108
+geographic perimeter: 112
+
+Shape at 14 :
+Shape Information
+id: 21
+name: Right Triangle
+width: 19
+height: 19
+screen area: 190
+geographic area: 180
+screen perimeter: 54
+geographic perimeter: 28.8701
+
+Shape at 15 :
+Shape Information
+id: 22
+name: Rhombus
+width: 9
+height: 9
+screen area: 41
+geographic area: 40
+screen perimeter: 16
+geographic perimeter: 8.48528
+
+All Shapes were displayed.
+
+
+Finding shape with id 4
+	Found id at position: 0
+Displaying shape with id 4
+Would you like to change the foreground or background? 
+ f: forground
+ b: background 
+ q: display the shapeq
+The fill type was set to INFO
++4--------------------------+
+|                           |
+| Shape Information         |
+| id: 4                     |
+| name: Rectangle           |
+| width: 6                  |
+| height: 10                |
+| screen area: 60           |
+| geographic area: 60       |
+| screen perimeter: 116     |
+| geographic perimeter: 120 |
+|                           |
++---------------------------+
+The fill type was set to FILLED
++4-------+
+|        |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+|        |
++--------+
+The fill type was set to HALLOW
++4-------+
+|        |
+| ****** |
+| *----* |
+| *----* |
+| *----* |
+| *----* |
+| *----* |
+| *----* |
+| *----* |
+| *----* |
+| ****** |
+|        |
++--------+
+Displaying a hollow version of shape 4, using the default fill characters.
+******
+*    *
+*    *
+*    *
+*    *
+*    *
+*    *
+*    *
+*    *
+******
+Displaying a hollow version of shape 4, using the o as the forground and . as the background.
+oooooo
+o....o
+o....o
+o....o
+o....o
+o....o
+o....o
+o....o
+o....o
+oooooo
+
+Creating a shape view object.
+Displaying a rectangle with borders drawn around it.
++17--------+
+|          |
+| ******** |
+| ******** |
+| ******** |
+| ******** |
+| ******** |
+| ******** |
+|          |
++----------+
+
+Creating a shape view object.
+Displaying id 4 with borders drawn around it.
++4-------+
+|        |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+|        |
++--------+
+Displaying a ShapeView by just printing it, 
+	printing it first as
+	filled, 
+	then hallow, 
+	then info
+The fill type was set to FILLED
++4-------+
+|        |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+| ****** |
+|        |
++--------+
+
+The fill type was set to HALLOW
++4-------+
+|        |
+| ****** |
+| *    * |
+| *    * |
+| *    * |
+| *    * |
+| *    * |
+| *    * |
+| *    * |
+| *    * |
+| ****** |
+|        |
++--------+
+
+The fill type was set to INFO
++4--------------------------+
+|                           |
+| Shape Information         |
+| id: 4                     |
+| name: Rectangle           |
+| width: 6                  |
+| height: 10                |
+| screen area: 60           |
+| geographic area: 60       |
+| screen perimeter: 116     |
+| geographic perimeter: 120 |
+|                           |
++---------------------------+
+
+The fill type was set to INFO
++17------------------------+
+|                          |
+| Shape Information        |
+| id: 17                   |
+| name: Rectangle          |
+| width: 8                 |
+| height: 6                |
+| screen area: 48          |
+| geographic area: 48      |
+| screen perimeter: 92     |
+| geographic perimeter: 96 |
+|                          |
++--------------------------+
+
+Testing the assignment operator in the shapeview class
+A shape was created.
+A rectangle was created.
+
+
+Displaying all Shapes:
+
+
+Shape at 0 :
+Shape Information
+id: 4
+name: Rectangle
+width: 6
+height: 10
+screen area: 60
+geographic area: 60
+screen perimeter: 116
+geographic perimeter: 120
+
+Shape at 1 :
+Shape Information
+id: 5
+name: Right Triangle
+width: 6
+height: 6
+screen area: 21
+geographic area: 18
+screen perimeter: 15
+geographic perimeter: 10.4853
+
+Shape at 2 :
+Shape Information
+id: 6
+name: Rectangle
+width: 8
+height: 7
+screen area: 56
+geographic area: 56
+screen perimeter: 108
+geographic perimeter: 112
+
+Shape at 3 :
+Shape Information
+id: 7
+name: Right Triangle
+width: 19
+height: 19
+screen area: 190
+geographic area: 180
+screen perimeter: 54
+geographic perimeter: 28.8701
+
+Shape at 4 :
+Shape Information
+id: 8
+name: Rhombus
+width: 9
+height: 9
+screen area: 41
+geographic area: 40
+screen perimeter: 16
+geographic perimeter: 8.48528
+
+Shape at 5 :
+Shape Information
+id: 9
+name: Rectangle
+width: 3
+height: 8
+screen area: 24
+geographic area: 24
+screen perimeter: 44
+geographic perimeter: 48
+
+Shape at 6 :
+Shape Information
+id: 10
+name: Rectangle
+width: 35
+height: 30
+screen area: 1050
+geographic area: 1050
+screen perimeter: 2096
+geographic perimeter: 2100
+
+Shape at 7 :
+Shape Information
+id: 11
+name: Square
+width: 10
+height: 10
+screen area: 100
+geographic area: 100
+screen perimeter: 196
+geographic perimeter: 200
+
+Shape at 8 :
+Shape Information
+id: 12
+name: Right Triangle
+width: 10
+height: 10
+screen area: 55
+geographic area: 50
+screen perimeter: 27
+geographic perimeter: 16.1421
+
+Shape at 9 :
+Shape Information
+id: 13
+name: Isosceles Triangle
+width: 23
+height: 12
+screen area: 144
+geographic area: 138
+screen perimeter: 44
+geographic perimeter: 34.5832
+
+Shape at 10 :
+Shape Information
+id: 14
+name: Rhombus
+width: 11
+height: 11
+screen area: 61
+geographic area: 60
+screen perimeter: 20
+geographic perimeter: 9.38083
+
+Shape at 11 :
+Shape Information
+id: 18
+name: Rectangle
+width: 6
+height: 10
+screen area: 60
+geographic area: 60
+screen perimeter: 116
+geographic perimeter: 120
+
+Shape at 12 :
+Shape Information
+id: 19
+name: Right Triangle
+width: 6
+height: 6
+screen area: 21
+geographic area: 18
+screen perimeter: 15
+geographic perimeter: 10.4853
+
+Shape at 13 :
+Shape Information
+id: 20
+name: Rectangle
+width: 8
+height: 7
+screen area: 56
+geographic area: 56
+screen perimeter: 108
+geographic perimeter: 112
+
+Shape at 14 :
+Shape Information
+id: 21
+name: Right Triangle
+width: 19
+height: 19
+screen area: 190
+geographic area: 180
+screen perimeter: 54
+geographic perimeter: 28.8701
+
+Shape at 15 :
+Shape Information
+id: 22
+name: Rhombus
+width: 9
+height: 9
+screen area: 41
+geographic area: 40
+screen perimeter: 16
+geographic perimeter: 8.48528
+
+Shape at 16 :
+Shape Information
+id: 23
+name: Rectangle
+width: 3
+height: 8
+screen area: 24
+geographic area: 24
+screen perimeter: 44
+geographic perimeter: 48
+
+All Shapes were displayed.
+
+
+Last shape has id: 23
+The fill type was set to FILLED
++23---+
+|     |
+| *** |
+| *** |
+| *** |
+| *** |
+| *** |
+| *** |
+| *** |
+| *** |
+|     |
++-----+
+
+The fill type was set to HALLOW
++23---+
+|     |
+| *** |
+| * * |
+| * * |
+| * * |
+| * * |
+| * * |
+| * * |
+| *** |
+|     |
++-----+
+
+A shape was created.
+A rectangle was created.
+Last shape has id: 24
+The fill type was set to FILLED
++24-----------------------------------+
+|                                     |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+| *********************************** |
+|                                     |
++-------------------------------------+
+
+The fill type was set to HALLOW
++24-----------------------------------+
+|                                     |
+| *********************************** |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *                                 * |
+| *********************************** |
+|                                     |
++-------------------------------------+
+
++24-----------------------------------+
+|                                     |
+| ooooooooooooooooooooooooooooooooooo |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| o.................................o |
+| ooooooooooooooooooooooooooooooooooo |
+|                                     |
++-------------------------------------+
+
+Testing the square class.
+A shape was created.
+A rectangle was created.
+A square was created.
++25----------+
+|            |
+| oooooooooo |
+| o........o |
+| o........o |
+| o........o |
+| o........o |
+| o........o |
+| o........o |
+| o........o |
+| o........o |
+| oooooooooo |
+|            |
++------------+
+
+Testing the right triangle class.
+A shape was created.
+A right triangle was created
+The fill type was set to FILLED
++26----------+
+|            |
+| o          |
+| oo         |
+| ooo        |
+| oooo       |
+| ooooo      |
+| oooooo     |
+| ooooooo    |
+| oooooooo   |
+| ooooooooo  |
+| oooooooooo |
+|            |
+
++------------+
+
+The fill type was set to HALLOW
++26----------+
+|            |
+| o          |
+| oo         |
+| o.o        |
+| o..o       |
+| o...o      |
+| o....o     |
+| o.....o    |
+| o......o   |
+| o.......o  |
+| oooooooooo |
+|            |
++------------+
+
+Testing the isosceles triangle class.
+A shape was created.
+An isoceles triangle was created
+The fill type was set to FILLED
++27-----------------------+
+|                         |
+| ...........o........... |
+| ..........ooo.......... |
+| .........ooooo......... |
+| ........ooooooo........ |
+| .......ooooooooo....... |
+| ......ooooooooooo...... |
+| .....ooooooooooooo..... |
+| ....ooooooooooooooo.... |
+| ...ooooooooooooooooo... |
+| ..ooooooooooooooooooo.. |
+| .ooooooooooooooooooooo. |
+| ooooooooooooooooooooooo |
+|                         |
++-------------------------+
+
+The fill type was set to HALLOW
++27-----------------------+
+|                         |
+| ...........o........... |
+| ..........o.o.......... |
+| .........o...o......... |
+| ........o.....o........ |
+| .......o.......o....... |
+| ......o.........o...... |
+| .....o...........o..... |
+| ....o.............o.... |
+| ...o...............o... |
+| ..o.................o.. |
+| .o...................o. |
+| ooooooooooooooooooooooo |
+|                         |
++-------------------------+
+
+Testing the rhombus class.
+A shape was created.
+A rhombus was created
+The fill type was set to FILLED
++28---------------------+
+|                       |
+| ..........o.......... |
+| .........ooo......... |
+| ........ooooo........ |
+| .......ooooooo....... |
+| ......ooooooooo...... |
+| .....ooooooooooo..... |
+| ......ooooooooo...... |
+| .......ooooooo....... |
+| ........ooooo........ |
+| .........ooo......... |
+| ..........o.......... |
+|                       |
++-----------------------+
+
+The fill type was set to HALLOW
++28---------------------+
+|                       |
+| ..........o.......... |
+| .........o.o......... |
+| ........o...o........ |
+| .......o.....o....... |
+| ......o.......o...... |
+| .....o.........o..... |
+| ......o.......o...... |
+| .......o.....o....... |
+| ........o...o........ |
+| .........o.o......... |
+| ..........o.......... |
+|                       |
++-----------------------+
+
+
+Enter input: r
+Please enter the ID of the shape which you would like to remove.14
+Shape 14 was erased
+
+Enter input: l
+The following shapes are available for display: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 
+
+Enter input: q
+

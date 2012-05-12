@@ -1,0 +1,34 @@
+The Calculator is turned on.
+==========Welcome to the Calculator=================Advanced Programming
+Assignment 1 : Calculator
+Description: A calculator demonstrating
+	*the use of classes in C++
+	*manipulation of pointers
+	*algorithm for manipulating arbitrarily large integers in any base system (decimal, binary, hexidecimal etc) 
+	*dynamic memory allocation and destruction ===================================================
+====+++=====Running Tests======++++=====
+
+Creating some largeints.
+	 x is 1123 should match:  1123
+	 y is 0064 should match:  64
+	 z is -2032 should match: -2032
+	 w is 27 should match:  27
+
+Testing the copy constructor
+	Copying a LargeInt to a new one
+	 p is copied from z -2032 should match: -2032
+
+Testing the assignment overloading =
+	Overwriting what was in x 1123 with what's in x2 11123
+	 x is 11123 should match:  11123
+
+Testing arithmatical operations.
+Adding 
+  11123
++ 64
+= 011187
+This is the result:  ==5187
+====+++=====Tests Completed====++++=====
+---------Thanks for using the calculator.----------
+ The calculator has now powered down.
+

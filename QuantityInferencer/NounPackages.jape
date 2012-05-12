@@ -1,0 +1,36 @@
+/*
+*
+*  This file is designed to annotate approximate and exact quantities for the use in evaluating etailment
+*
+*  Gina, 17 Aug 2010
+* 
+*/
+Phase:   NounPackages
+Input: Token Lookup Number CollectionNounCluster
+Options: control = appelt
+
+
+// hundreds of thousands of pounds
+//lots of people
+//tons of submarines
+//reports of events
+//both of the American atomic bombs
+
+//TBD: put a better numerical value and range into the packages section
+Rule: packageofnouns
+( 
+	( 		( {Token.category == "NNS"} ):packages 
+			{Token.string == "of"} 
+			( {Token.string == "the"}|{Token.string == "its"} )? 
+			)+
+	( {CollectionNounCluster} ):noun 
+):pack -->
+//	:pack.NounPackage = {
+//			rule = "countable packages of nouns", 
+//			value = :packages.Token.string, 
+//			headnoun= :noun.CollectionNounCluster.headnoun }
+
+	:pack.CollectionNounCluster = {
+					rule = "countable packages of nouns", 
+					value = :packages.Token.string, 
+					headnoun= :noun.CollectionNounCluster.headnoun }

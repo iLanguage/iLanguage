@@ -1,0 +1,368 @@
+The Calculator is turned on.
+==========Welcome to the Calculator=================
+Advanced Programming
+Assignment 1 : Calculator
+Description: A calculator demonstrating
+	*the use of classes and objects in C++
+	*manipulation of pointers
+	*understanding of cstring and ascii table representation of characters
+	*algorithm for manipulating arbitrarily large integers in any base system (decimal, binary, hexidecimal etc) 
+	*dynamic memory allocation and destruction 
+===================================================
+-------Sample interaction (as specified in the assignment requirements):--------
+Accumulator: +0			Calculator starts with 0 value
+Enter input: +2			User inputs an operation (+,-,*,/,%) and an arbitrarily large integer (2)
+
+Accumulator: +2			Calculator performs (0+2)
+Enter input: -3			User inputs a value (-3)
+
+Accumulator: -1			Calculator performs (2-3)
+Enter input: 			Calculator waits for user input
+---------Operations menu:----------
+	+<input> Add <input>
+	-<input> Subtract <input>
+	*<input> Multiplication by <input> 
+	/<input> Division by <input>
+	%<input> Modulus by <input>
+	=<input> Reset to <input>
+
+	n        Negate 
+	c        Clear (reset) to zero
+	q        Quit
+	h        Help
+
+	t        Run tests
+
+	s        Trace Sequence class. Use this to trace how the data structure works (for TA to grade)
+	l        Trace LargeInt class. Use this to trace how the arithmetic works (for the TA to grade)
+	o        Trace off
+
+Creating a largeint
+Accumulator: 0
+Enter input: t
+Creating a largeint
+Creating a largeint
+====+++=====Running Tests======++++=====
+
+Creating some largeints.
+Creating a largeint
+	 x is 1123 should match:  1123
+Creating a largeint
+	 y is 0064 should match:  64
+Creating a largeint
+	 z is -2032 should match: -2032
+Creating a largeint
+	 w is 27 should match:  27
+
+Testing the copy constructor
+	Copying a LargeInt to a new one
+Copying a  large int to a new one
+	 p is copied from z -2032 should match: -2032
+Creating a largeint
+
+Testing the assignment overloading =
+	Overwriting what was in x 1123 with what's in x2 11123
+Assigning a  large int to a previously initialized large int
+	 x is 11123 should match:  11123
+
+Testing mathematic operations.
+Copying a  large int to a new one
+
+Checking the size of the accumulator...5
+Checking the size of the input...		2
+
+Checking the originalstring of the accumulator...11123
+Checking the originalstring of the input...		0064
+The accumulator is longer than the input.
+Adding 
+  11123
++ 64
+Making a longer result array in case there is a carry.
+Created an empty LargeInt of size 6
+Adding 3 to 4
+ 0 place of result was: 0
+ 0 place of result is now: 7
+Adding 2 to 6
+ 1 place of result was: 0
+ 1 place of result is now: 8
+ 2 place of x: 1
+ 2 copied to place of result is now: 1
+ 3 place of x: 1
+ 3 copied to place of result is now: 1
+ 4 place of x: 1
+ 4 copied to place of result is now: 1
+ 5 place of x: 0
+ 5 copied to place of result is now: 0
+= 011187
+This is the result:  011187
+
+Checking the size of the accumulator...6
+Checking the size of the input...		2
+
+Checking the originalstring of the accumulator...
+Checking the originalstring of the input...		27
+The accumulator is longer than the input.
+Adding 
+  011187
++ 27
+The longest operand already has enough space to absorb a carry, creating a result of the same size.
+Created an empty LargeInt of size 6
+Adding 7 to 7
+ 0 place of result was: 0
+ 0 place of result is now: 4
+ 0 place of x was: 7
+ 0 place of x is now: 4
+ 1 place of x plus 1 would be: 9
+Adding 9 to 2
+ 1 place of result was: 0
+ 1 place of result is now: 1
+ 1 place of x was: 9
+ 1 place of x is now: 1
+ 2 place of x plus 1 would be: 2
+ 2 place of x: 2
+ 2 copied to place of result is now: 2
+ 3 place of x: 1
+ 3 copied to place of result is now: 1
+ 4 place of x: 1
+ 4 copied to place of result is now: 1
+ 5 place of x: 0
+ 5 copied to place of result is now: 0
+ 6 place of x: 0
+ 6 copied to place of result is now: 0
+= 011214
+This is the result:  011214
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...3
+Checking the size of the input...		1
+
+Checking the originalstring of the accumulator...999
+Checking the originalstring of the input...		3
+The accumulator is longer than the input.
+Adding 
+  999
++ 3
+Making a longer result array in case there is a carry.
+Created an empty LargeInt of size 4
+Adding 9 to 3
+ 0 place of result was: 0
+ 0 place of result is now: 2
+ 0 place of x was: 9
+ 0 place of x is now: 2
+ 1 place of x plus 1 would be: 10
+ 1 place of x was: 9
+ 1 place of x is now: 0
+ 2 place of x plus 1 would be: 10
+ 2 place of x was: 9
+ 2 place of x is now: 0
+Ran out of x to carry over, setting the carry to 0+1
+ 3 place of x plus 1 would be: 1
+ 1 place of x: 0
+ 1 copied to place of result is now: 0
+ 2 place of x: 0
+ 2 copied to place of result is now: 0
+ 3 place of x: 1
+ 3 copied to place of result is now: 1
+= 1002
+This is the result:  1002
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...4
+Checking the size of the input...		5
+
+Checking the originalstring of the accumulator...9879
+Checking the originalstring of the input...		89878
+The input is longer than the accumulator.
+Adding 
+  89878
++ 9879
+Making a longer result array in case there is a carry.
+Created an empty LargeInt of size 6
+Adding 8 to 9
+ 0 place of result was: 0
+ 0 place of result is now: 7
+ 0 place of x was: 8
+ 0 place of x is now: 7
+ 1 place of x plus 1 would be: 8
+Adding 8 to 7
+ 1 place of result was: 0
+ 1 place of result is now: 5
+ 1 place of x was: 8
+ 1 place of x is now: 5
+ 2 place of x plus 1 would be: 9
+Adding 9 to 8
+ 2 place of result was: 0
+ 2 place of result is now: 7
+ 2 place of x was: 9
+ 2 place of x is now: 7
+ 3 place of x plus 1 would be: 10
+ 3 place of x was: 9
+ 3 place of x is now: 0
+ 4 place of x plus 1 would be: 9
+Adding 0 to 9
+ 3 place of result was: 0
+ 3 place of result is now: 9
+ 4 place of x: 9
+ 4 copied to place of result is now: 9
+ 5 place of x: 0
+ 5 copied to place of result is now: 0
+= 099757
+This is the result:  099757
+====+++=====Tests Completed====++++=====
+Accumulator: 0
+Enter input: =10
+Creating a largeint
+Creating a largeint
+Resetting the value to 010
+Accumulator:  10
+Enter input: +10
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...2
+Checking the size of the input...		2
+
+Checking the originalstring of the accumulator...010
+Checking the originalstring of the input...		010
+The accumulator is longer than the input.
+Adding 
+  10
++ 10
+Making a longer result array in case there is a carry.
+Created an empty LargeInt of size 3
+Adding 0 to 0
+ 0 place of result was: 0
+ 0 place of result is now: 0
+Adding 1 to 1
+ 1 place of result was: 0
+ 1 place of result is now: 2
+ 2 place of x: 0
+ 2 copied to place of result is now: 0
+= 020
+Accumulator:  020
+Enter input: +-1
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...3
+Checking the size of the input...		2
+
+Checking the originalstring of the accumulator...
+Checking the originalstring of the input...		0-1
+The accumulator is longer than the input.
+Adding 
+  020
++ -1
+The longest operand already has enough space to absorb a carry, creating a result of the same size.
+Created an empty LargeInt of size 3
+Adding 0 to 1
+ 0 place of result was: 0
+ 0 place of result is now: 1
+Adding 2 to -3
+ 1 place of result was: 0
+ 1 place of result is now: -1
+ 2 place of x: 0
+ 2 copied to place of result is now: 0
+ 3 place of x: 0
+ 3 copied to place of result is now: 0
+= 0/1
+Accumulator:  0/1
+Enter input: +3
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...3
+Checking the size of the input...		1
+
+Checking the originalstring of the accumulator...
+Checking the originalstring of the input...		03
+The accumulator is longer than the input.
+Adding 
+  0/1
++ 3
+The longest operand already has enough space to absorb a carry, creating a result of the same size.
+Created an empty LargeInt of size 3
+Adding 1 to 3
+ 0 place of result was: 0
+ 0 place of result is now: 4
+ 1 place of x: -1
+ 1 copied to place of result is now: -1
+ 2 place of x: 0
+ 2 copied to place of result is now: 0
+ 3 place of x: 0
+ 3 copied to place of result is now: 0
+= 0/4
+Accumulator:  0/4
+Enter input: =4
+Creating a largeint
+Creating a largeint
+Resetting the value to 04
+Accumulator:  4
+Enter input: +3
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...1
+Checking the size of the input...		1
+
+Checking the originalstring of the accumulator...03
+Checking the originalstring of the input...		03
+The accumulator is longer than the input.
+Adding 
+  4
++ 3
+Making a longer result array in case there is a carry.
+Created an empty LargeInt of size 2
+Adding 4 to 3
+ 0 place of result was: 0
+ 0 place of result is now: 7
+ 1 place of x: 0
+ 1 copied to place of result is now: 0
+= 07
+Accumulator:  07
+Enter input: +4352356
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...2
+Checking the size of the input...		7
+
+Checking the originalstring of the accumulator...
+Checking the originalstring of the input...		04352356
+The input is longer than the accumulator.
+Adding 
+  4352356
++ 07
+Making a longer result array in case there is a carry.
+Created an empty LargeInt of size 8
+Adding 6 to 7
+ 0 place of result was: 0
+ 0 place of result is now: 3
+ 0 place of x was: 6
+ 0 place of x is now: 3
+ 1 place of x plus 1 would be: 6
+Adding 6 to 0
+ 1 place of result was: 0
+ 1 place of result is now: 6
+ 2 place of x: 3
+ 2 copied to place of result is now: 3
+ 3 place of x: 2
+ 3 copied to place of result is now: 2
+ 4 place of x: 5
+ 4 copied to place of result is now: 5
+ 5 place of x: 3
+ 5 copied to place of result is now: 3
+ 6 place of x: 4
+ 6 copied to place of result is now: 4
+ 7 place of x: 0
+ 7 copied to place of result is now: 0
+= 04352363
+Accumulator:  04352363
+Enter input: q
+Creating a largeint
+Creating a largeint
+---------Thanks for using the calculator.----------
+ The calculator has now powered down.
+

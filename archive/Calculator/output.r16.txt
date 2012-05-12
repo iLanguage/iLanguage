@@ -1,0 +1,166 @@
+The Calculator is turned on.
+==========Welcome to the Calculator=================Advanced Programming
+Assignment 1 : Calculator
+Description: A calculator demonstrating
+	*the use of classes in C++
+	*manipulation of pointers
+	*algorithm for manipulating arbitrarily large integers in any base system (decimal, binary, hexidecimal etc) 
+	*dynamic memory allocation and destruction ===================================================
+====+++=====Running Tests======++++=====
+
+Creating some largeints.
+Creating a largeint
+	 x is 1123 should match:  1123
+Creating a largeint
+	 y is 0064 should match:  64
+Creating a largeint
+	 z is -2032 should match: -2032
+Creating a largeint
+	 w is 27 should match:  27
+
+Testing the copy constructor
+	Copying a LargeInt to a new one
+Copying a  large int to a new one
+	 p is copied from z -2032 should match: -2032
+Creating a largeint
+
+Testing the assignment overloading =
+	Overwriting what was in x 1123 with what's in x2 11123
+Assigning a  large int to a previously initialized large int
+	 x is 11123 should match:  11123
+
+Testing arithmatical operations.
+Copying a  large int to a new one
+
+Checking the size of the accumulator...5
+Checking the size of the input...		2
+
+Checking the originalstring of the accumulator...11123
+Checking the originalstring of the input...		0064
+The accumulator is longer than the input.
+Adding 
+  11123
++ 64
+Created an empty LargeInt of size 6
+Adding 3 to 4
+This is the new value in the 0 place: 7
+Adding 2 to 6
+This is the new value in the 1 place: 8
+Just copying 1 (should match 1) to place 2
+Just copying 1 (should match 1) to place 3
+Just copying 1 (should match 1) to place 4
+= 011187
+This is the result:  011187
+
+Checking the size of the accumulator...6
+Checking the size of the input...		2
+
+Checking the originalstring of the accumulator...
+Checking the originalstring of the input...		27
+The accumulator is longer than the input.
+Adding 
+  011187
++ 27
+Created an empty LargeInt of size 7
+Adding 7 to 7
+In this base system (10) The addition of 7+7 results in a carry, here is the value: 14	(Note: 
+	the carries are added to the x rather than to the result, so durring the 
+	successive carrying that might be triggered by a 
+	few 999 in a row the x changes, but not the resut holder)
+Putting the carry into the next higher position to the left in x. [4] 9
+	Carried 1 times.
+This is the new value in the 0 place: 4
+Adding 9 to 2
+In this base system (10) The addition of 9+2 results in a carry, here is the value: 11	(Note: 
+	the carries are added to the x rather than to the result, so durring the 
+	successive carrying that might be triggered by a 
+	few 999 in a row the x changes, but not the resut holder)
+Putting the carry into the next higher position to the left in x. [3] 2
+	Carried 1 times.
+This is the new value in the 1 place: 1
+Just copying 2 (should match 2) to place 2
+Just copying 1 (should match 1) to place 3
+Just copying 1 (should match 1) to place 4
+Just copying 0 (should match 0) to place 5
+= 0011214
+This is the result:  0011214
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...3
+Checking the size of the input...		1
+
+Checking the originalstring of the accumulator...999
+Checking the originalstring of the input...		3
+The accumulator is longer than the input.
+Adding 
+  999
++ 3
+Created an empty LargeInt of size 4
+Adding 9 to 3
+In this base system (10) The addition of 9+3 results in a carry, here is the value: 12	(Note: 
+	the carries are added to the x rather than to the result, so durring the 
+	successive carrying that might be triggered by a 
+	few 999 in a row the x changes, but not the resut holder)
+Need to carry to the next position to the left.
+	 Now x looks like this:  909
+		 New carry: 10
+Need to carry to the next position to the left.
+	 Now x looks like this:  009
+		 New carry: 1
+Putting the carry into the next higher position to the left in result. [0] 0
+	Carried 3 times.
+This is the new value in the 0 place: 2
+Just copying 0 (should match 0) to place 1
+Just copying 0 (should match 0) to place 2
+= 1002
+This is the result:  1002
+Creating a largeint
+Creating a largeint
+
+Checking the size of the accumulator...4
+Checking the size of the input...		5
+
+Checking the originalstring of the accumulator...9879
+Checking the originalstring of the input...		89878
+The input is longer than the accumulator.
+Adding 
+  89878
++ 9879
+Created an empty LargeInt of size 6
+Adding 8 to 9
+In this base system (10) The addition of 8+9 results in a carry, here is the value: 17	(Note: 
+	the carries are added to the x rather than to the result, so durring the 
+	successive carrying that might be triggered by a 
+	few 999 in a row the x changes, but not the resut holder)
+Putting the carry into the next higher position to the left in x. [3] 8
+	Carried 1 times.
+This is the new value in the 0 place: 7
+Adding 8 to 7
+In this base system (10) The addition of 8+7 results in a carry, here is the value: 15	(Note: 
+	the carries are added to the x rather than to the result, so durring the 
+	successive carrying that might be triggered by a 
+	few 999 in a row the x changes, but not the resut holder)
+Putting the carry into the next higher position to the left in x. [2] 9
+	Carried 1 times.
+This is the new value in the 1 place: 5
+Adding 9 to 8
+In this base system (10) The addition of 9+8 results in a carry, here is the value: 17	(Note: 
+	the carries are added to the x rather than to the result, so durring the 
+	successive carrying that might be triggered by a 
+	few 999 in a row the x changes, but not the resut holder)
+Need to carry to the next position to the left.
+	 Now x looks like this:  80988
+		 New carry: 9
+Putting the carry into the next higher position to the left in x. [0] 9
+	Carried 2 times.
+This is the new value in the 2 place: 7
+Adding 0 to 9
+This is the new value in the 3 place: 9
+Just copying 9 (should match 9) to place 4
+= 099757
+This is the result:  099757
+====+++=====Tests Completed====++++=====
+---------Thanks for using the calculator.----------
+ The calculator has now powered down.
+

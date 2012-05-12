@@ -1,0 +1,108 @@
+Imports: {
+	import static gate.Utils.*;//to use the start and end functions
+}
+Phase: QuantityInferencer
+Input: pair h t 
+Options: control=appelt debug=true
+
+Rule: QuantityInferencer
+(
+ {pair}
+):rte
+-->
+{
+	
+		//get the entire annotation set that matched "pair"
+       AnnotationSet pairAS = (AnnotationSet)bindings.get("rte");
+       //create an itterator to itterate through the pairs
+       Annotation pairAnno = pairAS.iterator().next();
+       FeatureMap pairfeatures = pairAnno.getFeatures();
+       System.out.println("Checking a pair: "+stringFor(doc,pairAnno) );
+       //get a pair
+       AnnotationSet annoInPairAS = inputAS.get(pairAnno.getStartNode().getOffset(), pairAnno.getEndNode().getOffset());
+       //get a hypothesis the pair
+       Annotation hAnno = annoInPairAS.get("h").iterator().next();
+       long startOfTheAnnotationInH=hAnno.getStartNode().getOffset();
+	   long endOfTheAnnotationInH=hAnno.getEndNode().getOffset();
+       //get the text in the pair
+       Annotation tAnno = annoInPairAS.get("t").iterator().next();
+       long startOfTheAnnotationInT=tAnno.getStartNode().getOffset();
+	   long endOfTheAnnotationInT=tAnno.getEndNode().getOffset();
+	   
+       boolean entailmentFound = false;
+       /*
+        * Pseudo code for inference engine
+        * for each pair:
+        *	 for each annotation type in the hypothesis {Age, Money, Percent, ExactQuantity, ApproximateQuantity} 
+        * 			for each annotation  {Age, Money, Percent, ExactQuantity, ApproximateQuantity}  in the text
+        * 				compare the string in the "quantity" feature to see if there is a matching string in the text's annotation set. 
+        * 
+        * if true=entail
+        * 
+        * Use HashSet to store the types of annotions {Age, Money, Percent, ExactQuantity, ApproximateQuantity} 
+        * Use JavaDoc for AnnotationSet, Annotation
+        */
+
+       Set<String> quantityTypes = new HashSet<String>();
+       quantityTypes.add("Age");
+       quantityTypes.add("ExactQuantity");
+       quantityTypes.add("ApproximateQuantity"); //ApproximateQuantity		26506	26519	134748	{headnoun=feet, quantity=10, quantityrange=10, rule=ApproximateQuantity}
+       quantityTypes.add("ApproximateQuantityInCollection");
+       
+       String compaired="";
+       String quantityString="";
+       String quantitiesInHypothesis="";
+       
+       // for each of the quantity types of annoation, loop through all hypotheses, checking to see if they have potential matches in their texts
+       for(String quantityType : quantityTypes) {
+    	   System.out.println("Checking annotation of type: "+quantityType );
+	           	   
+	       AnnotationSet quantityAnnotationsInH = outputAS.get(quantityType, startOfTheAnnotationInH, endOfTheAnnotationInH);
+	       for(Annotation quantityAnnotationInH : quantityAnnotationsInH) {
+
+	    	   quantitiesInHypothesis += "; "+stringFor(doc,quantityAnnotationInH);
+		       FeatureMap featuresOfH = quantityAnnotationInH.getFeatures();
+		       quantityString+=" ;h: "+stringFor(doc,quantityAnnotationInH);
+		       System.out.println("This is Quantity in Hypothesis: "+stringFor(doc,quantityAnnotationInH));
+		       
+		       AnnotationSet quantityAnnotationsInT = outputAS.get(quantityType,  startOfTheAnnotationInT,  endOfTheAnnotationInT);
+		       for (Annotation quantityAnnotationInT : quantityAnnotationsInT){
+		    	   FeatureMap featuresOfT = quantityAnnotationInT.getFeatures();
+		    	   quantityString+=" t: "+stringFor(doc,quantityAnnotationInT);
+		    	   System.out.println("This is Quantity in Text: "+stringFor(doc,quantityAnnotationInT));
+		    	   
+		    	   String x=(String)featuresOfT.get("headnoun");
+		    	   String y=(String)featuresOfH.get("headnoun");
+		    	   String z=(String)featuresOfT.get("quantity");
+		    	   String w=(String)featuresOfH.get("quantity");
+		    	   
+		    	   if (x==null || y==null || z==null || w==null){
+		    		   //throw new NullPointerException();
+		    		   System.out.println("A headnoun or quantity was missing in pair t:"+featuresOfT+" , h: "+featuresOfH);
+		    	   } else {
+		    		   String reasoning =w+y+" <-- "+z+x;
+		    		   System.out.println("Reasoning to check is: "+reasoning);
+		    		   if( z.equals(w) ){
+		    			   System.out.println("The numbers match.");
+		    			   //matching people depends on using stem for the head noun
+		    			   if( x.equals(y) || ( y.equals("people") && ( x.equals("inmate") ||x.equals("worker") ||x.equals("prisoner") ||x.equals("casualtie") ||x.equals("live") ||x.equals("individual") ||x.equals("other") ) ) )  {
+		    				   System.out.println("The headnouns match (or is about people)h~t: "+y+"~"+x);
+				    		   compaired =" "+x+":"+y;
+				    		   System.out.println("\tThis is considered an ENTAILMENT.\tThis is actually an "+pairfeatures.get("entailment") );
+					    	   pairfeatures.put("entailResult","ENTAILMENT");
+					    	   pairfeatures.put("aReasoning",reasoning);
+					    	   entailmentFound= true;
+					    	   return;
+			    		   }
+		    		   }  
+		    	   }//end if sequence to find a matching quantity (matchign headnouns and matching quantities)
+		       }//end for to cycle through the text annotations
+	       }//end for to cycle through the hypothesis annotations       
+       }//end loop to check all types of quantity annotations     
+       if (entailmentFound==false){
+    	   System.out.println("This is considered an UNKNOWN.\tThis is actually an "+pairfeatures.get("entailment") );
+    	   pairfeatures.put("entailResult","UNKNOWN");
+       }
+       pairfeatures.put("quantitiesInHypothesis",quantitiesInHypothesis);
+       pairfeatures.put("quantitiesInBoth",quantityString);
+}
