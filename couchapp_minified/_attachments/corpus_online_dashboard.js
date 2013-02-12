@@ -15,6 +15,7 @@ if (window.location.origin.indexOf("localhost") == -1) {
 }
 
 
+
 //Set the RequireJS configuration
 require.config({
   paths : {
@@ -110,83 +111,13 @@ require.config({
 
 //Initialization
 require([ 
-      "user/UserApp",  
-      "backbone",
-      "libs/webservicesconfig_devserver"
-      ], function(
-          App,
-          forcingpouchtoloadearly
-      ) {
-  
-  try{
-    var pieces = window.location.pathname.replace(/^\//,"").split("/");
-    var pouchName = pieces[0];
-    //Handle McGill server which runs out of a virtual directory
-    if(pouchName == "corpus"){
-      pouchName = pieces[1];
-    }
-    Backbone.couch_connector.config.db_name = pouchName;
-  }catch(e){
-    if (OPrime.debugMode) OPrime.debug("Couldn't set the databse name off of the url.");
-  }
-  
+    "app/App",  
+    "backbone",
+    "libs/webservicesconfig_devserver"
+    ], function(
+        App,
+        forcingpouchtoloadearly
+    ) {
   
   window.app = new App({filledWithDefaults: true});
 });
-
-
-//// Initialization
-//require([
-//    "user/UserApp",
-//    "user/UserAppView",
-//    "user/UserRouter",
-//    "compiledTemplates",
-//    "backbone",
-//    "backbone_pouchdb",
-//    "libs/webservicesconfig_devserver",
-//    "libs/OPrime"
-//], function(
-//    UserApp,
-//    UserAppView,
-//    UserRouter,
-//    compiledTemplates,
-//    Backbone,
-//    forcingpouchtoloadonbackboneearly
-//) {
-//  
-//  /*
-//   * Start the pub sub hub
-//   */
-//  window.hub = {};
-//  OPrime.makePublisher(window.hub);
-// 
-//  /*
-//   * Check for user's cookie and the dashboard so we can load it
-//   */
-//  var username = OPrime.getCookie("username");
-//  if (username != null && username != "") {
-//
-//    window.app = new UserApp();
-//    var auth = window.app.get("authentication");
-//    var u = localStorage.getItem("encryptedUser");
-//    auth.loadEncryptedUser(u, function(success, errors){
-//      if(success == null){
-//        alert("Bug: We couldnt log you in."+errors.join("<br/>") + " " + OPrime.contactUs);  
-//        OPrime.setCookie("username","");
-//        document.location.href='index.html';
-//        return;
-//      }else{
-////        alert("We logged you in." + OPrime.contactUs);  
-//        window.appView = new UserAppView({model: window.app}); 
-//        window.appView.render();
-//        app.router = new UserRouter();
-//        Backbone.history.start();
-//      }
-//    });
-//    
-//  } else {
-//    // new user, let them register or login as themselves or lingllama
-//    document.location.href='index.html';
-//  }
-//  
-//});
