@@ -22,9 +22,10 @@ angular.module('app')
                     jsonForServer.benchmark.version = json.benchmarkVersion;
                     jsonForServer.benchmark.iteration = json.iteration;
                     jsonForServer.benchmark.scale = json.scale;
-                    scope.$emit("openExperimentRunner", jsonForServer);
 
-                    alert("Showing the user the performance test experiement they can run" + JSON.stringify(json));
+                    scope.$apply(function () {
+                        scope.$emit("openExperimentRunner", jsonForServer);
+                    })
                 };
                 scope.$watchCollection(attr.scatterPlot, function(compiler_runs_data, oldData) {
                     var clearPreviousPlots = true;
