@@ -2,9 +2,9 @@
     "manifest_version": 2,
     "name": "mcbenchviz",
     "version": "0.0.0",
-
     "description": "description",
 
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     "author": "awesome people",
     "app": {
         "launch": {
