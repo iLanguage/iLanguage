@@ -8,12 +8,14 @@ var express = require('express'),
     backends = require('./lib/backend'),
     task = require ('./lib/task.js'),
     command = require("./lib/command.js"),
-    performance = require("./lib/performance")
-    errors = require('./lib/errors')
-    appConfig = require('./appConfig.json');
+    performance = require("./lib/performance"),
+    errors = require('./lib/errors'),
+    appConfig = require('./appConfig.json'),
+    path = require('path');
     
 
 var type = grest.type;
+var taskManager = new task.Manager();
 
 var options = {
     dialect: "mysql",
