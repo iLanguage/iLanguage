@@ -6,7 +6,6 @@ angular.module('app')
             getAll: function () {
                 $http.get("http://184.107.193.50:8080/performance").success(function (data) {
                     var benchmarkByName = {};
-                    benchmarks.length = 0;
 
                     angular.forEach(data.result, function (benchmark) {
                         var name = benchmark.benchmarkName + " " + benchmark.benchmarkVersion;
@@ -17,8 +16,22 @@ angular.module('app')
                         benchmarkByName[name].push(benchmark);
                     });
 
-                    angular.forEach(benchmarkByName, function (data, name) {
-                        benchmarks.push(new Benchmark(name, data));
+                    var existingBenchmarks = {};
+                    angular.forEach(benchmarks, function (benchmark) {
+                        existingBenchmarks[benchmark.name] = benchmark;
+                    });
+
+                    angular.forEach(benchmarkByName, function (allData, name) {
+                        if (!existingBenchmarks.hasOwnProperty(name)) {
+                            benchmarks.push(new Benchmark(name, allData));
+                        } else {
+                            var benchmark = existingBenchmarks[name];
+                            angular.forEach(allData, function (data) {
+                                if (!benchmark.hasEntry(data)) {
+                                    benchmark.addEntry(data);
+                                }
+                            });
+                        }
                     });
                 });
                 return benchmarks;
