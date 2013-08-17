@@ -171,18 +171,14 @@ angular.module('app')
                             showUserThePerformanceTestDetails(object);
                         });
                 };
-                scope.$watchCollection(attr.useLogBubbleSize, function(newValue, oldValue){
-                    if (useLogBubbleSize != newValue) {
-                        useLogBubbleSize = newValue;
-                        return drawScatterPlot();
-                    }
+                scope.$watch(attr.useLogBubbleSize, function(newValue, oldValue){
+                    useLogBubbleSize = newValue;
+                    return drawScatterPlot();
                 });
 
                 scope.$watchCollection(attr.scatterPlot, function(newValue, oldValue){
-                    if (compiler_runs_data != newValue) {
-                        compiler_runs_data = newValue;
-                        return drawScatterPlot();
-                    }
+                    compiler_runs_data = newValue;
+                    return drawScatterPlot();
                 });
                 
             }
