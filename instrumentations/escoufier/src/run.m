@@ -43,6 +43,7 @@ for i = 1:iteration
     timings(i+1, 1) = toc;
 end
 
+fprintf("<json>");
 for i = 1:iteration+1
   if i == 1
     fprintf("{\"times\": [");
@@ -70,3 +71,4 @@ for i = 1:44
     fprintf("]}");
   end
 end
+fprintf("</json>");
