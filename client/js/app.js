@@ -4,6 +4,16 @@ angular.module('app', ['ngRoute'])
         $rootScope.partialUrl = partialUrl;
     })
 
-    .config(function ($routeProvider) {
-
+    .config(function ($routeProvider, partialUrl) {
+        $routeProvider
+            .when('/', {
+                templateUrl: partialUrl + '/home.html'
+            })
+            .when('/benchmark/:name*', {
+                templateUrl: partialUrl + '/benchmark-view.html',
+                controller: 'BenchmarkViewCtrl'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
     });
