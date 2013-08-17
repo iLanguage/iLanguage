@@ -1,7 +1,13 @@
 <div ng-if="benchmark">
-    {{ benchmark.data.length }}
-    <div scatter-plot="benchmark.activeData"></div>
-    <pre highlight>
+    Results: {{ benchmark.data.length }}
+    <div class="input-prepend input-append">
+  		<span class="add-on">Bubble radius:</span>
+  		<button class="btn btn-small" ng-class="{'btn-success': useLogScaleForBubbleSize}"
+  		ng-click="toogleButtonScale()" >Log</button>
+	</div>
+     
+    <div scatter-plot="benchmark.activeData" use-log-bubble-size=(useLogScaleForBubbleSize)></div>
+    <pre highlight >
 arg_list = argv();
 scale = str2num(arg_list{1});
 iteration = str2num(arg_list{2});
