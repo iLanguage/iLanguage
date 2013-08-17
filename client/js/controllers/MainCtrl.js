@@ -3,10 +3,11 @@ angular.module('app')
         $scope.benchmarks = benchmarkData.getAll();
         $scope.benchmark = null;
         $location.url('/');
-        $scope.selectBenchmark = function (name) {
-            $scope.benchmark = $scope.benchmarks[name];
-            if ($scope.benchmark) {
-                $location.url('/benchmark/' + name.replace(/ /, '-'));
+        
+        $scope.selectBenchmark = function (benchmark) {
+            $scope.benchmark = benchmark;
+            if (benchmark) {
+                $location.url('/benchmark/' + benchmark.name.replace(/ /, '-'));
             }
         }
     });
