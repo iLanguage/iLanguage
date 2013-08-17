@@ -23,7 +23,7 @@ for i = 1:iteration
         Ryy = R(1:p, 1:p);
         Rxx = R(p+1:p+j, p+1:p+j);
         Rxy = R(p+1:p+j, 1:p);
-        Ryx = Rxy';
+        Ryx = transpose(Rxy);
         rvt = trace(Ryx*Rxy)/((trace(Ryy^2)*trace(Rxx^2))^0.5);
         if rvt > Rvmax
           Rvmax = rvt;                        

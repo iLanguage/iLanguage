@@ -266,6 +266,19 @@ grest.rest(app, "", [
             res
         );
    },
+
+   "POST", ["benchmarks", "src"], {
+    "benchmark": {
+        "name": type.string,
+        "version": type.string            
+       }
+   },
+   type.string,
+   "Returns the source code of the benchmark",
+   function (req, res) {
+    toHttpResponse(benchmarks.getSrc(benchmarks.getId(req.body.benchmark)), res);
+   },
+
    "GET", ["tasks"], 
     type.array(task.schema),
     "Returns all tasks.",
