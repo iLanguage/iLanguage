@@ -93,7 +93,7 @@ sequelize.sync();
 
 
 app.use(express.bodyParser());
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 grest.rest(app, "", [
     "GET", ["test"], type.string,
     "Returns a test string",
