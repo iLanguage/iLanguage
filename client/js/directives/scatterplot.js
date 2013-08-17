@@ -107,21 +107,6 @@ angular.module('app')
                         return y(object.runtime);
                     };
 
-                    var showRunDetails = function(object) {
-                        alert("Object " + object.runtime);
-
-                        d3.select(this).enter().append("text")
-                            .text(function(d) {
-                                return d.runtime;
-                            })
-                            .attr("x", function(d) {
-                                return x(d.scale);
-                            })
-                            .attr("y", function(d) {
-                                return y(d.runtime);
-                            });
-                    };
-
                     var bubbleWeight = 1;
                     var getBubbleSizeFromJson = function(object) {
                         if (useLogBubbleSize) {
@@ -172,7 +157,7 @@ angular.module('app')
                         .on("mouseover", function(object) {
                             return tooltip
                                 .style("visibility", "visible")
-                                .html("<div class='run_details_tooltip'>Benchmark: " + object.benchmarkName + "<br/> Time: " + object.runtime + "<br/> Dataset Size: " + object.runtime + "</div>");
+                                .html("<div class='run_details_tooltip'>Benchmark: " + object.benchmarkName + "<br/> Time: " + object.runtime + "<br/> Dataset Size: " + object.scale + "</div>");
                         })
                         .on("mousemove", function(object) {
                             return tooltip.style("top", (event.pageY - 10) + "px")
