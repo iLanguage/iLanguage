@@ -212,26 +212,29 @@ grest.rest(app, "", [
         }, 
         "benchmark": {
             "name": type.string,
-            "version": type.string            
+            "version": type.string,
+            "scale": type.integer,
+            "iteration": type.integer
        }
     },
     type.array(task.schema),
     "Return the instrumentation data for a benchmark run",
     function (req, res) {
-        var benchmarkId = benchmarks.getId(req.body.benchmark);
+        var instrumentationId = benchmarks.getId(req.body.benchmark);
         var backendId = backends.getId(req.body.backend);
         var scale = req.body.benchmark.scale;
         var iteration = req.body.benchmark.iteration;
         
         toHttpResponse(
-            benchmarks
-            .get(benchmarkId)
-            .then(function (benchmark) {
+            instrumentations
+            .get(instrumentationId)
+            .then(function (instrumentation) {
                 return backends
                 .get(backendId)
                 .then(function (backend) {
-                    var sources = path.join(appConfig.benchmarks.path, benchmark.sources);
-                    var runPath = path.join( appConfig.benchmarks.path, benchmark.runPath);
+                    var sources = path.join(appConfig.instrumentations.path, instrumentation.sources);
+                    var runPath = path.join( appConfig.instrumentations.path, instrumentation.runPath);
+                    var resultPath = path.join(appConfig.instrumentations.path, instrumentation.results);
 
                     var t = taskManager.task(new command.Local(
                         backends.operations[backendId].getCompileString({
@@ -252,19 +255,8 @@ grest.rest(app, "", [
                         t.start()
                         .then(t2)
                         .then(function (t2) {
-                            return performance.add({
-                                benchmarkName: benchmark.name,
-                                benchmarkVersion: benchmark.version,
-                                backendName: backend.name,
-                                backendVersion: backend.version,
-                                compile:true,
-                                run:true,
-                                scale:scale,
-                                iteration:iteration,
-                                runtime:t2.command.runTime,
-                                startDate:t2.startTime,
-                                endDate:t2.endTime
-                            });
+		            var json = t2.getJsonOutput();
+                            return Q.nfcall(fs.writeFileSync, resultPath, JSON.stringify({status:"done", data:[json]}, null, "    "));
                         })
                     )
                     return task.TasksToJS([t, t2]);
