@@ -3,10 +3,13 @@
     <head>
         <meta charset="utf-8" />
         <title>test</title>
+        <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     </head>
-    <body>
-        Test
+    <body ng-app="app" ng-include="partialUrl + '/base.html'">
+        Loading...
+        <script src="bower_components/jquery/jquery.js"></script>
         <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <script src="app.write.js"></script>
     </body>
 </html>
