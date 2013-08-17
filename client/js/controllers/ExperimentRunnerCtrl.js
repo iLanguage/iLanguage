@@ -1,7 +1,29 @@
 angular.module('app')
-    .controller('ExperimentRunnerCtrl', function($scope, $rootScope) {
+    .controller('ExperimentRunnerCtrl', function($scope, $rootScope, $http) {
+        $scope.data = {
+            "backend": {
+                "name": "Octave",
+                "version": "3.4.3"
+            },
+            "benchmark": {
+                "name": "escoufier",
+                "version": "1.0",
+                "iteration": 3,
+                "scale": 22
+            }
+        };
 
-        $scope.open = function () {
+        $scope.sendRunCommand = function () {
+            $http.post('http://184.107.193.50:8080/performance/run', $scope.data)
+                .success(function () {
+                    console.log(arguments);
+                }).error(function () {
+                    console.log('err', arguments);
+                })
+        };
+
+        $scope.open = function (evt, data) {
+            jQuery.extend($scope.data, data);
             $scope.shouldBeOpen = true;
         };
 
