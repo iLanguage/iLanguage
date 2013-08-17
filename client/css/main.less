@@ -9,6 +9,7 @@ html, body, #page {
 
   > div {
     height: 100%;
+    overflow-y: auto;
   }
 
   > div:first-child, > div:last-child {
@@ -17,7 +18,7 @@ html, body, #page {
   }
 
   /* Left Sidebar */
-  > div:first-child {
+  > div:first-child, > div:last-child {
     padding: 0 10px;
 
     ul {
@@ -28,8 +29,11 @@ html, body, #page {
         margin-bottom: 10px;
         padding: 0;
 
-        &.active a {
-          color: #2a6496;
+        &.active {
+          box-shadow: inset 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
+          a {
+            color: #2a6496;
+          }
         }
 
         a {
