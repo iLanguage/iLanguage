@@ -2,7 +2,30 @@ angular.module('app')
     .directive('scatterPlot', function() {
         return {
             link: function(scope, element, attr) {
+                showUserThePerformanceTestDetails = function(json) {
+                    var jsonForServer = {
+                        "backend": {
+                            "name": "Octave",
+                            "version": "3.4.3",
+                        },
+                        "benchmark": {
+                            "name": "escoufier",
+                            "version": "1.0",
+                            "iteration": 3,
+                            "scale": 22,
+                        }
+                    };
+                    jsonForServer.backend.version = json.backendVersion;
+                    jsonForServer.backend.name = json.backendName;
 
+                    jsonForServer.benchmark.name = json.benchmarkName;
+                    jsonForServer.benchmark.version = json.benchmarkVersion;
+                    jsonForServer.benchmark.iteration = json.iteration;
+                    jsonForServer.benchmark.scale = json.scale;
+                    scope.$emit("openExperimentRunner", jsonForServer);
+
+                    alert("Showing the user the performance test experiement they can run" + JSON.stringify(json));
+                };
                 scope.$watchCollection(attr.scatterPlot, function(compiler_runs_data, oldData) {
                     var clearPreviousPlots = true;
                     if (clearPreviousPlots) {
@@ -134,6 +157,9 @@ angular.module('app')
                         .on("mouseout", function(object) {
                             return tooltip
                                 .style("visibility", "hidden");
+                        })
+                        .on("click", function(object) {
+                            showUserThePerformanceTestDetails(object);
                         });
                 });
             }
