@@ -9,7 +9,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.2.0rc1",
+    "jquery": "~2.0.3",
+    "bootstrap": "~3.0.0-rc1",
     "d3": "~3.2.8"
   }
 }

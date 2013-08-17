@@ -8,7 +8,7 @@ module.exports = function (grunt) {
                 banner: '/*! <%= grunt.template.today("dd-mm-yyyy") %> */'
             },
             dist: {
-                src: ["src/*.js", "src/**/*.js"],
+                src: ["js/*.js", "js/**/*.js"],
                 dest: 'dist/<%= destName %>.js'
             }
         },
@@ -43,6 +43,17 @@ module.exports = function (grunt) {
             app: {
                 files: '<%= concat.dist.src %>',
                 tasks: ['jshint', 'concat', 'ngmin', 'uglify']
+            },
+            less: {
+                files: 'css/**.less',
+                tasks: ['less:main']
+            }
+        },
+        less: {
+            main: {
+                files: {
+                    "css/main.css": "css/**.less"
+                }
             }
         },
         documentWrite: {
@@ -57,6 +68,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-ngmin');
 
     grunt.registerTask('lint', ['jshint']);
