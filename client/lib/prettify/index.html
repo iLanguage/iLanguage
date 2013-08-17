@@ -1,3 +1,7 @@
+<link rel="stylesheet" type="text/css" href="gcp/prettify.css">
+<script type="text/javascript" src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=Matlab&skin=sons-of-obsidian"></script>
+<body onload="prettyPrint()">
+<pre class="prettyprint linenums">
 arg_list = argv();
 scale = str2num(arg_list{1});
 iteration = str2num(arg_list{2});
@@ -23,7 +27,7 @@ for i = 1:iteration
         Ryy = R(1:p, 1:p);
         Rxx = R(p+1:p+j, p+1:p+j);
         Rxy = R(p+1:p+j, 1:p);
-        Ryx = Rxy';
+        Ryx = transpose(Rxy);
         rvt = trace(Ryx*Rxy)/((trace(Ryy^2)*trace(Rxx^2))^0.5);
         if rvt > Rvmax
           Rvmax = rvt;                        
@@ -37,5 +41,5 @@ for i = 1:iteration
     end
 end
 
-fprintf("Hello");
 % 0.14287 for scale 22 and iteration 3
+</pre>

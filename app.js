@@ -11,7 +11,8 @@ var express = require('express'),
     performance = require("./lib/performance"),
     errors = require('./lib/errors'),
     appConfig = require('./appConfig.json'),
-    path = require('path');
+    path = require('path'),
+    instrumentations = require("./lib/instrumentation.js");
     
 
 var type = grest.type;
@@ -179,6 +180,13 @@ grest.rest(app, "", [
 	toHttpResponse(instrumentations.getAll(), res);
     },
 
+    "GET", ["instrumentations", type.integer("id")],
+    {},
+    "Return the instrumentation metadata for a benchmark run",
+    function (req, res) {
+	toHttpResponse(instrumentations.get(req.params.id), res);
+    },
+
     "GET", ["instrumentations", type.integer("id"), "results"],
     {
         "status": type.string,
@@ -191,7 +199,7 @@ grest.rest(app, "", [
             "value": type.integer     
         })
     },
-    "Return the instrumentation data for a benchmark run",
+    "Return the instrumentation results for a benchmark run",
     function (req, res) {
 	toHttpResponse(instrumentations.getResults(req.params.id), res);
     },
@@ -264,7 +272,32 @@ grest.rest(app, "", [
             }),
             res
         );
-   }
+   },
+   "GET", ["tasks"], 
+    type.array(task.schema),
+    "Returns all tasks.",
+    function (req,res) {
+        toHttpResponse(task.TasksToJS(taskManager.getAll()), res);
+    },
+
+    "GET", ["tasks", "running"], 
+    type.array(task.schema),
+    "Returns all running tasks.",
+    function (req,res) {
+        toHttpResponse(task.TasksToJS(taskManager.getSome({status:"running"})), res);
+    },
+
+    "GET", ["tasks", type.integer("id")], 
+    task.schema, 
+    "Returns the task with matching identifier.",
+    function (req,res) {
+        var t = taskManager.get(req.params.id);
+        if (t !== undefined) {
+            toHttpResponse(task.TaskToJS(t), res);
+        } else {
+            toHttpResponse(new errors.NotFound("Task '" + req.params.id + "' could not be found"), res);
+        }
+    },
 ]);
 
 http.createServer(app).listen(app.get('port'), function(){
