@@ -37,4 +37,5 @@ for i = 1:iteration
     end
 end
 
+fprintf("Hello");
 % 0.14287 for scale 22 and iteration 3

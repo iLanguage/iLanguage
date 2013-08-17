@@ -264,7 +264,32 @@ grest.rest(app, "", [
             }),
             res
         );
-   }
+   },
+   "GET", ["tasks"], 
+    type.array(task.schema),
+    "Returns all tasks.",
+    function (req,res) {
+        toHttpResponse(task.TasksToJS(taskManager.getAll()), res);
+    },
+
+    "GET", ["tasks", "running"], 
+    type.array(task.schema),
+    "Returns all running tasks.",
+    function (req,res) {
+        toHttpResponse(task.TasksToJS(taskManager.getSome({status:"running"})), res);
+    },
+
+    "GET", ["tasks", type.integer("id")], 
+    task.schema, 
+    "Returns the task with matching identifier.",
+    function (req,res) {
+        var t = taskManager.get(req.params.id);
+        if (t !== undefined) {
+            toHttpResponse(task.TaskToJS(t), res);
+        } else {
+            toHttpResponse(new errors.NotFound("Task '" + req.params.id + "' could not be found"), res);
+        }
+    },
 ]);
 
 http.createServer(app).listen(app.get('port'), function(){
