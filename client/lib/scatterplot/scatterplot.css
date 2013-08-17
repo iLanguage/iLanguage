@@ -18,3 +18,8 @@
 .circle {
     fill: #222;
 }
+.run_details_tooltip {
+	color:#fff;
+	background-color: #333;
+	opacity: .5;
+}
