@@ -125,6 +125,9 @@ angular.module('app')
                         // if (radius > 50){
                         //  radius = object.runtime/object.scale;
                         // }
+                        if(object.runtime < 0.2){
+                            return 2;
+                        }
                         return radius;
                     };
 
