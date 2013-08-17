@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('ExperimentRunnerCtrl', function($scope, $rootScope, $http) {
+    .controller('ExperimentRunnerCtrl', function($scope, $rootScope, $http, benchmarkData) {
         $scope.data = {
             "backend": {
                 "name": "Octave",
@@ -12,18 +12,55 @@ angular.module('app')
                 "scale": 22
             }
         };
+        $scope.isPolling = false;
 
         $scope.sendRunCommand = function () {
+            $scope.isPolling = true;
+
+            $scope.data.benchmark.iteration = parseInt($scope.data.benchmark.iteration, 10);
+            $scope.data.benchmark.scale = parseInt($scope.data.benchmark.scale, 10);
             $http.post('http://184.107.193.50:8080/performance/run', $scope.data)
-                .success(function () {
-                    console.log(arguments);
+                .success(function (response) {
+                    var taskId = response.result[1].id,
+                        intervalId = setInterval(pollTaskStatus, 2000);
+
+                    function pollTaskStatus() {
+                        jQuery.get('http://184.107.193.50:8080/tasks/' + taskId)
+                            .success(function (response) {
+                                console.log(response.result.status, response.result.status === "done");
+                                if (response.result.status === "done") {
+                                    clearInterval(intervalId);
+                                    $scope.$apply(function() {
+                                        benchmarkData.getAll();
+                                        $scope.isPolling = false;
+                                    });
+                                } else if(response.result.status === "failed") {
+                                    clearInterval(intervalId);
+                                    $scope.$apply("isPollied = false");
+                                }
+                            })
+                            .error(function () {
+                                clearInterval(intervalId);
+                                $scope.$apply("isPollied = false");
+                            });
+                    }
                 }).error(function () {
-                    console.log('err', arguments);
+                    alert('An error occurred!');
+                    console.log('error running the tasks', arguments);
+                    $scope.isPolling = false
                 })
         };
 
         $scope.open = function (evt, data) {
-            jQuery.extend($scope.data, data);
+            if (!data) {
+                data = {
+                    "benchmark": {
+                        "name": $scope.benchmark.instances[0].benchmarkName,
+                        "version": $scope.benchmark.instances[0].benchmarkVersion
+                    }
+                }
+            }
+            jQuery.extend(true, $scope.data, data);
             $scope.shouldBeOpen = true;
         };
 

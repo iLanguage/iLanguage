@@ -1,0 +1,54 @@
+<!-- Modal -->
+<div ng-controller="ExperimentRunnerCtrl" bs3-modal="shouldBeOpen" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Run a New Experiment</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <h3>Backend</h3>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            Name:
+                            <input ng-model="data.backend.name" placeholder="Octave" class="form-control" />
+                        </div>
+                        <div class="col-lg-6">
+                            Version:
+                            <input ng-model="data.backend.version" placeholder="3.4.3" class="form-control" />
+                        </div>
+                    </div>
+
+                    <h3>Benchmark</h3>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            Name:
+                            <input ng-model="data.benchmark.name" placeholder="escoufier" class="form-control" />
+                        </div>
+                        <div class="col-lg-6">
+                            Version:
+                            <input ng-model="data.benchmark.version" placeholder="1.0" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-6">
+                            Iteration:
+                            <input ng-model="data.benchmark.iteration" placeholder="3" class="form-control" />
+                        </div>
+                        <div class="col-lg-6">
+                            Scale:
+                            <input ng-model="data.benchmark.scale" placeholder="22" class="form-control" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary"
+                        ng-click="sendRunCommand()" ng-class="{disabled: isPolling}">Run Experiment</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
