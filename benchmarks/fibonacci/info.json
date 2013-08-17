@@ -1,0 +1,7 @@
+{
+"name": "fibonacci",
+"version": "1.0",
+    "sources": "fibonacci/src",
+    "runPath": "fibonacci/src/run.m",
+"tags": []
+}
