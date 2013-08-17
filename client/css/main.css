@@ -17,3 +17,34 @@ html, body, #page {
 #page > div {
     height: 100%;
 }
+
+/* Left Sidebar */
+#page > div:first-child {
+    padding: 0 10px;
+}
+
+#page > div:first-child ul {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+#page > div:first-child ul li {
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+#page > div:first-child ul li.active a {
+    color: #2a6496;
+}
+
+#page > div:first-child ul li a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+#page > div:first-child ul li a:hover {
+    text-decoration: none;
+}
