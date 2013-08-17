@@ -2,6 +2,8 @@ angular.module('app')
     .directive('scatterPlot', function() {
         return {
             link: function(scope, element, attr) {
+                var compiler_runs_data = [];
+                var useLogBubbleSize = true;
                 showUserThePerformanceTestDetails = function(json) {
                     var jsonForServer = {
                         "backend": {
@@ -27,7 +29,11 @@ angular.module('app')
                         scope.$emit("openExperimentRunner", jsonForServer);
                     })
                 };
-                scope.$watchCollection(attr.scatterPlot, function(compiler_runs_data, oldData) {
+
+                var drawScatterPlot = function() {
+
+                    console.log(compiler_runs_data);
+
                     var clearPreviousPlots = true;
                     if (clearPreviousPlots) {
                         element.html("");
@@ -42,7 +48,7 @@ angular.module('app')
                         .attr("width", w)
                         .attr("height", h);
 
-                    /* TODO use the data to determine this */
+                    /* Get the max values from the JSON to determine the axis lengths */
                     var max_value_of_x = Math.max.apply(Math,
                         compiler_runs_data.map(function(d) {
                             return d.scale;
@@ -70,7 +76,7 @@ angular.module('app')
                         .attr("transform", "translate(" + (left_pad - pad) + ", 0)")
                         .call(yAxis);
 
-                    /* Show Loading */
+                    /* Show Loading until the data loads */
                     svg.append("text")
                         .attr("class", "loading")
                         .text("Loading ...")
@@ -116,14 +122,23 @@ angular.module('app')
                             });
                     };
 
-                    var bubbleWeight = 10;
+                    var bubbleWeight = 1;
                     var getBubbleSizeFromJson = function(object) {
-                        var radius = object.runtime / object.scale * bubbleWeight
+                        if (useLogBubbleSize) {
+                            bubbleWeight = 10;
+                        } else {
+                            bubbleWeight = 1;
+                        }
+                        var radius = object.runtime / object.iteration * bubbleWeight
                         console.log("Run time: " + object.runtime);
-                        console.log("Dataset size: " + object.scale);
-                        console.log("Radius: " + radius);
+                        console.log("Dataset size: " + object.iteration);
+                        console.log("\tRadius: " + radius);
+                        if (useLogBubbleSize) {
+                            radius = Math.log(radius);
+                        }
+                        
                         // if (radius > 50){
-                        // 	radius = object.runtime/object.scale;
+                        //  radius = object.runtime/object.scale;
                         // }
                         return radius;
                     };
@@ -137,6 +152,8 @@ angular.module('app')
                         .style("visibility", "hidden")
                         .html("");
 
+                    var color = d3.scale.category20();
+
                     svg.selectAll(".loading").remove();
                     svg.selectAll("circle")
                         .data(compiler_runs_data)
@@ -146,6 +163,12 @@ angular.module('app')
                         .attr("cx", getXFromJson)
                         .attr("cy", getYFromJson)
                         .attr("r", getBubbleSizeFromJson)
+                        .style("fill", function(object, i) {
+                            return color(i);
+                        })
+                        .style("opacity", function(object, i) {
+                            return ".5";
+                        })
                         .on("mouseover", function(object) {
                             return tooltip
                                 .style("visibility", "visible")
@@ -162,7 +185,21 @@ angular.module('app')
                         .on("click", function(object) {
                             showUserThePerformanceTestDetails(object);
                         });
+                };
+                scope.$watchCollection(attr.useLogBubbleSize, function(newValue, oldValue){
+                    if (useLogBubbleSize != newValue) {
+                        useLogBubbleSize = newValue;
+                        return drawScatterPlot();
+                    }
                 });
+
+                scope.$watchCollection(attr.scatterPlot, function(newValue, oldValue){
+                    if (compiler_runs_data != newValue) {
+                        compiler_runs_data = newValue;
+                        return drawScatterPlot();
+                    }
+                });
+                
             }
         }
     });
