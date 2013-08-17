@@ -1,0 +1,20 @@
+{
+	"backends": {
+        "type": "dir",
+        "path": "./backends",
+        "metadata": "info.json",
+        "operationPath": "./operations.js"
+	},
+	"benchmarks": {
+        "type": "dir",
+		"path": "./benchmarks/",
+		"metadata": "info.json"
+	},
+	"command": {
+		"outputSeparator": "\n",
+		"options": {
+			"timeout": 36000000,
+			"killSignal": "SIGKILL"
+		}
+	}
+}
