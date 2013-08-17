@@ -8,12 +8,14 @@ var express = require('express'),
     backends = require('./lib/backend'),
     task = require ('./lib/task.js'),
     command = require("./lib/command.js"),
-    performance = require("./lib/performance")
-    errors = require('./lib/errors')
-    appConfig = require('./appConfig.json');
+    performance = require("./lib/performance"),
+    errors = require('./lib/errors'),
+    appConfig = require('./appConfig.json'),
+    path = require('path');
     
 
 var type = grest.type;
+var taskManager = new task.Manager();
 
 var options = {
     dialect: "mysql",
@@ -93,7 +95,7 @@ sequelize.sync();
 
 
 app.use(express.bodyParser());
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 grest.rest(app, "", [
     "GET", ["test"], type.string,
     "Returns a test string",
@@ -166,6 +168,103 @@ grest.rest(app, "", [
             res
         );
     },
+    
+    "GET", ["instrumentations"],
+    type.array({
+        "name": type.string,
+        "version": type.string
+    }),
+    "Return the instrumentation data for a benchmark run",
+    function (req, res) {
+	toHttpResponse(instrumentations.getAll(), res);
+    },
+
+    "GET", ["instrumentations", type.integer("id"), "results"],
+    {
+        "status": type.string,
+        "time": type.array({
+            "iteration": type.integer,
+            "value": type.number,
+        }),
+        "count": type.array({
+            "line": type.integer,
+            "value": type.integer     
+        })
+    },
+    "Return the instrumentation data for a benchmark run",
+    function (req, res) {
+	toHttpResponse(instrumentations.getResults(req.params.id), res);
+    },
+
+    "POST", ["instrumentations", "run"],
+    {
+        "backend": {
+            "name": type.string,
+            "version": type.string
+        }, 
+        "benchmark": {
+            "name": type.string,
+            "version": type.string            
+       }
+    },
+    type.array(task.schema),
+    "Return the instrumentation data for a benchmark run",
+    function (req, res) {
+        var benchmarkId = benchmarks.getId(req.body.benchmark);
+        var backendId = backends.getId(req.body.backend);
+        var scale = req.body.benchmark.scale;
+        var iteration = req.body.benchmark.iteration;
+        
+        toHttpResponse(
+            benchmarks
+            .get(benchmarkId)
+            .then(function (benchmark) {
+                return backends
+                .get(backendId)
+                .then(function (backend) {
+                    var sources = path.join(appConfig.benchmarks.path, benchmark.sources);
+                    var runPath = path.join( appConfig.benchmarks.path, benchmark.runPath);
+
+                    var t = taskManager.task(new command.Local(
+                        backends.operations[backendId].getCompileString({
+                            sources: sources,
+                            runPath: runPath
+                        }), 
+                        appConfig.command
+                    ));
+                    var t2 = taskManager.task(new command.Instrumented(new command.Local(
+                        backends.operations[backendId].getRunString({
+                            sources: sources,
+                            runPath: runPath
+                        }, [scale, iteration]), 
+                        appConfig.command
+                    )));
+
+                    toErrorLog(
+                        t.start()
+                        .then(t2)
+                        .then(function (t2) {
+                            return performance.add({
+                                benchmarkName: benchmark.name,
+                                benchmarkVersion: benchmark.version,
+                                backendName: backend.name,
+                                backendVersion: backend.version,
+                                compile:true,
+                                run:true,
+                                scale:scale,
+                                iteration:iteration,
+                                runtime:t2.command.runTime,
+                                startDate:t2.startTime,
+                                endDate:t2.endTime
+                            });
+                        })
+                    )
+                    return task.TasksToJS([t, t2]);
+                })
+            }),
+            res
+        );
+   }
 ]);
 
 http.createServer(app).listen(app.get('port'), function(){
