@@ -1,20 +1,26 @@
 {
-	"backends": {
+    "backends": {
         "type": "dir",
         "path": "./backends",
         "metadata": "info.json",
         "operationPath": "./operations.js"
-	},
-	"benchmarks": {
+    },
+    "benchmarks": {
         "type": "dir",
-		"path": "./benchmarks/",
-		"metadata": "info.json"
-	},
-	"command": {
-		"outputSeparator": "\n",
-		"options": {
-			"timeout": 36000000,
-			"killSignal": "SIGKILL"
-		}
-	}
+	"path": "./benchmarks/",
+	"metadata": "info.json"
+    },
+    "command": {
+	"outputSeparator": "\n",
+	"options": {
+            "timeout": 36000000,
+            "killSignal": "SIGKILL"
+         }
+    },
+    "instrumentations": {
+        "type": "dir",
+        "path": "./instrumentations",
+        "metadata": "info.json",
+        "result": "result.json"  
+    }
 }
