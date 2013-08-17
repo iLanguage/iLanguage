@@ -56,7 +56,7 @@ module.exports = function (grunt) {
                 }
             }
         },
-        documentWrite: {
+        appendSrcTags: {
             app: {
                 files: '<%= concat.dist.src %>',
                 dest: 'app.write.js'
@@ -77,7 +77,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', ['jshint', 'concat', 'ngmin', 'uglify']);
 
-    grunt.registerMultiTask('documentWrite', 'outputs a js file that `document.write` your files', function () {
+    grunt.registerMultiTask('appendSrcTags', 'outputs a js file that `document.write` your files', function () {
         var _ = grunt.util._;
 
         this.files.forEach(function (f) {
