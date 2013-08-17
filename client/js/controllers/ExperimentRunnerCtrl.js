@@ -49,7 +49,15 @@ angular.module('app')
         };
 
         $scope.open = function (evt, data) {
-            jQuery.extend($scope.data, data);
+            if (!data) {
+                data = {
+                    "benchmark": {
+                        "name": $scope.benchmark.instances[0].benchmarkName,
+                        "version": $scope.benchmark.instances[0].benchmarkVersion
+                    }
+                }
+            }
+            jQuery.extend(true, $scope.data, data);
             $scope.shouldBeOpen = true;
         };
 
