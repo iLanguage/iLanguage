@@ -34,6 +34,9 @@ angular.module('app')
                                         benchmarkData.getAll();
                                         $scope.isPolling = false;
                                     });
+                                } else if(response.result.status === "failed") {
+                                    clearInterval(intervalId);
+                                    $scope.$apply("isPollied = false");
                                 }
                             })
                             .error(function () {
