@@ -4,6 +4,9 @@
             <li ng-repeat="benchmark in benchmarks" class="breadcrumb" ng-class="{active: benchmark == $parent.benchmark}">
                 <a ng-click="selectBenchmark(benchmark)">{{ benchmark.name }}</a>
             </li>
+            <li class="breadcrumb">
+                <a ng-click="$emit('openExperimentRunner')">Run New Experiment</a>
+            </li>
         </ul>
     </div>
     <div class="col-sm-8" ng-include="partialUrl + '/benchmark-view.html'" ng-controller="BenchmarkViewCtrl">
@@ -15,4 +18,25 @@
             </li>
         </ul>
     </div>
+</div>
+
+<div ng-controller="ExperimentRunnerCtrl">
+    <!-- Modal -->
+    <div bs3-modal="shouldBeOpen" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Run a New Experiment</h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Run Experiment</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </div>
