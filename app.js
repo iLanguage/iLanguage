@@ -11,7 +11,8 @@ var express = require('express'),
     performance = require("./lib/performance"),
     errors = require('./lib/errors'),
     appConfig = require('./appConfig.json'),
-    path = require('path');
+    path = require('path'),
+    instrumentations = require("./lib/instrumentation.js");
     
 
 var type = grest.type;
@@ -179,6 +180,13 @@ grest.rest(app, "", [
 	toHttpResponse(instrumentations.getAll(), res);
     },
 
+    "GET", ["instrumentations", type.integer("id")],
+    {},
+    "Return the instrumentation metadata for a benchmark run",
+    function (req, res) {
+	toHttpResponse(instrumentations.get(req.params.id), res);
+    },
+
     "GET", ["instrumentations", type.integer("id"), "results"],
     {
         "status": type.string,
@@ -191,7 +199,7 @@ grest.rest(app, "", [
             "value": type.integer     
         })
     },
-    "Return the instrumentation data for a benchmark run",
+    "Return the instrumentation results for a benchmark run",
     function (req, res) {
 	toHttpResponse(instrumentations.getResults(req.params.id), res);
     },
