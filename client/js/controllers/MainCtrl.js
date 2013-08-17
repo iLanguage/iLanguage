@@ -1,13 +1,19 @@
 angular.module('app')
-    .controller('MainCtrl', function ($scope, $location, benchmarkData) {
+    .controller('MainCtrl', function($scope, $location, benchmarkData) {
         $scope.benchmarks = benchmarkData.getAll();
         $scope.benchmark = null;
         $location.url('/');
-        
-        $scope.selectBenchmark = function (benchmark) {
+
+        $scope.selectBenchmark = function(benchmark) {
             $scope.benchmark = benchmark;
             if (benchmark) {
                 $location.url('/benchmark/' + benchmark.name.replace(/ /, '-'));
             }
-        }
+        };
+        
+        $scope.useLogScaleForBubbleSize = false;
+        $scope.toogleButtonScale = function() {
+            $scope.useLogScaleForBubbleSize = !$scope.useLogScaleForBubbleSize;
+        };
+
     });
