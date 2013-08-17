@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+    "name": "mcbenchviz",
+    "version": "0.0.0",
+
+    "description": "description",
+
+    "author": "awesome people",
+    "app": {
+        "launch": {
+            "local_path": "app.html"
+        }
+    }
+}
