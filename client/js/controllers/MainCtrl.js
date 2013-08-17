@@ -1,9 +1,14 @@
 angular.module('app')
-    .controller('MainCtrl', function ($scope, $location, benchmarkData) {
+    .controller('MainCtrl', function($scope, $location, benchmarkData) {
         $scope.benchmarks = benchmarkData.getAll();
         $scope.benchmark = null;
 
-        $scope.selectBenchmark = function (benchmark) {
+        $scope.useLogScaleForBubbleSize = false;
+        $scope.toogleButtonScale = function() {
+            $scope.useLogScaleForBubbleSize = !$scope.useLogScaleForBubbleSize;
+        };
+
+        $scope.selectBenchmark = function(benchmark) {
             $scope.benchmark = benchmark;
             if (benchmark) {
                 $location.url('/benchmark/' + benchmarkUrl(benchmark));
@@ -16,7 +21,7 @@ angular.module('app')
                     var benchmarkName = $location.url().match(/^\/benchmark\/(.+)/);
                     if (benchmarkName) {
                         benchmarkName = benchmarkName[1];
-                        angular.forEach($scope.benchmarks, function (benchmark) {
+                        angular.forEach($scope.benchmarks, function(benchmark) {
                             if (benchmarkName === benchmarkUrl(benchmark)) {
                                 $scope.selectBenchmark(benchmark);
                             }
