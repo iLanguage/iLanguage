@@ -1,11 +1,10 @@
 <div id="page" class="row" ng-controller="MainCtrl">
     <div class="col-sm-2">
         <ul ng-repeat="(name, benchmark) in benchmarks">
-            <li><a href="#/benchmark/{{ name }}">{{ name }}</a></li>
+            <li><a ng-click="selectBenchmark(name)">{{ name }}</a></li>
         </ul>
     </div>
-    <div class="col-sm-8">
-        <div ng-view></div>
+    <div class="col-sm-8" ng-include="partialUrl + '/benchmark-view.html'" ng-controller="BenchmarkViewCtrl">
     </div>
     <div class="col-sm-2">
         Right

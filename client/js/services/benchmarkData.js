@@ -1,6 +1,7 @@
 angular.module('app')
     .service('benchmarkData', function ($http, $q) {
         var benchmarks = {};
+        // 184.107.193.50:8080/performance
         return {
             getAll: function () {
                 var request = $q.defer();
