@@ -171,19 +171,43 @@ grest.rest(app, "", [
     
     "GET", ["instrumentations"],
     type.array({
-
+        "name": type.string,
+        "version": type.string
     }),
     "Return the instrumentation data for a benchmark run",
     function (req, res) {
-	throw new Error("Unimplemented");
+	toHttpResponse(instrumentations.getAll(), res);
+    },
+
+    "GET", ["instrumentations", type.integer("id"), "results"],
+    {
+        "status": type.string,
+        "time": type.array({
+            "iteration": type.integer,
+            "value": type.number,
+        }),
+        "count": type.array({
+            "line": type.integer,
+            "value": type.integer     
+        })
+    },
+    "Return the instrumentation data for a benchmark run",
+    function (req, res) {
+	toHttpResponse(instrumentations.getResults(req.params.id), res);
     },
 
     "POST", ["instrumentations", "run"],
     {
+        "backend": {
+            "name": type.string,
+            "version": type.string
+        }, 
+        "benchmark": {
+            "name": type.string,
+            "version": type.string            
+       }
     },
-    type.array({
-
-    }),
+    type.array(task.schema),
     "Return the instrumentation data for a benchmark run",
     function (req, res) {
         var benchmarkId = benchmarks.getId(req.body.benchmark);
