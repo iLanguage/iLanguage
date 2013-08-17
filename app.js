@@ -12,7 +12,8 @@ var express = require('express'),
     errors = require('./lib/errors'),
     appConfig = require('./appConfig.json'),
     path = require('path'),
-    instrumentations = require("./lib/instrumentation.js");
+    instrumentations = require("./lib/instrumentation.js"),
+    fs = require('fs');
     
 
 var type = grest.type;
@@ -255,8 +256,8 @@ grest.rest(app, "", [
                         t.start()
                         .then(t2)
                         .then(function (t2) {
-		            var json = t2.getJsonOutput();
-                            return Q.nfcall(fs.writeFileSync, resultPath, JSON.stringify({status:"done", data:[json]}, null, "    "));
+		            var json = t2.command.getJsonOutput();
+                            return Q.nfcall(fs.writeFile, resultPath, JSON.stringify({status:"done", data:[json]}, null, "    "));
                         })
                     )
                     return task.TasksToJS([t, t2]);
