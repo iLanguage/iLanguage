@@ -1,0 +1,18 @@
+<div id="page" class="row" ng-controller="MainCtrl">
+    <div class="col-sm-2">
+        <ul class="list-unstyled">
+            <li ng-repeat="benchmark in benchmarks" class="breadcrumb" ng-class="{active: benchmark == $parent.benchmark}">
+                <a ng-click="selectBenchmark(benchmark)">{{ benchmark.name }}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-8" ng-include="partialUrl + '/benchmark-view.html'" ng-controller="BenchmarkViewCtrl">
+    </div>
+    <div class="col-sm-2">
+        <ul class="list-unstyled">
+            <li ng-repeat="instance in benchmark.data" class="breadcrumb" ng-class="{active: benchmark.isActive(instance)}">
+                <a ng-click="benchmark.toggleActive(instance)">{{ instance.backendName }} {{ instance.backendVersion }}</a>
+            </li>
+        </ul>
+    </div>
+</div>
