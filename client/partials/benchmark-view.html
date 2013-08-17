@@ -1,5 +1,6 @@
 <div ng-if="benchmark">
     {{ benchmark.data.length }}
+    <div scatter-plot="benchmark.activeData"></div>
 </div>
 <div ng-if="!benchmark">
     Please select a benchmark in the sidebar on the left
