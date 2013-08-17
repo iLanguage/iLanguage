@@ -28,7 +28,7 @@ for i = 1:iteration
         Ryy = R(1:p, 1:p); execCounter(27,1) = execCounter(27,1) + 1;
         Rxx = R(p+1:p+j, p+1:p+j); execCounter(28,1) = execCounter(28,1) + 1;
         Rxy = R(p+1:p+j, 1:p); execCounter(29,1) = execCounter(29,1) + 1;
-        Ryx = Rxy'; execCounter(30,1) = execCounter(30,1) + 1;
+        Ryx = transpose(Rxy); execCounter(30,1) = execCounter(30,1) + 1;
         rvt = trace(Ryx*Rxy)/((trace(Ryy^2)*trace(Rxx^2))^0.5); execCounter(31,1) = execCounter(31,1) + 1;
         if rvt > Rvmax
           Rvmax = rvt; execCounter(33,1) = execCounter(33,1) + 1;

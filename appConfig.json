@@ -8,7 +8,8 @@
     "benchmarks": {
         "type": "dir",
 	"path": "./benchmarks/",
-	"metadata": "info.json"
+	"metadata": "info.json",
+    "runFile": "src/run.m"
     },
     "command": {
 	"outputSeparator": "\n",
