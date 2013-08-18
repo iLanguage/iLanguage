@@ -128,6 +128,9 @@ angular.module('app')
                         if(object.runtime < 0.2){
                             return 2;
                         }
+                        if(radius < 2){
+                            return 2;
+                        }
                         return radius;
                     };
 
@@ -155,12 +158,12 @@ angular.module('app')
                             return color(i);
                         })
                         .style("opacity", function(object, i) {
-                            return ".5";
+                            return ".9";
                         })
                         .on("mouseover", function(object) {
                             return tooltip
                                 .style("visibility", "visible")
-                                .html("<div class='run_details_tooltip'>Benchmark: " + object.benchmarkName + "<br/> Time: " + object.runtime + "<br/> Dataset Size: " + object.scale + "</div>");
+                                .html("<div class='run_details_tooltip'>Benchmark: " + object.benchmarkName + "<br/> Time: " + object.runtime + "<br/> Iterations: " + object.iteration + "<br/> Dataset Size: " + object.scale + "</div>");
                         })
                         .on("mousemove", function(object) {
                             return tooltip.style("top", (event.pageY - 10) + "px")
