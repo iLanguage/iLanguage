@@ -1,7 +1,7 @@
 {
   "name": "Wordcloud",
-  "version": "1.6",
-  "description": "Wordcloud webapp.",
+  "version": "1.7",
+  "description": "Wordcloud ",
   "app": {
     "launch": {
       "local_path": "wordcloud.html"
