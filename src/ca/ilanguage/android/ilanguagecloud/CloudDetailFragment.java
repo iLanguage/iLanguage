@@ -11,10 +11,9 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
 
 import ca.ilanguage.android.ilanguagecloud.dummy.DummyContent;
-import ca.ilanguage.android.wordcloud.AndroidWordCloudActivity.JavaScriptInterface;
+import ca.ilanguage.android.ilanguagecloud.JavascriptInterface;
 
 /**
  * A fragment representing a single Cloud detail screen. This fragment is either
