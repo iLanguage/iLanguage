@@ -3,6 +3,8 @@ package ca.ilanguage.android.ilanguagecloud;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 /**
  * An activity representing a list of Clouds. This activity has different
@@ -73,5 +75,12 @@ public class CloudListActivity extends FragmentActivity implements
 			detailIntent.putExtra(CloudDetailFragment.ARG_ITEM_ID, id);
 			startActivity(detailIntent);
 		}
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main_activity_actions, menu);
+		return super.onCreateOptionsMenu(menu);
 	}
 }
