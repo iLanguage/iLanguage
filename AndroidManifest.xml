@@ -31,8 +31,12 @@
                 android:value=".CloudListActivity" />
         </activity>
         <activity
-            android:name="ca.ilanguage.android.ilanguagecloud.CloudCreateActivity"
-            android:label="@string/title_activity_cloud_create" >
+            android:name="ca.ilanguage.android.ilanguagecloud.CloudEditActivity"
+            android:label="@string/title_activity_cloud_edit"
+            android:parentActivityName="ca.ilanguage.android.ilanguagecloud.CloudDetailActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ca.ilanguage.android.ilanguagecloud.CloudDetailActivity" />
         </activity>
     </application>
 

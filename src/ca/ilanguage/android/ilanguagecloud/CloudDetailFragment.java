@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
@@ -11,6 +14,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import ca.ilanguage.android.ilanguagecloud.dummy.DummyContent;
 import ca.ilanguage.android.ilanguagecloud.JavascriptInterface;
@@ -21,7 +25,7 @@ import ca.ilanguage.android.ilanguagecloud.JavascriptInterface;
  * {@link CloudDetailActivity} on handsets.
  */
 public class CloudDetailFragment extends Fragment {
-	
+
 	protected static final String TAG = "WordCloud";
 	public static final boolean D = true;
 	private String mOutPath;
@@ -48,6 +52,7 @@ public class CloudDetailFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
 
 		if (getArguments().containsKey(ARG_ITEM_ID)) {
 			// Load the dummy content specified by the fragment
@@ -57,7 +62,27 @@ public class CloudDetailFragment extends Fragment {
 					ARG_ITEM_ID));
 		}
 	}
+	
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater.inflate(R.menu.cloud_detail_actions, menu);
+	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	   // handle item selection
+	   switch (item.getItemId()) {
+	      case R.id.action_exportsvg:
+	    	 Toast.makeText(getActivity().getApplicationContext(), "TODO: Export SVG", Toast.LENGTH_SHORT).show();
+	         return true;
+	      case R.id.action_exportpng:
+	    	 Toast.makeText(getActivity().getApplicationContext(), "TODO: Export PNG", Toast.LENGTH_SHORT).show();
+	         return true;
+	      default:
+	         return super.onOptionsItemSelected(item);
+	   }
+	}
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -67,8 +92,8 @@ public class CloudDetailFragment extends Fragment {
 		// Show the dummy content as text in a TextView.
 		if (mItem != null) {
 			mWebView = (WebView) rootView.findViewById(R.id.webView1);
-			mWebView.addJavascriptInterface(new JavascriptInterface(getActivity()),
-					"Android");
+			mWebView.addJavascriptInterface(new JavascriptInterface(
+					getActivity()), "Android");
 			mWebView.setWebViewClient(new MyWebViewClient());
 			mWebView.setWebChromeClient(new MyWebChromeClient());
 			WebSettings webSettings = mWebView.getSettings();
@@ -105,30 +130,33 @@ public class CloudDetailFragment extends Fragment {
 
 		return rootView;
 	}
-	
-    class MyWebChromeClient extends WebChromeClient {
-   		public boolean shouldOverrideUrlLoading(WebView view, String url) {
-  			mWebView.loadUrl("javascript:console.log('URL: " + url + "')");
-  			if(D) Log.d(TAG, "Overrode Url loading in WebChromeClient");
-  			return true;
-  		}
 
-  		@Override
-  		public boolean onConsoleMessage(ConsoleMessage cm) {
-  			if(D) Log.d(TAG, cm.message() + " -- From line " + cm.lineNumber() + " of "
-  					+ cm.sourceId());
-  			return true;
-  		}
-  	}
+	class MyWebChromeClient extends WebChromeClient {
+		public boolean shouldOverrideUrlLoading(WebView view, String url) {
+			mWebView.loadUrl("javascript:console.log('URL: " + url + "')");
+			if (D)
+				Log.d(TAG, "Overrode Url loading in WebChromeClient");
+			return true;
+		}
 
-  	class MyWebViewClient extends WebViewClient {
-  		@Override
-  		public boolean shouldOverrideUrlLoading(WebView view, String url) {
-  			mWebView.loadUrl("javascript:console.log('URL: " + url + "')");
-  			if(D) Log.d(TAG, "Overrode Url loading in WebViewClient");
-  			return true;
-  		}
+		@Override
+		public boolean onConsoleMessage(ConsoleMessage cm) {
+			if (D)
+				Log.d(TAG, cm.message() + " -- From line " + cm.lineNumber()
+						+ " of " + cm.sourceId());
+			return true;
+		}
+	}
 
-  	}
+	class MyWebViewClient extends WebViewClient {
+		@Override
+		public boolean shouldOverrideUrlLoading(WebView view, String url) {
+			mWebView.loadUrl("javascript:console.log('URL: " + url + "')");
+			if (D)
+				Log.d(TAG, "Overrode Url loading in WebViewClient");
+			return true;
+		}
+
+	}
 
 }

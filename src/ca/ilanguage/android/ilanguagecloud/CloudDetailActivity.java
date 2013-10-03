@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 /**
@@ -47,6 +49,13 @@ public class CloudDetailActivity extends FragmentActivity {
 	}
 
 	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.cloud_list_actions, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
@@ -59,6 +68,10 @@ public class CloudDetailActivity extends FragmentActivity {
 			//
 			NavUtils.navigateUpTo(this, new Intent(this,
 					CloudListActivity.class));
+			return true;
+		case R.id.action_edit:
+			Intent editIntent = new Intent(this, CloudEditActivity.class);
+			startActivity(editIntent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

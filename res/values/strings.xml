@@ -4,6 +4,7 @@
     <string name="app_name">iLanguageCloud</string>
     <string name="title_cloud_detail">Cloud Detail</string>
     <string name="action_new">Create Cloud</string>
+    <string name="action_edit">Edit Cloud</string>
     <string name="action_exportsvg">Export as SVG</string>
     <string name="action_exportpng">Export as PNG</string>
     <string name="title_activity_cloud_create">CloudCreateActivity</string>
@@ -12,5 +13,6 @@
     <string name="create_new_cloud_title">Create a new word cloud</string>
     <string name="button_create">Create Cloud</string>
     <string name="cloud_title_hint">Cloud title</string>
+    <string name="title_activity_cloud_edit">CloudEditActivity</string>
 
 </resources>
