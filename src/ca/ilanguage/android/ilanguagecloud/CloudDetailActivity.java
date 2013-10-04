@@ -69,10 +69,6 @@ public class CloudDetailActivity extends FragmentActivity {
 			NavUtils.navigateUpTo(this, new Intent(this,
 					CloudListActivity.class));
 			return true;
-		case R.id.action_edit:
-			Intent editIntent = new Intent(this, CloudEditActivity.class);
-			startActivity(editIntent);
-			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
