@@ -30,6 +30,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CloudListActivity" />
         </activity>
+        <activity
+            android:name="ca.ilanguage.android.ilanguagecloud.CloudEditActivity"
+            android:label="@string/title_cloud_edit"
+            android:parentActivityName=".CloudListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CloudListActivity" />
+        </activity>
+        
+        <provider
+            android:name=".contentprovider.CloudContentProvider"
+            android:authorities="ca.ilanguage.android.ilanguagecloud.contentprovider" >
+        </provider>
     </application>
 
 </manifest>

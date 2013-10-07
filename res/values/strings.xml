@@ -2,17 +2,17 @@
 <resources>
 
     <string name="app_name">iLanguageCloud</string>
+    
     <string name="title_cloud_detail">Cloud Detail</string>
+    <string name="title_cloud_edit">Cloud Edit</string>
+    
     <string name="action_new">Create Cloud</string>
     <string name="action_edit">Edit Cloud</string>
     <string name="action_exportsvg">Export as SVG</string>
     <string name="action_exportpng">Export as PNG</string>
-    <string name="title_activity_cloud_create">CloudCreateActivity</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="create_new_cloud_title">Create a new word cloud</string>
-    <string name="button_create">Create Cloud</string>
-    <string name="cloud_title_hint">Cloud title</string>
-    <string name="title_activity_cloud_edit">CloudEditActivity</string>
-
+    
+    <string name="cloud_edit_title">Title</string>
+    <string name="cloud_edit_contents">Contents</string>
+    <string name="cloud_edit_confirm">Confirm</string>
+    
 </resources>

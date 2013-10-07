@@ -1,15 +1,21 @@
 package ca.ilanguage.android.ilanguagecloud;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import ca.ilanguage.android.ilanguagecloud.dummy.DummyContent;
+import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
+import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
 
 /**
  * A list fragment representing a list of Clouds. This fragment also supports
@@ -20,7 +26,10 @@ import ca.ilanguage.android.ilanguagecloud.dummy.DummyContent;
  * Activities containing this fragment MUST implement the {@link Callbacks}
  * interface.
  */
-public class CloudListFragment extends ListFragment {
+public class CloudListFragment extends ListFragment implements
+		LoaderManager.LoaderCallbacks<Cursor> {
+
+	private SimpleCursorAdapter adapter;
 
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
@@ -48,7 +57,7 @@ public class CloudListFragment extends ListFragment {
 		/**
 		 * Callback for when an item has been selected.
 		 */
-		public void onItemSelected(String id);
+		public void onItemSelected(long id);
 	}
 
 	/**
@@ -57,7 +66,7 @@ public class CloudListFragment extends ListFragment {
 	 */
 	private static Callbacks sDummyCallbacks = new Callbacks() {
 		@Override
-		public void onItemSelected(String id) {
+		public void onItemSelected(long id) {
 		}
 	};
 
@@ -73,15 +82,27 @@ public class CloudListFragment extends ListFragment {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 
-		// TODO: replace with a real list adapter.
-		setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, DummyContent.ITEMS));
+		fillData();
 	}
 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		inflater.inflate(R.menu.cloud_list_actions, menu);
+	}
+
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_new:
+			createCloud();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	private void createCloud() {
+		Intent intent = new Intent(getActivity().getApplicationContext(),
+				CloudEditActivity.class);
+		startActivity(intent);
 	}
 
 	@Override
@@ -124,7 +145,8 @@ public class CloudListFragment extends ListFragment {
 
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
-		mCallbacks.onItemSelected(DummyContent.ITEMS.get(position).id);
+		// mCallbacks.onItemSelected(DummyContent.ITEMS.get(position).id);
+		mCallbacks.onItemSelected(id);
 	}
 
 	@Override
@@ -156,5 +178,36 @@ public class CloudListFragment extends ListFragment {
 		}
 
 		mActivatedPosition = position;
+	}
+
+	private void fillData() {
+		String[] from = new String[] { CloudTable.COLUMN_TITLE };
+		int[] to = new int[] { android.R.id.text1 };
+
+		getLoaderManager().initLoader(0, null, this);
+		adapter = new SimpleCursorAdapter(getActivity(),
+				android.R.layout.simple_list_item_activated_1, null, from, to,
+				0);
+
+		setListAdapter(adapter);
+	}
+
+	@Override
+	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+		String[] projection = { CloudTable.COLUMN_ID, CloudTable.COLUMN_TITLE };
+		CursorLoader cursorLoader = new CursorLoader(getActivity()
+				.getApplicationContext(), CloudContentProvider.CONTENT_URI,
+				projection, null, null, null);
+		return cursorLoader;
+	}
+
+	@Override
+	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+		adapter.swapCursor(data);
+	}
+
+	@Override
+	public void onLoaderReset(Loader<Cursor> loader) {
+		adapter.swapCursor(null);
 	}
 }

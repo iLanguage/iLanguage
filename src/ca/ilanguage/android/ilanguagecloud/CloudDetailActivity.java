@@ -39,8 +39,7 @@ public class CloudDetailActivity extends FragmentActivity {
 			// Create the detail fragment and add it to the activity
 			// using a fragment transaction.
 			Bundle arguments = new Bundle();
-			arguments.putString(CloudDetailFragment.ARG_ITEM_ID, getIntent()
-					.getStringExtra(CloudDetailFragment.ARG_ITEM_ID));
+			arguments.putLong(CloudDetailFragment.ARG_ITEM_ID, getIntent().getLongExtra(CloudDetailFragment.ARG_ITEM_ID, 0));
 			CloudDetailFragment fragment = new CloudDetailFragment();
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction()

@@ -54,13 +54,13 @@ public class CloudListActivity extends FragmentActivity implements
 	 * the item with the given ID was selected.
 	 */
 	@Override
-	public void onItemSelected(String id) {
+	public void onItemSelected(long id) {
 		if (mTwoPane) {
 			// In two-pane mode, show the detail view in this activity by
 			// adding or replacing the detail fragment using a
 			// fragment transaction.
 			Bundle arguments = new Bundle();
-			arguments.putString(CloudDetailFragment.ARG_ITEM_ID, id);
+			arguments.putLong(CloudDetailFragment.ARG_ITEM_ID, id);
 			CloudDetailFragment fragment = new CloudDetailFragment();
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction()

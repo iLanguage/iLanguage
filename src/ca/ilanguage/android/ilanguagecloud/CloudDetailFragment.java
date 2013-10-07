@@ -1,5 +1,8 @@
 package ca.ilanguage.android.ilanguagecloud;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -15,9 +18,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
-
+import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
+import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
 import ca.ilanguage.android.ilanguagecloud.dummy.DummyContent;
-import ca.ilanguage.android.ilanguagecloud.JavascriptInterface;
 
 /**
  * A fragment representing a single Cloud detail screen. This fragment is either
@@ -31,6 +34,8 @@ public class CloudDetailFragment extends Fragment {
 	private String mOutPath;
 	private WebView mWebView;
 
+	private Uri cloudUri;
+
 	/**
 	 * The fragment argument representing the item ID that this fragment
 	 * represents.
@@ -40,7 +45,7 @@ public class CloudDetailFragment extends Fragment {
 	/**
 	 * The dummy content this fragment is presenting.
 	 */
-	private DummyContent.DummyItem mItem;
+	private  mItem;
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
@@ -54,15 +59,48 @@ public class CloudDetailFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 
-		if (getArguments().containsKey(ARG_ITEM_ID)) {
-			// Load the dummy content specified by the fragment
-			// arguments. In a real-world scenario, use a Loader
-			// to load content from a content provider.
-			mItem = DummyContent.ITEM_MAP.get(getArguments().getString(
-					ARG_ITEM_ID));
+		Bundle extras = getActivity().getIntent().getExtras();
+
+		cloudUri = (savedInstanceState == null) ? null
+				: (Uri) savedInstanceState
+						.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
+
+		if (extras != null) {
+			cloudUri = extras
+					.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
+			getData(cloudUri);
+		}
+
+	}
+
+	private void getData(Uri uri) {
+		String[] projection = { CloudTable.COLUMN_TITLE,
+				CloudTable.COLUMN_CONTENTS, CloudTable.COLUMN_FONT };
+		Cursor cursor = getActivity().getContentResolver().query(uri,
+				projection, null, null, null);
+		if (cursor != null) {
+			cursor.moveToFirst();
+			String category = cursor.getString(cursor
+					.getColumnIndexOrThrow(CloudTable.COLUMN_FONT));
+
+			for (int i = 0; i < mCategory.getCount(); i++) {
+
+				String s = (String) mCategory.getItemAtPosition(i);
+				if (s.equalsIgnoreCase(category)) {
+					mCategory.setSelection(i);
+				}
+			}
+
+			mTitleText.setText(cursor.getString(cursor
+					.getColumnIndexOrThrow(CloudTable.COLUMN_TITLE)));
+			mBodyText.setText(cursor.getString(cursor
+					.getColumnIndexOrThrow(CloudTable.COLUMN_CONTENTS)));
+
+			// Always close the cursor
+			cursor.close();
 		}
 	}
-	
+
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		inflater.inflate(R.menu.cloud_detail_actions, menu);
@@ -70,19 +108,32 @@ public class CloudDetailFragment extends Fragment {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	   // handle item selection
-	   switch (item.getItemId()) {
-	      case R.id.action_exportsvg:
-	    	 Toast.makeText(getActivity().getApplicationContext(), "TODO: Export SVG", Toast.LENGTH_SHORT).show();
-	         return true;
-	      case R.id.action_exportpng:
-	    	 Toast.makeText(getActivity().getApplicationContext(), "TODO: Export PNG", Toast.LENGTH_SHORT).show();
-	         return true;
-	      default:
-	         return super.onOptionsItemSelected(item);
-	   }
+		// handle item selection
+		switch (item.getItemId()) {
+		case R.id.action_edit:
+			Intent detailIntent = new Intent(getActivity()
+					.getApplicationContext(), CloudEditActivity.class);
+			cloudUri = Uri.parse(CloudContentProvider.CONTENT_URI + "/"
+					+ getArguments().getParcelable(ARG_ITEM_ID).toString());
+			detailIntent.putExtra(CloudContentProvider.CONTENT_ITEM_TYPE,
+					cloudUri);
+			startActivity(detailIntent);
+			// Toast.makeText(getActivity().getApplicationContext(),
+			// "TODO: Edit Cloud", Toast.LENGTH_LONG).show();
+			return true;
+		case R.id.action_exportsvg:
+			Toast.makeText(getActivity().getApplicationContext(),
+					"TODO: Export SVG", Toast.LENGTH_SHORT).show();
+			return true;
+		case R.id.action_exportpng:
+			Toast.makeText(getActivity().getApplicationContext(),
+					"TODO: Export PNG", Toast.LENGTH_SHORT).show();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
