@@ -100,8 +100,7 @@ public class CloudListFragment extends ListFragment implements
 	}
 
 	private void createCloud() {
-		Intent intent = new Intent(getActivity().getApplicationContext(),
-				CloudEditActivity.class);
+		Intent intent = new Intent(getActivity(), CloudEditActivity.class);
 		startActivity(intent);
 	}
 

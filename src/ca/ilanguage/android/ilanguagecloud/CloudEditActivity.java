@@ -118,11 +118,11 @@ public class CloudEditActivity extends Activity {
 		values.put(CloudTable.COLUMN_CONTENTS, description);
 
 		if (cloudUri == null) {
-			// New todo
+			// New cloud
 			cloudUri = getContentResolver().insert(
 					CloudContentProvider.CONTENT_URI, values);
 		} else {
-			// Update todo
+			// Update cloud
 			getContentResolver().update(cloudUri, values, null, null);
 		}
 	}

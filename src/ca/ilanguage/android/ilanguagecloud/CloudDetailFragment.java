@@ -1,5 +1,6 @@
 package ca.ilanguage.android.ilanguagecloud;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -31,7 +32,6 @@ public class CloudDetailFragment extends Fragment {
 
 	protected static final String TAG = "WordCloud";
 	public static final boolean D = true;
-	private String mOutPath;
 	private WebView mWebView;
 
 	private Uri cloudUri;
@@ -104,27 +104,26 @@ public class CloudDetailFragment extends Fragment {
 		// handle item selection
 		switch (item.getItemId()) {
 		case R.id.action_edit:
-			Intent editDetailIntent = new Intent(getActivity()
-					.getApplicationContext(), CloudEditActivity.class);
-//			cloudUri = Uri.parse(CloudContentProvider.CONTENT_URI + "/"
-//					+ getArguments().getParcelable(ARG_ITEM_ID).toString());
+			Intent editDetailIntent = new Intent(getActivity(),
+					CloudEditActivity.class);
 			editDetailIntent.putExtra(CloudContentProvider.CONTENT_ITEM_TYPE,
 					cloudUri);
 			startActivity(editDetailIntent);
 			return true;
 		case R.id.action_exportsvg:
-			Toast.makeText(getActivity().getApplicationContext(),
-					"TODO: Export SVG", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), "TODO: Export SVG",
+					Toast.LENGTH_SHORT).show();
 			return true;
 		case R.id.action_exportpng:
-			Toast.makeText(getActivity().getApplicationContext(),
-					"TODO: Export PNG", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), "TODO: Export PNG",
+					Toast.LENGTH_SHORT).show();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
 	}
 
+	@SuppressLint("SetJavaScriptEnabled")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -134,8 +133,7 @@ public class CloudDetailFragment extends Fragment {
 		// Show the dummy content as text in a TextView.
 		if (mItem != null) {
 			mWebView = (WebView) rootView.findViewById(R.id.webView1);
-			mWebView.addJavascriptInterface(new JavascriptInterface(
-					getActivity()), "Android");
+			mWebView.addJavascriptInterface(new JavascriptInterface(getActivity()), "jsinterface");
 			mWebView.setWebViewClient(new MyWebViewClient());
 			mWebView.setWebChromeClient(new MyWebChromeClient());
 
@@ -144,23 +142,16 @@ public class CloudDetailFragment extends Fragment {
 
 			WebSettings webSettings = mWebView.getSettings();
 			webSettings.setBuiltInZoomControls(true);
-			// webSettings.setDefaultFontSize(26);
-			// webSettings.setDefaultZoom(WebSettings.ZoomDensity.CLOSE);
 			webSettings.setJavaScriptEnabled(true);
 
-			/*
-			 * Use HTML5 localstorage to maintain app state requires Android 2.1
-			 * or better, minsdk > 7
-			 */
+			// Use HTML5 localstorage to maintain app state
 			webSettings.setDefaultTextEncodingName("utf-8");
 			webSettings.setAppCacheEnabled(true);
 			webSettings.setDomStorageEnabled(true);
 			webSettings.setDatabaseEnabled(true); // to use webSQL
 			webSettings.setDatabasePath(databasePath);
 
-			/*
-			 * Use HTML5 File API to read files
-			 */
+			// Use HTML5 File API to read files
 			webSettings.setAllowFileAccess(true);
 
 			webSettings.setLoadWithOverviewMode(true);
