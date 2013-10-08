@@ -314,5 +314,4 @@ console.log('Using text: ' + currentText);
 
 // loadCloud(null, $('#cloud'), null, fonts[currentFont], texts[currentText]);
 var testText = window.jsinterface.getCloudString();
-console.log(testText + ' is what we are passing');
 loadCloud(null, $('#cloud'), null, fonts[currentFont], testText);
