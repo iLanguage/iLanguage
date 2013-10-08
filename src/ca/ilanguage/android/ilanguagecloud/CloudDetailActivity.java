@@ -7,6 +7,9 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
+
+
 
 /**
  * An activity representing a single Cloud detail screen. This activity is only
@@ -39,11 +42,11 @@ public class CloudDetailActivity extends FragmentActivity {
 			// Create the detail fragment and add it to the activity
 			// using a fragment transaction.
 			Bundle arguments = new Bundle();
-			arguments.putLong(CloudDetailFragment.ARG_ITEM_ID, getIntent().getLongExtra(CloudDetailFragment.ARG_ITEM_ID, 0));
+			arguments.putParcelable(CloudContentProvider.CONTENT_ITEM_TYPE, getIntent().getParcelableExtra(CloudContentProvider.CONTENT_ITEM_TYPE));
+
 			CloudDetailFragment fragment = new CloudDetailFragment();
 			fragment.setArguments(arguments);
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.cloud_detail_container, fragment).commit();
+			getSupportFragmentManager().beginTransaction().add(R.id.cloud_detail_container, fragment).commit();
 		}
 	}
 

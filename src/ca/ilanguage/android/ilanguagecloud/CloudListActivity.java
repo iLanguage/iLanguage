@@ -1,8 +1,10 @@
 package ca.ilanguage.android.ilanguagecloud;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
 
 /**
  * An activity representing a list of Clouds. This activity has different
@@ -60,7 +62,11 @@ public class CloudListActivity extends FragmentActivity implements
 			// adding or replacing the detail fragment using a
 			// fragment transaction.
 			Bundle arguments = new Bundle();
-			arguments.putLong(CloudDetailFragment.ARG_ITEM_ID, id);
+			Uri cloudUri = Uri.parse(CloudContentProvider.CONTENT_URI + "/"
+					+ id);
+			arguments.putParcelable(CloudContentProvider.CONTENT_ITEM_TYPE,
+					cloudUri);
+
 			CloudDetailFragment fragment = new CloudDetailFragment();
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction()
@@ -70,7 +76,10 @@ public class CloudListActivity extends FragmentActivity implements
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.
 			Intent detailIntent = new Intent(this, CloudDetailActivity.class);
-			detailIntent.putExtra(CloudDetailFragment.ARG_ITEM_ID, id);
+			Uri cloudUri = Uri.parse(CloudContentProvider.CONTENT_URI + "/"
+					+ id);
+			detailIntent.putExtra(CloudContentProvider.CONTENT_ITEM_TYPE,
+					cloudUri);
 			startActivity(detailIntent);
 		}
 	}

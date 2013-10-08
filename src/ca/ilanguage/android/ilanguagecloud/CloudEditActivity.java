@@ -14,6 +14,8 @@ import android.widget.Toast;
 import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
 import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
 
+
+
 public class CloudEditActivity extends Activity {
 	private Spinner mFont;
 	private EditText mTitleText;

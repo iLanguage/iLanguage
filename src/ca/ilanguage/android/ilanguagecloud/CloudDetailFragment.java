@@ -1,5 +1,6 @@
 package ca.ilanguage.android.ilanguagecloud;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -20,7 +21,6 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
 import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
-import ca.ilanguage.android.ilanguagecloud.dummy.DummyContent;
 
 /**
  * A fragment representing a single Cloud detail screen. This fragment is either
@@ -45,7 +45,7 @@ public class CloudDetailFragment extends Fragment {
 	/**
 	 * The dummy content this fragment is presenting.
 	 */
-	private  mItem;
+	private String mItem;
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
@@ -60,6 +60,7 @@ public class CloudDetailFragment extends Fragment {
 		setHasOptionsMenu(true);
 
 		Bundle extras = getActivity().getIntent().getExtras();
+		Bundle arguments = getArguments();
 
 		cloudUri = (savedInstanceState == null) ? null
 				: (Uri) savedInstanceState
@@ -67,6 +68,10 @@ public class CloudDetailFragment extends Fragment {
 
 		if (extras != null) {
 			cloudUri = extras
+					.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
+			getData(cloudUri);
+		} else if (arguments != null) {
+			cloudUri = arguments
 					.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
 			getData(cloudUri);
 		}
@@ -80,21 +85,9 @@ public class CloudDetailFragment extends Fragment {
 				projection, null, null, null);
 		if (cursor != null) {
 			cursor.moveToFirst();
-			String category = cursor.getString(cursor
-					.getColumnIndexOrThrow(CloudTable.COLUMN_FONT));
-
-			for (int i = 0; i < mCategory.getCount(); i++) {
-
-				String s = (String) mCategory.getItemAtPosition(i);
-				if (s.equalsIgnoreCase(category)) {
-					mCategory.setSelection(i);
-				}
-			}
-
-			mTitleText.setText(cursor.getString(cursor
-					.getColumnIndexOrThrow(CloudTable.COLUMN_TITLE)));
-			mBodyText.setText(cursor.getString(cursor
-					.getColumnIndexOrThrow(CloudTable.COLUMN_CONTENTS)));
+			mItem = cursor.getString(cursor
+					.getColumnIndexOrThrow(CloudTable.COLUMN_CONTENTS));
+			Log.d("text inside mItem", mItem);
 
 			// Always close the cursor
 			cursor.close();
@@ -111,15 +104,13 @@ public class CloudDetailFragment extends Fragment {
 		// handle item selection
 		switch (item.getItemId()) {
 		case R.id.action_edit:
-			Intent detailIntent = new Intent(getActivity()
+			Intent editDetailIntent = new Intent(getActivity()
 					.getApplicationContext(), CloudEditActivity.class);
-			cloudUri = Uri.parse(CloudContentProvider.CONTENT_URI + "/"
-					+ getArguments().getParcelable(ARG_ITEM_ID).toString());
-			detailIntent.putExtra(CloudContentProvider.CONTENT_ITEM_TYPE,
+//			cloudUri = Uri.parse(CloudContentProvider.CONTENT_URI + "/"
+//					+ getArguments().getParcelable(ARG_ITEM_ID).toString());
+			editDetailIntent.putExtra(CloudContentProvider.CONTENT_ITEM_TYPE,
 					cloudUri);
-			startActivity(detailIntent);
-			// Toast.makeText(getActivity().getApplicationContext(),
-			// "TODO: Edit Cloud", Toast.LENGTH_LONG).show();
+			startActivity(editDetailIntent);
 			return true;
 		case R.id.action_exportsvg:
 			Toast.makeText(getActivity().getApplicationContext(),
@@ -147,15 +138,15 @@ public class CloudDetailFragment extends Fragment {
 					getActivity()), "Android");
 			mWebView.setWebViewClient(new MyWebViewClient());
 			mWebView.setWebChromeClient(new MyWebChromeClient());
+
+			String databasePath = mWebView.getContext()
+					.getDir("databases", Context.MODE_PRIVATE).getPath();
+
 			WebSettings webSettings = mWebView.getSettings();
 			webSettings.setBuiltInZoomControls(true);
 			// webSettings.setDefaultFontSize(26);
 			// webSettings.setDefaultZoom(WebSettings.ZoomDensity.CLOSE);
 			webSettings.setJavaScriptEnabled(true);
-			/*
-			 * Let the webview handle persistance in form data
-			 */
-			// webSettings.setSaveFormData(true);
 
 			/*
 			 * Use HTML5 localstorage to maintain app state requires Android 2.1
@@ -165,7 +156,8 @@ public class CloudDetailFragment extends Fragment {
 			webSettings.setAppCacheEnabled(true);
 			webSettings.setDomStorageEnabled(true);
 			webSettings.setDatabaseEnabled(true); // to use webSQL
-			webSettings.setDatabasePath(mOutPath + "databases/");
+			webSettings.setDatabasePath(databasePath);
+
 			/*
 			 * Use HTML5 File API to read files
 			 */
