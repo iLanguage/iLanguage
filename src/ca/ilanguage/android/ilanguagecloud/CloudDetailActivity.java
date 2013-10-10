@@ -9,8 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
 
-
-
 /**
  * An activity representing a single Cloud detail screen. This activity is only
  * used on handset devices. On tablet-size devices, item details are presented
@@ -42,11 +40,15 @@ public class CloudDetailActivity extends FragmentActivity {
 			// Create the detail fragment and add it to the activity
 			// using a fragment transaction.
 			Bundle arguments = new Bundle();
-			arguments.putParcelable(CloudContentProvider.CONTENT_ITEM_TYPE, getIntent().getParcelableExtra(CloudContentProvider.CONTENT_ITEM_TYPE));
+			arguments.putParcelable(
+					CloudContentProvider.CONTENT_ITEM_TYPE,
+					getIntent().getParcelableExtra(
+							CloudContentProvider.CONTENT_ITEM_TYPE));
 
 			CloudDetailFragment fragment = new CloudDetailFragment();
 			fragment.setArguments(arguments);
-			getSupportFragmentManager().beginTransaction().add(R.id.cloud_detail_container, fragment).commit();
+			getSupportFragmentManager().beginTransaction()
+					.add(R.id.cloud_detail_container, fragment).commit();
 		}
 	}
 
@@ -67,9 +69,9 @@ public class CloudDetailActivity extends FragmentActivity {
 			// more details, see the Navigation pattern on Android Design:
 			//
 			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
-			//
 			NavUtils.navigateUpTo(this, new Intent(this,
 					CloudListActivity.class));
+
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

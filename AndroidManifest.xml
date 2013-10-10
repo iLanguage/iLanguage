@@ -33,10 +33,10 @@
         <activity
             android:name="ca.ilanguage.android.ilanguagecloud.CloudEditActivity"
             android:label="@string/title_cloud_edit"
-            android:parentActivityName=".CloudListActivity" >
+            android:parentActivityName=".CloudDetailActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CloudListActivity" />
+                android:value=".CloudDetailActivity" />
         </activity>
         
         <provider

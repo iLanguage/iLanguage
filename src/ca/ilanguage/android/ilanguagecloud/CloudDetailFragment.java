@@ -45,7 +45,8 @@ public class CloudDetailFragment extends Fragment {
 	/**
 	 * The dummy content this fragment is presenting.
 	 */
-	private String mItem;
+	private String mDetailText;
+	private String mFont;
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
@@ -85,9 +86,10 @@ public class CloudDetailFragment extends Fragment {
 				projection, null, null, null);
 		if (cursor != null) {
 			cursor.moveToFirst();
-			mItem = cursor.getString(cursor
+			mDetailText = cursor.getString(cursor
 					.getColumnIndexOrThrow(CloudTable.COLUMN_CONTENTS));
-			Log.d("text inside mItem", mItem);
+			mFont = cursor.getString(cursor
+					.getColumnIndexOrThrow(CloudTable.COLUMN_FONT));
 
 			// Always close the cursor
 			cursor.close();
@@ -131,9 +133,15 @@ public class CloudDetailFragment extends Fragment {
 				container, false);
 
 		// Show the dummy content as text in a TextView.
-		if (mItem != null) {
+		if (mDetailText != null && mFont != null) {
+			JavascriptInterface myJavascriptInterface = new JavascriptInterface(
+					getActivity());
+			
+			myJavascriptInterface.setCloudParams(mDetailText, mFont);
+
 			mWebView = (WebView) rootView.findViewById(R.id.webView1);
-			mWebView.addJavascriptInterface(new JavascriptInterface(getActivity()), "jsinterface");
+			mWebView.addJavascriptInterface(myJavascriptInterface,
+					"jsinterface");
 			mWebView.setWebViewClient(new MyWebViewClient());
 			mWebView.setWebChromeClient(new MyWebChromeClient());
 
@@ -168,8 +176,7 @@ public class CloudDetailFragment extends Fragment {
 	class MyWebChromeClient extends WebChromeClient {
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			mWebView.loadUrl("javascript:console.log('URL: " + url + "')");
-			if (D)
-				Log.d(TAG, "Overrode Url loading in WebChromeClient");
+			if (D) Log.d(TAG, "Overrode Url loading in WebChromeClient");
 			return true;
 		}
 
@@ -186,8 +193,7 @@ public class CloudDetailFragment extends Fragment {
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			mWebView.loadUrl("javascript:console.log('URL: " + url + "')");
-			if (D)
-				Log.d(TAG, "Overrode Url loading in WebViewClient");
+			if (D) Log.d(TAG, "Overrode Url loading in WebViewClient");
 			return true;
 		}
 
