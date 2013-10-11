@@ -38,9 +38,11 @@
 
     <Button
         android:id="@+id/cloud_edit_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:text="@string/cloud_edit_confirm" >
+
     </Button>
 
 </LinearLayout> 

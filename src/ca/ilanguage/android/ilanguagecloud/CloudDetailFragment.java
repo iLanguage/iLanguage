@@ -112,6 +112,10 @@ public class CloudDetailFragment extends Fragment {
 					cloudUri);
 			startActivity(editDetailIntent);
 			return true;
+		case R.id.action_new:
+			Intent intent = new Intent(getActivity(), CloudEditActivity.class);
+			startActivity(intent);
+			return true;
 		case R.id.action_exportsvg:
 			Toast.makeText(getActivity(), "TODO: Export SVG",
 					Toast.LENGTH_SHORT).show();
