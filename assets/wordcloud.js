@@ -1,4 +1,4 @@
-var loadCloud = function(scope, element, attr, userChosenFontFace, textToTurnIntoACloud) {
+var loadCloud = function(element, userChosenFontFace, textToTurnIntoACloud) {
 
   /**
    * D3 word cloud by Jason Davies see http://www.jasondavies.com/wordcloud/ for more details
@@ -33,7 +33,9 @@ var loadCloud = function(scope, element, attr, userChosenFontFace, textToTurnInt
 
   var svg = d3.select(element[0]).append('svg')
     .attr('width', w)
-    .attr('height', h);
+    .attr('height', h)
+    .attr('version', '1.1')
+    .attr('xmlns', 'http://www.w3.org/2000/svg');
 
   var background = svg.append('g'),
     vis = svg.append('g')
@@ -49,22 +51,6 @@ var loadCloud = function(scope, element, attr, userChosenFontFace, textToTurnInt
     discard = /^(@|https?:)/,
     htmlTags = /(<[^>]*?>|<script.*?<\/script>|<style.*?<\/style>|<head.*?><\/head>)/g,
     matchTwitter = /^https?:\/\/([^\.]*\.)?twitter\.com/;
-
-  function parseHTML(d) {
-    parseText(d.replace(htmlTags, ' ').replace(/&#(x?)([\dA-Fa-f]{1,4});/g, function(d, hex, m) {
-      return String.fromCharCode(+((hex ? '0x' : '') + m));
-    }).replace(/&\w+;/g, ' '));
-  }
-
-  function flatten(o, k) {
-    if (typeof o === 'string') return o;
-    var text = [];
-    for (k in o) {
-      var v = flatten(o[k], k);
-      if (v) text.push(v);
-    }
-    return text.join(' ');
-  }
 
   function parseText(text) {
     tags = {};
@@ -157,6 +143,10 @@ var loadCloud = function(scope, element, attr, userChosenFontFace, textToTurnInt
       .delay(1000)
       .duration(750)
       .attr('transform', 'translate(' + [w >> 1, h >> 1] + ')scale(' + scale + ')');
+
+    setPNG();
+    setSVG();
+
   }
 
   function hashchange() {
@@ -164,7 +154,42 @@ var loadCloud = function(scope, element, attr, userChosenFontFace, textToTurnInt
   }
 
   function load(f) {
-    parseText(fetcher);
+    parseText(f);
+  }
+
+  // Converts a given word cloud to image/png.
+  function setPNG() {
+    var canvas = document.createElement('canvas'),
+      c = canvas.getContext('2d');
+    canvas.width = w;
+    canvas.height = h;
+    c.translate(w >> 1, h >> 1);
+    c.scale(scale, scale);
+    words.forEach(function(word, i) {
+      c.save();
+      c.translate(word.x, word.y);
+      c.rotate(word.rotate * Math.PI / 180);
+      c.textAlign = 'center';
+      c.fillStyle = fill(word.text.toLowerCase());
+      c.font = word.size + 'px ' + word.font;
+      c.fillText(word.text, 0, 0);
+      c.restore();
+    });
+    // d3.select(this).attr('href', canvas.toDataURL('image/png'));
+    var currentPNG = canvas.toDataURL('image/png');
+    localStorage.setItem('currentPNG', currentPNG);
+    console.log(localStorage.getItem('currentPNG') || 'null image');
+  }
+
+  function setSVG() {
+    var currentSVG = d3.select('svg');
+    var currentSVGOut = 'data:image/svg+xml;charset=utf-8;base64,' +
+      btoa(unescape(encodeURIComponent(currentSVG.attr('version', '1.1')
+        .attr('xmlns', 'http://www.w3.org/2000/svg')
+        .node().parentNode.innerHTML)));
+
+    localStorage.setItem('currentSVG', currentSVGOut);
+    console.log(localStorage.getItem('currentSVG') || 'null image');
   }
 
   var r = 40.5,
@@ -213,10 +238,6 @@ var loadCloud = function(scope, element, attr, userChosenFontFace, textToTurnInt
     arc = d3.svg.arc()
       .innerRadius(0)
       .outerRadius(r);
-
-  d3.selectAll('#angle-count, #angle-from, #angle-to')
-    .on('change', getAngles)
-    .on('mouseup', getAngles);
 
   getAngles();
 
@@ -301,6 +322,8 @@ var loadCloud = function(scope, element, attr, userChosenFontFace, textToTurnInt
 // var previousFont = localStorage.getItem('previousFont') || 0;
 // localStorage.setItem('previousFont', currentFont);
 
-var cloudFont = window.jsinterface.getCloudFont();
-var cloudText = window.jsinterface.getCloudString();
-loadCloud(null, $('#cloud'), null, cloudFont, cloudText);
+// var cloudFont = window.jsinterface.getCloudFont();
+var cloudFont = 'FreeSans';
+// var cloudText = window.jsinterface.getCloudString();
+var cloudText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus euismod sapien metus, bibendum bibendum arcu interdum in. Maecenas aliquet, arcu scelerisque sodales aliquet, sapien lacus vestibulum risus, eget bibendum massa turpis eu eros. Integer a eros vehicula, fermentum eros vitae, lobortis diam. Pellentesque vitae consectetur ipsum, id viverra est. Nulla quis fringilla purus, ut pharetra nibh. Nunc adipiscing blandit dolor a tristique. Cras porttitor bibendum vestibulum. Vestibulum ornare, nunc feugiat iaculis blandit, velit ligula pretium leo, et rutrum quam lorem pretium nibh. Aliquam vel aliquam massa. Pellentesque odio tellus, pellentesque non diam eu, sodales euismod neque. Vivamus lacus lectus, imperdiet a blandit ac, varius eu metus. Praesent euismod enim eu nisi hendrerit, at accumsan urna cursus. Cras vestibulum cursus turpis, eget mollis lorem tristique vitae. Vivamus quam odio, mollis non egestas ac, aliquam at urna. Ut sed dolor sed ante ultrices sagittis eget id lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque a nulla in orci dignissim mattis. Nunc tristique est sed augue sollicitudin lacinia. Integer eleifend enim nec rhoncus luctus. Fusce ut nibh mollis, pellentesque risus id, feugiat arcu. Cras dapibus nunc gravida mauris cursus, porta elementum ante semper. Quisque eget magna eget orci luctus commodo. Donec ut ipsum rhoncus, blandit ligula in, ultricies justo. Etiam lobortis varius lobortis. Mauris blandit felis aliquet est volutpat, ac luctus lacus condimentum. Suspendisse ut lobortis urna, vel scelerisque nibh. Quisque venenatis risus ac lacinia bibendum. Nullam vel eros eget purus lacinia volutpat quis non metus. In purus risus, egestas vel laoreet vitae, viverra sit amet arcu. Pellentesque cursus velit non posuere venenatis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam blandit metus quis posuere vehicula. Sed aliquam eget nisl id tincidunt. Phasellus quam nisl, ornare eget elementum in, tempor at ligula. Ut et dui mi. Quisque tincidunt rutrum elit. Duis quis consectetur ante, a venenatis ligula. Nullam vitae tempus diam, ac ultrices erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur at nibh malesuada, consectetur lorem ac, fermentum leo. Sed sit amet mauris ligula. Sed imperdiet pharetra lectus, sit amet faucibus nunc pharetra a. Sed vel vestibulum augue, lacinia aliquet nulla. Vivamus vel hendrerit nibh. Nam tempor non dolor vel posuere. Sed fringilla varius nisl eget pulvinar. Nullam nec imperdiet libero, nec vestibulum leo. Duis nisl magna, dictum eget ante a, faucibus mollis sapien. Aenean ac leo sit amet tortor blandit egestas. Mauris nec rhoncus odio. Curabitur vitae dui arcu. Nam aliquam quam risus, vel lobortis augue eleifend quis. Duis nulla dolor, bibendum eget justo sit amet, semper suscipit lacus. Sed consequat aliquam neque, eu cursus nunc facilisis ac. Vestibulum semper ullamcorper tortor et dictum. Suspendisse at consequat sem.';
+loadCloud($('#cloud'), cloudFont, cloudText);

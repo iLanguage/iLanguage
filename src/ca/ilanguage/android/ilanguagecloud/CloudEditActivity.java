@@ -2,11 +2,9 @@ package ca.ilanguage.android.ilanguagecloud;
 
 import android.app.Activity;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
@@ -18,10 +16,12 @@ import android.widget.Toast;
 import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
 import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
 
+
 public class CloudEditActivity extends Activity {
 	private Spinner mFont;
 	private EditText mTitleText;
 	private EditText mBodyText;
+	private final String mTitleCheck = getString(R.string.cloud_edit_title_check);
 
 	private Uri cloudUri;
 
@@ -159,7 +159,7 @@ public class CloudEditActivity extends Activity {
 	}
 
 	private void makeToast() {
-		Toast.makeText(CloudEditActivity.this, "Please maintain a summary",
+		Toast.makeText(CloudEditActivity.this, mTitleCheck,
 				Toast.LENGTH_LONG).show();
 	}
 }

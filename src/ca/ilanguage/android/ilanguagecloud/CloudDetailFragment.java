@@ -19,7 +19,6 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
 import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
 
@@ -117,12 +116,10 @@ public class CloudDetailFragment extends Fragment {
 			startActivity(intent);
 			return true;
 		case R.id.action_exportsvg:
-			Toast.makeText(getActivity(), "TODO: Export SVG",
-					Toast.LENGTH_SHORT).show();
+			mWebView.loadUrl("javascript:downloadSVG()");
 			return true;
 		case R.id.action_exportpng:
-			Toast.makeText(getActivity(), "TODO: Export PNG",
-					Toast.LENGTH_SHORT).show();
+			mWebView.loadUrl("javascript:downloadPNG()");
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

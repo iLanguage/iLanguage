@@ -14,5 +14,7 @@
     <string name="cloud_edit_title">Title</string>
     <string name="cloud_edit_contents">Contents</string>
     <string name="cloud_edit_confirm">Confirm</string>
+
+    <string name="cloud_edit_title_check">Please provide a title for your cloud.</string>
     
 </resources>
