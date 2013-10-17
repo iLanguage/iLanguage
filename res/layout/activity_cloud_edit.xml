@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Spinner
+        android:id="@+id/fonts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/fonts" >
+    </Spinner>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/cloud_edit_title"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/cloud_edit_title"
+            android:imeOptions="actionNext" >
+        </EditText>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/cloud_edit_contents"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="top"
+        android:hint="@string/cloud_edit_contents"
+        android:imeOptions="actionNext" >
+    </EditText>
+
+    <Button
+        android:id="@+id/cloud_edit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/cloud_edit_confirm" >
+
+    </Button>
+
+</LinearLayout> 

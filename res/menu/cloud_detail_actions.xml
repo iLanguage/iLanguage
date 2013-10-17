@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_edit"
+        android:icon="@drawable/ic_action_edit"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/action_edit"/>
+    <item
+        android:id="@+id/action_exportsvg"
+        android:showAsAction="never"
+        android:title="@string/action_exportsvg"
+        android:enabled="true" />
+    <item
+        android:id="@+id/action_exportpng"
+        android:showAsAction="never"
+        android:title="@string/action_exportpng"
+		android:enabled="true" />
+</menu>

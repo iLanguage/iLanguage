@@ -1,23 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ca.ilanguage.android.wordcloud.preprocessor"
+    package="ca.ilanguage.android.ilanguagecloud"
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="8" />
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="18" />
 
     <application
+        android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
         <activity
-            android:label="@string/app_name"
-            android:name=".AndroidWordlePreprocessorActivity" >
-            <intent-filter >
+            android:name="ca.ilanguage.android.ilanguagecloud.CloudListActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="ca.ilanguage.android.ilanguagecloud.CloudDetailActivity"
+            android:label="@string/title_cloud_detail"
+            android:parentActivityName=".CloudListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CloudListActivity" />
+        </activity>
+        <activity
+            android:name="ca.ilanguage.android.ilanguagecloud.CloudEditActivity"
+            android:label="@string/title_cloud_edit"
+            android:parentActivityName=".CloudDetailActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CloudDetailActivity" />
+        </activity>
+        
+        <provider
+            android:name=".contentprovider.CloudContentProvider"
+            android:authorities="ca.ilanguage.android.ilanguagecloud.contentprovider" >
+        </provider>
     </application>
 
 </manifest>

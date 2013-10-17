@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, AndroidWordlePreprocessorActivity!</string>
-    <string name="app_name">AndroidWordlePreprocessor</string>
+    <string name="app_name">iLanguageCloud</string>
+    
+    <string name="title_cloud_detail">Cloud Detail</string>
+    <string name="title_cloud_edit">Cloud Edit</string>
+    
+    <string name="action_new">Create Cloud</string>
+    <string name="action_edit">Edit Cloud</string>
+    <string name="action_exportsvg">Export as SVG</string>
+    <string name="action_exportpng">Export as PNG</string>
+    
+    <string name="cloud_edit_title">Title</string>
+    <string name="cloud_edit_contents">Contents</string>
+    <string name="cloud_edit_confirm">Confirm</string>
 
+    <string name="cloud_edit_title_check">Please provide a title for your cloud.</string>
+    
 </resources>
