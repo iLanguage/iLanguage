@@ -1,8 +1,10 @@
-var loadCloud = function(element, userChosenFontFace, textToTurnIntoACloud) {
+var loadCloud = function(scope, element, userChosenFontFace, textToTurnIntoACloud) {
 
   /**
    * D3 word cloud by Jason Davies see http://www.jasondavies.com/wordcloud/ for more details
    */
+
+  console.log('This is our Android webview: ' + scope);
 
   var fill = d3.scale.category20();
   var w = element.width() || 600,
@@ -104,22 +106,38 @@ var loadCloud = function(element, userChosenFontFace, textToTurnIntoACloud) {
       .style('font-size', function(d) {
         return d.size + 'px';
       });
-    text.enter().append('text')
-      .attr('text-anchor', 'middle')
-      .attr('transform', function(d) {
-        return 'translate(' + [d.x, d.y] + ')rotate(' + d.rotate + ')';
-      })
-      .style('font-size', function(d) {
-        return d.size + 'px';
-      })
-      .on('click', function(d) {
-        $('#gsc-i-id1').val(d.text);
-        $('input.gsc-search-button').click();
-      })
-      .style('opacity', 1e-6)
-      .transition()
-      .duration(1000)
-      .style('opacity', 1);
+
+    // Use transitions for in-browser effect only if we're not
+    // on our Android webview.
+    if (scope === false) {
+      text.enter().append('text')
+        .attr('text-anchor', 'middle')
+        .attr('transform', function(d) {
+          return 'translate(' + [d.x, d.y] + ')rotate(' + d.rotate + ')';
+        })
+        .style('font-size', function(d) {
+          return d.size + 'px';
+        })
+        .on('click', function(d) {
+          $('#gsc-i-id1').val(d.text);
+          $('input.gsc-search-button').click();
+        })
+        .style('opacity', 1e-6)
+        .transition()
+        .duration(500)
+        .style('opacity', 1);
+    } else {
+      text.enter().append('text')
+        .attr('text-anchor', 'middle')
+        .attr('transform', function(d) {
+          return 'translate(' + [d.x, d.y] + ')rotate(' + d.rotate + ')';
+        })
+        .style('opacity', 1)
+        .style('font-size', function(d) {
+          return d.size + 'px';
+        });
+    }
+
     text.style('font-family', function(d) {
       return d.font;
     })
@@ -129,24 +147,28 @@ var loadCloud = function(element, userChosenFontFace, textToTurnIntoACloud) {
       .text(function(d) {
         return d.text;
       });
-    var exitGroup = background.append('g')
-      .attr('transform', vis.attr('transform'));
-    var exitGroupNode = exitGroup.node();
-    text.exit().each(function() {
-      exitGroupNode.appendChild(this);
-    });
-    exitGroup.transition()
-      .duration(1000)
-      .style('opacity', 1e-6)
-      .remove();
-    vis.transition()
-      .delay(1000)
-      .duration(750)
-      .attr('transform', 'translate(' + [w >> 1, h >> 1] + ')scale(' + scale + ')');
 
-    setPNG();
-    setSVG();
-
+    // Use transitions for in-browser effect only if we're not
+    // on our Android webview.
+    if (scope === false) {
+      vis.transition()
+        // .delay(100)
+        .duration(1000)
+        .attr('transform', 'translate(' + [w >> 1, h >> 1] + ')scale(' + scale + ')')
+        .each('end', function() {
+          // setSVG();
+          setPNG();
+        });
+    } else {
+      vis.transition()
+        // .delay(1)
+        .duration(5000)
+        // .attr('transform', 'translate(' + [w >> 1, h >> 1] + ')scale(' + scale + ')')
+        .each('end', function() {
+          // setSVG();
+          setPNG();
+        });
+    }
   }
 
   function hashchange() {
@@ -159,6 +181,7 @@ var loadCloud = function(element, userChosenFontFace, textToTurnIntoACloud) {
 
   // Converts a given word cloud to image/png.
   function setPNG() {
+    console.log('just got to setPNG');
     var canvas = document.createElement('canvas'),
       c = canvas.getContext('2d');
     canvas.width = w;
@@ -175,21 +198,19 @@ var loadCloud = function(element, userChosenFontFace, textToTurnIntoACloud) {
       c.fillText(word.text, 0, 0);
       c.restore();
     });
-    // d3.select(this).attr('href', canvas.toDataURL('image/png'));
     var currentPNG = canvas.toDataURL('image/png');
     localStorage.setItem('currentPNG', currentPNG);
-    console.log(localStorage.getItem('currentPNG') || 'null image');
+    // console.log(currentPNG);
+    if (scope) { window.jsinterface.sendImageToAndroid(currentPNG.match(/[^,]*$/)[0]); }
   }
 
   function setSVG() {
     var currentSVG = d3.select('svg');
     var currentSVGOut = 'data:image/svg+xml;charset=utf-8;base64,' +
-      btoa(unescape(encodeURIComponent(currentSVG.attr('version', '1.1')
-        .attr('xmlns', 'http://www.w3.org/2000/svg')
-        .node().parentNode.innerHTML)));
+      btoa(unescape(encodeURIComponent(currentSVG.node().parentNode.innerHTML)));
 
     localStorage.setItem('currentSVG', currentSVGOut);
-    console.log(localStorage.getItem('currentSVG') || 'null image');
+    console.log(currentSVGOut);
   }
 
   var r = 40.5,
@@ -319,11 +340,15 @@ var loadCloud = function(element, userChosenFontFace, textToTurnIntoACloud) {
   hashchange();
 };
 
-// var previousFont = localStorage.getItem('previousFont') || 0;
-// localStorage.setItem('previousFont', currentFont);
+var userAgent = navigator.userAgent || '';
+var userAgentTest = new RegExp(/iLanguageCloud/g);
+// scope is true only if we're inside our Android application.
+// False for all other browsers.
+var scope = userAgentTest.test(userAgent);
 
-// var cloudFont = window.jsinterface.getCloudFont();
-var cloudFont = 'FreeSans';
-// var cloudText = window.jsinterface.getCloudString();
-var cloudText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus euismod sapien metus, bibendum bibendum arcu interdum in. Maecenas aliquet, arcu scelerisque sodales aliquet, sapien lacus vestibulum risus, eget bibendum massa turpis eu eros. Integer a eros vehicula, fermentum eros vitae, lobortis diam. Pellentesque vitae consectetur ipsum, id viverra est. Nulla quis fringilla purus, ut pharetra nibh. Nunc adipiscing blandit dolor a tristique. Cras porttitor bibendum vestibulum. Vestibulum ornare, nunc feugiat iaculis blandit, velit ligula pretium leo, et rutrum quam lorem pretium nibh. Aliquam vel aliquam massa. Pellentesque odio tellus, pellentesque non diam eu, sodales euismod neque. Vivamus lacus lectus, imperdiet a blandit ac, varius eu metus. Praesent euismod enim eu nisi hendrerit, at accumsan urna cursus. Cras vestibulum cursus turpis, eget mollis lorem tristique vitae. Vivamus quam odio, mollis non egestas ac, aliquam at urna. Ut sed dolor sed ante ultrices sagittis eget id lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque a nulla in orci dignissim mattis. Nunc tristique est sed augue sollicitudin lacinia. Integer eleifend enim nec rhoncus luctus. Fusce ut nibh mollis, pellentesque risus id, feugiat arcu. Cras dapibus nunc gravida mauris cursus, porta elementum ante semper. Quisque eget magna eget orci luctus commodo. Donec ut ipsum rhoncus, blandit ligula in, ultricies justo. Etiam lobortis varius lobortis. Mauris blandit felis aliquet est volutpat, ac luctus lacus condimentum. Suspendisse ut lobortis urna, vel scelerisque nibh. Quisque venenatis risus ac lacinia bibendum. Nullam vel eros eget purus lacinia volutpat quis non metus. In purus risus, egestas vel laoreet vitae, viverra sit amet arcu. Pellentesque cursus velit non posuere venenatis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam blandit metus quis posuere vehicula. Sed aliquam eget nisl id tincidunt. Phasellus quam nisl, ornare eget elementum in, tempor at ligula. Ut et dui mi. Quisque tincidunt rutrum elit. Duis quis consectetur ante, a venenatis ligula. Nullam vitae tempus diam, ac ultrices erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur at nibh malesuada, consectetur lorem ac, fermentum leo. Sed sit amet mauris ligula. Sed imperdiet pharetra lectus, sit amet faucibus nunc pharetra a. Sed vel vestibulum augue, lacinia aliquet nulla. Vivamus vel hendrerit nibh. Nam tempor non dolor vel posuere. Sed fringilla varius nisl eget pulvinar. Nullam nec imperdiet libero, nec vestibulum leo. Duis nisl magna, dictum eget ante a, faucibus mollis sapien. Aenean ac leo sit amet tortor blandit egestas. Mauris nec rhoncus odio. Curabitur vitae dui arcu. Nam aliquam quam risus, vel lobortis augue eleifend quis. Duis nulla dolor, bibendum eget justo sit amet, semper suscipit lacus. Sed consequat aliquam neque, eu cursus nunc facilisis ac. Vestibulum semper ullamcorper tortor et dictum. Suspendisse at consequat sem.';
-loadCloud($('#cloud'), cloudFont, cloudText);
+// Parameters to pass. If scope is true, use our Android JS functions.
+// Otherwise, use our overrides.
+var cloudFont = scope === true ? window.jsinterface.getCloudFont() : 'FreeSans';
+var cloudText = scope === true ? window.jsinterface.getCloudString() : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus euismod sapien metus, bibendum bibendum arcu interdum in. Maecenas aliquet, arcu scelerisque sodales aliquet, sapien lacus vestibulum risus, eget bibendum massa turpis eu eros. Integer a eros vehicula, fermentum eros vitae, lobortis diam. Pellentesque vitae consectetur ipsum, id viverra est. Nulla quis fringilla purus, ut pharetra nibh. Nunc adipiscing blandit dolor a tristique. Cras porttitor bibendum vestibulum. Vestibulum ornare, nunc feugiat iaculis blandit, velit ligula pretium leo, et rutrum quam lorem pretium nibh. Aliquam vel aliquam massa. Pellentesque odio tellus, pellentesque non diam eu, sodales euismod neque. Vivamus lacus lectus, imperdiet a blandit ac, varius eu metus. Praesent euismod enim eu nisi hendrerit, at accumsan urna cursus. Cras vestibulum cursus turpis, eget mollis lorem tristique vitae. Vivamus quam odio, mollis non egestas ac, aliquam at urna. Ut sed dolor sed ante ultrices sagittis eget id lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque a nulla in orci dignissim mattis. Nunc tristique est sed augue sollicitudin lacinia. Integer eleifend enim nec rhoncus luctus. Fusce ut nibh mollis, pellentesque risus id, feugiat arcu. Cras dapibus nunc gravida mauris cursus, porta elementum ante semper. Quisque eget magna eget orci luctus commodo. Donec ut ipsum rhoncus, blandit ligula in, ultricies justo. Etiam lobortis varius lobortis. Mauris blandit felis aliquet est volutpat, ac luctus lacus condimentum. Suspendisse ut lobortis urna, vel scelerisque nibh. Quisque venenatis risus ac lacinia bibendum. Nullam vel eros eget purus lacinia volutpat quis non metus. In purus risus, egestas vel laoreet vitae, viverra sit amet arcu. Pellentesque cursus velit non posuere venenatis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam blandit metus quis posuere vehicula. Sed aliquam eget nisl id tincidunt. Phasellus quam nisl, ornare eget elementum in, tempor at ligula. Ut et dui mi. Quisque tincidunt rutrum elit. Duis quis consectetur ante, a venenatis ligula. Nullam vitae tempus diam, ac ultrices erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur at nibh malesuada, consectetur lorem ac, fermentum leo. Sed sit amet mauris ligula. Sed imperdiet pharetra lectus, sit amet faucibus nunc pharetra a. Sed vel vestibulum augue, lacinia aliquet nulla. Vivamus vel hendrerit nibh. Nam tempor non dolor vel posuere. Sed fringilla varius nisl eget pulvinar. Nullam nec imperdiet libero, nec vestibulum leo. Duis nisl magna, dictum eget ante a, faucibus mollis sapien. Aenean ac leo sit amet tortor blandit egestas. Mauris nec rhoncus odio. Curabitur vitae dui arcu. Nam aliquam quam risus, vel lobortis augue eleifend quis. Duis nulla dolor, bibendum eget justo sit amet, semper suscipit lacus. Sed consequat aliquam neque, eu cursus nunc facilisis ac. Vestibulum semper ullamcorper tortor et dictum. Suspendisse at consequat sem.';
+
+loadCloud(scope, $('#cloud'), cloudFont, cloudText);
