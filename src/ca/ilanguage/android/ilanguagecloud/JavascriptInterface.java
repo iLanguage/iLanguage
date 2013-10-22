@@ -1,16 +1,22 @@
 package ca.ilanguage.android.ilanguagecloud;
 
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Environment;
+import android.util.Base64;
 
 public class JavascriptInterface {
 
 	Context mContext;
+	String mCloudTitle;
 	String mCloudString;
 	String mCloudFont;
 
@@ -28,41 +34,56 @@ public class JavascriptInterface {
 	public String getCloudFont() {
 		return mCloudFont;
 	}
-	
-	@android.webkit.JavascriptInterface
-	public void sendImageToAndroid(String base64ImageString) {
-//		Log.v("should have string from js)", base64ImageString);
-		File externalStorageDir = Environment.getExternalStorageDirectory();
-		File myFile = new File(externalStorageDir, "output.txt");
-		
-		if(myFile.exists()) {
-			try {
-				FileOutputStream fileOut = new FileOutputStream(myFile);
-				OutputStreamWriter fileOutWriter = new OutputStreamWriter(fileOut);
-				fileOutWriter.append(base64ImageString);
-				fileOutWriter.close();
-				fileOut.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else {
-			try {
-				myFile.createNewFile();
-				FileOutputStream fileOut = new FileOutputStream(myFile);
-				OutputStreamWriter fileOutWriter = new OutputStreamWriter(fileOut);
-				fileOutWriter.append(base64ImageString);
-				fileOutWriter.close();
-				fileOut.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		
-	}
-	
-	public void setCloudParams(String mCloudString, String mCloudFont) {
+
+	public void setCloudParams(String mCloudTitle, String mCloudString,
+			String mCloudFont) {
+		this.mCloudTitle = mCloudTitle;
 		this.mCloudString = mCloudString;
 		this.mCloudFont = mCloudFont;
 	}
 
+	@android.webkit.JavascriptInterface
+	public void getLocalStorage(String keyValue, String fileType) {
+		Long currentTime = System.currentTimeMillis() / 1000;
+
+		storeImage(keyValue, this.mCloudTitle + "_" + currentTime.toString()
+				+ "." + fileType);
+
+	}
+
+	public void storeImage(String imageData, String filename) {
+
+		byte[] imageAsBytes = Base64.decode(imageData, 0);
+
+		File filePath = new File(Environment.getExternalStorageDirectory()
+				+ "/iLanguageCloud/exports/");
+		filePath.mkdirs();
+		String fileString = filePath.toString() + filename;
+
+		FileOutputStream fos = null;
+		BufferedOutputStream bos = null;
+
+		try {
+			fos = new FileOutputStream(fileString);
+			bos = new BufferedOutputStream(fos);
+			bos.write(imageAsBytes);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (bos != null) {
+					bos.close();
+					fos.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		mContext.sendBroadcast(new Intent(
+				Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse(fileString)));
+
+	}
 }

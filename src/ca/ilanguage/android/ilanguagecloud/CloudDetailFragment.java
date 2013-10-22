@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,6 +45,7 @@ public class CloudDetailFragment extends Fragment {
 	/**
 	 * The dummy content this fragment is presenting.
 	 */
+	private String mTitleText;
 	private String mDetailText;
 	private String mFont;
 
@@ -85,6 +87,8 @@ public class CloudDetailFragment extends Fragment {
 				projection, null, null, null);
 		if (cursor != null) {
 			cursor.moveToFirst();
+			mTitleText = cursor.getString(cursor
+					.getColumnIndexOrThrow(CloudTable.COLUMN_TITLE));
 			mDetailText = cursor.getString(cursor
 					.getColumnIndexOrThrow(CloudTable.COLUMN_CONTENTS));
 			mFont = cursor.getString(cursor
@@ -116,10 +120,10 @@ public class CloudDetailFragment extends Fragment {
 			startActivity(intent);
 			return true;
 		case R.id.action_exportsvg:
-			mWebView.loadUrl("javascript:downloadSVG()");
+			mWebView.loadUrl("javascript:(function() { var localStorageResult = localStorage.getItem('currentSVGdata'); window.jsinterface.getLocalStorage(localStorageResult, 'svg'); })()");
 			return true;
 		case R.id.action_exportpng:
-			mWebView.loadUrl("javascript:downloadPNG()");
+			mWebView.loadUrl("javascript:(function() { var localStorageResult = localStorage.getItem('currentPNGdata'); window.jsinterface.getLocalStorage(localStorageResult, 'png'); })()");
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -137,8 +141,9 @@ public class CloudDetailFragment extends Fragment {
 		if (mDetailText != null && mFont != null) {
 			JavascriptInterface myJavascriptInterface = new JavascriptInterface(
 					getActivity());
-			
-			myJavascriptInterface.setCloudParams(mDetailText, mFont);
+
+			myJavascriptInterface
+					.setCloudParams(mTitleText, mDetailText, mFont);
 
 			mWebView = (WebView) rootView.findViewById(R.id.webView1);
 			mWebView.addJavascriptInterface(myJavascriptInterface,

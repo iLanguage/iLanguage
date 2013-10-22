@@ -152,20 +152,17 @@ var loadCloud = function(scope, element, userChosenFontFace, textToTurnIntoAClou
     // on our Android webview.
     if (scope === false) {
       vis.transition()
-        // .delay(100)
         .duration(1000)
         .attr('transform', 'translate(' + [w >> 1, h >> 1] + ')scale(' + scale + ')')
         .each('end', function() {
-          // setSVG();
+          setSVG();
           setPNG();
         });
     } else {
       vis.transition()
-        // .delay(1)
-        .duration(5000)
-        // .attr('transform', 'translate(' + [w >> 1, h >> 1] + ')scale(' + scale + ')')
+        .duration(3000)
         .each('end', function() {
-          // setSVG();
+          setSVG();
           setPNG();
         });
     }
@@ -181,7 +178,6 @@ var loadCloud = function(scope, element, userChosenFontFace, textToTurnIntoAClou
 
   // Converts a given word cloud to image/png.
   function setPNG() {
-    console.log('just got to setPNG');
     var canvas = document.createElement('canvas'),
       c = canvas.getContext('2d');
     canvas.width = w;
@@ -199,18 +195,22 @@ var loadCloud = function(scope, element, userChosenFontFace, textToTurnIntoAClou
       c.restore();
     });
     var currentPNG = canvas.toDataURL('image/png');
+    var currentPNGdata = currentPNG.match(/[^,]*$/)[0];
     localStorage.setItem('currentPNG', currentPNG);
+    localStorage.setItem('currentPNGdata', currentPNGdata);
     // console.log(currentPNG);
-    if (scope) { window.jsinterface.sendImageToAndroid(currentPNG.match(/[^,]*$/)[0]); }
+    // if (scope) { window.jsinterface.sendImageToAndroid('png', currentPNG.match(/[^,]*$/)[0]); }
   }
 
   function setSVG() {
     var currentSVG = d3.select('svg');
-    var currentSVGOut = 'data:image/svg+xml;charset=utf-8;base64,' +
-      btoa(unescape(encodeURIComponent(currentSVG.node().parentNode.innerHTML)));
+    var currentSVGEscaped = btoa(unescape(encodeURIComponent(currentSVG.node().parentNode.innerHTML)));
+    var currentSVGOut = 'data:image/svg+xml;charset=utf-8;base64,' + currentSVGEscaped;
 
     localStorage.setItem('currentSVG', currentSVGOut);
-    console.log(currentSVGOut);
+    localStorage.setItem('currentSVGdata', currentSVGEscaped);
+    // console.log(currentSVGOut);
+    // if (scope) { window.jsinterface.sendImageToAndroid('svg', currentSVGOut.match(/[^,]*$/)[0]); }
   }
 
   var r = 40.5,
