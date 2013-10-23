@@ -21,7 +21,7 @@ public class CloudEditActivity extends Activity {
 	private Spinner mFont;
 	private EditText mTitleText;
 	private EditText mBodyText;
-	private final String mTitleCheck = getString(R.string.cloud_edit_title_check);
+	private String mTitleCheck;
 
 	private Uri cloudUri;
 
@@ -37,6 +37,7 @@ public class CloudEditActivity extends Activity {
 		mFont = (Spinner) findViewById(R.id.fonts);
 		mTitleText = (EditText) findViewById(R.id.cloud_edit_title);
 		mBodyText = (EditText) findViewById(R.id.cloud_edit_contents);
+		mTitleCheck = getString(R.string.cloud_edit_title_check);
 		final Button confirmButton = (Button) findViewById(R.id.cloud_edit_button);
 
 		final Bundle extras = getIntent().getExtras();
