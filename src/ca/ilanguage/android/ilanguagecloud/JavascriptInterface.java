@@ -1,17 +1,18 @@
 package ca.ilanguage.android.ilanguagecloud;
 
 import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 import android.content.Context;
-import android.content.Intent;
+import android.media.MediaScannerConnection;
+import android.media.MediaScannerConnection.OnScanCompletedListener;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Base64;
+import android.util.Log;
 
 public class JavascriptInterface {
 
@@ -19,6 +20,7 @@ public class JavascriptInterface {
 	String mCloudTitle;
 	String mCloudString;
 	String mCloudFont;
+	public static String[] fileMimeType = new String[0];
 
 	/** Instantiate the interface and set the context */
 	JavascriptInterface(Context c) {
@@ -37,28 +39,29 @@ public class JavascriptInterface {
 
 	public void setCloudParams(String mCloudTitle, String mCloudString,
 			String mCloudFont) {
-		this.mCloudTitle = mCloudTitle;
+		this.mCloudTitle = mCloudTitle.replaceAll("\\W+", "");
 		this.mCloudString = mCloudString;
 		this.mCloudFont = mCloudFont;
 	}
 
 	@android.webkit.JavascriptInterface
 	public void getLocalStorage(String keyValue, String fileType) {
-		Long currentTime = System.currentTimeMillis() / 1000;
-
+		Long currentTime = System.currentTimeMillis();
+		
 		storeImage(keyValue, this.mCloudTitle + "_" + currentTime.toString()
-				+ "." + fileType);
+				+ "." + fileType, fileType);
 
 	}
 
-	public void storeImage(String imageData, String filename) {
+	public void storeImage(String imageData, String filename, String fileType) {
 
 		byte[] imageAsBytes = Base64.decode(imageData, 0);
+		fileMimeType[0] = fileType == "png" ? "image/png" : "image/svg+xml";
 
 		File filePath = new File(Environment.getExternalStorageDirectory()
-				+ "/iLanguageCloud/exports/");
+				+ "/iLanguageCloud/");
 		filePath.mkdirs();
-		String fileString = filePath.toString() + filename;
+		String fileString = filePath.toString() + "/" + filename;
 
 		FileOutputStream fos = null;
 		BufferedOutputStream bos = null;
@@ -82,8 +85,15 @@ public class JavascriptInterface {
 			}
 		}
 
-		mContext.sendBroadcast(new Intent(
-				Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse(fileString)));
+		MediaScannerConnection.scanFile(mContext,
+				new String[] { fileString }, fileMimeType,
+				new OnScanCompletedListener() {
+					@Override
+					public void onScanCompleted(String path, Uri uri) {
+						Log.v("testing updater", "file " + path
+								+ " was scanned successfully: " + uri);
+					}
+				});
 
 	}
 }
