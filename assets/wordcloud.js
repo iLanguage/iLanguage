@@ -339,8 +339,8 @@ var loadCloud = function(isAndroid, element, userChosenFontFace, textToTurnIntoA
 };
 
 var tempLoader = "<div id='loading' style='" +
-  "position:absolute;width:100px;height:50px;top:50%;left:50%;" +
-  "margin:-25px 0 0 -50px;text-align:center;font-family:sans-serif;" +
+  'position:absolute;width:100px;height:50px;top:50%;left:50%;' +
+  'margin:-25px 0 0 -50px;text-align:center;font-family:sans-serif;' +
   "font-weight:700;font-size:24px'>Rendering...</div>";
 $('body').append(tempLoader);
 

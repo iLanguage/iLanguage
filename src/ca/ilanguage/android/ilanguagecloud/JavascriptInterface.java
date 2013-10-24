@@ -5,12 +5,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.media.MediaScannerConnection;
 import android.media.MediaScannerConnection.OnScanCompletedListener;
 import android.net.Uri;
@@ -60,7 +63,7 @@ public class JavascriptInterface {
 
 	}
 
-	public void storeImage(String imageData, String filename, String fileType) {
+	private void storeImage(String imageData, String filename, String fileType) {
 
 		byte[] imageAsBytes = Base64.decode(imageData, 0);
 
@@ -70,7 +73,7 @@ public class JavascriptInterface {
 
 		String fileString = filePath.toString() + "/" + filename;
 		saveFileLocation[0] = fileString;
-		saveMimeType[0] = fileType == "png" ? "image/png" : "image/svg+xml";
+		saveMimeType[0] = (fileType.equalsIgnoreCase("png")) ? "image/png" : "image/svg+xml";
 
 		FileOutputStream fos = null;
 		BufferedOutputStream bos = null;
@@ -107,16 +110,24 @@ public class JavascriptInterface {
 				});
 	}
 	
-	public void notifyUser(Uri uri, String imageMimeType) {
-		Intent intent = new Intent();
-		intent.setAction(Intent.ACTION_GET_CONTENT);
-		intent.setDataAndType(uri, imageMimeType);
+	private void notifyUser(Uri uri, String imageMimeType) {
+		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+		intent.setType(imageMimeType);
 
-		PendingIntent pIntent = PendingIntent.getActivity(mContext, 0, intent, 0);
+		PackageManager packageManager = mContext.getPackageManager();
+		List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
+		boolean isIntentSafe = activities.size() > 0;
+
+		if (!isIntentSafe) { return; }
+
+		String titlePrompt = "Open image with";
+		Intent chooser = Intent.createChooser(intent, titlePrompt);
+
+		PendingIntent pIntent = PendingIntent.getActivity(mContext, 0, chooser, 0);
 
 		Notification n  = new NotificationCompat.Builder(mContext)
 		        .setContentTitle("Image saved successfully.")
-		        .setContentText("PNG files are viewable in the Gallery. SVG images require an SVG viewer.")
+		        .setContentText("Only PNGs are viewable in the Gallery.")
 		        .setSmallIcon(R.drawable.ic_launcher)
 		        .setTicker("Image saved successfully. Click to view.")
 		        .setContentIntent(pIntent)
