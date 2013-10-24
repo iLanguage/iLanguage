@@ -112,7 +112,7 @@ public class JavascriptInterface {
 	
 	private void notifyUser(Uri uri, String imageMimeType) {
 		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-		intent.setType(imageMimeType);
+//		intent.setType(imageMimeType);
 
 		PackageManager packageManager = mContext.getPackageManager();
 		List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
