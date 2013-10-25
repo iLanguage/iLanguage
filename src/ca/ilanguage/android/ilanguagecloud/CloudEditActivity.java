@@ -16,7 +16,6 @@ import android.widget.Toast;
 import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
 import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
 
-
 public class CloudEditActivity extends Activity {
 	private Spinner mFont;
 	private EditText mTitleText;
@@ -32,15 +31,16 @@ public class CloudEditActivity extends Activity {
 
 		String name = this.getClass().getName();
 		String[] strings = name.split("\\.");
-		Log.v("crashfix", "onCreate " + strings[strings.length - 1] + " " + name);
+		Log.v("crashfix", "onCreate " + strings[strings.length - 1] + " "
+				+ name);
 
 		mFont = (Spinner) findViewById(R.id.fonts);
 		mTitleText = (EditText) findViewById(R.id.cloud_edit_title);
 		mBodyText = (EditText) findViewById(R.id.cloud_edit_contents);
 		mTitleCheck = getString(R.string.cloud_edit_title_check);
-		final Button confirmButton = (Button) findViewById(R.id.cloud_edit_button);
+		Button confirmButton = (Button) findViewById(R.id.cloud_edit_button);
 
-		final Bundle extras = getIntent().getExtras();
+		Bundle extras = getIntent().getExtras();
 
 		// Check from the saved Instance
 		cloudUri = (savedInstanceState == null) ? null
@@ -70,18 +70,18 @@ public class CloudEditActivity extends Activity {
 	}
 
 	private void fillData(Uri uri) {
-		final String[] projection = { CloudTable.COLUMN_TITLE,
+		String[] projection = { CloudTable.COLUMN_TITLE,
 				CloudTable.COLUMN_CONTENTS, CloudTable.COLUMN_FONT };
-		final Cursor cursor = getContentResolver().query(uri, projection, null,
-				null, null);
+		Cursor cursor = getContentResolver().query(uri, projection, null, null,
+				null);
 		if (cursor != null) {
 			cursor.moveToFirst();
-			final String category = cursor.getString(cursor
+			String category = cursor.getString(cursor
 					.getColumnIndexOrThrow(CloudTable.COLUMN_FONT));
 
 			for (int i = 0; i < mFont.getCount(); i++) {
 
-				final String s = (String) mFont.getItemAtPosition(i);
+				String s = (String) mFont.getItemAtPosition(i);
 				if (s.equalsIgnoreCase(category)) {
 					mFont.setSelection(i);
 				}
@@ -101,10 +101,12 @@ public class CloudEditActivity extends Activity {
 	protected void onSaveInstanceState(Bundle outState) {
 		String name = this.getClass().getName();
 		String[] strings = name.split("\\.");
-		Log.v("crashfix", "onSaveInstanceState " + strings[strings.length - 1] + " " + name);
+		Log.v("crashfix", "onSaveInstanceState " + strings[strings.length - 1]
+				+ " " + name);
+
 		super.onSaveInstanceState(outState);
+		saveState();
 		outState.putParcelable(CloudContentProvider.CONTENT_ITEM_TYPE, cloudUri);
-//		saveState();
 	}
 
 	@Override
@@ -112,6 +114,7 @@ public class CloudEditActivity extends Activity {
 		String name = this.getClass().getName();
 		String[] strings = name.split("\\.");
 		Log.v("crashfix", "onPause " + strings[strings.length - 1] + " " + name);
+
 		super.onPause();
 		saveState();
 	}
@@ -120,8 +123,6 @@ public class CloudEditActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			// NavUtils.navigateUpTo(this, new Intent(this,
-			// CloudEditActivity.class));
 			if (TextUtils.isEmpty(mTitleText.getText().toString())) {
 				makeToast();
 			} else {
@@ -135,16 +136,21 @@ public class CloudEditActivity extends Activity {
 	}
 
 	private void saveState() {
-		final String category = (String) mFont.getSelectedItem();
-		final String summary = mTitleText.getText().toString();
-		final String description = mBodyText.getText().toString();
+		String name = this.getClass().getName();
+		String[] strings = name.split("\\.");
+		Log.v("crashfix", "saveState " + strings[strings.length - 1] + " "
+				+ name);
+
+		String category = (String) mFont.getSelectedItem();
+		String summary = mTitleText.getText().toString();
+		String description = mBodyText.getText().toString();
 
 		// Only save if either summary or description
 		// is available
 
 		if (description.length() == 0 && summary.length() == 0) { return; }
 
-		final ContentValues values = new ContentValues();
+		ContentValues values = new ContentValues();
 		values.put(CloudTable.COLUMN_FONT, category);
 		values.put(CloudTable.COLUMN_TITLE, summary);
 		values.put(CloudTable.COLUMN_CONTENTS, description);
@@ -160,7 +166,7 @@ public class CloudEditActivity extends Activity {
 	}
 
 	private void makeToast() {
-		Toast.makeText(CloudEditActivity.this, mTitleCheck,
-				Toast.LENGTH_LONG).show();
+		Toast.makeText(CloudEditActivity.this, mTitleCheck, Toast.LENGTH_LONG)
+				.show();
 	}
 }

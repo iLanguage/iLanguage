@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
 
 /**
@@ -32,6 +33,11 @@ public class CloudListActivity extends FragmentActivity implements
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		String name = this.getClass().getName();
+		String[] strings = name.split("\\.");
+		Log.v("crashfix", "onCreate " + strings[strings.length - 1] + " "
+				+ name);
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cloud_list);
 
@@ -57,15 +63,15 @@ public class CloudListActivity extends FragmentActivity implements
 	 */
 	@Override
 	public void onItemSelected(long id) {
+
+		Bundle arguments = new Bundle();
+		Uri cloudUri = Uri.parse(CloudContentProvider.CONTENT_URI + "/" + id);
+		arguments.putParcelable(CloudContentProvider.CONTENT_ITEM_TYPE, cloudUri);
+
 		if (mTwoPane) {
 			// In two-pane mode, show the detail view in this activity by
 			// adding or replacing the detail fragment using a
 			// fragment transaction.
-			Bundle arguments = new Bundle();
-			Uri cloudUri = Uri.parse(CloudContentProvider.CONTENT_URI + "/"
-					+ id);
-			arguments.putParcelable(CloudContentProvider.CONTENT_ITEM_TYPE,
-					cloudUri);
 
 			CloudDetailFragment fragment = new CloudDetailFragment();
 			fragment.setArguments(arguments);
@@ -76,10 +82,7 @@ public class CloudListActivity extends FragmentActivity implements
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.
 			Intent detailIntent = new Intent(this, CloudDetailActivity.class);
-			Uri cloudUri = Uri.parse(CloudContentProvider.CONTENT_URI + "/"
-					+ id);
-			detailIntent.putExtra(CloudContentProvider.CONTENT_ITEM_TYPE,
-					cloudUri);
+			detailIntent.putExtras(arguments);
 			startActivity(detailIntent);
 		}
 	}

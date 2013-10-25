@@ -60,18 +60,13 @@ public class CloudDetailFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 
-		Bundle extras = getActivity().getIntent().getExtras();
 		Bundle arguments = getArguments();
 
 		cloudUri = (savedInstanceState == null) ? null
 				: (Uri) savedInstanceState
 						.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
 
-		if (extras != null) {
-			cloudUri = extras
-					.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
-			getData(cloudUri);
-		} else if (arguments != null) {
+		if (arguments != null) {
 			cloudUri = arguments
 					.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
 			getData(cloudUri);
