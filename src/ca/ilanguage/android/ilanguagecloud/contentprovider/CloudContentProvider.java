@@ -25,17 +25,12 @@ public class CloudContentProvider extends ContentProvider {
 	private static final int CLOUD_ID = 20;
 
 	private static final String AUTHORITY = "ca.ilanguage.android.ilanguagecloud.contentprovider";
-
 	private static final String BASE_PATH = "clouds";
-	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY
-			+ "/" + BASE_PATH);
-	public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
-			+ "/clouds";
-	public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
-			+ "/cloud";
+	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
+	public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/clouds";
+	public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/cloud";
 
-	private static final UriMatcher sURIMatcher = new UriMatcher(
-			UriMatcher.NO_MATCH);
+	private static final UriMatcher sURIMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 	static {
 		sURIMatcher.addURI(AUTHORITY, BASE_PATH, CLOUDS);
 		sURIMatcher.addURI(AUTHORITY, BASE_PATH + "/#", CLOUD_ID);
