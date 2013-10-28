@@ -3,6 +3,7 @@ package ca.ilanguage.android.ilanguagecloud;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
@@ -10,11 +11,15 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
+import android.widget.TextView;
 import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
 import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
 
@@ -37,6 +42,7 @@ public class CloudListFragment extends ListFragment implements
 	 * activated item position. Only used on tablets.
 	 */
 	private static final String STATE_ACTIVATED_POSITION = "activated_position";
+	private static final int DELETE_ID = Menu.FIRST + 1;
 
 	/**
 	 * The fragment's current callback object, which is notified of list item
@@ -82,12 +88,18 @@ public class CloudListFragment extends ListFragment implements
 	public void onCreate(Bundle savedInstanceState) {
 		String name = this.getClass().getName();
 		String[] strings = name.split("\\.");
-		Log.v("crashfix", "onCreate " + strings[strings.length - 1] + " " + name);
+		Log.v("crashfix", "onCreate " + strings[strings.length - 1] + " "
+				+ name);
 
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
-
 		fillData();
+	}
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		registerForContextMenu(getListView());
 	}
 
 	@Override
@@ -95,6 +107,7 @@ public class CloudListFragment extends ListFragment implements
 		inflater.inflate(R.menu.cloud_list_actions, menu);
 	}
 
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.action_new:
@@ -103,6 +116,32 @@ public class CloudListFragment extends ListFragment implements
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		
+		AdapterContextMenuInfo info = (AdapterContextMenuInfo) menuInfo;
+		CharSequence title = ((TextView) info.targetView).getText();
+		menu.setHeaderTitle(R.string.list_delete_header);
+		menu.add(0, DELETE_ID, 0, getString(R.string.list_delete) + ": '" + (String) title + "'");
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case DELETE_ID:
+			AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
+					.getMenuInfo();
+			Uri uri = Uri.parse(CloudContentProvider.CONTENT_URI + "/"
+					+ info.id);
+			getActivity().getContentResolver().delete(uri, null, null);
+			fillData();
+			return true;
+		}
+		return super.onContextItemSelected(item);
 	}
 
 	@Override
@@ -122,10 +161,8 @@ public class CloudListFragment extends ListFragment implements
 		super.onAttach(activity);
 
 		// Activities containing this fragment must implement its callbacks.
-		if (!(activity instanceof Callbacks)) {
-			throw new IllegalStateException(
-					"Activity must implement fragment's callbacks.");
-		}
+		if (!(activity instanceof Callbacks)) { throw new IllegalStateException(
+				"Activity must implement fragment's callbacks."); }
 
 		mCallbacks = (Callbacks) activity;
 	}
@@ -145,7 +182,6 @@ public class CloudListFragment extends ListFragment implements
 
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
-		// mCallbacks.onItemSelected(DummyContent.ITEMS.get(position).id);
 		mCallbacks.onItemSelected(id);
 	}
 
@@ -183,7 +219,8 @@ public class CloudListFragment extends ListFragment implements
 	private void fillData() {
 		String name = this.getClass().getName();
 		String[] strings = name.split("\\.");
-		Log.v("crashfix", "fillData " + strings[strings.length - 1] + " " + name);
+		Log.v("crashfix", "fillData " + strings[strings.length - 1] + " "
+				+ name);
 
 		String[] from = new String[] { CloudTable.COLUMN_TITLE };
 		int[] to = new int[] { android.R.id.text1 };

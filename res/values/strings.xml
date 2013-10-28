@@ -11,6 +11,9 @@
     <string name="action_exportsvg">Export as SVG</string>
     <string name="action_exportpng">Export as PNG</string>
     
+    <string name="list_delete_header">Warning!</string>
+    <string name="list_delete">Delete</string>
+    
     <string name="cloud_edit_title">Title</string>
     <string name="cloud_edit_contents">Contents</string>
     <string name="cloud_edit_confirm">Confirm</string>

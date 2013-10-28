@@ -105,7 +105,7 @@ public class CloudEditActivity extends Activity {
 				+ " " + name);
 
 		super.onSaveInstanceState(outState);
-		saveState();
+//		saveState();
 		outState.putParcelable(CloudContentProvider.CONTENT_ITEM_TYPE, cloudUri);
 	}
 
@@ -116,7 +116,7 @@ public class CloudEditActivity extends Activity {
 		Log.v("crashfix", "onPause " + strings[strings.length - 1] + " " + name);
 
 		super.onPause();
-		saveState();
+//		saveState();
 	}
 
 	@Override
