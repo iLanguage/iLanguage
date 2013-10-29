@@ -20,7 +20,6 @@ import android.net.Uri;
 import android.os.Environment;
 import android.support.v4.app.NotificationCompat;
 import android.util.Base64;
-import android.util.Log;
 
 public class JavascriptInterface {
 
@@ -73,7 +72,8 @@ public class JavascriptInterface {
 
 		String fileString = filePath.toString() + "/" + filename;
 		saveFileLocation[0] = fileString;
-		saveMimeType[0] = (fileType.equalsIgnoreCase("png")) ? "image/png" : "image/svg+xml";
+		saveMimeType[0] = (fileType.equalsIgnoreCase("png")) ? "image/png"
+				: "image/svg+xml";
 
 		FileOutputStream fos = null;
 		BufferedOutputStream bos = null;
@@ -101,21 +101,16 @@ public class JavascriptInterface {
 				saveMimeType, new OnScanCompletedListener() {
 					@Override
 					public void onScanCompleted(String path, Uri uri) {
-						Log.v("testing updater", "file " + path
-								+ " was scanned successfully: " + uri);
-
 						notifyUser(uri, saveMimeType[0], saveFileLocation[0]);
-
 					}
 				});
 	}
-	
+
 	private void notifyUser(Uri uri, String imageMimeType, String savePath) {
-		
+
 		Intent intent = new Intent();
 
-		// Special handling for SVG images. 
-		// Otherwise, treat as PNG.
+		// Special handling for SVG images. Otherwise, treat as PNG.
 		if (imageMimeType.equalsIgnoreCase("image/svg+xml")) {
 			Uri fileUri = Uri.fromFile(new File(savePath));
 			intent.setAction(Intent.ACTION_SEND);
@@ -137,17 +132,17 @@ public class JavascriptInterface {
 
 		PendingIntent pIntent = PendingIntent.getActivity(mContext, 0, chooser, 0);
 
-		Notification n  = new NotificationCompat.Builder(mContext)
-		        .setContentTitle("Image saved successfully.")
-		        .setContentText("Only PNGs are viewable in the Gallery.")
-		        .setSmallIcon(R.drawable.ic_launcher)
-		        .setTicker("Saved successfully. Click to view or share.")
-		        .setContentIntent(pIntent)
-		        .setAutoCancel(true)
-		        .build();
+		Notification n = new NotificationCompat.Builder(mContext)
+				.setContentTitle("Image saved successfully.")
+				.setContentText("Only PNGs are viewable in the Gallery.")
+				.setSmallIcon(R.drawable.ic_launcher)
+				.setTicker("Saved successfully. Click to access.")
+				.setContentIntent(pIntent)
+				.setAutoCancel(true)
+				.build();
 
-		NotificationManager notificationManager = 
-				(NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+		NotificationManager notificationManager = (NotificationManager) mContext
+				.getSystemService(Context.NOTIFICATION_SERVICE);
 
 		notificationManager.notify(0, n);
 	}
