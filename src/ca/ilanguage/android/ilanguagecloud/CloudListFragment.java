@@ -1,6 +1,8 @@
 package ca.ilanguage.android.ilanguagecloud;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -126,19 +128,19 @@ public class CloudListFragment extends ListFragment implements
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) menuInfo;
 		CharSequence title = ((TextView) info.targetView).getText();
 		menu.setHeaderTitle(R.string.list_delete_header);
-		menu.add(0, DELETE_ID, 0, getString(R.string.list_delete) + ": '" + (String) title + "'");
+		menu.add(0, DELETE_ID, 0, getString(R.string.list_delete) + " '" + (String) title + "'");
 	}
 
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case DELETE_ID:
-			AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
-					.getMenuInfo();
-			Uri uri = Uri.parse(CloudContentProvider.CONTENT_URI + "/"
-					+ info.id);
-			getActivity().getContentResolver().delete(uri, null, null);
-			fillData();
+			AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+			Uri uri = Uri.parse(CloudContentProvider.CONTENT_URI + "/" + info.id);
+
+			AlertDialog diaBox = AskOption(uri);
+			diaBox.show();
+
 			return true;
 		}
 		return super.onContextItemSelected(item);
@@ -231,6 +233,34 @@ public class CloudListFragment extends ListFragment implements
 				0);
 
 		setListAdapter(adapter);
+	}
+	
+	private AlertDialog AskOption(final Uri uri) {
+		AlertDialog deleteConfirmationDialog = new AlertDialog.Builder(getActivity())
+			.setTitle(R.string.confirm_delete_header)
+			.setMessage(R.string.confirm_delete)
+			
+			.setPositiveButton(R.string.confirm_delete_positive, new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					getActivity().getContentResolver().delete(uri, null, null);
+					fillData();
+					dialog.dismiss();
+				}
+			})
+			
+			.setNegativeButton(R.string.confirm_delete_negative, new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+				}
+			})
+			
+			.create();
+		
+		return deleteConfirmationDialog;
 	}
 
 	@Override
