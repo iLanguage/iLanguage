@@ -113,7 +113,7 @@ public class CloudListFragment extends ListFragment implements
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.action_new:
-			Intent intent = new Intent(getActivity(), CloudEditActivity.class);
+			Intent intent = new Intent(getActivity().getApplicationContext(), CloudEditActivity.class);
 			startActivity(intent);
 			return true;
 		}

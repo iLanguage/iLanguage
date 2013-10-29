@@ -105,7 +105,7 @@ public class CloudEditActivity extends Activity {
 				+ " " + name);
 
 		super.onSaveInstanceState(outState);
-//		saveState();
+		saveState();
 		outState.putParcelable(CloudContentProvider.CONTENT_ITEM_TYPE, cloudUri);
 	}
 
@@ -159,8 +159,10 @@ public class CloudEditActivity extends Activity {
 			// New cloud
 			cloudUri = getContentResolver().insert(
 					CloudContentProvider.CONTENT_URI, values);
+			Log.v("crashfix", "Here is new cloudUri: " + cloudUri.toString());
 		} else {
 			// Update cloud
+			Log.v("crashfix", "Here is existing cloudUri: " + cloudUri.toString());
 			getContentResolver().update(cloudUri, values, null, null);
 		}
 	}
