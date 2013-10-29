@@ -104,15 +104,27 @@ public class JavascriptInterface {
 						Log.v("testing updater", "file " + path
 								+ " was scanned successfully: " + uri);
 
-						notifyUser(uri, saveMimeType[0]);
+						notifyUser(uri, saveMimeType[0], saveFileLocation[0]);
 
 					}
 				});
 	}
 	
-	private void notifyUser(Uri uri, String imageMimeType) {
-		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//		intent.setType(imageMimeType);
+	private void notifyUser(Uri uri, String imageMimeType, String savePath) {
+		
+		Intent intent = new Intent();
+
+		// Special handling for SVG images. 
+		// Otherwise, treat as PNG.
+		if (imageMimeType.equalsIgnoreCase("image/svg+xml")) {
+			Uri fileUri = Uri.fromFile(new File(savePath));
+			intent.setAction(Intent.ACTION_SEND);
+			intent.putExtra(Intent.EXTRA_STREAM, fileUri);
+			intent.setType(imageMimeType);
+		} else {
+			intent.setAction(Intent.ACTION_VIEW);
+			intent.setDataAndType(uri, imageMimeType);
+		}
 
 		PackageManager packageManager = mContext.getPackageManager();
 		List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
@@ -129,7 +141,7 @@ public class JavascriptInterface {
 		        .setContentTitle("Image saved successfully.")
 		        .setContentText("Only PNGs are viewable in the Gallery.")
 		        .setSmallIcon(R.drawable.ic_launcher)
-		        .setTicker("Image saved successfully. Click to view.")
+		        .setTicker("Saved successfully. Click to view or share.")
 		        .setContentIntent(pIntent)
 		        .setAutoCancel(true)
 		        .build();

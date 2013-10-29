@@ -116,7 +116,7 @@ public class CloudEditActivity extends Activity {
 		Log.v("crashfix", "onPause " + strings[strings.length - 1] + " " + name);
 
 		super.onPause();
-//		saveState();
+		saveState();
 	}
 
 	@Override
