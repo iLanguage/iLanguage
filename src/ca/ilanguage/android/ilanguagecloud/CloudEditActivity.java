@@ -23,6 +23,7 @@ public class CloudEditActivity extends Activity {
 	private String mTitleCheck;
 
 	private Uri cloudUri;
+	private boolean cameFromAfar = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class CloudEditActivity extends Activity {
 		
 		// Check for incoming intent from another application
 		if (Intent.ACTION_SEND.equals(action) && type != null){
+			cameFromAfar = true;
 			if ("text/plain".equals(type)) {
 				incomingTextData(intent);
 			}
@@ -70,7 +72,13 @@ public class CloudEditActivity extends Activity {
 				} else {
 					setResult(RESULT_OK);
 					saveState();
-					finish();
+					if (cameFromAfar == true) {
+						Intent intent = new Intent(CloudEditActivity.this, CloudListActivity.class);
+						startActivity(intent);
+						finish();
+					} else {
+						finish();
+					}
 				}
 			}
 
