@@ -2,6 +2,7 @@ package ca.ilanguage.android.ilanguagecloud;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,26 +28,38 @@ public class CloudEditActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cloud_edit);
+		
+		Intent intent = getIntent();
 
 		mFont = (Spinner) findViewById(R.id.fonts);
 		mTitleText = (EditText) findViewById(R.id.cloud_edit_title);
 		mBodyText = (EditText) findViewById(R.id.cloud_edit_contents);
 		mTitleCheck = getString(R.string.cloud_edit_title_check);
 		Button confirmButton = (Button) findViewById(R.id.cloud_edit_button);
+		
+		String action = intent.getAction();
+		String type = intent.getType();
+		
+		// Check for incoming intent from another application
+		if (Intent.ACTION_SEND.equals(action) && type != null){
+			if ("text/plain".equals(type)) {
+				incomingTextData(intent);
+			}
+		} else {
+			Bundle extras = intent.getExtras();
 
-		Bundle extras = getIntent().getExtras();
+			// Check from the saved Instance
+			cloudUri = (savedInstanceState == null) ? null
+					: (Uri) savedInstanceState
+							.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
 
-		// Check from the saved Instance
-		cloudUri = (savedInstanceState == null) ? null
-				: (Uri) savedInstanceState
+			// Or passed from main activity
+			if (extras != null) {
+				cloudUri = extras
 						.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
 
-		// Or passed from the other activity
-		if (extras != null) {
-			cloudUri = extras
-					.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
-
-			fillData(cloudUri);
+				fillData(cloudUri);
+			}
 		}
 
 		confirmButton.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +75,13 @@ public class CloudEditActivity extends Activity {
 			}
 
 		});
+	}
+	
+	private void incomingTextData(Intent intent) {
+		String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
+		if (sharedText != null) {
+			mBodyText.setText(sharedText);
+		}
 	}
 
 	private void fillData(Uri uri) {
