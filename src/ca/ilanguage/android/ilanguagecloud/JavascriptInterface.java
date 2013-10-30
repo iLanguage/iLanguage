@@ -135,7 +135,7 @@ public class JavascriptInterface {
 		Notification n = new NotificationCompat.Builder(mContext)
 				.setContentTitle("Image saved successfully.")
 				.setContentText("Only PNGs are viewable in the Gallery.")
-				.setSmallIcon(R.drawable.ic_launcher)
+				.setSmallIcon(R.drawable.ic_stat_ilanguage_logo)
 				.setTicker("Saved successfully. Click to access.")
 				.setContentIntent(pIntent)
 				.setAutoCancel(true)
