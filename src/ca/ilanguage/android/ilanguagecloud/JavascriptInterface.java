@@ -14,6 +14,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
 import android.media.MediaScannerConnection.OnScanCompletedListener;
 import android.net.Uri;
@@ -105,20 +107,30 @@ public class JavascriptInterface {
 					}
 				});
 	}
-
+	
 	private void notifyUser(Uri uri, String imageMimeType, String savePath) {
-
+		
 		Intent intent = new Intent();
+		PendingIntent pIntent;
 
 		// Special handling for SVG images. Otherwise, treat as PNG.
 		if (imageMimeType.equalsIgnoreCase("image/svg+xml")) {
+			// In order for attachment to get the proper file extension
+			// get the fileUri from the previously saved path
 			Uri fileUri = Uri.fromFile(new File(savePath));
 			intent.setAction(Intent.ACTION_SEND);
 			intent.putExtra(Intent.EXTRA_STREAM, fileUri);
 			intent.setType(imageMimeType);
+			
+			// Use a share chooser for SVG
+			String titlePrompt = mContext.getString(R.string.notification_chooser_title);
+			Intent chooser = Intent.createChooser(intent, titlePrompt);
+			pIntent = PendingIntent.getActivity(mContext, 1, chooser, 0);
 		} else {
+			// PNG is easier, as we just call a view intent
 			intent.setAction(Intent.ACTION_VIEW);
 			intent.setDataAndType(uri, imageMimeType);
+			pIntent = PendingIntent.getActivity(mContext, 1, intent, 0);
 		}
 
 		PackageManager packageManager = mContext.getPackageManager();
@@ -126,17 +138,15 @@ public class JavascriptInterface {
 		boolean isIntentSafe = activities.size() > 0;
 
 		if (!isIntentSafe) { return; }
-
-		String titlePrompt = "Open image with";
-		Intent chooser = Intent.createChooser(intent, titlePrompt);
-
-		PendingIntent pIntent = PendingIntent.getActivity(mContext, 0, chooser, 0);
-
+		
+		Bitmap bm = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.ic_launcher_web);
+  
 		Notification n = new NotificationCompat.Builder(mContext)
-				.setContentTitle("Image saved successfully.")
-				.setContentText("Only PNGs are viewable in the Gallery.")
+				.setContentTitle(mContext.getString(R.string.notification_title))
+				.setContentText(mContext.getString(R.string.notificaiton_text))
 				.setSmallIcon(R.drawable.ic_stat_ilanguage_logo)
-				.setTicker("Saved successfully. Click to access.")
+				.setLargeIcon(bm)
+				.setTicker(mContext.getString(R.string.notification_ticker))
 				.setContentIntent(pIntent)
 				.setAutoCancel(true)
 				.build();
