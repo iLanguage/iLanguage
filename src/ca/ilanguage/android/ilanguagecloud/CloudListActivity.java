@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
 
 /**
@@ -33,11 +32,6 @@ public class CloudListActivity extends FragmentActivity implements
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		String name = this.getClass().getName();
-		String[] strings = name.split("\\.");
-		Log.v("crashfix", "onCreate " + strings[strings.length - 1] + " "
-				+ name);
-
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cloud_list);
 

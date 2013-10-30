@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -28,11 +27,6 @@ public class CloudEditActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cloud_edit);
-
-		String name = this.getClass().getName();
-		String[] strings = name.split("\\.");
-		Log.v("crashfix", "onCreate " + strings[strings.length - 1] + " "
-				+ name);
 
 		mFont = (Spinner) findViewById(R.id.fonts);
 		mTitleText = (EditText) findViewById(R.id.cloud_edit_title);
@@ -62,6 +56,7 @@ public class CloudEditActivity extends Activity {
 					makeToast();
 				} else {
 					setResult(RESULT_OK);
+					saveState();
 					finish();
 				}
 			}
@@ -99,24 +94,13 @@ public class CloudEditActivity extends Activity {
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		String name = this.getClass().getName();
-		String[] strings = name.split("\\.");
-		Log.v("crashfix", "onSaveInstanceState " + strings[strings.length - 1]
-				+ " " + name);
-
 		super.onSaveInstanceState(outState);
-		saveState();
 		outState.putParcelable(CloudContentProvider.CONTENT_ITEM_TYPE, cloudUri);
 	}
 
 	@Override
 	protected void onPause() {
-		String name = this.getClass().getName();
-		String[] strings = name.split("\\.");
-		Log.v("crashfix", "onPause " + strings[strings.length - 1] + " " + name);
-
 		super.onPause();
-		saveState();
 	}
 
 	@Override
@@ -127,6 +111,7 @@ public class CloudEditActivity extends Activity {
 				makeToast();
 			} else {
 				setResult(RESULT_OK);
+				saveState();
 				finish();
 			}
 
@@ -136,11 +121,6 @@ public class CloudEditActivity extends Activity {
 	}
 
 	private void saveState() {
-		String name = this.getClass().getName();
-		String[] strings = name.split("\\.");
-		Log.v("crashfix", "saveState " + strings[strings.length - 1] + " "
-				+ name);
-
 		String category = (String) mFont.getSelectedItem();
 		String summary = mTitleText.getText().toString();
 		String description = mBodyText.getText().toString();
@@ -159,10 +139,8 @@ public class CloudEditActivity extends Activity {
 			// New cloud
 			cloudUri = getContentResolver().insert(
 					CloudContentProvider.CONTENT_URI, values);
-			Log.v("crashfix", "Here is new cloudUri: " + cloudUri.toString());
 		} else {
 			// Update cloud
-			Log.v("crashfix", "Here is existing cloudUri: " + cloudUri.toString());
 			getContentResolver().update(cloudUri, values, null, null);
 		}
 	}

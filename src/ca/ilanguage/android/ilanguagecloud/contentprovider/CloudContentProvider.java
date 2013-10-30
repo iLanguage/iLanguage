@@ -92,7 +92,7 @@ public class CloudContentProvider extends ContentProvider {
 			id = sqlDB.insert(CloudTable.TABLE_CLOUD, null, values);
 			break;
 		default:
-			throw new IllegalArgumentException("Unknown URI: " + uri);
+			throw new IllegalArgumentException("Unknown Insert URI: " + uri);
 		}
 		getContext().getContentResolver().notifyChange(uri, null);
 		return Uri.parse(BASE_PATH + "/" + id);
@@ -120,7 +120,7 @@ public class CloudContentProvider extends ContentProvider {
 			}
 			break;
 		default:
-			throw new IllegalArgumentException("Unknown URI: " + uri);
+			throw new IllegalArgumentException("Unknown Delete URI: " + uri);
 		}
 		getContext().getContentResolver().notifyChange(uri, null);
 		return rowsDeleted;
@@ -150,7 +150,7 @@ public class CloudContentProvider extends ContentProvider {
 			}
 			break;
 		default:
-			throw new IllegalArgumentException("Unknown URI: " + uri);
+			throw new IllegalArgumentException("Unknown Update URI: " + uri);
 		}
 		getContext().getContentResolver().notifyChange(uri, null);
 		return rowsUpdated;

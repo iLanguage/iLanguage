@@ -12,7 +12,6 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -88,11 +87,6 @@ public class CloudListFragment extends ListFragment implements
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		String name = this.getClass().getName();
-		String[] strings = name.split("\\.");
-		Log.v("crashfix", "onCreate " + strings[strings.length - 1] + " "
-				+ name);
-
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 		fillData();
@@ -219,11 +213,6 @@ public class CloudListFragment extends ListFragment implements
 	}
 
 	private void fillData() {
-		String name = this.getClass().getName();
-		String[] strings = name.split("\\.");
-		Log.v("crashfix", "fillData " + strings[strings.length - 1] + " "
-				+ name);
-
 		String[] from = new String[] { CloudTable.COLUMN_TITLE };
 		int[] to = new int[] { android.R.id.text1 };
 
