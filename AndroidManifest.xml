@@ -44,7 +44,8 @@
         
         <provider
             android:name=".contentprovider.CloudContentProvider"
-            android:authorities="ca.ilanguage.android.ilanguagecloud.contentprovider" >
+            android:authorities="ca.ilanguage.android.ilanguagecloud.contentprovider"
+            android:exported="false" >
         </provider>
     </application>
 
