@@ -8,18 +8,19 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
 import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
 
@@ -33,6 +34,7 @@ public class CloudDetailFragment extends Fragment {
 	protected static final String TAG = "WordCloud";
 	public static final boolean D = true;
 	private WebView mWebView;
+	protected Object mActionMode;
 
 	private Uri cloudUri;
 
@@ -124,6 +126,38 @@ public class CloudDetailFragment extends Fragment {
 			return super.onOptionsItemSelected(item);
 		}
 	}
+	
+	private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
+		
+		@Override
+		public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+			return false;
+		}
+		
+		@Override
+		public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+			MenuInflater inflater = mode.getMenuInflater();
+			inflater.inflate(R.menu.cloud_select_actions, menu);
+			return true;
+		}
+		
+		@Override
+		public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+			switch (item.getItemId()) {
+			case R.id.action_remove:
+				Toast.makeText(getActivity(), "I chose delete", Toast.LENGTH_LONG).show();
+				mode.finish();
+				return true;
+			default:
+				return false;
+			}
+		}
+
+		@Override
+		public void onDestroyActionMode(ActionMode mode) {
+			mActionMode = null;
+		}
+	};
 
 	@SuppressLint("SetJavaScriptEnabled")
 	@Override
@@ -132,22 +166,17 @@ public class CloudDetailFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_cloud_detail,
 				container, false);
 
-		// Show the dummy content as text in a TextView.
 		if (mDetailText != null && mFont != null) {
-			JavascriptInterface myJavascriptInterface = new JavascriptInterface(
-					getActivity());
+			JavascriptInterface myJavascriptInterface = new JavascriptInterface(getActivity());
 
-			myJavascriptInterface
-					.setCloudParams(mTitleText, mDetailText, mFont);
+			myJavascriptInterface.setCloudParams(mTitleText, mDetailText, mFont);
 
 			mWebView = (WebView) rootView.findViewById(R.id.webView1);
-			mWebView.addJavascriptInterface(myJavascriptInterface,
-					"jsinterface");
+			mWebView.addJavascriptInterface(myJavascriptInterface, "jsinterface");
 			mWebView.setWebViewClient(new MyWebViewClient());
 			mWebView.setWebChromeClient(new MyWebChromeClient());
 
-			String databasePath = mWebView.getContext()
-					.getDir("databases", Context.MODE_PRIVATE).getPath();
+			String databasePath = mWebView.getContext().getDir("databases", Context.MODE_PRIVATE).getPath();
 
 			WebSettings webSettings = mWebView.getSettings();
 			webSettings.setBuiltInZoomControls(true);
@@ -165,24 +194,27 @@ public class CloudDetailFragment extends Fragment {
 
 			webSettings.setLoadWithOverviewMode(true);
 			webSettings.setUseWideViewPort(true);
-			webSettings.setUserAgentString(webSettings.getUserAgentString()
-					+ " " + getString(R.string.app_name));
+			webSettings.setUserAgentString(webSettings.getUserAgentString() + " " + getString(R.string.app_name));
 
-			mWebView.setOnLongClickListener(onLongClickListener);
+//			mWebView.setOnLongClickListener(new View.OnLongClickListener() {
+//				
+//				@Override
+//				public boolean onLongClick(View v) {
+//					if (mActionMode != null) {
+//						return false;
+//					}
+//					
+//					mActionMode = mWebView.startActionMode(mActionModeCallback);
+//					v.setSelected(false);
+//					return true;
+//				}
+//			});
+			
 			mWebView.loadUrl("file:///android_asset/wordcloud.html");
 		}
 
 		return rootView;
 	}
-	
-	OnLongClickListener onLongClickListener = new View.OnLongClickListener() {
-		
-		@Override
-		public boolean onLongClick(View v) {
-			Log.v("clickyclicky", "just received long click event");
-			return true;
-		}
-	};
 	
 	class MyWebChromeClient extends WebChromeClient {
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
