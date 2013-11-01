@@ -10,6 +10,7 @@
     <string name="action_edit">Edit Cloud</string>
     <string name="action_exportsvg">Export as SVG</string>
     <string name="action_exportpng">Export as PNG</string>
+    <string name="action_delete_word">Remove</string>
     
     <string name="list_delete_header">Choose an action</string>
     <string name="list_delete">Delete</string>
