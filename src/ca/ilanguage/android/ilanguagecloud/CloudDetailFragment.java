@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
@@ -167,12 +168,22 @@ public class CloudDetailFragment extends Fragment {
 			webSettings.setUserAgentString(webSettings.getUserAgentString()
 					+ " " + getString(R.string.app_name));
 
+			mWebView.setOnLongClickListener(onLongClickListener);
 			mWebView.loadUrl("file:///android_asset/wordcloud.html");
 		}
 
 		return rootView;
 	}
-
+	
+	OnLongClickListener onLongClickListener = new View.OnLongClickListener() {
+		
+		@Override
+		public boolean onLongClick(View v) {
+			Log.v("clickyclicky", "just received long click event");
+			return true;
+		}
+	};
+	
 	class MyWebChromeClient extends WebChromeClient {
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			mWebView.loadUrl("javascript:console.log('URL: " + url + "')");
