@@ -33,3 +33,7 @@ android {
         release.setRoot('build-types/release')
     }
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.8'
+}
