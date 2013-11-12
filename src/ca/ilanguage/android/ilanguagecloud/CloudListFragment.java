@@ -66,6 +66,7 @@ public class CloudListFragment extends ListFragment implements LoaderManager.Loa
 		 * Callback for when an item has been selected.
 		 */
 		public void onItemSelected(long id);
+		public void onItemDeleted();
 	}
 
 	/**
@@ -74,8 +75,9 @@ public class CloudListFragment extends ListFragment implements LoaderManager.Loa
 	 */
 	private static Callbacks sDummyCallbacks = new Callbacks() {
 		@Override
-		public void onItemSelected(long id) {
-		}
+		public void onItemSelected(long id) {}
+		@Override
+		public void onItemDeleted() {}
 	};
 
 	/**
@@ -229,6 +231,7 @@ public class CloudListFragment extends ListFragment implements LoaderManager.Loa
 					public void onClick(DialogInterface dialog, int which) {
 						getActivity().getContentResolver().delete(uri, null, null);
 						fillData();
+						mCallbacks.onItemDeleted();
 						dialog.dismiss();
 					}
 				})

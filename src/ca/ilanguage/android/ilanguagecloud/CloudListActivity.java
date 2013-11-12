@@ -3,7 +3,9 @@ package ca.ilanguage.android.ilanguagecloud;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 
 import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
 
@@ -29,6 +31,7 @@ public class CloudListActivity extends FragmentActivity implements CloudListFrag
 	 * device.
 	 */
 	private boolean mTwoPane;
+	private String TAG = "DetailFragmentView";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +71,7 @@ public class CloudListActivity extends FragmentActivity implements CloudListFrag
 			CloudDetailFragment fragment = new CloudDetailFragment();
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction()
-					.replace(R.id.cloud_detail_container, fragment).commit();
+					.replace(R.id.cloud_detail_container, fragment, TAG).commit();
 
 		} else {
 			// In single-pane mode, simply start the detail activity
@@ -76,6 +79,14 @@ public class CloudListActivity extends FragmentActivity implements CloudListFrag
 			Intent detailIntent = new Intent(this, CloudDetailActivity.class);
 			detailIntent.putExtras(arguments);
 			startActivity(detailIntent);
+		}
+	}
+
+	public void onItemDeleted() {
+
+		if (mTwoPane) {
+			FragmentManager fm = getSupportFragmentManager();
+			fm.beginTransaction().remove(fm.findFragmentByTag(TAG)).commit();
 		}
 	}
 }
