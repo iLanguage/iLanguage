@@ -17,10 +17,9 @@ public class CloudSQLiteHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase database) {
 		CloudTable.onCreate(database);
 	}
- 
+
 	@Override
-	public void onUpgrade(SQLiteDatabase database, int oldVersion,
-			int newVersion) {
+	public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
 		CloudTable.onUpgrade(database, oldVersion, newVersion);
 	}
 

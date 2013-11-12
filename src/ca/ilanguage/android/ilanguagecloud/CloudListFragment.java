@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
 import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
 
@@ -29,12 +30,11 @@ import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
  * tablet devices by allowing list items to be given an 'activated' state upon
  * selection. This helps indicate which item is currently being viewed in a
  * {@link CloudDetailFragment}.
- * <p>
+ * <p/>
  * Activities containing this fragment MUST implement the {@link Callbacks}
  * interface.
  */
-public class CloudListFragment extends ListFragment implements
-		LoaderManager.LoaderCallbacks<Cursor> {
+public class CloudListFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
 	private SimpleCursorAdapter adapter;
 
@@ -106,19 +106,18 @@ public class CloudListFragment extends ListFragment implements
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.action_new:
-			Intent intent = new Intent(getActivity(), CloudEditActivity.class);
-			startActivity(intent);
-			return true;
+			case R.id.action_new:
+				Intent intent = new Intent(getActivity(), CloudEditActivity.class);
+				startActivity(intent);
+				return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
 	@Override
-	public void onCreateContextMenu(ContextMenu menu, View v,
-			ContextMenuInfo menuInfo) {
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
-		
+
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) menuInfo;
 		CharSequence title = ((TextView) info.targetView).getText();
 		menu.setHeaderTitle(R.string.list_delete_header);
@@ -128,14 +127,14 @@ public class CloudListFragment extends ListFragment implements
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case DELETE_ID:
-			AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-			Uri uri = Uri.parse(CloudContentProvider.CONTENT_URI + "/" + info.id);
+			case DELETE_ID:
+				AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+				Uri uri = Uri.parse(CloudContentProvider.CONTENT_URI + "/" + info.id);
 
-			AlertDialog diaBox = AskOption(uri);
-			diaBox.show();
+				AlertDialog diaBox = AskOption(uri);
+				diaBox.show();
 
-			return true;
+				return true;
 		}
 		return super.onContextItemSelected(item);
 	}
@@ -145,10 +144,8 @@ public class CloudListFragment extends ListFragment implements
 		super.onViewCreated(view, savedInstanceState);
 
 		// Restore the previously serialized activated item position.
-		if (savedInstanceState != null
-				&& savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
-			setActivatedPosition(savedInstanceState
-					.getInt(STATE_ACTIVATED_POSITION));
+		if (savedInstanceState != null && savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
+			setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
 		}
 	}
 
@@ -157,8 +154,9 @@ public class CloudListFragment extends ListFragment implements
 		super.onAttach(activity);
 
 		// Activities containing this fragment must implement its callbacks.
-		if (!(activity instanceof Callbacks)) { throw new IllegalStateException(
-				"Activity must implement fragment's callbacks."); }
+		if (!(activity instanceof Callbacks)) {
+			throw new IllegalStateException("Activity must implement fragment's callbacks.");
+		}
 
 		mCallbacks = (Callbacks) activity;
 	}
@@ -172,8 +170,7 @@ public class CloudListFragment extends ListFragment implements
 	}
 
 	@Override
-	public void onListItemClick(ListView listView, View view, int position,
-			long id) {
+	public void onListItemClick(ListView listView, View view, int position, long id) {
 		super.onListItemClick(listView, view, position, id);
 
 		// Notify the active callbacks interface (the activity, if the
@@ -197,9 +194,7 @@ public class CloudListFragment extends ListFragment implements
 	public void setActivateOnItemClick(boolean activateOnItemClick) {
 		// When setting CHOICE_MODE_SINGLE, ListView will automatically
 		// give items the 'activated' state when touched.
-		getListView().setChoiceMode(
-				activateOnItemClick ? ListView.CHOICE_MODE_SINGLE
-						: ListView.CHOICE_MODE_NONE);
+		getListView().setChoiceMode(activateOnItemClick ? ListView.CHOICE_MODE_SINGLE : ListView.CHOICE_MODE_NONE);
 	}
 
 	private void setActivatedPosition(int position) {
@@ -213,51 +208,49 @@ public class CloudListFragment extends ListFragment implements
 	}
 
 	private void fillData() {
-		String[] from = new String[] { CloudTable.COLUMN_TITLE };
-		int[] to = new int[] { android.R.id.text1 };
+		String[] from = new String[]{CloudTable.COLUMN_TITLE};
+		int[] to = new int[]{android.R.id.text1};
 
 		getLoaderManager().initLoader(0, null, this);
 		adapter = new SimpleCursorAdapter(getActivity(),
-				android.R.layout.simple_list_item_activated_1, null, from, to,
-				0);
+				android.R.layout.simple_list_item_activated_1, null, from, to, 0);
 
 		setListAdapter(adapter);
 	}
-	
+
 	private AlertDialog AskOption(final Uri uri) {
 		AlertDialog deleteConfirmationDialog = new AlertDialog.Builder(getActivity())
-			.setTitle(R.string.confirm_delete_header)
-			.setMessage(R.string.confirm_delete)
-			
-			.setPositiveButton(R.string.confirm_delete_positive, new DialogInterface.OnClickListener() {
-				
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					getActivity().getContentResolver().delete(uri, null, null);
-					fillData();
-					dialog.dismiss();
-				}
-			})
-			
-			.setNegativeButton(R.string.confirm_delete_negative, new DialogInterface.OnClickListener() {
-				
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					dialog.dismiss();
-				}
-			})
-			
-			.create();
-		
+				.setTitle(R.string.confirm_delete_header)
+				.setMessage(R.string.confirm_delete)
+
+				.setPositiveButton(R.string.confirm_delete_positive, new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						getActivity().getContentResolver().delete(uri, null, null);
+						fillData();
+						dialog.dismiss();
+					}
+				})
+
+				.setNegativeButton(R.string.confirm_delete_negative, new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+					}
+				})
+
+				.create();
+
 		return deleteConfirmationDialog;
 	}
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		String[] projection = { CloudTable.COLUMN_ID, CloudTable.COLUMN_TITLE };
-		CursorLoader cursorLoader = new CursorLoader(getActivity()
-				.getApplicationContext(), CloudContentProvider.CONTENT_URI,
-				projection, null, null, null);
+		String[] projection = {CloudTable.COLUMN_ID, CloudTable.COLUMN_TITLE};
+		CursorLoader cursorLoader = new CursorLoader(getActivity().getApplicationContext(),
+				CloudContentProvider.CONTENT_URI, projection, null, null, null);
 		return cursorLoader;
 	}
 

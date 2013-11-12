@@ -1,12 +1,5 @@
 package ca.ilanguage.android.ilanguagecloud;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.List;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -23,6 +16,13 @@ import android.os.Environment;
 import android.support.v4.app.NotificationCompat;
 import android.util.Base64;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+
 public class JavascriptInterface {
 
 	Context mContext;
@@ -33,7 +33,9 @@ public class JavascriptInterface {
 	String[] saveFileLocation = new String[1];
 	String[] saveMimeType = new String[1];
 
-	/** Instantiate the interface and set the context */
+	/**
+	 * Instantiate the interface and set the context
+	 */
 	JavascriptInterface(Context c) {
 		mContext = c;
 	}
@@ -48,8 +50,7 @@ public class JavascriptInterface {
 		return mCloudFont;
 	}
 
-	public void setCloudParams(String mCloudTitle, String mCloudString,
-			String mCloudFont) {
+	public void setCloudParams(String mCloudTitle, String mCloudString, String mCloudFont) {
 		this.mCloudTitle = mCloudTitle.replaceAll("\\W+", "");
 		this.mCloudString = mCloudString;
 		this.mCloudFont = mCloudFont;
@@ -58,24 +59,19 @@ public class JavascriptInterface {
 	@android.webkit.JavascriptInterface
 	public void getLocalStorage(String keyValue, String fileType) {
 		Long currentTime = System.currentTimeMillis();
-
-		storeImage(keyValue, this.mCloudTitle + "_" + currentTime.toString()
-				+ "." + fileType, fileType);
-
+		storeImage(keyValue, this.mCloudTitle + "_" + currentTime.toString() + "." + fileType, fileType);
 	}
 
 	private void storeImage(String imageData, String filename, String fileType) {
 
 		byte[] imageAsBytes = Base64.decode(imageData, 0);
 
-		File filePath = new File(Environment.getExternalStorageDirectory()
-				+ "/iLanguageCloud/");
+		File filePath = new File(Environment.getExternalStorageDirectory() + "/iLanguageCloud/");
 		filePath.mkdirs();
 
 		String fileString = filePath.toString() + "/" + filename;
 		saveFileLocation[0] = fileString;
-		saveMimeType[0] = (fileType.equalsIgnoreCase("png")) ? "image/png"
-				: "image/svg+xml";
+		saveMimeType[0] = (fileType.equalsIgnoreCase("png")) ? "image/png" : "image/svg+xml";
 
 		FileOutputStream fos = null;
 		BufferedOutputStream bos = null;
@@ -99,17 +95,16 @@ public class JavascriptInterface {
 			}
 		}
 
-		MediaScannerConnection.scanFile(mContext, saveFileLocation,
-				saveMimeType, new OnScanCompletedListener() {
-					@Override
-					public void onScanCompleted(String path, Uri uri) {
-						notifyUser(uri, saveMimeType[0], saveFileLocation[0]);
-					}
-				});
+		MediaScannerConnection.scanFile(mContext, saveFileLocation, saveMimeType, new OnScanCompletedListener() {
+			@Override
+			public void onScanCompleted(String path, Uri uri) {
+				notifyUser(uri, saveMimeType[0], saveFileLocation[0]);
+			}
+		});
 	}
-	
+
 	private void notifyUser(Uri uri, String imageMimeType, String savePath) {
-		
+
 		Intent intent = new Intent();
 		PendingIntent pIntent;
 
@@ -121,7 +116,7 @@ public class JavascriptInterface {
 			intent.setAction(Intent.ACTION_SEND);
 			intent.putExtra(Intent.EXTRA_STREAM, fileUri);
 			intent.setType(imageMimeType);
-			
+
 			// Use a share chooser for SVG
 			String titlePrompt = mContext.getString(R.string.notification_chooser_title);
 			Intent chooser = Intent.createChooser(intent, titlePrompt);
@@ -137,10 +132,12 @@ public class JavascriptInterface {
 		List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
 		boolean isIntentSafe = activities.size() > 0;
 
-		if (!isIntentSafe) { return; }
-		
+		if (!isIntentSafe) {
+			return;
+		}
+
 		Bitmap bm = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.ic_launcher_web);
-  
+
 		Notification n = new NotificationCompat.Builder(mContext)
 				.setContentTitle(mContext.getString(R.string.notification_title))
 				.setContentText(mContext.getString(R.string.notificaiton_text))
@@ -151,9 +148,7 @@ public class JavascriptInterface {
 				.setAutoCancel(true)
 				.build();
 
-		NotificationManager notificationManager = (NotificationManager) mContext
-				.getSystemService(Context.NOTIFICATION_SERVICE);
-
+		NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 		notificationManager.notify(0, n);
 	}
 

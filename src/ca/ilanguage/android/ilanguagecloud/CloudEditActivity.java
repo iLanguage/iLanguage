@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
 import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
 
@@ -29,7 +30,7 @@ public class CloudEditActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cloud_edit);
-		
+
 		Intent intent = getIntent();
 
 		mFont = (Spinner) findViewById(R.id.fonts);
@@ -37,12 +38,12 @@ public class CloudEditActivity extends Activity {
 		mBodyText = (EditText) findViewById(R.id.cloud_edit_contents);
 		mTitleCheck = getString(R.string.cloud_edit_title_check);
 		Button confirmButton = (Button) findViewById(R.id.cloud_edit_button);
-		
+
 		String action = intent.getAction();
 		String type = intent.getType();
-		
+
 		// Check for incoming intent from another application
-		if (Intent.ACTION_SEND.equals(action) && type != null){
+		if (Intent.ACTION_SEND.equals(action) && type != null) {
 			cameFromAfar = true;
 			if ("text/plain".equals(type)) {
 				incomingTextData(intent);
@@ -51,15 +52,11 @@ public class CloudEditActivity extends Activity {
 			Bundle extras = intent.getExtras();
 
 			// Check from the saved Instance
-			cloudUri = (savedInstanceState == null) ? null
-					: (Uri) savedInstanceState
-							.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
+			cloudUri = savedInstanceState == null ? null : (Uri) savedInstanceState.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
 
 			// Or passed from main activity
 			if (extras != null) {
-				cloudUri = extras
-						.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
-
+				cloudUri = extras.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
 				fillData(cloudUri);
 			}
 		}
@@ -72,7 +69,7 @@ public class CloudEditActivity extends Activity {
 				} else {
 					setResult(RESULT_OK);
 					saveState();
-					if (cameFromAfar == true) {
+					if (cameFromAfar) {
 						Intent intent = new Intent(CloudEditActivity.this, CloudListActivity.class);
 						startActivity(intent);
 						finish();
@@ -84,7 +81,7 @@ public class CloudEditActivity extends Activity {
 
 		});
 	}
-	
+
 	private void incomingTextData(Intent intent) {
 		String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
 		if (sharedText != null) {
@@ -93,14 +90,11 @@ public class CloudEditActivity extends Activity {
 	}
 
 	private void fillData(Uri uri) {
-		String[] projection = { CloudTable.COLUMN_TITLE,
-				CloudTable.COLUMN_CONTENTS, CloudTable.COLUMN_FONT };
-		Cursor cursor = getContentResolver().query(uri, projection, null, null,
-				null);
+		String[] projection = {CloudTable.COLUMN_TITLE, CloudTable.COLUMN_CONTENTS, CloudTable.COLUMN_FONT};
+		Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
 		if (cursor != null) {
 			cursor.moveToFirst();
-			String category = cursor.getString(cursor
-					.getColumnIndexOrThrow(CloudTable.COLUMN_FONT));
+			String category = cursor.getString(cursor.getColumnIndexOrThrow(CloudTable.COLUMN_FONT));
 
 			for (int i = 0; i < mFont.getCount(); i++) {
 
@@ -110,10 +104,8 @@ public class CloudEditActivity extends Activity {
 				}
 			}
 
-			mTitleText.setText(cursor.getString(cursor
-					.getColumnIndexOrThrow(CloudTable.COLUMN_TITLE)));
-			mBodyText.setText(cursor.getString(cursor
-					.getColumnIndexOrThrow(CloudTable.COLUMN_CONTENTS)));
+			mTitleText.setText(cursor.getString(cursor.getColumnIndexOrThrow(CloudTable.COLUMN_TITLE)));
+			mBodyText.setText(cursor.getString(cursor.getColumnIndexOrThrow(CloudTable.COLUMN_CONTENTS)));
 
 			// Always close the cursor
 			cursor.close();
@@ -134,16 +126,16 @@ public class CloudEditActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case android.R.id.home:
-			if (TextUtils.isEmpty(mTitleText.getText().toString())) {
-				makeToast();
-			} else {
-				setResult(RESULT_OK);
-				saveState();
-				finish();
-			}
+			case android.R.id.home:
+				if (TextUtils.isEmpty(mTitleText.getText().toString())) {
+					makeToast();
+				} else {
+					setResult(RESULT_OK);
+					saveState();
+					finish();
+				}
 
-			return true;
+				return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -165,8 +157,7 @@ public class CloudEditActivity extends Activity {
 
 		if (cloudUri == null) {
 			// New cloud
-			cloudUri = getContentResolver().insert(
-					CloudContentProvider.CONTENT_URI, values);
+			cloudUri = getContentResolver().insert(CloudContentProvider.CONTENT_URI, values);
 		} else {
 			// Update cloud
 			getContentResolver().update(cloudUri, values, null, null);
@@ -174,7 +165,6 @@ public class CloudEditActivity extends Activity {
 	}
 
 	private void makeToast() {
-		Toast.makeText(CloudEditActivity.this, mTitleCheck, Toast.LENGTH_LONG)
-				.show();
+		Toast.makeText(CloudEditActivity.this, mTitleCheck, Toast.LENGTH_LONG).show();
 	}
 }

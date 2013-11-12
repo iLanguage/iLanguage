@@ -21,6 +21,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
 import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
 import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
 
@@ -45,7 +46,7 @@ public class CloudDetailFragment extends Fragment {
 	public static final String ARG_ITEM_ID = "item_id";
 
 	/**
-	 * The dummy content this fragment is presenting.
+	 * The content this fragment is presenting.
 	 */
 	private String mTitleText;
 	private String mDetailText;
@@ -65,31 +66,24 @@ public class CloudDetailFragment extends Fragment {
 
 		Bundle arguments = getArguments();
 
-		cloudUri = (savedInstanceState == null) ? null
-				: (Uri) savedInstanceState
-						.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
+		cloudUri = (savedInstanceState == null) ? null : (Uri) savedInstanceState
+				.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
 
 		if (arguments != null) {
-			cloudUri = arguments
-					.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
+			cloudUri = arguments.getParcelable(CloudContentProvider.CONTENT_ITEM_TYPE);
 			getData(cloudUri);
 		}
 
 	}
 
 	private void getData(Uri uri) {
-		String[] projection = { CloudTable.COLUMN_TITLE,
-				CloudTable.COLUMN_CONTENTS, CloudTable.COLUMN_FONT };
-		Cursor cursor = getActivity().getContentResolver().query(uri,
-				projection, null, null, null);
+		String[] projection = {CloudTable.COLUMN_TITLE, CloudTable.COLUMN_CONTENTS, CloudTable.COLUMN_FONT};
+		Cursor cursor = getActivity().getContentResolver().query(uri, projection, null, null, null);
 		if (cursor != null) {
 			cursor.moveToFirst();
-			mTitleText = cursor.getString(cursor
-					.getColumnIndexOrThrow(CloudTable.COLUMN_TITLE));
-			mDetailText = cursor.getString(cursor
-					.getColumnIndexOrThrow(CloudTable.COLUMN_CONTENTS));
-			mFont = cursor.getString(cursor
-					.getColumnIndexOrThrow(CloudTable.COLUMN_FONT));
+			mTitleText = cursor.getString(cursor.getColumnIndexOrThrow(CloudTable.COLUMN_TITLE));
+			mDetailText = cursor.getString(cursor.getColumnIndexOrThrow(CloudTable.COLUMN_CONTENTS));
+			mFont = cursor.getString(cursor.getColumnIndexOrThrow(CloudTable.COLUMN_FONT));
 
 			// Always close the cursor
 			cursor.close();
@@ -105,51 +99,49 @@ public class CloudDetailFragment extends Fragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// handle item selection
 		switch (item.getItemId()) {
-		case R.id.action_edit:
-			Intent editDetailIntent = new Intent(getActivity(),
-					CloudEditActivity.class);
-			editDetailIntent.putExtra(CloudContentProvider.CONTENT_ITEM_TYPE,
-					cloudUri);
-			startActivity(editDetailIntent);
-			return true;
-		case R.id.action_new:
-			Intent intent = new Intent(getActivity(), CloudEditActivity.class);
-			startActivity(intent);
-			return true;
-		case R.id.action_exportsvg:
-			mWebView.loadUrl("javascript:(function() { var localStorageResult = localStorage.getItem('currentSVGdata'); window.jsinterface.getLocalStorage(localStorageResult, 'svg'); })()");
-			return true;
-		case R.id.action_exportpng:
-			mWebView.loadUrl("javascript:(function() { var localStorageResult = localStorage.getItem('currentPNGdata'); window.jsinterface.getLocalStorage(localStorageResult, 'png'); })()");
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
+			case R.id.action_edit:
+				Intent editDetailIntent = new Intent(getActivity(), CloudEditActivity.class);
+				editDetailIntent.putExtra(CloudContentProvider.CONTENT_ITEM_TYPE, cloudUri);
+				startActivity(editDetailIntent);
+				return true;
+			case R.id.action_new:
+				Intent intent = new Intent(getActivity(), CloudEditActivity.class);
+				startActivity(intent);
+				return true;
+			case R.id.action_exportsvg:
+				mWebView.loadUrl("javascript:(function() { var localStorageResult = localStorage.getItem('currentSVGdata'); window.jsinterface.getLocalStorage(localStorageResult, 'svg'); })()");
+				return true;
+			case R.id.action_exportpng:
+				mWebView.loadUrl("javascript:(function() { var localStorageResult = localStorage.getItem('currentPNGdata'); window.jsinterface.getLocalStorage(localStorageResult, 'png'); })()");
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
 		}
 	}
-	
+
 	private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
-		
+
 		@Override
 		public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
 			return false;
 		}
-		
+
 		@Override
 		public boolean onCreateActionMode(ActionMode mode, Menu menu) {
 			MenuInflater inflater = mode.getMenuInflater();
 			inflater.inflate(R.menu.cloud_select_actions, menu);
 			return true;
 		}
-		
+
 		@Override
 		public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
 			switch (item.getItemId()) {
-			case R.id.action_remove:
-				Toast.makeText(getActivity(), "I chose delete", Toast.LENGTH_LONG).show();
-				mode.finish();
-				return true;
-			default:
-				return false;
+				case R.id.action_remove:
+					Toast.makeText(getActivity(), "I chose delete", Toast.LENGTH_LONG).show();
+					mode.finish();
+					return true;
+				default:
+					return false;
 			}
 		}
 
@@ -161,10 +153,8 @@ public class CloudDetailFragment extends Fragment {
 
 	@SuppressLint("SetJavaScriptEnabled")
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_cloud_detail,
-				container, false);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View rootView = inflater.inflate(R.layout.fragment_cloud_detail, container, false);
 
 		if (mDetailText != null && mFont != null) {
 			JavascriptInterface myJavascriptInterface = new JavascriptInterface(getActivity());
@@ -196,26 +186,12 @@ public class CloudDetailFragment extends Fragment {
 			webSettings.setUseWideViewPort(true);
 			webSettings.setUserAgentString(webSettings.getUserAgentString() + " " + getString(R.string.app_name));
 
-//			mWebView.setOnLongClickListener(new View.OnLongClickListener() {
-//				
-//				@Override
-//				public boolean onLongClick(View v) {
-//					if (mActionMode != null) {
-//						return false;
-//					}
-//					
-//					mActionMode = mWebView.startActionMode(mActionModeCallback);
-//					v.setSelected(false);
-//					return true;
-//				}
-//			});
-			
 			mWebView.loadUrl("file:///android_asset/wordcloud.html");
 		}
 
 		return rootView;
 	}
-	
+
 	class MyWebChromeClient extends WebChromeClient {
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			mWebView.loadUrl("javascript:console.log('URL: " + url + "')");
@@ -226,8 +202,7 @@ public class CloudDetailFragment extends Fragment {
 		@Override
 		public boolean onConsoleMessage(ConsoleMessage cm) {
 			if (D)
-				Log.d(TAG, cm.message() + " -- From line " + cm.lineNumber()
-						+ " of " + cm.sourceId());
+				Log.d(TAG, cm.message() + " -- From line " + cm.lineNumber() + " of " + cm.sourceId());
 			return true;
 		}
 	}
@@ -241,5 +216,4 @@ public class CloudDetailFragment extends Fragment {
 		}
 
 	}
-
 }
