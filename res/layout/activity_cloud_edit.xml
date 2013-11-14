@@ -9,17 +9,19 @@
 
     <EditText
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:hint="@string/cloud_edit_title"
         android:id="@+id/cloud_edit_title"
-        android:inputType="text" />
+        android:inputType="text"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse" />
 
     <Spinner
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:id="@+id/fonts"
         android:entries="@array/fonts"
-        android:paddingLeft="6dp" />
+        android:paddingLeft="6dp"
+        android:layout_gravity="top" />
 
     <EditText
         android:layout_width="fill_parent"
@@ -38,5 +40,6 @@
         android:drawableLeft="@drawable/ic_action_accept"
         android:layout_gravity="right|center_vertical"
         android:paddingLeft="24dp"
-        android:paddingRight="24dp" />
+        android:paddingRight="24dp"
+        android:textColor="@android:color/black" />
 </LinearLayout>
