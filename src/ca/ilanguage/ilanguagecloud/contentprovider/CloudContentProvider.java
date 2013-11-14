@@ -25,7 +25,7 @@ public class CloudContentProvider extends ContentProvider {
 	private static final int CLOUDS = 10;
 	private static final int CLOUD_ID = 20;
 
-	private static final String AUTHORITY = "ca.ilanguage.android.ilanguagecloud.contentprovider";
+	private static final String AUTHORITY = "ca.ilanguage.ilanguagecloud.contentprovider";
 	private static final String BASE_PATH = "clouds";
 	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
 	public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/clouds";
