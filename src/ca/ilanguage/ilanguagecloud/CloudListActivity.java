@@ -1,13 +1,12 @@
-package ca.ilanguage.android.ilanguagecloud;
+package ca.ilanguage.ilanguagecloud;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
-import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
+import ca.ilanguage.ilanguagecloud.contentprovider.CloudContentProvider;
 
 /**
  * An activity representing a list of Clouds. This activity has different

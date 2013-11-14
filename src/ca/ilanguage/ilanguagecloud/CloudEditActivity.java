@@ -1,4 +1,4 @@
-package ca.ilanguage.android.ilanguagecloud;
+package ca.ilanguage.ilanguagecloud;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -14,8 +14,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
-import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
+import ca.ilanguage.ilanguagecloud.contentprovider.CloudContentProvider;
+import ca.ilanguage.ilanguagecloud.database.CloudTable;
 
 public class CloudEditActivity extends Activity {
 	private Spinner mFont;

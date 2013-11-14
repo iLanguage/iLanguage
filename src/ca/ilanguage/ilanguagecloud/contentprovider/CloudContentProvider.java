@@ -1,4 +1,4 @@
-package ca.ilanguage.android.ilanguagecloud.contentprovider;
+package ca.ilanguage.ilanguagecloud.contentprovider;
 
 import android.content.ContentProvider;
 import android.content.ContentResolver;
@@ -13,8 +13,8 @@ import android.text.TextUtils;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import ca.ilanguage.android.ilanguagecloud.database.CloudSQLiteHelper;
-import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
+import ca.ilanguage.ilanguagecloud.database.CloudSQLiteHelper;
+import ca.ilanguage.ilanguagecloud.database.CloudTable;
 
 public class CloudContentProvider extends ContentProvider {
 

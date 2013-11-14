@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="ca.ilanguage.android.ilanguagecloud.CloudListActivity"
+            android:name="ca.ilanguage.ilanguagecloud.CloudListActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="ca.ilanguage.android.ilanguagecloud.CloudDetailActivity"
+            android:name="ca.ilanguage.ilanguagecloud.CloudDetailActivity"
             android:label="@string/title_cloud_detail"
             android:parentActivityName=".CloudListActivity" >
             <meta-data
@@ -32,7 +32,7 @@
                 android:value=".CloudListActivity" />
         </activity>
         <activity
-            android:name="ca.ilanguage.android.ilanguagecloud.CloudEditActivity"
+            android:name="ca.ilanguage.ilanguagecloud.CloudEditActivity"
             android:label="@string/title_cloud_edit"
             android:parentActivityName=".CloudDetailActivity" >
             <meta-data
@@ -46,8 +46,8 @@
             </activity>
         
         <provider
-            android:name=".contentprovider.CloudContentProvider"
-            android:authorities="ca.ilanguage.android.ilanguagecloud.contentprovider"
+            android:name="ca.ilanguage.ilanguagecloud.contentprovider.CloudContentProvider"
+            android:authorities="ca.ilanguage.ilanguagecloud.contentprovider"
             android:exported="false" >
         </provider>
     </application>

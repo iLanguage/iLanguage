@@ -1,4 +1,4 @@
-package ca.ilanguage.android.ilanguagecloud;
+package ca.ilanguage.ilanguagecloud;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -22,8 +22,8 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
-import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
+import ca.ilanguage.ilanguagecloud.contentprovider.CloudContentProvider;
+import ca.ilanguage.ilanguagecloud.database.CloudTable;
 
 /**
  * A list fragment representing a list of Clouds. This fragment also supports

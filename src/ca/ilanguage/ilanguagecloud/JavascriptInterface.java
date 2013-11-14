@@ -1,4 +1,4 @@
-package ca.ilanguage.android.ilanguagecloud;
+package ca.ilanguage.ilanguagecloud;
 
 import android.app.Notification;
 import android.app.NotificationManager;

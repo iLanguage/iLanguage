@@ -1,4 +1,4 @@
-package ca.ilanguage.android.ilanguagecloud.database;
+package ca.ilanguage.ilanguagecloud.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

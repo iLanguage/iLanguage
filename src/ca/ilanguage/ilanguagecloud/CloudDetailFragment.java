@@ -1,4 +1,4 @@
-package ca.ilanguage.android.ilanguagecloud;
+package ca.ilanguage.ilanguagecloud;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -22,8 +22,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
-import ca.ilanguage.android.ilanguagecloud.database.CloudTable;
+import ca.ilanguage.ilanguagecloud.contentprovider.CloudContentProvider;
+import ca.ilanguage.ilanguagecloud.database.CloudTable;
 
 /**
  * A fragment representing a single Cloud detail screen. This fragment is either

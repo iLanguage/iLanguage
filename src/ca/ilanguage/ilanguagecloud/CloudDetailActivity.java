@@ -1,4 +1,4 @@
-package ca.ilanguage.android.ilanguagecloud;
+package ca.ilanguage.ilanguagecloud;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
+import ca.ilanguage.ilanguagecloud.contentprovider.CloudContentProvider;
 
 /**
  * An activity representing a single Cloud detail screen. This activity is only

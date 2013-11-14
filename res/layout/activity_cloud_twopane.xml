@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/cloud_list"
-        android:name="ca.ilanguage.android.ilanguagecloud.CloudListFragment"
+        android:name="ca.ilanguage.ilanguagecloud.CloudListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
