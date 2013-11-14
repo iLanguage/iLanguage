@@ -1,4 +1,4 @@
-package ca.ilanguage.android.ilanguagecloud.database;
+package ca.ilanguage.ilanguagecloud.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class CloudSQLiteHelper extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "clouds.db";
-	private static final int DATABASE_VERSION = 5;
+	private static final int DATABASE_VERSION = 6;
 
 	public CloudSQLiteHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -17,10 +17,9 @@ public class CloudSQLiteHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase database) {
 		CloudTable.onCreate(database);
 	}
- 
+
 	@Override
-	public void onUpgrade(SQLiteDatabase database, int oldVersion,
-			int newVersion) {
+	public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
 		CloudTable.onUpgrade(database, oldVersion, newVersion);
 	}
 

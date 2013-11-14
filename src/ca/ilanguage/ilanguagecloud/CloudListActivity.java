@@ -1,10 +1,12 @@
-package ca.ilanguage.android.ilanguagecloud;
+package ca.ilanguage.ilanguagecloud;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
+import android.support.v4.app.FragmentManager;
+
+import ca.ilanguage.ilanguagecloud.contentprovider.CloudContentProvider;
 
 /**
  * An activity representing a list of Clouds. This activity has different
@@ -21,14 +23,14 @@ import ca.ilanguage.android.ilanguagecloud.contentprovider.CloudContentProvider;
  * This activity also implements the required
  * {@link CloudListFragment.Callbacks} interface to listen for item selections.
  */
-public class CloudListActivity extends FragmentActivity implements
-		CloudListFragment.Callbacks {
+public class CloudListActivity extends FragmentActivity implements CloudListFragment.Callbacks {
 
 	/**
 	 * Whether or not the activity is in two-pane mode, i.e. running on a tablet
 	 * device.
 	 */
 	private boolean mTwoPane;
+	private String TAG = "DetailFragmentView";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +49,6 @@ public class CloudListActivity extends FragmentActivity implements
 			((CloudListFragment) getSupportFragmentManager().findFragmentById(
 					R.id.cloud_list)).setActivateOnItemClick(true);
 		}
-
-		// TODO: If exposing deep links into your app, handle intents here.
 	}
 
 	/**
@@ -57,30 +57,35 @@ public class CloudListActivity extends FragmentActivity implements
 	 */
 	@Override
 	public void onItemSelected(long id) {
+
+		Bundle arguments = new Bundle();
+		Uri cloudUri = Uri.parse(CloudContentProvider.CONTENT_URI + "/" + id);
+		arguments.putParcelable(CloudContentProvider.CONTENT_ITEM_TYPE, cloudUri);
+
 		if (mTwoPane) {
 			// In two-pane mode, show the detail view in this activity by
 			// adding or replacing the detail fragment using a
 			// fragment transaction.
-			Bundle arguments = new Bundle();
-			Uri cloudUri = Uri.parse(CloudContentProvider.CONTENT_URI + "/"
-					+ id);
-			arguments.putParcelable(CloudContentProvider.CONTENT_ITEM_TYPE,
-					cloudUri);
 
 			CloudDetailFragment fragment = new CloudDetailFragment();
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction()
-					.replace(R.id.cloud_detail_container, fragment).commit();
+					.replace(R.id.cloud_detail_container, fragment, TAG).commit();
 
 		} else {
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.
 			Intent detailIntent = new Intent(this, CloudDetailActivity.class);
-			Uri cloudUri = Uri.parse(CloudContentProvider.CONTENT_URI + "/"
-					+ id);
-			detailIntent.putExtra(CloudContentProvider.CONTENT_ITEM_TYPE,
-					cloudUri);
+			detailIntent.putExtras(arguments);
 			startActivity(detailIntent);
+		}
+	}
+
+	public void onItemDeleted() {
+
+		if (mTwoPane) {
+			FragmentManager fm = getSupportFragmentManager();
+			fm.beginTransaction().remove(fm.findFragmentByTag(TAG)).commit();
 		}
 	}
 }
