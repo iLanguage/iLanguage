@@ -2,6 +2,9 @@
 NonPublicConstants.java
 assets/analytics_website_script.html
 .settings
+signing.properties
+*.keystore
+*.jks
 
 # Compiled source #
 ###################
