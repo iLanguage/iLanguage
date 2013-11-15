@@ -136,7 +136,7 @@ public class JavascriptInterface {
 			return;
 		}
 
-		Bitmap bm = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.ic_launcher_web);
+		Bitmap bm = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.ic_launcher);
 
 		Notification n = new NotificationCompat.Builder(mContext)
 				.setContentTitle(mContext.getString(R.string.notification_title))
