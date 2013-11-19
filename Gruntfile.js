@@ -156,8 +156,8 @@ module.exports = function(grunt) {
     // check index.html to edit your build targets
     // enable this task if you prefer defining your build targets here
     /*uglify: {
-            dist: {}
-        },*/
+      dist: {}
+    },*/
     'bower-install': {
       app: {
         html: '<%= yeoman.app %>/index.html',
