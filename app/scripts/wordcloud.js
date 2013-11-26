@@ -8,7 +8,7 @@ var loadCloud = function(isAndroid, element, userChosenFontFace, textToTurnIntoA
 
   var fill = d3.scale.category20();
   // var w = element.width() || 600,
-  var w = 600,
+  var w = document.getElementById(element).offsetWidth || 600,
       h = window.innerHeight || 400;
 
   var words = [],
@@ -34,7 +34,7 @@ var loadCloud = function(isAndroid, element, userChosenFontFace, textToTurnIntoA
     .on('word', progress)
     .on('end', draw);
 
-  var svg = d3.select(element).append('svg')
+  var svg = d3.select('#' + element).append('svg')
     .attr('width', w)
     .attr('height', h)
     .attr('version', '1.1')
