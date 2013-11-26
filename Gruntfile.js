@@ -17,6 +17,9 @@ module.exports = function(grunt) {
     // configurable paths
     yeoman: {
       app: 'app',
+      distApp: 'dist-app'
+    },
+    release: {
       dist: 'dist'
     },
     watch: {
@@ -68,7 +71,7 @@ module.exports = function(grunt) {
       dist: {
         options: {
           open: true,
-          base: '<%= yeoman.dist %>',
+          base: '<%= yeoman.distApp %>',
           livereload: false
         }
       }
@@ -79,8 +82,8 @@ module.exports = function(grunt) {
           dot: true,
           src: [
             '.tmp',
-            '<%= yeoman.dist %>/*',
-            '!<%= yeoman.dist %>/.git*'
+            '<%= yeoman.distApp %>/*',
+            '!<%= yeoman.distApp %>/.git*'
           ]
         }]
       },
@@ -125,7 +128,7 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          generatedImagesDir: '<%= yeoman.dist %>/images/generated'
+          generatedImagesDir: '<%= yeoman.distApp %>/images/generated'
         }
       },
       server: {
@@ -168,26 +171,26 @@ module.exports = function(grunt) {
       dist: {
         files: {
           src: [
-            '<%= yeoman.dist %>/scripts/{,*/}*.js',
-            '<%= yeoman.dist %>/styles/{,*/}*.css',
-            '<%= yeoman.dist %>/images/{,*/}*.{gif,jpeg,jpg,png,webp}',
-            '<%= yeoman.dist %>/styles/fonts/{,*/}*.*'
+            '<%= yeoman.distApp %>/scripts/{,*/}*.js',
+            '<%= yeoman.distApp %>/styles/{,*/}*.css',
+            '<%= yeoman.distApp %>/images/{,*/}*.{gif,jpeg,jpg,png,webp}',
+            '<%= yeoman.distApp %>/styles/fonts/{,*/}*.*'
           ]
         }
       }
     },
     useminPrepare: {
       options: {
-        dest: '<%= yeoman.dist %>'
+        dest: '<%= yeoman.distApp %>'
       },
       html: '<%= yeoman.app %>/index.html'
     },
     usemin: {
       options: {
-        assetsDirs: ['<%= yeoman.dist %>']
+        assetsDirs: ['<%= yeoman.distApp %>']
       },
-      html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css']
+      html: ['<%= yeoman.distApp %>/{,*/}*.html'],
+      css: ['<%= yeoman.distApp %>/styles/{,*/}*.css']
     },
     imagemin: {
       dist: {
@@ -195,7 +198,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '<%= yeoman.app %>/images',
           src: '{,*/}*.{gif,jpeg,jpg,png}',
-          dest: '<%= yeoman.dist %>/images'
+          dest: '<%= yeoman.distApp %>/images'
         }]
       }
     },
@@ -205,7 +208,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '<%= yeoman.app %>/images',
           src: '{,*/}*.svg',
-          dest: '<%= yeoman.dist %>/images'
+          dest: '<%= yeoman.distApp %>/images'
         }]
       }
     },
@@ -218,7 +221,7 @@ module.exports = function(grunt) {
       //
       // dist: {
       //     files: {
-      //         '<%= yeoman.dist %>/styles/main.css': [
+      //         '<%= yeoman.distApp %>/styles/main.css': [
       //             '.tmp/styles/{,*/}*.css',
       //             '<%= yeoman.app %>/styles/{,*/}*.css'
       //         ]
@@ -242,7 +245,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '<%= yeoman.app %>',
           src: '*.html',
-          dest: '<%= yeoman.dist %>'
+          dest: '<%= yeoman.distApp %>'
         }]
       }
     },
@@ -253,7 +256,7 @@ module.exports = function(grunt) {
           expand: true,
           dot: true,
           cwd: '<%= yeoman.app %>',
-          dest: '<%= yeoman.dist %>',
+          dest: '<%= yeoman.distApp %>',
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
@@ -268,6 +271,13 @@ module.exports = function(grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      sample: {
+        expand: true,
+        dot: true,
+        cwd: '<%= yeoman.distApp %>',
+        dest: '<%= release.dist %>',
+        src: '**/*.js'
       }
     },
     concurrent: {
@@ -324,13 +334,24 @@ module.exports = function(grunt) {
     'cssmin',
     'uglify',
     'copy:dist',
-    'rev',
+    // 'rev',
     'usemin'
+  ]);
+
+  grunt.registerTask('move', [
+    'copy:sample'
   ]);
 
   grunt.registerTask('default', [
     'jshint',
     'test',
     'build'
+  ]);
+
+  grunt.registerTask('deploy', [
+    'jshint',
+    'test',
+    'build',
+    'move'
   ]);
 };
