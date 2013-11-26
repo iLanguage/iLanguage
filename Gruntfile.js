@@ -282,14 +282,14 @@ module.exports = function(grunt) {
     },
     concurrent: {
       server: [
-        'compass',
+        // 'compass',
         'copy:styles'
       ],
       test: [
         'copy:styles'
       ],
       dist: [
-        'compass',
+        // 'compass',
         'copy:styles',
         'imagemin',
         'svgmin',
