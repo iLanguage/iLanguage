@@ -119,15 +119,10 @@ var loadCloud = function(isAndroid, element, userChosenFontFace, textToTurnIntoA
         .style('font-size', function(d) {
           return d.size + 'px';
         })
-        .on('click', function(d) {
-          $('#gsc-i-id1').val(d.text);
-          $('input.gsc-search-button').click();
-        })
         .style('opacity', 1e-6)
         .transition()
         .duration(500)
         .style('opacity', 1);
-      $('#loading').remove();
     } else {
       text.enter().append('text')
         .attr('text-anchor', 'middle')
@@ -138,7 +133,6 @@ var loadCloud = function(isAndroid, element, userChosenFontFace, textToTurnIntoA
         .style('font-size', function(d) {
           return d.size + 'px';
         });
-      $('#loading').remove();
     }
 
     text.style('font-family', function(d) {
@@ -158,8 +152,8 @@ var loadCloud = function(isAndroid, element, userChosenFontFace, textToTurnIntoA
         .duration(1000)
         .attr('transform', 'translate(' + [w >> 1, h >> 1] + ')scale(' + scale + ')')
         .each('end', function() {
-          // setSVG();
-          // setPNG();
+          setSVG();
+          setPNG();
         });
     } else {
       vis.transition()
