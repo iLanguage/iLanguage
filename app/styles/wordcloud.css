@@ -4,18 +4,21 @@
   font-weight: 400;
   src: url('./fonts/Allura-Regular.ttf') format('truetype');
 }
+
 @font-face {
   font-family: 'Trade Winds';
   font-style: normal;
   font-weight: 400;
   src: url('./fonts/Ewert-Regular.ttf') format('truetype');
 }
+
 @font-face {
   font-family: 'Ewert';
   font-style: normal;
   font-weight: 400;
   src: url('./fonts/CevicheOne-Regular.ttf') format('truetype');
 }
+
 @font-face {
   font-family: 'Ceviche One';
   font-style: normal;
