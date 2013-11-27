@@ -87,6 +87,16 @@ module.exports = function(grunt) {
           ]
         }]
       },
+      deploy: {
+        files: [{
+          dot: true,
+          src: [
+            '.tmp',
+            '<%= release.dist %>/*',
+            '!<%= release.dist %>/.git*'
+          ]
+        }]
+      },
       server: '.tmp'
     },
     jshint: {
@@ -339,6 +349,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('move', [
+    'clean:deploy',
     'copy:sample'
   ]);
 
