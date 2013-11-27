@@ -1,6 +1,6 @@
 var loadCloud = function(isAndroid, element, userChosenFontFace, textToTurnIntoACloud) {
   //accept a dom element, or an id
-  if(!element.offsetWidth){
+  if(element.offsetWidth == undefined){
     element = document.getElementById(element);
   }
   if(element.length){

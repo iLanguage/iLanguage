@@ -1,17 +1,3 @@
-table {
-  width: 100%;
-}
-
-td {
-  width: 50%;
-  border: 1px solid black;
-}
-
-tr {
-  text-align: center;
-}
-
-
 html,
 body {
 	margin: 0;
@@ -52,7 +38,7 @@ input[type="checkbox"] {
   outline: none;
 }
 
-#todoapp {
+#wordCloudapp {
 	background: #fff;
 	background: rgba(255, 255, 255, 0.9);
 	margin: 130px 0 40px 0;
@@ -64,7 +50,7 @@ input[type="checkbox"] {
 				0 25px 50px 0 rgba(0, 0, 0, 0.15);
 }
 
-#todoapp:before {
+#wordCloudapp:before {
 	content: '';
 	border-left: 1px solid #f5d6d6;
 	border-right: 1px solid #f5d6d6;
@@ -75,16 +61,16 @@ input[type="checkbox"] {
 	height: 100%;
 }
 
-#todoapp input::-webkit-input-placeholder {
+#wordCloudapp input::-webkit-input-placeholder {
 	font-style: italic;
 }
 
-#todoapp input::-moz-placeholder {
+#wordCloudapp input::-moz-placeholder {
 	font-style: italic;
 	color: #a9a9a9;
 }
 
-#todoapp h1 {
+#wordCloudapp h1 {
 	position: absolute;
 	top: -120px;
 	width: 100%;
@@ -124,7 +110,7 @@ input[type="checkbox"] {
 	border-top-right-radius: 1px;
 }
 
-#new-todo,
+#new-wordCloud,
 .edit {
 	position: relative;
 	margin: 0;
@@ -149,7 +135,7 @@ input[type="checkbox"] {
 	font-smoothing: antialiased;
 }
 
-#new-todo {
+#new-wordCloud {
 	padding: 16px 16px 16px 60px;
 	border: none;
 	background: rgba(0, 0, 0, 0.02);
@@ -188,39 +174,39 @@ label[for='toggle-all'] {
 	color: #737373;
 }
 
-#todo-list {
+#wordCloud-list {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-#todo-list li {
+#wordCloud-list li {
 	position: relative;
 	font-size: 24px;
 	border-bottom: 1px dotted #ccc;
 }
 
-#todo-list li:last-child {
+#wordCloud-list li:last-child {
 	border-bottom: none;
 }
 
-#todo-list li.editing {
+#wordCloud-list li.editing {
 	border-bottom: none;
 	padding: 0;
 }
 
-#todo-list li.editing .edit {
+#wordCloud-list li.editing .edit {
 	display: block;
 	width: 506px;
 	padding: 13px 17px 12px 17px;
 	margin: 0 0 0 43px;
 }
 
-#todo-list li.editing .view {
+#wordCloud-list li.editing .view {
 	display: none;
 }
 
-#todo-list li .toggle {
+#wordCloud-list li .toggle {
 	text-align: center;
 	width: 40px;
 	/* auto, since non-WebKit browsers doesn't support input styling */
@@ -237,7 +223,7 @@ label[for='toggle-all'] {
 	appearance: none;
 }
 
-#todo-list li .toggle:after {
+#wordCloud-list li .toggle:after {
 	content: '✔';
 	/* 40 + a couple of pixels visual adjustment */
 	line-height: 43px;
@@ -246,14 +232,14 @@ label[for='toggle-all'] {
 	text-shadow: 0 -1px 0 #bfbfbf;
 }
 
-#todo-list li .toggle:checked:after {
+#wordCloud-list li .toggle:checked:after {
 	color: #85ada7;
 	text-shadow: 0 1px 0 #669991;
 	bottom: 1px;
 	position: relative;
 }
 
-#todo-list li label {
+#wordCloud-list li label {
 	white-space: pre;
 	word-break: break-word;
 	padding: 15px 60px 15px 15px;
@@ -264,12 +250,12 @@ label[for='toggle-all'] {
 	transition: color 0.4s;
 }
 
-#todo-list li.completed label {
+#wordCloud-list li.completed label {
 	color: #a9a9a9;
 	text-decoration: line-through;
 }
 
-#todo-list li .destroy {
+#wordCloud-list li .destroy {
 	display: none;
 	position: absolute;
 	top: 0;
@@ -284,7 +270,7 @@ label[for='toggle-all'] {
 	transition: all 0.2s;
 }
 
-#todo-list li .destroy:hover {
+#wordCloud-list li .destroy:hover {
 	text-shadow: 0 0 1px #000,
 				 0 0 10px rgba(199, 107, 107, 0.8);
 	-webkit-transform: scale(1.3);
@@ -292,19 +278,19 @@ label[for='toggle-all'] {
 	transform: scale(1.3);
 }
 
-#todo-list li .destroy:after {
+#wordCloud-list li .destroy:after {
 	content: '✖';
 }
 
-#todo-list li:hover .destroy {
+#wordCloud-list li:hover .destroy {
 	display: block;
 }
 
-#todo-list li .edit {
+#wordCloud-list li .edit {
 	display: none;
 }
 
-#todo-list li.editing:last-child {
+#wordCloud-list li.editing:last-child {
 	margin-bottom: -1px;
 }
 
@@ -335,7 +321,7 @@ label[for='toggle-all'] {
 				0 44px 2px -6px rgba(0, 0, 0, 0.2);
 }
 
-#todo-count {
+#wordCloud-count {
 	float: left;
 	text-align: left;
 }
@@ -399,11 +385,11 @@ label[for='toggle-all'] {
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 	#toggle-all,
-	#todo-list li .toggle {
+	#wordCloud-list li .toggle {
 		background: none;
 	}
 
-	#todo-list li .toggle {
+	#wordCloud-list li .toggle {
 		height: 40px;
 	}
 
@@ -563,7 +549,7 @@ hr {
 		left: 8px;
 	}
 
-	.learn-bar #todoapp {
+	.learn-bar #wordCloudapp {
 		width: 550px;
 		margin: 130px auto 40px auto;
 	}
