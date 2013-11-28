@@ -1,11 +1,11 @@
 {
-  "name": "FieldDBGlosser",
+  "name": "fielddb-glosser",
   "version": "1.82.0",
   "authors": [
     "info@fielddb.org"
   ],
   "description": "A semi-automatic IGT morpheme segmenter and glosser",
-  "main": "Glosser.js",
+  "main": "dist/fielddb-glosser.min.js",
   "keywords": [
     "igt",
     "leipzig",

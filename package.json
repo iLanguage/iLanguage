@@ -1,0 +1,39 @@
+{
+  "name": "fielddb-glosser",
+  "description": "A semi-automatic IGT morpheme segmenter and glosser",
+  "version": "1.82.0",
+  "homepage": "https://github.com/OpenSourceFieldlinguistics/FieldDB/issues/milestones?state=closed",
+  "author": {
+    "name": "fielddb",
+    "email": "info@fielddb.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenSourceFieldlinguistics/FieldDBGlosser"
+  },
+  "bugs": {
+    "url": "https://github.com/OpenSourceFieldlinguistics/FieldDB/issues/"
+  },
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "main": "lib/FieldDBGlosser",
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.4.0",
+    "grunt": "~0.4.2"
+  },
+  "keywords": []
+}
