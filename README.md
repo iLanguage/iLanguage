@@ -41,11 +41,14 @@ var exports = Bocoup.utils;
 
 ## Examples
 
+In the examples below, all fields are optional but the more information provided, the more context the glosser can take into account when returning guesses.
+
+
 To guess an utterance (citation line) from morphemes:
 
 ```javascript
 Glosser.guessUtteranceFromMorphemes({
-	utterrance: "Kichanaywan punqota",
+	utterrance: "",
 	morphemes: "Kicha-nay-wa-n punqo-ta",
 	allomorphs: "",
 	gloss: "open-DES-1OM-3SG door-ACC", 
@@ -54,14 +57,14 @@ Glosser.guessUtteranceFromMorphemes({
 ```
 
 
-To guess a morpheme segment from an utterance/orthography line:
+To guess a morpheme segmention from an utterance/orthography line:
 
 ```javascript
 Glosser.guessMorphemesFromUtterance({
 	utterrance: "Kichanaywan punqota",
-	morphemes: "Kicha-nay-wa-n punqo-ta",
+	morphemes: "",
 	allomorphs: "",
-	gloss: "open-DES-1OM-3SG door-ACC", 
+	gloss: "", 
 	translation: "I feel like opening the door."
 });
 ```
@@ -74,7 +77,7 @@ Glosser.guessGlossFromMorphemes({
 	utterrance: "Kichanaywan punqota",
 	morphemes: "Kicha-nay-wa-n punqo-ta",
 	allomorphs: "",
-	gloss: "open-DES-1OM-3SG door-ACC", 
+	gloss: "", 
 	translation: "I feel like opening the door."
 });
 ```
