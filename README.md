@@ -4,7 +4,7 @@ A semi-automatic IGT morpheme segmenter and glosser
 
 ## Getting Started
 ### On the server
-Install the module with: `npm install fielddb-glosser`
+Install the module with: `npm install fielddb-glosser --save`
 
 ```javascript
 var Glosser = require('FieldDBGlosser');
@@ -12,15 +12,18 @@ Glosser.init(); // "init"
 ```
 
 ### In the browser
-Download the [production version][min] or the [development version][max].
 
-[min]: https://raw.github.com/OpenSourceFieldlinguistics/FieldDBGlosser/master/dist/fielddb-glosser.min.js
-[max]: https://raw.github.com/OpenSourceFieldlinguistics/FieldDBGlosser/master/dist/fielddb-glosser.js
+Install the module with: `bower install fielddb-glosser --save`
+
+Or, download the [production version][min] or the [development version][max].
+
+[min]: https://raw.github.com/OpenSourceFieldlinguistics/FieldDBGlosser/master/fielddb-glosser.min.js
+[max]: https://raw.github.com/OpenSourceFieldlinguistics/FieldDBGlosser/master/fielddb-glosser.js
 
 In your web page:
 
 ```html
-<script src="dist/fielddb-glosser.min.js"></script>
+<script src="bower_components/fielddb-glosser/fielddb-glosser.min.js"></script>
 <script>
 	Glosser.init(); // "init"
 </script>
@@ -32,7 +35,7 @@ In your code, you can attach FieldDBGlosser's methods to any object.
 <script>
 var exports = Bocoup.utils;
 </script>
-<script src="dist/fielddb-glosser.min.js"></script>
+<script src="bower_components/fielddb-glosser/fielddb-glosser.min.js"></script>
 <script>
 	Bocoup.utils.init(); // "init"
 </script>
@@ -120,5 +123,5 @@ _Also, please don't edit files in the "dist" subdirectory as they are generated 
 * v1.16 Basic glosser which uses a map reduce of precedence rules to build a morphemes template, and D3.js visualization of morphemes
 
 ## License
-Copyright (c) 2013 FieldDB  
+Copyright (c) 2013 FieldDB Contributors
 Licensed under the Apache 2.0 license.
