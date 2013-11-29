@@ -1,6 +1,6 @@
 'use strict';
 
-var FieldDBGlosser = require('../lib/FieldDBGlosser.js');
+var Glosser = require('../lib/FieldDBGlosser.js');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -30,7 +30,8 @@ exports['init'] = {
   'no args': function(test) {
     test.expect(1);
     // tests here
-    test.equal(FieldDBGlosser.init(), 'init', 'should be init.');
+    console.log(Glosser);
+    test.equal(Glosser.init(), 'init', 'should be init.');
     test.done();
   }
 };
