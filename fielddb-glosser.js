@@ -13,6 +13,9 @@
 (function(exports) {
 
   'use strict';
+
+  var Glosser = {};
+
   var console = console || {
     log: function() {}
   };
@@ -113,8 +116,8 @@
 
     }
   };
-  exports.currentCorpusName = "";
-  exports.downloadPrecedenceRules = function(pouchname, glosserURL, callback) {
+  Glosser.currentCorpusName = "";
+  Glosser.downloadPrecedenceRules = function(pouchname, glosserURL, callback) {
     if (!glosserURL || glosserURL === "default") {
       if (!window.app) {
         throw "Glosser cant be guessed, there is no app so the URL must be defined.";
@@ -137,7 +140,7 @@
 
         // Save the reduced precedence rules in localStorage
         localStorage.setItem(pouchname + "reducedRules", JSON.stringify(reducedRules));
-        exports.currentCorpusName = pouchname;
+        Glosser.currentCorpusName = pouchname;
         if (typeof callback === "function") {
           callback();
         }
@@ -157,11 +160,11 @@
    *
    * @return {String} The guessed morphemes line.
    */
-  exports.morphemefinder = function(unparsedUtterance) {
+  Glosser.morphemefinder = function(unparsedUtterance) {
     var potentialParse = '';
 
     // Get the precedence rules from localStorage
-    var rules = localStorage.getItem(exports.currentCorpusName + "reducedRules");
+    var rules = localStorage.getItem(Glosser.currentCorpusName + "reducedRules");
 
     var parsedWords = [];
     if (rules) {
@@ -259,9 +262,9 @@
 
     return parsedWords.join(" ");
   };
-  exports.toastedUserToSync = false;
-  exports.toastedUserToImport = 0;
-  exports.glossFinder = function(morphemesLine) {
+  Glosser.toastedUserToSync = false;
+  Glosser.toastedUserToImport = 0;
+  Glosser.glossFinder = function(morphemesLine) {
     //Guess a gloss
     var morphemeGroup = morphemesLine.split(/ +/);
     var glossGroups = [];
@@ -270,12 +273,12 @@
     }
     if (!window.app.get("corpus").lexicon.get("lexiconNodes")) {
       var corpusSize = 31; //TODO get corpus size another way. // app.get("corpus").datalists.models[app.get("corpus").datalists.models.length-1].get("datumIds").length;
-      if (corpusSize > 30 && !exports.toastedUserToSync) {
-        exports.toastedUserToSync = true;
-        window.appView.toastUser("You probably have enough data to train an autoglosser for your corpus.\n\nIf you sync your data with the team server then editing the morphemes will automatically run the auto exports.", "alert-success", "Sync to train your auto-glosser:");
+      if (corpusSize > 30 && !Glosser.toastedUserToSync) {
+        Glosser.toastedUserToSync = true;
+        window.appView.toastUser("You probably have enough data to train an autoglosser for your corpus.\n\nIf you sync your data with the team server then editing the morphemes will automatically run the auto Glosser.", "alert-success", "Sync to train your auto-glosser:");
       } else {
-        exports.toastedUserToImport++;
-        if (exports.toastedUserToImport % 10 === 1 && corpusSize < 30) {
+        Glosser.toastedUserToImport++;
+        if (Glosser.toastedUserToImport % 10 === 1 && corpusSize < 30) {
           window.appView.toastUser("You have roughly " + corpusSize + " datum saved in your pouch, if you have around 30 datum, then you have enough data to train an autoglosser for your corpus.", "alert-info", "AutoGlosser:");
         }
       }
@@ -311,9 +314,9 @@
    * Takes as a parameters an array of rules which came from CouchDB precedence rule query.
    * Example Rule: {"key":{"x":"@","relation":"preceeds","y":"aqtu","context":"aqtu-nay-wa-n"},"value":2}
    */
-  exports.generateForceDirectedRulesJsonForD3 = function(rules, pouchname) {
+  Glosser.generateForceDirectedRulesJsonForD3 = function(rules, pouchname) {
     if (!pouchname) {
-      pouchname = exports.currentCorpusName;
+      pouchname = Glosser.currentCorpusName;
     }
     if (!rules) {
       rules = localStorage.getItem(pouchname + "precendenceRules");
@@ -374,11 +377,11 @@
     var rulesGraph = {};
     rulesGraph.links = morphemeLinks;
     rulesGraph.nodes = morphemenodes;
-    exports.rulesGraph = rulesGraph;
+    Glosser.rulesGraph = rulesGraph;
 
     return rulesGraph;
   };
-  exports.saveAndInterConnectInApp = function(callback) {
+  Glosser.saveAndInterConnectInApp = function(callback) {
 
     if (typeof callback === "function") {
       callback();
@@ -388,28 +391,28 @@
    * Some sample D3 from the force-html.html example
    *
    */
-  //exports.rulesGraph = exports.rulesGraph || {};
-  exports.visualizeMorphemesAsForceDirectedGraph = function(rulesGraph, divElement, pouchname) {
+  //Glosser.rulesGraph = Glosser.rulesGraph || {};
+  Glosser.visualizeMorphemesAsForceDirectedGraph = function(rulesGraph, divElement, pouchname) {
 
     if (pouchname) {
-      exports.currentCorpusName = pouchname;
+      Glosser.currentCorpusName = pouchname;
     } else {
       throw ("Must provide corpus name to be able to visualize morphemes");
     }
     if (!rulesGraph) {
-      rulesGraph = exports.rulesGraph;
+      rulesGraph = Glosser.rulesGraph;
       if (rulesGraph) {
         if (rulesGraph.links.length === 0) {
-          rulesGraph = exports.generateForceDirectedRulesJsonForD3();
+          rulesGraph = Glosser.generateForceDirectedRulesJsonForD3();
         }
       } else {
-        rulesGraph = exports.generateForceDirectedRulesJsonForD3();
+        rulesGraph = Glosser.generateForceDirectedRulesJsonForD3();
       }
     }
     if (!rulesGraph) {
       return;
     }
-    if (exports.rulesGraph.links.length === 0) {
+    if (Glosser.rulesGraph.links.length === 0) {
       return;
     }
     var json = rulesGraph;
@@ -533,9 +536,11 @@
   };
 
 
-  exports.init = function() {
+  Glosser.init = function() {
     return 'init';
   };
+
+  exports.Glosser = Glosser;
 
 
 }(typeof exports === 'object' && exports || this));

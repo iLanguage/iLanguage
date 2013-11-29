@@ -29,18 +29,6 @@ In your web page:
 </script>
 ```
 
-In your code, you can attach FieldDBGlosser's methods to any object.
-
-```html
-<script>
-var exports = Bocoup.utils;
-</script>
-<script src="bower_components/fielddb-glosser/fielddb-glosser.min.js"></script>
-<script>
-	Bocoup.utils.init(); // "init"
-</script>
-```
-
 
 ## Examples
 

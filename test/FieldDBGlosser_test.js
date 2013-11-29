@@ -1,6 +1,6 @@
 'use strict';
 
-var Glosser = require('../lib/FieldDBGlosser.js');
+var Glosser = require('../lib/FieldDBGlosser.js').Glosser;
 
 /*
   ======== A Handy Little Nodeunit Reference ========
