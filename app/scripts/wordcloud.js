@@ -2,19 +2,21 @@
 
   exports.newiLanguageCloud = function(userOptions) {
 
-    var element = userOptions.cloudDiv,
-      textToTurnIntoACloud = userOptions.cloudText,
-      cloudStopWords = userOptions.cloudStopWords,
-      userChosenFontFace = userOptions.cloudFont,
-      isAndroid = userOptions.isAndroid;
+    var self = this;
+    self.element             = userOptions.cloudDiv;
+
+    var textToTurnIntoACloud = userOptions.cloudText,
+        cloudStopWords       = userOptions.cloudStopWords,
+        userChosenFontFace   = userOptions.cloudFont,
+        isAndroid            = userOptions.isAndroid;
 
     //accept a dom element, or an id
-    if(element.offsetWidth == undefined){
-      element = document.getElementById(element);
+    if(self.element.offsetWidth == undefined){
+      self.element = document.getElementById(self.element);
     }
 
-    if(element.length){
-      element = element[0];
+    if(self.element.length){
+      self.element = self.element[0];
     }
 
     /**
@@ -22,7 +24,7 @@
      */
 
     var fill = d3.scale.category20(),
-      w = element.offsetWidth || 600,
+      w = self.element.offsetWidth || 600,
       h = window.innerHeight || 400;
 
     var words = [],
@@ -48,7 +50,7 @@
       .on('word', progress)
       .on('end', draw);
 
-    var svg = d3.select(element).append('svg')
+    var svg = d3.select(self.element).append('svg')
       .attr('width', w)
       .attr('height', h)
       .attr('version', '1.1')
