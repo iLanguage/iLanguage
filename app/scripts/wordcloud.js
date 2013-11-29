@@ -1,10 +1,11 @@
 (function(exports) {
 
-  exports.loadCloud = function(userOptions) {
+  exports.newiLanguageCloud = function(userOptions) {
 
     var element = userOptions.cloudDiv,
       textToTurnIntoACloud = userOptions.cloudText,
       cloudStopWords = userOptions.cloudStopWords,
+      userChosenFontFace = userOptions.cloudFont,
       isAndroid = userOptions.isAndroid;
 
     //accept a dom element, or an id
