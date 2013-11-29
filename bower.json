@@ -1,6 +1,6 @@
 {
   "name": "fielddb-glosser",
-  "version": "1.82.0",
+  "version": "1.82.1",
   "authors": [
     "info@fielddb.org"
   ],
@@ -19,7 +19,11 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "lib",
+    "dist",
+    "Gruntfile.js",
+    "package.json"
   ],
   "dependencies": {
     "d3": "~3.3.10",

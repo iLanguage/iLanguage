@@ -19,7 +19,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: ['lib/FieldDBGlosser.js'],
-        dest: 'dist/<%= pkg.name %>.js'
+        dest: '<%= pkg.name %>.js'
       },
     },
     uglify: {
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: '<%= concat.dist.dest %>',
-        dest: 'dist/<%= pkg.name %>.min.js'
+        dest: '<%= pkg.name %>.min.js'
       },
     },
     nodeunit: {
