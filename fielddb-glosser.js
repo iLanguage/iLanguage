@@ -1,4 +1,4 @@
-/*! fielddb-glosser - v1.82.0 - 2013-11-28
+/*! fielddb-glosser - v1.82.0 - 2013-11-29
 * https://github.com/OpenSourceFieldlinguistics/FieldDB/issues/milestones?state=closed
 * Copyright (c) 2013 FieldDB Contributors; Licensed Apache 2.0 */
 // var d3 = require("d3");
@@ -151,6 +151,7 @@
       dataType: ""
     });
   };
+
   /**
    * Takes in an utterance line and, based on our current set of precendence
    * rules, guesses what the morpheme line would be. The algorithm is
@@ -160,7 +161,14 @@
    *
    * @return {String} The guessed morphemes line.
    */
-  Glosser.morphemefinder = function(unparsedUtterance, pouchname) {
+  Glosser.morphemefinder = function(unparsedUtterance, pouchname, justCopyDontGuessIGT) {
+    if(!unparsedUtterance){
+      return "";
+    }
+
+    if (justCopyDontGuessIGT) {
+      return unparsedUtterance;
+    }
 
     if (!pouchname) {
       if (!window.app || !window.app.get("corpus")) {
@@ -270,9 +278,14 @@
     return parsedWords.join(" ");
   };
 
-  Glosser.glossFinder = function(morphemesLine, pouchname) {
+  Glosser.glossFinder = function(morphemesLine, pouchname, justCopyDontGuessIGT) {
     if (!morphemesLine) {
       return "";
+    }
+
+    if (justCopyDontGuessIGT) {
+      var justQuestionMarks = morphemesLine.trim().replace(/[^ -]+/g, "?");
+      return justQuestionMarks;
     }
 
     if (!pouchname) {
@@ -325,6 +338,37 @@
     // Replace the gloss line with the guessed glosses
     return glossGroups.join(" ");
   };
+
+  Glosser.guessUtteranceFromMorphemes = function(igt, justCopyDontGuessIGT){
+    if(!igt.utterance && igt.morphemes){
+      igt.utterance = igt.morphemes.replace(/[-.]/g,"");
+    }
+    return igt;
+  };
+
+  Glosser.guessMorphemesFromUtterance = function(igt, justCopyDontGuessIGT){
+    if (igt.morphemes) {
+      return igt;
+    }
+    igt.morphemes = Glosser.morphemefinder(igt.utterance, igt.pouchname, justCopyDontGuessIGT);
+    if (!igt.gloss) {
+      igt.gloss = Glosser.glossFinder(igt.morphemes, igt.pouchname, justCopyDontGuessIGT);
+    }
+    return igt;
+  };
+
+  Glosser.guessGlossFromMorphemes = function(igt, justCopyDontGuessIGT){
+    if (igt.gloss) {
+      return igt;
+    }
+    if (igt.morphemes) {
+      igt.gloss = Glosser.glossFinder(igt.morphemes, igt.pouchname, justCopyDontGuessIGT);
+    } else {
+      igt.gloss = Glosser.glossFinder(igt.utterance, igt.pouchname, justCopyDontGuessIGT);
+    }
+    return igt;
+  };
+
 
   /**
    * Takes as a parameters an array of rules which came from CouchDB precedence rule query.
