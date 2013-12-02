@@ -23,9 +23,6 @@ var opts3 = {
   isAndroid: false
 };
 
-newiLanguageCloud(opts);
-console.log('opts', opts);
-newiLanguageCloud(opts2);
-console.log('opts2', opts2);
-newiLanguageCloud(opts3);
-console.log('opts3', opts3);
+var cloud = WordCloud(opts).render();
+var cloud2 = WordCloud(opts2).render();
+var cloud3 = WordCloud(opts3).render();

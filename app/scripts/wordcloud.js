@@ -21,18 +21,15 @@
           isAndroid            = userOptions.isAndroid;
 
       //accept a dom element, or an id
-      if(element.offsetWidth == undefined){
+      if(element.offsetWidth === undefined) {
         element = document.getElementById(element);
       }
 
-      if(element.length){
+      if(element.length) {
         element = element[0];
       }
 
       // D3 word cloud by Jason Davies see http://www.jasondavies.com/wordcloud/ for more details
-
-      console.log('element', element);
-
       var fill = d3.scale.category20(),
         w = element.offsetWidth || 600,
         h = window.innerHeight || 400,
@@ -68,19 +65,16 @@
       var background = svg.append('g'),
         vis = svg.append('g').attr('transform', 'translate(' + [w >> 1, h >> 1] + ')');
 
-      d3.select(window).on('hashchange', hashchange);
-      d3.select(window).on('load', hashchange);
-
       function generate() {
         layout.font(userChosenFontFace).spiral('archimedean');
-        fontSize = d3.scale.linear().range([10, 60]);
+        fontSize = d3.scale.linear().range([10, h * 0.25]);
 
         if (tags.length) {
           fontSize.domain([+tags[tags.length - 1].value || 1, +tags[0].value]);
         }
 
         words = [];
-        layout.stop().words(tags.slice(0, max = Math.min(tags.length, +150))).start();
+        layout.stop().words(tags.slice(0, max = Math.min(tags.length, +250))).start();
       }
 
       function parseText(text) {
@@ -265,10 +259,9 @@
         from,
         to,
         count,
-        scale = d3.scale.linear(),
-        arc = d3.svg.arc()
-          .innerRadius(0)
-          .outerRadius(r);
+        arc = d3.svg.arc().innerRadius(0).outerRadius(r);
+
+      scale = d3.scale.linear();
 
       function cross(a, b) { return a[0] * b[1] - a[1] * b[0]; }
       function dot(a, b) { return a[0] * b[0] + a[1] * b[1]; }
@@ -351,6 +344,7 @@
 
       getAngles();
 
+      hashchange();
       return this;
 
     };
