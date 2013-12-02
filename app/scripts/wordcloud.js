@@ -2,7 +2,6 @@
 
   exports.newiLanguageCloud = function(userOptions) {
 
-    var self = this;
     var element              = userOptions.cloudDiv,
         textToTurnIntoACloud = userOptions.cloudText,
         cloudStopWords       = userOptions.cloudStopWords,
