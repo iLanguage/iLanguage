@@ -2,11 +2,11 @@
 
   var WordCloud = function(options) {
 
-    // var cloud = defaultCloud();
     var cloud = options || {};
     cloud.cloudDiv = cloud.cloudDiv || 'cloud';
     cloud.cloudText = cloud.cloudText || 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their projects again and again. And if she hasn’t been rewritten, then they are still using her.Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk';
-    cloud.cloudStopWords = cloud.cloudStopWords || '';
+    // From Jonathan Feinberg's cue.language, see lib/cue.language/license.txt.
+    cloud.cloudStopWords = cloud.cloudStopWords || /^(i|me|my|myself|we|us|our|ours|ourselves|you|your|yours|yourself|yourselves|he|him|his|himself|she|her|hers|herself|it|its|itself|they|them|their|theirs|themselves|what|which|who|whom|whose|this|that|these|those|am|is|are|was|were|be|been|being|have|has|had|having|do|does|did|doing|will|would|should|can|could|ought|i'm|you're|he's|she's|it's|we're|they're|i've|you've|we've|they've|i'd|you'd|he'd|she'd|we'd|they'd|i'll|you'll|he'll|she'll|we'll|they'll|isn't|aren't|wasn't|weren't|hasn't|haven't|hadn't|doesn't|don't|didn't|won't|wouldn't|shan't|shouldn't|can't|cannot|couldn't|mustn't|let's|that's|who's|what's|here's|there's|when's|where's|why's|how's|a|an|the|and|but|if|or|because|as|until|while|of|at|by|for|with|about|against|between|into|through|during|before|after|above|below|to|from|up|upon|down|in|out|on|off|over|under|again|further|then|once|here|there|when|where|why|how|all|any|both|each|few|more|most|other|some|such|no|nor|not|only|own|same|so|than|too|very|say|says|said|shall)$/;
     cloud.cloudFont = cloud.cloudFont || 'FreeSans';
     cloud.isAndroid = cloud.isAndroid || false;
 
@@ -29,26 +29,24 @@
         element = element[0];
       }
 
-      /**
-       * D3 word cloud by Jason Davies see http://www.jasondavies.com/wordcloud/ for more details
-       */
+      // D3 word cloud by Jason Davies see http://www.jasondavies.com/wordcloud/ for more details
 
       console.log('element', element);
 
       var fill = d3.scale.category20(),
         w = element.offsetWidth || 600,
-        h = window.innerHeight || 400;
-
-      var words = [],
+        h = window.innerHeight || 400,
+        words = [],
         max,
         scale = 1,
-        complete = 0,
-        keyword = '',
         tags,
         fontSize,
         maxLength = 30,
         fetcher = textToTurnIntoACloud,
-        statusText = '';
+        stopWords = cloudStopWords,
+        punctuation = /[!"&()*+,-\.\/:;<=>?\[\\\]^`\{|\}~]+/g,
+        wordSeparators = /[\s\u3031-\u3035\u309b\u309c\u30a0\u30fc\uff70]+/g,
+        discard = /^(@|https?:)/;
 
       var layout = d3.layout.cloud()
         .timeInterval(10)
@@ -59,7 +57,6 @@
         .text(function(d) {
           return d.key;
         })
-        .on('word', progress)
         .on('end', draw);
 
       var svg = d3.select(element).append('svg')
@@ -74,22 +71,27 @@
       d3.select(window).on('hashchange', hashchange);
       d3.select(window).on('load', hashchange);
 
-      // From Jonathan Feinberg's cue.language, see lib/cue.language/license.txt.
-      var stopWords = /^(i|me|my|myself|we|us|our|ours|ourselves|you|your|yours|yourself|yourselves|he|him|his|himself|she|her|hers|herself|it|its|itself|they|them|their|theirs|themselves|what|which|who|whom|whose|this|that|these|those|am|is|are|was|were|be|been|being|have|has|had|having|do|does|did|doing|will|would|should|can|could|ought|i'm|you're|he's|she's|it's|we're|they're|i've|you've|we've|they've|i'd|you'd|he'd|she'd|we'd|they'd|i'll|you'll|he'll|she'll|we'll|they'll|isn't|aren't|wasn't|weren't|hasn't|haven't|hadn't|doesn't|don't|didn't|won't|wouldn't|shan't|shouldn't|can't|cannot|couldn't|mustn't|let's|that's|who's|what's|here's|there's|when's|where's|why's|how's|a|an|the|and|but|if|or|because|as|until|while|of|at|by|for|with|about|against|between|into|through|during|before|after|above|below|to|from|up|upon|down|in|out|on|off|over|under|again|further|then|once|here|there|when|where|why|how|all|any|both|each|few|more|most|other|some|such|no|nor|not|only|own|same|so|than|too|very|say|says|said|shall)$/,
-        punctuation = /[!"&()*+,-\.\/:;<=>?\[\\\]^`\{|\}~]+/g,
-        wordSeparators = /[\s\u3031-\u3035\u309b\u309c\u30a0\u30fc\uff70]+/g,
-        discard = /^(@|https?:)/,
-        htmlTags = /(<[^>]*?>|<script.*?<\/script>|<style.*?<\/style>|<head.*?><\/head>)/g;
+      function generate() {
+        layout.font(userChosenFontFace).spiral('archimedean');
+        fontSize = d3.scale.linear().range([10, 60]);
+
+        if (tags.length) {
+          fontSize.domain([+tags[tags.length - 1].value || 1, +tags[0].value]);
+        }
+
+        words = [];
+        layout.stop().words(tags.slice(0, max = Math.min(tags.length, +150))).start();
+      }
 
       function parseText(text) {
         tags = {};
         var cases = {};
 
         text.split(wordSeparators).forEach(function(word) {
-          if (discard.test(word)) { return };
+          if (discard.test(word)) { return; }
           word = word.replace(punctuation, '');
 
-          if (stopWords.test(word.toLowerCase())) { return };
+          if (stopWords.test(word.toLowerCase())) { return; }
           word = word.substr(0, maxLength);
 
           cases[word.toLowerCase()] = word;
@@ -107,20 +109,9 @@
         generate();
       }
 
-      function generate() {
-        layout.font(userChosenFontFace).spiral('archimedean');
-        fontSize = d3.scale.linear().range([10, 60]);
-
-        if (tags.length) {
-          fontSize.domain([+tags[tags.length - 1].value || 1, +tags[0].value]);
-        }
-
-        complete = 0;
-        words = [];
-        layout.stop().words(tags.slice(0, max = Math.min(tags.length, +150))).start();
+      function hashchange() {
+        parseText(fetcher);
       }
-
-      function progress(d) {}
 
       function draw(data, bounds) {
         scale = bounds ? Math.min(
@@ -184,61 +175,53 @@
         if (!isAndroid) {
           vis.transition()
             .duration(1000)
-            .attr('transform', 'translate(' + [w >> 1, h >> 1] + ')scale(' + scale + ')')
-            .each('end', function() {
-              setSVG();
-              setPNG();
-            });
+            .attr('transform', 'translate(' + [w >> 1, h >> 1] + ')scale(' + scale + ')');
+            // .each('end', function() {
+            //   setSVG();
+            //   setPNG();
+            // });
         } else {
           vis.transition()
-            .duration(3000)
-            .each('end', function() {
-              setSVG();
-              setPNG();
-            });
+            .duration(3000);
+            // .each('end', function() {
+            //   setSVG();
+            //   setPNG();
+            // });
         }
       }
 
-      function hashchange() {
-        load(fetcher);
-      }
-
-      function load(f) {
-        parseText(f);
-      }
-
       // Converts a given word cloud to image/png.
-      function setPNG() {
-        var canvas = document.createElement('canvas'),
-          c = canvas.getContext('2d');
-        canvas.width = w;
-        canvas.height = h;
-        c.translate(w >> 1, h >> 1);
-        c.scale(scale, scale);
-        words.forEach(function(word, i) {
-          c.save();
-          c.translate(word.x, word.y);
-          c.rotate(word.rotate * Math.PI / 180);
-          c.textAlign = 'center';
-          c.fillStyle = fill(word.text.toLowerCase());
-          c.font = word.size + 'px ' + word.font;
-          c.fillText(word.text, 0, 0);
-          c.restore();
-        });
-        var currentPNG = canvas.toDataURL('image/png');
-        var currentPNGdata = currentPNG.match(/[^,]*$/)[0];
-        localStorage.setItem('currentPNG', currentPNG);
-        localStorage.setItem('currentPNGdata', currentPNGdata);
-      }
+      // function setPNG() {
+      //   var canvas = document.createElement('canvas'),
+      //     c = canvas.getContext('2d');
+      //   canvas.width = w;
+      //   canvas.height = h;
+      //   c.translate(w >> 1, h >> 1);
+      //   c.scale(scale, scale);
+      //   words.forEach(function(word, i) {
+      //     c.save();
+      //     c.translate(word.x, word.y);
+      //     c.rotate(word.rotate * Math.PI / 180);
+      //     c.textAlign = 'center';
+      //     c.fillStyle = fill(word.text.toLowerCase());
+      //     c.font = word.size + 'px ' + word.font;
+      //     c.fillText(word.text, 0, 0);
+      //     c.restore();
+      //   });
+      //   var currentPNG = canvas.toDataURL('image/png');
+      //   var currentPNGdata = currentPNG.match(/[^,]*$/)[0];
+      //   localStorage.setItem('currentPNG', currentPNG);
+      //   localStorage.setItem('currentPNGdata', currentPNGdata);
+      // }
 
-      function setSVG() {
-        var currentSVG = d3.select('svg');
-        var currentSVGEscaped = btoa(unescape(encodeURIComponent(currentSVG.node().parentNode.innerHTML)));
-        var currentSVGOut = 'data:image/svg+xml;charset=utf-8;base64,' + currentSVGEscaped;
+      // function setSVG() {
+      //   var currentSVG = d3.select('svg');
+      //   var currentSVGEscaped = btoa(unescape(encodeURIComponent(currentSVG.node().parentNode.innerHTML)));
+      //   var currentSVGOut = 'data:image/svg+xml;charset=utf-8;base64,' + currentSVGEscaped;
 
-        localStorage.setItem('currentSVG', currentSVGOut);
-        localStorage.setItem('currentSVGdata', currentSVGEscaped);
-      }
+      //   localStorage.setItem('currentSVG', currentSVGOut);
+      //   localStorage.setItem('currentSVGdata', currentSVGEscaped);
+      // }
 
       var r = 40.5,
         px = 35,
@@ -287,14 +270,8 @@
           .innerRadius(0)
           .outerRadius(r);
 
-      getAngles();
-
-      function getAngles() {
-        count = +2;
-        from = Math.max(-90, Math.min(90, +0));
-        to = Math.max(-90, Math.min(90, +90));
-        update();
-      }
+      function cross(a, b) { return a[0] * b[1] - a[1] * b[0]; }
+      function dot(a, b) { return a[0] * b[0] + a[1] * b[1]; }
 
       function update() {
         scale.domain([0, count - 1]).range([from, to]);
@@ -333,7 +310,7 @@
               d = (i ? to : from) + 90;
               var start = [-r * Math.cos(d * radians), -r * Math.sin(d * radians)],
                 m = [d3.event.x, d3.event.y],
-                delta = ~~ (Math.atan2(cross(start, m), dot(start, m)) / radians);
+                delta = ~~(Math.atan2(cross(start, m), dot(start, m)) / radians);
               d = Math.max(-90, Math.min(90, d + delta - 90)); // remove this for 360°
               delta = to - from;
               if (i) {
@@ -365,13 +342,14 @@
         });
       }
 
-      function cross(a, b) {
-        return a[0] * b[1] - a[1] * b[0];
+      function getAngles() {
+        count = +2;
+        from = Math.max(-90, Math.min(90, +0));
+        to = Math.max(-90, Math.min(90, +90));
+        update();
       }
 
-      function dot(a, b) {
-        return a[0] * b[0] + a[1] * b[1];
-      }
+      getAngles();
 
       return this;
 
