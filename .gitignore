@@ -1,9 +1,5 @@
-node_modules
-dist
-dist-app
-.tmp
-.sass-cache
-app/bower_components
+/node_modules/
+/dist/
 
 # OS generated files #
 ######################

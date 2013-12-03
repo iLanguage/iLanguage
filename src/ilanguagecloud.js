@@ -1,8 +1,8 @@
 /*
- * iLanguageCloud
+ * ilanguagecloud
  * https://github.com/iLanguage/iLanguageCloud
  *
- * Copyright (c) 2013 Joshua Horner
+ * Copyright (c) 2013 
  * Licensed under the MIT license.
  */
 
