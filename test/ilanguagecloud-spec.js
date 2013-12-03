@@ -1,7 +1,5 @@
 'use strict';
 
-var wordcloud = require('../src/ilanguagecloud.js');
-
 /*
   ======== A Handy Little Jasmine Reference ========
 https://github.com/pivotal/jasmine/wiki/Matchers
@@ -43,10 +41,34 @@ https://github.com/pivotal/jasmine/wiki/Matchers
 
 */
 
+describe("lib/ilanguage-cloud", function() {
 
-describe("lib/wordcloud", function() {
-    it("should load", function() {
-        expect(wordcloud.awesome()).toBe('awesome');
+  describe("It has useful content for infoviz", function() {
+
+    it("should automatically clean the text to create informative wordclouds", function() {
+      expect(true).toBeTruthy();
     });
-});
 
+    it("should guess negative words for this text", function() {
+      expect(true).toBeTruthy();
+    });
+
+    it("should guess buzz words for this text", function() {
+      expect(true).toBeTruthy();
+    });
+
+  });
+
+  describe("It is not English oriented", function() {
+
+    it("should adapt to any language typology", function() {
+      expect(true).toBeTruthy();
+    });
+
+  });
+
+  it("should do everything a wordcloud can do", function() {
+    expect(true).toBeTruthy();
+  });
+
+});
