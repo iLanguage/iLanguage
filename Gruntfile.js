@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   // Show elapsed time at the end.
   require('time-grunt')(grunt);
 
@@ -20,9 +20,10 @@ module.exports = function (grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['src/<%= pkg.name %>.js'],
+        // src: ['src/<%= pkg.name %>.js'],
+        src: ['src/**/*.js'],
         dest: 'dist/<%= pkg.name %>.js'
-      },
+      }
     },
     uglify: {
       options: {
@@ -31,7 +32,7 @@ module.exports = function (grunt) {
       dist: {
         src: '<%= concat.dist.dest %>',
         dest: 'dist/<%= pkg.name %>.min.js'
-      },
+      }
     },
     nodeunit: {
       files: ['test/**/*_test.js']
@@ -47,11 +48,14 @@ module.exports = function (grunt) {
         options: {
           jshintrc: 'src/.jshintrc'
         },
-        src: ['src/**/*.js']
+        src: [
+          'src/**/*.js',
+          '!src/layout/*'
+        ]
       },
       test: {
         src: ['test/**/*.js']
-      },
+      }
     },
     watch: {
       gruntfile: {
@@ -65,8 +69,8 @@ module.exports = function (grunt) {
       test: {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'nodeunit']
-      },
-    },
+      }
+    }
   });
 
   // These plugins provide necessary tasks.
