@@ -23,22 +23,21 @@ function SampleController($scope) {
     $scope.text0.text = $scope["text" + whichText].text;
     console.log("Loaded text " + whichText + ": ", $scope.text0);
   };
-};
+}
 
 app.directive('wordCloud', function() {
   return {
     link: function(scope, element, attr) {
       var cloudHolder = {};
-      var drawWordCloud = function() {
-        cloudHolder.cloud.cloudDiv = element[0];
-        WordCloud(cloudHolder.cloud).render();
-      }
+      cloudHolder.cloud = WordCloud({
+        cloudDiv: element[0]
+      });
 
       scope.$watch(attr.cloudContent, function(newValue, oldValue) {
-        cloudHolder.cloud = newValue;
-        return drawWordCloud();
+        cloudHolder.cloud.text = newValue.text;
+        return cloudHolder.cloud.render();
       });
 
     }
-  }
+  };
 });
