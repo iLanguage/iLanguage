@@ -30,7 +30,7 @@ app.directive('wordCloud', function() {
     link: function(scope, element, attr) {
       var cloudHolder = {};
       cloudHolder.cloud = WordCloud({
-        cloudDiv: element[0]
+        element: element[0]
       });
 
       scope.$watch(attr.cloudContent, function(newValue, oldValue) {
