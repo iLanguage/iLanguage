@@ -115,16 +115,19 @@ var app = app || {};
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));
 			this.$el.toggleClass('completed', this.model.get('completed'));
-			// This sample shows a few TO DOs to make the loadCloud more useful: 
+			// This sample shows a few TO DOs to make the loadCloud more useful:
 			// * not be global
 			// * something is wrong with the width detection, TODO remove timeout
-			// * accept an object which 
+			// * accept an object which
 			//  * contains the text
 			//  * contains an optional double click function etc
 			var self = this;
 			window.setTimeout(function(){
 				self.$el.find('.word-cloud').html('');
-				loadCloud(isAndroid, self.$el.find('.word-cloud')[0], cloudFont, self.model.get("text"), self.model.toJSON());
+        WordCloud({
+          element: self.$el.find('.word-cloud')[0],
+          text: self.model.get("text")
+        }).render();
 			}, 100);
 			this.toggleVisible();
 			this.$input = this.$('.edit');
@@ -230,7 +233,7 @@ var app = app || {};
 			this.listenTo(app.wordClouds, 'filter', this.filterAll);
 			this.listenTo(app.wordClouds, 'all', this.render);
 
-			// Suppresses 'add' events with {reset: true} and prevents the app view 
+			// Suppresses 'add' events with {reset: true} and prevents the app view
 			// from being re-rendered for every model. Only renders when the 'reset'
 			// event is triggered at the end of the fetch.
 			app.wordClouds.fetch({reset: true});
