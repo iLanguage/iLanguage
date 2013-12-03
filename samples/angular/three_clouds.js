@@ -28,13 +28,14 @@ function SampleController($scope) {
 app.directive('wordCloud', function() {
   return {
     link: function(scope, element, attr) {
-      var cloudText = "";
+      var cloudHolder = {};
       var drawWordCloud = function() {
-        loadCloud(isAndroid, element[0], cloudFont, cloudText);
+        cloudHolder.cloud.cloudDiv = element[0];
+        WordCloud(cloudHolder.cloud).render();
       }
 
       scope.$watch(attr.cloudContent, function(newValue, oldValue) {
-        cloudText = newValue.text;
+        cloudHolder.cloud = newValue;
         return drawWordCloud();
       });
 
