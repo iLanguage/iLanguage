@@ -17,7 +17,7 @@ https://github.com/pivotal/jasmine/wiki/Matchers
     expect(x).toBeLessThan(y); passes if x is less than y
     expect(x).toBeGreaterThan(y); passes if x is greater than y
     expect(function(){fn();}).toThrow(e); passes if function fn throws exception e when executed
-    
+
     Every matcher's criteria can be inverted by prepending .not:
     expect(x).not.toEqual(y); compares objects or primitives x and y and passes if they are not equivalent
 
@@ -28,11 +28,11 @@ https://github.com/pivotal/jasmine/wiki/Matchers
         toBeLessThan: function(expected) {
           var actual = this.actual;
           var notText = this.isNot ? " not" : "";
-    
+
           this.message = function () {
             return "Expected " + actual + notText + " to be less than " + expected;
           }
-    
+
           return actual < expected;
         }
 
@@ -41,33 +41,33 @@ https://github.com/pivotal/jasmine/wiki/Matchers
 
 */
 
-describe("lib/ilanguage-cloud", function() {
+describe('lib/ilanguage-cloud', function() {
 
-  describe("It has useful content for infoviz", function() {
+  describe('It has useful content for infoviz', function() {
 
-    it("should automatically clean the text to create informative wordclouds", function() {
+    xit('should automatically clean the text to create informative wordclouds', function() {
       expect(true).toBeTruthy();
     });
 
-    it("should guess negative words for this text", function() {
+    xit('should guess negative words for this text', function() {
       expect(true).toBeTruthy();
     });
 
-    it("should guess buzz words for this text", function() {
-      expect(true).toBeTruthy();
-    });
-
-  });
-
-  describe("It is not English oriented", function() {
-
-    it("should adapt to any language typology", function() {
+    xit('should guess buzz words for this text', function() {
       expect(true).toBeTruthy();
     });
 
   });
 
-  it("should do everything a wordcloud can do", function() {
+  describe('It is not English oriented', function() {
+
+    xit('should adapt to any language typology', function() {
+      expect(true).toBeTruthy();
+    });
+
+  });
+
+  xit('should do everything a wordcloud can do', function() {
     expect(true).toBeTruthy();
   });
 

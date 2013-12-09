@@ -35,15 +35,15 @@ module.exports = function(grunt) {
       }
     },
     jasmine_node: {
-      specNameMatcher: "spec",
-      projectRoot: "./",
+      specNameMatcher: 'spec',
+      projectRoot: './',
       requirejs: false,
-      forceExit: true,
+      forceExit: false,
       isVerbose: true,
       showColors: true,
       jUnit: {
         report: true,
-        savePath: "./build/reports/jasmine/",
+        savePath: './build/reports/jasmine/',
         consolidate: true,
         useDotNotation: false
       }
@@ -93,5 +93,5 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'jasmine_node', 'concat', 'uglify']);
-  grunt.registerTask('debug', ['jshint', 'concat']);
+  grunt.registerTask('debug', ['jshint', 'jasmine_node', 'concat']);
 };
