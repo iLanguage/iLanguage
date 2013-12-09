@@ -34,8 +34,16 @@ module.exports = function(grunt) {
         dest: 'dist/<%= pkg.name %>.min.js'
       }
     },
+    jasmine: {
+      src: 'dist/app_bundle.js',
+      options: {
+        specs: 'dist/test_bundle.js',
+        vendor: []
+      }
+    },
     jasmine_node: {
       specNameMatcher: 'spec',
+      specFolders: ['test/spec/common'],
       projectRoot: './',
       requirejs: false,
       forceExit: false,
@@ -46,6 +54,33 @@ module.exports = function(grunt) {
         savePath: './build/reports/jasmine/',
         consolidate: true,
         useDotNotation: false
+      }
+    },
+    browserify: {
+      main: {
+        src: ['./src/browser/app.js'],
+        dest: 'dist/app_bumdle_main.js',
+        options: {
+          alias: ['./src/browser/app.js:sampleapp'],
+          ignore: ['src/node/**/*.js']
+        }
+      },
+      src: {
+          src: ['src/common/**/*.js', 'src/browser/**/*.js'],
+          dest: 'dist/app_bundle.js',
+          options: {
+              alias: ['./src/browser/App.js:SampleApp'],
+              externalize: ['src/common/**/*.js', 'src/browser/**/*.js'],
+              ignore: ['src/node/**/*.js']
+          }
+      },
+      test: {
+          src: ['test/spec/common/**/*.js', 'test/spec/browser/**/*.js'],
+          dest: 'dist/test_bundle.js',
+          options: {
+              external: ['./src/**/*.js'],
+              ignore: ['./node_modules/underscore/underscore.js']
+          }
       }
     },
     jshint: {
@@ -59,10 +94,7 @@ module.exports = function(grunt) {
         options: {
           jshintrc: 'src/.jshintrc'
         },
-        src: [
-          'src/**/*.js',
-          '!src/layout/*'
-        ]
+        src: ['src/**/*.js']
       },
       test: {
         src: ['test/**/*.js']
@@ -80,18 +112,24 @@ module.exports = function(grunt) {
       test: {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'jasmine_node']
+      },
+      all: {
+        files: ['src/**/*.*', 'test/**/*.*'],
+        tasks: ['debug']
       }
     }
   });
 
   // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-jasmine-node');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-browserify');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'jasmine_node', 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'jasmine_node', 'browserify', 'jasmine', 'concat', 'uglify']);
   grunt.registerTask('debug', ['jshint', 'jasmine_node', 'concat']);
 };
