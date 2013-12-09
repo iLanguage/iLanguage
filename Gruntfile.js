@@ -114,7 +114,7 @@ module.exports = function(grunt) {
         tasks: ['jshint:test', 'jasmine_node']
       },
       all: {
-        files: ['src/**/*.*', 'test/**/*.*'],
+        files: ['src/**/*.js', 'test/**/*.js'],
         tasks: ['debug']
       }
     }
