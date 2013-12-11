@@ -5,6 +5,7 @@
  * Copyright (c) 2013
  * Licensed under the MIT license.
  */
+require('./d3.layout.cloud');
 (function(exports) {
 
   var WordCloud = function(options) {
@@ -400,5 +401,4 @@
   };
 
   exports.WordCloud = WordCloud;
-
-}(typeof exports === 'object' && exports || this));
+})(typeof exports === 'undefined' ? this['WordCloud'] = {} : exports);

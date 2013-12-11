@@ -41,19 +41,19 @@ https://github.com/pivotal/jasmine/wiki/Matchers
 
 */
 
-describe('lib/ilanguage-cloud', function() {
+xdescribe('lib/ilanguage-cloud', function() {
 
   describe('It has useful content for infoviz', function() {
 
-    xit('should automatically clean the text to create informative wordclouds', function() {
+    it('should automatically clean the text to create informative wordclouds', function() {
       expect(true).toBeTruthy();
     });
 
-    xit('should guess negative words for this text', function() {
+    it('should guess negative words for this text', function() {
       expect(true).toBeTruthy();
     });
 
-    xit('should guess buzz words for this text', function() {
+    it('should guess buzz words for this text', function() {
       expect(true).toBeTruthy();
     });
 
@@ -61,13 +61,13 @@ describe('lib/ilanguage-cloud', function() {
 
   describe('It is not English oriented', function() {
 
-    xit('should adapt to any language typology', function() {
+    it('should adapt to any language typology', function() {
       expect(true).toBeTruthy();
     });
 
   });
 
-  xit('should do everything a wordcloud can do', function() {
+  it('should do everything a wordcloud can do', function() {
     expect(true).toBeTruthy();
   });
 

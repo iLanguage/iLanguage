@@ -20,14 +20,6 @@
       "type": "MIT"
     }
   ],
-  "browserify": {
-    "transform": ["browserify-shim"]
-  },
-  "browserify-shim": {
-    "./libs/d3/d3.v3.min.js": {
-      "exports": "d3"
-    }
-  },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-concat": "~0.3.0",
@@ -39,7 +31,9 @@
     "jasmine-node": "~1.11.0",
     "time-grunt": "~0.1.0",
     "grunt": "~0.4.2",
+    "canvas": "~1.1.2",
+    "d3": "~3.3.11",
     "browserify": "~2.36.1",
-    "grunt-browserify": "~1.2.11"
+    "grunt-browserify": "~1.2.12"
   }
 }

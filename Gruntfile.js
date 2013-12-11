@@ -20,8 +20,7 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
-        // src: ['src/<%= pkg.name %>.js'],
-        src: ['src/**/*.js'],
+        src: ['libs/d3.layout.cloud.js', 'dist/main_bundle.js'],
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
@@ -43,7 +42,6 @@ module.exports = function(grunt) {
     },
     jasmine_node: {
       specNameMatcher: 'spec',
-      specFolders: ['test/spec/common'],
       projectRoot: './',
       requirejs: false,
       forceExit: false,
@@ -57,30 +55,21 @@ module.exports = function(grunt) {
       }
     },
     browserify: {
-      main: {
-        src: ['./src/browser/app.js'],
-        dest: 'dist/app_bumdle_main.js',
+      // vendor: {
+      //   src: [''],
+      //   dest: {},
+      //   options: {}
+      // },
+      src: {
+        src: ['src/common/app.js'],
+        dest: 'dist/main_bundle.js',
         options: {
-          alias: ['./src/browser/app.js:sampleapp'],
           ignore: ['src/node/**/*.js']
         }
       },
-      src: {
-          src: ['src/common/**/*.js', 'src/browser/**/*.js'],
-          dest: 'dist/app_bundle.js',
-          options: {
-              alias: ['./src/browser/App.js:SampleApp'],
-              externalize: ['src/common/**/*.js', 'src/browser/**/*.js'],
-              ignore: ['src/node/**/*.js']
-          }
-      },
       test: {
           src: ['test/spec/common/**/*.js', 'test/spec/browser/**/*.js'],
-          dest: 'dist/test_bundle.js',
-          options: {
-              external: ['./src/**/*.js'],
-              ignore: ['./node_modules/underscore/underscore.js']
-          }
+          dest: 'dist/test_bundle.js'
       }
     },
     jshint: {
@@ -94,27 +83,15 @@ module.exports = function(grunt) {
         options: {
           jshintrc: 'src/.jshintrc'
         },
-        src: ['src/**/*.js']
+        src: ['src/**/*.js', '!src/common/d3.layout.cloud.js']
       },
       test: {
         src: ['test/**/*.js']
       }
     },
     watch: {
-      gruntfile: {
-        files: '<%= jshint.gruntfile.src %>',
-        tasks: ['jshint:gruntfile']
-      },
-      lib: {
-        files: '<%= jshint.lib.src %>',
-        tasks: ['jshint:lib', 'jasmine_node']
-      },
-      test: {
-        files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test', 'jasmine_node']
-      },
       all: {
-        files: ['src/**/*.js', 'test/**/*.js'],
+        files: ['src/**/*.js', 'test/**/*.js', 'Gruntfile.js'],
         tasks: ['debug']
       }
     }
@@ -131,5 +108,5 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'jasmine_node', 'browserify', 'jasmine', 'concat', 'uglify']);
-  grunt.registerTask('debug', ['jshint', 'jasmine_node', 'concat']);
+  grunt.registerTask('debug', ['jasmine_node', 'browserify', 'jasmine']);
 };

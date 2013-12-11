@@ -1,5 +1,10 @@
-// Word cloud layout by Jason Davies, http://www.jasondavies.com/word-cloud/
-// Algorithm due to Jonathan Feinberg, http://static.mrfeinberg.com/bv_ch03.pdf
+/**
+ *
+ * Word cloud layout by Jason Davies, http://www.jasondavies.com/word-cloud/
+ * Algorithm due to Jonathan Feinberg, http://static.mrfeinberg.com/bv_ch03.pdf
+ *
+ */
+// require('d3');
 (function(exports) {
   function cloud() {
     var size = [256, 256],
@@ -385,8 +390,8 @@
     canvas.height = ch / ratio;
   } else {
     // node-canvas support
-    var Canvas = require('canvas');
-    canvas = new Canvas(cw << 5, ch);
+    // var Canvas = require('../../node_modules/canvas');
+    // canvas = new Canvas(cw << 5, ch);
   }
 
   var c = canvas.getContext('2d'),
@@ -398,4 +403,5 @@
   c.textAlign = 'center';
 
   exports.cloud = cloud;
+  d3.layout.cloud = cloud;
 })(typeof exports === 'undefined' ? d3.layout || (d3.layout = {}) : exports);
