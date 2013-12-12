@@ -34,10 +34,10 @@ module.exports = function(grunt) {
       }
     },
     jasmine: {
-      src: 'dist/app_bundle.js',
+      src: 'dist/main_bundle.js',
       options: {
         specs: 'dist/test_bundle.js',
-        vendor: []
+        vendor: 'dist/vendor.js'
       }
     },
     jasmine_node: {
@@ -104,8 +104,12 @@ module.exports = function(grunt) {
     },
     watch: {
       all: {
-        files: ['src/**/*.js', 'test/**/*.js', 'Gruntfile.js'],
+        files: ['src/**/*.js', 'test/spec/**/*.js', 'Gruntfile.js'],
         tasks: ['debug']
+      },
+      web: {
+        files: ['src/**/*.js', 'test/spec/**/*.js', 'Gruntfile.js'],
+        tasks: ['debugweb']
       }
     }
   });
@@ -122,4 +126,5 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['jshint', 'jasmine_node', 'browserify', 'jasmine', 'concat', 'uglify']);
   grunt.registerTask('debug', ['jshint', 'jasmine_node', 'browserify', 'jasmine', 'concat']);
+  grunt.registerTask('debugweb', ['jshint', 'browserify', 'jasmine', 'concat']);
 };
