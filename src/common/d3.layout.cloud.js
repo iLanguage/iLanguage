@@ -4,7 +4,6 @@
  * Algorithm due to Jonathan Feinberg, http://static.mrfeinberg.com/bv_ch03.pdf
  *
  */
-// require('d3');
 (function(exports) {
   function cloud() {
     var size = [256, 256],

@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['libs/d3.layout.cloud.js', 'dist/main_bundle.js'],
+        src: ['dist/vendor.js', 'dist/main_bundle.js'],
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
@@ -55,16 +55,29 @@ module.exports = function(grunt) {
       }
     },
     browserify: {
-      // vendor: {
-      //   src: [''],
-      //   dest: {},
-      //   options: {}
-      // },
+      vendor: {
+        src: ['./node_modules/d3/d3.min.js'],
+        dest: 'dist/vendor.js',
+        options: {
+          shim: {
+            d3: {
+              path: './node_modules/d3/d3.min.js',
+              exports: 'd3'
+            }
+          }
+        }
+      },
       src: {
         src: ['src/common/app.js'],
         dest: 'dist/main_bundle.js',
         options: {
-          ignore: ['src/node/**/*.js']
+          ignore: ['src/node/**/*.js'],
+          shim: {
+            layoutCloud: {
+              path: 'src/common/d3.layout.cloud.js',
+              exports: 'layoutCloud'
+            }
+          }
         }
       },
       test: {
@@ -108,5 +121,5 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'jasmine_node', 'browserify', 'jasmine', 'concat', 'uglify']);
-  grunt.registerTask('debug', ['jasmine_node', 'browserify', 'jasmine']);
+  grunt.registerTask('debug', ['jshint', 'jasmine_node', 'browserify', 'jasmine', 'concat']);
 };
