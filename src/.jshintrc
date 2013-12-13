@@ -10,6 +10,7 @@
   "boss": true,
   "eqnull": true,
   "devel": true,
+  "expr": true,
   "globals": {
     "exports": true,
     "window": false,
