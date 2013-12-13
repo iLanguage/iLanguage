@@ -7,20 +7,40 @@ describe('lib/stopwords', function() {
     expect(StopWords).toBeDefined();
   });
 
-  it('should accept space seperated list', function() {
-    var spaceSeparatedList = 'a an the he she it we go be';
+  it('should accept a space seperated list', function() {
+    var spaceSeparatedList = 'a an the he she    it  we go    be';
     var result = StopWords.processStopWords({
       stopWords: spaceSeparatedList
     });
     expect(result.stopWords).toEqual(/^(a|an|the|he|she|it|we|go|be)$/);
   });
 
+  it('should accept a comma seperated list', function() {
+    var commaSeparatedList = 'a, an, the, he, she,    it,  we, go,    be';
+    var result = StopWords.processStopWords({
+      stopWords: commaSeparatedList
+    });
+    expect(result.stopWords).toEqual(/^(a|an|the|he|she|it|we|go|be)$/);
+  });
+
   it('should accept a regular expression', function() {
-    expect(true).toBeTruthy();
+    var regexpSeparatedList = /^(a|an|the|he|she|it|we|go|be)$/;
+    var result = StopWords.processStopWords({
+      stopWords: regexpSeparatedList
+    });
+    expect(result.stopWords).toEqual(/^(a|an|the|he|she|it|we|go|be)$/);
   });
 
   it('should throw an error if an invalid regex is provided', function() {
-    expect(true).toBeTruthy();
+    var regexpSeparatedList = 'a|an|the|he|she|it|we|go|be';
+    var e = 'Invalid RegExp a|an|the|he|she|it|we|go|be';
+
+    expect(function() {
+      StopWords.processStopWords({
+        stopWords: regexpSeparatedList
+      });
+    }).toThrow(e);
+
   });
 
   it('should accept a text', function() {
