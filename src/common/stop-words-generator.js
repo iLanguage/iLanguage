@@ -9,7 +9,6 @@
 
     cutoffPercent = cutoffPercent || 0.015;
     var parsedText = Tokenizer.tokenizeInput(inputText); //create array of words only
-    // var parsedText = tokenizeInput(inputText); //create array of words only
 
     var wordCounts = function(wordarray) {
       var history = {};
