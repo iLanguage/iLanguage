@@ -5,10 +5,9 @@
  * Copyright (c) 2013
  * Licensed under the MIT license.
  */
-var layoutCloud = require('layoutCloud');
-var StopWords = require('./stop-words');
-
 (function(exports) {
+  var layoutCloud = require('layoutCloud');
+  var StopWords = require('./stop-words');
 
   var WordCloud = function(options) {
 
