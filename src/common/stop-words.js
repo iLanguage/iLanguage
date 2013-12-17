@@ -14,7 +14,6 @@
       var autoCalculatedStopWords = StopWordsGenerator.calculateStopWords(obj.text, obj.cutoff || 0.015);
       processed = true;
       obj.stopWords = new RegExp('^(' + autoCalculatedStopWords.join('|') + ')$');
-      console.log('auto-generated option active for element:', obj.element, 'and they are', obj.stopWords);
       return obj;
     }
 
