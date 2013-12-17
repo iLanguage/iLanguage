@@ -1,4 +1,5 @@
 (function(exports) {
+  var Tokenizer = require('./tokenizer');
 
   var calculateStopWords = function(inputText, cutoffPercent) {
 
@@ -7,7 +8,7 @@
     }
 
     cutoffPercent = cutoffPercent || 0.015;
-    var parsedText = inputText.match(/[a-zA-Z]+/g); //create array of words only
+    var parsedText = Tokenizer.tokenizeInput(inputText); //create array of words only
 
     var wordCounts = function(wordarray) {
       var history = {};
@@ -21,7 +22,9 @@
     };
 
     var results = wordCounts(parsedText);
-    var orderedResults = Object.keys(results).sort(function(a, b) {return -(results[a] - results[b]);});
+    var orderedResults = Object.keys(results).sort(function(a, b) {
+      return -(results[a] - results[b]);
+    });
     var outputStops = [];
 
     for (var o in orderedResults) {
@@ -36,4 +39,4 @@
 
   exports.calculateStopWords = calculateStopWords;
 
-})(typeof exports === 'undefined' ? this['calculateStopWords'] = {} : exports);
+})(typeof exports === 'undefined' ? this['StopWordsGenerator'] = {} : exports);

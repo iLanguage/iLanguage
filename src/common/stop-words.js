@@ -1,4 +1,5 @@
 (function(exports) {
+  var StopWordsGenerator = require('./stop-words-generator');
 
   var defaults = {
     // From Jonathan Feinberg's cue.language, see https://github.com/jdf/cue.language/blob/master/license.txt.
@@ -7,9 +8,17 @@
 
   var processStopWords = function(obj) {
 
+    var processed = false;
+
+    if (obj.stopWords === true) {
+      var autoCalculatedStopWords = StopWordsGenerator.calculateStopWords(obj.text, obj.cutoff || 0.015);
+      processed = true;
+      obj.stopWords = new RegExp('^(' + autoCalculatedStopWords.join('|') + ')$');
+      return obj;
+    }
+
     var stringCheck = obj.stopWords.toString().substring(0, 20),
-      commasOrSpaces = /[,\s]+/g,
-      processed = false;
+      commasOrSpaces = /[,\s]+/g;
 
     if (stringCheck.indexOf('/') === 0) {
       // user most likely provided regex of stop words
