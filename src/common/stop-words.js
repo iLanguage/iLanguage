@@ -11,7 +11,7 @@
     var processed = false;
 
     if (obj.stopWords === true) {
-      var autoCalculatedStopWords = StopWordsGenerator.calculateStopWords(obj.text, obj.cutoff || 0.015);
+      var autoCalculatedStopWords = StopWordsGenerator.calculateStopWords(obj);
       processed = true;
       obj.stopWords = new RegExp('^(' + autoCalculatedStopWords.join('|') + ')$');
       return obj;
