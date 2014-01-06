@@ -10,8 +10,8 @@
     var words = [];
 
     text.split(wordSeparators).forEach(function(word) {
-      word = word.replace(punctuation, ' ');
-      word = word.replace(suffixes, ' ');
+      word = word.replace(punctuation, '');
+      word = word.replace(suffixes, '');
       words.push(word);
     });
 
