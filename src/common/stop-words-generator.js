@@ -13,7 +13,7 @@
     var wordCounts = function(wordarray) {
       var history = {};
       for (var word = 0; word < wordarray.length; word++) {
-        var currentRecord = wordarray[word].toLowerCase();
+        var currentRecord = wordarray[word].toLowerCase().replace(/^\s+|\s+$/g, '');
         history[currentRecord] ? // check if word already exists in history
         history[currentRecord] += 1 : // if so, increase its count by one
         history[currentRecord] = 1; // otherwise mark as first occurrence
