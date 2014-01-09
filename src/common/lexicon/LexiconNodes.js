@@ -64,7 +64,7 @@ define("lexicon/LexiconNodes",
         }
         this._byId[model.id] = model;
         this._byCid[model.cid] = model;
-        var index = options.at != null ? options.at :
+        var index = options.at !== null ? options.at :
                     this.comparator ? this.sortedIndex(model, this.comparator) :
                     this.length;
         this.models.splice(index, 0, model);

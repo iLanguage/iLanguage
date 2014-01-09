@@ -58,7 +58,7 @@ define([
               value : lexiconTriples[triple].value
             }));
           }
-          if (typeof callback == "function"){
+          if (typeof callback === "function"){
             callback();
           }
         },// end successful response
@@ -83,13 +83,13 @@ define([
       for(triple in lexiconTriples){
         this.get("lexiconNodes").add(new LexiconNode({morpheme: lexiconTriples[triple].key.morpheme , allomorphs: [lexiconTriples[triple].key.morpheme], gloss: lexiconTriples[triple].key.gloss, value: lexiconTriples[triple].value}));
       }
-      if (typeof callback == "function"){
+      if (typeof callback === "function"){
         callback();
       }
     },
     saveAndInterConnectInApp : function(callback){
       
-      if(typeof callback == "function"){
+      if(typeof callback === "function"){
         callback();
       }
     }

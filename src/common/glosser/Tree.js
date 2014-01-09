@@ -39,7 +39,7 @@ var mixedBranchingBracketIt = function(pieces) {
 
   // This is it! Recursion!!
 
-  if(window.count % 2 == 1){
+  if(window.count % 2 === 1){
     var piece1 = pieces.shift();
     var piece2 = pieces.shift();
     pieces.unshift( "[" + piece1 + " " + piece2 + "]" );

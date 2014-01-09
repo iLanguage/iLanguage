@@ -56,7 +56,7 @@ define([ "backbone" ], function(Backbone) {
     },
     saveAndInterConnectInApp : function(callback) {
 
-      if (typeof callback == "function") {
+      if (typeof callback === "function") {
         callback();
       }
     }

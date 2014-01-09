@@ -152,7 +152,7 @@ define([
                     corpusself.makeSureCorpusHasASession(function(){
                       corpusself.sessions.at(0).setAsCurrentSession(function(){
                         $(".spinner-status").html("Session loaded.");
-                        if(typeof sucessloadingorCreatingcallback == "function"){
+                        if(typeof sucessloadingorCreatingcallback === "function"){
                           sucessloadingorCreatingcallback();
                         }
                       });
@@ -229,7 +229,7 @@ define([
         this.set("publicCorpus", "Private");
       }
       
-      if( !this.get("datumStates") || this.get("datumStates").length == 0 ){
+      if( !this.get("datumStates") || this.get("datumStates").length === 0 ){
         this.set("datumStates", new DatumStates([ 
           new DatumState({
             state : "Checked",
@@ -248,7 +248,7 @@ define([
         ]));
       }//end if to set datumStates
       
-      if(!this.get("datumFields") || this.get("datumFields").length == 0){
+      if(!this.get("datumFields") || this.get("datumFields").length === 0){
         this.set("datumFields", new DatumFields([ 
           new DatumField({
             label : "judgement",
@@ -319,7 +319,7 @@ define([
         ]));
       }//end if to set datumFields
       
-      if(!this.get("conversationFields") || this.get("conversationFields").length == 0 ){
+      if(!this.get("conversationFields") || this.get("conversationFields").length === 0 ){
           this.set("conversationFields", new DatumFields([ 
             new DatumField({
               label : "speakers",
@@ -336,7 +336,7 @@ define([
           ]));
         }
       
-      if(!this.get("sessionFields") || this.get("sessionFields").length == 0){
+      if(!this.get("sessionFields") || this.get("sessionFields").length === 0){
         this.set("sessionFields", new DatumFields([ 
            new DatumField({
              label : "goal",
@@ -405,7 +405,7 @@ define([
       }
 //      this.loadPermissions();
       
-      if(typeof donefillingcallback == "function"){
+      if(typeof donefillingcallback === "function"){
         donefillingcallback();
       }
     },
@@ -423,7 +423,7 @@ define([
         this.set("license", defaultLicense);
       }
       var licenseUpdated = this.get("license");
-      if(typeof licenseUpdated == "string"){
+      if(typeof licenseUpdated === "string"){
         licenseUpdated = {};
       }
       if (!licenseUpdated.title) {
@@ -442,7 +442,7 @@ define([
           humanReadable: "Sample: The materials included in this corpus are available for research and educational use. If you want to use the materials for commercial purposes, please notify the author(s) of the corpus (myemail@myemail.org) prior to the use of the materials. Users of this corpus can copy and redistribute the materials included in this corpus, under the condition that the materials copied/redistributed are properly attributed.  Modification of the data in any copied/redistributed work is not allowed unless the data source is properly cited and the details of the modification is clearly mentioned in the work. Some of the items included in this corpus may be subject to further access conditions specified by the owners of the data and/or the authors of the corpus."
         };
       var termsUpdated = this.get("termsOfUse");
-      if(!termsUpdated || typeof termsUpdated == "string"){
+      if(!termsUpdated || typeof termsUpdated === "string"){
         termsUpdated = defaultTerms;
         this.set("termsOfUse", defaultTerms);
       }
@@ -549,7 +549,7 @@ define([
         }
         //Set up the typeahead for the permissions edit
         
-        if(typeof doneLoadingPermissions == "function"){
+        if(typeof doneLoadingPermissions === "function"){
           doneLoadingPermissions();
         }
       });
@@ -727,7 +727,7 @@ define([
 //    glosser: new Glosser(),//DONOT store in attributes when saving to pouch (too big)
     lexicon: new Lexicon(),//DONOT store in attributes when saving to pouch (too big)
     prepareANewPouch : function(couchConnection, callback) {
-      if (!couchConnection || couchConnection == undefined) {
+      if (!couchConnection || couchConnection === undefined) {
         console.log("App.changePouch couchConnection must be supplied.");
         return;
       } else {
@@ -743,7 +743,7 @@ define([
         Backbone.couch_connector.config.db_name = couchConnection.pouchname;
       }
       
-      if(typeof callback == "function"){
+      if(typeof callback === "function"){
         callback();
       }
       return;
@@ -752,7 +752,7 @@ define([
       
       
       alert("TODO set/validate that the the pouch connection");
-      if (this.pouch == undefined) {
+      if (this.pouch === undefined) {
         // this.pouch = Backbone.sync.pouch("https://localhost:6984/"
         // + couchConnection.pouchname);
         this.pouch = Backbone.sync
@@ -760,7 +760,7 @@ define([
             + couchConnection.pouchname : OPrime.pouchUrl
             + couchConnection.pouchname);
       }
-      if (typeof callback == "function") {
+      if (typeof callback === "function") {
         callback();
       }
     }, 
@@ -784,7 +784,7 @@ define([
       /* Upgrade chrome app user corpora's to v1.38+ */
       var oldCouchConnection = this.get("couchConnection");
       if(oldCouchConnection){
-        if(oldCouchConnection.domain == "ifielddevs.iriscouch.com"){
+        if(oldCouchConnection.domain === "ifielddevs.iriscouch.com"){
           oldCouchConnection.domain  = "corpusdev.lingsync.org";
           oldCouchConnection.port = "";
           this.set("couchConnection", oldCouchConnection);
@@ -830,7 +830,7 @@ define([
         delete this.get("couchConnection").corpusid;
         //make sure the corpus is in the history of the user to trigger the server to create the database before we go further
         var pouches = _.pluck(window.app.get("authentication").get("userPrivate").get("corpuses"), "pouchname");
-        if(pouches.indexOf(potentialpouchname) == -1){
+        if(pouches.indexOf(potentialpouchname) === -1){
           window.app.get("authentication").get("userPrivate").get("corpuses").unshift(this.get("couchConnection"));
         }
 //        window.app.get("authentication").get("userPrivate").set("mostRecentIds", {});
@@ -918,7 +918,7 @@ define([
       try{
         var ds = this.get("datumStates").models;
         for (var s in ds){
-          if(ds[s].get("state") == undefined){
+          if(ds[s].get("state") === undefined){
             this.get("datumStates").remove(ds[s]);
           }
         }
@@ -957,7 +957,7 @@ define([
             if(!teamid){
               teamid = model.get("team")._id; //Works if UserMask came from a mongodb id
               if(!teamid){
-                if(model.get("team").get("username") == window.app.get("authentication").get("userPrivate").get("username")){
+                if(model.get("team").get("username") === window.app.get("authentication").get("userPrivate").get("username")){
                   teamid = window.app.get("authentication").get("userPrivate").id; //Assumes the user private and team are the same user...this is dangerous
                 }
               }
@@ -1041,7 +1041,7 @@ define([
             //make sure the corpus is updated in the history of the user
             var pouches = _.pluck(window.app.get("authentication").get("userPrivate").get("corpuses"), "pouchname");
             var oldconnection = pouches.indexOf(model.get("couchConnection").pouchname);
-            if(oldconnection != -1){
+            if(oldconnection !== -1){
               window.app.get("authentication").get("userPrivate").get("corpuses").splice(oldconnection, 1);
             }
             window.app.get("authentication").get("userPrivate").get("corpuses").unshift(model.get("couchConnection"));
@@ -1074,21 +1074,21 @@ define([
             }else{
               //if an existing corpus
               window.app.get("authentication").saveAndInterConnectInApp();
-              if(typeof successcallback == "function"){
+              if(typeof successcallback === "function"){
                 successcallback();
               }
             }
           },
           error : function(model, response, options) {
             if (OPrime.debugMode) OPrime.debug("Corpus save error", model, response, options);
-//            if(response && response.reason && response.reason == "unauthorized"){
+//            if(response && response.reason && response.reason === "unauthorized"){
 //              alert('Corpus save error: ' + response.reason);
 //              window.app.get("authentication").syncUserWithServer(function(){
 //              
 //              });
 //            }
 
-            if(typeof failurecallback == "function"){
+            if(typeof failurecallback === "function"){
               failurecallback();
             }else{
             }
@@ -1100,7 +1100,7 @@ define([
         this.datalists = new DataLists();
       }
       if(this.datalists.length > 0){
-        if (typeof sucess == "function"){
+        if (typeof sucess === "function"){
           sucess();
           return;
         }
@@ -1115,7 +1115,7 @@ define([
         },
         success : function(model, response, options) {
           if (response.length > 0) {
-            if(typeof sucess == "function"){
+            if(typeof sucess === "function"){
               sucess();
             }else{
               if (OPrime.debugMode) OPrime.debug('the corpus has datalists');
@@ -1146,14 +1146,14 @@ define([
                 window.app.get("authentication").get("userPrivate").get("dataLists").unshift(model.id);
                 self.datalists.unshift(model);
                 
-                if(typeof sucess == "function"){
+                if(typeof sucess === "function"){
                   sucess();
                 }else{
                   if (OPrime.debugMode) OPrime.debug('DataList save success' + model.id);
                 }
               },
               error : function(e) {
-                if(typeof failure == "function"){
+                if(typeof failure === "function"){
                   failure();
                 }else{
                   if (OPrime.debugMode) OPrime.debug('DataList save error' + e);
@@ -1170,7 +1170,7 @@ define([
         this.sessions = new Sessions();
       }
       if(this.sessions.length > 0){
-        if (typeof suces == "function"){
+        if (typeof suces === "function"){
           suces();
           return;
         }
@@ -1186,7 +1186,7 @@ define([
         },
         success : function(model, response, options) {
           if (response.length > 0) {
-            if(typeof suces == "function"){
+            if(typeof suces === "function"){
               suces();
             }else{
               if (OPrime.debugMode) OPrime.debug('the corpus has sessions');
@@ -1210,14 +1210,14 @@ define([
                 window.app.get("authentication").get("userPrivate").get("sessionHistory").unshift(model.id);
                 self.sessions.unshift(model);
 
-                if(typeof suces == "function"){
+                if(typeof suces === "function"){
                   suces();
                 }else{
                   if (OPrime.debugMode) OPrime.debug('Session save success' + model.id);
                 }
               },
               error : function(e) {
-                if(typeof fail == "function"){
+                if(typeof fail === "function"){
                   fail();
                 }else{
                   if (OPrime.debugMode) OPrime.debug('Session save error' + e);
@@ -1248,7 +1248,7 @@ define([
         window.validCouchViews = this.validCouchViews();
       }
       var viewparts = view.split("/");
-      if(viewparts.length != 2){
+      if(viewparts.length !== 2){
         console.log("Warning "+view+ " is not a valid view name.");
         return;
       }
@@ -1258,14 +1258,14 @@ define([
       }
       if(OPrime.isBackboneCouchDBApp()){
         //TODO make the view in couchdb shouldnt be necessary since it was created in the couchapp?
-        if(typeof callbackpouchview == "function"){
+        if(typeof callbackpouchview === "function"){
           callbackpouchview();
         }
         return;
       }
       if(!corpusself.pouch){
         alert("TODO test this creating a view");
-        if(typeof callbackpouchview == "function"){
+        if(typeof callbackpouchview === "function"){
           callbackpouchview();
         }
         return;
@@ -1294,7 +1294,7 @@ define([
             }else{
               
               if (OPrime.debugMode) OPrime.debug("The "+view+" view was created.");
-              if(typeof callbackpouchview == "function"){
+              if(typeof callbackpouchview === "function"){
                 callbackpouchview();
               }
               
@@ -1315,7 +1315,7 @@ define([
      * @param failurecallback
      */
     setAsCurrentCorpus : function(successcallback, failurecallback){
-      if (window.app.get("corpus").id != this.id ) {
+      if (window.app.get("corpus").id !== this.id ) {
         window.app.set("corpus", this);
       }
       window.app.get("authentication").get("userPrivate").get("mostRecentIds").corpusid = this.id;
@@ -1330,7 +1330,7 @@ define([
 
       if(window.appView){
         window.appView.setUpAndAssociateViewsAndModelsWithCurrentCorpus(function() {
-          if (typeof successcallback == "function") {
+          if (typeof successcallback === "function") {
             successcallback();
           }else{
             window.appView.toastUser("Sucessfully connected all views up to corpus: "+ this.id,"alert-success","Connected!");
@@ -1339,15 +1339,15 @@ define([
           }
         });
       }else{
-        if (typeof successcallback == "function") {
+        if (typeof successcallback === "function") {
           successcallback();
         }
       }
     },
     validate: function(attrs){
       if(attrs.publicCorpus){
-        if(attrs.publicCorpus != "Public"){
-          if(attrs.publicCorpus != "Private"){
+        if(attrs.publicCorpus !== "Public"){
+          if(attrs.publicCorpus !== "Private"){
             return "Corpus must be either Public or Private"; //TODO test this.
           }
         }
@@ -1357,7 +1357,7 @@ define([
       var attributes;
 
       // Handle both `"key", value` and `{key: value}` -style arguments.
-      if (_.isObject(key) || key == null) {
+      if (_.isObject(key) || key === null) {
         attributes = key;
         options = value;
       } else {
@@ -1424,7 +1424,7 @@ define([
       if(!jsonUrl){
         /* if we have already asked the server in this session, return */
         if(this.frequentDatumFields){
-          if(typeof callback == "function"){
+          if(typeof callback === "function"){
             callback(this.frequentDatumFields);
           }
           return;
@@ -1435,7 +1435,7 @@ define([
           pouchname = couchConnection.pouchname;
           /* if the user has overriden the frequent fields, use their preferences */
           if(this.get("frequentDatumFields")){
-            if(typeof callback == "function"){
+            if(typeof callback === "function"){
               callback(this.get("frequentDatumFields"));
             }
             return;
@@ -1460,7 +1460,7 @@ define([
                 serverResults.rows, "key").indexOf("datumTotal"))].value;
             
             for ( var field in serverResults.rows) {
-              if(serverResults.rows[field].key == "datumTotal"){
+              if(serverResults.rows[field].key === "datumTotal"){
                 continue;
               }
               if (serverResults.rows[field].value / totalDatumCount * 100 > 50) {
@@ -1472,7 +1472,7 @@ define([
             if (OPrime.debugMode) OPrime.debug("There was a problem extracting the frequentFields, instead using defaults : ",e);
             frequentFields = ["judgement","utterance","morphemes","gloss","translation"];
           }
-          if(frequentFields == []){
+          if(frequentFields === []){
             frequentFields = ["judgement","utterance","morphemes","gloss","translation"];
           }
           
@@ -1489,7 +1489,7 @@ define([
           }
           
           self.frequentDatumFields = frequentFields;
-          if (typeof callback == "function") {
+          if (typeof callback === "function") {
             callback(frequentFields);
           }
         },// end successful fetch
@@ -1497,7 +1497,7 @@ define([
           OPrime
           .debug("There was a problem getting the frequent datum fields, using defaults."
               + JSON.stringify(response));
-          if (typeof callback == "function") {
+          if (typeof callback === "function") {
             callback(["judgement","utterance","morphemes","gloss","translation"]);
           }
           
@@ -1527,7 +1527,7 @@ define([
       if(!jsonUrl){
         /* if we have already asked the server in this session, return */
         if(this.frequentDatumValidationStates){
-          if(typeof callback == "function"){
+          if(typeof callback === "function"){
             callback(this.frequentDatumValidationStates);
           }
           return;
@@ -1538,7 +1538,7 @@ define([
           pouchname = couchConnection.pouchname;
           /* if the user has overriden the frequent fields, use their preferences */
           if(this.get("frequentDatumValidationStates")){
-            if(typeof callback == "function"){
+            if(typeof callback === "function"){
               callback(this.get("frequentDatumValidationStates"));
             }
             return;
@@ -1558,13 +1558,13 @@ define([
           var counts = _.pluck(serverResults.rows, "value");
           if (OPrime.debugMode) OPrime.debug(counts);
           var frequentStates = _.pluck(serverResults.rows, "key");
-          if(frequentStates == []){
+          if(frequentStates === []){
             frequentStates = ["Checked","Deleted","ToBeCheckedWithAnna","ToBeCheckedWithBill", "ToBeCheckedWithClaude"];
           }
           
           
           self.frequentDatumValidationStates = frequentStates;
-          if (typeof callback == "function") {
+          if (typeof callback === "function") {
             callback(frequentStates);
           }
           window.getFrequentDatumValidationStatesPending = false;
@@ -1574,7 +1574,7 @@ define([
           OPrime
           .debug("There was a problem getting the frequentDatumValidationStates, using defaults."
               + JSON.stringify(response));
-          if (typeof callback == "function") {
+          if (typeof callback === "function") {
             callback(["Checked","Deleted","ToBeCheckedWithAnna","ToBeCheckedWithBill", "ToBeCheckedWithClaude"]);
           }
           window.getFrequentDatumValidationStatesPending = false;
@@ -1605,7 +1605,7 @@ define([
       if(!jsonUrl){
         /* if we have already asked the server in this session, return */
         if(this.frequentDatumTags){
-          if(typeof callback == "function"){
+          if(typeof callback === "function"){
             callback(this.frequentDatumTags);
           }
           return;
@@ -1616,7 +1616,7 @@ define([
           pouchname = couchConnection.pouchname;
           /* if the user has overriden the frequent fields, use their preferences */
           if(this.get("frequentDatumTags")){
-            if(typeof callback == "function"){
+            if(typeof callback === "function"){
               callback(this.get("frequentDatumTags"));
             }
             return;
@@ -1636,12 +1636,12 @@ define([
           var counts = _.pluck(serverResults.rows, "value");
           if (OPrime.debugMode) OPrime.debug(counts);
           var frequentTags = _.pluck(serverResults.rows, "key");
-          if(frequentTags == []){
+          if(frequentTags === []){
             frequentTags = ["Passive","WH","Indefinte","Generic", "Agent-y","Causative","Pro-drop","Ambigous"];
           }
           
           self.frequentDatumTags = frequentTags;
-          if (typeof callback == "function") {
+          if (typeof callback === "function") {
             callback(frequentTags);
           }
           window.getFrequentDatumTagsPending = false;
@@ -1651,7 +1651,7 @@ define([
           OPrime
           .debug("There was a problem getting the frequentDatumTags, using defaults."
               + JSON.stringify(response));
-          if (typeof callback == "function") {
+          if (typeof callback === "function") {
             callback(["Passive","WH","Indefinte","Generic", "Agent-y","Causative","Pro-drop","Ambigous"]);
           }
           window.getFrequentDatumTagsPending = false;

@@ -42,7 +42,7 @@ define([
      */
     initialize : function() {
       this.set("pouchname", window.app.get("corpus").get("pouchname"));
-      if(this.get("datumFields") == undefined){
+      if(this.get("datumFields") === undefined){
         this.set("datumFields",window.app.get("corpus").get("datumFields").clone());
       }
       if(this.get("filledWithDefaults")){
@@ -51,7 +51,7 @@ define([
       }
     },
     fillWithDefaults : function(){
-      if(this.get("datumFields") == undefined){
+      if(this.get("datumFields") === undefined){
         this.set("datumFields",window.app.get("corpus").get("datumFields").clone());
       }
     },
@@ -87,7 +87,7 @@ define([
     },
     saveAndInterConnectInApp : function(callback){
       
-      if(typeof callback == "function"){
+      if(typeof callback === "function"){
         callback();
       }
     },
@@ -142,7 +142,7 @@ define([
       self.set("extractedHeader",header);
 
       self.set("asCSV", rows);
-      if(typeof callback == "function"){
+      if(typeof callback === "function"){
         callback();
       }
     },
@@ -205,7 +205,7 @@ define([
       var j = 0;
 
       for ( var i = 0; i < lineCSV.length; i++) {
-        if (lineCSV[i] != "-DELETED-") {
+        if (lineCSV[i] !== "-DELETED-") {
           CSV[j] = lineCSV[i];
           CSV[j] = CSV[j].replace(/^\s*|\s*$/g, ""); // remove leading & trailing
           // space
@@ -336,12 +336,12 @@ define([
         }
         rows.push(cells);
       }
-      if(rows == []){
+      if(rows === []){
         rows.push("");
       }
       self.set("extractedHeader",header);
       self.set("asCSV", rows);
-      if(typeof callback == "function"){
+      if(typeof callback === "function"){
         callback();
       }
     },
@@ -366,7 +366,7 @@ define([
       }
       
       self.set("asCSV", rows);
-      if(typeof callback == "function"){
+      if(typeof callback === "function"){
         callback();
       }
     },
@@ -398,7 +398,7 @@ define([
       var columnhead = "";
       for(l in lines){
         //Its a new row
-        if( lines[l].indexOf("\\ge ") == 0 ){
+        if( lines[l].indexOf("\\ge ") === 0 ){
           currentDatum += 1;
           matrix[currentDatum] = {};
           matrix[currentDatum]["ge"] = lines[l].replace("\\ge ","");;
@@ -413,7 +413,7 @@ define([
               header.push(columnhead);
             }else{
               //add it to the current column head in the current datum, its just another line.
-              if(lines[1].trim() != ""){
+              if(lines[1].trim() !== ""){
                 matrix[currentDatum][columnhead] += lines[l];
               }
             }
@@ -437,24 +437,24 @@ define([
         }
         rows.push(cells);
       }
-      if(rows == []){
+      if(rows === []){
         rows.push("");
       }
       self.set("extractedHeader",header);
       self.set("asCSV", rows);
-      if(typeof callback == "function"){
+      if(typeof callback === "function"){
         callback();
       }
     },
     importTextGrid : function(text, self, callback){
       alert("The app thinks this might be a Praat TextGrid file, but we haven't implemented this kind of import yet. You can vote for it in our bug tracker.");
-      if(typeof callback == "function"){
+      if(typeof callback === "function"){
         callback();
       }
     },
     importLatex : function(text, self, callback){
       alert("The app thinks this might be a LaTeX file, but we haven't implemented this kind of import yet. You can vote for it in our bug tracker.");
-      if(typeof callback == "function"){
+      if(typeof callback === "function"){
         callback();
       }
     },
@@ -485,7 +485,7 @@ define([
         }
       }
       self.set("asCSV", rows);
-      if(typeof callback == "function"){
+      if(typeof callback === "function"){
         callback();
       }
     },
@@ -545,7 +545,7 @@ define([
      */
     guessFormatAndImport : function(fileIndex, callback){
       var self = this;
-      if(fileIndex == null){
+      if(fileIndex === null){
         fileIndex = 0;
       }
       
@@ -563,24 +563,24 @@ define([
       //if the user is just typing, try raw text
       if(self.get("files")[fileIndex]){
         var fileExtension = self.get("files")[fileIndex].name.split('.').pop().toLowerCase();
-        if(fileExtension == "csv"){
+        if(fileExtension === "csv"){
           importType.csv.confidence++;
-        }else if(fileExtension == "txt"){
+        }else if(fileExtension === "txt"){
           //If there are more than 20 tabs in the file, try tabbed.
           if(self.get("rawText").split("\t").length > 20){
             importType.tabbed.confidence++;
           }else{
             importType.handout.confidence++;
           }
-        }else if(fileExtension == "eaf"){
+        }else if(fileExtension === "eaf"){
           importType.elanXML.confidence++;
-        }else if(fileExtension == "xml"){
+        }else if(fileExtension === "xml"){
           importType.xml.confidence++;
-        }else if(fileExtension == "sf"){
+        }else if(fileExtension === "sf"){
           importType.toolbox.confidence++;
-        }else if(fileExtension == "tex"){
+        }else if(fileExtension === "tex"){
           importType.latex.confidence++;
-        }else if(fileExtension == "textgrid"){
+        }else if(fileExtension === "textgrid"){
           importType.praatTextgrid.confidence++;
         }
       }
@@ -597,9 +597,9 @@ define([
       var self = this;
       // If we use onloadend, we need to check the readyState.
       reader.onloadend = function(evt) {
-        if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+        if (evt.target.readyState === FileReader.DONE) { // DONE === 2
           self.set("rawText", evt.target.result);
-          if(typeof callback == "function"){
+          if(typeof callback === "function"){
             callback();
           }
         }

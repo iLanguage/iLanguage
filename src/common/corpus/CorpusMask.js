@@ -220,7 +220,7 @@ define([
       var attributes;
 
       // Handle both `"key", value` and `{key: value}` -style arguments.
-      if (_.isObject(key) || key == null) {
+      if (_.isObject(key) || key === null) {
         attributes = key;
         options = value;
       } else {
@@ -266,7 +266,7 @@ define([
       
         if(OPrime.isBackboneCouchDBApp()){
           self.save();
-          if(typeof successcallback == "function"){
+          if(typeof successcallback === "function"){
             successcallback();
           }
           return;
@@ -278,7 +278,7 @@ define([
             if (OPrime.debugMode) OPrime.debug(response);
             if(err){
               if (OPrime.debugMode) OPrime.debug("CorpusMask put error", err);
-              if(err.status == "409"){
+              if(err.status === "409"){
                 //find out what the rev is in the database by fetching
                 self.fetch({
                   success : function(model, response) {
@@ -291,13 +291,13 @@ define([
                     db.put(modelwithhardcodedid, function(err, response) {
                       if(err){
                         if (OPrime.debugMode) OPrime.debug("CorpusMask put error, even after fetching the version number",err);
-                        if(typeof failurecallback == "function"){
+                        if(typeof failurecallback === "function"){
                           failurecallback();
                         }
                       }else{
                         if (OPrime.debugMode) OPrime.debug("CorpusMask put success, after fetching its version number and overwriting it", response);
                         //this happens on subsequent save into pouch of this CorpusMask's id
-                        if(typeof successcallback == "function"){
+                        if(typeof successcallback === "function"){
                           successcallback();
                         }
                       }
@@ -307,7 +307,7 @@ define([
                   //fetch error
                   error : function(e) {
                     if (OPrime.debugMode) OPrime.debug('CorpusMask fetch error after trying to resolve a conflict error' + JSON.stringify(err));
-                    if(typeof failurecallback == "function"){
+                    if(typeof failurecallback === "function"){
                       failurecallback();
                     }
                   }
@@ -315,12 +315,12 @@ define([
               }else{
                 if (OPrime.debugMode) OPrime.debug('CorpusMask put error that was not a conflict' + JSON.stringify(err));
                 //this is a real error, not a conflict error
-                if(typeof failurecallback == "function"){
+                if(typeof failurecallback === "function"){
                   failurecallback();
                 }
               }
             }else{
-              if(typeof successcallback == "function"){
+              if(typeof successcallback === "function"){
                 successcallback();
               }else{
                 if (OPrime.debugMode) OPrime.debug("CorpusMask save success", response);

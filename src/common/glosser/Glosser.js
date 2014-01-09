@@ -1,7 +1,7 @@
 var Glosser = Glosser || {};
 Glosser.currentCorpusName = "";
 Glosser.downloadPrecedenceRules = function(pouchname, glosserURL, callback){
-  if(!glosserURL ||glosserURL == "default"){
+  if(!glosserURL ||glosserURL === "default"){
     var couchConnection = app.get("corpus").get("couchConnection");
     var couchurl = OPrime.getCouchUrl(couchConnection);
     glosserURL = couchurl + "/_design/pages/_view/precedence_rules?group=true";
@@ -21,7 +21,7 @@ Glosser.downloadPrecedenceRules = function(pouchname, glosserURL, callback){
       // Save the reduced precedence rules in localStorage
       localStorage.setItem(pouchname+"reducedRules", JSON.stringify(reducedRules));
       Glosser.currentCorpusName = pouchname;
-      if(typeof callback == "function"){
+      if(typeof callback === "function"){
         callback();
       }
     },
@@ -73,11 +73,11 @@ Glosser.morphemefinder = function(unparsedUtterance) {
       var prefixtemplate = [];
       prefixtemplate.push("@");
       for (var i = 0; i < 10; i++) {
-        if (prefixtemplate[i] == undefined) {
+        if (prefixtemplate[i] === undefined) {
           break;
         }
         for (var j in matchedRules) {
-          if (prefixtemplate[i] == matchedRules[j].r[0].key.x) {
+          if (prefixtemplate[i] === matchedRules[j].r[0].key.x) {
             if (prefixtemplate[i + 1]) { // ambiguity (two potential following
                                           // morphemes)
               prefixtemplate.pop();
@@ -92,15 +92,15 @@ Glosser.morphemefinder = function(unparsedUtterance) {
       // If the prefix template hit ambiguity in the middle, try from the suffix
       // in until it hits ambiguity
       var suffixtemplate = [];
-      if (prefixtemplate[prefixtemplate.length - 1] != "@" || prefixtemplate.length == 1) {
+      if (prefixtemplate[prefixtemplate.length - 1] !== "@" || prefixtemplate.length === 1) {
         // Suffix:
         suffixtemplate.push("@")
         for (var i = 0; i < 10; i++) {
-          if (suffixtemplate[i] == undefined) {
+          if (suffixtemplate[i] === undefined) {
             break;
           }
           for (var j in matchedRules) {
-            if (suffixtemplate[i] == matchedRules[j].r[0].key.y) {
+            if (suffixtemplate[i] === matchedRules[j].r[0].key.y) {
               if (suffixtemplate[i + 1]) { // ambiguity (two potential
                                             // following morphemes)
                 suffixtemplate.pop();
@@ -157,7 +157,7 @@ Glosser.glossFinder = function(morphemesLine){
       window.appView.toastUser("You probably have enough data to train an autoglosser for your corpus.\n\nIf you sync your data with the team server then editing the morphemes will automatically run the auto glosser.","alert-success","Sync to train your auto-glosser:");
     }else{
       Glosser.toastedUserToImport ++;
-      if(Glosser.toastedUserToImport % 10 == 1 && corpusSize < 30){
+      if(Glosser.toastedUserToImport % 10 === 1 && corpusSize < 30){
         window.appView.toastUser("You have roughly "+corpusSize+" datum saved in your pouch, if you have around 30 datum, then you have enough data to train an autoglosser for your corpus.","alert-info","AutoGlosser:");
       }
     }
@@ -208,10 +208,10 @@ Glosser.generateForceDirectedRulesJsonForD3 = function(rules, pouchname) {
   morphemes = [];
   for ( var i in rules) {
     /* make the @ more like what a linguist recognizes for word boundaries */
-    if(rules[i].key.x == "@"){
+    if(rules[i].key.x === "@"){
       rules[i].key.x = "#_"
     }
-    if(rules[i].key.y == "@"){
+    if(rules[i].key.y === "@"){
       rules[i].key.y = "_#"
     }
     var xpos = morphemes.indexOf(rules[i].key.x);
@@ -225,7 +225,7 @@ Glosser.generateForceDirectedRulesJsonForD3 = function(rules, pouchname) {
       ypos = morphemes.length - 1;
     }
     //To avoid loops?
-    if (rules[i].key.y.indexOf("@") == -1) {
+    if (rules[i].key.y.indexOf("@") === -1) {
       morphemeLinks.push({
         source : xpos,
         target : ypos,
@@ -257,7 +257,7 @@ Glosser.generateForceDirectedRulesJsonForD3 = function(rules, pouchname) {
 }
 Glosser.saveAndInterConnectInApp = function(callback){
   
-  if(typeof callback == "function"){
+  if(typeof callback === "function"){
     callback();
   }
 }
@@ -276,7 +276,7 @@ Glosser.visualizeMorphemesAsForceDirectedGraph = function(rulesGraph, divElement
   if(!rulesGraph){
     rulesGraph = Glosser.rulesGraph;
     if(rulesGraph){
-      if(rulesGraph.links.length == 0){
+      if(rulesGraph.links.length === 0){
         rulesGraph = Glosser.generateForceDirectedRulesJsonForD3();
       }
     }else{
@@ -286,7 +286,7 @@ Glosser.visualizeMorphemesAsForceDirectedGraph = function(rulesGraph, divElement
   if(!rulesGraph){
     return;
   }
-  if( Glosser.rulesGraph.links.length == 0 ){
+  if( Glosser.rulesGraph.links.length === 0 ){
     return;
   }
  json = rulesGraph;
