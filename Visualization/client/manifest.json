@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "name": "McBenchViz",
+    "version": "0.0.0",
+    "description": "Dashboard for exploring and visualising performance characteristics of multi configuration MatLab compiler output",
+
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://google-code-prettify.googlecode.com; object-src 'self'",
+    "author": "awesome people",
+    "app": {
+        "launch": {
+            "local_path": "app.html"
+        }
+    },
+    "icons" : {
+        "16" : "images/icon16.png",
+        "48" : "images/icon48.png",
+        "128" : "images/icon128.png"
+    },
+
+    "permissions": [
+        "http://184.107.193.50/"
+    ]
+}

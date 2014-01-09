@@ -1,0 +1,14 @@
+<div ng-if="benchmark">
+    Results: {{ benchmark.data.length }}
+    <div class="input-prepend input-append">
+  		<span class="add-on">Bubble radius:</span>
+  		<button class="btn btn-small" ng-class="{'btn-success': useLogScaleForBubbleSize}"
+  		ng-click="toogleButtonScale()" >Log</button>
+	</div>
+     
+    <div scatter-plot="benchmark.activeInstances" use-log-bubble-size="useLogScaleForBubbleSize"></div>
+    <pre class="prettyprint linenums" matlab-src-syntax-highlighting benchmark-name="benchmark.name"></pre>
+</div>
+<div ng-if="!benchmark">
+    Please select a benchmark in the sidebar on the left
+</div>

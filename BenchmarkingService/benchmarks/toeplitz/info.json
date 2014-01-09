@@ -1,0 +1,7 @@
+{
+"name": "toeplitz",
+"version": "1.0",
+    "sources": "toeplitz/src",
+    "runPath": "toeplitz/src/run.m",
+"tags": []
+}

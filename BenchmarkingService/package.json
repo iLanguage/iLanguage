@@ -1,0 +1,15 @@
+{
+  "name": "mcbenchviz",
+  "description": "Visualize performance results of benchmarks.",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.x",
+    "grest": "latest",
+    "murmurhash": "0.0.2",
+    "mysql": "2.0.0-alpha8",
+    "ssh2": "0.2.11",
+    "q": "0.9.6",
+    "sequelize": "1.5.0"
+  }
+}
