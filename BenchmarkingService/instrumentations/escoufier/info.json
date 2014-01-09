@@ -1,0 +1,8 @@
+{
+    "name": "escoufier",
+    "version": "1.0",
+    "sources": "escoufier/src",
+    "runPath": "escoufier/src/run.m",
+    "results": "escoufier/result.json",
+    "tags": []
+}

@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<head>
+  <title>Syntax Highlighting</title>
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" title="Default" href="highlight.js/styles/ir_black.css">
+  <link rel="alternate stylesheet" title="GitHub" href="highlight.js/styles/vs.css">
+  <link rel="alternate stylesheet" title="Monokai" href="highlight.js/styles/monokai.css">
+    <style>
+    body {
+      font: small Arial, sans-serif;
+    }
+    h2 {
+      font: bold 100% Arial, sans-serif;
+      margin-top: 2em;
+      margin-bottom: 0.5em;
+    }
+    pre {
+      margin: 0; font-size: medium;
+    }
+    #switch {
+      overflow: auto; width: 67em;
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    #switch li {
+      float: left; width: 12em;
+      padding: 0.1em; margin: 0.1em 1em 0.1em 0;
+      background: #EEE;
+      cursor: pointer;
+    }
+    #switch li.current {
+      background: #CCC;
+    }
+    .code {
+      font: medium monospace;
+    }
+    .code .keyword {
+      font-weight: bold;
+    }
+  </style>
+
+  <script src="highlight.js/highlight.pack.js"></script>
+  <script>
+  hljs.tabReplace = '    ';
+  hljs.initHighlightingOnLoad();
+  </script>
+
+  <script>
+  (function(container_id) {
+      if (window.addEventListener) {
+          var attach = function(el, ev, handler) {
+              el.addEventListener(ev, handler, false);
+          }
+      } else if (window.attachEvent) {
+          var attach = function(el, ev, handler) {
+              el.attachEvent('on' + ev, handler);
+          }
+      } else {
+          var attach = function(el, ev, handler) {
+              ev['on' + ev] = handler;
+          }
+      }
+
+
+      attach(window, 'load', function() {
+          var current = null;
+
+          var info = {};
+          var links = document.getElementsByTagName('link');
+          var ul = document.createElement('ul')
+
+          for (var i = 0; (link = links[i]); i++) {
+              if (link.getAttribute('rel').indexOf('style') != -1
+                  && link.title) {
+
+                  var title = link.title;
+
+                  info[title] = {
+                  'link': link,
+                  'li': document.createElement('li')
+                  }
+
+                  ul.appendChild(info[title].li)
+                  info[title].li.title = title;
+
+                  info[title].link.disabled = true;
+
+                  info[title].li.appendChild(document.createTextNode(title));
+                  attach(info[title].li, 'click', (function (el) {
+                      return function() {
+                          current.li.className = '';
+                          current.link.disabled = true;
+                          current = el;
+                          current.li.className = 'current';
+                          current.link.disabled = false;
+                      }})(info[title]));
+              }
+          }
+
+          current = info['Default']
+          current.li.className = 'current';
+          current.link.disabled = false;
+
+          ul.id = 'switch';
+          container = document.getElementById(container_id);
+          container.appendChild(ul);
+      });
+
+  })('styleswitcher');
+  </script>
+<body>
+
+<div id="styleswitcher">
+  <h2>Styles</h2>
+</div>
+
+<div>
+    <label class="matlab"/>
+<pre>
+  <code>
+arg_list = argv();
+scale = str2num(arg_list{1});
+iteration = str2num(arg_list{2});
+
+p = 0; vt = 0; vr = 0; vrt = 0; rvt = 0; RV = 0; j = 0; k = 0;
+x2 = 0; R = 0; Rxx = 0; Ryy = 0; Rxy = 0; Ryx = 0; Rvmax = 0; f = 0;
+
+for i = 1:iteration
+    x = abs(randn(scale, scale));
+    p = size(x, 2);
+    vt = [1:p];     
+    vr = [];                                   
+    RV = [1:p];                               
+    for j = 1:p                                
+      Rvmax = 0;
+      for k = 1:(p-j+1)                        
+        if j == 1
+          x2 = [x, x(:, vt(k))];
+        else
+          x2 = [x, x(:, vr), x(:, vt(k))];     
+        end
+        R = corrcoef(x2);                      
+        Ryy = R(1:p, 1:p);
+        Rxx = R(p+1:p+j, p+1:p+j);
+        Rxy = R(p+1:p+j, 1:p);
+        Ryx = Rxy';
+        rvt = trace(Ryx*Rxy)/((trace(Ryy^2)*trace(Rxx^2))^0.5);
+        if rvt > Rvmax
+          Rvmax = rvt;                        
+          vrt(j) = vt(k);                      
+        end
+      end
+      vr(j) = vrt(j);                          
+      RV(j) = Rvmax;                           
+      f = find(vt~=vr(j));                     
+      vt = vt(f);                              
+    end
+end
+
+% 0.14287 for scale 22 and iteration 3
+</code>
+</pre>
+</div>

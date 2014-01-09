@@ -106,3 +106,13 @@ ehthumbs.db
 Icon?
 Thumbs.db
 *.swp
+
+
+*.m~
+
+*.mex*
+	
+slprj/
+.idea/
+client/bower_components/
+client/app.write.js
