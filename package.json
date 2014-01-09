@@ -1,0 +1,39 @@
+{
+  "name": "ilanguagecloud",
+  "version": "0.1.0",
+  "description": "Make dynamic wordclouds.",
+  "keywords": [
+    "jquery-plugin"
+  ],
+  "homepage": "https://github.com/iLanguage/iLanguageCloud",
+  "bugs": "https://github.com//ilanguagecloud/issues",
+  "author": {
+    "name": "",
+    "email": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iLanguage/iLanguageCloud"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-watch": "~0.5.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-jasmine": "~0.5.2",
+    "grunt-jasmine-node": "~0.1.0",
+    "jasmine-node": "~1.11.0",
+    "time-grunt": "~0.1.0",
+    "grunt": "~0.4.2",
+    "canvas": "~1.1.2",
+    "d3": "~3.3.11",
+    "browserify": "~3.2.0",
+    "grunt-browserify": "git+https://github.com/jmreidy/grunt-browserify.git"
+  }
+}

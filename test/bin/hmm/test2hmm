@@ -1,1 +1,0 @@
-./esthmm -N 6 -M 13 example0.seq > example0.hmm

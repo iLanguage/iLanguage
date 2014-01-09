@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="three_clouds.css">
+    </head>
+
+    <body>
+
+        <section id="wordCloudapp">
+            <header id="header">
+                <h1>backbone.js</h1>
+                <input id="new-wordCloud" placeholder="What would you like to be in a cloud?" autofocus>
+            </header>
+            <section id="main">
+                <input id="toggle-all" type="checkbox">
+                <label for="toggle-all">Mark all as complete</label>
+                <ul id="wordCloud-list"></ul>
+            </section>
+            <footer id="footer"></footer>
+        </section>
+        <footer id="info">
+            <p>Double-click to edit a word cloud</p>
+            <p>Based on <a href="http://wordCloudmvc.com">TodoMVC</a></p>
+        </footer>
+        <script type="text/template" id="item-template">
+            <div class="view">
+                <input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
+                <label><div class="word-cloud"></div></label>
+                <button class="destroy"></button>
+            </div>
+            <input class="edit" value="<%- text %>">
+        </script>
+        <script type="text/template" id="stats-template">
+            <span id="wordCloud-count"><strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %> left</span>
+            <ul id="filters">
+                <li>
+                    <a class="selected" href="#/">All</a>
+                </li>
+                <li>
+                    <a href="#/active">Active</a>
+                </li>
+                <li>
+                    <a href="#/completed">Completed</a>
+                </li>
+            </ul>
+            <% if (completed) { %>
+            <button id="clear-completed">Clear completed (<%= completed %>)</button>
+            <% } %>
+        </script>
+
+    <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.3.0/lodash.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage-min.js"></script>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+
+    <script src="../../dist/ilanguagecloud.min.js"></script>
+    <script src="three_clouds.js"></script>
+
+    </body>
+</html>
