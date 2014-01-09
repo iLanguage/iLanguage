@@ -15,7 +15,6 @@
     "exports": true,
     "window": false,
     "document": false,
-    "d3": false,
     "global": false,
     "require": false
   }
