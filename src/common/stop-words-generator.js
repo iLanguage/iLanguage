@@ -1,19 +1,19 @@
 (function(exports) {
   var Tokenizer = require('./tokenizer');
 
-  var calculateStopWords = function(inputText, cutoffPercent) {
+  var calculateStopWords = function(obj) {
 
-    if (!inputText) {
+    if (!obj.inputText) {
       return;
     }
 
-    cutoffPercent = cutoffPercent || 0.015;
-    var parsedText = Tokenizer.tokenizeInput(inputText); //create array of words only
+    var cutoffPercent = obj.cutoff || 0.015,
+      parsedText = Tokenizer.tokenizeInput(obj.inputText); //create array of words only
 
     var wordCounts = function(wordarray) {
       var history = {};
       for (var word = 0; word < wordarray.length; word++) {
-        var currentRecord = wordarray[word].toLowerCase();
+        var currentRecord = wordarray[word].toLowerCase().replace(/^\s+|\s+$/g, '');
         history[currentRecord] ? // check if word already exists in history
         history[currentRecord] += 1 : // if so, increase its count by one
         history[currentRecord] = 1; // otherwise mark as first occurrence
