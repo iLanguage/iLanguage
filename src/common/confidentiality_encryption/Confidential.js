@@ -46,7 +46,7 @@ define( [
       
     },
     fillWithDefaults : function(){
-      if (this.get("secretkey") == "This should be a top secret pass phrase.") {
+      if (this.get("secretkey") === "This should be a top secret pass phrase.") {
         this.set("secretkey", this.secretKeyGenerator());
       }
     },
@@ -56,7 +56,7 @@ define( [
     decryptedMode : false,
     turnOnDecryptedMode : function(callback){
       this.decryptedMode = false;
-      if(typeof callback == "function"){
+      if(typeof callback === "function"){
         callback();
       }
     },
@@ -67,7 +67,7 @@ define( [
           window.appView.authView.showQuickAuthenticateView( function(){
             //This happens after the user has been authenticated. 
             self.decryptedMode = true;
-            if(typeof callback == "function"){
+            if(typeof callback === "function"){
               callback();
             }
           });
@@ -80,7 +80,7 @@ define( [
     },
     saveAndInterConnectInApp : function(callback){
       
-      if(typeof callback == "function"){
+      if(typeof callback === "function"){
         callback();
       }
     },
