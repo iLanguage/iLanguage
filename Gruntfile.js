@@ -12,7 +12,7 @@ module.exports = function(grunt) {
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-      ' Licensed MIT */\n',
+      ' Licensed Apache 2.0 */\n',
     // Task configuration.
     concat: {
       options: {
@@ -96,7 +96,7 @@ module.exports = function(grunt) {
         options: {
           jshintrc: 'src/.jshintrc'
         },
-        src: ['src/**/*.js', '!src/common/d3.layout.cloud.js']
+        src: ['src/**/*.js', '!src/common/core/*.js']
       },
       test: {
         src: ['test/**/*.js']
