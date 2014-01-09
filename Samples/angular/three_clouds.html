@@ -1,0 +1,41 @@
+<!doctype html>
+<html ng-app="app">
+
+    <head>
+        <link rel="stylesheet" href="three_clouds.css">
+    </head>
+
+    <body ng-controller="SampleController" >
+
+
+
+    <table>
+        <tr>
+            <td colspan="2">
+                <button ng-click="setRandomCloudText()">Ramdon text in the first Cloud</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <div data-word-cloud data-cloud-content="{{text0}}"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div data-word-cloud data-cloud-content="{{text2}}"></div>
+            </td>
+            <td>
+                <div data-word-cloud data-cloud-content="{{text3}}"></div>
+            </td>
+        </tr>
+    </table>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular-route.min.js"></script>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="../../dist/ilanguagecloud.min.js"></script>
+    <script src="three_clouds.js"></script>
+
+    </body>
+</html>
