@@ -1,6 +1,6 @@
 'use strict';
-var StopWords = require('../../../src/common/stop-words');
-var StopWordsGenerator = require('../../../src/common/stop-words-generator');
+var StopWords = require('../../../src/common/stop-words').StopWords;
+var StopWordsGenerator = require('../../../src/common/stop-words-generator').StopWordsGenerator;
 var textSort = function(a, b) {
   return a.localeCompare(b);
 };

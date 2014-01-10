@@ -37,6 +37,8 @@
 
   };
 
-  exports.calculateStopWords = calculateStopWords;
+  exports.StopWordsGenerator  = {
+    calculateStopWords: calculateStopWords
+  };
 
 })(typeof exports === 'undefined' ? this['StopWordsGenerator'] = {} : exports);

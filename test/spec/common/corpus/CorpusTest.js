@@ -1,7 +1,11 @@
-xdescribe('Corpus:', function() {
+var Corpus = require('../../../../src/common/corpus/Corpus').Corpus;
+
+
+describe('Corpus:', function() {
 
   describe('As a team we want to be able to go back in time in the corpus revisions', function() {
     it('should be able to import from GitHub repository', function() {
+      expect(Corpus.Orthography).toBeDefined();
       expect(true).toBeTruthy();
     });
   });
