@@ -1,6 +1,6 @@
 'use strict';
 
-xdescribe('lib/dialect', function() {
+describe('lib/dialect', function() {
 
   it('should accept an ISO language code and/or a text to guess the dialect/language', function() {
     expect(true).toBeTruthy();

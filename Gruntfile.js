@@ -8,11 +8,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
-    banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+    banner: '/* <%= pkg.name %>.js - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-      '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-      '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-      ' Licensed Apache 2.0 */\n',
+      '<%= pkg.homepage ? "" + pkg.homepage + "\\n" : "" %>' +
+      '\nCopyright (c) 2009 - <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>.\n' +
+      'Licensed:  <%= pkg.licenses[0].type %> \n*/\n \n',
     // Task configuration.
     concat: {
       options: {
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['dist/vendor.js', 'dist/main_bundle.js'],
+        src: ['dist/main_bundle.js'],
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         banner: '<%= banner %>'
       },
       dist: {
-        src: '<%= concat.dist.dest %>',
+        src: '<%= browserify.src.dest %>',
         dest: 'dist/<%= pkg.name %>.min.js'
       }
     },
@@ -55,33 +55,16 @@ module.exports = function(grunt) {
       }
     },
     browserify: {
-      vendor: {
-        src: ['./node_modules/d3/d3.min.js'],
-        dest: 'dist/vendor.js',
-        options: {
-          shim: {
-            d3: {
-              path: './node_modules/d3/d3.min.js',
-              exports: 'd3'
-            }
-          }
-        }
-      },
       src: {
-        src: ['src/common/app.js'],
+        src: ['src/common/<%= pkg.name %>.js'],
         dest: 'dist/main_bundle.js',
         options: {
-          ignore: ['src/node/**/*.js'],
-          shim: {
-            layoutCloud: {
-              path: 'src/common/d3.layout.cloud.js',
-              exports: 'layoutCloud'
-            }
-          }
+          ignore: ['src/node/**/*.js', 'src/common/core/*.js'],
+          shim: {}
         }
       },
       test: {
-          src: ['test/spec/common/**/*.js', 'test/spec/browser/**/*.js'],
+          src: ['test/spec/common/**/*.js', '!test/spec/common/core/*.js', 'test/spec/browser/**/*.js'],
           dest: 'dist/test_bundle.js'
       }
     },
