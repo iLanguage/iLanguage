@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         banner: '<%= banner %>'
       },
       dist: {
-        src: '<%= browserify.src.dest %>',
+        src: '<%= concat.dist.dest %>',
         dest: 'dist/<%= pkg.name %>.min.js'
       }
     },
@@ -56,11 +56,10 @@ module.exports = function(grunt) {
     },
     browserify: {
       src: {
-        src: ['src/common/<%= pkg.name %>.js'],
+        src: ['src/common/app.js'],
         dest: 'dist/main_bundle.js',
         options: {
-          ignore: ['src/node/**/*.js', 'src/common/core/*.js'],
-          shim: {}
+          ignore: ['src/node/**/*.js', 'src/common/core/*.js']
         }
       },
       test: {

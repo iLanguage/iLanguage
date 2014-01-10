@@ -19,6 +19,8 @@
 
   };
 
-  exports.tokenizeInput = tokenizeInput;
+  exports.Tokenizer = {
+    tokenizeInput: tokenizeInput
+  };
 
 })(typeof exports === 'undefined' ? this['Tokenizer'] = {} : exports);
