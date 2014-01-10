@@ -7,7 +7,7 @@ A semi-unsupervised language independent morphological analyzer useful for stemm
 =======
 [![Build Status](https://travis-ci.org/iLanguage/iLanguage.png)](https://travis-ci.org/ilanguage/iLanguage)
 
-# Contributors
+# Lab Members
 
 * [Gina Cook](http://gina.ilanguage.ca/) (U Delaware, Concordia)
 * [Theresa Deering](http://trisapeace.angelfire.com/) (McGill, Visit Scotland)
@@ -35,6 +35,16 @@ A semi-unsupervised language independent morphological analyzer useful for stemm
 * [Yuliya Kondratenko](http://aboutkondratenko.wordpress.com/) Summer 2013 (Concordia, Theoretical Linguistics)
 * [Dominique Bédard](http://www.eoa.umontreal.ca/) Fall 2013, Spring 2014 (U de Montréal, Speech Language Pathology)
 * [Alexandre Herbay](https://twitter.com/Hafsloo) Spring 2014 (U de Montréal, Psycho-linguistics & Toulouse III, Computer Science)
+
+
+## Release History
+
+* v1.0 April 16 2009 - Initial implementation in bash and perl
+* v2.0 Jul 3 2010 - Implementation in C++
+* v3.0 April 30 2011 - Implementation in Groovy 
+* v4.0 July 20 2012 - Implementation in JavaScript Map Reduce
+* v4.1 Nov 29 2013 - Added more high level functions for gloss lookup
+* v5.0 Jan 9 2014 - Implementation in CommonJS
 
 
 # License 
