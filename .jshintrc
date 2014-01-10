@@ -20,6 +20,8 @@
     "xdescribe": false,
     "it": false,
     "xit": false,
-    "expect": false
+    "expect": false,
+    "runs": false,
+    "waitsFor": false
   }
 }

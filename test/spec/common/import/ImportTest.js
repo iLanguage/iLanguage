@@ -1,5 +1,6 @@
-describe("Import: as a morphologist I want to import my data from CSV",
-  function() {
+xdescribe("Import:", function() {
+
+  describe("As a morphologist I want to import my data from CSV", function() {
     it("should detect drag and drop", function() {
 
       expect(true).toBeTruthy();
@@ -7,9 +8,7 @@ describe("Import: as a morphologist I want to import my data from CSV",
     });
 
   });
-describe(
-  "Import: as a synctactician I want to import my data from Word/text examples on three lines",
-  function() {
+  describe("As a synctactician I want to import my data from Word/text examples on three lines", function() {
     it("should detect drag and drop", function() {
 
       expect(true).toBeTruthy();
@@ -18,9 +17,7 @@ describe(
 
   });
 
-describe(
-  "Import: as a phonetican/Fieldlinguist/Anthropoligest I want to import my data in ELAN XML",
-  function() {
+  describe("As a phonetican/Fieldlinguist/Anthropoligest I want to import my data in ELAN XML", function() {
     it("should detect drag and drop", function() {
 
       expect(true).toBeTruthy();
@@ -28,25 +25,27 @@ describe(
     });
 
   });
-describe("Import Template", function() {
+  describe("Import Template", function() {
 
-  beforeEach(function() {
-    // var d = document.createElement("div");
-    // d.setAttribute("id", "status");
-    // document.body.appendChild(d);
-    // d.appendChild(this.view.render().el);
+    beforeEach(function() {
+      // var d = document.createElement("div");
+      // d.setAttribute("id", "status");
+      // document.body.appendChild(d);
+      // d.appendChild(this.view.render().el);
+    });
+
+    it("has more than one column", function() {
+      expect(true).toBeTruthy();
+    });
+
+    it("has the filename as the title", function() {
+      expect(true).toBeTruthy();
+    });
+
   });
 
-  it("has more than one column", function() {
-    expect(true).toBeTruthy();
-  });
-
-  it("has the filename as the title", function() {
-    expect(true).toBeTruthy();
-  });
 
 });
-
 // describe("Import routes", function() {
 // beforeEach(function() {
 // this.router = new ImportRouter;
@@ -56,7 +55,6 @@ describe("Import Template", function() {
 // } catch(e) {}
 // this.router.navigate("elsewhere");
 // });
-//		  
 // it("fires the index route with a blank hash", function() {
 // this.router.bind("route:index", this.routeSpy);
 // this.router.navigate("", true);
