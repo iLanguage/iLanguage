@@ -1,5 +1,5 @@
 (function(exports) {
-  var StopWordsGenerator = require('./stop-words-generator');
+  var StopWordsGenerator = require('./stop-words-generator').StopWordsGenerator;
 
   var defaults = {
     // From Jonathan Feinberg's cue.language, see https://github.com/jdf/cue.language/blob/master/license.txt.
@@ -41,7 +41,10 @@
 
   };
 
-  exports.processStopWords = processStopWords;
-  exports.defaults = defaults;
+  exports.StopWords = {
+    processStopWords : processStopWords,
+    defaults : defaults,
+    StopWordsGenerator: StopWordsGenerator
+  };
 
 })(typeof exports === 'undefined' ? this['StopWords'] = {} : exports);

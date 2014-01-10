@@ -1,4 +1,5 @@
 'use strict';
+var iLanguage = require('../../../src/common/ilanguage').iLanguage;
 
 /*
   ======== A Handy Little Jasmine Reference ========
@@ -41,11 +42,13 @@ https://github.com/pivotal/jasmine/wiki/Matchers
 
 */
 
-xdescribe('lib/ilanguage', function() {
+describe('lib/ilanguage', function() {
 
   describe('It has useful content for infoviz', function() {
 
     it('should automatically clean the text to create informative wordclouds', function() {
+      expect(iLanguage.Corpus).toBeDefined();
+      expect(iLanguage.Lexicon).toBeDefined();
       expect(true).toBeTruthy();
     });
 
