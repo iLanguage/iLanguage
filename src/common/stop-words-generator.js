@@ -1,5 +1,5 @@
 (function(exports) {
-  var Tokenizer = require('./tokenizer');
+  var Tokenizer = require('./tokenizer').Tokenizer;
 
   var calculateStopWords = function(obj) {
 
