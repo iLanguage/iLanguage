@@ -27,10 +27,10 @@ https://github.com/pivotal/jasmine/wiki/Matchers
 
         toBeLessThan: function(expected) {
           var actual = this.actual;
-          var notText = this.isNot ? " not" : "";
+          var notText = this.isNot ? ' not' : '';
 
           this.message = function () {
-            return "Expected " + actual + notText + " to be less than " + expected;
+            return 'Expected ' + actual + notText + ' to be less than ' + expected;
           }
 
           return actual < expected;

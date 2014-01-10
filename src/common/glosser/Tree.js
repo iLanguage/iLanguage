@@ -1,1 +1,1 @@
-var Tree = require("fielddb/api/glosser/Tree");
+var Tree = require('fielddb/api/glosser/Tree');

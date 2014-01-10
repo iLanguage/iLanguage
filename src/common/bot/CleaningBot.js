@@ -1,1 +1,1 @@
-var CleaningBot = require("fielddb/api/bot/CleaningBot");
+var CleaningBot = require('fielddb/api/bot/CleaningBot');

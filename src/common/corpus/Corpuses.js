@@ -1,1 +1,1 @@
-var Corpora = require("fielddb/api/corpus/Corpuses");
+var Corpora = require('fielddb/api/corpus/Corpuses');

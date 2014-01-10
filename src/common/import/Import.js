@@ -1,1 +1,1 @@
-var DataImport = require("fielddb/api/import/Import");
+var DataImport = require('fielddb/api/import/Import');

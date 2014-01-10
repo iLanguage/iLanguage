@@ -1,1 +1,1 @@
-var CorpusConnection = require("fielddb/api/corpus/CorpusConnection");
+var CorpusConnection = require('fielddb/api/corpus/CorpusConnection');
