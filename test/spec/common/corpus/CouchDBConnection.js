@@ -1,3 +1,4 @@
+var OPrime = {};
 var CouchDBConnection = function(url, user) {
   this.url = url;
   this.user = user;
@@ -14,7 +15,7 @@ var CouchDBConnection = function(url, user) {
       success: function(serverResults) {
         that.result = serverResults;
         console.log("server contacted", serverResults);
-        if (typeof optionalCallback == "function") {
+        if (typeof optionalCallback === "function") {
           optionalCallback();
         }
       },
@@ -43,9 +44,6 @@ var CouchDBConnection = function(url, user) {
           success: function(serverResults) {
             that.uploadResult = serverResults;
             console.log("server contacted", serverResults);
-            if (typeof optionalCallback == "function") {
-              optionalCallback();
-            }
           },
           error: function(serverResults) {
             that.uploadResult = serverResults;
@@ -68,7 +66,7 @@ var CouchDBConnection = function(url, user) {
     return this.uploadResult.ok;
   };
   this.loggedIn = function() {
-    return this.result.name == this.user.name;
+    return this.result.name === this.user.name;
   };
   this.assertLoginSuccessful = function() {
     expect(this.result.name).toEqual(this.user.name);

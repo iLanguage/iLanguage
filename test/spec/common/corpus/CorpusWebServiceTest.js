@@ -1,3 +1,5 @@
+var OPrime = OPrime || {};
+var CouchDBConnection = require("CouchDBConnection");
 var runCORSTests = function(whichServer) {
 
   /*
@@ -10,13 +12,13 @@ var runCORSTests = function(whichServer) {
 
 
   var serverURL = "https://corpusdev.lingsync.org/_session";
-  if (whichServer == "Testing") {
+  if (whichServer === "Testing") {
     serverURL = "https://corpusdev.lingsync.org/_session";
-  } else if (whichServer == "Stable") {
+  } else if (whichServer === "Stable") {
     serverURL = "https://corpus.lingsync.org/_session";
-  } else if (whichServer == "McGill") {
+  } else if (whichServer === "McGill") {
     serverURL = "https://prosody.linguistics.mcgill.ca/corpus/_session/";
-  } else if (whichServer == "Localhost") {
+  } else if (whichServer === "Localhost") {
     serverURL = "https://localhost:6984/_session";
   }
   console.log("Testing with: " + serverURL);
@@ -126,7 +128,7 @@ var runCORSTests = function(whichServer) {
 
 };
 
-describe("CorpusWebService Testing: ", function() {
+xdescribe("CorpusWebService Testing: ", function() {
   runCORSTests("Testing");
 });
 
