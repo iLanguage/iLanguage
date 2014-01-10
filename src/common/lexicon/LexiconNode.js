@@ -1,1 +1,1 @@
-var Word = require("fielddb/api/lexicon/LexiconNode");
+var Word = require('fielddb/api/lexicon/LexiconNode');

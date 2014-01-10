@@ -1,1 +1,1 @@
-var Confidential = require("fielddb/api/confidentiality_encryption/Confidential");
+var Confidential = require('fielddb/api/confidentiality_encryption/Confidential');

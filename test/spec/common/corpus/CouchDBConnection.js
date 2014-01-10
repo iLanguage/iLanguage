@@ -14,41 +14,41 @@ var CouchDBConnection = function(url, user) {
       data: that.user,
       success: function(serverResults) {
         that.result = serverResults;
-        console.log("server contacted", serverResults);
-        if (typeof optionalCallback === "function") {
+        console.log('server contacted', serverResults);
+        if (typeof optionalCallback === 'function') {
           optionalCallback();
         }
       },
       error: function(serverResults) {
         that.result = serverResults;
         console
-          .log("There was a problem contacting the server to login.");
+          .log('There was a problem contacting the server to login.');
       }
     });
   };
   this.uploadADocument = function(doc, database) {
     var that = this;
     that.uploadResult = {};
-    var method = "POST";
+    var method = 'POST';
     var uploadURLSuffix = database;
     if (doc.id) {
-      method = "PUT";
-      uploadURLSuffix = database + "/" + doc._id;
+      method = 'PUT';
+      uploadURLSuffix = database + '/' + doc._id;
     }
     var upload = function() {
       OPrime
         .makeCORSRequest({
           type: method,
-          url: that.url.replace("_session", uploadURLSuffix),
+          url: that.url.replace('_session', uploadURLSuffix),
           data: doc,
           success: function(serverResults) {
             that.uploadResult = serverResults;
-            console.log("server contacted", serverResults);
+            console.log('server contacted', serverResults);
           },
           error: function(serverResults) {
             that.uploadResult = serverResults;
             console
-              .log("There was a problem contacting the server to upload.");
+              .log('There was a problem contacting the server to upload.');
           }
         });
     };

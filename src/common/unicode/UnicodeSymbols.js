@@ -1,1 +1,1 @@
-var UnicodeSymbols = require("fielddb/api/unicode/UnicodeSymbols");
+var UnicodeSymbols = require('fielddb/api/unicode/UnicodeSymbols');

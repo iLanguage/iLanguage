@@ -1,1 +1,1 @@
-var DataExport = require("fielddb/api/export/Export");
+var DataExport = require('fielddb/api/export/Export');

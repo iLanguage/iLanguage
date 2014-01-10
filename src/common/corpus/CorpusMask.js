@@ -1,1 +1,1 @@
-var CorpusMask = require("fielddb/api/corpus/CorpusMask");
+var CorpusMask = require('fielddb/api/corpus/CorpusMask');

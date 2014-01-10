@@ -1,1 +1,1 @@
-var Glosser = require("fielddb/api/glosser/Glosser");
+var Glosser = require('fielddb/api/glosser/Glosser');
