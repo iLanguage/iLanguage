@@ -11,7 +11,7 @@ firstGlosser.downloadPrecedenceRules(firstdb, "http://localhost:5984/" + firstdb
     translation: "I feel like opening the door."
   });
   console.log(utterance);
-  firstGlosser.visualizeMorphemesAsForceDirectedGraph(null, document.getElementById("glosser"), firstdb);
+  firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(null, document.getElementById("glosser"), firstdb);
 });
 
 var seconddb = "glossersample-cherokee";
@@ -19,7 +19,7 @@ var secondGlosser = new Glosser({
   pouchname: seconddb
 });
 secondGlosser.downloadPrecedenceRules(seconddb, "http://localhost:5984/" + seconddb + "/_design/pages/_view/precedence_rules?group=true", function() {
-  secondGlosser.visualizeMorphemesAsForceDirectedGraph(null, document.getElementById("glosser2"), seconddb);
+  secondGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(null, document.getElementById("glosser2"), seconddb);
 });
 
 var thirddb = "glossersample-inuktitut";

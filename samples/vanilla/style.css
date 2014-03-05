@@ -10,3 +10,45 @@ td {
 tr {
   text-align: center;
 }
+
+
+/* D3 force directed graph */
+circle.node {
+	stroke: #fff;
+	stroke-width: 1.5px;
+}
+
+line.link {
+	stroke-opacity: .6;
+}
+
+
+.link {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+#licensing {
+  fill: green;
+}
+
+.link.licensing {
+  stroke: green;
+}
+
+.link.resolved {
+  stroke-dasharray: 0,2 1;
+}
+
+circle {
+  fill: #ccc;
+  stroke: #333;
+  stroke-width: 1.5px;
+}
+
+text {
+  color: #fff;
+  background-color: #333;
+  opacity: .5;
+}
