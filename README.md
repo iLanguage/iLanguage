@@ -39,7 +39,7 @@ To guess an utterance (citation line) from morphemes:
 
 ```javascript
 Glosser.guessUtteranceFromMorphemes({
-	utterrance: "",
+	utterance: "",
 	morphemes: "Kicha-nay-wa-n punqo-ta",
 	allomorphs: "",
 	gloss: "open-DES-1OM-3SG door-ACC", 
@@ -52,7 +52,7 @@ To guess a morpheme segmention from an utterance/orthography line:
 
 ```javascript
 Glosser.guessMorphemesFromUtterance({
-	utterrance: "Kichanaywan punqota",
+	utterance: "Kichanaywan punqota",
 	morphemes: "",
 	allomorphs: "",
 	gloss: "", 
@@ -65,7 +65,7 @@ To guess glosses from a morphemes/allomorphs line:
 
 ```javascript
 Glosser.guessGlossFromMorphemes({
-	utterrance: "Kichanaywan punqota",
+	utterance: "Kichanaywan punqota",
 	morphemes: "Kicha-nay-wa-n punqo-ta",
 	allomorphs: "",
 	gloss: "", 

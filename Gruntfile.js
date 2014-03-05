@@ -18,7 +18,7 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['lib/FieldDBGlosser.js'],
+        src: ['bower_components/d3/d3.js','bower_components/underscore/underscore.js','lib/FieldDBGlosser.js'],
         dest: '<%= pkg.name %>.js'
       },
     },
@@ -51,6 +51,28 @@ module.exports = function(grunt) {
         src: ['test/**/*.js']
       },
     },
+    concurrent: {
+      server: [
+        'jshint', 'nodeunit', 'concat', 'uglify'
+      ]
+    },
+    connect: {
+      options: {
+        port: 9000,
+        livereload: 35729,
+        // change this to '0.0.0.0' to access the server from outside
+        hostname: 'localhost'
+      },
+      livereload: {
+        options: {
+          open: true,
+          base: [
+            '.tmp',
+            '.'
+          ]
+        }
+      }
+    },
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
@@ -73,6 +95,20 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-concurrent');
+
+  grunt.registerTask('serve', function(target) {
+    if (target === 'dist') {
+      return grunt.task.run(['build', 'connect:dist:keepalive']);
+    }
+
+    grunt.task.run([
+      'concurrent:server',
+      'connect:livereload',
+      'watch'
+    ]);
+  });
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'nodeunit', 'concat', 'uglify']);
