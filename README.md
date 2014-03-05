@@ -7,8 +7,8 @@ A semi-automatic IGT morpheme segmenter and glosser
 Install the module with: `npm install fielddb-glosser --save`
 
 ```javascript
-var Glosser = require('FieldDBGlosser');
-Glosser.init(); // "init"
+var Glosser = require('FieldDBGlosser').Glosser;
+var glosser = new Glosser("yourdbidentifier"); 
 ```
 
 ### In the browser
@@ -25,7 +25,7 @@ In your web page:
 ```html
 <script src="bower_components/fielddb-glosser/fielddb-glosser.min.js"></script>
 <script>
-	Glosser.init(); // "init"
+	var glosser = new Glosser("yourdbidentifier"); 
 </script>
 ```
 
@@ -38,7 +38,7 @@ In the examples below, all fields are optional but the more information provided
 To guess an utterance (citation line) from morphemes:
 
 ```javascript
-Glosser.guessUtteranceFromMorphemes({
+glosser.guessUtteranceFromMorphemes({
 	utterance: "",
 	morphemes: "Kicha-nay-wa-n punqo-ta",
 	allomorphs: "",
@@ -51,20 +51,20 @@ Glosser.guessUtteranceFromMorphemes({
 To guess a morpheme segmention from an utterance/orthography line:
 
 ```javascript
-Glosser.guessMorphemesFromUtterance({
+glosser.guessMorphemesFromUtterance({
 	utterance: "Kichanaywan punqota",
 	morphemes: "",
 	allomorphs: "",
 	gloss: "", 
 	translation: "I feel like opening the door."
 });
-```
+```	
 
 
 To guess glosses from a morphemes/allomorphs line:
 
 ```javascript
-Glosser.guessGlossFromMorphemes({
+glosser.guessGlossFromMorphemes({
 	utterance: "Kichanaywan punqota",
 	morphemes: "Kicha-nay-wa-n punqo-ta",
 	allomorphs: "",
@@ -75,7 +75,7 @@ Glosser.guessGlossFromMorphemes({
 
 To show a D3.js force directed graph of morphemes in the corpus:
 
-Javascript:
+CSS:
 
 ```css
 #corpus-precedence-rules-visualization {
@@ -93,7 +93,7 @@ var doubleClickMorpheme = function(dataPoint){
 };
 
 try {
-	Glosser.visualizeMorphemesAsForceDirectedGraph(null, document.getElementById("corpus-precedence-rules-visualization"), "https://example.com/yourdburl", doubleClickMorpheme);
+	glosser.visualizeMorphemesAsForceDirectedGraph(null, document.getElementById("corpus-precedence-rules-visualization"), "https://example.com/yourdbidentifier", doubleClickMorpheme);
 } catch(e) {
 	console.warn("There was a problem loading your corpus visualization.");
 }

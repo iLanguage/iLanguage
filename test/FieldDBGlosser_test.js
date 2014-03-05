@@ -31,7 +31,8 @@ exports['init'] = {
     test.expect(1);
     // tests here
     try {
-      var igt = Glosser.guessUtteranceFromMorphemes({
+      var glosser = new Glosser();
+      var igt = glosser.guessUtteranceFromMorphemes({
         utterance: "",
         morphemes: "Kicha-nay-wa-n punqo-ta",
         allomorphs: "",
@@ -48,12 +49,13 @@ exports['init'] = {
       test.done();
     }
   },
-  
+
   'downloadPrecedenceRules': function(test) {
     test.expect(1);
     // tests here
     try {
-      Glosser.downloadPrecedenceRules("public-firstcorpus", "https://corpusdev.lingsync.org/public-firstcorpus/_design/pages/_view/precedence_rules?group=true", function() {
+      var glosser = new Glosser();
+      glosser.downloadPrecedenceRules("public-firstcorpus", "https://corpusdev.lingsync.org/public-firstcorpus/_design/pages/_view/precedence_rules?group=true", function() {
         console.log('Completed');
         test.equal('Completed', 'Completed', 'should be Completed.');
         test.done();
