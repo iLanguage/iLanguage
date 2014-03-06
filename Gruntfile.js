@@ -12,22 +12,27 @@ module.exports = function(grunt) {
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     // Task configuration.
-    concat: {
-      options: {
-        banner: '<%= banner %>',
-        stripBanners: true
+    browserify: {
+      src: {
+        src: ['lib/FieldDBGlosser.js'],
+        dest: '<%= pkg.name %>.js',
+        options: {
+          banner: '<%= banner %>',
+          ignore: [],
+          shim: {}
+        }
       },
-      dist: {
-        src: ['bower_components/d3/d3.js','bower_components/underscore/underscore.js','lib/FieldDBGlosser.js'],
-        dest: '<%= pkg.name %>.js'
-      },
+      test: {
+        src: ['test/**/*.js'],
+        dest: 'dist/test_bundle.js'
+      }
     },
     uglify: {
       options: {
         banner: '<%= banner %>'
       },
       dist: {
-        src: '<%= concat.dist.dest %>',
+        src: '<%= browserify.src.dest %>',
         dest: '<%= pkg.name %>.min.js'
       },
     },
@@ -53,7 +58,7 @@ module.exports = function(grunt) {
     },
     concurrent: {
       server: [
-        'jshint', 'nodeunit', 'concat', 'uglify'
+        'jshint', 'nodeunit', 'browserify', 'uglify'
       ]
     },
     connect: {
@@ -86,11 +91,26 @@ module.exports = function(grunt) {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'nodeunit']
       },
+      browserify: {
+        files: ['<%= jshint.lib.src %>', 'test/{,*/}*.js'],
+        tasks: ['browserify']
+      },
+      livereload: {
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        },
+        files: [
+          'samples/**/*.html',
+          'samples/**/*.js',
+          'samples/**/*.css',
+          '<%= pkg.name %>.js'
+        ]
+      }
     },
   });
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -111,6 +131,6 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'nodeunit', 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'nodeunit', 'browserify', 'uglify']);
 
 };

@@ -14,12 +14,10 @@
   "bugs": {
     "url": "https://github.com/OpenSourceFieldlinguistics/FieldDB/issues/"
   },
-  "licenses": [
-    {
-      "type": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
+  "licenses": [{
+    "type": "Apache 2.0",
+    "url": "http://www.apache.org/licenses/LICENSE-2.0"
+  }],
   "main": "lib/FieldDBGlosser",
   "engines": {
     "node": ">= 0.6.0"
@@ -28,7 +26,8 @@
     "test": "grunt nodeunit"
   },
   "devDependencies": {
-    "grunt-contrib-concat": "~0.3.0",
+    "browserify": "~3.2.0",
+    "grunt-browserify": "~1.3.0",
     "grunt-contrib-connect": "~0.5.0",
     "grunt-contrib-uglify": "~0.2.0",
     "grunt-contrib-jshint": "~0.6.0",

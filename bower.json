@@ -26,7 +26,5 @@
     "package.json"
   ],
   "dependencies": {
-    "d3": "~3.3.10",
-    "underscore": "~1.5.2"
   }
 }

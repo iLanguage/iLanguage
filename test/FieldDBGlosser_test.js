@@ -1,6 +1,7 @@
 'use strict';
 
 var Glosser = require('../lib/FieldDBGlosser.js').Glosser;
+var XMLHttpRequestNode = require("xmlhttprequest").XMLHttpRequest;
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -31,7 +32,9 @@ exports['init'] = {
     test.expect(1);
     // tests here
     try {
-      var glosser = new Glosser();
+      var glosser = new Glosser({
+        XMLHttpRequestLocal: XMLHttpRequestNode
+      });
       var igt = glosser.guessUtteranceFromMorphemes({
         utterance: "",
         morphemes: "Kicha-nay-wa-n punqo-ta",
@@ -54,7 +57,9 @@ exports['init'] = {
     test.expect(1);
     // tests here
     try {
-      var glosser = new Glosser();
+      var glosser = new Glosser({
+        XMLHttpRequestLocal: XMLHttpRequestNode
+      });
       glosser.downloadPrecedenceRules("public-firstcorpus", "https://corpusdev.lingsync.org/public-firstcorpus/_design/pages/_view/precedence_rules?group=true", function() {
         console.log('Completed');
         test.equal('Completed', 'Completed', 'should be Completed.');
