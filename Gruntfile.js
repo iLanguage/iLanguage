@@ -21,10 +21,6 @@ module.exports = function(grunt) {
           ignore: [],
           shim: {}
         }
-      },
-      test: {
-        src: ['test/**/*.js'],
-        dest: 'dist/test_bundle.js'
       }
     },
     uglify: {
