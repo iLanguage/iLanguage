@@ -77,7 +77,7 @@ module.exports = function(grunt) {
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
-        tasks: ['jshint:gruntfile']
+        tasks: ['jshint:gruntfile', 'browserify']
       },
       lib: {
         files: '<%= jshint.lib.src %>',
@@ -96,9 +96,7 @@ module.exports = function(grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          'samples/**/*.html',
-          'samples/**/*.js',
-          'samples/**/*.css',
+          'samples/**/*',
           '<%= pkg.name %>.js'
         ]
       }
