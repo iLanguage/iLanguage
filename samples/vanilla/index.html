@@ -1,32 +1,59 @@
 <!doctype html>
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-desktop-dark.min.css">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-desktop-dark.min.css">
+</head>
 
-    <body>
+<body>
 
     <table>
         <tr>
             <td colspan="2">
                 <div id="glosser"></div>
+                <div id="lexicon">  
+
+                    <section>
+                        <label class="topcoat-switch">
+                            <input type="checkbox" class="topcoat-switch__input"/>
+                            <div class="topcoat-switch__toggle">
+                            </div>
+                        </label>
+                    </section>
+
+                    <section>
+                        <textarea class="topcoat-textarea" rows="6" cols="36" placeholder="Textarea">
+                        </textarea>
+                        <ul>
+                            <li><strong>nay:</strong> Impulsative. to feel like (involutary agent)<br/>
+                            examples: sunayawan, tusunayawanmi</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <input type="range" class="topcoat-range"/>
+                    </section>
+
+                </div>
             </td>
         </tr>
         <tr>
             <td>
                 <div id="glosser2"></div>
+                <div id="lexicon2"></div>
             </td>
             <td>
                 <div id="glosser3"></div>
+                <div id="lexicon3"></div>
             </td>
         </tr>
     </table>
 
+    <script src="../../dist/vendor.js"></script>
     <script src="../../fielddb-glosser.js"></script>
     <script src="main.js"></script>
 
-    </body>
+</body>
 </html>
