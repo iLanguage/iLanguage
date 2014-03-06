@@ -27,5 +27,5 @@ var thirdGlosser = new Glosser({
   pouchname: thirddb
 });
 thirdGlosser.downloadPrecedenceRules(thirddb, "http://localhost:5984/" + thirddb + "/_design/pages/_view/precedence_rules?group=true", function() {
-  thirdGlosser.visualizeMorphemesAsForceDirectedGraph(null, document.getElementById("glosser3"), thirddb);
+  thirdGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(null, document.getElementById("glosser3"), thirddb);
 });
