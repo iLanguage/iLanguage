@@ -9,5 +9,5 @@
   "undef": true,
   "boss": true,
   "eqnull": true,
-  "predef": ["exports", "global", "window", "localStorage", "require", "XDomainRequest"]
+  "predef": ["console","document","exports", "global", "window", "localStorage", "require", "XDomainRequest"]
 }
