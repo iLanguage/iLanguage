@@ -14,10 +14,12 @@
   "bugs": {
     "url": "https://github.com/OpenSourceFieldlinguistics/FieldDB/issues/"
   },
-  "licenses": [{
-    "type": "Apache 2.0",
-    "url": "http://www.apache.org/licenses/LICENSE-2.0"
-  }],
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
   "main": "lib/FieldDBGlosser",
   "engines": {
     "node": ">= 0.6.0"
@@ -40,6 +42,8 @@
   "keywords": [],
   "dependencies": {
     "d3": "~3.3.10",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "frb": "^0.2.17",
+    "collections": "^1.0.1"
   }
 }

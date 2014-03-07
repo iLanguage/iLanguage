@@ -8,9 +8,76 @@ td {
 }
 
 tr {
-  text-align: center;
 }
 
+.lexicon ul{
+  list-style-type: none;
+  clear: both;
+  box-shadow:  inset 0 1px rgba(0,0,0,0.05);
+}
+
+.lexicon ul li {
+  float: left;
+  padding: .5em;
+  box-shadow:  inset 0 1px rgba(0,0,0,0.05);
+  width: 20em;
+}
+
+.lexicon .definition {
+ font-style: italic;
+}
+
+.lexicon .headword {
+  font-weight: bold;
+  padding-right: 0.2em;
+}
+
+.lexicon dl {
+ box-shadow:  inset 0 1px rgba(0,0,0,0.05);
+ width: 100%;
+ overflow:hidden;
+}
+
+/*
+dd:nth-of-type(odd) {   background-color: #333}
+dl:nth-of-type(odd) {  background-color: #ccc }​*/
+
+
+.lexicon dt {
+  padding: 0;
+  margin: 0;
+  float:left;
+  width:40%; 
+  color: #ccc;
+}
+
+.lexicon dd {
+  padding: 0;
+  margin: 0;
+  float:left;
+  width:50%; 
+}
+
+.utterance {
+ background-color: #323245;
+}
+
+.morphemes {
+  background-color: #353535;
+}
+
+.gloss {
+ color: #fcccfc;
+ background-color: #454545;
+}
+
+.confidence {
+  background-color: #232323;
+}
+
+[contenteditable="true"]:focus{
+  color: #fff;
+}
 
 /* D3 force directed graph */
 circle.node {
@@ -51,4 +118,13 @@ text {
   color: #fff;
   background-color: #333;
   opacity: .5;
-}*/
+  }*/
+
+  .distance2{
+    opacity: 0.2;
+  }
+
+
+  .distance3{
+    opacity: 0.1;
+  }
