@@ -16,22 +16,23 @@
                 <div id="lexicon" class="lexicon">  
 
                     <section>
-                        <label class="topcoat-switch">
-                            <input type="checkbox" class="topcoat-switch__input"/>
-                            <div class="topcoat-switch__toggle">
-                            </div>
-                        </label>
-                    </section>
-
-                    <section>
-                        <textarea class="topcoat-textarea" rows="6" cols="36" placeholder="Textarea">
+                        <textarea id="lexiconJSON" class="topcoat-textarea lexiconJSON"  placeholder="Lexicon data">
                         </textarea>
                     </section>
 
                     <section>
-                        <label class="topcoat-label">Confidence Threshold:</label>
-                        <br/>
-                        <input id="lexiconConfidenceThreshold" type="range" min="0" max="10" value="5" class="topcoat-range"/>
+                        <p>
+                            <label class="topcoat-switch">
+                                <input type="checkbox" class="topcoat-switch__input"/>
+                                <div class="topcoat-switch__toggle">
+                                </div>
+                            </label>
+                        </p>
+                        <p>
+                            <label class="topcoat-label">Confidence Threshold:</label>
+                            <br/>
+                            <input id="lexiconConfidenceThreshold" type="range" min="0" max="10" value="5" class="topcoat-range"/>
+                        </p>
                     </section>
 
                 </div>

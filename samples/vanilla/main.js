@@ -32,7 +32,7 @@ secondGlosser.downloadPrecedenceRules(seconddb, "http://localhost:5984/" + secon
     element: document.getElementById("lexicon2"),
     dontConnectWordBoundaries: true
   });
-  secondGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, document.getElementById("glosser2"), seconddb);
+  secondGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, document.getElementById("glosser2"), seconddb, "dontusewordboundaries");
 });
 
 var thirddb = "glossersample-inuktitut";
