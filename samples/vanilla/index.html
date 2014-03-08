@@ -16,18 +16,26 @@
                 <header>
                     <h2 hidden>Lexicon Browser</h2>
 
-                    <p>Welcome to the Lexicon Browser. It is automatically generated based on the data in your corpus. You can hover over the morphemes either in the context of where it appears in the corpus, or in the traditional list form. Double click on any lexical entry to view/edit the discussion of the lexical item. Click on any text to edit it.</p>
-
-
+                    <p>Welcome to the Lexicon Browser. This interface can be used to either browse your lexicon, or clean your corpus while cleaning the lexicon. The Lexicon is automatically trained based on the data in your Corpus, it is more similar to a Mental Lexicon than a Word List or Dictionary. To view examples of the morpheme's usage, hover over any morpheme either in the Precedence Graph where it appears in the context of other morphemes, or in the more traditional list form which congains the Lexicon Nodes as cards below. In the Lexicon Node List you can double click on any card to view/edit the discussion/definition of the lexical item. Click on any text to edit it.</p>
 
                     <label class="topcoat-label">
-                        Refresh
+                        Re-train:
                     </label>
                     <button id="refreshButton" class="topcoat-button--large fa fa-refresh"></button>
 
 
                     <label class="topcoat-label">
-                        Show as Graph:
+                        Auto save and Re-train on edits:
+                    </label>
+                    <label class="topcoat-switch">
+                        <input type="checkbox" id="autoSaveAndReTrain" class="topcoat-switch__input"/>
+                        <div class="topcoat-switch__toggle">
+                        </div>
+                    </label>
+
+
+                    <label class="topcoat-label">
+                        Precedence Graph:
                     </label>
                     <label class="topcoat-switch">
                         <input type="checkbox" id="showGlosserAsGraph" checked class="topcoat-switch__input"/>
@@ -36,7 +44,7 @@
                     </label>
 
                     <label class="topcoat-label">
-                        Show as List:
+                        Lexicon Node List:
                     </label>
                     <label class="topcoat-switch">
                         <input type="checkbox" id="showLexiconAsList" checked class="topcoat-switch__input"/>
@@ -92,7 +100,7 @@
 </tr>
 </table>
 
-<script src="../../fielddb-glosser.js"></script>
+<script src="../../fielddb-glosser.min.js"></script>
 <script src="main.js"></script>
 
 </body>

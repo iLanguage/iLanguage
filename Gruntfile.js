@@ -89,7 +89,7 @@ module.exports = function(grunt) {
       },
       browserify: {
         files: ['<%= jshint.lib.src %>', 'test/{,*/}*.js'],
-        tasks: ['browserify']
+        tasks: ['jshint:lib', 'browserify']
       },
       livereload: {
         options: {
