@@ -18,12 +18,19 @@ tr {
 
 .lexicon ul li {
   float: left;
-  padding: .5em;
+  padding: 0.5em;
+  margin: 0.5em;
   box-shadow:  inset 0 1px rgba(0,0,0,0.05);
+  border:2px solid black !important;
+  border-radius: 15px;
   width: 20em;
 }
 
 .lexicon .definition {
+ font-style: italic;
+}
+
+.lexicon .utteranceContext {
  font-style: italic;
 }
 
@@ -55,24 +62,27 @@ dl:nth-of-type(odd) {  background-color: #ccc }​*/
   padding: 0;
   margin: 0;
   float:left;
-  width:50%; 
+  width:55%; 
 }
 
 .utterance {
+ color: #ccc;
  background-color: #323245;
 }
 
 .morphemes {
-  background-color: #353535;
+ color: #ccc;
+ background-color: #353535;
 }
 
 .gloss {
- color: #fcccfc;
+ color: #ccfcfc;
  background-color: #454545;
 }
 
 .confidence {
-  background-color: #232323;
+ color: #999;
+ background-color: #232323;
 }
 
 [contenteditable="true"]:focus{
