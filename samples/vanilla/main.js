@@ -32,6 +32,7 @@ secondGlosser.downloadPrecedenceRules(seconddb, "http://localhost:5984/" + secon
     element: document.getElementById("lexicon2"),
     dontConnectWordBoundaries: true
   });
+  lexicon.bindToView();
   secondGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, document.getElementById("glosser2"), seconddb, "dontusewordboundaries");
 });
 
@@ -46,5 +47,6 @@ thirdGlosser.downloadPrecedenceRules(thirddb, "http://localhost:5984/" + thirddb
     element: document.getElementById("lexicon3"),
     dontConnectWordBoundaries: true
   });
+  lexicon.bindToView();
   thirdGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, document.getElementById("glosser3"), thirddb, "dont connect on word boundaries so we can see templates in paradigms");
 });
