@@ -5,53 +5,95 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-desktop-dark.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 </head>
 
-<body>
+<body class="dark">
 
     <table>
-        <tr>
+        <tr class="browser-controls" id="lexiconBrowserControls">
             <td colspan="2">
-                <div id="glosser"></div>
-                <div id="lexicon" class="lexicon">  
+                <header>
+                    <h2 hidden>Lexicon Browser</h2>
 
-                    <section>
-                        <textarea id="lexiconJSON" class="topcoat-textarea lexiconJSON"  placeholder="Lexicon data">
-                        </textarea>
-                    </section>
+                    <p>Welcome to the Lexicon Browser. It is automatically generated based on the data in your corpus. You can hover over the morphemes either in the context of where it appears in the corpus, or in the traditional list form. Double click on any lexical entry to view/edit the discussion of the lexical item. Click on any text to edit it.</p>
 
-                    <section>
-                        <p>
-                            <label class="topcoat-switch">
-                                <input type="checkbox" class="topcoat-switch__input"/>
-                                <div class="topcoat-switch__toggle">
-                                </div>
-                            </label>
-                        </p>
-                        <p>
-                            <label class="topcoat-label">Confidence Threshold:</label>
-                            <br/>
-                            <input id="lexiconConfidenceThreshold" type="range" min="0" max="10" value="5" class="topcoat-range"/>
-                        </p>
-                    </section>
 
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div id="glosser2"></div>
-                <div id="lexicon2" class="lexicon"></div>
-            </td>
-            <td>
-                <div id="glosser3"></div>
-                <div id="lexicon3" class="lexicon"></div>
-            </td>
-        </tr>
-    </table>
 
-    <script src="../../fielddb-glosser.js"></script>
-    <script src="main.js"></script>
+                    <label class="topcoat-label">
+                        Refresh
+                    </label>
+                    <button id="refreshButton" class="topcoat-button--large fa fa-refresh"></button>
+
+
+                    <label class="topcoat-label">
+                        Show as Graph:
+                    </label>
+                    <label class="topcoat-switch">
+                        <input type="checkbox" id="showGlosserAsGraph" checked class="topcoat-switch__input"/>
+                        <div class="topcoat-switch__toggle">
+                        </div>
+                    </label>
+
+                    <label class="topcoat-label">
+                        Show as List:
+                    </label>
+                    <label class="topcoat-switch">
+                        <input type="checkbox" id="showLexiconAsList" checked class="topcoat-switch__input"/>
+                        <div class="topcoat-switch__toggle">
+                        </div>
+                    </label>
+
+                    <label class="topcoat-label" title="This can help see the linear/template order of morphemes, rather than which morphemes are over-represented in the corpus.">
+                        Graph Word Boundaries:
+                    </label>
+                    <label class="topcoat-switch">
+                        <input type="checkbox" id="graphWordBoundaries" class="topcoat-switch__input"/>
+                        <div class="topcoat-switch__toggle">
+                        </div>
+                    </label>
+
+
+                    <label class="topcoat" title="Lexicon nodes below the threshold wont be shown">Confidence cut-off:</label>
+                    <label class="topcoat">
+                        <input id="lexiconConfidenceThreshold" type="range" min="0" max="10" value="5" class="topcoat-range"/>
+                    </label>
+
+                </header>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <h2>glossersample-quechua</h2>
+            <div id="glosser"></div>
+            <div id="lexicon" class="lexicon">  
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h2>glossersample-cherokee</h2>
+            <div id="glosser2"></div>
+            <div id="lexicon2" class="lexicon"></div>
+        </td>
+        <td>
+            <h2>glossersample-inuktitut</h2>
+            <div id="glosser3"></div>
+            <div id="lexicon3" class="lexicon"></div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <textarea id="lexiconJSON" class="topcoat-textarea lexiconJSON"  placeholder="Lexicon data">
+            </textarea>
+        </div>
+    </td>
+</tr>
+</table>
+
+<script src="../../fielddb-glosser.js"></script>
+<script src="main.js"></script>
 
 </body>
 </html>

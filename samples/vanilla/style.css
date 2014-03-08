@@ -4,10 +4,20 @@ table {
 
 td {
   width: 50%;
-  border: 1px solid black;
+  border: 1px solid rgba(255,255,255,50);
+  border-radius: 5px;
 }
 
 tr {
+  vertical-align: top;
+}
+
+h2{
+  font-weight: 300 !important;
+}
+body {
+  color: white !important;
+  font-weight: 300 !important;
 }
 
 .lexicon ul{
@@ -22,17 +32,30 @@ tr {
   padding: 0.5em;
   margin: 0.5em;
   border:2px solid black !important;
-  border-radius: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   width: 20em;
 }
-.lexicon .lexiconJSON{
+
+.node_details_tooltip {
+  padding: 0.5em;
+  margin: 0.5em;
+  border:2px solid black !important;
+  border-radius: 10px;
+  width: 20em;
+  background-color: #333;
+  opacity: 0.8;
+}
+
+.lexiconJSON{
   width: 100%;
   resize: auto !important;
   height: 20em;
 }
 
-.lexicon .definition {
+.lexicon .discussion {
  font-style: italic;
+ margin-right: 0.2em;
 }
 
 .lexicon .utteranceContext {
@@ -81,12 +104,12 @@ dl:nth-of-type(odd) {  background-color: #ccc }​*/
 
 .gloss {
  color: #ccfcfc;
- background-color: #454545;
+ background-color: #232323;
 }
 
 .confidence {
  color: #999;
- background-color: #232323;
+ background-color: #454545;
 }
 
 [contenteditable="true"]:focus{
