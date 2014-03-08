@@ -100,6 +100,14 @@ try {
 ```
 
 
+### Sample glosser visualization client code
+
+For source code see [samples/vanilla](https://github.com/OpenSourceFieldlinguistics/FieldDBGlosser/tree/master/samples/vanilla)
+
+
+![lexicon_browser_dashboard](https://f.cloud.github.com/assets/196199/2366164/8555cb70-a6f3-11e3-93ec-140fcaad2294.png)
+
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
