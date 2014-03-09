@@ -1,16 +1,15 @@
 var Glosser = Glosser || {};
 Glosser.currentCorpusName = "";
-Glosser.downloadPrecedenceRules = function(pouchname, callback){
-  var couchConnection = app.get("corpus").get("couchConnection");
-  var couchurl = couchConnection.protocol+couchConnection.domain+":"+couchConnection.port +couchConnection.path+"/";
-
-  $.ajax({
+Glosser.downloadPrecedenceRules = function(pouchname, glosserURL, callback){
+  if(!glosserURL ||glosserURL == "default"){
+    var couchConnection = app.get("corpus").get("couchConnection");
+    var couchurl = OPrime.getCouchUrl(couchConnection);
+    glosserURL = couchurl + "/_design/pages/_view/precedence_rules?group=true";
+  }
+  OPrime.makeCORSRequest({
     type : 'GET',
-    url : couchurl + pouchname
-        + "/_design/get_precedence_rules_from_morphemes/_view/precedence_rules?group=true",
+    url : glosserURL,
     success : function(rules) {
-      // Parse the rules from JSON into an object
-      rules = JSON.parse(rules);
       localStorage.setItem(pouchname+"precendenceRules", JSON.stringify(rules.rows));
 
       // Reduce the rules such that rules which are found in multiple source
@@ -31,7 +30,7 @@ Glosser.downloadPrecedenceRules = function(pouchname, callback){
     },
     dataType : ""
   });
-}
+};
 /**
  * Takes in an utterance line and, based on our current set of precendence
  * rules, guesses what the morpheme line would be. The algorithm is
@@ -133,7 +132,7 @@ Glosser.morphemefinder = function(unparsedUtterance) {
           .replace(/--+/g, "-")   // Ensure that there is only ever one "-" in a row
           .replace(/^-/, "")      // Remove "-" at the start of the word
           .replace(/-$/, "");     // Remove "-" at the end of the word
-      Utils.debug("Potential parse of " + unparsedWords[word].replace(/@/g, "")
+      if (OPrime.debugMode) OPrime.debug("Potential parse of " + unparsedWords[word].replace(/@/g, "")
           + " is " + potentialParse);
           
       parsedWords.push(potentialParse);
@@ -141,7 +140,7 @@ Glosser.morphemefinder = function(unparsedUtterance) {
   }
   
   return parsedWords.join(" ");
-}
+};
 Glosser.toastedUserToSync = false;
 Glosser.toastedUserToImport = 0;
 Glosser.glossFinder = function(morphemesLine){
@@ -152,7 +151,7 @@ Glosser.glossFinder = function(morphemesLine){
     return "";
   }
   if(! window.app.get("corpus").lexicon.get("lexiconNodes")){
-    var corpusSize = app.get("corpus").get("dataLists").models[app.get("corpus").get("dataLists").models.length-1].get("datumIds").length;
+    var corpusSize = 31; //TODO get corpus size another way. // app.get("corpus").datalists.models[app.get("corpus").datalists.models.length-1].get("datumIds").length;
     if(corpusSize > 30 && !Glosser.toastedUserToSync){
       Glosser.toastedUserToSync = true;
       window.appView.toastUser("You probably have enough data to train an autoglosser for your corpus.\n\nIf you sync your data with the team server then editing the morphemes will automatically run the auto glosser.","alert-success","Sync to train your auto-glosser:");
@@ -184,7 +183,7 @@ Glosser.glossFinder = function(morphemesLine){
   
   // Replace the gloss line with the guessed glosses
   return glossGroups.join(" ");
-}
+};
 /**
  * Takes as a parameters an array of rules which came from CouchDB precedence rule query.
  * Example Rule: {"key":{"x":"@","relation":"preceeds","y":"aqtu","context":"aqtu-nay-wa-n"},"value":2}
@@ -208,6 +207,13 @@ Glosser.generateForceDirectedRulesJsonForD3 = function(rules, pouchname) {
   morphemeLinks = [];
   morphemes = [];
   for ( var i in rules) {
+    /* make the @ more like what a linguist recognizes for word boundaries */
+    if(rules[i].key.x == "@"){
+      rules[i].key.x = "#_"
+    }
+    if(rules[i].key.y == "@"){
+      rules[i].key.y = "_#"
+    }
     var xpos = morphemes.indexOf(rules[i].key.x);
     if (xpos < 0) {
       morphemes.push(rules[i].key.x);
@@ -218,7 +224,8 @@ Glosser.generateForceDirectedRulesJsonForD3 = function(rules, pouchname) {
       morphemes.push(rules[i].key.y);
       ypos = morphemes.length - 1;
     }
-    if (rules[i].key.y != "@") {
+    //To avoid loops?
+    if (rules[i].key.y.indexOf("@") == -1) {
       morphemeLinks.push({
         source : xpos,
         target : ypos,
@@ -234,7 +241,7 @@ Glosser.generateForceDirectedRulesJsonForD3 = function(rules, pouchname) {
   for (m in morphemes) {
     morphemenodes.push({
       name : morphemes[m],
-      group : morphemes[m].length
+      length : morphemes[m].length
     });
   }
   
@@ -286,8 +293,13 @@ Glosser.visualizeMorphemesAsForceDirectedGraph = function(rulesGraph, divElement
   var width = 800,
   height = 300;
 
-  var color = d3.scale.category20();
-  
+  /*
+  Short morphemes will be blue, long will be red 
+  */
+  var color = d3.scale.linear()
+      .range(['darkblue', 'darkred']) // or use hex values
+      .domain([1, 8]);
+
   var x = d3.scale.linear()
      .range([0, width]);
    
@@ -296,23 +308,25 @@ Glosser.visualizeMorphemesAsForceDirectedGraph = function(rulesGraph, divElement
   
   var force = d3.layout.force()
     .charge(-120)
+    .linkStrength(0.2)
     .linkDistance(30)
     .size([width, height]);
   
-  var svg = d3.select("#corpus-precedence-rules-visualization-fullscreen").append("svg")
+  var svg = d3.select(divElement).append("svg")
     .attr("width", width)
     .attr('title', "Morphology Visualization for "+ pouchname)
     .attr("height", height);
   
-  var titletext = "Explore the precedence relations of morphemes in your corpus";
+  var titletext = "Click to search morphemes in your corpus";
   if(rulesGraph.nodes.length < 3){
     titletext = "Your morpheme visualizer will appear here after you have synced.";
   }
   //A label for the current year.
   var title = svg.append("text")
     .attr("class", "vis-title")
-    .attr("dy", "2em")
-    .attr("dx", "2em")
+    .attr("dy", "1em")
+    .attr("dx", "1em")
+    .style("fill", "#cccccc")
 //    .attr("transform", "translate(" + x(1) + "," + y(1) + ")scale(-1,-1)")
     .text(titletext);
   
@@ -335,7 +349,9 @@ Glosser.visualizeMorphemesAsForceDirectedGraph = function(rulesGraph, divElement
     .enter().append("circle")
       .attr("class", "node")
       .attr("r", 5)
-      .style("fill", function(d) { return color(d.group); })
+      .style("fill", function(d) { 
+        return color(d.length); 
+      })
       .on("mouseover", function(d) {
         tooltip = d3.select("body")
         .append("div")
@@ -347,6 +363,16 @@ Glosser.visualizeMorphemesAsForceDirectedGraph = function(rulesGraph, divElement
       })
       .on("mouseout", function() {
         tooltip.style("visibility", "hidden");
+      })
+      .on("click", function(d) {
+        /* show the morpheme as a search result so the user can use the viz to explore the corpus*/
+        if(window.app && window.app.router){
+          // window.app.router.showEmbeddedSearch(pouchname, "morphemes:"+d.name);
+          var url = "corpus/"+pouchname+"/search/"+"morphemes:"+d.name;
+          // window.location.replace(url);    
+          window.app.router.navigate(url, {trigger: true});
+
+        }
       })
       .call(force.drag);
   
