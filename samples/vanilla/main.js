@@ -42,7 +42,8 @@ var loadExamples = function() {
     var renderFirstGraph = function() {
       var glosserElement = document.getElementById("glosser");
       glosserElement.innerHTML = "";
-      firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, !showWordBoundaries);
+      var confidenceThreshold = document.getElementById("lexiconConfidenceThreshold").value /10;
+      firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, !showWordBoundaries, confidenceThreshold);
     };
     rerenderIfWordBoundariesChange.push(renderFirstGraph);
     renderFirstGraph();
@@ -64,7 +65,8 @@ var loadExamples = function() {
     var renderSecondGraph = function() {
       var glosserElement = document.getElementById("glosser2");
       glosserElement.innerHTML = "";
-      firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, !showWordBoundaries);
+      var confidenceThreshold = document.getElementById("lexiconConfidenceThreshold").value /10;
+      firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, !showWordBoundaries, confidenceThreshold);
     };
     rerenderIfWordBoundariesChange.push(renderSecondGraph);
     renderSecondGraph();
@@ -86,7 +88,8 @@ var loadExamples = function() {
     var renderThirdGraph = function() {
       var glosserElement = document.getElementById("glosser3");
       glosserElement.innerHTML = "";
-      firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, !showWordBoundaries);
+      var confidenceThreshold = document.getElementById("lexiconConfidenceThreshold").value /10;
+      firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, !showWordBoundaries, confidenceThreshold);
     };
     rerenderIfWordBoundariesChange.push(renderThirdGraph);
     renderThirdGraph();
