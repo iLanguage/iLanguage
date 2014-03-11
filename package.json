@@ -43,7 +43,7 @@
   "dependencies": {
     "d3": "~3.3.10",
     "underscore": "~1.5.2",
-    "frb": "^0.2.17",
+    "frb": "git://github.com/cesine/frb.git#contenteditable",
     "collections": "^1.0.1"
   }
 }

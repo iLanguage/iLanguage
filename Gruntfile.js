@@ -54,7 +54,7 @@ module.exports = function(grunt) {
     },
     concurrent: {
       server: [
-        'jshint', 'nodeunit', 'browserify', 'uglify'
+        'jshint', 'browserify', 'uglify'
       ]
     },
     connect: {
@@ -83,10 +83,10 @@ module.exports = function(grunt) {
         files: '<%= jshint.lib.src %>',
         tasks: ['jshint:lib', 'nodeunit']
       },
-      test: {
-        files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test', 'nodeunit']
-      },
+      // test: {
+      //   files: '<%= jshint.test.src %>',
+      //   tasks: ['jshint:test', 'nodeunit']
+      // },
       browserify: {
         files: ['<%= jshint.lib.src %>', 'test/{,*/}*.js'],
         tasks: ['jshint:lib', 'browserify']
@@ -125,6 +125,7 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'nodeunit', 'browserify', 'uglify']);
+  grunt.registerTask('test', ['jshint', 'nodeunit', 'browserify', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'browserify', 'uglify']);
 
 };
