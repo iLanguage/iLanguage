@@ -19,41 +19,41 @@ var loadExamples = function() {
     }
   };
 
-  var firstdb = "elisekm-eti3_data_tutorial";
-  var firstGlosser = new Glosser({
-    pouchname: firstdb
-  });
-  firstGlosser.downloadPrecedenceRules(firstdb, "https://corpus.lingsync.org/" + firstdb + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
-    var utterance = firstGlosser.guessUtteranceFromMorphemes({
-      utterance: "",
-      morphemes: "Kicha-nay-wa-n punqo-ta",
-      allomorphs: "",
-      gloss: "open-DES-1OM-3SG door-ACC",
-      translation: "I feel like opening the door."
-    });
-    console.log(utterance);
-    var lexicon = LexiconFactory({
-      precedenceRelations: precedenceRelations,
-      dbname: firstdb,
-      element: document.getElementById("lexicon"),
-      dontConnectWordBoundaries: !showWordBoundaries
-    });
-    lexicon.bindToView();
-    var renderFirstGraph = function() {
-      var glosserElement = document.getElementById("glosser");
-      glosserElement.innerHTML = "";
-      var confidenceThreshold = document.getElementById("lexiconConfidenceThreshold").value /10;
-      firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, !showWordBoundaries, confidenceThreshold);
-    };
-    rerenderIfWordBoundariesChange.push(renderFirstGraph);
-    renderFirstGraph();
-  });
+  // var firstdb = "elisekm-eti3_data_tutorial";
+  // var firstGlosser = new Glosser({
+  //   pouchname: firstdb
+  // });
+  // firstGlosser.downloadPrecedenceRules(firstdb, "https://localhost:6984/" + firstdb + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
+  //   var utterance = firstGlosser.guessUtteranceFromMorphemes({
+  //     utterance: "",
+  //     morphemes: "Kicha-nay-wa-n punqo-ta",
+  //     allomorphs: "",
+  //     gloss: "open-DES-1OM-3SG door-ACC",
+  //     translation: "I feel like opening the door."
+  //   });
+  //   console.log(utterance);
+  //   var lexicon = LexiconFactory({
+  //     precedenceRelations: precedenceRelations,
+  //     dbname: firstdb,
+  //     element: document.getElementById("lexicon"),
+  //     dontConnectWordBoundaries: !showWordBoundaries
+  //   });
+  //   lexicon.bindToView();
+  //   var renderFirstGraph = function() {
+  //     var glosserElement = document.getElementById("glosser");
+  //     glosserElement.innerHTML = "";
+  //     var confidenceThreshold = document.getElementById("lexiconConfidenceThreshold").value /10;
+  //     firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, !showWordBoundaries, confidenceThreshold);
+  //   };
+  //   rerenderIfWordBoundariesChange.push(renderFirstGraph);
+  //   renderFirstGraph();
+  // });
 
   var seconddb = "nemo814-group_data_entry_tutorial";
   var secondGlosser = new Glosser({
     pouchname: seconddb
   });
-  secondGlosser.downloadPrecedenceRules(seconddb, "https://corpus.lingsync.org/" + seconddb + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
+  secondGlosser.downloadPrecedenceRules(seconddb, "https://localhost:6984/" + seconddb + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
     var lexicon = LexiconFactory({
       precedenceRelations: precedenceRelations,
       dbname: seconddb,
@@ -66,7 +66,7 @@ var loadExamples = function() {
       var glosserElement = document.getElementById("glosser2");
       glosserElement.innerHTML = "";
       var confidenceThreshold = document.getElementById("lexiconConfidenceThreshold").value /10;
-      firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, !showWordBoundaries, confidenceThreshold);
+      secondGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, !showWordBoundaries, confidenceThreshold);
     };
     rerenderIfWordBoundariesChange.push(renderSecondGraph);
     renderSecondGraph();
