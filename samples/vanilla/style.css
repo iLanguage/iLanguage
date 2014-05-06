@@ -31,6 +31,9 @@ h2{
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   width: 20em;
+  /* make scrollable and same size */
+  height: 10em !important;
+  overflow: auto !important;
 }
 
 .node_details_tooltip {
@@ -109,7 +112,8 @@ dl:nth-of-type(odd) {  background-color: #ccc }​*/
 }
 
 [contenteditable="true"]:focus{
-  color: #fff;
+  color: #000;
+  background-color: #fff;
 }
 
 /* D3 force directed graph */
