@@ -15,10 +15,6 @@ tr {
 h2{
   font-weight: 300 !important;
 }
-body {
-  color: white !important;
-  font-weight: 300 !important;
-}
 
 .lexicon ul{
   list-style-type: none;
@@ -81,7 +77,7 @@ dl:nth-of-type(odd) {  background-color: #ccc }​*/
   padding: 0;
   margin: 0;
   float:left;
-  width:40%; 
+  width:40%;
   color: #ccc;
 }
 
@@ -89,7 +85,7 @@ dl:nth-of-type(odd) {  background-color: #ccc }​*/
   padding: 0;
   margin: 0;
   float:left;
-  width:55%; 
+  width:55%;
 }
 
 .utterance {
