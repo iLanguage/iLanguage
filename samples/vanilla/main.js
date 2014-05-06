@@ -19,11 +19,12 @@ var loadExamples = function() {
     }
   };
 
+  var url = "https://localhost:6984";
   // var firstdb = "elisekm-eti3_data_tutorial";
   // var firstGlosser = new Glosser({
   //   pouchname: firstdb
   // });
-  // firstGlosser.downloadPrecedenceRules(firstdb, "https://localhost:6984/" + firstdb + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
+  // firstGlosser.downloadPrecedenceRules(firstdb, url + "/" + firstdb + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
   //   var utterance = firstGlosser.guessUtteranceFromMorphemes({
   //     utterance: "",
   //     morphemes: "Kicha-nay-wa-n punqo-ta",
@@ -36,7 +37,8 @@ var loadExamples = function() {
   //     precedenceRelations: precedenceRelations,
   //     dbname: firstdb,
   //     element: document.getElementById("lexicon"),
-  //     dontConnectWordBoundaries: !showWordBoundaries
+  //     dontConnectWordBoundaries: !showWordBoundaries,
+      // url: url+ "/" + seconddb
   //   });
   //   lexicon.bindToView();
   //   var renderFirstGraph = function() {
@@ -53,12 +55,13 @@ var loadExamples = function() {
   var secondGlosser = new Glosser({
     pouchname: seconddb
   });
-  secondGlosser.downloadPrecedenceRules(seconddb, "https://localhost:6984/" + seconddb + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
+  secondGlosser.downloadPrecedenceRules(seconddb, url + "/" + seconddb + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
     var lexicon = LexiconFactory({
       precedenceRelations: precedenceRelations,
       dbname: seconddb,
       element: document.getElementById("lexicon2"),
-      dontConnectWordBoundaries: !showWordBoundaries
+      dontConnectWordBoundaries: !showWordBoundaries,
+      url: url+ "/" + seconddb
     });
     lexicon.bindToView();
 

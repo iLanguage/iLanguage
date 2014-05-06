@@ -44,6 +44,7 @@
     "d3": "~3.3.10",
     "underscore": "~1.5.2",
     "frb": "git://github.com/cesine/frb.git#contenteditable",
-    "collections": "^1.0.1"
+    "collections": "^1.0.1",
+    "q": "^1.0.1"
   }
 }
