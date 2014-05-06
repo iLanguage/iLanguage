@@ -5,7 +5,7 @@
     "info@fielddb.org"
   ],
   "description": "A semi-automatic IGT morpheme segmenter and glosser",
-  "main": "dist/fielddb-glosser.min.js",
+  "main": "fielddb-glosser.min.js",
   "keywords": [
     "igt",
     "leipzig",

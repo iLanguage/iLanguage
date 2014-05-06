@@ -19,11 +19,11 @@ var loadExamples = function() {
     }
   };
 
-  var firstdb = "glossersample-quechua";
+  var firstdb = "elisekm-eti3_data_tutorial";
   var firstGlosser = new Glosser({
     pouchname: firstdb
   });
-  firstGlosser.downloadPrecedenceRules(firstdb, "http://localhost:5984/" + firstdb + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
+  firstGlosser.downloadPrecedenceRules(firstdb, "https://corpus.lingsync.org/" + firstdb + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
     var utterance = firstGlosser.guessUtteranceFromMorphemes({
       utterance: "",
       morphemes: "Kicha-nay-wa-n punqo-ta",
@@ -49,11 +49,11 @@ var loadExamples = function() {
     renderFirstGraph();
   });
 
-  var seconddb = "glossersample-cherokee";
+  var seconddb = "nemo814-group_data_entry_tutorial";
   var secondGlosser = new Glosser({
     pouchname: seconddb
   });
-  secondGlosser.downloadPrecedenceRules(seconddb, "http://localhost:5984/" + seconddb + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
+  secondGlosser.downloadPrecedenceRules(seconddb, "https://corpus.lingsync.org/" + seconddb + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
     var lexicon = LexiconFactory({
       precedenceRelations: precedenceRelations,
       dbname: seconddb,
@@ -72,29 +72,6 @@ var loadExamples = function() {
     renderSecondGraph();
   });
 
-  var thirddb = "glossersample-inuktitut";
-  var thirdGlosser = new Glosser({
-    pouchname: thirddb
-  });
-  thirdGlosser.downloadPrecedenceRules(thirddb, "http://localhost:5984/" + thirddb + "/_design/lexicon/_view/morphemesPrecedenceContext?group=true", function(precedenceRelations) {
-    var lexicon = LexiconFactory({
-      precedenceRelations: precedenceRelations,
-      dbname: thirddb,
-      element: document.getElementById("lexicon3"),
-      dontConnectWordBoundaries: !showWordBoundaries
-    });
-    lexicon.bindToView();
-
-    var renderThirdGraph = function() {
-      var glosserElement = document.getElementById("glosser3");
-      glosserElement.innerHTML = "";
-      var confidenceThreshold = document.getElementById("lexiconConfidenceThreshold").value /10;
-      firstGlosser.visualizePrecedenceRelationsAsForceDirectedGraph(lexicon, glosserElement, !showWordBoundaries, confidenceThreshold);
-    };
-    rerenderIfWordBoundariesChange.push(renderThirdGraph);
-    renderThirdGraph();
-  });
-
 };
 
 var refreshButton = document.getElementById("refreshButton");
@@ -105,7 +82,6 @@ var showGlosserAsGraph = document.getElementById("showGlosserAsGraph");
 showGlosserAsGraph.onchange = function(){
   document.getElementById("glosser").hidden = !showGlosserAsGraph.checked;
   document.getElementById("glosser2").hidden = !showGlosserAsGraph.checked;
-  document.getElementById("glosser3").hidden = !showGlosserAsGraph.checked;
 };
 
 
@@ -113,7 +89,6 @@ var showLexiconAsList = document.getElementById("showLexiconAsList");
 showLexiconAsList.onchange = function(){
   document.getElementById("lexicon").hidden = !showLexiconAsList.checked;
   document.getElementById("lexicon2").hidden = !showLexiconAsList.checked;
-  document.getElementById("lexicon3").hidden = !showLexiconAsList.checked;
 };
 
 loadExamples();
