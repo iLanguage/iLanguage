@@ -2020,6 +2020,12 @@ var LexiconFactory = require("./Lexicon").LexiconFactory;
     } else {
       XMLHttpRequestLocal = window.XMLHttpRequest;
     }
+    for (var attribute in options) {
+      if (!options.hasOwnProperty(attribute)) {
+        continue;
+      }
+      this[attribute] = options[attribute];
+    }
 
     // var console = console || {
     //   log: function() {}
@@ -2139,16 +2145,50 @@ var LexiconFactory = require("./Lexicon").LexiconFactory;
         type: 'GET',
         url: glosserURL,
         success: function(rules) {
-          // localStorage.setItem(pouchname + "precendenceRules", JSON.stringify(rules.rows));
+          // Dont need to store the actual rules, they are too big
+          // try {
+          //   localStorage.setItem(pouchname + "precendenceRules", JSON.stringify(rules.rows));
+          // } catch (e) {
+          //   //remove other corpora's rules to make space for the most recent...
+          //   for (var x in localStorage) {
+          //     if(!localStorage.hasOwnProperty(x)){
+          //       continue;
+          //     }
+          //     if (x.indexOf("precendenceRules") > -1) {
+          //       localStorage.removeItem(x);
+          //     }
+          //   }
+          //   localStorage.setItem(pouchname + "precendenceRules", JSON.stringify(rules.rows));
+          // }
 
           // Reduce the rules such that rules which are found in multiple source
           // words are only used/included once.
           var reducedRules = _.chain(rules.rows).groupBy(function(rule) {
+            if (rule.key.distance === 1) {
+              // upgrade to fancier context sensitive rules
+              if (rule.key.previous && rule.key.previous.morphemes) {
+                rule.key.x = rule.key.previous.morphemes;
+              }
+              if (rule.key.subsequent && rule.key.subsequent.morphemes) {
+                rule.key.y = rule.key.subsequent.morphemes;
+              }
+            }
             return rule.key.x + "-" + rule.key.y;
           }).value();
 
           // Save the reduced precedence rules in localStorage
-          // localStorage.setItem(pouchname + "reducedRules", JSON.stringify(reducedRules));
+          try {
+            localStorage.setItem(pouchname + "reducedRules", JSON.stringify(reducedRules));
+          } catch (e) {
+            //remove other corpora's rules to make space for the most recent...
+            for (var x in localStorage) {
+              if (x.indexOf("reducedRules") > -1) {
+                localStorage.removeItem(x);
+              }
+            }
+            localStorage.setItem(pouchname + "reducedRules", JSON.stringify(reducedRules));
+          }
+
           self.currentCorpusName = pouchname;
           if (typeof callback === "function") {
             callback(rules.rows);
@@ -2221,6 +2261,9 @@ var LexiconFactory = require("./Lexicon").LexiconFactory;
               break;
             }
             for (var j in matchedRules) {
+              if (prefixtemplate.length > 2 && prefixtemplate[prefixtemplate.length - 1] === "@") {
+                continue; //we found the end already
+              }
               if (prefixtemplate[i] === matchedRules[j].r[0].key.x) {
                 if (prefixtemplate[i + 1]) { // ambiguity (two potential following
                   // morphemes)
@@ -2232,62 +2275,85 @@ var LexiconFactory = require("./Lexicon").LexiconFactory;
               }
             }
           }
-
-          // If the prefix template hit ambiguity in the middle, try from the suffix
-          // in until it hits ambiguity
-          var suffixtemplate = [];
-          if (prefixtemplate[prefixtemplate.length - 1] !== "@" || prefixtemplate.length === 1) {
-            // Suffix:
-            suffixtemplate.push("@");
-            for (var ii = 0; ii < 10; ii++) {
-              if (suffixtemplate[ii] === undefined) {
-                break;
-              }
-              for (var jj in matchedRules) {
-                if (suffixtemplate[ii] === matchedRules[jj].r[0].key.y) {
-                  if (suffixtemplate[ii + 1]) { // ambiguity (two potential
-                    // following morphemes)
-                    suffixtemplate.pop();
-                    break;
-                  } else {
-                    suffixtemplate[ii + 1] = matchedRules[jj].r[0].key.x;
+          // If prefix template matches the whole word (ie we have seen it before, return the prefix template exactly)
+          if (prefixtemplate.length > 2 && prefixtemplate[0] === "@" && prefixtemplate[prefixtemplate.length - 1] === "@") {
+            prefixtemplate.pop(); //remove final @
+            prefixtemplate.shift(); //remove intitial @
+            parsedWords.push(prefixtemplate.join("-"));
+          } else {
+            // If the prefix template hit ambiguity in the middle, try from the suffix
+            // in until it hits ambiguity
+            var suffixtemplate = [];
+            if (prefixtemplate[prefixtemplate.length - 1] !== "@" || prefixtemplate.length === 1) {
+              // Suffix:
+              suffixtemplate.push("@");
+              for (var ii = 0; ii < 10; ii++) {
+                if (suffixtemplate[ii] === undefined) {
+                  break;
+                }
+                for (var jj in matchedRules) {
+                  if (suffixtemplate[ii] === matchedRules[jj].r[0].key.y) {
+                    if (suffixtemplate[ii + 1]) { // ambiguity (two potential
+                      // following morphemes)
+                      suffixtemplate.pop();
+                      break;
+                    } else {
+                      suffixtemplate[ii + 1] = matchedRules[jj].r[0].key.x;
+                    }
                   }
                 }
               }
             }
+
+            // Combine prefix and suffix templates into one regular expression which
+            // can be tested against the word to find a potential parse.
+            // Regular expressions will look something like
+            //    (@)(.*)(hall)(.*)(o)(.*)(wa)(.*)(n)(.*)(@)
+            var template = [];
+            template = prefixtemplate.concat(suffixtemplate.reverse());
+            for (var slot in template) {
+              template[slot] = "(" + template[slot] + ")";
+            }
+            var regex = new RegExp(template.join("(.*)"), "");
+
+            // Use the regular expression to find a guessed morphemes line
+            potentialParse = unparsedWords[word]
+              .replace(regex, "$1-$2-$3-$4-$5-$6-$7-$8-$9") // Use backreferences to parse into morphemes
+            .replace(/\$[0-9]/g, "") // Remove any backreferences that weren't used
+            .replace(/@/g, "") // Remove the start/end-of-line symbol
+            .replace(/--+/g, "-") // Ensure that there is only ever one "-" in a row
+            .replace(/^-/, "") // Remove "-" at the start of the word
+            .replace(/-$/, ""); // Remove "-" at the end of the word
+            if (OPrime.debugMode) {
+              OPrime.debug("Potential parse of " + unparsedWords[word].replace(/@/g, "") + " is " + potentialParse);
+            }
+
+            parsedWords.push(potentialParse);
           }
 
-          // Combine prefix and suffix templates into one regular expression which
-          // can be tested against the word to find a potential parse.
-          // Regular expressions will look something like
-          //    (@)(.*)(hall)(.*)(o)(.*)(wa)(.*)(n)(.*)(@)
-          var template = [];
-          template = prefixtemplate.concat(suffixtemplate.reverse());
-          for (var slot in template) {
-            template[slot] = "(" + template[slot] + ")";
-          }
-          var regex = new RegExp(template.join("(.*)"), "");
-
-          // Use the regular expression to find a guessed morphemes line
-          potentialParse = unparsedWords[word]
-            .replace(regex, "$1-$2-$3-$4-$5-$6-$7-$8-$9") // Use backreferences to parse into morphemes
-          .replace(/\$[0-9]/g, "") // Remove any backreferences that weren't used
-          .replace(/@/g, "") // Remove the start/end-of-line symbol
-          .replace(/--+/g, "-") // Ensure that there is only ever one "-" in a row
-          .replace(/^-/, "") // Remove "-" at the start of the word
-          .replace(/-$/, ""); // Remove "-" at the end of the word
-          if (OPrime.debugMode) {
-            OPrime.debug("Potential parse of " + unparsedWords[word].replace(/@/g, "") + " is " + potentialParse);
-          }
-
-          parsedWords.push(potentialParse);
         }
       }
 
       return parsedWords.join(" ");
     };
 
-    this.glossFinder = function(morphemesLine, pouchname, justCopyDontGuessIGT) {
+    this.contextSensitiveGlossFinder = function(igt, pouchname, justCopyDontGuessIGT) {
+      var morphemesLine = igt.morphemes;
+      if (!morphemesLine) {
+        return "";
+      }
+
+      if (justCopyDontGuessIGT || !this.lexicon) {
+        var justQuestionMarks = morphemesLine.trim().replace(/[^ =-]+/g, "?");
+        igt.gloss = justQuestionMarks;
+      } else {
+        igt = this.lexicon.guessContextSensitiveGlosses(igt);
+      }
+
+      return igt;
+    };
+
+    this.simplisticGlossFinder = function(morphemesLine, pouchname, justCopyDontGuessIGT) {
       if (!morphemesLine) {
         return "";
       }
@@ -2361,7 +2427,7 @@ var LexiconFactory = require("./Lexicon").LexiconFactory;
       }
       igt.morphemes = this.morphemefinder(igt.utterance, igt.pouchname, justCopyDontGuessIGT);
       if (!igt.gloss) {
-        igt.gloss = this.glossFinder(igt.morphemes, igt.pouchname, justCopyDontGuessIGT);
+        igt = this.contextSensitiveGlossFinder(igt, igt.pouchname, justCopyDontGuessIGT);
       }
       return igt;
     };
@@ -2370,14 +2436,12 @@ var LexiconFactory = require("./Lexicon").LexiconFactory;
       if (igt.gloss) {
         return igt;
       }
-      if (igt.morphemes) {
-        igt.gloss = this.glossFinder(igt.morphemes, igt.pouchname, justCopyDontGuessIGT);
-      } else {
-        igt.gloss = this.glossFinder(igt.utterance, igt.pouchname, justCopyDontGuessIGT);
+      if (!igt.morphemes) {
+        igt.morphemes = igt.utterance;
       }
+      igt = this.contextSensitiveGlossFinder(igt, igt.pouchname, justCopyDontGuessIGT);
       return igt;
     };
-
 
     /**
      * Takes as a parameters an array of rules which came from CouchDB precedence rule query.
@@ -2489,7 +2553,7 @@ var LexiconFactory = require("./Lexicon").LexiconFactory;
       var width = 800,
         height = 300;
       /*
-    Short morphemes will be blue, long will be red 
+    Short morphemes will be blue, long will be red
     */
       var color = d3.scale.linear()
         .range(['darkblue', 'darkred']) // or use hex values
@@ -2581,7 +2645,7 @@ var LexiconFactory = require("./Lexicon").LexiconFactory;
           if (window.app && window.app.router) {
             // window.app.router.showEmbeddedSearch(pouchname, "morphemes:"+d.igt.morphemes);
             var url = "corpus/" + pouchname + "/search/" + "morphemes:" + d.igt.morphemes;
-            // window.location.replace(url);    
+            // window.location.replace(url);
             window.app.router.navigate(url, {
               trigger: true
             });
@@ -2634,6 +2698,11 @@ var LexiconFactory = require("./Lexicon").LexiconFactory;
         links: [],
         nodes: []
       };
+      if (!this.localDocument) {
+        console.warn(" Glosser Visualization requested but the DOM was not provided to the glosser ");
+        return;
+      }
+      var localDocument = this.localDocument;
 
       lexicon.precedenceGraph = lexicon.precedenceRelations.filter(function(relation) {
         if (!relation.key.previous || !relation.key.subsequent) {
@@ -2651,10 +2720,10 @@ var LexiconFactory = require("./Lexicon").LexiconFactory;
           }
         }
         /* make the @ more like what a linguist recognizes for  word boundaries */
-        if (relation.key.previous.morphemes === "@"){
+        if (relation.key.previous.morphemes === "@") {
           relation.key.previous.morphemes = "#_";
         }
-        if (relation.key.subsequent.morphemes === "@"){
+        if (relation.key.subsequent.morphemes === "@") {
           relation.key.subsequent.morphemes = "_#";
         }
 
@@ -2662,11 +2731,11 @@ var LexiconFactory = require("./Lexicon").LexiconFactory;
         if (relation.key.distance > 1) {
           return;
         }
-        // only consider -> relations 
+        // only consider -> relations
         if (relation.key.relation !== "precedes") {
           return;
         }
-        // only confident morphemes 
+        // only confident morphemes
         confidenceCutOff = confidenceCutOff | 1;
         if (relation.key.previous.confidence < confidenceCutOff || relation.key.subsequent.confidence < confidenceCutOff) {
           return;
@@ -2725,7 +2794,7 @@ var LexiconFactory = require("./Lexicon").LexiconFactory;
       };
 
       /*
-      Short morphemes will be blue, long will be red 
+      Short morphemes will be blue, long will be red
       */
       var color = d3.scale.linear()
         .range(['darkblue', 'darkred']) // or use hex values
@@ -2805,7 +2874,7 @@ var LexiconFactory = require("./Lexicon").LexiconFactory;
           return d.igt.confidence ? d.igt.confidence / 2 : 1;
         })
         .on("mouseover", function(object) {
-          var findNode = document.getElementById(object.igt.morphemes);
+          var findNode = localDocument.getElementById(object.igt.morphemes);
           if (findNode) {
             findNode = findNode.innerHTML + "<p>" + findNode.getAttribute("title") + "<p>";
           } else {
@@ -2829,7 +2898,7 @@ var LexiconFactory = require("./Lexicon").LexiconFactory;
           if (window.app && window.app.router) {
             // window.app.router.showEmbeddedSearch(pouchname, "morphemes:"+d.igt.morphemes);
             var url = "corpus/" + lexicon.pouchname + "/search/" + "morphemes:" + d.igt.morphemes;
-            // window.location.replace(url);    
+            // window.location.replace(url);
             window.app.router.navigate(url, {
               trigger: true
             });
@@ -2882,8 +2951,8 @@ var LexiconFactory = require("./Lexicon").LexiconFactory;
 
 }(typeof exports === 'object' && exports || this));
 
-},{"./Lexicon":4,"d3":26,"underscore":70}],4:[function(require,module,exports){
-var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};var ObservableDOM = require("frb/dom");
+},{"./Lexicon":4,"d3":26,"underscore":69}],4:[function(require,module,exports){
+var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};// var ObservableDOM = require("frb/dom"); // add support for content editable
 var Bindings = require("frb/bindings");
 var SortedSet = require("collections/sorted-set");
 var UniqueSet = require("collections/set");
@@ -3009,7 +3078,7 @@ var Q = require("q");
                 before: datumField.mask + ""
               };
               // TODO this makes things lower case... because part of the map reduce seems to be doing that...
-              datumField.mask = datumField.mask.replace(new RegExp(self.igtBeforeCleaning[datumField.label], "ig"), self.igt[datumField.label]);
+              datumField.mask = datumField.mask.replace(new RegExp(self.igtBeforeCleaning[datumField.label], "g"), self.igt[datumField.label]);
               datumField.value = datumField.mask;
               change.after = datumField.mask;
               self.proposedChanges.push(change);
@@ -3106,7 +3175,10 @@ var Q = require("q");
         if (!element) {
           return;
         }
-        listElement = document.createElement("ul");
+        if (!this.localDOM) {
+          return;
+        }
+        listElement = this.localDOM.createElement("ul");
         element.appendChild(listElement);
 
         this.forEach(function(entry) {
@@ -3117,7 +3189,7 @@ var Q = require("q");
             return;
           }
 
-          listItemView = document.createElement("li");
+          listItemView = this.localDOM.createElement("li");
           listItemView.__data__ = entry;
           listItemView.style.opacity = listItemView.__data__.igt.confidence;
           if (listItemView.__data__.igt.morphemes) {
@@ -3125,15 +3197,15 @@ var Q = require("q");
           }
           // console.log("\tCreating Node view for " + listItemView.id);
 
-          headword = document.createElement("span");
+          headword = this.localDOM.createElement("span");
           headword.contentEditable = 'true';
           headword.classList.add("headword");
           listItemView.__data__.igt.headword = listItemView.__data__.igt.headword || listItemView.__data__.igt.morphemes ? listItemView.__data__.igt.morphemes : listItemView.__data__.igt.gloss;
 
-          contexts = document.createElement("span");
+          contexts = this.localDOM.createElement("span");
           contexts.classList.add("utteranceContext");
 
-          discussion = document.createElement("span");
+          discussion = this.localDOM.createElement("span");
           discussion.contentEditable = 'true';
           discussion.classList.add("discussion");
           discussion.hidden = true;
@@ -3145,7 +3217,7 @@ var Q = require("q");
             }
             /* Create the json View if its not there, otherwise toggle its hidden */
             if (!e.target.jsonView) {
-              e.target.jsonView = document.createElement("textarea");
+              e.target.jsonView = this.localDOM.createElement("textarea");
               e.target.appendChild(e.target.jsonView);
               e.target.jsonView.classList.add("lexiconJSON");
               discussion.hidden = !discussion.hidden;
@@ -3189,7 +3261,7 @@ var Q = require("q");
             console.log(window.currentlySelectedNode.__data__);
           };
 
-          fieldList = document.createElement("dl");
+          fieldList = this.localDOM.createElement("dl");
 
           var component = {
             listItemView: listItemView,
@@ -3210,8 +3282,8 @@ var Q = require("q");
                 headword.classList.add(field + ":" + listItemView.__data__.igt[field]);
                 discussion.classList.add(field + ":" + listItemView.__data__.igt[field]);
 
-                fieldDTElement = document.createElement("dt");
-                fieldLabelElement = document.createElement("span");
+                fieldDTElement = this.localDOM.createElement("dt");
+                fieldLabelElement = this.localDOM.createElement("span");
                 fieldLabelElement.innerHTML = field;
                 fieldLabelElement.classList.add("fieldlabel");
                 fieldLabelElement.classList.add(field);
@@ -3219,8 +3291,8 @@ var Q = require("q");
                 fieldDTElement.appendChild(fieldLabelElement);
                 fieldList.appendChild(fieldDTElement);
 
-                fieldDDElement = document.createElement("dd");
-                fieldElement = document.createElement("span");
+                fieldDDElement = this.localDOM.createElement("dd");
+                fieldElement = this.localDOM.createElement("span");
                 fieldElement.contentEditable = 'true';
                 fieldElement.classList.add("fieldvalue");
                 fieldElement.classList.add(field);
@@ -3263,7 +3335,7 @@ var Q = require("q");
               "<-": "'Example: '+listItemView.__data__.utteranceContext.join(' Example: ')"
             },
             "listItemView.hidden": {
-              "<-": "listItemView.__data__.igt.confidence < document.getElementById('lexiconConfidenceThreshold').value / 10"
+              "<-": "listItemView.__data__.igt.confidence < this.localDOM.getElementById('lexiconConfidenceThreshold').value / 10"
             }
           });
 
@@ -3291,6 +3363,57 @@ var Q = require("q");
         return JSON.stringify(this.toObject(), null, 2);
       }
     },
+
+    guessContextSensitiveGlosses: {
+      value: function(datum) {
+
+        if (!datum.morphemes) {
+          console.warn("There was no morphemes line to guess the gloss from...");
+          return datum;
+        }
+        var glossGroups = [];
+        var matchingNodes = [];
+        var morphemeToFind = "";
+        var morphemeGroup = datum.morphemes.split(/ +/);
+        var matchingfunction = function(node) {
+          if (node.igt.morphemes === morphemeToFind) {
+            console.log(node);
+            matchingNodes.push(node);
+          }
+        };
+        for (var group in morphemeGroup) {
+          var morphemes = morphemeGroup[group].split("-");
+          var glosses = [];
+          for (var m in morphemes) {
+            if (!morphemes.hasOwnProperty(m)) {
+              continue;
+            }
+            matchingNodes = [];
+            morphemeToFind = morphemes[m];
+            this.filter(matchingfunction);
+
+            var gloss = "?"; // If there's no matching gloss, use question marks
+            if (matchingNodes && matchingNodes.length > 0) {
+              // Take the first gloss for this morpheme
+              console.log("Glosses which match: " + morphemes[m], matchingNodes);
+              try {
+                gloss = matchingNodes[0].igt.gloss;
+              } catch (e) {
+                console.log(matchingNodes);
+              }
+            }
+            glosses.push(gloss);
+          }
+
+          glossGroups.push(glosses.join("-"));
+        }
+        datum.glossAlternates = datum.glossAlternates ? datum.glossAlternates.concat(glossGroups) : glossGroups;
+        datum.gloss = glossGroups.join(" ");
+        // Replace the gloss line with the guessed glosses
+        return datum;
+      }
+    },
+
     /**
      * Takes as a parameters an array of this.precedenceRelations which came from CouchDB precedence rule query.
      * Example Rule: {"key":{"x":"@","relation":"preceeds","y":"aqtu","context":"aqtu-nay-wa-n"},"value":2}
@@ -3380,7 +3503,7 @@ var Q = require("q");
 
 }(typeof exports === 'object' && exports || this));
 
-},{"../../FieldDB/api/CORS":1,"collections/set":17,"collections/sorted-set":23,"frb/bindings":30,"frb/dom":36,"q":69}],5:[function(require,module,exports){
+},{"../../FieldDB/api/CORS":1,"collections/set":17,"collections/sorted-set":23,"frb/bindings":30,"q":68}],5:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -17762,7 +17885,7 @@ function bindRangeContent(
 }
 
 
-},{"./algebra":27,"./binders":29,"./compile-assigner":31,"./compile-binder":32,"./compile-observer":34,"./observers":64,"./parse":66,"./scope":67,"./stringify":68}],29:[function(require,module,exports){
+},{"./algebra":27,"./binders":29,"./compile-assigner":31,"./compile-binder":32,"./compile-observer":34,"./observers":63,"./parse":65,"./scope":66,"./stringify":67}],29:[function(require,module,exports){
 
 var Scope = require("./scope");
 var Observers = require("./observers");
@@ -18201,7 +18324,7 @@ function isActive(target) {
 }
 
 
-},{"./observers":64,"./scope":67}],30:[function(require,module,exports){
+},{"./observers":63,"./scope":66}],30:[function(require,module,exports){
 
 var Map = require("collections/map");
 var bind = require("./bind");
@@ -18300,7 +18423,7 @@ function cancelBinding(object, name) {
 }
 
 
-},{"./bind":28,"./compute":35,"./observe":63,"./stringify":68,"collections/map":52}],31:[function(require,module,exports){
+},{"./bind":28,"./compute":35,"./observe":62,"./stringify":67,"collections/map":51}],31:[function(require,module,exports){
 
 var compileEvaluator = require("./compile-evaluator");
 var solve = require("./algebra");
@@ -18501,7 +18624,7 @@ compile.semantics = {
 }
 
 
-},{"./algebra":27,"./compile-evaluator":33,"./scope":67}],32:[function(require,module,exports){
+},{"./algebra":27,"./compile-evaluator":33,"./scope":66}],32:[function(require,module,exports){
 
 var compileObserver = require("./compile-observer");
 var Observers = require("./observers");
@@ -18603,7 +18726,7 @@ compile.semantics = {
 };
 
 
-},{"./algebra":27,"./binders":29,"./compile-observer":34,"./observers":64}],33:[function(require,module,exports){
+},{"./algebra":27,"./binders":29,"./compile-observer":34,"./observers":63}],33:[function(require,module,exports){
 
 var Object = require("collections/shim-object");
 var Map = require("collections/map");
@@ -18915,7 +19038,7 @@ var semantics = compile.semantics = {
 };
 
 
-},{"./operators":65,"./parse":66,"./scope":67,"collections/map":52,"collections/shim-object":57,"collections/sorted-set":61}],34:[function(require,module,exports){
+},{"./operators":64,"./parse":65,"./scope":66,"collections/map":51,"collections/shim-object":56,"collections/sorted-set":60}],34:[function(require,module,exports){
 
 var Observers = require("./observers");
 var Operators = require("./operators");
@@ -19021,7 +19144,7 @@ Object.keys(Operators).forEach(function (name) {
 compilers.toString = Observers.makeOperatorObserverMaker(Operators.toString);
 
 
-},{"./observers":64,"./operators":65}],35:[function(require,module,exports){
+},{"./observers":63,"./operators":64}],35:[function(require,module,exports){
 
 var parse = require("./parse");
 var compileObserver = require("./compile-observer");
@@ -19081,70 +19204,7 @@ function compute(target, targetPath, descriptor) {
 }
 
 
-},{"./compile-binder":32,"./compile-observer":34,"./observers":64,"./parse":66,"./scope":67}],36:[function(require,module,exports){
-
-var PropertyChanges = require("collections/listen/property-changes");
-
-// for whatever reason, HTMLInputElement is not the same as the global of the
-// same name, at least in Chrome
-
-function changeChecked(event) {
-    PropertyChanges.dispatchOwnPropertyChange(event.target, "checked", event.target.checked);
-}
-
-function changeValue(event) {
-    PropertyChanges.dispatchOwnPropertyChange(event.target, "value", event.target.value);
-}
-
-function changeInnerHTML(event) {
-    PropertyChanges.dispatchOwnPropertyChange(event.target, "innerHTML", event.target.innerHTML);
-    PropertyChanges.dispatchOwnPropertyChange(event.target, "innerText", event.target.innerText);
-    PropertyChanges.dispatchOwnPropertyChange(event.target, "value", event.target.innerText);
-}
-
-function makeObservable(key) {
-    if (key === "checked") {
-        this.addEventListener("change", changeChecked);
-    } else if (key === "value") {
-        this.addEventListener("change", changeValue);
-        if (this.type === "text" || this.nodeName === "TEXTAREA") {
-            this.addEventListener("keyup", changeValue);
-        } else if (this.contentEditable) {
-            this.innerText = this.innerText ? this.innerText : this.value;
-            this.addEventListener("keyup", changeInnerHTML);
-        }
-    }
-}
-
-function makeUnobservable(key) {
-    if (key === "checked") {
-        this.removeEventListener("change", changeChecked);
-    } else if (key === "value") {
-        this.removeEventListener("change", changeValue);
-        if (this.type === "text" || this.nodeName === "TEXTAREA") {
-            this.removeEventListener("keyup", changeValue);
-        } else if (this.contentEditable) {
-            this.removeEventListener("keyup", changeInnerHTML);
-        }
-    }
-}
-
-var HTMLInputElement = Object.getPrototypeOf(document.createElement("input"));
-HTMLInputElement.makePropertyObservable = makeObservable;
-HTMLInputElement.makePropertyUnobservable = makeUnobservable;
-
-var HTMLTextAreaElement = Object.getPrototypeOf(document.createElement("textarea"));
-HTMLTextAreaElement.makePropertyObservable = makeObservable;
-HTMLTextAreaElement.makePropertyUnobservable = makeUnobservable;
-
-var HTMLSpanElement = Object.getPrototypeOf(document.createElement("span"));
-HTMLSpanElement.makePropertyObservable = makeObservable;
-HTMLSpanElement.makePropertyUnobservable = makeUnobservable;
-
-// TODO make window.history state observable
-
-
-},{"collections/listen/property-changes":50}],37:[function(require,module,exports){
+},{"./compile-binder":32,"./compile-observer":34,"./observers":63,"./parse":65,"./scope":66}],36:[function(require,module,exports){
 module.exports = (function() {
   /*
    * Generated by PEG.js 0.7.0.
@@ -23863,7 +23923,7 @@ module.exports = (function() {
   };
 })();
 
-},{}],38:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 
 var Set = require("collections/set");
 var Dict = require("collections/dict");
@@ -23933,7 +23993,7 @@ exports.operatorTypes = Dict(operatorTokens.map(function (type, token) {
 }));
 
 
-},{"collections/dict":40,"collections/set":54}],39:[function(require,module,exports){
+},{"collections/dict":39,"collections/set":53}],38:[function(require,module,exports){
 "use strict";
 
 require("collections/shim");
@@ -24122,9 +24182,9 @@ function merge(target, source) {
 }
 
 
-},{"collections/shim":59}],40:[function(require,module,exports){
+},{"collections/shim":58}],39:[function(require,module,exports){
 arguments[4][6][0].apply(exports,arguments)
-},{"./generic-collection":42,"./generic-map":43,"./listen/property-changes":50,"./shim":59}],41:[function(require,module,exports){
+},{"./generic-collection":41,"./generic-map":42,"./listen/property-changes":49,"./shim":58}],40:[function(require,module,exports){
 "use strict";
 
 var Shim = require("./shim");
@@ -24309,7 +24369,7 @@ FastSet.prototype.logNode = function (node, write) {
 };
 
 
-},{"./dict":40,"./generic-collection":42,"./generic-set":45,"./list":47,"./listen/property-changes":50,"./shim":59,"./tree-log":62}],42:[function(require,module,exports){
+},{"./dict":39,"./generic-collection":41,"./generic-set":44,"./list":46,"./listen/property-changes":49,"./shim":58,"./tree-log":61}],41:[function(require,module,exports){
 "use strict";
 
 module.exports = GenericCollection;
@@ -24572,7 +24632,7 @@ GenericCollection.prototype.iterator = function () {
 require("./shim-array");
 
 
-},{"./shim-array":55}],43:[function(require,module,exports){
+},{"./shim-array":54}],42:[function(require,module,exports){
 "use strict";
 
 var Object = require("./shim-object");
@@ -24760,9 +24820,9 @@ Item.prototype.compare = function (that) {
 };
 
 
-},{"./listen/map-changes":49,"./listen/property-changes":50,"./shim-object":57}],44:[function(require,module,exports){
+},{"./listen/map-changes":48,"./listen/property-changes":49,"./shim-object":56}],43:[function(require,module,exports){
 arguments[4][10][0].apply(exports,arguments)
-},{"./shim-object":57}],45:[function(require,module,exports){
+},{"./shim-object":56}],44:[function(require,module,exports){
 
 module.exports = GenericSet;
 function GenericSet() {
@@ -24823,7 +24883,7 @@ GenericSet.prototype.toggle = function (value) {
 };
 
 
-},{}],46:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 
 // Adapted from Eloquent JavaScript by Marijn Haverbeke
 // http://eloquentjavascript.net/appendix2.html
@@ -25061,7 +25121,7 @@ Heap.prototype.handleContentMapWillChange = function (value, key) {
 };
 
 
-},{"./generic-collection":42,"./listen/array-changes":48,"./listen/map-changes":49,"./listen/property-changes":50,"./listen/range-changes":51,"./shim":59}],47:[function(require,module,exports){
+},{"./generic-collection":41,"./listen/array-changes":47,"./listen/map-changes":48,"./listen/property-changes":49,"./listen/range-changes":50,"./shim":58}],46:[function(require,module,exports){
 "use strict";
 
 module.exports = List;
@@ -25498,7 +25558,7 @@ Node.prototype.addAfter = function (node) {
 };
 
 
-},{"./generic-collection":42,"./generic-order":44,"./listen/property-changes":50,"./listen/range-changes":51,"./shim":59}],48:[function(require,module,exports){
+},{"./generic-collection":41,"./generic-order":43,"./listen/property-changes":49,"./listen/range-changes":50,"./shim":58}],47:[function(require,module,exports){
 /*
     Based in part on observable arrays from Motorola Mobility’s Montage
     Copyright (c) 2012, Motorola Mobility LLC. All Rights Reserved.
@@ -25747,7 +25807,7 @@ var observableArrayProperties = {
 var ChangeDispatchArray = Object.create(Array.prototype, observableArrayProperties);
 
 
-},{"../list":47,"../shim":59,"./map-changes":49,"./property-changes":50,"./range-changes":51,"weak-map":53}],49:[function(require,module,exports){
+},{"../list":46,"../shim":58,"./map-changes":48,"./property-changes":49,"./range-changes":50,"weak-map":52}],48:[function(require,module,exports){
 "use strict";
 
 var WeakMap = require("weak-map");
@@ -25896,7 +25956,7 @@ MapChanges.prototype.dispatchBeforeMapChange = function (key, value) {
 };
 
 
-},{"../dict":40,"../list":47,"weak-map":53}],50:[function(require,module,exports){
+},{"../dict":39,"../list":46,"weak-map":52}],49:[function(require,module,exports){
 /*
     Based in part on observable arrays from Motorola Mobility’s Montage
     Copyright (c) 2012, Motorola Mobility LLC. All Rights Reserved.
@@ -26346,7 +26406,7 @@ PropertyChanges.makePropertyUnobservable = function (object, key) {
 };
 
 
-},{"../shim":59,"weak-map":53}],51:[function(require,module,exports){
+},{"../shim":58,"weak-map":52}],50:[function(require,module,exports){
 "use strict";
 
 var WeakMap = require("weak-map");
@@ -26487,7 +26547,7 @@ RangeChanges.prototype.dispatchBeforeRangeChange = function (plus, minus, index)
 };
 
 
-},{"../dict":40,"weak-map":53}],52:[function(require,module,exports){
+},{"../dict":39,"weak-map":52}],51:[function(require,module,exports){
 "use strict";
 
 var Shim = require("./shim");
@@ -26549,9 +26609,9 @@ Map.prototype.logNode = function (node, log) {
 };
 
 
-},{"./generic-collection":42,"./generic-map":43,"./listen/property-changes":50,"./set":54,"./shim":59}],53:[function(require,module,exports){
+},{"./generic-collection":41,"./generic-map":42,"./listen/property-changes":49,"./set":53,"./shim":58}],52:[function(require,module,exports){
 module.exports=require(16)
-},{}],54:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 "use strict";
 
 var Shim = require("./shim");
@@ -26726,7 +26786,7 @@ Set.prototype.makeObservable = function () {
 };
 
 
-},{"./fast-set":41,"./generic-collection":42,"./generic-set":45,"./list":47,"./listen/property-changes":50,"./listen/range-changes":51,"./shim":59}],55:[function(require,module,exports){
+},{"./fast-set":40,"./generic-collection":41,"./generic-set":44,"./list":46,"./listen/property-changes":49,"./listen/range-changes":50,"./shim":58}],54:[function(require,module,exports){
 "use strict";
 
 /*
@@ -27002,9 +27062,9 @@ ArrayIterator.prototype.next = function () {
 };
 
 
-},{"./generic-collection":42,"./generic-order":44,"./shim-function":56,"weak-map":53}],56:[function(require,module,exports){
+},{"./generic-collection":41,"./generic-order":43,"./shim-function":55,"weak-map":52}],55:[function(require,module,exports){
 module.exports=require(19)
-},{}],57:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 "use strict";
 
 var WeakMap = require("weak-map");
@@ -27544,11 +27604,11 @@ Object.clear = function (object) {
 };
 
 
-},{"weak-map":53}],58:[function(require,module,exports){
+},{"weak-map":52}],57:[function(require,module,exports){
 module.exports=require(21)
-},{}],59:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 arguments[4][22][0].apply(exports,arguments)
-},{"./shim-array":55,"./shim-function":56,"./shim-object":57,"./shim-regexp":58}],60:[function(require,module,exports){
+},{"./shim-array":54,"./shim-function":55,"./shim-object":56,"./shim-regexp":57}],59:[function(require,module,exports){
 "use strict";
 
 module.exports = SortedArray;
@@ -27819,7 +27879,7 @@ SortedArray.prototype.iterate = function (start, end) {
 SortedArray.prototype.Iterator = Array.prototype.Iterator;
 
 
-},{"./generic-collection":42,"./listen/property-changes":50,"./listen/range-changes":51,"./shim":59}],61:[function(require,module,exports){
+},{"./generic-collection":41,"./listen/property-changes":49,"./listen/range-changes":50,"./shim":58}],60:[function(require,module,exports){
 "use strict";
 
 module.exports = SortedSet;
@@ -28557,9 +28617,9 @@ Iterator.prototype.next = function () {
 };
 
 
-},{"./generic-collection":42,"./generic-set":45,"./listen/property-changes":50,"./listen/range-changes":51,"./shim":59,"./tree-log":62}],62:[function(require,module,exports){
+},{"./generic-collection":41,"./generic-set":44,"./listen/property-changes":49,"./listen/range-changes":50,"./shim":58,"./tree-log":61}],61:[function(require,module,exports){
 module.exports=require(24)
-},{}],63:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 
 var parse = require("./parse");
 var compile = require("./compile-observer");
@@ -28617,7 +28677,7 @@ function observe(source, expression, descriptorOrFunction) {
 var empty = {};
 
 
-},{"./compile-observer":34,"./observers":64,"./parse":66,"./scope":67}],64:[function(require,module,exports){
+},{"./compile-observer":34,"./observers":63,"./parse":65,"./scope":66}],63:[function(require,module,exports){
 
 require("collections/shim"); // Function.noop
 var PropertyChanges = require("collections/listen/property-changes");
@@ -30168,7 +30228,7 @@ function autoCancelPrevious(emit) {
 }
 
 
-},{"./compile-observer":34,"./merge":39,"./operators":65,"./parse":66,"./scope":67,"collections/heap":46,"collections/listen/array-changes":48,"collections/listen/property-changes":50,"collections/map":52,"collections/set":54,"collections/shim":59,"collections/sorted-array":60,"collections/sorted-set":61}],65:[function(require,module,exports){
+},{"./compile-observer":34,"./merge":38,"./operators":64,"./parse":65,"./scope":66,"collections/heap":45,"collections/listen/array-changes":47,"collections/listen/property-changes":49,"collections/map":51,"collections/set":53,"collections/shim":58,"collections/sorted-array":59,"collections/sorted-set":60}],64:[function(require,module,exports){
 
 require("collections/shim-object"); // equals, compare
 require("collections/shim-regexp"); // escape
@@ -30325,7 +30385,7 @@ exports.last = function (collection) {
 };
 
 
-},{"collections/map":52,"collections/set":54,"collections/shim-object":57,"collections/shim-regexp":58}],66:[function(require,module,exports){
+},{"collections/map":51,"collections/set":53,"collections/shim-object":56,"collections/shim-regexp":57}],65:[function(require,module,exports){
 
 require("collections/shim");
 var grammar = require("./grammar");
@@ -30353,7 +30413,7 @@ function parse(text, options) {
 }
 
 
-},{"./grammar":37,"collections/shim":59}],67:[function(require,module,exports){
+},{"./grammar":36,"collections/shim":58}],66:[function(require,module,exports){
 
 module.exports = Scope;
 function Scope(value) {
@@ -30369,7 +30429,7 @@ Scope.prototype.nest = function (value) {
 };
 
 
-},{}],68:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 "use strict";
 
 var parse = require("./parse");
@@ -30652,9 +30712,9 @@ typeToToken.forEach(function (token, type) {
 });
 
 
-},{"./language":38,"./parse":66}],69:[function(require,module,exports){
+},{"./language":37,"./parse":65}],68:[function(require,module,exports){
 module.exports=require(2)
-},{"__browserify_process":5}],70:[function(require,module,exports){
+},{"__browserify_process":5}],69:[function(require,module,exports){
 //     Underscore.js 1.5.2
 //     http://underscorejs.org
 //     (c) 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
