@@ -1,7 +1,22 @@
 (function(exports) {
   var Tokenizer = require('./tokenizer').Tokenizer;
 
+  Array.prototype.getUnique = function() {
+    var u = {}, a = [];
+    for (var i = 0, l = this.length; i < l; ++i) {
+      if (u.hasOwnProperty(this[i])) {
+        continue;
+      }
+      if (this[i]) {
+        a.push(this[i]);
+        u[this[i]] = 1;
+      }
+    }
+    return a;
+  };
+
   var calculateStopWords = function(obj) {
+    var stopWords = obj.stopWordsArray || [];
 
     if (!obj.inputText) {
       return;
@@ -13,10 +28,14 @@
     var wordCounts = function(wordarray) {
       var history = {};
       for (var word = 0; word < wordarray.length; word++) {
-        var currentRecord = wordarray[word].toLowerCase().replace(/^\s+|\s+$/g, '');
-        history[currentRecord] ? // check if word already exists in history
-        history[currentRecord] += 1 : // if so, increase its count by one
-        history[currentRecord] = 1; // otherwise mark as first occurrence
+        var currentWord = wordarray[word].toLowerCase().replace(/^\s+|\s+$/g, '');
+        /* If the word is too short, automatically consider it a stop word */
+        if (currentWord.length < 3) {
+          stopWords.push(currentWord);
+        }
+        history[currentWord] ? // check if word already exists in history
+        history[currentWord] += 1 : // if so, increase its count by one
+        history[currentWord] = 1; // otherwise mark as first occurrence
       }
       return history;
     };
@@ -25,19 +44,20 @@
     var orderedResults = Object.keys(results).sort(function(a, b) {
       return -(results[a] - results[b]);
     });
-    var outputStops = [];
 
     for (var o in orderedResults) {
       if ((results[orderedResults[o]] / parsedText.length) >= cutoffPercent) {
-        outputStops.push(orderedResults[o]);
+        stopWords.push(orderedResults[o]);
       }
     }
 
-    return outputStops;
+    return stopWords.getUnique().sort(function(a, b) {
+      return a.localeCompare(b);
+    });
 
   };
 
-  exports.StopWordsGenerator  = {
+  exports.StopWordsGenerator = {
     calculateStopWords: calculateStopWords
   };
 
