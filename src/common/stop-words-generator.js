@@ -40,14 +40,16 @@
       return history;
     };
 
-    var results = wordCounts(parsedText);
-    var orderedResults = Object.keys(results).sort(function(a, b) {
-      return -(results[a] - results[b]);
+    var wordFrequencies = wordCounts(parsedText);
+    obj.wordFrequencies = wordFrequencies;
+
+    var orderedWordFrequencies = Object.keys(wordFrequencies).sort(function(a, b) {
+      return -(wordFrequencies[a] - wordFrequencies[b]);
     });
 
-    for (var o in orderedResults) {
-      if ((results[orderedResults[o]] / parsedText.length) >= cutoffPercent) {
-        stopWords.push(orderedResults[o]);
+    for (var o in orderedWordFrequencies) {
+      if ((wordFrequencies[orderedWordFrequencies[o]] / parsedText.length) >= cutoffPercent) {
+        stopWords.push(orderedWordFrequencies[o]);
       }
     }
 
