@@ -4,7 +4,8 @@ var SortedSet = require("collections/sorted-set");
 var UniqueSet = require("collections/set");
 var CORS = require("fielddb/api/CORS").CORS;
 var Q = require("q");
-var StopWords = require('../stop-words').StopWords;
+var NonContentWords = require('./NonContentWords').NonContentWords;
+var LexemeFrequency = require('./LexemeFrequency').LexemeFrequency;
 
 (function(exports) {
 
@@ -336,7 +337,8 @@ var StopWords = require('../stop-words').StopWords;
     }
     return lex;
   };
-  Lexicon.StopWords = StopWords;
+  Lexicon.NonContentWords = NonContentWords;
+  Lexicon.LexemeFrequency = LexemeFrequency;
   exports.Lexicon = Lexicon;
   global.Lexicon = Lexicon;
 

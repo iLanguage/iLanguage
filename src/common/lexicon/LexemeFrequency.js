@@ -1,5 +1,5 @@
 (function(exports) {
-  var Tokenizer = require('./tokenizer').Tokenizer;
+  var Tokenizer = require('./Tokenizer').Tokenizer;
 
   Array.prototype.getUnique = function() {
     var u = {}, a = [];
@@ -15,8 +15,8 @@
     return a;
   };
 
-  var calculateStopWords = function(obj) {
-    var stopWords = obj.stopWordsArray || [];
+  var calculateNonContentWords = function(obj) {
+    var nonContentWords = obj.nonContentWordsArray || [];
 
     if (!obj.inputText) {
       return;
@@ -31,7 +31,7 @@
         var currentWord = wordarray[word].toLowerCase().replace(/^\s+|\s+$/g, '');
         /* If the word is too short, automatically consider it a stop word */
         if (currentWord.length < 3) {
-          stopWords.push(currentWord);
+          nonContentWords.push(currentWord);
         }
         history[currentWord] ? // check if word already exists in history
         history[currentWord] += 1 : // if so, increase its count by one
@@ -49,18 +49,18 @@
 
     for (var o in orderedWordFrequencies) {
       if ((wordFrequencies[orderedWordFrequencies[o]] / parsedText.length) >= cutoffPercent) {
-        stopWords.push(orderedWordFrequencies[o]);
+        nonContentWords.push(orderedWordFrequencies[o]);
       }
     }
 
-    return stopWords.getUnique().sort(function(a, b) {
+    return nonContentWords.getUnique().sort(function(a, b) {
       return a.localeCompare(b);
     });
 
   };
 
-  exports.StopWordsGenerator = {
-    calculateStopWords: calculateStopWords
+  exports.LexemeFrequency = {
+    calculateNonContentWords: calculateNonContentWords
   };
 
-})(typeof exports === 'undefined' ? this['StopWordsGenerator'] = {} : exports);
+})(typeof exports === 'undefined' ? this['LexemeFrequency'] = {} : exports);
