@@ -2,7 +2,7 @@
 
 	var Corpus = {}; //require('fielddb/api/corpus/Corpus');
 	Corpus.Orthography = {};
-	Corpus.Orthography.Tokenizer = require('../tokenizer').Tokenizer;
+	Corpus.Orthography.Tokenizer = require('../lexicon/Tokenizer').Tokenizer;
 
 	exports.Corpus = Corpus;
 

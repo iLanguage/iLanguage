@@ -1,6 +1,6 @@
 'use strict';
-var StopWords = require('../../../src/common/stop-words').StopWords;
-var StopWordsGenerator = require('../../../src/common/stop-words-generator').StopWordsGenerator;
+var NonContentWords = require('../../../../src/common/lexicon/NonContentWords').NonContentWords;
+var LexemeFrequency = require('../../../../src/common/lexicon/LexemeFrequency').LexemeFrequency;
 
 var sampleTexts = {
   cloud1: "A cloud is a visible mass of condensed droplets or frozen crystals suspended in the atmosphere. Cloud(s) may also refer to: Contents  [hide]  1 Information Technology 2 Science 3 Fiction 4 Literature 5 Music 6 Other uses 7 See also Information Technology  Cloud computing, Internet-based development and use of computer technology stored on servers rather than the client computers Cloud (operating system), a browser-based operating system that will instantly be usable after turning on the PC, by the makers of gOS Tag cloud, a visual depiction of user-generated tags used typically to describe the content of web sites Cloud storage, a model of networked online storage Cloud.com, a company that develops open source cloud orchestration software CloudStack, an open source cloud computing software Science  Magellanic Clouds, irregular dwarf galaxies near our galaxy, the Milky Way Interstellar cloud, dense region between stars Molecular cloud, interstellar cloud containing molecules Electron cloud, analogy used to describe an electron that orbits around a nucleus Point cloud, in mathematics, a set of vertices in a three-dimensional coordinate system CLOUD, an experimental facility used to investigate the microphysics between galactic cosmic rays and clouds Cloud chamber, an experimental device used in early studies of particle physics Fiction  Cloud Strife, a character in Final Fantasy VII media Bou Keng Wan ('Cloud'), a Kung Fu character from the Hong Kong comic, Fung Wan Cloud (comics), a Marvel comic book character Cloudbase, the fictional skyborne headquarters of Spectrum, from the science fiction television series Captain Scarlet and the Mysterons Clouds (film), a 2000 film written and directed by Don Thompson and produced by Will Arntz Literature  The Clouds, a comedy by Aristophanes Clouds, a 1977 philosophical comedic play by British playwright Michael Frayn The Clouds, a 1797 play by the British writer Richard Cumberland The Cloud of Unknowing, a medieval mystical text Music  Clouds (60s rock band), a Scottish music group that operated in the late 1960s Clouds (Australian band), an indie rock group based in Sydney, Australia in the 1990s The Clouds (UK band), a British indie pop band from the 1980s Cloud (music), sound mass consisting of statistical clouds of microsounds 'Clouds', a song by Chaka Khan from Naughty 'Clouds', a song by Level 42 on the album Retroglide 'Clouds', a song by Spires That in the Sunset Rise on the album This Is Fire 'Clouds' (Zach Sobiech song) a song by Zach Sobiech Clouds (Joni Mitchell album), 1969 Clouds (Lee Ranaldo album), 1997 Clouds (Tiamat album), 1992 Clouds (EP), an EP by Nosound 'Cloudy', by Average White Band from the album Cut the Cake Other uses  Cloud (dancer), a b-boy, writer, and director from Florida Cloud (surname) Cloud, California, a former settlement in Kings County Clodoald (522–560), better known as Cloud or Saint Cloud, son of King Chlodomer of Orleans Saint-Cloud, a commune in the western suburbs of Paris, France Cloud (video game), a 2005 third-person computer puzzle game See also  The Cloud (disambiguation) Cloud Nine (disambiguation) Red Cloud (disambiguation) St. Cloud (disambiguation) White Cloud (disambiguation) McCloud (disambiguation)",
@@ -11,33 +11,33 @@ var sampleTexts = {
 describe('lib/stopwords', function() {
 
   it('should load', function() {
-    expect(StopWords).toBeDefined();
+    expect(NonContentWords).toBeDefined();
   });
 
   it('should accept a space seperated list', function() {
     var spaceSeparatedList = 'a an the he she    it  we go    be';
-    var result = StopWords.processStopWords({
-      stopWordsArray: spaceSeparatedList
+    var result = NonContentWords.processNonContentWords({
+      nonContentWordsArray: spaceSeparatedList
     });
-    expect(result.stopWordsArray)
+    expect(result.nonContentWordsArray)
       .toEqual(['a', 'an', 'the', 'he', 'she', 'it', 'we', 'go', 'be']);
   });
 
   it('should accept a comma seperated list', function() {
     var commaSeparatedList = 'a, an, the, he, she,    it,  we, go,    be';
-    var result = StopWords.processStopWords({
-      stopWordsArray: commaSeparatedList
+    var result = NonContentWords.processNonContentWords({
+      nonContentWordsArray: commaSeparatedList
     });
-    expect(result.stopWordsArray)
+    expect(result.nonContentWordsArray)
       .toEqual(['a', 'an', 'the', 'he', 'she', 'it', 'we', 'go', 'be']);
   });
 
   it('should accept a regular expression', function() {
     var regexpSeparatedList = /^(a|an|the|he|she|it|we|go|be)$/;
-    var result = StopWords.processStopWords({
-      stopWordsArray: regexpSeparatedList
+    var result = NonContentWords.processNonContentWords({
+      nonContentWordsArray: regexpSeparatedList
     });
-    expect(result.stopWordsArray)
+    expect(result.nonContentWordsArray)
       .toEqual(['a', 'an', 'the', 'he', 'she', 'it', 'we', 'go', 'be']);
   });
 
@@ -46,8 +46,8 @@ describe('lib/stopwords', function() {
     var e = 'Invalid RegExp a|an|the|he|she|it|we|go|be';
 
     expect(function() {
-      StopWords.processStopWords({
-        stopWordsArray: regexpSeparatedList
+      NonContentWords.processNonContentWords({
+        nonContentWordsArray: regexpSeparatedList
       });
     }).toThrow(e);
 
@@ -57,7 +57,7 @@ describe('lib/stopwords', function() {
     var textToTest = {
       inputText: sampleTexts.cloud1
     };
-    expect(StopWordsGenerator.calculateStopWords(textToTest))
+    expect(LexemeFrequency.calculateNonContentWords(textToTest))
       .toEqual(['1', '2', '3', '4', '42', '5', '6', '7', 'a', 'an', 'as', 'be', 'by', 'cloud', 'clouds', 'ep', 'fu', 'in', 'is', 'of', 'on', 'or', 'pc', 'st', 'the', 'to', 'uk']);
   });
 
@@ -65,7 +65,7 @@ describe('lib/stopwords', function() {
     var textToTest = {
       inputText: sampleTexts.cloud2
     };
-    expect(StopWordsGenerator.calculateStopWords(textToTest))
+    expect(LexemeFrequency.calculateNonContentWords(textToTest))
       .toEqual(['15', 'a', 'an', 'and', 'as', 'at', 'be', 'by', 'cloud', 'computing', 'do', 'go', 'in', 'is', 'it', 'no', 'of', 'on', 'or', 'the', 'to', 'up']);
   });
 
@@ -73,7 +73,7 @@ describe('lib/stopwords', function() {
     var textToTest = {
       inputText: sampleTexts.french
     };
-    expect(StopWordsGenerator.calculateStopWords(textToTest))
+    expect(LexemeFrequency.calculateNonContentWords(textToTest))
       .toEqual(['0', '1', '10', '11', '12', '2', '3', '4', '40', '5', '6', '7', '8', '9', 'a', 'au', 'b', 'c', 'ce', 'd1', 'd2', 'dans', 'de', 'des', 'du', 'dû', 'en', 'et', 'eu', 'i', 'ii', 'il', 'la', 'le', 'les', 'ne', 'nuages', 'on', 'ou', 'où', 'sa', 'se', 'si', 'un', 'y', '«', '°c', '»', 'à']);
   });
 
@@ -82,7 +82,7 @@ describe('lib/stopwords', function() {
       inputText: sampleTexts.cloud1,
       cutoff: 0.01
     };
-    expect(StopWordsGenerator.calculateStopWords(textToTest))
+    expect(LexemeFrequency.calculateNonContentWords(textToTest))
       .toEqual(['1', '2', '3', '4', '42', '5', '6', '7', 'a', 'album', 'an', 'and', 'as', 'be', 'by', 'cloud', 'clouds', 'disambiguation', 'ep', 'from', 'fu', 'in', 'is', 'of', 'on', 'or', 'pc', 'st', 'the', 'to', 'uk']);
   });
 
@@ -93,20 +93,20 @@ describe('lib/stopwords', function() {
   it('should produce a filtered text for stop words', function() {
     var textToTest = {
       inputText: "this will not have any stop words",
-      stopWordsArray: "not any"
+      nonContentWordsArray: "not any"
     };
-    StopWords.processStopWords(textToTest);
-    expect(StopWords.filterText(textToTest).filteredText).toEqual('this will  have  stop words');
+    NonContentWords.processNonContentWords(textToTest);
+    expect(NonContentWords.filterText(textToTest).filteredText).toEqual('this will  have  stop words');
   });
 
   it('should produce a filtered text for stop words and morphemes', function() {
     var textToTest = {
       inputText: "this will not have any stop words or morphemes",
-      stopWordsArray: "not any",
+      nonContentWordsArray: "not any",
       morphemes: /(^un|^pre|s$|ed$|ing$)/
     };
-    StopWords.processStopWords(textToTest);
-    expect(StopWords.filterText(textToTest).filteredText).toEqual('thi will  have  stop word or morpheme');
+    NonContentWords.processNonContentWords(textToTest);
+    expect(NonContentWords.filterText(textToTest).filteredText).toEqual('thi will  have  stop word or morpheme');
   });
 
   it('should produce a weighted list of words (rather than 0/1 stop vs content', function() {
@@ -117,7 +117,7 @@ describe('lib/stopwords', function() {
     var textToTest = {
       inputText: 'ᐅᔨᔭᐅᖁᕙᕋ ᖃᓄᖅ ᐊᔪᕐᓇᖅᑎᒋᔫᔮᓚᐅᕐᓂᖓᓂᒃ ᓈᒻᒪᑦᑎᐊᖅᑐᒃᑯᑦ ᐅᖃᓪᓚᐅᓯᖃᕆᐊᒥᒃ ᐊᔪᕆᖖᒋᑦᑎᐊᖅᑐᒍ ᐃᓕᓴᐃᔨᐅᔫᓚᐅᕐᓂᖓᓂᒃ, ᑐᑭᓯᐅᕆᔨᐅᔫᓂᖓᓄᑦ ᖃᐅᔨᒪᓂᕐᒥᓄᑦ, ᐃᓕᓐᓂᐊᕐᓂᓕᕆᔨᐅᔫᓚᐅᕐᓂᖓᓄᑦ ᐊᒻᒪᓗ ᐃᓚᒋᔭᒥᓂᒃ ᑲᒪᑦᑎᐊᖅᑑᓚᐅᕐᓂᖓᓄᑦ. ᐅᑭᐅᓪᓗᐊᖖᒍᑲᐅᑎᒋᓂᐊᓕᕐᐳᖅ ᑕᐃᒪ ᐊᓂᕐᓂᖏᓚᐅᖅᓯᒪᓂᖓᓂᑦ ᐅᑭᐊᒃᓵᖓᓂ 2012 ᐅᑭᐅᖃᓕᖅᑐᓂ 93- ᓂᒃ, ᐊᒻᒪᓗ ᐃᔾᔪᑎᒋᓪᓗᒍ ᐃᓕᑕᕆᓯᒪᓕᕈᑎᒋᓂᐊᓚᐅᕋᓗᐊᕋᒃᑯᑦ ᐃᓕᓐᓂᐊᕈᑎᒋᓯᒪᔭᓐᓄᑦ ᓘᑦᑖᖑᓂᕐᒧᑦ ᖃᐅᔨᓴᕈᑎᒋᔭᓐᓂ ᖃᐅᔨᓴᕐᓂᐊᖅᑐᒋᑦ ᐃᓕᓐᓂᐊᖅᑎᑦᑎᔾᔪᑎᒋᕙᓚᐅᖅᑕᖏᑦ, ᐊᔪᓕᓪᓚᑦᑖᑲᓴᓚᐅᕋᒃᑯ ᐃᓗᕕᖅᑕᐅᑎᓪᓗᒍ ᐃᖅᑲᐅᒪᔾᔪᑎᒋᔭᓂᒃ ᐅᖃᐅᓯᐅᓂᐊᖅᑐᓂᒃ ᑎᑎᕋᖅᓯᒪᔪᓕᐅᕆᐊᒥᒃ. ᓇᖕᒥᓂᖅᑕᐅᖅ ᐊᑖᑕᒐ ᑐᖁᓵᖅᓯᒪᓚᐅᕐᒪᑦ — ᐱᖃᑎᐊᓗᒋᓚᐅᕐᒪᒍ ᐊᑖᑕᒪ ᐊᐅᐱᓛᕐᔫᑉ ᓄᑲᕆᓚᐅᖅᓯᒪᔭᖓ ᑲᑭᐊᕐᓂᐅᑦ. ᑕᒪᓐᓇᓗ ᐱᔾᔪᑎᖏᓪᓗᒍ ᐅᕙᓐᓂᒃ ᖃᐅᔨᓯᒪᓕᕋᒪ ᑕᒪᑐᒪᓂ, ᑎᒍᒥᐊᖅᑎᐅᒋᐊᖃᕐᓂᓐᓂᒃ ᐃᓄᑐᖃᕆᔭᑦᑕ ᐅᓂᒃᑲᐅᓯᕆᕙᒃᓯᒪᔭᖏᓂᒃ, ᐅᓪᓗᒥᐅᓕᖅᑐᒥᓗ ᓯᕗᓂᕕᓂᕆᔭᕆᓕᖅᑕᑦᑎᓐᓄᑦ. ᑎᑎᕋᖅᓯᒪᔪᑎᒍᑦ ᐃᓕᑕᕆᓯᒪᔪᓐᓇᖅᐸᕗᑦ ᐊᒻᒪᓗ ᖃᓄᖅ ᐃᓅᓯᒥᓐᓄᑦ ᐊᒃᑐᐃᓯᒪᓂᕆᓚᐅᖅᑕᖏᓂᒃ ᐅᕙᑦᑎᓐᓄᑦ ᓇᖕᒥᓂᖅ, ᐃᓕᑉᐸᓪᓕᐊᑎᑦᑐᓂᑎᒍ, ᐃᑲᔪᖅᑐᕐᓯᒪᓪᓗᓂᑎᒍᑦ ᐊᒻᒪᓗ ᐱᐅᓯᒋᐊᖅᑎᓐᓇᓱᒃᑐᒋᑦ ᖃᐅᔨᒪᓂᕆᓕᕈᒫᖅᑕᖏᑕ ᑭᖑᕚᕆᓕᕐᓂᐊᕐᒥᔭᑦᑕᑦᑕᐅᖅ. ᖃᓄᐃᒋᔮᖖᒋᑕᕋ ᐅᓂᒃᑲᐅᓯᖃᕆᐊᒥᒃ ᐃᓅᓯᕆᓚᐅᖅᑕᖓᓄᑦ ᐃᓕᓴᐃᔾᔪᑎᒋᕙᓚᐅᖅᑕᖏᓄᓪᓗ ᐱᔾᔪᑎᖃᖅᑐᓂᒃ ᐱᔾᔪᑎᒋᓪᓗᒍ ᑎᑎᕋᓚᐅᕋᒃᑭᑦ ᐃᓄᒃᑎᑑᖅᓯᒪᓪᓗᒋᑦ ᐊᒻᒪᓗ ᕿᒥᕐᕈᓚᐅᖅᓯᒪᒻᒪᒋᑦ ᓈᒻᒪᒋᓯᒪᓕᓚᐅᖅᑐᒋᓪᓗ ᐃᓕᓐᓂᐊᕈᑎᒋᓯᒪᔭᓐᓄᑦ ᑎᑎᕋᖅᓯᒪᔪᓕᐅᕐᓂᐊᓵᖅᑎᓪᓗᖓ ᑎᓯᐱᕆ 2011- ᖑᑎᓪᓗᒍ. ᑖᒃᑯᐊ ᑎᑎᕋᖅᓯᒪᔭᒃᑲ ᐋᖅᑭᒃᓱᐊᕆᓕᓚᐅᕐᒥᒐᒃᑭᑦ ᓴᐃᒻᒪᖅᑎᑕᐅᓯᒪᓪᓗᖓ ᐊᒻᒪᓗ ᓈᒻᒪᒋᔭᐅᓯᒪᑎᓪᓗᒋᑦ ᐃᕐᓂᕆᔭᖓᓂᑦ ᑭᖑᕚᕆᔭᖓᓂᓪᓗ ᐱᐊᕆᒥᑦ. ᐊᐅᐱᓛᕐᔪᒃ ᐊᒥᓱᓂᑦ ᐅᐱᒋᔭᐅᑦᑎᐊᖅᑐᓂ ᐃᓄᑐᖃᕆᔭᐅᓚᐅᕐᒪᑦ'
     };
-    expect(StopWordsGenerator.calculateStopWords(textToTest))
+    expect(LexemeFrequency.calculateNonContentWords(textToTest))
       .toEqual(['93', 'ᐃᓕᓐᓂᐊᕈᑎᒋᓯᒪᔭᓐᓄᑦ', 'ᐊᒻᒪᓗ', 'ᓂᒃ', 'ᖃᓄᖅ', '—']);
   });
 
