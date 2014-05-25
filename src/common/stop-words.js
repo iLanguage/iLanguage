@@ -10,40 +10,51 @@
   };
 
   var processStopWords = function(userCloud) {
-
+    var providedStopWords = userCloud.stopWordsArray;
     // console.log("userCloud.stopWords", userCloud.stopWords);
     var processed = false;
 
-    if (!userCloud.stopWords) {
+    if (!providedStopWords) {
       userCloud.inputText = userCloud.text;
       var autoCalculatedStopWords = StopWordsGenerator.calculateStopWords(userCloud);
-      console.log("autoCalculatedStopWords", autoCalculatedStopWords);
+      console.log("autoCalculatedStopWords", autoCalculatedStopWords.join(","));
       processed = true;
-      userCloud.stopWords = new RegExp('^(' + autoCalculatedStopWords.join('|') + ')$');
+      userCloud.stopWordsArray = autoCalculatedStopWords;
+      userCloud.stopWordsRegExp = new RegExp('^(' + autoCalculatedStopWords.join('|') + ')$');
       return userCloud;
     }
     // console.log("not autogen userCloud.stopWords ", userCloud.stopWords);
 
-    var stringCheck = userCloud.stopWords.toString().substring(0, 20),
+    var stringCheck = providedStopWords.toString().substring(0, 20),
       commasOrSpaces = /[,\s]+/g;
 
     if (stringCheck.indexOf('/') === 0) {
       // user most likely provided regex of stop words
       processed = true;
-      userCloud.stopWords = new RegExp(userCloud.stopWords);
+      userCloud.stopWordsArray = providedStopWords.toString().replace('/^(', '').replace(')$/', '').split('|');
+      userCloud.stopWordsRegExp = new RegExp(providedStopWords);
+      return userCloud;
+    }
+
+    if (Object.prototype.toString.call(providedStopWords) === '[object Array]') {
+      // user most likely provided an array of stop words
+      processed = true;
+      userCloud.stopWordsArray = providedStopWords;
+      userCloud.stopWordsRegExp = new RegExp('^(' + providedStopWords.join('|') + ')$');
       return userCloud;
     }
 
     if ((stringCheck.indexOf(',') !== -1) || (stringCheck.indexOf(',') === -1 && stringCheck.indexOf(' ') !== -1)) {
       // user most likely provided comma-separated or space-separated list of stop words
       processed = true;
-      userCloud.stopWords = new RegExp('^(' + userCloud.stopWords.replace(commasOrSpaces, '|') + ')$');
+      userCloud.stopWordsArray = providedStopWords.split(commasOrSpaces);
+      userCloud.stopWordsRegExp = new RegExp('^(' + providedStopWords.replace(commasOrSpaces, '|') + ')$');
       return userCloud;
     }
 
     if (!processed) {
       // user did not provide a parsable regex, throw error
-      throw 'Invalid RegExp ' + userCloud.stopWords;
+      throw 'Invalid RegExp ' + providedStopWords;
     }
 
   };
@@ -55,7 +66,7 @@
       text = text.toLocaleLowerCase();
     }
     var filteredText = text.split(defaults.wordSeparators).map(function(word) {
-      if (!userCloud.stopWords.test(word)) {
+      if (!userCloud.stopWordsRegExp.test(word)) {
         if (userCloud.morphemes) {
           word = word.replace(userCloud.morphemes, "");
         }
