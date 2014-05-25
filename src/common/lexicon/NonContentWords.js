@@ -15,7 +15,7 @@
     var processed = false;
 
     if (!providedNonContentWords) {
-      userCloud.inputText = userCloud.text;
+      userCloud.orthography = userCloud.text;
       var autoCalculatedNonContentWords = LexemeFrequency.calculateNonContentWords(userCloud);
       console.log("autoCalculatedNonContentWords", autoCalculatedNonContentWords.join(","));
       processed = true;
@@ -60,7 +60,7 @@
   };
 
   var filterText = function(userCloud) {
-    var text = userCloud.inputText.replace(defaults.punctuation, ' ');
+    var text = userCloud.orthography.replace(defaults.punctuation, ' ');
 
     if (userCloud.caseInsensitive) {
       text = text.toLocaleLowerCase();
