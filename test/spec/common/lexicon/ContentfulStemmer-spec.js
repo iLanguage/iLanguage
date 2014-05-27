@@ -20,15 +20,28 @@ describe('Basic NLP tasks', function() {
       orthography: sampleTexts.shortText
     });
     expect(result.wordFrequencies)
-      .toEqual({
-        a: 2,
-        cloud: 1,
-        is: 1,
-        visible: 1,
-        mass: 1,
-        of: 1,
-        h20: 1
-      });
+      .toEqual([{
+        orthography: 'a',
+        count: 2
+      }, {
+        orthography: 'cloud',
+        count: 1
+      }, {
+        orthography: 'is',
+        count: 1
+      }, {
+        orthography: 'visible',
+        count: 1
+      }, {
+        orthography: 'mass',
+        count: 1
+      }, {
+        orthography: 'of',
+        count: 1
+      }, {
+        orthography: 'h20',
+        count: 1
+      }]);
   });
 
   it('should guess a list of non content words using zipfs law', function() {
@@ -46,7 +59,8 @@ describe('Stop Words', function() {
   it('should accept a space seperated list', function() {
     var spaceSeparatedList = 'a an the he she    it  we go    be';
     var result = NonContentWords.processNonContentWords({
-      nonContentWordsArray: spaceSeparatedList
+      nonContentWordsArray: spaceSeparatedList,
+      userSpecifiedNonContentWords: true
     });
     expect(result.nonContentWordsArray)
       .toEqual(['a', 'an', 'the', 'he', 'she', 'it', 'we', 'go', 'be']);
@@ -55,7 +69,8 @@ describe('Stop Words', function() {
   it('should accept a comma seperated list', function() {
     var commaSeparatedList = 'a, an, the, he, she,    it,  we, go,    be';
     var result = NonContentWords.processNonContentWords({
-      nonContentWordsArray: commaSeparatedList
+      nonContentWordsArray: commaSeparatedList,
+      userSpecifiedNonContentWords: true
     });
     expect(result.nonContentWordsArray)
       .toEqual(['a', 'an', 'the', 'he', 'she', 'it', 'we', 'go', 'be']);
@@ -64,7 +79,8 @@ describe('Stop Words', function() {
   it('should accept a regular expression', function() {
     var regexpSeparatedList = /^(a|an|the|he|she|it|we|go|be)$/;
     var result = NonContentWords.processNonContentWords({
-      nonContentWordsArray: regexpSeparatedList
+      nonContentWordsArray: regexpSeparatedList,
+      userSpecifiedNonContentWords: true
     });
     expect(result.nonContentWordsArray)
       .toEqual(['a', 'an', 'the', 'he', 'she', 'it', 'we', 'go', 'be']);
@@ -76,7 +92,8 @@ describe('Stop Words', function() {
 
     expect(function() {
       NonContentWords.processNonContentWords({
-        nonContentWordsArray: regexpSeparatedList
+        nonContentWordsArray: regexpSeparatedList,
+        userSpecifiedNonContentWords: true
       });
     }).toThrow(e);
 
@@ -134,6 +151,7 @@ describe('Language Independant', function() {
   it('should produce a filtered text for stop words', function() {
     var textToTest = {
       orthography: "this will not have any stop words",
+      userSpecifiedNonContentWords: true,
       nonContentWordsArray: "not any"
     };
     NonContentWords.processNonContentWords(textToTest);
@@ -144,7 +162,9 @@ describe('Language Independant', function() {
     var textToTest = {
       orthography: "this will not have any stop words or morphemes",
       nonContentWordsArray: "not any",
-      morphemes: /(^un|^pre|s$|ed$|ing$)/
+      userSpecifiedNonContentWords: true,
+      morphemes: /(^un|^pre|s$|ed$|ing$)/,
+      morphemesArray: ["un-", " -pre", " -s", " -ed", " -ing"]
     };
     NonContentWords.processNonContentWords(textToTest);
     expect(NonContentWords.filterText(textToTest).filteredText).toEqual('thi will  have  stop word or morpheme');

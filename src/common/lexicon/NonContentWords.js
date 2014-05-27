@@ -13,10 +13,11 @@
     var providedNonContentWords = userCloud.nonContentWordsArray;
     // console.log("userCloud.nonContentWords", userCloud.nonContentWords);
     var processed = false;
+    // console.log("providedNonContentWords", providedNonContentWords);
 
-    if (!providedNonContentWords) {
-      userCloud.orthography = userCloud.text;
-      var autoCalculatedNonContentWords = LexemeFrequency.calculateNonContentWords(userCloud);
+    if (!userCloud.userSpecifiedNonContentWords) {
+      userCloud.wordFrequencies = null;
+      var autoCalculatedNonContentWords = LexemeFrequency.calculateNonContentWords(userCloud).nonContentWordsArray;
       console.log("autoCalculatedNonContentWords", autoCalculatedNonContentWords.join(","));
       processed = true;
       userCloud.nonContentWordsArray = autoCalculatedNonContentWords;
