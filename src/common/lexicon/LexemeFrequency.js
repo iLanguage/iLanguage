@@ -16,7 +16,6 @@
   };
 
   var calculateWordFrequencies = function(obj) {
-    var nonContentWords = obj.nonContentWordsArray || [];
     obj.vocabSize = 0;
     obj.textSize = 0;
 
@@ -46,7 +45,16 @@
 
     }
 
-    obj.wordFrequencies = frequencyMap;
+    obj.wordFrequencies = [];
+
+    for (var item in frequencyMap) {
+      if (frequencyMap.hasOwnProperty(item)) {
+        obj.wordFrequencies.push({
+          orthography: item,
+          count: frequencyMap[item]
+        });
+      }
+    }
 
     return obj;
   };
@@ -58,7 +66,8 @@
     if (!obj.orthography) {
       return;
     }
-    var nonContentWords = [];
+    var buzzWords = [];
+    var probablyNotBuzzWords = [];
 
     var wordFrequencies = obj.wordFrequencies || calculateWordFrequencies(obj).wordFrequencies;
 
@@ -76,42 +85,41 @@
       console.log('Setting cutoffPercent automatically ' + typology);
     }
 
-    var orderedWordFrequencies = Object.keys(wordFrequencies).sort(function(a, b) {
-      return -(wordFrequencies[a] - wordFrequencies[b]);
-    });
-
-    for (var o in orderedWordFrequencies) {
-      var wordRank = (wordFrequencies[orderedWordFrequencies[o]] / obj.vocabSize);
-      // console.log("orderedWordFrequencies[o] " + orderedWordFrequencies[o] + ' ' + wordFrequencies[orderedWordFrequencies[o]] + ' ' + wordRank);
+    for (var oIndex in wordFrequencies) {
+      if (!wordFrequencies.hasOwnProperty(oIndex)) {
+        continue;
+      }
+      var wordRank = (wordFrequencies[oIndex].count / obj.vocabSize);
+      // console.log("wordFrequencies[oIndex] " + wordFrequencies[oIndex] + ' ' + wordFrequencies[oIndex] + ' ' + wordRank);
       if (wordRank > cutoffPercent) {
-        nonContentWords.push(orderedWordFrequencies[o]);
+        if (wordFrequencies[oIndex].orthography.length > 5) {
+          buzzWords.push(wordFrequencies[oIndex].orthography);
+          wordFrequencies[oIndex].categories = ["buzzWord"];
+        } else {
+          probablyNotBuzzWords.push(wordFrequencies[oIndex].orthography);
+          wordFrequencies[oIndex].categories = ["functionalWord"];
+        }
       }
       /* If the word is too short, automatically consider it a stop word */
-      if (orderedWordFrequencies[o].length < 3) {
-        nonContentWords.push(orderedWordFrequencies[o]);
+      if (wordFrequencies[oIndex].orthography.length < 3) {
+        probablyNotBuzzWords.push(wordFrequencies[oIndex].orthography);
+        wordFrequencies[oIndex].categories = ["functionalWord"];
       }
     }
-    /* don't push in long words, they are probably core to the text */
-    var probablyNotBuzzWords = [];
-    nonContentWords.map(function(word) {
-      if (word.length <= 5) {
-        probablyNotBuzzWords.push(word);
-      } else {
-        obj.buzzWordsArray.push(word);
-      }
-    });
 
-    obj.nonContentWordsArray = obj.nonContentWordsArray.concat(probablyNotBuzzWords);
-    obj.nonContentWordsArray = getUnique(obj.nonContentWordsArray);
-    obj.nonContentWordsArray.sort(function(a, b) {
-      return a.localeCompare(b);
-    });
-
-    obj.buzzWordsArray = getUnique(obj.buzzWordsArray);
-    obj.buzzWordsArray.sort(function(a, b) {
-      return a.localeCompare(b);
-    });
-
+    if (!obj.userSpecifiedNonContentWords) {
+      obj.nonContentWordsArray = obj.nonContentWordsArray.concat(probablyNotBuzzWords);
+      obj.nonContentWordsArray = getUnique(obj.nonContentWordsArray);
+      obj.nonContentWordsArray.sort(function(a, b) {
+        return a.localeCompare(b);
+      });
+    }
+    if (!obj.userSpecifiedBuzzWords) {
+      obj.buzzWordsArray = getUnique(buzzWords);
+      obj.buzzWordsArray.sort(function(a, b) {
+        return a.localeCompare(b);
+      });
+    }
     return obj;
 
   };

@@ -9,6 +9,7 @@ var LexemeFrequency = require('./LexemeFrequency').LexemeFrequency;
 
 (function(exports) {
 
+  var maxLexiconSize = 1000;
 
   var LexiconNode = function(options) {
     for (var property in options) {
@@ -375,19 +376,26 @@ var LexemeFrequency = require('./LexemeFrequency').LexemeFrequency;
     }
 
     if (options.orthography) {
-      LexemeFrequency.calculateNonContentWords(options);
-
-      var guessWordCategory = function(word) {
-        var category = "contentWord";
-        if (options.buzzWordsArray.indexOf(word) > -1) {
-          category = "buzzWord";
-        } else if (options.nonContentWordsArray.indexOf(word) > -1) {
-          category = "functionalWord";
+      if (options.nonContentWordsArray) {
+        options.userSpecifiedNonContentWords = true;
+        if (Object.prototype.toString.call(options.nonContentWordsArray) === '[object Array]' && options.nonContentWordsArray.length === 0) {
+          options.userSpecifiedNonContentWords = false;
+          console.log("User sent an empty array of non content words, attempting to automatically detect them");
         }
-        return category;
-      };
-      for (var word in options.wordFrequencies) {
-        if (!options.wordFrequencies.hasOwnProperty(word)) {
+        // else if (options.nonContentWordsArray.trim && !options.nonContentWordsArray.trim()) {
+        //   options.userSpecifiedNonContentWords = false;
+        // }
+      }
+      NonContentWords.processNonContentWords(options);
+
+      for (var wordIndex in options.wordFrequencies) {
+        if (!options.wordFrequencies.hasOwnProperty(wordIndex)) {
+          continue;
+        }
+        var word = options.wordFrequencies[wordIndex].orthography;
+        var count = options.wordFrequencies[wordIndex].count;
+        var categories = options.wordFrequencies[wordIndex].categories;
+        if(lex.length > maxLexiconSize){
           continue;
         }
         lex.add(new LexiconNode({
@@ -397,9 +405,9 @@ var LexemeFrequency = require('./LexemeFrequency').LexemeFrequency;
             morphemes: word,
             gloss: word,
           },
-          categories: [guessWordCategory(word)],
+          categories: categories,
           datumids: [options._id],
-          count: options.wordFrequencies[word],
+          count: count,
           utteranceContext: [word],
           url: options.url
         }));
@@ -417,6 +425,7 @@ var LexemeFrequency = require('./LexemeFrequency').LexemeFrequency;
   Lexicon.NonContentWords = NonContentWords;
   Lexicon.LexemeFrequency = LexemeFrequency;
   Lexicon.LexiconNode = LexiconNode;
+  Lexicon.LexiconFactory = LexiconFactory;
 
   exports.Lexicon = Lexicon;
   global.Lexicon = Lexicon;
