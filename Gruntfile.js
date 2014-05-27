@@ -106,7 +106,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browserify');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'jasmine_node', 'browserify', 'jasmine', 'concat', 'uglify']);
+  grunt.registerTask('test', ['jshint', 'jasmine_node', 'browserify', 'jasmine', 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'browserify', 'jasmine', 'concat', 'uglify']);
   grunt.registerTask('debug', ['jshint', 'jasmine_node', 'browserify', 'jasmine', 'concat']);
   grunt.registerTask('debugweb', ['jshint', 'browserify', 'jasmine', 'concat']);
 };
