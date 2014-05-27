@@ -55,6 +55,9 @@
         });
       }
     }
+    obj.wordFrequencies = obj.wordFrequencies.sort(function(a, b) {
+      return -(a.count - b.count);
+    });
 
     return obj;
   };

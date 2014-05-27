@@ -52,6 +52,30 @@ describe('Basic NLP tasks', function() {
       .toEqual(['a', 'is', 'of']);
   });
 
+  it('should produce an order word frequency list', function() {
+    var result = LexemeFrequency.calculateNonContentWords({
+      orthography: "bbbbbb cccccc aaaaa aaaaa zzzzz zzzzz zzzzz bbbbbb"
+    });
+    expect(result.wordFrequencies)
+      .toEqual([{
+        orthography: 'zzzzz',
+        count: 3,
+        categories: ['functionalWord']
+      }, {
+        orthography: 'bbbbbb',
+        count: 2,
+        categories: ['buzzWord']
+      }, {
+        orthography: 'aaaaa',
+        count: 2,
+        categories: ['functionalWord']
+      }, {
+        orthography: 'cccccc',
+        count: 1,
+        categories: ['buzzWord']
+      }]);
+  });
+
 });
 
 describe('Stop Words', function() {
