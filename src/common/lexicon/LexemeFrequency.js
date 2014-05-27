@@ -107,6 +107,10 @@
       return a.localeCompare(b);
     });
 
+    obj.buzzWordsArray = getUnique(obj.buzzWordsArray);
+    obj.buzzWordsArray.sort(function(a, b) {
+      return a.localeCompare(b);
+    });
 
     return obj;
 

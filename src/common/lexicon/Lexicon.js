@@ -32,9 +32,15 @@ var LexemeFrequency = require('./LexemeFrequency').LexemeFrequency;
           field,
           tmpArray;
 
+        if (!a.igt || !b.igt) {
+          equal = false;
+          return equal;
+        }
+
         for (fieldIndex in this.expandedIGTFields) {
           field = this.expandedIGTFields[fieldIndex];
           if (a.igt.hasOwnProperty(field)) {
+            // console.log(a);
             if (a.igt[field] === b.igt[field]) {
               equal = true;
             }
@@ -205,6 +211,43 @@ var LexemeFrequency = require('./LexemeFrequency').LexemeFrequency;
         return JSON.stringify(this.toObject(), null, 2);
       }
     },
+    getLexicalEntries: {
+      value: function(lexicalEntryToMatch) {
+        var deffered = Q.defer(),
+          matches = [],
+          self = this;
+
+        if (!lexicalEntryToMatch) {
+          deffered.resolve(matches);
+        } else {
+          this.filter(function(value, key, object, depth) {
+            console.log(key + " of " + self.length);
+            if (typeof lexicalEntryToMatch.equals === "function") {
+              if (lexicalEntryToMatch.equals(value)) {
+                matches.push(value);
+                console.log(value);
+              }
+            } else {
+              var howWellDoesThisMatch = 0;
+              lexicalEntryToMatch = lexicalEntryToMatch.trim();
+              for (var attr in value.igt) {
+                if (value.igt.hasOwnProperty(attr) && value.igt[attr] === lexicalEntryToMatch) {
+                  howWellDoesThisMatch = howWellDoesThisMatch + 1;
+                }
+              }
+              if (howWellDoesThisMatch > 0) {
+                matches.push(value);
+                console.log(value);
+              }
+            }
+            if (key === self.length - 1) {
+              deffered.resolve(matches);
+            }
+          }, this);
+        }
+        return deffered.promise;
+      }
+    },
 
     guessContextSensitiveGlosses: {
       value: function(datum) {
@@ -327,6 +370,40 @@ var LexemeFrequency = require('./LexemeFrequency').LexemeFrequency;
         } catch (e) {
           console.warn(e);
         }
+
+      }
+    }
+
+    if (options.orthography) {
+      LexemeFrequency.calculateNonContentWords(options);
+
+      var guessWordCategory = function(word) {
+        var category = "contentWord";
+        if (options.buzzWordsArray.indexOf(word) > -1) {
+          category = "buzzWord";
+        } else if (options.nonContentWordsArray.indexOf(word) > -1) {
+          category = "functionalWord";
+        }
+        return category;
+      };
+      for (var word in options.wordFrequencies) {
+        if (!options.wordFrequencies.hasOwnProperty(word)) {
+          continue;
+        }
+        lex.add(new LexiconNode({
+          igt: {
+            orthography: word,
+            utterance: word,
+            morphemes: word,
+            gloss: word,
+          },
+          categories: [guessWordCategory(word)],
+          datumids: [options._id],
+          count: options.wordFrequencies[word],
+          utteranceContext: [word],
+          url: options.url
+        }));
+
       }
     }
 
@@ -339,12 +416,13 @@ var LexemeFrequency = require('./LexemeFrequency').LexemeFrequency;
   };
   Lexicon.NonContentWords = NonContentWords;
   Lexicon.LexemeFrequency = LexemeFrequency;
+  Lexicon.LexiconNode = LexiconNode;
+
   exports.Lexicon = Lexicon;
   global.Lexicon = Lexicon;
 
   exports.LexiconFactory = LexiconFactory;
   global.LexiconFactory = LexiconFactory;
 
-// }(typeof exports === 'object' && exports || this));
+  // }(typeof exports === 'object' && exports || this));
 })(typeof exports === 'undefined' ? this['Lexicon'] = {} : exports);
-
