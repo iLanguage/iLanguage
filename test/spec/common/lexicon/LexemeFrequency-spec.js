@@ -1,6 +1,6 @@
 var LexemeFrequency = require('../../../../src/common/lexicon/LexemeFrequency').LexemeFrequency;
 
-var specIsRunningTooLong = 5000;
+// var specIsRunningTooLong = 5000;
 
 describe('LexemeFrequency construction', function() {
 

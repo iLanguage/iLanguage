@@ -81,9 +81,14 @@ describe('Basic NLP tasks', function() {
 
 describe('Stop Words', function() {
 
+  it('should load', function() {
+    expect(NonContentWords).toBeDefined();
+  });
+
   it('should accept a space seperated list', function() {
     var spaceSeparatedList = 'a an the he she    it  we go    be';
     var result = NonContentWords.processNonContentWords({
+      orthography: '',
       nonContentWordsArray: spaceSeparatedList,
       userSpecifiedNonContentWords: true
     });
