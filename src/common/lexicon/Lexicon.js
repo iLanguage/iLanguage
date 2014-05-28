@@ -332,7 +332,7 @@ var LexemeFrequency = require('./LexemeFrequency').LexemeFrequency;
     var lex = new Lexicon();
     lex.precedenceRelations = new UniqueSet();
     lex.references = new UniqueSet();
-    if (options.precedenceRelations) {
+    if (options.precedenceRelations && options.precedenceRelations.length > 0) {
       for (var i in options.precedenceRelations) {
         try {
           //Add source target and value to the link
