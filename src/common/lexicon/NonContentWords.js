@@ -98,12 +98,13 @@
     } else {
       userCloud.morphemesRegExp = null;
     }
-
+    return userCloud;
   };
 
   var processNonContentWords = function(userCloud) {
     var processed = false,
-      stringCheck;
+      stringCheck,
+      commasOrSpaces;
 
     processNonContentMorphemes(userCloud);
 
@@ -137,6 +138,7 @@
     } else {
       userCloud.nonContentWordsRegExp = null;
     }
+    return userCloud;
   };
 
   var filterText = function(userCloud) {
