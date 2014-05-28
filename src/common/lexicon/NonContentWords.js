@@ -80,75 +80,63 @@
     }
 
     userCloud.morphemesArray = userCloud.morphemesArray.concat(userCloud.prefixesArray).concat(userCloud.suffixesArray);
-
     userCloud.morphemesArray = getUnique(userCloud.morphemesArray).sort(function(a, b) {
       return b.length - a.length;
     });
-    console.log(userCloud.morphemesArray);
-    userCloud.morphemesRegExp = userCloud.morphemesArray.map(function(morpheme) {
-      console.log('morpheme' + morpheme);
-      if (morpheme.indexOf('-') === 0) {
-        return morpheme.replace('-', '') + '$';
-      }
-      if (morpheme.indexOf('-') === morpheme.length - 1) {
-        return '^' + morpheme.replace('-', '');
-      }
-    }).join('|');
-    userCloud.morphemesRegExp = new RegExp('(' + userCloud.morphemesRegExp + ')');
+    if (userCloud.morphemesArray.length > 0) {
+      console.log(userCloud.morphemesArray);
+      userCloud.morphemesRegExp = userCloud.morphemesArray.map(function(morpheme) {
+        console.log('morpheme' + morpheme);
+        if (morpheme.indexOf('-') === 0) {
+          return morpheme.replace('-', '') + '$';
+        }
+        if (morpheme.indexOf('-') === morpheme.length - 1) {
+          return '^' + morpheme.replace('-', '');
+        }
+      }).join('|');
+      userCloud.morphemesRegExp = new RegExp('(' + userCloud.morphemesRegExp + ')');
+    } else {
+      userCloud.morphemesRegExp = null;
+    }
 
   };
 
   var processNonContentWords = function(userCloud) {
-    var providedNonContentWords = userCloud.nonContentWordsArray;
-    // console.log('userCloud.nonContentWords', userCloud.nonContentWords);
-    var processed = false;
-    // console.log('providedNonContentWords', providedNonContentWords);
+    var processed = false,
+      stringCheck;
 
     processNonContentMorphemes(userCloud);
 
     if (!userCloud.userSpecifiedNonContentWords) {
       userCloud.wordFrequencies = null;
-      var autoCalculatedNonContentWords = LexemeFrequency.calculateNonContentWords(userCloud).nonContentWordsArray;
-      console.log('autoCalculatedNonContentWords', autoCalculatedNonContentWords.join(','));
-      processed = true;
-      userCloud.nonContentWordsArray = autoCalculatedNonContentWords;
-      userCloud.nonContentWordsRegExp = new RegExp('^(' + autoCalculatedNonContentWords.join('|') + ')$');
-      return userCloud;
-    }
-    // console.log('not autogen userCloud.nonContentWords ', userCloud.nonContentWords);
-
-    var stringCheck = providedNonContentWords.toString().substring(0, 20),
+      userCloud.nonContentWordsArray = LexemeFrequency.calculateNonContentWords(userCloud).nonContentWordsArray;
+    } else {
+      stringCheck = userCloud.nonContentWordsArray.toString().substring(0, 20),
       commasOrSpaces = /[,\s]+/g;
 
-    if (stringCheck.indexOf('/') === 0) {
-      // user most likely provided regex of stop words
-      processed = true;
-      userCloud.nonContentWordsArray = providedNonContentWords.toString().replace('/^(', '').replace(')$/', '').split('|');
-      userCloud.nonContentWordsRegExp = new RegExp(providedNonContentWords);
-      return userCloud;
+      if (stringCheck.indexOf('/') === 0) {
+        // user most likely provided regex of stop words
+        processed = true;
+        userCloud.nonContentWordsArray = userCloud.nonContentWordsArray.toString().replace('/^(', '').replace(')$/', '').split('|');
+      } else if (Object.prototype.toString.call(userCloud.nonContentWordsArray) === '[object Array]') {
+        // user most likely provided an array of stop words
+        processed = true;
+        userCloud.nonContentWordsArray = userCloud.nonContentWordsArray;
+      } else if ((stringCheck.indexOf(',') !== -1) || (stringCheck.indexOf(',') === -1 && stringCheck.indexOf(' ') !== -1)) {
+        // user most likely provided comma-separated or space-separated list of stop words
+        processed = true;
+        userCloud.nonContentWordsArray = userCloud.nonContentWordsArray.split(commasOrSpaces);
+      } else if (!processed) {
+        // user did not provide a parsable regex, throw error
+        throw 'Invalid RegExp ' + userCloud.nonContentWordsArray;
+      }
     }
 
-    if (Object.prototype.toString.call(providedNonContentWords) === '[object Array]') {
-      // user most likely provided an array of stop words
-      processed = true;
-      userCloud.nonContentWordsArray = providedNonContentWords;
-      userCloud.nonContentWordsRegExp = new RegExp('^(' + providedNonContentWords.join('|') + ')$');
-      return userCloud;
+    if (userCloud.nonContentWordsArray.length > 0) {
+      userCloud.nonContentWordsRegExp = new RegExp('^(' + userCloud.nonContentWordsArray.join('|') + ')$');
+    } else {
+      userCloud.nonContentWordsRegExp = null;
     }
-
-    if ((stringCheck.indexOf(',') !== -1) || (stringCheck.indexOf(',') === -1 && stringCheck.indexOf(' ') !== -1)) {
-      // user most likely provided comma-separated or space-separated list of stop words
-      processed = true;
-      userCloud.nonContentWordsArray = providedNonContentWords.split(commasOrSpaces);
-      userCloud.nonContentWordsRegExp = new RegExp('^(' + providedNonContentWords.replace(commasOrSpaces, '|') + ')$');
-      return userCloud;
-    }
-
-    if (!processed) {
-      // user did not provide a parsable regex, throw error
-      throw 'Invalid RegExp ' + providedNonContentWords;
-    }
-
   };
 
   var filterText = function(userCloud) {
