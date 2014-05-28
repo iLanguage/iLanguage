@@ -18,7 +18,12 @@
   var calculateWordFrequencies = function(obj) {
     obj.vocabSize = 0;
     obj.textSize = 0;
-
+    obj.prefixesArray = obj.prefixesArray || [];
+    obj.suffixesArray = obj.suffixesArray || [];
+    var wordsArrayForMorphemeCalculation = [];
+    var currentWord,
+      currentMorpheme,
+      stem;
     var tokensAsArray = obj.orthography;
     if (Object.prototype.toString.call(tokensAsArray) !== '[object Array]') {
       tokensAsArray = Tokenizer.tokenizeInput(obj.orthography);
@@ -26,7 +31,7 @@
 
     var frequencyMap = {};
     for (var word = 0; word < tokensAsArray.length; word++) {
-      var currentWord = tokensAsArray[word].toLowerCase().replace(/^\s+|\s+$/g, '');
+      currentWord = tokensAsArray[word].toLowerCase().replace(/^\s+|\s+$/g, '');
 
       for (var functionToRun in obj.functionsPerWord) {
         if (!obj.functionsPerWord.hasOwnProperty(functionToRun)) {
@@ -40,6 +45,7 @@
       } else {
         frequencyMap[currentWord] = 1;
         obj.vocabSize += 1;
+        wordsArrayForMorphemeCalculation.push(currentWord);
       }
       obj.textSize += 1;
 
@@ -55,6 +61,62 @@
         });
       }
     }
+    /* sort the morphems by length */
+    obj.prefixesArray.sort(function(a, b) {
+      return b.length - a.length;
+    });
+    obj.suffixesArray.sort(function(a, b) {
+      return b.length - a.length;
+    });
+
+    if ((obj.prefixesArray && obj.prefixesArray.length > 0) || (obj.suffixesArray && obj.suffixesArray > 0)) {
+      obj.lexicalExperience = {};
+      var wordsOrderedByPrefix = wordsArrayForMorphemeCalculation.sort(function(a, b) {
+        return a.localeCompare(b);
+      });
+      for (var wordIndex = 0; wordIndex < wordsArrayForMorphemeCalculation.length; wordIndex++) {
+        currentWord = wordsArrayForMorphemeCalculation[wordIndex];
+        // if (obj.lexicalExperience[currentWord] /* lexical blocking, dont decompose words which are whole */ ) {
+        //   console.log('  Not decomposing known word: ' + currentWord);
+        //   continue;
+        // }
+        /* see if any suffixes apply to this word */
+        for (var suffixIndex = 0; suffixIndex < obj.suffixesArray.length; suffixIndex++) {
+          currentMorpheme = obj.suffixesArray[suffixIndex].replace(/-/, '');
+          // stem = currentWord.replace(new RegExp(currentMorpheme + '$', i), '');
+          stem = currentWord.replace(currentMorpheme, '');
+          if (currentWord.indexOf(currentMorpheme) === currentWord.length - currentMorpheme.length && stem.length > 2 /* only consider roots longer than 2 characterse */ ) {
+            obj.lexicalExperience[currentMorpheme] = obj.lexicalExperience[currentMorpheme] || [];
+            obj.lexicalExperience[currentMorpheme].push(stem + '-' + currentMorpheme);
+
+            obj.lexicalExperience[stem] = obj.lexicalExperience[stem] || [];
+            obj.lexicalExperience[stem].push(stem + '-' + currentMorpheme);
+
+            console.log('  Found a suffix ' + currentMorpheme, obj.lexicalExperience[currentMorpheme]);
+            console.log('  Found a stem ' + stem, obj.lexicalExperience[stem]);
+          }
+        }
+
+        /* see if any prefixes apply to this word */
+        for (var prefixIndex = 0; prefixIndex < obj.prefixesArray.length; prefixIndex++) {
+          currentMorpheme = obj.prefixesArray[prefixIndex].replace(/-/, '');
+          stem = currentWord.replace(currentMorpheme, '');
+          if (currentWord.indexOf(currentMorpheme) === 0 && stem.length > 2 /* only consider roots longer than 2 characterse */ ) {
+            obj.lexicalExperience[currentMorpheme] = obj.lexicalExperience[currentMorpheme] || [];
+            obj.lexicalExperience[currentMorpheme].push(currentMorpheme + '-' + stem);
+
+            obj.lexicalExperience[stem] = obj.lexicalExperience[stem] || [];
+            obj.lexicalExperience[stem].push(currentMorpheme + '-' + stem);
+
+            console.log('  Found a prefix ' + currentMorpheme, obj.lexicalExperience[currentMorpheme]);
+            console.log('  Found a stem ' + stem, obj.lexicalExperience[stem]);
+          }
+        }
+
+
+      }
+    }
+
     obj.wordFrequencies = obj.wordFrequencies.sort(function(a, b) {
       return -(a.count - b.count);
     });
@@ -93,20 +155,20 @@
         continue;
       }
       var wordRank = (wordFrequencies[oIndex].count / obj.vocabSize);
-      // console.log("wordFrequencies[oIndex] " + wordFrequencies[oIndex] + ' ' + wordFrequencies[oIndex] + ' ' + wordRank);
+      // console.log('wordFrequencies[oIndex] ' + wordFrequencies[oIndex] + ' ' + wordFrequencies[oIndex] + ' ' + wordRank);
       if (wordRank > cutoffPercent) {
         if (wordFrequencies[oIndex].orthography.length > 5) {
           buzzWords.push(wordFrequencies[oIndex].orthography);
-          wordFrequencies[oIndex].categories = ["buzzWord"];
+          wordFrequencies[oIndex].categories = ['buzzWord'];
         } else {
           probablyNotBuzzWords.push(wordFrequencies[oIndex].orthography);
-          wordFrequencies[oIndex].categories = ["functionalWord"];
+          wordFrequencies[oIndex].categories = ['functionalWord'];
         }
       }
       /* If the word is too short, automatically consider it a stop word */
       if (wordFrequencies[oIndex].orthography.length < 3) {
         probablyNotBuzzWords.push(wordFrequencies[oIndex].orthography);
-        wordFrequencies[oIndex].categories = ["functionalWord"];
+        wordFrequencies[oIndex].categories = ['functionalWord'];
       }
     }
 
@@ -123,6 +185,8 @@
         return a.localeCompare(b);
       });
     }
+
+
     return obj;
 
   };
