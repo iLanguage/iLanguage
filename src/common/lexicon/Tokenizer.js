@@ -12,6 +12,7 @@
   var tokenizeInput = function(doc) {
     if (!doc.orthography || !doc.orthography.length) {
       doc.orthographyArray = [];
+      doc.orthographicWords = [];
       return doc;
     }
     var orthographicTokens = [],
@@ -61,6 +62,7 @@
     });
 
     doc.orthographyArray = orthographicTokens;
+    doc.orthographicWords = orthographicWords;
     return doc;
 
   };

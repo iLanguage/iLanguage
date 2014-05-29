@@ -13,6 +13,7 @@ describe('Tokenizer construction', function() {
       orthography: 'There\'s a user-defined text: with ‘some’ stuff. And another. -too,  2011- ᖑᑎᓪᓗᒍ. again.',
     });
     expect(doc.orthographyArray).toEqual(['There', '\'', 's', 'a', 'user-defined', 'text', ':', 'with', '‘', 'some', '’', 'stuff', '.', 'And', 'another', '.', '-', 'too', ',', '2011', '-', 'ᖑᑎᓪᓗᒍ', '.', 'again', '.']);
+    expect(doc.orthographicWords).toEqual([ 'There', 'user-defined', 'text', 'with', 'some', 'stuff', 'And', 'another', 'too', '2011', 'ᖑᑎᓪᓗᒍ', 'again' ]);
     // expect(doc.tokenizeOnTheseRegExp.toString()).toEqual('/[!-,.-/:-@[-`{-~〱-〵゛゜゠ーｰ\s]+/');
     // expect(doc.wordExternalPunctuationRegExp.toString()).toEqual('/(^[-\'\u2000-\u206F]+|[-\'\u2000-\u206F]+$)/');
   });

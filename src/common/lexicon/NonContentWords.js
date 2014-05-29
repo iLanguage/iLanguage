@@ -140,9 +140,7 @@
     }
 
     if (userCloud.nonContentWordsArray.length > 0) {
-      userCloud.nonContentWordsRegExp = new RegExp('^(' + userCloud.nonContentWordsArray.map(function(word) {
-        return regExpEscape(word);
-      }).join('|') + ')$');
+      userCloud.nonContentWordsRegExp = new RegExp('^(' + userCloud.nonContentWordsArray.join('|') + ')$');
     } else {
       userCloud.nonContentWordsRegExp = null;
     }
@@ -151,7 +149,7 @@
 
   var filterText = function(userCloud) {
     console.log('nonContentWordsRegExp', userCloud.nonContentWordsRegExp);
-    var filteredText = Tokenizer.tokenizeInput(userCloud).orthographyArray.map(function(word) {
+    var filteredText = Tokenizer.tokenizeInput(userCloud).orthographicWords.map(function(word) {
       if (!userCloud.nonContentWordsRegExp.test(word)) {
         if (userCloud.morphemesRegExp) {
           word = word.replace(userCloud.morphemesRegExp, '');
