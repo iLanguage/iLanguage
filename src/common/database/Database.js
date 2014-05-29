@@ -41,6 +41,18 @@
           console.warn("Cannot fetch data with out a url");
           return;
         }
+
+        var cantLogIn = function(reason) {
+          console.log(reason);
+          self.register().then(function() {
+            self.fetchAllDocuments().then(function(documents) {
+              deffered.resolve(documents);
+            }, function(reason) {
+              deffered.reject(reason);
+            });
+          });
+        };
+
         CORS.makeCORSRequest({
           type: 'POST',
           dataType: "json",
@@ -57,30 +69,17 @@
             dataType: "json",
             url: self.url + "/" + self.dbname + "/" + self.allDocumentsMapReduce
           }).then(function(result) {
-              if (result.rows && result.rows.length) {
-                deffered.resolve(result.rows.map(function(doc) {
-                  return doc.value;
-                }));
-              } else {
-                deffered.resolve([]);
-              }
-            },
-            function(reason) {
-              console.log(reason);
-              self.register().then(function() {
-                self.fetchAllDocuments().then(function(documents) {
-                  deffered.resolve(documents);
-                }, function(reason) {
-                  deffered.reject(reason);
-                });
-              });
-            });
+            if (result.rows && result.rows.length) {
+              deffered.resolve(result.rows.map(function(doc) {
+                return doc.value;
+              }));
+            } else {
+              deffered.resolve([]);
+            }
+          }, cantLogIn);
 
 
-        }, function() {
-          console.log("Failed to login ");
-          deffered.reject();
-        });
+        }, cantLogIn);
         return deffered.promise;
       }
     },
