@@ -27,7 +27,7 @@
       stem;
     var tokensAsArray = obj.orthography;
     if (Object.prototype.toString.call(tokensAsArray) !== '[object Array]') {
-      tokensAsArray = Tokenizer.tokenizeInput(obj).orthographyArray;
+      tokensAsArray = Tokenizer.tokenizeInput(obj).orthographicWords;
     }
 
     var frequencyMap = {};
