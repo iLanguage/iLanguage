@@ -20,18 +20,19 @@
     obj.textSize = 0;
     obj.prefixesArray = obj.prefixesArray || [];
     obj.suffixesArray = obj.suffixesArray || [];
+
     var wordsArrayForMorphemeCalculation = [];
     var currentWord,
       currentMorpheme,
       stem;
     var tokensAsArray = obj.orthography;
     if (Object.prototype.toString.call(tokensAsArray) !== '[object Array]') {
-      tokensAsArray = Tokenizer.tokenizeInput(obj.orthography);
+      tokensAsArray = Tokenizer.tokenizeInput(obj).orthographyArray;
     }
 
     var frequencyMap = {};
     for (var word = 0; word < tokensAsArray.length; word++) {
-      currentWord = tokensAsArray[word].toLowerCase().replace(/^\s+|\s+$/g, '');
+      currentWord = tokensAsArray[word];
 
       for (var functionToRun in obj.functionsPerWord) {
         if (!obj.functionsPerWord.hasOwnProperty(functionToRun)) {
@@ -92,8 +93,8 @@
             obj.lexicalExperience[stem] = obj.lexicalExperience[stem] || [];
             obj.lexicalExperience[stem].push(stem + '-' + currentMorpheme);
 
-            console.log('  Found a suffix ' + currentMorpheme, obj.lexicalExperience[currentMorpheme]);
-            console.log('  Found a stem ' + stem, obj.lexicalExperience[stem]);
+            // console.log('  Found a suffix ' + currentMorpheme);
+            // console.log('  Found a stem ' + stem);
           }
         }
 
@@ -108,14 +109,14 @@
             obj.lexicalExperience[stem] = obj.lexicalExperience[stem] || [];
             obj.lexicalExperience[stem].push(currentMorpheme + '-' + stem);
 
-            console.log('  Found a prefix ' + currentMorpheme, obj.lexicalExperience[currentMorpheme]);
-            console.log('  Found a stem ' + stem, obj.lexicalExperience[stem]);
+            // console.log('  Found a prefix ' + currentMorpheme);
+            // console.log('  Found a stem ' + stem);
           }
         }
 
-
       }
     }
+    console.log(obj.lexicalExperience);
 
     obj.wordFrequencies = obj.wordFrequencies.sort(function(a, b) {
       return -(a.count - b.count);
