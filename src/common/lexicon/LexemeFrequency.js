@@ -31,6 +31,7 @@
     }
 
     var frequencyMap = {};
+    var caseInsensitiveKey;
     for (var word = 0; word < tokensAsArray.length; word++) {
       currentWord = tokensAsArray[word];
 
@@ -41,27 +42,56 @@
         obj.functionsPerWord[functionToRun](currentWord); /* TODO dont loose caller's context */
       }
 
-      if (frequencyMap[currentWord]) {
-        frequencyMap[currentWord] += 1;
+      /* intelligently use the most frequent case */
+      caseInsensitiveKey = currentWord.toLocaleLowerCase();
+      if (frequencyMap[caseInsensitiveKey]) {
+        if (frequencyMap[caseInsensitiveKey][currentWord]) {
+          frequencyMap[caseInsensitiveKey][currentWord] += 1;
+        } else {
+          frequencyMap[caseInsensitiveKey][currentWord] = 1;
+        }
       } else {
-        frequencyMap[currentWord] = 1;
+        frequencyMap[caseInsensitiveKey] = {};
+        frequencyMap[caseInsensitiveKey][currentWord] = 1;
         obj.vocabSize += 1;
-        wordsArrayForMorphemeCalculation.push(currentWord);
+        wordsArrayForMorphemeCalculation.push(caseInsensitiveKey);
       }
       obj.textSize += 1;
 
     }
 
+    /* convert the frequency map into an array of words with more meta data */
     obj.wordFrequencies = [];
-
-    for (var item in frequencyMap) {
-      if (frequencyMap.hasOwnProperty(item)) {
-        obj.wordFrequencies.push({
-          orthography: item,
-          count: frequencyMap[item]
-        });
+    // console.log(frequencyMap);
+    for (var caseGroupedWord in frequencyMap) {
+      if (!frequencyMap.hasOwnProperty(caseGroupedWord)) {
+        continue;
       }
+      var totalCount = 0;
+      var mostPopularCase = '';
+      var mostPopularCaseCount = 0;
+      for (var caseSensitiveWord in frequencyMap[caseGroupedWord]) {
+        if (!frequencyMap[caseGroupedWord].hasOwnProperty(caseSensitiveWord)) {
+          continue;
+        }
+        totalCount += frequencyMap[caseGroupedWord][caseSensitiveWord];
+        if (frequencyMap[caseGroupedWord][caseSensitiveWord] > mostPopularCaseCount) {
+          mostPopularCase = caseSensitiveWord;
+          mostPopularCaseCount = frequencyMap[caseGroupedWord][caseSensitiveWord];
+        }
+      }
+      var wordEntry = {
+        orthography: mostPopularCase,
+        count: totalCount
+      };
+      if (wordEntry.count > mostPopularCaseCount) {
+        wordEntry.alternates = frequencyMap[caseGroupedWord]
+      }
+      obj.wordFrequencies.push(wordEntry);
     }
+    // console.log(obj.wordFrequencies);
+
+
     /* sort the morphems by length */
     obj.prefixesArray.sort(function(a, b) {
       return b.length - a.length;
@@ -116,7 +146,7 @@
 
       }
     }
-    console.log(obj.lexicalExperience);
+    // console.log(obj.lexicalExperience);
 
     obj.wordFrequencies = obj.wordFrequencies.sort(function(a, b) {
       return -(a.count - b.count);
@@ -187,7 +217,7 @@
       });
     }
 
-    console.log(obj.nonContentWordsArray);
+    // console.log(obj.nonContentWordsArray);
     return obj;
 
   };

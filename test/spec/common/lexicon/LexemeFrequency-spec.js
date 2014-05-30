@@ -8,9 +8,32 @@ describe('LexemeFrequency construction', function() {
     expect(LexemeFrequency).toBeDefined();
   });
 
+  it('should let the user specify the case of words', function() {
+    var doc = LexemeFrequency.calculateWordFrequencies({
+      orthography: ' Intense Hardworking  Easily-Found driven Helpful',
+    });
+
+    expect(doc.wordFrequencies).toEqual([{
+      orthography: 'Intense',
+      count: 1
+    }, {
+      orthography: 'Hardworking',
+      count: 1
+    }, {
+      orthography: 'Easily-Found',
+      count: 1
+    }, {
+      orthography: 'driven',
+      count: 1
+    }, {
+      orthography: 'Helpful',
+      count: 1
+    }]);
+  });
+
   it('should sort prefixes by length', function() {
     var doc = LexemeFrequency.calculateWordFrequencies({
-      orthography: 'undo untie under',
+      orthography: 'undo untie under ',
       prefixesArray: ['un-', 'under-']
     });
 

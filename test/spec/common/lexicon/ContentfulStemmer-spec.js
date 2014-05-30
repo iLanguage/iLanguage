@@ -23,15 +23,16 @@ describe('Basic NLP tasks', function() {
     expect(result.wordFrequencies)
       .toEqual([{
         orthography: 'A',
-        count: 1
+        count: 2,
+        alternates: {
+          A: 1,
+          a: 1
+        }
       }, {
         orthography: 'cloud',
         count: 1
       }, {
         orthography: 'is',
-        count: 1
-      }, {
-        orthography: 'a',
         count: 1
       }, {
         orthography: 'visible',
@@ -63,7 +64,7 @@ describe('Basic NLP tasks', function() {
       orthography: sampleTexts.shortText
     });
     expect(result.nonContentWordsArray)
-      .toEqual(['A', 'a', 'is', 'of']);
+      .toEqual(['A', 'is', 'of']);
   });
 
   it('should produce an order word frequency list', function() {
@@ -147,52 +148,48 @@ describe('Language Independant', function() {
 
   it('should accept a (test English 1) text', function() {
     var textToTest = {
-      orthography: sampleTexts.cloud1,
-      caseInsensitive: true
+      orthography: sampleTexts.cloud1
       // cutoff: 0.2
     };
     var result = LexemeFrequency.calculateNonContentWords(textToTest);
     expect(result.nonContentWordsArray)
-      .toEqual(['1', '2', '3', '4', '42', '5', '6', '7', 'a', 'album', 'also', 'an', 'and', 'as', 'band', 'be', 'by', 'cloud', 'comic', 'ep', 'film', 'from', 'fu', 'game', 'group', 'in', 'indie', 'is', 'mass', 'music', 'of', 'on', 'open', 'or', 'other', 'pc', 'play', 'rock', 's', 'see', 'song', 'st', 'that', 'the', 'to', 'uk', 'used', 'uses', 'wan', 'white', 'will', 'zach']);
+      .toEqual(['1', '2', '3', '4', '42', '5', '6', '7', 'Cloud', 'EP', 'Fu', 'Music', 'Other', 'PC', 'See', 'St', 'UK', 'Wan', 'White', 'Zach', 'a', 'album', 'also', 'an', 'and', 'as', 'band', 'be', 'by', 'comic', 'film', 'from', 'game', 'group', 'in', 'indie', 'is', 'mass', 'of', 'on', 'open', 'or', 'play', 'rock', 's', 'song', 'that', 'the', 'to', 'used', 'uses', 'will']);
     expect(result.buzzWordsArray)
-      .toEqual(['between', 'british', 'character', 'clouds', 'computer', 'computing', 'describe', 'disambiguation', 'electron', 'experimental', 'fiction', 'information', 'interstellar', 'literature', 'operating', 'science', 'sobiech', 'software', 'source', 'storage', 'system', 'technology', 'writer']);
+      .toEqual(['British', 'Clouds', 'Electron', 'Fiction', 'Information', 'Interstellar', 'Literature', 'Science', 'Sobiech', 'Technology', 'between', 'character', 'computer', 'computing', 'describe', 'disambiguation', 'experimental', 'operating', 'software', 'source', 'storage', 'system', 'writer']);
   });
 
   it('should accept a (test English 2) text', function() {
     var textToTest = {
-      orthography: sampleTexts.cloud2,
-      caseInsensitive: true
+      orthography: sampleTexts.cloud2
     };
     var result = LexemeFrequency.calculateNonContentWords(textToTest);
     expect(result.nonContentWordsArray)
-      .toEqual(['1', '15', '1950s', '1990s', '2', '3', '4', '5', '6', '7', '8', 'a', 'also', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'can', 'cloud', 'data', 'do', 'e', 'for', 'g', 'ge', 'go', 'in', 'is', 'it', 'like', 'more', 'no', 'of', 'on', 'or', 'over', 'run', 's', 'such', 'term', 'that', 'the', 'this', 'time', 'to', 'up', 'use', 'used', 'users', 'which', 'with']);
+      .toEqual(['1', '15', '1950s', '1990s', '2', '3', '4', '5', '6', '7', '8', 'GE', 'This', 'a', 'also', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'can', 'cloud', 'data', 'do', 'e', 'for', 'g', 'go', 'in', 'is', 'it', 'like', 'more', 'no', 'of', 'on', 'or', 'over', 'run', 's', 'such', 'term', 'that', 'the', 'time', 'to', 'up', 'use', 'used', 'users', 'which', 'with']);
     expect(result.buzzWordsArray)
-      .toEqual(['application', 'business', 'client', 'computer', 'computers', 'computing', 'founded', 'hardware', 'hosted', 'infrastructure', 'location', 'mainframe', 'multiple', 'network', 'remote', 'resources', 'server', 'service', 'services', 'shared', 'sharing', 'software', 'terminals', 'through', 'utility']);
+      .toEqual(['Service', 'application', 'business', 'client', 'computer', 'computers', 'computing', 'founded', 'hardware', 'hosted', 'infrastructure', 'location', 'mainframe', 'multiple', 'network', 'remote', 'resources', 'server', 'services', 'shared', 'sharing', 'software', 'terminals', 'through', 'utility']);
   });
 
   it('should accept a (test French) text', function() {
     var textToTest = {
-      orthography: sampleTexts.french,
-      caseInsensitive: true
+      orthography: sampleTexts.french
     };
     var result = LexemeFrequency.calculateNonContentWords(textToTest);
     expect(result.nonContentWordsArray)
-      .toEqual(['0', '1', '10', '11', '12', '2', '3', '4', '40', '5', '6', '7', '8', '9', 'a', 'air', 'au', 'b', 'c', 'ce', 'comme', 'd', 'd1', 'd2', 'dans', 'de', 'des', 'du', 'dû', 'eau', 'en', 'est', 'et', 'eu', 'glace', 'i', 'ii', 'il', 'jusqu', 'l', 'la', 'le', 'les', 'leur', 'mais', 'ne', 'nuage', 'on', 'ou', 'où', 'par', 'plus', 'pour', 'qu', 'que', 'qui', 's', 'sa', 'se', 'selon', 'si', 'un', 'une', 'y', '«', '°c', '»', 'à']);
+      .toEqual(['0', '1', '10', '11', '12', '2', '3', '4', '40', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D1', 'D2', 'I', 'II', 'Si', 'air', 'au', 'ce', 'comme', 'd', 'dans', 'de', 'des', 'du', 'dû', 'eau', 'en', 'est', 'et', 'eu', 'glace', 'il', 'jusqu', 'l', 'la', 'le', 'les', 'leur', 'mais', 'ne', 'nuage', 'on', 'ou', 'où', 'par', 'plus', 'pour', 'qu', 'que', 'qui', 's', 'sa', 'se', 'selon', 'un', 'une', 'y', '«', '°C', '»', 'à']);
     expect(result.buzzWordsArray)
-      .toEqual(['atmosphère', 'classification', 'condensation', 'famille', 'formation', 'gouttelettes', 'liquide', 'modifier', 'nuages', 'particules', 'produit', 'refroidissement', 'siècle', 'vapeur']);
+      .toEqual(['Famille', 'atmosphère', 'classification', 'condensation', 'formation', 'gouttelettes', 'liquide', 'modifier', 'nuages', 'particules', 'produit', 'refroidissement', 'siècle', 'vapeur']);
   });
 
   it('should accept a text and a weight', function() {
     var textToTest = {
       orthography: sampleTexts.cloud1,
-      cutoff: 0.0001,
-      caseInsensitive: true
+      cutoff: 0.0001
     };
     var result = LexemeFrequency.calculateNonContentWords(textToTest);
     expect(result.nonContentWordsArray)
-      .toEqual(['1', '1797', '1960s', '1969', '1977', '1980s', '1990s', '1992', '1997', '2', '2000', '2005', '3', '4', '42', '5', '522', '560', '6', '60s', '7', 'a', 'after', 'album', 'also', 'an', 'and', 'arntz', 'as', 'b-boy', 'band', 'based', 'be', 'book', 'bou', 'by', 'cake', 'chaka', 'cloud', 'com', 'comic', 'cut', 'dense', 'don', 'dwarf', 'early', 'ep', 'film', 'final', 'fire', 'frayn', 'from', 'fu', 'fung', 'game', 'gos', 'group', 'hide', 'hong', 'in', 'indie', 'is', 'joni', 'keng', 'khan', 'king', 'kings', 'known', 'kong', 'kung', 'late', 'lee', 'level', 'mass', 'may', 'media', 'milky', 'model', 'music', 'near', 'nine', 'of', 'on', 'open', 'or', 'other', 'our', 'paris', 'pc', 'play', 'point', 'pop', 'rays', 'red', 'refer', 'rise', 'rock', 's', 'saint', 'see', 'set', 'sites', 'son', 'song', 'sound', 'st', 'stars', 'tag', 'tags', 'text', 'than', 'that', 'the', 'this', 'to', 'uk', 'use', 'used', 'uses', 'video', 'vii', 'wan', 'way', 'web', 'white', 'will', 'zach']);
+      .toEqual(['1', '1797', '1960s', '1969', '1977', '1980s', '1990s', '1992', '1997', '2', '2000', '2005', '3', '4', '42', '5', '522', '560', '6', '60s', '7', 'Arntz', 'Bou', 'Cake', 'Chaka', 'Cloud', 'Cut', 'Don', 'EP', 'Final', 'Fire', 'Frayn', 'Fu', 'Fung', 'Hong', 'Joni', 'Keng', 'Khan', 'King', 'Kings', 'Kong', 'Kung', 'Lee', 'Level', 'Milky', 'Music', 'Nine', 'Other', 'PC', 'Paris', 'Point', 'Red', 'Rise', 'Saint', 'See', 'St', 'Tag', 'This', 'UK', 'VII', 'Wan', 'Way', 'White', 'Zach', 'a', 'after', 'album', 'also', 'an', 'and', 'as', 'b-boy', 'band', 'based', 'be', 'book', 'by', 'com', 'comic', 'dense', 'dwarf', 'early', 'film', 'from', 'gOS', 'game', 'group', 'hide', 'in', 'indie', 'is', 'known', 'late', 'mass', 'may', 'media', 'model', 'near', 'of', 'on', 'open', 'or', 'our', 'play', 'pop', 'rays', 'refer', 'rock', 's', 'set', 'sites', 'son', 'song', 'sound', 'stars', 'tags', 'text', 'than', 'that', 'the', 'to', 'use', 'used', 'uses', 'video', 'web', 'will']);
     expect(result.buzzWordsArray)
-      .toEqual(['analogy', 'aristophanes', 'around', 'atmosphere', 'australia', 'australian', 'average', 'better', 'between', 'british', 'browser-based', 'california', 'captain', 'chamber', 'character', 'chlodomer', 'client', 'clodoald', 'cloudbase', 'clouds', 'cloudstack', 'cloudy', 'comedic', 'comedy', 'comics', 'commune', 'company', 'computer', 'computers', 'computing', 'condensed', 'consisting', 'containing', 'content', 'contents', 'coordinate', 'cosmic', 'county', 'crystals', 'cumberland', 'dancer', 'depiction', 'describe', 'development', 'develops', 'device', 'directed', 'director', 'disambiguation', 'droplets', 'electron', 'experimental', 'facility', 'fantasy', 'fiction', 'fictional', 'florida', 'former', 'france', 'frozen', 'galactic', 'galaxies', 'galaxy', 'headquarters', 'information', 'instantly', 'internet-based', 'interstellar', 'investigate', 'irregular', 'literature', 'magellanic', 'makers', 'marvel', 'mathematics', 'mccloud', 'medieval', 'michael', 'microphysics', 'microsounds', 'mitchell', 'molecular', 'molecules', 'mysterons', 'mystical', 'naughty', 'networked', 'nosound', 'nucleus', 'online', 'operated', 'operating', 'orbits', 'orchestration', 'orleans', 'particle', 'philosophical', 'physics', 'playwright', 'produced', 'puzzle', 'ranaldo', 'rather', 'region', 'retroglide', 'richard', 'saint-cloud', 'scarlet', 'science', 'scottish', 'series', 'servers', 'settlement', 'skyborne', 'sobiech', 'software', 'source', 'spectrum', 'spires', 'statistical', 'storage', 'stored', 'strife', 'studies', 'suburbs', 'sunset', 'surname', 'suspended', 'sydney', 'system', 'technology', 'television', 'third-person', 'thompson', 'three-dimensional', 'tiamat', 'turning', 'typically', 'unknowing', 'usable', 'user-generated', 'vertices', 'visible', 'visual', 'western', 'writer', 'written']);
+      .toEqual(['Aristophanes', 'Australia', 'Australian', 'Average', 'British', 'California', 'Captain', 'Chlodomer', 'Clodoald', 'CloudStack', 'Cloudbase', 'Clouds', 'Cloudy', 'Contents', 'County', 'Cumberland', 'Electron', 'Fantasy', 'Fiction', 'Florida', 'France', 'Information', 'Internet-based', 'Interstellar', 'Literature', 'Magellanic', 'Marvel', 'McCloud', 'Michael', 'Mitchell', 'Molecular', 'Mysterons', 'Naughty', 'Nosound', 'Orleans', 'Ranaldo', 'Retroglide', 'Richard', 'Saint-Cloud', 'Scarlet', 'Science', 'Scottish', 'Sobiech', 'Spectrum', 'Spires', 'Strife', 'Sunset', 'Sydney', 'Technology', 'Thompson', 'Tiamat', 'Unknowing', 'analogy', 'around', 'atmosphere', 'better', 'between', 'browser-based', 'chamber', 'character', 'client', 'comedic', 'comedy', 'comics', 'commune', 'company', 'computer', 'computers', 'computing', 'condensed', 'consisting', 'containing', 'content', 'coordinate', 'cosmic', 'crystals', 'dancer', 'depiction', 'describe', 'development', 'develops', 'device', 'directed', 'director', 'disambiguation', 'droplets', 'experimental', 'facility', 'fictional', 'former', 'frozen', 'galactic', 'galaxies', 'galaxy', 'headquarters', 'instantly', 'investigate', 'irregular', 'makers', 'mathematics', 'medieval', 'microphysics', 'microsounds', 'molecules', 'mystical', 'networked', 'nucleus', 'online', 'operated', 'operating', 'orbits', 'orchestration', 'particle', 'philosophical', 'physics', 'playwright', 'produced', 'puzzle', 'rather', 'region', 'series', 'servers', 'settlement', 'skyborne', 'software', 'source', 'statistical', 'storage', 'stored', 'studies', 'suburbs', 'surname', 'suspended', 'system', 'television', 'third-person', 'three-dimensional', 'turning', 'typically', 'usable', 'user-generated', 'vertices', 'visible', 'visual', 'western', 'writer', 'written']);
   });
 
   it('should produce a filtered text for stop words', function() {
