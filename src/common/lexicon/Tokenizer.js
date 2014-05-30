@@ -3,10 +3,15 @@
   /* http://jrgraphix.net/research/unicode_blocks.php */
   var defaults = {
     punctuationArray: ['\u0021-\u002C', '\u002E-\u002F', '\u003A-\u0040', '\u005B-\u0060', '\u007B-\u007E', '\u3031-\u3035', '\u309b', '\u309c', '\u30a0', '\u30fc', '\uff70', '\u2000-\u206F'],
-    fineWordInternallyButNotExternallyArray: ['-', '\'', '-'],
+    fineWordInternallyButNotExternallyArray: ['-', '\'', '-', '-'],
     wordDelimitersArray: [],
     // morphemesRegExp = /[はをがはのに。、「」、。・]+/g;
     japaneseWordBoundaryMorphemes: ['\u3001-\u303F', '\u3040-\u309F', '\u30A0-\u30FF']
+  };
+
+  var regExpEscape = function(s) {
+    return String(s).replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1').
+    replace(/\x08/g, '\\x08');
   };
 
   var tokenizeInput = function(doc) {
@@ -23,6 +28,7 @@
       wordBoundaryMorphemes = doc.wordBoundaryMorphemes,
       fineWordInternallyButNotExternallyArray = doc.fineWordInternallyButNotExternallyArray || defaults.fineWordInternallyButNotExternallyArray;
 
+      // fineWordInternallyButNotExternallyArray = fineWordInternallyButNotExternallyArray.concat(doc.punctuation); //TODO test this
     if (doc.caseInsensitive) {
       text = text.toLocaleLowerCase();
     }
@@ -37,20 +43,36 @@
     text = text.replace(doc.tokenizeOnTheseRegExp, ' $1 ');
 
     doc.wordExternalPunctuationRegExp = new RegExp('(' + '^[' + fineWordInternallyButNotExternallyArray.join('') + ']' + '|' + '[' + fineWordInternallyButNotExternallyArray.join('') + ']$' + ')', 'g');
+    // console.log("Regexp " + doc.tokenizeOnTheseRegExp);
     text.split(/\s/).map(function(wordOrSymbol) {
+      // console.log('wordOrSymbol ' + wordOrSymbol);
       wordOrSymbol = wordOrSymbol.replace(doc.wordExternalPunctuationRegExp, ' $1 ').trim();
       if (wordOrSymbol) {
+        // console.log('wordOrSymbol ' + wordOrSymbol);
+        var escapedPunctuation = new RegExp('([' + regExpEscape(doc.tokenizeOnTheseArray.join('')) + '])', 'g');
         if (wordOrSymbol.length === 1) {
           orthographicTokens.push(wordOrSymbol);
+          // if (!doc.tokenizeOnTheseRegExp.test(regExpEscape(wordOrSymbol)) && !doc.tokenizeOnTheseRegExp.test(wordOrSymbol) && !escapedPunctuation.test(wordOrSymbol) && !doc.wordExternalPunctuationRegExp.test(wordOrSymbol) && wordOrSymbol !== '.' && wordOrSymbol !== '‘' && wordOrSymbol !== ',' && wordOrSymbol !== '—') {
+          if (!doc.tokenizeOnTheseRegExp.test(regExpEscape(wordOrSymbol)) && !doc.tokenizeOnTheseRegExp.test(wordOrSymbol) && !doc.wordExternalPunctuationRegExp.test(regExpEscape(wordOrSymbol)) && wordOrSymbol !== '-' &&  wordOrSymbol !== ',') {
+            orthographicWords.push(wordOrSymbol);
+            // console.log("This is probably a word: " + wordOrSymbol);
+
+          } else {
+            // console.log("This is probably not a word: " + wordOrSymbol);
+          }
+
         } else {
           var extraTokens = wordOrSymbol.split(' ');
           if (extraTokens.length === 1 /* there was no word external punctuation */ ) {
             orthographicTokens.push(wordOrSymbol);
             orthographicWords.push(wordOrSymbol);
+            // console.log("This is probably a real  word: " + wordOrSymbol);
+
           } else {
             for (var token in extraTokens) {
-              if (extraTokens[token].length > 1 /* this is the word */ ) {
+              if (!escapedPunctuation.test(extraTokens[token]) && !doc.wordExternalPunctuationRegExp.test(extraTokens[token]) /* this is the word */ ) {
                 orthographicTokens.push(extraTokens[token]);
+                // console.log("This is also probably a word: " + extraTokens[token]);
                 orthographicWords.push(extraTokens[token]);
               } else {
                 orthographicTokens.push(extraTokens[token]);
@@ -61,6 +83,7 @@
       }
     });
 
+    doc.punctuationArray = punctuationArray;
     doc.orthographyArray = orthographicTokens;
     doc.orthographicWords = orthographicWords;
     return doc;
