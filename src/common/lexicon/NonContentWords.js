@@ -157,7 +157,7 @@
       console.log('Cannot produce filtered text.');
       return;
     }
-    console.log('nonContentWordsRegExp', userCloud.nonContentWordsRegExp);
+    // console.log('nonContentWordsRegExp', userCloud.nonContentWordsRegExp);
     var filteredText = Tokenizer.tokenizeInput(userCloud).orthographicWords.map(function(word) {
       if (!userCloud.nonContentWordsRegExp.test(word)) {
         if (userCloud.morphemesRegExp) {
