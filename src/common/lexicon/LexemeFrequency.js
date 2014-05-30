@@ -187,7 +187,7 @@
       });
     }
 
-
+    console.log(obj.nonContentWordsArray);
     return obj;
 
   };
