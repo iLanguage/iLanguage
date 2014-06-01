@@ -92,7 +92,7 @@
     if (userCloud.morphemesArray.length > 0) {
       console.log(userCloud.morphemesArray);
       userCloud.morphemesRegExp = userCloud.morphemesArray.map(function(morpheme) {
-        console.log('morpheme' + morpheme);
+        console.log('morpheme ' + morpheme);
         if (morpheme.indexOf('-') === 0) {
           return morpheme.replace('-', '') + '$';
         }
@@ -146,6 +146,20 @@
     } else {
       userCloud.nonContentWordsRegExp = null;
     }
+
+    if (userCloud.userRemovedWordsForAllDocumentsArray && userCloud.userRemovedWordsForAllDocumentsArray.length > 0) {
+      userCloud.userRemovedWordsForAllDocumentsRegExp = new RegExp('^(' + userCloud.userRemovedWordsForAllDocumentsArray.join('|') + ')$');
+      console.log('userRemovedWordsForAllDocumentsRegExp ' + userCloud.userRemovedWordsForAllDocumentsRegExp);
+    } else {
+      userCloud.userRemovedWordsForAllDocumentsRegExp = null;
+    }
+
+    if (userCloud.userRemovedWordsForThisDocumentArray && userCloud.userRemovedWordsForThisDocumentArray.length > 0) {
+      userCloud.userRemovedWordsForThisDocumentRegExp = new RegExp('^(' + userCloud.userRemovedWordsForThisDocumentArray.join('|') + ')$');
+      console.log('userRemovedWordsForThisDocumentRegExp ' + userCloud.userRemovedWordsForThisDocumentRegExp);
+    } else {
+      userCloud.userRemovedWordsForThisDocumentRegExp = null;
+    }
     return userCloud;
   };
 
@@ -153,19 +167,25 @@
     if (!userCloud.nonContentWordsRegExp) {
       processNonContentWords(userCloud);
     }
-    if (!userCloud.nonContentWordsRegExp) {
+    if (!userCloud.nonContentWordsRegExp || !userCloud.nonContentWordsRegExp.test) {
       console.log('Cannot produce filtered text.');
       return;
     }
     // console.log('nonContentWordsRegExp', userCloud.nonContentWordsRegExp);
     var filteredText = Tokenizer.tokenizeInput(userCloud).orthographicWords.map(function(word) {
-      if (!userCloud.nonContentWordsRegExp.test(word)) {
+      if (userCloud.nonContentWordsRegExp.test(word)) {
+        return '';
+      } else {
+        if (userCloud.userRemovedWordsForThisDocumentRegExp && userCloud.userRemovedWordsForThisDocumentRegExp.test(word)) {
+          return '';
+        }
+        if (userCloud.userRemovedWordsForAllDocumentsRegExp && userCloud.userRemovedWordsForAllDocumentsRegExp.test(word)) {
+          return '';
+        }
         if (userCloud.morphemesRegExp) {
           word = word.replace(userCloud.morphemesRegExp, '');
         }
         return word;
-      } else {
-        return '';
       }
     });
     userCloud.filteredText = filteredText.join(' ');

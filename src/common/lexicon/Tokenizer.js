@@ -8,7 +8,7 @@
     // morphemesRegExp = /[はをがはのに。、「」、。・]+/g;
     japaneseWordBoundaryMorphemes: ['\u3001-\u303F', '\u3040-\u309F', '\u30A0-\u30FF']
   };
-
+  // ^(@|https?:
   var regExpEscape = function(s) {
     return String(s).replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1').
     replace(/\x08/g, '\\x08');
@@ -20,6 +20,15 @@
       doc.orthographicWords = [];
       return doc;
     }
+    if (doc.punctuationArray && doc.punctuationArray.length === 0) {
+      doc.punctuationArray = null;
+    }
+    if (doc.wordDelimitersArray && doc.wordDelimitersArray.length === 0) {
+      doc.wordDelimitersArray = null;
+    }
+    if (doc.fineWordInternallyButNotExternallyArray && doc.fineWordInternallyButNotExternallyArray.length === 0) {
+      doc.fineWordInternallyButNotExternallyArray = null;
+    }
     var orthographicTokens = [],
       orthographicWords = [],
       text = doc.orthography.trim(),
@@ -28,9 +37,19 @@
       wordBoundaryMorphemes = doc.wordBoundaryMorphemes,
       fineWordInternallyButNotExternallyArray = doc.fineWordInternallyButNotExternallyArray || defaults.fineWordInternallyButNotExternallyArray;
 
-      // fineWordInternallyButNotExternallyArray = fineWordInternallyButNotExternallyArray.concat(doc.punctuation); //TODO test this
+    // fineWordInternallyButNotExternallyArray = fineWordInternallyButNotExternallyArray.concat(doc.punctuation); //TODO test this
     if (doc.caseInsensitive) {
       text = text.toLocaleLowerCase();
+    }
+    if (doc.userDefinedCleaningReWriteRules) {
+      for (var rule in doc.userDefinedCleaningReWriteRules) {
+        if (!doc.userDefinedCleaningReWriteRules.hasOwnProperty(rule)) {
+          continue;
+        }
+        text = text.replace(
+          new RegExp(doc.userDefinedCleaningReWriteRules[rule].source, 'g'),
+          doc.userDefinedCleaningReWriteRules[rule].target);
+      }
     }
 
     doc.tokenizeOnTheseArray = punctuationArray.concat(wordDelimitersArray);
@@ -53,7 +72,7 @@
         if (wordOrSymbol.length === 1) {
           orthographicTokens.push(wordOrSymbol);
           // if (!doc.tokenizeOnTheseRegExp.test(regExpEscape(wordOrSymbol)) && !doc.tokenizeOnTheseRegExp.test(wordOrSymbol) && !escapedPunctuation.test(wordOrSymbol) && !doc.wordExternalPunctuationRegExp.test(wordOrSymbol) && wordOrSymbol !== '.' && wordOrSymbol !== '‘' && wordOrSymbol !== ',' && wordOrSymbol !== '—') {
-          if (!doc.tokenizeOnTheseRegExp.test(regExpEscape(wordOrSymbol)) && !doc.tokenizeOnTheseRegExp.test(wordOrSymbol) && !doc.wordExternalPunctuationRegExp.test(regExpEscape(wordOrSymbol)) && wordOrSymbol !== '-' &&  wordOrSymbol !== ',') {
+          if (!doc.tokenizeOnTheseRegExp.test(regExpEscape(wordOrSymbol)) && !doc.tokenizeOnTheseRegExp.test(wordOrSymbol) && !doc.wordExternalPunctuationRegExp.test(regExpEscape(wordOrSymbol)) && wordOrSymbol !== '-' && wordOrSymbol !== ',') {
             orthographicWords.push(wordOrSymbol);
             // console.log("This is probably a word: " + wordOrSymbol);
 

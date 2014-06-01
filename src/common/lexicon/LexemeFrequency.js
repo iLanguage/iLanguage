@@ -67,6 +67,7 @@
       if (!frequencyMap.hasOwnProperty(caseGroupedWord)) {
         continue;
       }
+      //TODO handle userDefinedBoostingRules  here?
       var totalCount = 0;
       var mostPopularCase = '';
       var mostPopularCaseCount = 0;
@@ -85,7 +86,7 @@
         count: totalCount
       };
       if (wordEntry.count > mostPopularCaseCount) {
-        wordEntry.alternates = frequencyMap[caseGroupedWord]
+        wordEntry.alternates = frequencyMap[caseGroupedWord];
       }
       obj.wordFrequencies.push(wordEntry);
     }
@@ -200,6 +201,16 @@
       if (wordFrequencies[oIndex].orthography.length < 3) {
         probablyNotBuzzWords.push(wordFrequencies[oIndex].orthography);
         wordFrequencies[oIndex].categories = ['functionalWord'];
+      }
+      /* If the word has categories defined by the users add them  */
+      // console.log(obj.userRemovedWordsForThisDocumentArray);
+      if (obj.userRemovedWordsForThisDocumentArray && obj.userRemovedWordsForThisDocumentArray.indexOf(wordFrequencies[oIndex].orthography) > -1) {
+        wordFrequencies[oIndex].categories = wordFrequencies[oIndex].categories || [];
+        wordFrequencies[oIndex].categories.unshift('userRemovedWordAsUnrepresentativeOfThisDocument');
+      }
+      if (obj.userRemovedWordsForAllDocumentsArray && obj.userRemovedWordsForAllDocumentsArray.indexOf(wordFrequencies[oIndex].orthography) > -1) {
+        wordFrequencies[oIndex].categories = wordFrequencies[oIndex].categories || [];
+        wordFrequencies[oIndex].categories.unshift('userRemovedWordFromAllDocuments');
       }
     }
 
