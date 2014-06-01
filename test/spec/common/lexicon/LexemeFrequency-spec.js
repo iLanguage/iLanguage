@@ -111,6 +111,93 @@ describe('LexemeFrequency construction', function() {
     }]);
   });
 
+
+  it('should let the user remove noncontent words to be included', function() {
+    var doc = LexemeFrequency.calculateNonContentWords({
+      orthography: ' short word word word word and some more words to make a longer text'
+    });
+    expect(doc.wordFrequencies).toEqual([{
+      orthography: 'word',
+      count: 4,
+      categories: ['functionalWord']
+    }, {
+      orthography: 'short',
+      count: 1
+    }, {
+      orthography: 'and',
+      count: 1
+    }, {
+      orthography: 'some',
+      count: 1
+    }, {
+      orthography: 'more',
+      count: 1
+    }, {
+      orthography: 'words',
+      count: 1
+    }, {
+      orthography: 'to',
+      count: 1,
+      categories: ['functionalWord']
+    }, {
+      orthography: 'make',
+      count: 1
+    }, {
+      orthography: 'a',
+      count: 1,
+      categories: ['functionalWord']
+    }, {
+      orthography: 'longer',
+      count: 1
+    }, {
+      orthography: 'text',
+      count: 1
+    }]);
+
+    /* run again with user letting one of the previous stop word through */
+    doc.nonContentWordsArray = ['a', 'is'];
+    doc.userSpecifiedNonContentWords = true;
+    doc.wordFrequencies = null;
+    LexemeFrequency.calculateNonContentWords(doc);
+    expect(doc.wordFrequencies).toEqual([{
+      orthography: 'word',
+      count: 4
+    }, {
+      orthography: 'short',
+      count: 1
+    }, {
+      orthography: 'and',
+      count: 1
+    }, {
+      orthography: 'some',
+      count: 1
+    }, {
+      orthography: 'more',
+      count: 1
+    }, {
+      orthography: 'words',
+      count: 1
+    }, {
+      orthography: 'to',
+      count: 1
+    }, {
+      orthography: 'make',
+      count: 1
+    }, {
+      orthography: 'a',
+      count: 1,
+      categories: ['functionalWord']
+    }, {
+      orthography: 'longer',
+      count: 1
+    }, {
+      orthography: 'text',
+      count: 1
+    }]);
+
+  });
+
+
   it('should let the user specify the case of words', function() {
     var doc = LexemeFrequency.calculateWordFrequencies({
       orthography: ' Intense Hardworking  Easily-Found driven Helpful',

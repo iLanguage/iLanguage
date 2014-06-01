@@ -182,6 +182,8 @@
       console.log('Setting cutoffPercent automatically ' + typology);
     }
 
+    // console.log('calculateNonContentWords', wordFrequencies);
+    // console.log('calculateNonContentWords', obj.nonContentWordsArray);
     for (var oIndex in wordFrequencies) {
       if (!wordFrequencies.hasOwnProperty(oIndex)) {
         continue;
@@ -193,12 +195,23 @@
           buzzWords.push(wordFrequencies[oIndex].orthography);
           wordFrequencies[oIndex].categories = ['buzzWord'];
         } else {
+          if (obj.userSpecifiedNonContentWords) {
+            if (obj.nonContentWordsArray.indexOf(wordFrequencies[oIndex].orthography) === -1) {
+              continue;
+            }
+          }
+          // console.log('functionalWord', probablyNotBuzzWords);
           probablyNotBuzzWords.push(wordFrequencies[oIndex].orthography);
           wordFrequencies[oIndex].categories = ['functionalWord'];
         }
       }
       /* If the word is too short, automatically consider it a stop word */
       if (wordFrequencies[oIndex].orthography.length < 3) {
+        if (obj.userSpecifiedNonContentWords) {
+          if (obj.nonContentWordsArray.indexOf(wordFrequencies[oIndex].orthography) === -1) {
+            continue;
+          }
+        }
         probablyNotBuzzWords.push(wordFrequencies[oIndex].orthography);
         wordFrequencies[oIndex].categories = ['functionalWord'];
       }
