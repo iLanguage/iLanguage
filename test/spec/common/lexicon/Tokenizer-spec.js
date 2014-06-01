@@ -33,4 +33,16 @@ describe('Tokenizer construction', function() {
     expect(doc.orthographyArray).toEqual([]);
   });
 
+  it('should permit the user to define cleaning re-write rules prior to tokenization', function() {
+    var doc = Tokenizer.tokenizeInput({
+      orthography: 'This has AAA rewrite rules.',
+      userDefinedCleaningReWriteRules: [{
+        source: 'AAA',
+        relation: 'isCleanedAs',
+        target: 'BBB'
+      }]
+    });
+    expect(doc.orthographicWords).toEqual(['This', 'has', 'BBB', 'rewrite', 'rules']);
+  });
+
 });

@@ -214,6 +214,20 @@ describe('Language Independant', function() {
     expect(NonContentWords.filterText(textToTest).filteredText).toEqual('thi will  have  stop word or morpheme');
   });
 
+  it('should produce a filtered text for stop words, vulgar words and unrepresentative words and morphemes', function() {
+    var textToTest = {
+      orthography: "this will not have any stop words or morphemes, vulgar words or unrepresentative words like banana",
+      nonContentWordsArray: "not any",
+      userSpecifiedNonContentWords: true,
+      userRemovedWordsForThisDocumentArray: ['banana'],
+      userRemovedWordsForAllDocumentsArray: ['vulgar'],
+      // morphemes: /(^un|^pre|s$|ed$|ing$)/,
+      morphemesArray: ["un-", " pre-", " -s", " -ed", " -ing"]
+    };
+    NonContentWords.processNonContentWords(textToTest);
+    expect(NonContentWords.filterText(textToTest).filteredText).toEqual('thi will  have  stop word or morpheme  word or representative word like ');
+  });
+
   it('should produce a weighted list of words (rather than 0/1 stop vs content', function() {
     expect(true).toBeTruthy();
   });
