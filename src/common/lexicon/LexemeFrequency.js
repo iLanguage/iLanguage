@@ -1,5 +1,6 @@
 (function(exports) {
   var Tokenizer = require('./Tokenizer').Tokenizer;
+  var PROTECT_AGAINST_RESEVERD_WORDS = 'hhh';
 
   var getUnique = function(arrayObj) {
     var u = {}, a = [];
@@ -31,7 +32,8 @@
     }
 
     var frequencyMap = {};
-    var caseInsensitiveKey;
+    var caseCollapsableKey;
+    var javascriptSafeCurrentWord;
     for (var word = 0; word < tokensAsArray.length; word++) {
       currentWord = tokensAsArray[word];
 
@@ -43,18 +45,24 @@
       }
 
       /* intelligently use the most frequent case */
-      caseInsensitiveKey = currentWord.toLocaleLowerCase();
-      if (frequencyMap[caseInsensitiveKey]) {
-        if (frequencyMap[caseInsensitiveKey][currentWord]) {
-          frequencyMap[caseInsensitiveKey][currentWord] += 1;
+      if (obj.caseSensitivity === "preserve") {
+        caseCollapsableKey = currentWord;
+      } else {
+        caseCollapsableKey = currentWord.toLocaleLowerCase() + PROTECT_AGAINST_RESEVERD_WORDS;
+      }
+      console.log(caseCollapsableKey);
+      javascriptSafeCurrentWord = currentWord + PROTECT_AGAINST_RESEVERD_WORDS;
+      if (frequencyMap[caseCollapsableKey]) {
+        if (frequencyMap[caseCollapsableKey][javascriptSafeCurrentWord]) {
+          frequencyMap[caseCollapsableKey][javascriptSafeCurrentWord] += 1;
         } else {
-          frequencyMap[caseInsensitiveKey][currentWord] = 1;
+          frequencyMap[caseCollapsableKey][javascriptSafeCurrentWord] = 1;
         }
       } else {
-        frequencyMap[caseInsensitiveKey] = {};
-        frequencyMap[caseInsensitiveKey][currentWord] = 1;
+        frequencyMap[caseCollapsableKey] = {};
+        frequencyMap[caseCollapsableKey][javascriptSafeCurrentWord] = 1;
         obj.vocabSize += 1;
-        wordsArrayForMorphemeCalculation.push(caseInsensitiveKey);
+        wordsArrayForMorphemeCalculation.push(caseCollapsableKey);
       }
       obj.textSize += 1;
 
@@ -82,7 +90,7 @@
         }
       }
       var wordEntry = {
-        orthography: mostPopularCase,
+        orthography: mostPopularCase.replace(new RegExp(PROTECT_AGAINST_RESEVERD_WORDS + '$'), ''),
         count: totalCount
       };
       if (wordEntry.count > mostPopularCaseCount) {
@@ -148,7 +156,7 @@
       }
     }
     // console.log(obj.lexicalExperience);
-
+    // console.log(frequencyMap);
     obj.wordFrequencies = obj.wordFrequencies.sort(function(a, b) {
       return -(a.count - b.count);
     });
