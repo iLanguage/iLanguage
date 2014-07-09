@@ -52,7 +52,7 @@ describe('Basic NLP tasks', function() {
   it('should guess a list of non content words using zipfs law', function() {
     var result = LexemeFrequency.calculateNonContentWords({
       orthography: sampleTexts.shortText,
-      caseInsensitive: true
+      caseSensitivity: false
     });
     expect(result.nonContentWordsArray)
       .toEqual(['a', 'is', 'of']);

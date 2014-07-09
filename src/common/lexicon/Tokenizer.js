@@ -38,7 +38,7 @@
       fineWordInternallyButNotExternallyArray = doc.fineWordInternallyButNotExternallyArray || defaults.fineWordInternallyButNotExternallyArray;
 
     // fineWordInternallyButNotExternallyArray = fineWordInternallyButNotExternallyArray.concat(doc.punctuation); //TODO test this
-    if (doc.caseInsensitive) {
+    if (doc.caseSensitivity === "lower") {
       text = text.toLocaleLowerCase();
     }
     if (doc.userDefinedCleaningReWriteRules) {
