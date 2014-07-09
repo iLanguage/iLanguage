@@ -2,6 +2,17 @@
   var Tokenizer = require('./Tokenizer').Tokenizer;
   var PROTECT_AGAINST_RESEVERD_WORDS = 'hhh';
 
+  var reverseProtectionAgainstReservedWords = function(wordFrequenciesMap) {
+    var newWordMap = {};
+    for (var entry in wordFrequenciesMap) {
+      if (wordFrequenciesMap.hasOwnProperty(entry)) {
+        var newKey = entry.replace(new RegExp(PROTECT_AGAINST_RESEVERD_WORDS + '$'), '');
+        newWordMap[newKey] = wordFrequenciesMap[entry];
+      }
+    }
+    return newWordMap;
+  };
+
   var getUnique = function(arrayObj) {
     var u = {}, a = [];
     for (var i = 0, l = arrayObj.length; i < l; ++i) {
@@ -50,7 +61,7 @@
       } else {
         caseCollapsableKey = currentWord.toLocaleLowerCase() + PROTECT_AGAINST_RESEVERD_WORDS;
       }
-      console.log(caseCollapsableKey);
+      // console.log(caseCollapsableKey);
       javascriptSafeCurrentWord = currentWord + PROTECT_AGAINST_RESEVERD_WORDS;
       if (frequencyMap[caseCollapsableKey]) {
         if (frequencyMap[caseCollapsableKey][javascriptSafeCurrentWord]) {
@@ -94,7 +105,7 @@
         count: totalCount
       };
       if (wordEntry.count > mostPopularCaseCount) {
-        wordEntry.alternates = frequencyMap[caseGroupedWord];
+        wordEntry.alternates = reverseProtectionAgainstReservedWords(frequencyMap[caseGroupedWord]);
       }
       obj.wordFrequencies.push(wordEntry);
     }
@@ -140,7 +151,7 @@
         /* see if any prefixes apply to this word */
         for (var prefixIndex = 0; prefixIndex < obj.prefixesArray.length; prefixIndex++) {
           currentMorpheme = obj.prefixesArray[prefixIndex].replace(/-/, '');
-          stem = currentWord.replace(currentMorpheme, '');
+          stem = currentWord.replace(new RegExp(PROTECT_AGAINST_RESEVERD_WORDS + '$'), '').replace(currentMorpheme, '');
           if (currentWord.indexOf(currentMorpheme) === 0 && stem.length > 2 /* only consider roots longer than 2 characterse */ ) {
             obj.lexicalExperience[currentMorpheme] = obj.lexicalExperience[currentMorpheme] || [];
             obj.lexicalExperience[currentMorpheme].push(currentMorpheme + '-' + stem);

@@ -2,7 +2,7 @@ var LexemeFrequency = require('../../../../src/common/lexicon/LexemeFrequency').
 
 // var specIsRunningTooLong = 5000;
 
-describe('LexemeFrequency construction', function() {
+xdescribe('LexemeFrequency construction', function() {
 
   it('should load', function() {
     expect(LexemeFrequency).toBeDefined();
