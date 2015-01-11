@@ -25,9 +25,9 @@
 \usepackage{qtree}
 
 \usepackage{url}
-\urldef{\mailsa}\path|{alfred.hofmann, ursula.barth, ingrid.haas, frank.holzwarth,|
-\urldef{\mailsb}\path|anna.kramer, leonie.kunz, christine.reiss, nicole.sator,|
-\urldef{\mailsc}\path|erika.siebert-cole, peter.strasser, lncs}@springer.com|    
+%\urldef{\mailsa}\path|{alfred.hofmann, ursula.barth, ingrid.haas, frank.holzwarth,|
+%\urldef{\mailsb}\path|anna.kramer, leonie.kunz, christine.reiss, nicole.sator,|
+%\urldef{\mailsc}\path|erika.siebert-cole, peter.strasser, lncs}@springer.com|    
 \newcommand{\keywords}[1]{\par\addvspace\baselineskip
 \noindent\keywordname\enspace\ignorespaces#1}
 
@@ -36,12 +36,10 @@
 \mainmatter  % start of an individual contribution
 
 % first the title is needed
-\title{Lecture Notes in Computer Science:\\Authors' Instructions
-for the Preparation\\of Camera-Ready
-Contributions\\to LNCS/LNAI/LNBI Proceedings}
+\title{Morphological Parsing of Inuktitut}
 
 % a short form should be given in case it is too long for the running head
-\titlerunning{Lecture Notes in Computer Science: Authors' Instructions}
+\titlerunning{Morphological Parsing of Inuktitu}
 
 % the name(s) of the author(s) follow(s) next
 %
@@ -49,26 +47,24 @@ Contributions\\to LNCS/LNAI/LNBI Proceedings}
 % their surnames. This ensures that the names appear correctly in
 % the running heads and the author index.
 %
-\author{Alfred Hofmann%
-\thanks{Please note that the LNCS Editorial assumes that all authors have used
-the western naming convention, with given names preceding surnames. This determines
-the structure of the names in the running heads and the author index.}%
-\and Ursula Barth\and Ingrid Haas\and Frank Holzwarth\and\\
-Anna Kramer\and Leonie Kunz\and Christine Rei\ss\and\\
-Nicole Sator\and Erika Siebert-Cole\and Peter Stra\ss er}
+\author{AA%
+%\thanks{Please note that the LNCS Editorial assumes that all authors have used
+%the western naming convention, with given names preceding surnames. This determines
+%the structure of the names in the running heads and the author index.}%
+\and BB}
 %
-\authorrunning{Morphological Parsing of Inuktitut}
+\authorrunning{A, B}
 % (feature abused for this document to repeat the title also on left hand pages)
 
 % the affiliations are given next; don't give your e-mail address
 % unless you accept that it will be published
 \institute{Engineering and Computer Science\\
   Concordia University\\
-  Montr\'{e}al, QC Canada\\
-\mailsa\\
-\mailsb\\
-\mailsc\\
-\url{http://www.springer.com/lncs}}
+  Montr\'{e}al, QC Canada}
+%\mailsa\\
+%\mailsb\\
+%\mailsc\\
+%\url{http://www.springer.com/lncs}}
 
 %
 % NB: a more complex sample for affiliations and the mapping to the
@@ -89,6 +85,7 @@ This paper provides some motivations as well as an overview of morphological par
 \end{abstract}
 
 
+
 \section{Introduction}
 
 This paper serves three main purposes. It's primary purpose is to inform the author of various approaches in the field of morphological parsing. Its secondary purpose is to do a case study on morphological parsing of Inuktitut, an agglutinative language with few resources but a dire need for text processing. Its third purpose is to implement a novel algorithm which uses precedence relations between morphemes to constrain the model's hypothesized morphemes. 
@@ -104,41 +101,41 @@ Morphemes are defined as the smallest meaningful parts of a word. For example, t
 
 \begin{figure}[h]
 	
-\begin{pspicture}(4.5,2)(12,0.5)
-%\newpsobject{showgrid}{psgrid}{subgriddiv=1,griddots=10,gridlabels=6pt}
-%\showgrid
-%\psset{unit=0.025cm}
-
-
-\rput(5,1){\circlenode[]{0}{\tiny 0}}
-%this defines the start arrow, first it puts a node at 4,1 labled start0
-\pnode(4,1){start0}
-%then it makes an arch from start0 to 0
-\ncarc[arcangle=0]{->}{start0}{0}
-
-
-\rput(8,1){\circlenode[]{1}{\tiny 1}}
-%transition from 3 to 2 with {government}
-\ncarc[arcangle=35]{->}{0}{1}
-\naput{\rnode{x}{government}}
-
-\ncarc[arcangle=-35]{->}{0}{1}
-\naput{\rnode{x}{instrument}}
-
-\rput(11.5,1){\circlenode[doubleline=true]{2}{\tiny 2}}
-
-\ncarc[arcangle=45]{->}{1}{2}
-\naput{\rnode{x}{s}}
- 
-\ncarc[arcangle=10]{->}{1}{2}
-\naput{\rnode{x}{al}}
-
-
-\ncarc[arcangle=-35]{->}{1}{2}
-\naput{\rnode{x}{\o}}
-
-
-\end{pspicture}
+%\begin{pspicture}(4.5,2)(12,0.5)
+%%\newpsobject{showgrid}{psgrid}{subgriddiv=1,griddots=10,gridlabels=6pt}
+%%\showgrid
+%%\psset{unit=0.025cm}
+%
+%
+%\rput(5,1){\circlenode[]{0}{\tiny 0}}
+%%this defines the start arrow, first it puts a node at 4,1 labled start0
+%\pnode(4,1){start0}
+%%then it makes an arch from start0 to 0
+%\ncarc[arcangle=0]{->}{start0}{0}
+%
+%
+%\rput(8,1){\circlenode[]{1}{\tiny 1}}
+%%transition from 3 to 2 with {government}
+%\ncarc[arcangle=35]{->}{0}{1}
+%\naput{\rnode{x}{government}}
+%
+%\ncarc[arcangle=-35]{->}{0}{1}
+%\naput{\rnode{x}{instrument}}
+%
+%\rput(11.5,1){\circlenode[doubleline=true]{2}{\tiny 2}}
+%
+%\ncarc[arcangle=45]{->}{1}{2}
+%\naput{\rnode{x}{s}}
+% 
+%\ncarc[arcangle=10]{->}{1}{2}
+%\naput{\rnode{x}{al}}
+%
+%
+%\ncarc[arcangle=-35]{->}{1}{2}
+%\naput{\rnode{x}{\o}}
+%
+%
+%\end{pspicture}
 
 	\caption{Morphology can be easily visualized as Finite State Automaton.}
 	\label{fig:fsaenglish}
@@ -176,7 +173,7 @@ Stemming is less necessary in English where each word has a limited number of fo
 
 
 \begin{figure}[thb]
-	\includegraphics[width=220pt]{kurimo2008_agglutinative_type_token_ration.eps}
+%	\includegraphics[width=220pt]{kurimo2008_agglutinative_type_token_ration.eps}
 	\caption{Agglutinative Languages a high type-to-token ratio, resulting in sparse observations per type making statistical analysis nearly impossible (Kurimo 2008).}
 	\label{fig:typetokenratios}
 \end{figure}
@@ -226,11 +223,11 @@ Inuktitut words contain between 2-12 morphemes. Like all languages, the morpheme
 It is important to note that first line is in the romanized (ascii) script, rather than the Inuktitut script. Inuktitut has historically been written in both scripts as tools and fonts (and education) were nto available in the syllabic writing system that was designed for Inuktitut around the turn of the 20th century. However, now that Unicode fonts are readily available and the status of Inuktitut as an official language the trend is going towards the syllabic script which better reflects the patterns in the Inuktitut language.
 
 \begin{figure}
-	\glll tusaa +tsia +runna +nngit +tualuu +junga
-	tusaa tsiaq junnaq nngit tualuu junga
-	hear well able not much 1sg.pres.decl.non-spec
-	\glt `I can't hear very well.'
-	\glend
+%	\glll tusaa +tsia +runna +nngit +tualuu +junga
+%	tusaa tsiaq junnaq nngit tualuu junga
+%	hear well able not much 1sg.pres.decl.non-spec
+%	\glt `I can't hear very well.'
+%	\glend
 \Tree[ [ [ [ [ [ [ \vspace{-0.5in}\hspace{-0.3in}result  manner ] \hspace{-0.2in}aspect ] \hspace{-0.2in}mood ] neg ] \hspace{-0.2in}polarity ] \vspace{-0.5in}\hspace{-0.2in}tense	] \hspace{-0.2in}finite ]	\label{fig:inuktitutwords}
 	\caption{Inuktitut words are systematic templates for syntactic and semantic information}
 
@@ -240,48 +237,48 @@ Inuktitut is traditionally an oral language. The writing system is less than 100
 
 \begin{figure}[h]
 	
-\begin{pspicture}(4.5,2)(12,0)
-%\newpsobject{showgrid}{psgrid}{subgriddiv=1,griddots=10,gridlabels=6pt}
-%\showgrid
-%\psset{unit=0.025cm}
-
-\pnode(4,1){start0}
-
-\rput(5,1){\circlenode[]{0}{\tiny 0}}
-%this defines the start arrow, first it puts a node at 4,1 labled start0
-
-
-\rput(8,1){\circlenode[]{1}{\tiny 1}}
-%transition from 3 to 2 with {government}
-\ncarc[arcangle=55]{->}{0}{1}
-\naput{\rnode{x}{cat/cat}}
-
-\ncarc[arcangle=10]{->}{0}{1}
-\naput{\rnode{x}{dog/dog}}
-
-\ncarc[arcangle=-35]{->}{0}{1}
-\naput{\rnode{x}{bus/bus}}
-
-\ncarc[arcangle=-85]{->}{0}{1}
-\naput{\rnode{x}{sheep/sheep}}
-
-
-\rput(11.5,1){\circlenode[doubleline=true]{2}{\tiny 2}}
-
-\ncarc[arcangle=55]{->}{1}{2}
-\naput{\rnode{x}{z/s}}
- 
-\ncarc[arcangle=10]{->}{1}{2}
-\naput{\rnode{x}{z/z}}
-
-\ncarc[arcangle=-35]{->}{1}{2}
-\naput{\rnode{x}{z/ez}}
-
-\ncarc[arcangle=-75]{->}{1}{2}
-\naput{\rnode{x}{z/\o}}
-
-
-\end{pspicture}
+%\begin{pspicture}(4.5,2)(12,0)
+%%\newpsobject{showgrid}{psgrid}{subgriddiv=1,griddots=10,gridlabels=6pt}
+%%\showgrid
+%%\psset{unit=0.025cm}
+%
+%\pnode(4,1){start0}
+%
+%\rput(5,1){\circlenode[]{0}{\tiny 0}}
+%%this defines the start arrow, first it puts a node at 4,1 labled start0
+%
+%
+%\rput(8,1){\circlenode[]{1}{\tiny 1}}
+%%transition from 3 to 2 with {government}
+%\ncarc[arcangle=55]{->}{0}{1}
+%\naput{\rnode{x}{cat/cat}}
+%
+%\ncarc[arcangle=10]{->}{0}{1}
+%\naput{\rnode{x}{dog/dog}}
+%
+%\ncarc[arcangle=-35]{->}{0}{1}
+%\naput{\rnode{x}{bus/bus}}
+%
+%\ncarc[arcangle=-85]{->}{0}{1}
+%\naput{\rnode{x}{sheep/sheep}}
+%
+%
+%\rput(11.5,1){\circlenode[doubleline=true]{2}{\tiny 2}}
+%
+%\ncarc[arcangle=55]{->}{1}{2}
+%\naput{\rnode{x}{z/s}}
+% 
+%\ncarc[arcangle=10]{->}{1}{2}
+%\naput{\rnode{x}{z/z}}
+%
+%\ncarc[arcangle=-35]{->}{1}{2}
+%\naput{\rnode{x}{z/ez}}
+%
+%\ncarc[arcangle=-75]{->}{1}{2}
+%\naput{\rnode{x}{z/\o}}
+%
+%
+%\end{pspicture}
 
 	\caption{The distinction between morphemes and allomorphs can be seen as a Finite State Transducer, from elements of the Lexicon (morphemes) to elements in context of other elements (allomorphs). English plural is mentally a /z/ and can appear as a [z] or [s] depending on the consonants that are next to it.}
 	\label{fig:cats}
@@ -294,20 +291,20 @@ Being an allophonic writing system means that discovering the morphemes in conti
 
 
 \begin{figure}[htb]
-%\begin{enumerate}
-%\item 	
-%	\glll pisu +nngit  +junga
-%	pisu{\b k}  nngit junga
-%	walk not 1sg.pres.decl.non-spec
-%	\glt `I'm not walking.'
+%%\begin{enumerate}
+%%\item 	
+%%	\glll pisu +nngit  +junga
+%%	pisu{\b k}  nngit junga
+%%	walk not 1sg.pres.decl.non-spec
+%%	\glt `I'm not walking.'
+%%	\glend
+%%\item
+%	\glll tikip +punga
+%	tiki{\b t}  punga
+%	arrive 1sg.pres.question.non-spec
+%	\glt `Am I walking?'
 %	\glend
-%\item
-	\glll tikip +punga
-	tiki{\b t}  punga
-	arrive 1sg.pres.question.non-spec
-	\glt `Am I walking?'
-	\glend
-%\end{enumerate}
+%%\end{enumerate}
 	\caption{Morphemes are mental representations of morphs. Allomorphs are morphs in the context of other morphs. Allomorphs often show sound changes at their edges to allow the pronunciation of the word to be easier. In Inuktitut stops \{p,t,k\} the end of one morpheme change to match the stop of the next morpheme.}
 	\label{fig:inuktitutallomorphy}
 \end{figure}
@@ -378,11 +375,11 @@ Harris 1955 used tries (tree like branching structures which spell out words as 
 \Tree[.tion [.integrat [.dis re ] re ] ]\\
 Forward and Backward Tries, Harris 1955
 
-	\includegraphics{Johnson2003-hubmorph.eps}\\
-	Hubs and stretched hubs, Johnson \& Martin 2003
-	
-	\includegraphics[width=220px]{bernhard2007-alignment.eps}\\
-	Alignment, Bernhard 2007
+%	\includegraphics{Johnson2003-hubmorph.eps}\\
+%	Hubs and stretched hubs, Johnson \& Martin 2003
+%	
+%	\includegraphics[width=220px]{bernhard2007-alignment.eps}\\
+%	Alignment, Bernhard 2007
 	
 	\caption{Aproaches to capture transition likelihood between letters. Harris 1955's Tries were less successful as many suffixes (-s) or prefixes (re-) must be repeated at the leaf nodes.} Johnson \& Martin's stretched hubs allow sequences of letters to be considered 
 	\label{fig:transitionlikelyhood}
@@ -432,59 +429,59 @@ Morfessor comes in two flavors, one using Maximum Likelihood (ML)  and another u
 
 \begin{figure}[h]
 	
-\begin{pspicture}(4.5,3)(14,0.5)
-%\newpsobject{showgrid}{psgrid}{subgriddiv=1,griddots=10,gridlabels=6pt}
-%\showgrid
-
-\rput(6,1){\circlenode[]{4}{\tiny PRE}}
-
-
-\rput(10,3){\circlenode[]{3}{\tiny Noise}}
-
-\rput(7.5,1){\circlenode[]{0}{\tiny STM}}
-%this defines the start arrow, first it puts a node at 4,1 labled start0
-\pnode(6,1){start0}
-%then it makes an arch from start0 to 0
-\ncarc[arcangle=0]{->}{4}{0}
-\naput{\rnode{x}{un-}}
-
-
-\ncarc[arcangle=35]{->}{0}{3}
-\naput{\rnode{x}{-m-}}
-
-
-\ncarc[arcangle=-25]{->}{3}{0}
-\naput{\rnode{x}{\o}}
-
-\rput(10,1){\circlenode[]{1}{\tiny SUF}}
-%transition from 3 to 2 with {government}
-\ncarc[arcangle=35]{->}{0}{1}
-\naput{\rnode{x}{happ}}
-
-\ncarc[arcangle=-35]{->}{0}{1}
-\naput{\rnode{x}{stop}}
-
-\ncarc[arcangle=25]{->}{1}{3}
-\naput{\rnode{x}{-i-}}
-\ncarc[arcangle=-35]{->}{1}{3}
-\naput{\rnode{x}{-p-}}
-\ncarc[arcangle=55]{->}{3}{1}
-\naput{\rnode{x}{\o}}
-
-\rput(13.5,1){\circlenode[doubleline=true]{2}{\tiny \#}}
-
-\ncarc[arcangle=45]{->}{1}{2}
-\naput{\rnode{x}{ed}}
- 
-\ncarc[arcangle=10]{->}{1}{2}
-\naput{\rnode{x}{er}}
-
-
-\ncarc[arcangle=-35]{->}{1}{2}
-\naput{\rnode{x}{\o}}
-
-
-\end{pspicture}
+%\begin{pspicture}(4.5,3)(14,0.5)
+%%\newpsobject{showgrid}{psgrid}{subgriddiv=1,griddots=10,gridlabels=6pt}
+%%\showgrid
+%
+%\rput(6,1){\circlenode[]{4}{\tiny PRE}}
+%
+%
+%\rput(10,3){\circlenode[]{3}{\tiny Noise}}
+%
+%\rput(7.5,1){\circlenode[]{0}{\tiny STM}}
+%%this defines the start arrow, first it puts a node at 4,1 labled start0
+%\pnode(6,1){start0}
+%%then it makes an arch from start0 to 0
+%\ncarc[arcangle=0]{->}{4}{0}
+%\naput{\rnode{x}{un-}}
+%
+%
+%\ncarc[arcangle=35]{->}{0}{3}
+%\naput{\rnode{x}{-m-}}
+%
+%
+%\ncarc[arcangle=-25]{->}{3}{0}
+%\naput{\rnode{x}{\o}}
+%
+%\rput(10,1){\circlenode[]{1}{\tiny SUF}}
+%%transition from 3 to 2 with {government}
+%\ncarc[arcangle=35]{->}{0}{1}
+%\naput{\rnode{x}{happ}}
+%
+%\ncarc[arcangle=-35]{->}{0}{1}
+%\naput{\rnode{x}{stop}}
+%
+%\ncarc[arcangle=25]{->}{1}{3}
+%\naput{\rnode{x}{-i-}}
+%\ncarc[arcangle=-35]{->}{1}{3}
+%\naput{\rnode{x}{-p-}}
+%\ncarc[arcangle=55]{->}{3}{1}
+%\naput{\rnode{x}{\o}}
+%
+%\rput(13.5,1){\circlenode[doubleline=true]{2}{\tiny \#}}
+%
+%\ncarc[arcangle=45]{->}{1}{2}
+%\naput{\rnode{x}{ed}}
+% 
+%\ncarc[arcangle=10]{->}{1}{2}
+%\naput{\rnode{x}{er}}
+%
+%
+%\ncarc[arcangle=-35]{->}{1}{2}
+%\naput{\rnode{x}{\o}}
+%
+%
+%\end{pspicture}
 
 	\caption{A re-created approximation of what Morfessor's Hidden Markov Model (HMM) might look like. It contains 4 latent (unobserved states), transition properties are not show as this is a toy model. }
 	\label{fig:morfessor}
@@ -518,7 +515,7 @@ Results:
 51 suffixes were found from the apha order
 81 suffixes were found in the suffixial order	
 \end{verbatim}
-\hspace{-0.3in}\includegraphics[width=300pt]{changedmorfessorsource.eps}
+%\hspace{-0.3in}\includegraphics[width=300pt]{changedmorfessorsource.eps}
 	\caption{I changed Morfessor so that the initial search is on lists organized by suffixal order. On a small test sample this yielded roughly 10\% gain in accuracy.}
 	\label{fig:changemorfessorsource}
 \end{figure}
@@ -759,7 +756,7 @@ The script {\tt wordlist2rankedpossiblemorphs} can call Morfessor with three pos
 
 
 \begin{figure}[htb]
-	\includegraphics[width=260px]{morphlength.eps}
+%	\includegraphics[width=260px]{morphlength.eps}
 	\caption{Morpheme length in Inuktitut roots and suffixes roughly approximates a gamma distribution with a mean of 5 characters long. (`Gold standard' is taken from root and suffix lists provided by Inuktitutcomputing.ca)}
 	\label{fig:morphlength}
 \end{figure}
@@ -1178,37 +1175,37 @@ u > m
 
 Next the list of morphrelations (fig.~\ref{fig:intialdensecorpus2morphrelationsoutput}) are used to build a new template to create a new dense corpus. In the output we can see that the initial dense corpus found 4 different initials (all of which are seeded roots), initials can be followed by maniu, rsui tsiariaqa, and jimmaringu (all of which are indeed composed of 1 or 2 morphs in Inuktitut). These are inturn followed by laur or sima. Interestingly the dense corpora already provides information that laur precedes sima. Laur and sima (the seeded medials) are followed by tugut and juq (seeded finals) and also by a new category  composed of giaqanir. These new morphemes are entered into the predence rules (my equivalent of a lexicon) and are used as substituttion sets to build a new dense corpus.
 
-\begin{figure}[htb]
-\begin{verbatim}
-2 @ > kati
-1 @ > mali
-1 @ > tiki
-2 @ > tusaa
-1 giaqanir > mik
-1 jimmaringu > laur
-1 jimmaringulaur > sima
-2 juq > @
-1 kati > maniu
-1 kati > rsui
-1 laur > sima
-1 laur > tu
-2 laur > tugut
-1 mali > tsiariaqa
-1 maniu > laur
-2 mik > @
-1 rsui > sima
-1 sima > giaqanir
-2 sima > juq
-1 tiki > laur
-1 tsiariaqa > laur
-1 tu > mik
-2 tugut > @
-1 tusaa > jimmaringu
-1 tusaa > jimmaringulaur
-\end{verbatim}
-	\caption{Initiandensecorpus2morphrelations output}
-	\label{fig:intialdensecorpus2morphrelationsoutput}
-\end{figure}
+%\begin{figure}[h]
+%\begin{verbatim}
+%2 @ > kati
+%1 @ > mali
+%1 @ > tiki
+%2 @ > tusaa
+%1 giaqanir > mik
+%1 jimmaringu > laur
+%1 jimmaringulaur > sima
+%2 juq > @
+%1 kati > maniu
+%1 kati > rsui
+%1 laur > sima
+%1 laur > tu
+%2 laur > tugut
+%1 mali > tsiariaqa
+%1 maniu > laur
+%2 mik > @
+%1 rsui > sima
+%1 sima > giaqanir
+%2 sima > juq
+%1 tiki > laur
+%1 tsiariaqa > laur
+%1 tu > mik
+%2 tugut > @
+%1 tusaa > jimmaringu
+%1 tusaa > jimmaringulaur
+%\end{verbatim}
+%	\caption{Initiandensecorpus2morphrelations output}
+%	\label{fig:intialdensecorpus2morphrelationsoutput}
+%\end{figure}
 
 
 \subsubsection{Itterate over corpus until the template is learned}
@@ -1226,6 +1223,7 @@ In this paper I wanted to understand the parameters which can be learned using a
 
 
 I will conclude with a very long word in English, depending on how you segment it: \textit{You win some and you loose some}. Although syntactic and semantic information is easy to find in agglutinative languages, getting to the information by segmenting the mophemes is a very difficult task, one that requires external information like interaction of sounds at morpheme boundaries, the notion of heirarchical structure, precedence relations and perhaps even semantic grounding. In short, analysing grammar is difficult, and this is largely an area which only slow ground has been made. Hopefully the data crunching power of machine learning will make it possible to make futher ground than a solitary field worker who struggles to organize their data and allow NLP to shatter the current 90\% accuracy cieling.
+
 
 %
 %\section{Introduction}
