@@ -6,6 +6,7 @@ var CORS = require("fielddb/api/CORS").CORS;
 var Q = require("q");
 var NonContentWords = require('./NonContentWords').NonContentWords;
 var LexemeFrequency = require('./LexemeFrequency').LexemeFrequency;
+var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
 
 (function(exports) {
 
@@ -426,6 +427,7 @@ var LexemeFrequency = require('./LexemeFrequency').LexemeFrequency;
   Lexicon.LexemeFrequency = LexemeFrequency;
   Lexicon.LexiconNode = LexiconNode;
   Lexicon.LexiconFactory = LexiconFactory;
+  Lexicon.MorphemeSegmenter = MorphemeSegmenter;
 
   exports.Lexicon = Lexicon;
   global.Lexicon = Lexicon;
