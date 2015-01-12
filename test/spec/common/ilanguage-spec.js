@@ -1,6 +1,9 @@
 'use strict';
 var iLanguage = require('../../../src/common/ilanguage').iLanguage;
 
+var Q = require("q");
+var fs = require("fs");
+
 /*
   ======== A Handy Little Jasmine Reference ========
 https://github.com/pivotal/jasmine/wiki/Matchers
@@ -70,8 +73,151 @@ describe('lib/ilanguage', function() {
 
   });
 
-  it('should do everything a wordcloud can do', function() {
-    expect(true).toBeTruthy();
+  describe('train morphological segmenters', function() {
+
+    var trainingSeedSizes = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+    var pathToData = './../MorphoChallenge/morphochal10data/';
+    var currentSize = trainingSeedSizes[0];
+    var counter = 0;
+    var wordhash = {};
+
+    var wordlist = fs.readFileSync(pathToData + 'wordlist.tur', 'utf8').trim().split('\n');
+    wordlist.map(function(row) {
+      if (counter > currentSize) {
+        return;
+      }
+      counter++;
+      var twoPieces = row.split(/ +/);
+      wordhash[twoPieces[1]] = parseInt(twoPieces[0], 10);
+    });
+
+    var goldStandardTrainingWordList = fs.readFileSync(pathToData + 'goldstd_trainset.segmentation.tur', 'utf8').trim().split('\n');
+    var trainingWords = {};
+    counter = 0;
+    goldStandardTrainingWordList.map(function(row) {
+      if (counter > currentSize) {
+        return;
+      }
+      counter++;
+      var twoPieces = row.split(/\t/);
+      var word = twoPieces[0];
+      var alternates = twoPieces[1].split(',');
+      alternates = alternates.map(function(alternateParse) {
+        var morphemes = alternateParse.trim().split(' ');
+        // console.log('working on alternateParse', morphemes);
+        return morphemes.map(function(morpheme) {
+          return {
+            morphemes: morpheme.split(':')[0],
+            gloss: morpheme.split(':')[1]
+          }
+        });
+      });
+      trainingWords[word] = {
+        'alternates': alternates
+      };
+    });
+
+
+    // var goldStandardDevelopmentWordPairs = fs.readFileSync(pathToData + 'goldstd_develset.wordpairs.tur', 'utf8').trim().split('\n');
+    // var developmentWordPairs = {};
+    // counter = 0;
+    // goldStandardDevelopmentWordPairs.map(function(row) {
+    //   if (counter > currentSize) {
+    //     return;
+    //   }
+    //   counter++;
+    //   var twoPieces = row.split(/\t/);
+    //   var word = twoPieces[0];
+    //   var relatedWords = twoPieces[1];
+    //   developmentWordPairs[word] = {
+    //     'relatedWords': relatedWords
+    //   };
+    // });
+
+    it('should be load the wordlist', function() {
+      expect(wordlist[6]).toEqual('1 CCok');
+      expect(wordlist.length).toEqual(617298);
+      expect(wordhash['CIGlIklarIna']).toEqual(4);
+    });
+
+    it('should be load the training data', function() {
+      expect(goldStandardTrainingWordList[0]).toEqual('CIkarsanIz\tCIk:CIk ar:+TNS_ar sa:+if_SUF nIz:+PER2P_niz, CIkar:CIkar sa:+TNS_sa nIz:+PER2P_niz, CIkar:CIkar sa:+if_SUF nIz:+PER2P_niz, CIk:CIk ar:+TNS_ar sa:+TNS_sa nIz:+PER2P_niz');
+      expect(goldStandardTrainingWordList.length).toEqual(1000);
+      expect(trainingWords['OdediGine'].alternates.length).toEqual(2);
+      expect(trainingWords['OdediGine'].alternates[0]).toEqual([{
+        morphemes: 'Ode',
+        gloss: 'Ode'
+      }, {
+        morphemes: 'diG',
+        gloss: '+ADJ_dig'
+      }, {
+        morphemes: 'in',
+        gloss: '+POS2S'
+      }, {
+        morphemes: 'e',
+        gloss: '+DAT'
+      }]);
+    });
+
+    xit('should be load the development data', function() {
+      expect(goldStandardDevelopmentWordPairs[0]).toEqual('CIkarmasIydI\tCIkarImlar [CIkar] puanlamanIn [+NOUN_ma] temelindeki [+POS3] anlaSamIyordu [+PAST_hikaye]');
+      expect(goldStandardDevelopmentWordPairs.length).toEqual(300);
+      expect(developmentWordPairs['devrelerinde']).toEqual(9);
+
+    });
+
+    describe('train the default segmenter', function() {
+
+      it('should be able to train the default segmenter', function() {
+        expect(true).toBeTruthy();
+      });
+
+    });
+
+    describe('train the morfessor 2013 segmenter', function() {
+
+      it('should be able to train the default segmenter', function() {
+        expect(true).toBeTruthy();
+      });
+
+    });
+
+    describe('train the CRF 2013 segmenter', function() {
+
+      it('should be able to train the default segmenter', function() {
+        expect(true).toBeTruthy();
+      });
+
+    });
+
+  });
+
+  describe('evaulate morphological segmenters', function() {
+
+    describe('evaulate the default segmenter', function() {
+
+      it('should be able to evaulate the default segmenter', function() {
+        expect(true).toBeTruthy();
+      });
+
+    });
+
+    describe('evaulate the morfessor 2013 segmenter', function() {
+
+      it('should be able to evaulate the default segmenter', function() {
+        expect(true).toBeTruthy();
+      });
+
+    });
+
+    describe('evaulate the CRF 2013 segmenter', function() {
+
+      it('should be able to evaulate the default segmenter', function() {
+        expect(true).toBeTruthy();
+      });
+
+    });
+
   });
 
 });
