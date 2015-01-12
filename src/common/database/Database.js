@@ -7,7 +7,7 @@
     FieldDBDatabase.apply(this, arguments);
   };
 
-  var DEFAULTALLDOCUMENTSMAPREDUCE = '_design/pages/_view/datums?descending=true&limit=10';
+  var DEFAULT_COLLECTION_MAPREDUCE = '_design/pages/_view/COLLECTION?descending=true&limit=10';
   Database.prototype = Object.create(FieldDBDatabase.prototype, /** @lends Database.prototype */ {
     constructor: {
       value: Database

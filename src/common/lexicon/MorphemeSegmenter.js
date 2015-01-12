@@ -6,6 +6,8 @@
   };
 
   var MorphemeSegmenter = {
+
+
     runSegmenter: function(doc) {
       if (!doc.morphemeSegmentationOptions.segmenter) {
         console.warn("segmenter for this doc must be provided/injected.");
