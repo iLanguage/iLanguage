@@ -44,6 +44,7 @@
   ],
   "dependencies": {
     "fielddb": "0.70.1",
+    "fielddb-glosser": "2.2.0",
     "q": "^1.0.1",
     "collections": "^1.1.0"
   },

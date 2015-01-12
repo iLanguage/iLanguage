@@ -1,4 +1,11 @@
 var Tokenizer = require('../../../../src/common/lexicon/Tokenizer').Tokenizer;
+var MorphoParser = require('fielddb-glosser/lib/FieldDBGlosser').Glosser;
+var XMLHttpRequestNode = require("fielddb-glosser/node_modules/xmlhttprequest").XMLHttpRequest;
+
+var segmenter = new MorphoParser({
+  XMLHttpRequestLocal: XMLHttpRequestNode
+});
+// console.log("Default MorphoParser is ", segmenter);
 
 // var specIsRunningTooLong = 5000;
 
@@ -26,7 +33,7 @@ describe('Tokenizer construction', function() {
     expect(doc.orthographyArray).toEqual(['no', 's', 'pace', 's', 'here']);
   });
 
-  it('should tokenize obvious punctionation in a word', function() {
+  it('should tokenize obvious punctuation in a word', function() {
     var doc = Tokenizer.tokenizeInput({
       orthography: ''
     });
@@ -45,4 +52,37 @@ describe('Tokenizer construction', function() {
     expect(doc.orthographicWords).toEqual(['This', 'has', 'BBB', 'rewrite', 'rules']);
   });
 
+});
+
+describe('Tokenizer construction', function() {
+  it('should create an array of words if a segmenter\'s rules are not downloaded yet ', function() {
+
+    var doc = Tokenizer.tokenizeInput({
+      orthography: 'noqata tusunayawanmi',
+      dbname: 'lingllama-communitycorpus',
+      morphemeSegmentationOptions: {
+        segmenter: segmenter,
+        algorithm: "MorphoParser",
+        maxIterations: 2
+      }
+    });
+    expect(doc.orthographyArray).toEqual(['noqata', 'tusunayawanmi']);
+  });
+
+  it('should create an array of tokens (morphemes) if a segmenter\'s rules have been downloaded', function() {
+    global.ReducedRulesCache = {
+      'lingllama-communitycorpus': []
+    };
+    var doc = Tokenizer.tokenizeInput({
+      orthography: 'noqata tusunayawanmi',
+      dbname: 'lingllama-communitycorpus',
+      morphemeSegmentationOptions: {
+        segmenter: segmenter,
+        algorithm: "MorphoParser",
+        seeds: "noqa-ta tusu-na-y-wa-n-mi",
+        maxIterations: 2
+      }
+    });
+    expect(doc.orthographyArray).toEqual(['noqa', 'ta', 'tusu', 'na', 'y', 'wa', 'n', 'mi']);
+  });
 });

@@ -1,3 +1,5 @@
+var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
+
 (function(exports) {
 
   /* http://jrgraphix.net/research/unicode_blocks.php */
@@ -28,6 +30,9 @@
     }
     if (doc.fineWordInternallyButNotExternallyArray && doc.fineWordInternallyButNotExternallyArray.length === 0) {
       doc.fineWordInternallyButNotExternallyArray = null;
+    }
+    if (doc.morphemeSegmentationOptions) {
+      doc = MorphemeSegmenter.runSegmenter(doc);
     }
     var orthographicTokens = [],
       orthographicWords = [],
