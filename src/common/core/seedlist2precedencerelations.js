@@ -1,4 +1,8 @@
-#!/bin/bash
+#! /usr/bin/env node
+console.log(process.argv);
+var userArgs = process.argv.slice(2);
+
+
 # start the precedence relations for a template/grammar
 
 LANGUAGE="inuktitut"
@@ -51,12 +55,12 @@ cat $LANGUAGE-precedencerelations_seedlist >> $LANGUAGE-precedencerelations-hist
 
 
 echo "
-A history of the precedence rules are kept in $LANGUAGE-precedencerelations-history. 
-   This file is kept to gather probabilty information. It serves as a longterm memory, 
+A history of the precedence rules are kept in $LANGUAGE-precedencerelations-history.
+   This file is kept to gather probabilty information. It serves as a longterm memory,
    is not used as input to later steps."
 echo "
-The generalized frequency information for the precedence rules are in 
-   $LANGUAGE-precedencerelations-frequency. This is the file which is used 
+The generalized frequency information for the precedence rules are in
+   $LANGUAGE-precedencerelations-frequency. This is the file which is used
    as input in later steps."
 sort < $LANGUAGE-precedencerelations-history  |uniq -c > $LANGUAGE-precedencerelations-frequency
 
