@@ -1,9 +1,14 @@
 'use strict';
 var iLanguage = require('../../../src/common/ilanguage').iLanguage;
+var shellPromises = require('../../../src/common/shellPromises');
+var Tokenizer = iLanguage.Corpus.Orthography.Tokenizer;
 
-var Q = require("q");
 var fs = require("fs");
+var specIsRunningTooLong = 5000;
 
+var trainingSeedSizes = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+var pathToData = './../MorphoChallenge/morphochal10data/';
+var currentSize = trainingSeedSizes[0];
 /*
   ======== A Handy Little Jasmine Reference ========
 https://github.com/pivotal/jasmine/wiki/Matchers
@@ -75,26 +80,14 @@ describe('lib/ilanguage', function() {
 
   describe('train morphological segmenters', function() {
 
-    var trainingSeedSizes = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
-    var pathToData = './../MorphoChallenge/morphochal10data/';
-    var currentSize = trainingSeedSizes[0];
+
     var counter = 0;
-    var wordhash = {};
+    var wordAnalyses = {};
 
-    var wordlist = fs.readFileSync(pathToData + 'wordlist.tur', 'utf8').trim().split('\n');
-    wordlist.map(function(row) {
-      if (counter > currentSize) {
-        return;
-      }
-      counter++;
-      var twoPieces = row.split(/ +/);
-      wordhash[twoPieces[1]] = parseInt(twoPieces[0], 10);
-    });
-
-    var goldStandardTrainingWordList = fs.readFileSync(pathToData + 'goldstd_trainset.segmentation.tur', 'utf8').trim().split('\n');
-    var trainingWords = {};
+    var goldStandardRawText = fs.readFileSync(pathToData + 'goldstd_combined.segmentation.tur', 'utf8').trim().split('\n');
+    var goldStandardSegmentationsWordList = {};
     counter = 0;
-    goldStandardTrainingWordList.map(function(row) {
+    goldStandardRawText.map(function(row) {
       if (counter > currentSize) {
         return;
       }
@@ -109,42 +102,61 @@ describe('lib/ilanguage', function() {
           return {
             morphemes: morpheme.split(':')[0],
             gloss: morpheme.split(':')[1]
-          }
+          };
         });
       });
-      trainingWords[word] = {
+      goldStandardSegmentationsWordList[word] = {
         'alternates': alternates
       };
     });
 
 
-    // var goldStandardDevelopmentWordPairs = fs.readFileSync(pathToData + 'goldstd_develset.wordpairs.tur', 'utf8').trim().split('\n');
-    // var developmentWordPairs = {};
-    // counter = 0;
-    // goldStandardDevelopmentWordPairs.map(function(row) {
-    //   if (counter > currentSize) {
-    //     return;
-    //   }
-    //   counter++;
-    //   var twoPieces = row.split(/\t/);
-    //   var word = twoPieces[0];
-    //   var relatedWords = twoPieces[1];
-    //   developmentWordPairs[word] = {
-    //     'relatedWords': relatedWords
-    //   };
-    // });
+    var wordlistRawText = fs.readFileSync(pathToData + 'wordlist-2010.tur', 'utf8').trim().split('\n');
+    counter = 0;
+    wordlistRawText.map(function(row) {
+      var twoPieces = row.split(/ +/);
+      if (counter > currentSize) {
+        return;
+      }
+      counter++;
+      wordAnalyses[twoPieces[1]] = {
+        count: parseInt(twoPieces[0], 10)
+      };
+    });
 
-    it('should be load the wordlist', function() {
-      expect(wordlist[6]).toEqual('1 CCok');
-      expect(wordlist.length).toEqual(617298);
-      expect(wordhash['CIGlIklarIna']).toEqual(4);
+    var goldStandardTrainingPrecedenceRules = fs.readFileSync(pathToData + 'goldstd_combined.segmentation.precedenceRelations.tur', 'utf8');
+    goldStandardTrainingPrecedenceRules = JSON.parse(goldStandardTrainingPrecedenceRules);
+    var compactRelations = goldStandardTrainingPrecedenceRules.rows.map(function(row) {
+      return row.key.x + "-" + row.key.y;
+    });
+
+    var goldStandardDevelopmentWordPairs = fs.readFileSync(pathToData + 'goldstd_develset.wordpairs.tur', 'utf8').trim().split('\n');
+    var developmentWordPairs = {};
+    counter = 0;
+    goldStandardDevelopmentWordPairs.map(function(row) {
+      if (counter > currentSize) {
+        return;
+      }
+      counter++;
+      var twoPieces = row.split(/\t/);
+      var word = twoPieces[0];
+      var relatedWords = twoPieces[1];
+      developmentWordPairs[word] = {
+        'relatedWords': relatedWords
+      };
+    });
+
+    it('should be load the wordlistRawText', function() {
+      expect(wordlistRawText[6]).toEqual('1 CCok');
+      expect(wordlistRawText.length).toEqual(617298);
+      expect(wordAnalyses['CIGlIklarIna'].count).toEqual(4);
     });
 
     it('should be load the training data', function() {
-      expect(goldStandardTrainingWordList[0]).toEqual('CIkarsanIz\tCIk:CIk ar:+TNS_ar sa:+if_SUF nIz:+PER2P_niz, CIkar:CIkar sa:+TNS_sa nIz:+PER2P_niz, CIkar:CIkar sa:+if_SUF nIz:+PER2P_niz, CIk:CIk ar:+TNS_ar sa:+TNS_sa nIz:+PER2P_niz');
-      expect(goldStandardTrainingWordList.length).toEqual(1000);
-      expect(trainingWords['OdediGine'].alternates.length).toEqual(2);
-      expect(trainingWords['OdediGine'].alternates[0]).toEqual([{
+      expect(goldStandardRawText[5]).toEqual('CIkmazIna\tCIkmaz:CIkmaz I:+POS3 na:+DAT3, CIkmaz:CIkmaz In:+POS2S a:+DAT');
+      expect(goldStandardRawText.length).toEqual(1760);
+      expect(goldStandardSegmentationsWordList['OdediGine'].alternates.length).toEqual(2);
+      expect(goldStandardSegmentationsWordList['OdediGine'].alternates[0]).toEqual([{
         morphemes: 'Ode',
         gloss: 'Ode'
       }, {
@@ -159,17 +171,38 @@ describe('lib/ilanguage', function() {
       }]);
     });
 
-    xit('should be load the development data', function() {
+    it('should be load the development word pair data', function() {
       expect(goldStandardDevelopmentWordPairs[0]).toEqual('CIkarmasIydI\tCIkarImlar [CIkar] puanlamanIn [+NOUN_ma] temelindeki [+POS3] anlaSamIyordu [+PAST_hikaye]');
       expect(goldStandardDevelopmentWordPairs.length).toEqual(300);
-      expect(developmentWordPairs['devrelerinde']).toEqual(9);
-
+      expect(developmentWordPairs['devrelerinde'].relatedWords).toContain('devrelerine [+PL,+POS2S,devre]');
     });
 
     describe('train the default segmenter', function() {
 
       it('should be able to train the default segmenter', function() {
-        expect(true).toBeTruthy();
+        expect(goldStandardTrainingPrecedenceRules.rows.length).toEqual(7413);
+        expect(compactRelations.length).toEqual(7413);
+        expect(compactRelations[3000]).toEqual('galibiyet-e');
+
+        var word,
+          doc;
+
+        for (word in wordAnalyses) {
+          if (!wordAnalyses.hasOwnProperty(word)) {
+            continue;
+          }
+          doc = Tokenizer.tokenizeInput({
+            orthography: word,
+            morphemeSegmentationOptions: {
+              algorithm: 'MorphoParser',
+              precedenceRelations: compactRelations,
+              maxIterations: 2
+            }
+          });
+          wordAnalyses[word].MorphoParser = doc.morphemes;
+          // expect(wordAnalyses[word].MorphoParser).toEqual(goldStandardSegmentationsWordList[word]);
+        }
+
       });
 
     });
@@ -193,6 +226,27 @@ describe('lib/ilanguage', function() {
   });
 
   describe('evaulate morphological segmenters', function() {
+    var language = 'tur';
+    var evaluationType = 'segmentation';
+
+    var getWordsToEvaluate =
+      'cut -f1 ' +
+      ' goldstd_develset.' + evaluationType + '.' + language +
+      ' > relevantwordsfile.' + language;
+
+    var createWordPairsFromAlgorithmsLabels =
+      ' ./sample_word_pairs_v2.pl -n 300 ' +
+      ' -refwords relevantwordsfile.' + language +
+      ' < proposed.' + evaluationType + '.' + language +
+      ' > proposed.wordspairs.' + language;
+
+    var runEvaluationScriptOnWordPairs =
+      ' ./eval_morphemes_v2.pl ' +
+      ' goldstd_develset.wordpairs.' + language +
+      ' proposed.wordspairs.' + language +
+      ' goldstd_develset.' + evaluationType + '.' + language +
+      ' proposed.' + evaluationType + '.' + language;
+
 
     describe('evaulate the default segmenter', function() {
 
@@ -202,11 +256,22 @@ describe('lib/ilanguage', function() {
 
     });
 
-    describe('evaulate the morfessor 2013 segmenter', function() {
+    xdescribe('evaulate the morfessor 2013 segmenter', function() {
 
-      it('should be able to evaulate the default segmenter', function() {
-        expect(true).toBeTruthy();
-      });
+      it('should be able to evaulate the default segmenter', function(done) {
+        var runEvalutation = 'cd ' + pathToData + ' && ' + getWordsToEvaluate + ' && ' +
+          createWordPairsFromAlgorithmsLabels + ' && ' +
+          runEvaluationScriptOnWordPairs;
+
+        // console.log("running " + runEvalutation);
+        shellPromises.execute(runEvalutation)
+          .then(function(results) {
+            expect(results).toEqual(" ");
+
+          }).done(done);
+
+      }, specIsRunningTooLong);
+
 
     });
 
