@@ -1,4 +1,6 @@
-#!/bin/bash
+#! /usr/bin/env node
+console.log(process.argv);
+var userArgs = process.argv.slice(2);
 
 LANGUAGE="inuktitut"
 
@@ -27,7 +29,7 @@ echo "Creating a list of permissible morpheme boundaries ie, z > a, in xyz > abc
 
 sort -r inuktitut-morphrelations-frequency  > inuktitut-morphrelations-frequency-sorted
 
-for i in 1 
+for i in 1
 do
    echo "Welcome $i times"
 

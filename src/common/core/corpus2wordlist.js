@@ -1,33 +1,43 @@
-#!/bin/bash
-if [ -z "$1" ]; then 
-   echo usage: $0 directory "Provide a corpus. This script will generate a word list for the corpus: sorted by suffix order, sorted by frequency order and sorted by alphabetical order. "
-   exit
-fi
+#! /usr/bin/env node
+console.log(process.argv);
+var userArgs = process.argv.slice(2);
 
 
-FREQ="frequencyOrder"
-SUFFIXES="suffixOrder"
-ALPHA="alphabeticalOrder"
-SYLABLES="lengthInSylables"
+var corpus2wordlist = function(){
+  // if [ -z "$1" ]; then
+  //    echo usage: $0 directory "Provide a corpus. This script will generate a word list for the corpus: sorted by suffix order, sorted by frequency order and sorted by alphabetical order. "
+  //    exit
+  // fi
 
-# From Unix for Poets
 
-#zcat $1 > corpus #if its a gzip corpus
-tr -sc '[A-Z][+/][a-z]' '[\012*]' < $1 | sort | uniq -c | rev | sort  |rev | sed 's/^ *//' > $1-$SUFFIXES
-#cat $1-$SUFFIXES | grep '^2 ' > $1-$SUFFIXES-2
+  // FREQ="frequencyOrder"
+  // SUFFIXES="suffixOrder"
+  // ALPHA="alphabeticalOrder"
+  // SYLABLES="lengthInSylables"
 
-#tr -sc '[A-Z][+/][a-z]' '[\012*]' < $1 | sort | uniq -c | sort -nr | sed 's/^ *//' > $1-$FREQ
-#cat $1-$FREQ | grep '^2 ' > $1-$FREQ-2
+  // # From Unix for Poets
 
-#tr -sc '[A-Z][+/][a-z]' '[\012*]' < $1 | sort | uniq -c | sed 's/^ *//' > $1-$ALPHA
+  // #zcat $1 > corpus #if its a gzip corpus
+  // tr -sc '[A-Z][+/][a-z]' '[\012*]' < $1 | sort | uniq -c | rev | sort  |rev | sed 's/^ *//' > $1-$SUFFIXES
+  // #cat $1-$SUFFIXES | grep '^2 ' > $1-$SUFFIXES-2
 
-#tr -sc '[A-Z][a-z]' '[\012*]' < $1 | sort -u > words
-#tr -sc '[aeiou\012]' ' ' < words | awk '{print NF}' > syl
-#paste syl words |sort -nr | sed 's/\t/ /' > $1-$SYLABLES
-#rm words
-#rm syl 
+  // #tr -sc '[A-Z][+/][a-z]' '[\012*]' < $1 | sort | uniq -c | sort -nr | sed 's/^ *//' > $1-$FREQ
+  // #cat $1-$FREQ | grep '^2 ' > $1-$FREQ-2
 
-#rm corpus # if its a gzip corpus
+  // #tr -sc '[A-Z][+/][a-z]' '[\012*]' < $1 | sort | uniq -c | sed 's/^ *//' > $1-$ALPHA
 
-#eventually keep all files in the memory folder instead
-#mv $1-* memory
+  // #tr -sc '[A-Z][a-z]' '[\012*]' < $1 | sort -u > words
+  // #tr -sc '[aeiou\012]' ' ' < words | awk '{print NF}' > syl
+  // #paste syl words |sort -nr | sed 's/\t/ /' > $1-$SYLABLES
+  // #rm words
+  // #rm syl
+
+  // #rm corpus # if its a gzip corpus
+
+  // #eventually keep all files in the memory folder instead
+  // #mv $1-* memory
+};
+
+corpus2wordlist(userArgs);
+
+exports.corpus2wordlist = corpus2wordlist;
