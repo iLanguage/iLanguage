@@ -100,8 +100,13 @@ describe('lib/ilanguage', function() {
 
     var goldStandardTrainingPrecedenceRules = fs.readFileSync(pathToData + 'goldstd_combined.segmentation.precedenceRelations.tur', 'utf8');
     goldStandardTrainingPrecedenceRules = JSON.parse(goldStandardTrainingPrecedenceRules);
-    var compactRelations = goldStandardTrainingPrecedenceRules.rows.map(function(row) {
-      return row.key.x + "-" + row.key.y;
+    var compactRelations = [];
+    goldStandardTrainingPrecedenceRules.rows.map(function(row) {
+      console.log(row.key);
+      var compact = row.key.x + "-" + row.key.y;
+      if (compactRelations.indexOf(compact) === -1) {
+        compactRelations.push(compact);
+      }
     });
 
     var goldStandardDevelopmentWordPairs = fs.readFileSync(pathToData + 'goldstd_develset.wordpairs.tur', 'utf8').trim().split('\n');
