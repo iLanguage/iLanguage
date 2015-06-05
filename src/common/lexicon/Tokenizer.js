@@ -1,4 +1,5 @@
 var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
+var MorphoParser = require('./../core/corpus2morphology');
 
 (function(exports) {
 
@@ -115,7 +116,8 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
   };
 
   exports.Tokenizer = {
-    tokenizeInput: tokenizeInput
+    tokenizeInput: tokenizeInput,
   };
+  exports.MorphoParser = MorphoParser;
 
 })(typeof exports === 'undefined' ? this['Tokenizer'] = {} : exports);
