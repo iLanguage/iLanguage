@@ -8,6 +8,25 @@ var currentSize = trainingSeedSizes[0];
 
 describe('core/corpus2morphology', function() {
 
+  describe('It can guess segmentation', function() {
+
+    it('should run', function() {
+      expect(Corpus2Morphology).toBeDefined();
+      expect(Corpus2Morphology.run).toBeDefined();
+      expect(Corpus2Morphology.morphology2clean).toBeDefined();
+      expect(Corpus2Morphology.corpus2wordlist).toBeDefined();
+      expect(Corpus2Morphology.wordlist2rankedpossiblemorphs).toBeDefined();
+      expect(Corpus2Morphology.seedlist2precedencerelations).toBeDefined();
+      expect(Corpus2Morphology.seedlist2initialdensecorpus).toBeDefined();
+      expect(Corpus2Morphology.initialdensecorpus2morphrelations).toBeDefined();
+      expect(Corpus2Morphology.morphrelations2phonotactics).toBeDefined();
+      expect(Corpus2Morphology.morphorelations2template).toBeDefined();
+      expect(Corpus2Morphology.precedencerelations2densecorpus).toBeDefined();
+      expect(true).toBeTruthy();
+    });
+
+  });
+
 
   it("should Removing all files and memories...", function() {
     expect(true).toBeTruthy();
