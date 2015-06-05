@@ -1,41 +1,52 @@
-#!/bin/bash
+'use strict';
+var Corpus2Morphology = require('../../../../src/common/core/corpus2morphology').Corpus2Morphology;
 
-LANGUAGE="inuktitut"
+var specIsRunningTooLong = 5000;
 
-echo "Removing all files and memories..."
-#./morphology2clean
-./morphology2clean $1 #if you want to remove the word lists too
+var trainingSeedSizes = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+var currentSize = trainingSeedSizes[0];
 
-echo "Creating a wordlist..."
-./corpus2wordlist $1
-
-echo "Creating  rankedpossiblemorpheme lists..."
-#./wordlist2rankedpossiblemorphs $1-suffixOrder
-
-echo "Creating initial precedence relations..."
-./seedlist2precedencerelations $LANGUAGE-seedlist
-
-echo "Creating an initial dense corpus..."
-#echo "      (contains a hard coded seed list, change this to follow from above step in later versions)"
-./seedlist2initialdensecorpus $1-suffixOrder
-
-echo "Creating precedence relations between morphemes..."
-./initialdensecorpus2morphrelations.pl $LANGUAGE-densecorpus
-
-echo "Creating a list of permissible morpheme boundaries ie, z > a, in xyz > abc ..."
-./morphrelations2phonotactics.pl $LANGUAGE-morphrelations-frequency
-
-sort -r inuktitut-morphrelations-frequency  > inuktitut-morphrelations-frequency-sorted
-
-for i in 1 
-do
-   echo "Welcome $i times"
+describe('core/corpus2morphology', function() {
 
 
-echo "Creating a (new) template by generalizing individual morphs to their class..."
-./morphorelations2template.py $LANGUAGE-morphorelations-frequency-sorted
+  it("should Removing all files and memories...", function() {
+    expect(true).toBeTruthy();
+  });
+  
+  it("should Creating a wordlist...", function() {
+    expect(true).toBeTruthy();
+  });
+  
+  it("should Creating  rankedpossiblemorpheme lists...", function() {
+    expect(true).toBeTruthy();
+  });
+  
+  it("should Creating initial precedence relations...", function() {
+    expect(true).toBeTruthy();
+  });
+  
+  it("should Creating an initial dense corpus...", function() {
+    expect(true).toBeTruthy();
+  });
+  
+  it("should Creating precedence relations between morphemes...", function() {
+    expect(true).toBeTruthy();
+  });
+  
+  it("should Creating a list of permissible morpheme boundaries ie, z > a, in xyz > abc ...", function() {
+    expect(true).toBeTruthy();
+  });
+  
+  it("should Welcome $i times", function() {
+    expect(true).toBeTruthy();
+  });
 
-echo "Creating a new dense corpus..."
-./precedencerelations2densecorpus $1-suffixOrder
+  it("should Creating a (new) template by generalizing individual morphs to their class...", function() {
+    expect(true).toBeTruthy();
+  });
+  
+  it("should Creating a new dense corpus...", function() {
+    expect(true).toBeTruthy();
+  });
 
-done
+});
