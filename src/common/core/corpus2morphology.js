@@ -1,43 +1,43 @@
-#! /usr/bin/env node
-console.log(process.argv);
-var userArgs = process.argv.slice(2);
+(function(exports) {
 
-LANGUAGE="inuktitut"
+  var Corpus2Morphology = {
+    LANGUAGE: "inuktitut",
 
-echo "Removing all files and memories..."
-#./morphology2clean
-./morphology2clean $1 #if you want to remove the word lists too
+    run: function() {
+      console.log("Removing all files and memories...");
+      // #./morphology2clean
+      // ./morphology2clean $1 #if you want to remove the word lists too
 
-echo "Creating a wordlist..."
-./corpus2wordlist $1
+      console.log("Creating a wordlist...");
+      // ./corpus2wordlist $1
 
-echo "Creating  rankedpossiblemorpheme lists..."
-./wordlist2rankedpossiblemorphs $1-suffixOrder
+      console.log("Creating  rankedpossiblemorpheme lists...");
+      // ./wordlist2rankedpossiblemorphs $1-suffixOrder
 
-echo "Creating initial precedence relations..."
-./seedlist2precedencerelations $LANGUAGE-seedlist
+      console.log("Creating initial precedence relations...");
+      // ./seedlist2precedencerelations $LANGUAGE-seedlist
 
-echo "Creating an initial dense corpus..."
-echo "      (contains a hard coded seed list, change this to follow from above step in later versions)"
-./seedlist2initialdensecorpus $1-suffixOrder
+      console.log("Creating an initial dense corpus...");
+      console.log("      (contains a hard coded seed list, change this to follow from above step in later versions)");
+      // ./seedlist2initialdensecorpus $1-suffixOrder
 
-echo "Creating precedence relations between morphemes..."
-./initialdensecorpus2morphrelations.pl $LANGUAGE-densecorpus
+      console.log("Creating precedence relations between morphemes...");
+      // ./initialdensecorpus2morphrelations.pl $LANGUAGE-densecorpus
 
-echo "Creating a list of permissible morpheme boundaries ie, z > a, in xyz > abc ..."
-./morphrelations2phonotactics.pl $LANGUAGE-morphrelations-frequency
+      console.log("Creating a list of permissible morpheme boundaries ie, z > a, in xyz > abc ...");
+      // ./morphrelations2phonotactics.pl $LANGUAGE-morphrelations-frequency
 
-sort -r inuktitut-morphrelations-frequency  > inuktitut-morphrelations-frequency-sorted
-
-for i in 1
-do
-   echo "Welcome $i times"
+      // sort -r inuktitut-morphrelations-frequency  > inuktitut-morphrelations-frequency-sorted
 
 
-echo "Creating a (new) template by generalizing individual morphs to their class..."
-./morphrelations2template.py $LANGUAGE-morphorelations-frequency-sorted
+      console.log("Creating a (new) template by generalizing individual morphs to their class...");
+      // ./morphrelations2template.py $LANGUAGE-morphorelations-frequency-sorted
 
-echo "Creating a new dense corpus..."
-./precedencerelations2densecorpus $1-suffixOrder
+      console.log("Creating a new dense corpus...");
+      // ./precedencerelations2densecorpus $1-suffixOrder
+    }
+  };
 
-done
+  exports.Corpus2Morphology;
+  // }(typeof exports === 'object' && exports || this));
+})(typeof exports === 'undefined' ? this['Corpus2Morphology'] = {} : exports);
