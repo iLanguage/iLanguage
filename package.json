@@ -43,9 +43,9 @@
     "Oriana <oriana.kilbourn-ceron@mail.mcgill.ca>"
   ],
   "dependencies": {
+    "collections": "^1.1.0",
     "fielddb": "~0.93.2",
-    "q": "^1.0.1",
-    "collections": "^1.1.0"
+    "q": "^1.0.1"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",
