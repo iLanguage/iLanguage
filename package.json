@@ -1,6 +1,6 @@
 {
   "name": "ilanguage",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "A Language Independent 'word finding' tool, useful for stemming, tokenizing, indexing, spell checking and other common NLP tasks. Works on any human language and any unicode character set, learns from the data you give it. (Uses compression, maximum entropy and fieldlinguistics.)",
   "homepage": "https://github.com/iLanguage/iLanguage/issues/milestones?state=closed",
   "repository": {
