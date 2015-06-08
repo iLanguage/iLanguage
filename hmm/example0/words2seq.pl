@@ -1,1 +1,0 @@
-../words2seq.pl
