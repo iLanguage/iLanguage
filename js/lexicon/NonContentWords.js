@@ -1,6 +1,6 @@
 (function(exports) {
-  var LexemeFrequency = require('./LexemeFrequency').LexemeFrequency;
-  var Tokenizer = require('./Tokenizer').Tokenizer;
+  var LexemeFrequency = exports.LexemeFrequency || require('./LexemeFrequency').LexemeFrequency;
+  var Tokenizer = exports.Tokenizer || require('./Tokenizer').Tokenizer;
 
   var defaults = {
     // From Jonathan Feinberg's cue.language, see https://github.com/jdf/cue.language/blob/master/license.txt.
@@ -199,4 +199,4 @@
     filterText: filterText
   };
 
-})(typeof exports === 'undefined' ? this['NonContentWords'] = {} : exports);
+})(typeof exports === 'undefined' ? this : exports);

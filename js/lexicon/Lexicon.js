@@ -1,14 +1,12 @@
-// var ObservableDOM = require("frb/dom"); // add support for content editable
-// var Bindings = require("frb/bindings");
-var SortedSet = require("collections/sorted-set");
-var UniqueSet = require("collections/set");
-var CORS = require("fielddb/api/CORS").CORS;
-var Q = require("q");
-var NonContentWords = require('./NonContentWords').NonContentWords;
-var LexemeFrequency = require('./LexemeFrequency').LexemeFrequency;
-var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
-
 (function(exports) {
+  // var ObservableDOM = require("frb/dom"); // add support for content editable
+  // var Bindings = require("frb/bindings");
+  var SortedSet = UniqueSet = exports.FieldDB ? exports.FieldDB.Collection : require("fielddb").FieldDB.Collection;
+  var CORS = exports.FieldDB ? exports.FieldDB.CORS : require("fielddb/api/CORS").CORS;
+  var Q = exports.FieldDB ? exports.FieldDB.Q : require("q");
+  var NonContentWords = exports.NonContentWords || require('./NonContentWords').NonContentWords;
+  var LexemeFrequency = exports.LexemeFrequency || require('./LexemeFrequency').LexemeFrequency;
+  var MorphemeSegmenter = exports.MorphemeSegmenter || require('./MorphemeSegmenter').MorphemeSegmenter;
 
   var maxLexiconSize = 1000;
 
@@ -396,7 +394,7 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
         var word = options.wordFrequencies[wordIndex].orthography;
         var count = options.wordFrequencies[wordIndex].count;
         var categories = options.wordFrequencies[wordIndex].categories;
-        if(lex.length > maxLexiconSize){
+        if (lex.length > maxLexiconSize) {
           continue;
         }
         lex.add(new LexiconNode({
@@ -430,10 +428,14 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
   Lexicon.MorphemeSegmenter = MorphemeSegmenter;
 
   exports.Lexicon = Lexicon;
-  global.Lexicon = Lexicon;
+  try {
+    global.Lexicon = Lexicon;
+    global.LexiconFactory = LexiconFactory;
+  } catch (e) {
+    console.log(e);
+  }
 
   exports.LexiconFactory = LexiconFactory;
-  global.LexiconFactory = LexiconFactory;
 
   // }(typeof exports === 'object' && exports || this));
-})(typeof exports === 'undefined' ? this['Lexicon'] = {} : exports);
+})(typeof exports === 'undefined' ? this : exports);

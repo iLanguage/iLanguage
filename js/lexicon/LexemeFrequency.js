@@ -1,5 +1,5 @@
 (function(exports) {
-  var Tokenizer = require('./Tokenizer').Tokenizer;
+  var Tokenizer = exports.Tokenizer || require('./Tokenizer').Tokenizer;
   var PROTECT_AGAINST_RESEVERD_WORDS = 'hhh';
 
   var reverseProtectionAgainstReservedWords = function(wordFrequenciesMap) {
@@ -266,10 +266,10 @@
   };
 
 
-  exports.LexemeFrequency = {
+  exports.LexemeFrequency = exports.LexemeFrequency || {
     calculateWordFrequencies: calculateWordFrequencies,
     calculateNonContentWords: calculateNonContentWords,
     getUnique: getUnique
   };
 
-})(typeof exports === 'undefined' ? this['LexemeFrequency'] = {} : exports);
+})(typeof exports === 'undefined' ? this : exports);

@@ -17,7 +17,7 @@
     return values.length;
   };
 
-  var MorphemeSegmenter = {
+  var MorphemeSegmenter = exports.MorphemeSegmenter || {
     debugMode: true,
     seeds2precedenceRelations: function(word) {
       if (word === "") {
@@ -300,6 +300,6 @@
     }
   };
 
-  exports.MorphemeSegmenter = MorphemeSegmenter;
+  exports.MorphemeSegmenter = exports.MorphemeSegmenter || MorphemeSegmenter;
 
-})(typeof exports === "undefined" ? this["MorphemeSegmenter"] = {} : exports);
+})(typeof exports === "undefined" ? this : exports);
