@@ -1,8 +1,7 @@
 (function(exports) {
   // var ObservableDOM = require("frb/dom"); // add support for content editable
   // var Bindings = require("frb/bindings");
-  var SortedSet = exports.FieldDB ? exports.FieldDB.Collection : require("fielddb/api/Collection").Collection;
-  var UniqueSet = SortedSet;
+  var SortedSet = UniqueSet = exports.FieldDB ? exports.FieldDB.Collection : require("fielddb").FieldDB.Collection;
   var CORS = exports.FieldDB ? exports.FieldDB.CORS : require("fielddb/api/CORS").CORS;
   var Q = exports.FieldDB ? exports.FieldDB.Q : require("q");
   var NonContentWords = exports.NonContentWords || require('./NonContentWords').NonContentWords;
@@ -24,16 +23,6 @@
   LexiconNode.prototype = Object.create(Object.prototype, {
     constructor: {
       value: LexiconNode
-    },
-    id: {
-      get: function() {
-        var uniqueness = "";
-        if (this.igt) {
-          uniqueness = uniqueness + this.igt.morphemes ? this.igt.morphemes : "";
-          uniqueness = uniqueness + this.igt.gloss ? this.igt.gloss : "";
-        }
-        return uniqueness;
-      }
     },
     equals: {
       value: function(b) {
@@ -213,20 +202,15 @@
     constructor: {
       value: Lexicon
     },
-    INTERNAL_MODELS: {
-      value: {
-        item: LexiconNode
-      }
-    },
     sortBy: {
       value: "morphemes"
     },
 
-    // toJSON: {
-    //   value: function() {
-    //     return JSON.stringify(this.toObject(), null, 2);
-    //   }
-    // },
+    toJSON: {
+      value: function() {
+        return JSON.stringify(this.toObject(), null, 2);
+      }
+    },
     getLexicalEntries: {
       value: function(lexicalEntryToMatch) {
         var deffered = Q.defer(),
@@ -236,9 +220,8 @@
         if (!lexicalEntryToMatch) {
           deffered.resolve(matches);
         } else {
-          var results = this.find(lexicalEntryToMatch);
-          results.map(function(value){
-            console.log(value.id + " of " + self.length);
+          this.filter(function(value, key, object, depth) {
+            console.log(key + " of " + self.length);
             if (typeof lexicalEntryToMatch.equals === "function") {
               if (lexicalEntryToMatch.equals(value)) {
                 matches.push(value);
@@ -257,8 +240,10 @@
                 console.log(value);
               }
             }
-          });
-          deffered.resolve(matches);
+            if (key === self.length - 1) {
+              deffered.resolve(matches);
+            }
+          }, this);
         }
         return deffered.promise;
       }
