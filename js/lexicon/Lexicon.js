@@ -1,7 +1,8 @@
 (function(exports) {
   // var ObservableDOM = require("frb/dom"); // add support for content editable
   // var Bindings = require("frb/bindings");
-  var SortedSet = UniqueSet = exports.FieldDB ? exports.FieldDB.Collection : require("fielddb").FieldDB.Collection;
+  var SortedSet = exports.SortedSet || require("collections/sorted-set");
+  var UniqueSet = exports.Set || require("collections/set");
   var CORS = exports.FieldDB ? exports.FieldDB.CORS : require("fielddb/api/CORS").CORS;
   var Q = exports.FieldDB ? exports.FieldDB.Q : require("q");
   var NonContentWords = exports.NonContentWords || require('./NonContentWords').NonContentWords;
