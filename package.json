@@ -43,30 +43,31 @@
     "Oriana <oriana.kilbourn-ceron@mail.mcgill.ca>"
   ],
   "dependencies": {
-    "fielddb": "~0.93.2",
+    "collections": "^1.2.3",
+    "fielddb": "^0.93.2",
     "fielddb-glosser": "2.2.0",
-    "q": "^1.0.1",
-    "collections": "^1.1.0"
+    "q": "^1.0.1"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.6.0",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-uglify": "~0.2.2",
+    "gulp-jshint": "^1.8.4",
+    "jshint-stylish": "^0.4.0",
+    "gulp-jscs": "^1.1.2",
+    "gulp-util": "^3.0.1",
     "grunt-contrib-watch": "~0.5.2",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-jasmine": "~0.5.2",
-    "grunt-jasmine-node": "~0.1.0",
+    "gulp-bump": "^0.1.11",
+    "gulp-jasmine": "^1.0.0",
     "jasmine-node": "~1.11.0",
-    "time-grunt": "~0.1.0",
-    "grunt": "~0.4.2",
+    "gulp-istanbul": "^0.5.0",
+    "gulp": "^3.8.8",
     "browserify": "~3.2.0",
-    "grunt-browserify": "git+https://github.com/jmreidy/grunt-browserify.git"
+    "gulp-load-plugins": "^0.6.0",
+    "gulp-plumber": "^0.6.5"
   },
   "engines": {
-    "node": "~0.8 || ~0.10"
+    "node": "~0.8 || ~0.10 || ~0.12"
   },
   "scripts": {
-    "test": "jasmine-node test"
+    "test": "gulp test"
   },
   "licenses": [
     {
