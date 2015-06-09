@@ -1,4 +1,4 @@
-var MorphemeSegmenter = require('../../../../src/common/lexicon/MorphemeSegmenter').MorphemeSegmenter;
+var MorphemeSegmenter = MorphemeSegmenter || require('../../js/lexicon/MorphemeSegmenter').MorphemeSegmenter;
 
 // var specIsRunningTooLong = 5000;
 

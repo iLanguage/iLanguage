@@ -1,4 +1,4 @@
-var LexemeFrequency = require('../../../../src/common/lexicon/LexemeFrequency').LexemeFrequency;
+var LexemeFrequency = LexemeFrequency || require('../../js/lexicon/LexemeFrequency').LexemeFrequency;
 
 // var specIsRunningTooLong = 5000;
 

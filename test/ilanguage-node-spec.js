@@ -1,6 +1,6 @@
 'use strict';
-var iLanguage = require('../../../src/common/ilanguage').iLanguage;
-var shellPromises = require('../../../src/node/shellPromises');
+var iLanguage = require('../js/ilanguage').iLanguage;
+var shellPromises = require('../js/shellPromises');
 var Tokenizer = iLanguage.Corpus.Orthography.Tokenizer;
 
 var fs = require("fs");
@@ -160,8 +160,10 @@ describe('lib/ilanguage', function() {
 
       it('should be able to train the default segmenter', function() {
         expect(goldStandardTrainingPrecedenceRules.rows.length).toEqual(7413);
-        expect(compactRelations.length).toEqual(7413);
-        expect(compactRelations[3000]).toEqual('galibiyet-e');
+        // expect(compactRelations.length).toEqual(7413);
+        // expect(compactRelations[3000]).toEqual('galibiyet-e');
+        expect(compactRelations.length).toEqual(3527);
+        expect(compactRelations[3000]).toEqual('surukle-me');
 
         var word,
           doc;
