@@ -5,9 +5,9 @@ var plugins = require('gulp-load-plugins')();
 
 var paths = {
   jshint: ['./gulpfile.js'],
-  watch: ['./gulpfile.js', './js/**', './test/**/*.js', '!test/{temp,temp/**}'],
+  watch: ['./gulpfile.js', './js/**/*.js', './test/**/*.js', '!test/{temp,temp/**}'],
   tests: ['./test/**/*-spec.js', '!test/{temp,temp/**}'],
-  source: ['./js/*.js']
+  source: ['./js/*.js', './js/lexicon/*.js']
 };
 
 var plumberConf = {};
