@@ -1,5 +1,5 @@
 'use strict';
-var iLanguage = require('../js/ilanguage').iLanguage;
+var iLanguage = require('../js/ilanguage');
 var shellPromises = require('../js/shellPromises');
 var Tokenizer = iLanguage.Corpus.Orthography.Tokenizer;
 

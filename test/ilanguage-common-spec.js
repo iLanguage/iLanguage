@@ -1,5 +1,5 @@
 'use strict';
-var iLanguage = iLanguage || require('../js/ilanguage').iLanguage;
+var iLanguage = iLanguage || require('../js/ilanguage');
 var Tokenizer = iLanguage.Corpus.Orthography.Tokenizer;
 
 /*
@@ -50,7 +50,6 @@ describe('lib/ilanguage', function() {
     it('should automatically clean the text to create informative wordclouds', function() {
       expect(iLanguage.Corpus).toBeDefined();
       expect(iLanguage.Lexicon).toBeDefined();
-      expect(true).toBeTruthy();
     });
 
     it('should guess negative words for this text', function() {
