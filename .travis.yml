@@ -21,11 +21,11 @@ env:
 
 before_install:
   # Download and configure deps
-  npm install -g gulp &&
-  npm install -g jasmine-node &&
+  - npm install -g gulp 
+  - npm install -g jasmine-node 
   # npm install -g git://github.com/kacperus/jasmine-node.git &&
-  npm install
-before_script:
+  - npm install
+# before_script:
   # Make sure the emulator has started before running tests
 
 script: gulp
