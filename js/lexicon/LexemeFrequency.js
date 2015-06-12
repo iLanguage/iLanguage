@@ -198,7 +198,7 @@
       } else {
         cutoffPercent = 0.007;
       }
-      console.log('Setting cutoffPercent automatically ' + typology);
+      // console.log('Setting cutoffPercent automatically ' + typology);
     }
 
     // console.log('calculateNonContentWords', wordFrequencies);
