@@ -7,7 +7,7 @@ var fs = require("fs");
 var specIsRunningTooLong = 5000;
 
 var trainingSeedSizes = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
-var pathToData = './../MorphoChallenge/morphochal10data/';
+// var pathToData = './../MorphoChallenge/morphochal10data/';
 var currentSize = trainingSeedSizes[0];
 /*
   ======== A Handy Little Jasmine Reference ========
@@ -52,7 +52,7 @@ https://github.com/pivotal/jasmine/wiki/Matchers
 
 describe('lib/ilanguage', function() {
 
-  describe('train morphological segmenters', function() {
+  xdescribe('train morphological segmenters', function() {
 
 
     var counter = 0;
