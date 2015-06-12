@@ -18,7 +18,7 @@
   };
 
   var MorphemeSegmenter = exports.MorphemeSegmenter || {
-    debugMode: true,
+    debugMode: false,
     seeds2precedenceRelations: function(word) {
       if (word === "") {
         return;
@@ -112,7 +112,7 @@
       compactPrecedenceRelations.sort(function(a, b) {
         return a.length > b.length;
       });
-      console.log("compactPrecedenceRelations", compactPrecedenceRelations);
+      // console.log("compactPrecedenceRelations", compactPrecedenceRelations);
 
       return compactPrecedenceRelations;
     },

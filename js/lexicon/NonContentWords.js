@@ -90,9 +90,9 @@
       return b.length - a.length;
     });
     if (userCloud.morphemesArray.length > 0) {
-      console.log(userCloud.morphemesArray);
+      // console.log(userCloud.morphemesArray);
       userCloud.morphemesRegExp = userCloud.morphemesArray.map(function(morpheme) {
-        console.log('morpheme ' + morpheme);
+        // console.log('morpheme ' + morpheme);
         if (morpheme.indexOf('-') === 0) {
           return morpheme.replace('-', '') + '$';
         }
@@ -117,7 +117,7 @@
     if (!userCloud.userSpecifiedNonContentWords) {
       userCloud.wordFrequencies = null;
       userCloud.nonContentWordsArray = [];
-      console.log('Generating non content words array ...');
+      // console.log('Generating non content words array ...');
       userCloud.nonContentWordsArray = LexemeFrequency.calculateNonContentWords(userCloud).nonContentWordsArray;
     } else {
       stringCheck = userCloud.nonContentWordsArray.toString().substring(0, 20),
@@ -149,14 +149,14 @@
 
     if (userCloud.userRemovedWordsForAllDocumentsArray && userCloud.userRemovedWordsForAllDocumentsArray.length > 0) {
       userCloud.userRemovedWordsForAllDocumentsRegExp = new RegExp('^(' + userCloud.userRemovedWordsForAllDocumentsArray.join('|') + ')$');
-      console.log('userRemovedWordsForAllDocumentsRegExp ' + userCloud.userRemovedWordsForAllDocumentsRegExp);
+      // console.log('userRemovedWordsForAllDocumentsRegExp ' + userCloud.userRemovedWordsForAllDocumentsRegExp);
     } else {
       userCloud.userRemovedWordsForAllDocumentsRegExp = null;
     }
 
     if (userCloud.userRemovedWordsForThisDocumentArray && userCloud.userRemovedWordsForThisDocumentArray.length > 0) {
       userCloud.userRemovedWordsForThisDocumentRegExp = new RegExp('^(' + userCloud.userRemovedWordsForThisDocumentArray.join('|') + ')$');
-      console.log('userRemovedWordsForThisDocumentRegExp ' + userCloud.userRemovedWordsForThisDocumentRegExp);
+      // console.log('userRemovedWordsForThisDocumentRegExp ' + userCloud.userRemovedWordsForThisDocumentRegExp);
     } else {
       userCloud.userRemovedWordsForThisDocumentRegExp = null;
     }
@@ -168,7 +168,7 @@
       processNonContentWords(userCloud);
     }
     if (!userCloud.nonContentWordsRegExp || !userCloud.nonContentWordsRegExp.test) {
-      console.log('Cannot produce filtered text.');
+      // console.log('Cannot produce filtered text.');
       return;
     }
     // console.log('nonContentWordsRegExp', userCloud.nonContentWordsRegExp);

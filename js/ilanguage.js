@@ -6,9 +6,9 @@
 	try {
 		globals.iLanguage = iLanguage;
 	} catch (e) {
-		console.log("cannot set iLanguage on globals");
-		console.log(e.stack);
+		console.log("cannot set iLanguage on globals in this context");
+		// console.log(e.stack);
 	}
 	exports.iLanguage = exports.iLanguage || exports;
-	console.log("Loaded iLanguage into exports", exports);
+	// console.log("Loaded iLanguage into exports", exports);
 })(typeof exports === 'undefined' ? this : exports);

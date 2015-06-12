@@ -102,7 +102,7 @@ describe('lib/ilanguage', function() {
     goldStandardTrainingPrecedenceRules = JSON.parse(goldStandardTrainingPrecedenceRules);
     var compactRelations = [];
     goldStandardTrainingPrecedenceRules.rows.map(function(row) {
-      console.log(row.key);
+      // console.log(row.key);
       var compact = row.key.x + "-" + row.key.y;
       if (compactRelations.indexOf(compact) === -1) {
         compactRelations.push(compact);
@@ -244,7 +244,7 @@ describe('lib/ilanguage', function() {
           createWordPairsFromAlgorithmsLabels + ' && ' +
           runEvaluationScriptOnWordPairs;
 
-        // console.log("running " + runEvalutation);
+        console.log("running " + runEvalutation);
         shellPromises.execute(runEvalutation)
           .then(function(results) {
             expect(results).toEqual(" ");
