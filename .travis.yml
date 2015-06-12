@@ -1,7 +1,7 @@
 language: javascript
-env: CI=true
+
 node_js:
-  - '0.10'
+  - 0.12
 
 # whitelist
 #branches:
