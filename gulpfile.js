@@ -71,7 +71,7 @@ gulp.task('browserify', function() {
   var browserified = through2.obj(function(file, enc, next) {
     browserify({
         entries: [file.path],
-        standalone: "iLanguage",
+        standalone: 'iLanguage',
         derequire: true
       })
       // .transform('stripify')  /* TODO export iLanguage */
@@ -91,7 +91,6 @@ gulp.task('browserify', function() {
     .pipe(uglify())
     .pipe(gulp.dest('./'));
 });
-
 
 /**
 https://medium.com/@sogko/gulp-browserify-the-gulp-y-way-bb359b3f9623
