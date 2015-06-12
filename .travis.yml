@@ -25,6 +25,10 @@ before_install:
   - npm install -g jasmine-node 
   # npm install -g git://github.com/kacperus/jasmine-node.git &&
   - npm install
+  - cd node_modules
+  - rm -rf fielddb
+  - git clone https://github.com/OpenSourceFieldlinguistics/FieldDB.git
+  - mv FieldDB fielddb
 # before_script:
   # Make sure the emulator has started before running tests
 
