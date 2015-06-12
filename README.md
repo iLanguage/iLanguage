@@ -1,11 +1,26 @@
 iLanguage
 ============
 
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image]
+
 A semi-unsupervised language independent morphological analyzer useful for stemming unknown language text, or getting a rough estimate of possible parses for morphemes in a word. Uses compression, maximum entropy and fieldlinguistics.
 
 
-=======
-[![Build Status](https://travis-ci.org/iLanguage/iLanguage.png)](https://travis-ci.org/ilanguage/iLanguage)
+
+## Install
+
+```bash
+$ npm install --save ilanguage
+```
+
+
+## Usage
+
+```javascript
+var iLanguage = require('ilanguage');
+var lang = new iLanguage(); 
+```
+
 
 # Lab Members
 
@@ -61,3 +76,11 @@ This project is released under the [Apache 2.0](http://www.apache.org/licenses/L
 * Edit the code on your computer, commit it referencing the issue #xx you created ($ git commit -m "fixes #xx i changed blah blah...") and push to your origin ($ git push origin master).
 * Click on the "Pull Request" button, and leave us a note about what you changed. We will look at your changes and help you bring them into the project!
 * Feel the glow of contributing to OpenSource :)
+
+
+[npm-url]: https://npmjs.org/package/ilanguage
+[npm-image]: https://badge.fury.io/js/ilanguage.svg
+[travis-url]: https://travis-ci.org/user/ilanguage
+[travis-image]: https://travis-ci.org/user/ilanguage.svg?branch=master
+[daviddm-url]: https://david-dm.org/user/ilanguage.svg?theme=shields.io
+[daviddm-image]: https://david-dm.org/user/ilanguage

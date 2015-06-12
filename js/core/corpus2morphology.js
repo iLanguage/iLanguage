@@ -1,6 +1,6 @@
 (function(exports) {
 
-  var Corpus2Morphology = {
+  var Corpus2Morphology = exports.Corpus2Morphology || {
     LANGUAGE: "inuktitut",
 
     run: function() {
@@ -38,6 +38,6 @@
     }
   };
 
-  exports.Corpus2Morphology;
+  exports.Corpus2Morphology = Corpus2Morphology;
   // }(typeof exports === 'object' && exports || this));
-})(typeof exports === 'undefined' ? this['Corpus2Morphology'] = {} : exports);
+})(typeof exports === 'undefined' ? this : exports);

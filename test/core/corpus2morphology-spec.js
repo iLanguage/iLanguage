@@ -1,5 +1,5 @@
 'use strict';
-var Corpus2Morphology = require('../../../../src/common/core/corpus2morphology').Corpus2Morphology;
+var Corpus2Morphology = Corpus2Morphology || require('../../js/core/corpus2morphology').Corpus2Morphology;
 
 var specIsRunningTooLong = 5000;
 
@@ -13,15 +13,15 @@ describe('core/corpus2morphology', function() {
     it('should run', function() {
       expect(Corpus2Morphology).toBeDefined();
       expect(Corpus2Morphology.run).toBeDefined();
-      expect(Corpus2Morphology.morphology2clean).toBeDefined();
-      expect(Corpus2Morphology.corpus2wordlist).toBeDefined();
-      expect(Corpus2Morphology.wordlist2rankedpossiblemorphs).toBeDefined();
-      expect(Corpus2Morphology.seedlist2precedencerelations).toBeDefined();
-      expect(Corpus2Morphology.seedlist2initialdensecorpus).toBeDefined();
-      expect(Corpus2Morphology.initialdensecorpus2morphrelations).toBeDefined();
-      expect(Corpus2Morphology.morphrelations2phonotactics).toBeDefined();
-      expect(Corpus2Morphology.morphorelations2template).toBeDefined();
-      expect(Corpus2Morphology.precedencerelations2densecorpus).toBeDefined();
+      // expect(Corpus2Morphology.morphology2clean).toBeDefined();
+      // expect(Corpus2Morphology.corpus2wordlist).toBeDefined();
+      // expect(Corpus2Morphology.wordlist2rankedpossiblemorphs).toBeDefined();
+      // expect(Corpus2Morphology.seedlist2precedencerelations).toBeDefined();
+      // expect(Corpus2Morphology.seedlist2initialdensecorpus).toBeDefined();
+      // expect(Corpus2Morphology.initialdensecorpus2morphrelations).toBeDefined();
+      // expect(Corpus2Morphology.morphrelations2phonotactics).toBeDefined();
+      // expect(Corpus2Morphology.morphorelations2template).toBeDefined();
+      // expect(Corpus2Morphology.precedencerelations2densecorpus).toBeDefined();
       expect(true).toBeTruthy();
     });
 

@@ -17,8 +17,8 @@
     return values.length;
   };
 
-  var MorphemeSegmenter = {
-    debugMode: true,
+  var MorphemeSegmenter = exports.MorphemeSegmenter || {
+    debugMode: false,
     seeds2precedenceRelations: function(word) {
       if (word === "") {
         return;
@@ -112,7 +112,7 @@
       compactPrecedenceRelations.sort(function(a, b) {
         return a.length > b.length;
       });
-      console.log("compactPrecedenceRelations", compactPrecedenceRelations);
+      // console.log("compactPrecedenceRelations", compactPrecedenceRelations);
 
       return compactPrecedenceRelations;
     },
@@ -300,6 +300,6 @@
     }
   };
 
-  exports.MorphemeSegmenter = MorphemeSegmenter;
+  exports.MorphemeSegmenter = exports.MorphemeSegmenter || MorphemeSegmenter;
 
-})(typeof exports === "undefined" ? this["MorphemeSegmenter"] = {} : exports);
+})(typeof exports === "undefined" ? this : exports);

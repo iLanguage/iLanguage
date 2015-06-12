@@ -1,5 +1,5 @@
-var lexiconFactory = require('../../../../src/common/lexicon/Lexicon').LexiconFactory;
-var Lexicon = require('../../../../src/common/lexicon/Lexicon').Lexicon;
+var lexiconFactory =  LexiconFactory || require('../../js/lexicon/Lexicon').LexiconFactory;
+var Lexicon = Lexicon || require('../../js/lexicon/Lexicon').Lexicon;
 
 var specIsRunningTooLong = 5000;
 

@@ -1,14 +1,13 @@
-// var ObservableDOM = require("frb/dom"); // add support for content editable
-// var Bindings = require("frb/bindings");
-var SortedSet = require("collections/sorted-set");
-var UniqueSet = require("collections/set");
-var CORS = require("fielddb/api/CORS").CORS;
-var Q = require("q");
-var NonContentWords = require('./NonContentWords').NonContentWords;
-var LexemeFrequency = require('./LexemeFrequency').LexemeFrequency;
-var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
-
 (function(exports) {
+  // var ObservableDOM = require("frb/dom"); // add support for content editable
+  // var Bindings = require("frb/bindings");
+  var SortedSet = exports.SortedSet || require("collections/sorted-set");
+  var UniqueSet = exports.Set || require("collections/set");
+  var CORS = exports.FieldDB ? exports.FieldDB.CORS : require("fielddb/api/CORS").CORS;
+  var Q = exports.FieldDB ? exports.FieldDB.Q : require("q");
+  var NonContentWords = exports.NonContentWords || require('./NonContentWords').NonContentWords;
+  var LexemeFrequency = exports.LexemeFrequency || require('./LexemeFrequency').LexemeFrequency;
+  var MorphemeSegmenter = exports.MorphemeSegmenter || require('./MorphemeSegmenter').MorphemeSegmenter;
 
   var maxLexiconSize = 1000;
 
@@ -120,7 +119,7 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
     },
     clean: {
       value: function() {
-        console.log("Preparing datum with this lexical entry to be cleaned...");
+        // console.log("Preparing datum with this lexical entry to be cleaned...");
         var deffered = Q.defer();
         this.cleanedData = [];
         var promises = [];
@@ -128,7 +127,7 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
         this.proposedChanges = [];
 
         var successFunction = function(doc) {
-          console.log(doc);
+          // console.log(doc);
           doc.datumFields.map(function(datumField) {
             if (self.igtBeforeCleaning[datumField.label] !== self.igt[datumField.label] && (new RegExp(self.igtBeforeCleaning[datumField.label], "i")).test(datumField.mask)) {
               var change = {
@@ -149,7 +148,7 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
         };
 
         for (var idIndex = 0; idIndex < this.datumids.length; idIndex++) {
-          console.log(this.datumids.length[idIndex]);
+          // console.log(this.datumids.length[idIndex]);
           promises[idIndex] = CORS.makeCORSRequest({
             method: 'GET',
             dataType: 'json',
@@ -168,7 +167,7 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
         var deffered = Q.defer(),
           promises = [];
 
-        console.log("Saving cleaned datum...");
+        // console.log("Saving cleaned datum...");
         while (this.cleanedData.length > 0) {
           var cleanedDatum = this.cleanedData.pop();
           promises.push(CORS.makeCORSRequest({
@@ -179,7 +178,7 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
           }));
         }
         Q.allSettled(promises).then(function(results) {
-          console.log("Saving results: ", results);
+          // console.log("Saving results: ", results);
           deffered.resolve(results);
         });
         return deffered.promise;
@@ -189,7 +188,7 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
 
 
   var Lexicon = function(values, equals, compare, getDefault) {
-    console.log("\tConstructing Lexicon... ");
+    // console.log("\tConstructing Lexicon... ");
     // SortedSet.apply(this, [values, equals, compare, getDefault]);
     SortedSet.apply(this, Array.prototype.slice.call(arguments, 1));
     // if (!compare) {
@@ -223,11 +222,11 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
           deffered.resolve(matches);
         } else {
           this.filter(function(value, key, object, depth) {
-            console.log(key + " of " + self.length);
+            // console.log(key + " of " + self.length);
             if (typeof lexicalEntryToMatch.equals === "function") {
               if (lexicalEntryToMatch.equals(value)) {
                 matches.push(value);
-                console.log(value);
+                // console.log(value);
               }
             } else {
               var howWellDoesThisMatch = 0;
@@ -239,7 +238,7 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
               }
               if (howWellDoesThisMatch > 0) {
                 matches.push(value);
-                console.log(value);
+                // console.log(value);
               }
             }
             if (key === self.length - 1) {
@@ -264,7 +263,7 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
         var morphemeGroup = datum.morphemes.split(/ +/);
         var matchingfunction = function(node) {
           if (node.igt.morphemes === morphemeToFind) {
-            console.log(node);
+            // console.log(node);
             matchingNodes.push(node);
           }
         };
@@ -282,11 +281,11 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
             var gloss = "?"; // If there's no matching gloss, use question marks
             if (matchingNodes && matchingNodes.length > 0) {
               // Take the first gloss for this morpheme
-              console.log("Glosses which match: " + morphemes[m], matchingNodes);
+              // console.log("Glosses which match: " + morphemes[m], matchingNodes);
               try {
                 gloss = matchingNodes[0].igt.gloss;
               } catch (e) {
-                console.log(matchingNodes);
+                // console.log(matchingNodes);
               }
             }
             glosses.push(gloss);
@@ -381,7 +380,7 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
         options.userSpecifiedNonContentWords = true;
         if (Object.prototype.toString.call(options.nonContentWordsArray) === '[object Array]' && options.nonContentWordsArray.length === 0) {
           options.userSpecifiedNonContentWords = false;
-          console.log("User sent an empty array of non content words, attempting to automatically detect them");
+          // console.log("User sent an empty array of non content words, attempting to automatically detect them");
         }
         // else if (options.nonContentWordsArray.trim && !options.nonContentWordsArray.trim()) {
         //   options.userSpecifiedNonContentWords = false;
@@ -396,7 +395,7 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
         var word = options.wordFrequencies[wordIndex].orthography;
         var count = options.wordFrequencies[wordIndex].count;
         var categories = options.wordFrequencies[wordIndex].categories;
-        if(lex.length > maxLexiconSize){
+        if (lex.length > maxLexiconSize) {
           continue;
         }
         lex.add(new LexiconNode({
@@ -430,10 +429,14 @@ var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
   Lexicon.MorphemeSegmenter = MorphemeSegmenter;
 
   exports.Lexicon = Lexicon;
-  global.Lexicon = Lexicon;
+  try {
+    global.Lexicon = Lexicon;
+    global.LexiconFactory = LexiconFactory;
+  } catch (e) {
+    console.log(e);
+  }
 
   exports.LexiconFactory = LexiconFactory;
-  global.LexiconFactory = LexiconFactory;
 
   // }(typeof exports === 'object' && exports || this));
-})(typeof exports === 'undefined' ? this['Lexicon'] = {} : exports);
+})(typeof exports === 'undefined' ? this : exports);

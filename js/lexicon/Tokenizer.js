@@ -1,7 +1,7 @@
-var MorphemeSegmenter = require('./MorphemeSegmenter').MorphemeSegmenter;
-var MorphoParser = require('./../core/corpus2morphology');
 
 (function(exports) {
+  var MorphemeSegmenter = exports.MorphemeSegmenter || require('./MorphemeSegmenter').MorphemeSegmenter;
+  var Corpus2Morphology = exports.Corpus2Morphology || require('./../core/corpus2morphology').Corpus2Morphology;
 
   /* http://jrgraphix.net/research/unicode_blocks.php */
   var defaults = {
@@ -118,6 +118,6 @@ var MorphoParser = require('./../core/corpus2morphology');
   exports.Tokenizer = {
     tokenizeInput: tokenizeInput,
   };
-  exports.MorphoParser = MorphoParser;
+  exports.Corpus2Morphology = exports.Corpus2Morphology || Corpus2Morphology;
 
-})(typeof exports === 'undefined' ? this['Tokenizer'] = {} : exports);
+})(typeof exports === 'undefined' ? this : exports);

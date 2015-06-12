@@ -1,14 +1,7 @@
 'use strict';
-var iLanguage = require('../../../src/common/ilanguage').iLanguage;
-var shellPromises = require('../../../src/node/shellPromises');
+var iLanguage = iLanguage || require('../js/ilanguage');
 var Tokenizer = iLanguage.Corpus.Orthography.Tokenizer;
 
-var fs = require("fs");
-var specIsRunningTooLong = 5000;
-
-var trainingSeedSizes = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
-var pathToData = './../MorphoChallenge/morphochal10data/';
-var currentSize = trainingSeedSizes[0];
 /*
   ======== A Handy Little Jasmine Reference ========
 https://github.com/pivotal/jasmine/wiki/Matchers
@@ -57,7 +50,6 @@ describe('lib/ilanguage', function() {
     it('should automatically clean the text to create informative wordclouds', function() {
       expect(iLanguage.Corpus).toBeDefined();
       expect(iLanguage.Lexicon).toBeDefined();
-      expect(true).toBeTruthy();
     });
 
     it('should guess negative words for this text', function() {

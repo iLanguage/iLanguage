@@ -1,6 +1,6 @@
 'use strict';
-var LexemeFrequency = require('../../../../src/common/lexicon/LexemeFrequency').LexemeFrequency;
-var NonContentWords = require('../../../../src/common/lexicon/NonContentWords').NonContentWords;
+var LexemeFrequency = LexemeFrequency || require('../../js/lexicon/LexemeFrequency').LexemeFrequency;
+var NonContentWords = NonContentWords || require('../../js/lexicon/NonContentWords').NonContentWords;
 
 var sampleTexts = {
   shortText: "A cloud is a visible mass of H20.",
@@ -144,7 +144,7 @@ describe('Stop Words', function() {
   });
 });
 
-describe('Language Independant', function() {
+xdescribe('Language Independant', function() {
 
   it('should accept a (test English 1) text', function() {
     var textToTest = {

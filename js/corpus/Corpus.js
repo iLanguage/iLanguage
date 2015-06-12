@@ -2,8 +2,8 @@
 
 	var Corpus = {}; //require('fielddb/api/corpus/Corpus');
 	Corpus.Orthography = {};
-	Corpus.Orthography.Tokenizer = require('../lexicon/Tokenizer').Tokenizer;
+	Corpus.Orthography.Tokenizer = exports.Tokenizer || require('../lexicon/Tokenizer').Tokenizer;
 
 	exports.Corpus = Corpus;
 
-})(typeof exports === 'undefined' ? this['Corpus'] = {} : exports);
+})(typeof exports === 'undefined' ? this : exports);

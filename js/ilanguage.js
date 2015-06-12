@@ -1,9 +1,14 @@
 (function(exports) {
 
-	var iLanguage = {};
-	iLanguage.Corpus = require('./corpus/Corpus').Corpus;
-	iLanguage.Lexicon = require('./lexicon/Lexicon').Lexicon;
+	exports.Corpus = exports.Corpus || require('./corpus/Corpus').Corpus;
+	exports.Lexicon = exports.Lexicon || require('./lexicon/Lexicon').Lexicon;
 
-	exports.iLanguage = iLanguage;
-	console.log("Loaded iLanguage", iLanguage);
-})(typeof exports === 'undefined' ? this['iLanguage'] = {} : exports);
+	try {
+		globals.iLanguage = iLanguage;
+	} catch (e) {
+		console.log("cannot set iLanguage on globals in this context");
+		// console.log(e.stack);
+	}
+	exports.iLanguage = exports.iLanguage || exports;
+	// console.log("Loaded iLanguage into exports", exports);
+})(typeof exports === 'undefined' ? this : exports);
