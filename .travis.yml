@@ -29,6 +29,8 @@ before_install:
   - rm -rf fielddb
   - git clone https://github.com/OpenSourceFieldlinguistics/FieldDB.git
   - mv FieldDB fielddb
+  - cd fielddb
+  - npm install
 # before_script:
   # Make sure the emulator has started before running tests
 
