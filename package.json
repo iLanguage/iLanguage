@@ -44,7 +44,7 @@
   ],
   "dependencies": {
     "collections": "^1.2.3",
-    "fielddb": "^0.93.2",
+    "fielddb": "*",
     "q": "^1.0.1"
   },
   "devDependencies": {
