@@ -43,8 +43,8 @@
     "Oriana <oriana.kilbourn-ceron@mail.mcgill.ca>"
   ],
   "dependencies": {
-    "collections": "^1.2.3",
-    "fielddb": "*",
+    "collections": "git://github.com/cesine/collections.git#bower_support",
+    "fielddb": "git://github.com/OpenSourceFieldlinguistics/FieldDB.git",
     "q": "^1.0.1"
   },
   "devDependencies": {
@@ -70,9 +70,11 @@
     "node": "~0.8 || ~0.10 || ~0.12"
   },
   "scripts": {
-    "test": "gulp test",
+    "postinstall": "npm link fielddb; npm link collections; exit 0;",
+    "test": "jasmine-node test",
     "cover": "gulp istanbul",
-    "build": "browserify js/ilanguage.js -o ilanguage.min.js"
+    "build": "browserify js/ilanguage.js -o ilanguage.min.js",
+    "prepublish": "gulp release"
   },
   "licenses": [
     {

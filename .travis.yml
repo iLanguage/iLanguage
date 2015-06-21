@@ -1,37 +1,19 @@
-language: javascript
+language: node_js
 
 node_js:
   - 0.12
 
-# whitelist
-#branches:
-#  only:
-#    - tests
-
 notifications:
   email:
     recipients:
-      - lingsync-support@googlegroups.com
+      - ilanguagelab-dev@googlegroups.com
     on_success: change
     on_failure: always
-
-env:
-  matrix:
-    # see set_up_new_machine.sh
 
 before_install:
   # Download and configure deps
   - npm install -g gulp 
   - npm install -g jasmine-node 
   # npm install -g git://github.com/kacperus/jasmine-node.git &&
-  - npm install
-  - cd node_modules
-  - rm -rf fielddb
-  - git clone https://github.com/OpenSourceFieldlinguistics/FieldDB.git
-  - mv FieldDB fielddb
-  - cd fielddb
-  - npm install
-# before_script:
-  # Make sure the emulator has started before running tests
 
 script: gulp
