@@ -49,6 +49,8 @@ var lang = new iLanguage();
 * [Louisa Bielig](https://github.com/louisa-bielig) Summer 2013, Fall 2013, Summer 2015 (McGill, Theoretical Linguistics)
 * [Dominique Bédard](http://www.eoa.umontreal.ca/) Fall 2013, Spring 2014 (U de Montréal, Speech Language Pathology)
 * [Alexandre Herbay](https://twitter.com/Hafsloo) Spring 2014 (U de Montréal, Psycho-linguistics & Toulouse III, Computer Science)
+* [Veronica Cook-Vilbrin](http://github.com/vronvali) Summer 2015 (Norwich University, Psychology)
+
 
 ## Release History
 
