@@ -75,9 +75,5 @@
     "build": "browserify js/ilanguage.js -o ilanguage.min.js",
     "prepublish": "gulp release"
   },
-  "licenses": [
-    {
-      "type": "Apache 2.0"
-    }
-  ]
+  "license": "Apache-2.0"
 }
