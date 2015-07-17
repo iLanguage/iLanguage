@@ -1,56 +1,118 @@
 "use strict";
 
-var textGenerator = textGenerator || require('../js/text-generator').textGenerator;
+var randomOrthographicText = randomOrthographicText || require('../js/text-generator').randomOrthographicText;
 var randomUnicodeWord = randomUnicodeWord || require('../js/text-generator').randomUnicodeWord;
 
 describe("text generator", function() {
 
   it("should load", function() {
-    expect(textGenerator).toBeDefined();
+    expect(randomOrthographicText).toBeDefined();
     expect(randomUnicodeWord).toBeDefined();
   });
 
-  it("should generate unicode strings", function() {
-    var smallUnicodeWord = randomUnicodeWord(10);
-    expect(smallUnicodeWord).toBeDefined();
-    expect(smallUnicodeWord).toEqual(" ");
-    expect(smallUnicodeWord.length).toEqual(10);
-  });
-
-  // http://billposer.org/Linguistics/Computation/UnicodeRanges.html
   describe("char sets", function() {
 
+    it("should use a-z by default", function() {
+      var langOptions = randomOrthographicText.setLanguage();
+      expect(langOptions.unicodeStartChar).toEqual(0x0061);
+      expect(langOptions.unicodeRange).toEqual(26);
+    });
+
+    it("should accept any charset start and range", function() {
+      var langOptions = randomOrthographicText.setLanguage({
+        iso: "banana",
+        unicodeStartChar: 0x000,
+        unicodeRange: 2095
+      });
+      expect(langOptions.unicodeStartChar).toEqual(0x000);
+      expect(langOptions.unicodeRange).toEqual(2095);
+    });
+
     it("should know how to generate IPA charset", function() {
-      textGenerator.setLanguage("ipa");
-      expect(textGenerator.unicodeStartChar).toEqual(0x1D00);
-      expect(textGenerator.unicodeRange).toEqual(127);
+      var langOptions = randomOrthographicText.setLanguage("ipa");
+      expect(langOptions.unicodeStartChar).toEqual(0x1D00);
+      expect(langOptions.unicodeRange).toEqual(127);
     });
 
     it("should know how to generate nihõŋɡo charset", function() {
-      textGenerator.setLanguage("ja");
-      expect(textGenerator.unicodeStartChar).toEqual(0x3040);
-      expect(textGenerator.unicodeRange).toEqual(191);
+      var langOptions = randomOrthographicText.setLanguage("ja");
+      expect(langOptions.unicodeStartChar).toEqual(0x3040);
+      expect(langOptions.unicodeRange).toEqual(191);
     });
 
     it("should know how to generate ქართული charset start", function() {
-      textGenerator.setLanguage("ka");
-      expect(textGenerator.unicodeStartChar).toEqual(0x10A0);
-      expect(textGenerator.unicodeRange).toEqual(95);
+      var langOptions = randomOrthographicText.setLanguage("ka");
+      expect(langOptions.unicodeStartChar).toEqual(0x10A0);
+      expect(langOptions.unicodeRange).toEqual(95);
     });
 
   });
 
-  it("should generate random unicode texts", function() {
-    var smallUnicodeText = textGenerator(8);
-    expect(smallUnicodeText).toBeDefined();
-    expect(smallUnicodeText).toEqual(" ");
-    expect(smallUnicodeText.split(" ").length).toEqual(8);
+  describe("random text", function() {
+
+    it("should generate random orthographic words", function() {
+      var smallUnicodeWord = randomUnicodeWord(3);
+      expect(smallUnicodeWord).toBeDefined();
+      expect(smallUnicodeWord).toEqual(" ");
+      expect(smallUnicodeWord.length).toEqual(3);
+    });
+
+    it("should generate random texts", function() {
+      var smallUnicodeText = randomOrthographicText(8);
+      expect(smallUnicodeText).toBeDefined();
+      expect(smallUnicodeText).toEqual(" ");
+      expect(smallUnicodeText.split(" ").length).toEqual(8);
+    });
+
+    it("should generate random IPA texts", function() {
+      var smallUnicodeText = randomOrthographicText(8);
+      expect(smallUnicodeText).toBeDefined();
+      expect(smallUnicodeText).toEqual(" ");
+      expect(smallUnicodeText.split(" ").length).toEqual(8);
+    });
+
+    it("should generate random IPA texts", function() {
+      var smallUnicodeText = randomOrthographicText({
+        length: 4,
+        iso: "ipa"
+      });
+      expect(smallUnicodeText).toBeDefined();
+      expect(smallUnicodeText).toEqual(" ");
+      expect(smallUnicodeText.split(" ").length).toEqual(4);
+      expect(smallUnicodeText.indexOf("a")).toEqual(-1);
+    });
+
+    it("should generate random IPA texts", function() {
+      var smallUnicodeText = randomOrthographicText({
+        length: 8,
+        iso: "ka"
+      });
+      expect(smallUnicodeText).toBeDefined();
+      expect(smallUnicodeText).toEqual(" ");
+      expect(smallUnicodeText.split(" ").length).toEqual(8);
+      expect(smallUnicodeText.indexOf("a")).toEqual(-1);
+    });
+
+    it("should generate random IPA texts", function() {
+      var smallUnicodeText = randomOrthographicText({
+        length: 6,
+        iso: "ja"
+      });
+      expect(smallUnicodeText).toBeDefined();
+      expect(smallUnicodeText).toEqual(" ");
+      expect(smallUnicodeText.split(" ").length).toEqual(6);
+      expect(smallUnicodeText.indexOf("a")).toEqual(-1);
+    });
+
   });
 
   describe("seperators", function() {
 
     it("should support morpheme seperators", function() {
-      var smallUnicodeText = textGenerator(3, "-");
+      var smallUnicodeText = randomOrthographicText({
+        length: 3,
+        seperator: "-"
+      });
       expect(smallUnicodeText).toBeDefined();
       expect(smallUnicodeText).toEqual(" ");
       expect(smallUnicodeText.split("-").length).toEqual(3);
