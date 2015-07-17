@@ -1,6 +1,7 @@
 "use strict";
 
 var randomOrthographicText = randomOrthographicText || require('../js/text-generator').randomOrthographicText;
+var randomMorphologicalText = randomMorphologicalText || require('../js/text-generator').randomMorphologicalText;
 var randomUnicodeWord = randomUnicodeWord || require('../js/text-generator').randomUnicodeWord;
 
 describe("text generator", function() {
@@ -10,7 +11,7 @@ describe("text generator", function() {
     expect(randomUnicodeWord).toBeDefined();
   });
 
-  describe("char sets", function() {
+  xdescribe("char sets", function() {
 
     it("should use a-z by default", function() {
       var langOptions = randomOrthographicText.setLanguage();
@@ -101,16 +102,39 @@ describe("text generator", function() {
 
   });
 
-  xdescribe("seperators", function() {
+  describe("seperators", function() {
 
-    it("should support morpheme seperators", function() {
-      var smallUnicodeText = randomOrthographicText({
-        wordCount: 3,
-        seperator: "-"
+    it("should generate morphologically segmented texts", function() {
+      var smallUnicodeText = randomMorphologicalText(3);
+      expect(smallUnicodeText).toBeDefined();
+      console.log(smallUnicodeText);
+      expect(smallUnicodeText.split(" ").length).toEqual(3);
+      expect(smallUnicodeText).toContain("-");
+    });
+
+    it("should generate morphologically segmented ქართული-like texts", function() {
+      var smallUnicodeText = randomMorphologicalText({
+        wordCount: 6,
+        iso: "ka",
+        maxWordLength: 12,
+        maxMorphemeLength: 9,
+        maxMorphemesPerWord: 4
       });
       expect(smallUnicodeText).toBeDefined();
-      expect(smallUnicodeText).toEqual(" ");
-      expect(smallUnicodeText.split("-").length).toEqual(3);
+      console.log(smallUnicodeText);
+      expect(smallUnicodeText.split(" ").length).toEqual(6);
+      expect(smallUnicodeText).toContain("-");
+      expect(smallUnicodeText.split("-").length).toBeGreaterThan(6);
+    });
+
+    it("should support custom word boundaries", function() {
+      var smallUnicodeText = randomOrthographicText({
+        wordCount: 3,
+        wordBoundary: "."
+      });
+      expect(smallUnicodeText).toBeDefined();
+      console.log(smallUnicodeText);
+      expect(smallUnicodeText.split(".").length).toEqual(3);
       expect(smallUnicodeText.split(" ").length).not.toEqual(3);
     });
 
@@ -119,13 +143,20 @@ describe("text generator", function() {
   describe("invalid input", function() {
 
     it("should return an empty word", function() {
-      var emptyWord = randomOrthographicText();
+      var emptyWord = randomUnicodeWord();
       expect(emptyWord).toBeDefined();
       expect(emptyWord).toEqual("");
     });
 
-    it("should return an empty text", function() {
-      var emptyText = randomUnicodeWord();
+    it("should return an empty orthographic text", function() {
+      var emptyText = randomOrthographicText();
+      expect(emptyText).toBeDefined();
+      expect(emptyText).toEqual("");
+    });
+
+
+    it("should return an empty morphological text", function() {
+      var emptyText = randomMorphologicalText();
       expect(emptyText).toBeDefined();
       expect(emptyText).toEqual("");
     });

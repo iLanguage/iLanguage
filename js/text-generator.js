@@ -2,6 +2,11 @@
 
   var DEFAULT_MAX_WORD_LENGTH = 10;
   var DEFAULT_MAX_MORPHEME_LENGTH = 5;
+  var DEFAULT_MAX_MORPHEME_PER_WORD = 3;
+
+  var escapeRegexCharacters = function(regex) {
+    return regex.replace(/([()[{*+.$^\\|?])/g, '\\$1');
+  };
 
   var randomASCIIString = function(length) {
     return Math.random(1400).toString(36).substring(length);
@@ -22,6 +27,7 @@
     if (options.wordLength <= 0) {
       var thisWord = options.word;
       options.word = "";
+      options.wordLength = 0;
       return thisWord;
     }
 
@@ -56,9 +62,9 @@
     options.wordLength = Math.random() * (options.maxWordLength || DEFAULT_MAX_WORD_LENGTH);
 
     options.orthography = options.orthography +
-      (options.orthography ? options.wordBoundary : "") + randomUnicodeWord(options).replace(new RegExp(options.wordBoundary, "g"), "");
+      (options.orthography ? options.wordBoundary : "") + randomUnicodeWord(options).replace(new RegExp(escapeRegexCharacters(options.wordBoundary), "g"), "");
 
-    console.log("  randomOrthographicText\n", options);
+    // console.log("  randomOrthographicText\n", options);
     options.wordCount--;
     return randomOrthographicText(options);
   };
@@ -76,34 +82,35 @@
       };
     }
 
-    return randomMorphologicalWord(options);
-  };
-
-  var randomMorphologicalWord = function(options) {
-    if (!options) {
-      console.warn("randomMorphologicalWord:  You must pass options to recieve a text from ");
-      return "";
-    }
-
-    if (typeof options === "number") {
-      options = {
-        morphemeCount: options,
-        iso: "en"
-      };
-    }
-
-    if (options.morphemeCount <= 0) {
+    if (options.wordCount <= 0) {
       return options.orthography;
     }
 
-    options.orthography = options.orthography || options.text || "";
-    options.morphemeBoundary = options.morphemeBoundary || "-";
+    // Stash word values
+    var stashedWordBoundary = options.wordBoundary || " ";
+    var stashedMaxWordLength = options.maxWordLength || DEFAULT_MAX_WORD_LENGTH;
+    var stashedWordCount = options.wordCount;
+    var stashedOrthography = options.orthography || "";
 
-    options.orthography = options.orthography + (options.orthography ? options.morphemeBoundary : "") + randomUnicodeWord(options.maxWordLength || Math.random() * DEFAULT_MAX_MORPHEME_LENGTH);
-    // console.log("  randomOrthographicText\n", options);
-    options.morphemeCount--;
-    return randomMorphologicalWord(options);
+    // Put in morpheme values to get a word full of morphemes
+    options.wordBoundary = options.morphemeBoundary || "-";
+    options.maxWordLength = Math.random() * (options.maxMorphemeLength || DEFAULT_MAX_MORPHEME_LENGTH)
+    options.wordCount = Math.random() * (options.maxMorphemesPerWord || DEFAULT_MAX_MORPHEME_PER_WORD);
+    options.orthography = "";
+
+    stashedOrthography = stashedOrthography + (stashedOrthography ? stashedWordBoundary : "") + randomOrthographicText(options);
+
+    // Put back word values
+    options.wordBoundary = stashedWordBoundary || " ";
+    options.maxWordLength = stashedMaxWordLength || " ";
+    options.wordCount = stashedWordCount;
+    options.orthography = stashedOrthography;
+
+    // console.log("  randomMorphologicalText\n", options);
+    options.wordCount--;
+    return randomMorphologicalText(options);
   };
+
   /**
    *  Builds a naive unicode character range for a given language iso 
    *  (or accepts a range to be passed in). 
