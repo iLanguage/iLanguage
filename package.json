@@ -45,6 +45,7 @@
   "dependencies": {
     "collections": "git://github.com/cesine/collections.git#bower_support",
     "fielddb": "git://github.com/cesine/FieldDB.git",
+    "memory": "0.0.3",
     "q": "^1.0.1"
   },
   "devDependencies": {
