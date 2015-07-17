@@ -163,4 +163,16 @@ describe("text generator", function() {
 
   });
 
+  describe("performance", function() {
+
+    it("should throw an error if generating a text larger than 100000 words", function() {
+      try {
+        var hitsRecursionLimites = randomMorphologicalText(100000);
+        expect(" a sucessful result ").toEqual("Maximum call stack size exceeded");
+      } catch (exception) {
+        expect(exception.message).toEqual("Maximum call stack size exceeded");
+      }
+    });
+
+  });
 });
