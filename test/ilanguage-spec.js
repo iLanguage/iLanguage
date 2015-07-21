@@ -56,6 +56,37 @@ describe("ILanguage", function() {
 			expect(ilanguageFromText.orthography).toEqual("a simple text");
 		});
 
+		it("should accept a lexicon if one is provided", function() {
+			var ilanguageFromText = new ILanguage({
+				orthography: "a simple text",
+				lexicon: [{
+					orthography: "a"
+				}, {
+					orthography: "other"
+				}]
+			});
+			expect(ilanguageFromText).toBeDefined();
+			expect(ilanguageFromText.orthography).toEqual("a simple text");
+			expect(ilanguageFromText.lexicon).toBeDefined();
+			expect(ilanguageFromText.lexicon.length).toEqual(2);
+			expect(ilanguageFromText.lexicon[0].orthography).toEqual("a");
+			expect(ilanguageFromText.lexicon[1].orthography).toEqual("other");
+		});
+
+		it("should create a lexicon if one is needed", function() {
+			var ilanguageFromText = new ILanguage({
+				orthography: sampleText
+			});
+			expect(ilanguageFromText.orthography).toEqual(sampleText);
+			expect(ilanguageFromText.lexicon).toBeDefined();
+			if (sampleTextOptions.iso === "iu") {
+				expect(ilanguageFromText.lexicon.length).toEqual(10255);
+			} else {
+				expect(ilanguageFromText.lexicon.length).toEqual(20);
+			}
+		});
+
+
 	});
 
 	describe("scalability", function() {

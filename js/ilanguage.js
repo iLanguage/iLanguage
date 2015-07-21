@@ -116,12 +116,12 @@
     },
 
     debug: {
-      value: function( /* message, message2, message3, message4 */ ) {
+      value: function() {
         if (this.debugMode) {
           if (BASEOBJECT && BASEOBJECT.debug) {
             BASEOBJECT.debug.apply(this, arguments);
           } else {
-            console.log(message, message2, message3, message4);
+            console.log(arguments.join("\n"));
           }
         }
       }
@@ -129,6 +129,11 @@
 
     lexicon: {
       get: function() {
+        if (!this._lexicon && this.orthography) {
+          var resultOptions = ILanguage.Lexicon.LexemeFrequency.calculateNonContentWords(this);
+          this._lexicon = resultOptions.wordFrequencies;
+          this.debug("this._lexicon", this._lexicon.length);
+        }
         return this._lexicon;
       },
       set: function(value) {
