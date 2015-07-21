@@ -9,16 +9,19 @@ try {
 
 
 var ILanguage = ILanguage || require('../js/ilanguage').ILanguage;
+var randomMorphologicalText = randomMorphologicalText || require('../js/text-generator').randomMorphologicalText;
 
 var sampleText = sampleText || "";
+var sampleTextOptions = {};
 if (!sampleText) {
 	try {
 		var fs = require("fs");
-		var sampleLargeText = fs.readFileSync('../SampleData/InuktitutMagazine102-104rough-inuktitut-lc.txt', 'utf8').trim();
+		var sampleLargeText = fs.readFileSync('SampleData/InuktitutMagazine102-104rough-inuktitut-lc.txt', 'utf8').trim();
 		sampleText = sampleLargeText;
+		sampleTextOptions.iso = "iu";
 	} catch (e) {
-		var randomMorphologicalText = randomMorphologicalText || require('../js/text-generator').randomMorphologicalText;
-		var sampleTextOptions = {
+		console.log("I wasnt able to load the inuktitut data, using a generated ქართული text instead", e)
+		sampleTextOptions = {
 			wordCount: 20,
 			iso: "ka",
 			maxWordLength: 20,
@@ -31,21 +34,34 @@ if (!sampleText) {
 
 describe("ILanguage", function() {
 
-	it("should load", function() {
-		expect(ILanguage).toBeDefined();
-		expect(ILanguage.Corpus).toBeDefined();
-		expect(ILanguage.Lexicon).toBeDefined();
+	describe("construction", function() {
+
+		it("should load", function() {
+			expect(ILanguage).toBeDefined();
+			expect(ILanguage.Corpus).toBeDefined();
+			expect(ILanguage.Lexicon).toBeDefined();
+		});
+
+		it("should create new iLangauges from text", function() {
+			var ilanguageFromText = new ILanguage("a simple text");
+			expect(ilanguageFromText).toBeDefined();
+			expect(ilanguageFromText.orthography).toEqual("a simple text");
+		});
+
+		it("should create new iLangauges from objects", function() {
+			var ilanguageFromText = new ILanguage({
+				orthography: "a simple text"
+			});
+			expect(ilanguageFromText).toBeDefined();
+			expect(ilanguageFromText.orthography).toEqual("a simple text");
+		});
+
 	});
 
 	describe("scalability", function() {
 
 		it("should scale to large datasets", function() {
 			expect(sampleText).toBeTruthy();
-
-			var ilanguageFromText = new ILanguage(sampleText);
-			expect(ilanguageFromText).toBeDefined();
-			expect(ilanguageFromText.orthography).toEqual(" ");
-
 		});
 
 		describe("speed", function() {
@@ -112,4 +128,3 @@ describe("ILanguage", function() {
 
 	});
 });
-
