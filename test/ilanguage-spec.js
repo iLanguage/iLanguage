@@ -8,30 +8,44 @@ try {
 }
 
 
-var iLanguage = iLanguage || require('../js/ilanguage').iLanguage;
-var randomMorphologicalText = randomMorphologicalText || require('../js/text-generator').randomMorphologicalText;
-var sampleTextOptions = {
-	wordCount: 20,
-	iso: "ka",
-	maxWordLength: 20,
-	maxMorphemeLength: 9,
-	maxMorphemesPerWord: 4
-};
+var ILanguage = ILanguage || require('../js/ilanguage').ILanguage;
 
-var sampleText = sampleText || randomMorphologicalText(sampleTextOptions);
+var sampleText = sampleText || "";
+if (!sampleText) {
+	try {
+		var fs = require("fs");
+		var sampleLargeText = fs.readFileSync('../SampleData/InuktitutMagazine102-104rough-inuktitut-lc.txt', 'utf8').trim();
+		sampleText = sampleLargeText;
+	} catch (e) {
+		var randomMorphologicalText = randomMorphologicalText || require('../js/text-generator').randomMorphologicalText;
+		var sampleTextOptions = {
+			wordCount: 20,
+			iso: "ka",
+			maxWordLength: 20,
+			maxMorphemeLength: 9,
+			maxMorphemesPerWord: 4
+		};
+		sampleText = randomMorphologicalText(sampleTextOptions);
+	}
+}
 
-describe("iLanguage", function() {
+describe("ILanguage", function() {
 
 	it("should load", function() {
-		expect(iLanguage).toBeDefined();
-		expect(iLanguage.Corpus).toBeDefined();
-		expect(iLanguage.Lexicon).toBeDefined();
+		expect(ILanguage).toBeDefined();
+		expect(ILanguage.Corpus).toBeDefined();
+		expect(ILanguage.Lexicon).toBeDefined();
 	});
 
 	describe("scalability", function() {
 
 		it("should scale to large datasets", function() {
-			expect(true).toBeTruthy();
+			expect(sampleText).toBeTruthy();
+
+			var ilanguageFromText = new ILanguage(sampleText);
+			expect(ilanguageFromText).toBeDefined();
+			expect(ilanguageFromText.orthography).toEqual(" ");
+
 		});
 
 		describe("speed", function() {
@@ -44,7 +58,7 @@ describe("iLanguage", function() {
 		describe("run everywhere", function() {
 
 			it("should run offline clientside on subsets of large datasets", function() {
-				expect(true).toBeTruthy();
+				expect(sampleText).toBeTruthy();
 			});
 		});
 
