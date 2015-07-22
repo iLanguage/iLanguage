@@ -1,1 +1,1 @@
-global.iLanguage = require('./ilanguage').iLanguage;
+global.ILanguage = require('./ilanguage').ILanguage;

@@ -1,7 +1,7 @@
 'use strict';
-var iLanguage = require('../js/ilanguage');
+var ILanguage = require('../js/ilanguage');
 var shellPromises = require('../js/shellPromises');
-var Tokenizer = iLanguage.Corpus.Orthography.Tokenizer;
+var Tokenizer = ILanguage.Corpus.Orthography.Tokenizer;
 
 var fs = require("fs");
 var specIsRunningTooLong = 5000;
