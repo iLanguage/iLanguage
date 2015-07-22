@@ -89,44 +89,45 @@
     var lex = BASE_LEXICON_FACTORY.apply(this, [options]);
     if (lex.orthography && (!lex.wordFrequencies || lex.wordFrequencies.length === 0) && typeof Lexicon.bootstrapLexicon === "function") {
       Lexicon.bootstrapLexicon(lex);
-    }
-    lex.wordFrequencies = lex.wordFrequencies || [];
+      
+      lex.wordFrequencies = lex.wordFrequencies || [];
 
-    for (var wordIndex in lex.wordFrequencies) {
-      if (!lex.wordFrequencies.hasOwnProperty(wordIndex)) {
-        continue;
+      for (var wordIndex in lex.wordFrequencies) {
+        if (!lex.wordFrequencies.hasOwnProperty(wordIndex)) {
+          continue;
+        }
+        var word = lex.wordFrequencies[wordIndex];
+        if (typeof word === "string") {
+          word = {
+            orthography: word
+          };
+        }
+        /* accept Datum as words */
+        if (!word.igt && word.fields) {
+          word.igt = word.fields;
+        }
+        if (!word.igt) {
+          word.igt = {};
+        }
+        if (word.orthography && !word.igt.orthography) {
+          word.igt.orthography = word.orthography;
+          delete word.orthography;
+        }
+        word.count = word.count || 0;
+        word.categories = word.categories || [];
+        word.datumids = word.datumids || word.docids || [];
+        if (lex._id) {
+          word.datumids.push(lex._id);
+        }
+        if (lex.url) {
+          word.url = lex.url;
+        }
+        if (lex.length > Lexicon.maxLexiconSize) {
+          console.warn("Ignoring lexical entry (lexicon has reached max size " + Lexicon.maxLexiconSize + ") ", word);
+          continue;
+        }
+        lex.add(new LexiconNode(word));
       }
-      var word = lex.wordFrequencies[wordIndex];
-      if (typeof word === "string") {
-        word = {
-          orthography: word
-        };
-      }
-      /* accept Datum as words */
-      if (!word.igt && word.fields) {
-        word.igt = word.fields;
-      }
-      if (!word.igt) {
-        word.igt = {};
-      }
-      if (word.orthography && !word.igt.orthography) {
-        word.igt.orthography = word.orthography;
-        delete word.orthography;
-      }
-      word.count = word.count || 0;
-      word.categories = word.categories || [];
-      word.datumids = word.datumids || word.docids || [];
-      if (lex._id) {
-        word.datumids.push(lex._id);
-      }
-      if (lex.url) {
-        word.url = lex.url;
-      }
-      if (lex.length > Lexicon.maxLexiconSize) {
-        console.warn("Ignoring lexical entry (lexicon has reached max size " + Lexicon.maxLexiconSize + ") ", word);
-        continue;
-      }
-      lex.add(new LexiconNode(word));
     }
 
     console.log(lex.length);
