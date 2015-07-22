@@ -3,7 +3,7 @@
   var NonContentWords = exports.NonContentWords || require('./NonContentWords').NonContentWords;
   var LexemeFrequency = exports.LexemeFrequency || require('./LexemeFrequency').LexemeFrequency;
   var MorphemeSegmenter = exports.MorphemeSegmenter || require('./MorphemeSegmenter').MorphemeSegmenter;
-  var Q = require("q");
+  var Q = Q || exports.FieldDB ? exports.FieldDB.Q : require("q");
 
   // Accept injected Lexicon functionality
   var BASE_LEXICON = exports.Lexicon || Object;
@@ -34,7 +34,6 @@
       value: LexiconNode
     }
   });
-
 
   var Lexicon = function(options) {
     this.collection = options.collection || [];
