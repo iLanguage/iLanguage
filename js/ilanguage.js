@@ -130,8 +130,8 @@
     lexicon: {
       get: function() {
         if (!this._lexicon && this.orthography) {
-          var resultOptions = ILanguage.Lexicon.LexemeFrequency.calculateNonContentWords(this);
-          this._lexicon = resultOptions.wordFrequencies;
+          var resultLexicon = ILanguage.Lexicon.LexiconFactory(this);
+          this._lexicon = resultLexicon;
           this.debug("this._lexicon", this._lexicon.length);
         }
         return this._lexicon;
