@@ -71,10 +71,10 @@ gulp.task('browserify', function() {
   var browserified = through2.obj(function(file, enc, next) {
     browserify({
         entries: [file.path],
-        standalone: 'iLanguage',
+        standalone: 'ILanguage',
         derequire: true
       })
-      // .transform('stripify')  /* TODO export iLanguage */
+      // .transform('stripify')  /* TODO export ILanguage */
       .bundle(function(err, res) {
         // assumes file.contents is a Buffer
         file.contents = res;

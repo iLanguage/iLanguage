@@ -17,8 +17,8 @@ $ npm install --save ilanguage
 ## Usage
 
 ```javascript
-var iLanguage = require('ilanguage');
-var lang = new iLanguage(); 
+var ILanguage = require('ilanguage').ILanguage;
+var lang = new ILanguage(); 
 ```
 
 
