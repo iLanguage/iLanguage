@@ -21,6 +21,7 @@
     "name": "iLanguage Contributors",
     "email": "opensource@ilanguage.ca"
   },
+  "main": "js/ilanguage",
   "contributors": [
     "cesine <cesine@yahoo.com>",
     "trisapeace <trisapeace@gmail.com>",
