@@ -1,6 +1,6 @@
 {
   "name": "ilanguage",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "description": "A Language Independent 'word finding' tool, useful for stemming, tokenizing, indexing, spell checking and other common NLP tasks. Works on any human language and any unicode character set, learns from the data you give it. (Uses compression, maximum entropy and fieldlinguistics.)",
   "homepage": "https://github.com/iLanguage/iLanguage/issues/milestones?state=closed",
   "repository": {
@@ -43,7 +43,6 @@
     "Oriana <oriana.kilbourn-ceron@mail.mcgill.ca>"
   ],
   "dependencies": {
-    "collections": "git://github.com/cesine/collections.git#bower_support",
     "fielddb": "git://github.com/cesine/FieldDB.git",
     "memory": "0.0.3",
     "q": "^1.0.1"
