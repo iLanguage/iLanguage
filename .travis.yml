@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - 0.12
+  - 8
 
 # Faster builds on container infrastructure
 sudo: false
@@ -15,8 +15,8 @@ notifications:
 
 before_install:
   # Download and configure deps
-  - npm install -g gulp 
-  - npm install -g jasmine-node 
+  - npm install -g gulp
+  - npm install -g jasmine-node
   # npm install -g git://github.com/kacperus/jasmine-node.git &&
 
 script: gulp
