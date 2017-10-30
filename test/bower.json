@@ -14,7 +14,7 @@
     "tests"
   ],
   "devDependencies": {
-    "collections": "1.2.3",
+    "collections": "1.2.1",
     "jasmine": "~2.3.4"
   }
 }
