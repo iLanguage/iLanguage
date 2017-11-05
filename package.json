@@ -21,6 +21,7 @@
     "name": "iLanguage Contributors",
     "email": "opensource@ilanguage.ca"
   },
+  "main": "js/ilanguage",
   "contributors": [
     "cesine <cesine@yahoo.com>",
     "trisapeace <trisapeace@gmail.com>",
@@ -43,7 +44,6 @@
     "Oriana <oriana.kilbourn-ceron@mail.mcgill.ca>"
   ],
   "dependencies": {
-    "collections": "git://github.com/cesine/collections.git#bower_support",
     "fielddb": "git://github.com/cesine/FieldDB.git",
     "memory": "0.0.3",
     "q": "^1.5.1"
