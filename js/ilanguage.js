@@ -1,5 +1,5 @@
 (function(exports) {
-  /* globals globals */
+  /* globals globals, FieldDB */
   "use strict";
 
   exports.Corpus = exports.Corpus || require('./corpus/Corpus').Corpus;

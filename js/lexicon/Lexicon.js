@@ -4,7 +4,7 @@
   var LexemeFrequency = exports.LexemeFrequency || require('./LexemeFrequency').LexemeFrequency;
   var MorphemeSegmenter = exports.MorphemeSegmenter || require('./MorphemeSegmenter').MorphemeSegmenter;
   var Q = Q || exports.FieldDB ? exports.FieldDB.Q : require("q");
-  var FieldDB = FieldDB || exports.FieldDB || require('FieldDB');
+  var FieldDB = FieldDB || exports.FieldDB || require('fielddb');
   var BASEOBJECT = Object;
   try {
     BASEOBJECT = FieldDB.FieldDB ? FieldDB.FieldDB.FieldDBObject : FieldDB.FieldDBObject;
