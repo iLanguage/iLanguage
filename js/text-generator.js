@@ -94,7 +94,7 @@
 
     // Put in morpheme values to get a word full of morphemes
     options.wordBoundary = options.morphemeBoundary || "-";
-    options.maxWordLength = Math.random() * (options.maxMorphemeLength || DEFAULT_MAX_MORPHEME_LENGTH)
+    options.maxWordLength = Math.random() * (options.maxMorphemeLength || DEFAULT_MAX_MORPHEME_LENGTH);
     options.wordCount = Math.random() * (options.maxMorphemesPerWord || DEFAULT_MAX_MORPHEME_PER_WORD);
     options.orthography = "";
 
@@ -112,15 +112,15 @@
   };
 
   /**
-   *  Builds a naive unicode character range for a given language iso 
-   *  (or accepts a range to be passed in). 
-   *  
+   *  Builds a naive unicode character range for a given language iso
+   *  (or accepts a range to be passed in).
+   *
    *  While this usually isn't enough to make words
-   *  which look like real words in x language, its enough to ensure the 
+   *  which look like real words in x language, its enough to ensure the
    *  texts will be in unicode.
    *
    *  See http://billposer.org/Linguistics/Computation/UnicodeRanges.html to add more ranges
-   *  
+   *
    * @param {Object|String} options Either an iso code, or an object containing optionally an iso code,
    * or predefined character start and options.length of range.
    */

@@ -4,12 +4,18 @@
   var LexemeFrequency = exports.LexemeFrequency || require('./LexemeFrequency').LexemeFrequency;
   var MorphemeSegmenter = exports.MorphemeSegmenter || require('./MorphemeSegmenter').MorphemeSegmenter;
   var Q = Q || exports.FieldDB ? exports.FieldDB.Q : require("q");
-
+  var FieldDB = FieldDB || exports.FieldDB || require('fielddb');
+  var BASEOBJECT = Object;
+  try {
+    BASEOBJECT = FieldDB.FieldDB ? FieldDB.FieldDB.FieldDBObject : FieldDB.FieldDBObject;
+  } catch (exception) {
+    console.warn("Using Object as base object");
+  }
   // Accept injected Lexicon functionality
-  var BASE_LEXICON = exports.Lexicon || Object;
-  var BASE_LEXICON_NODE = BASE_LEXICON.LexiconNode || Object;
+  var BASE_LEXICON = BASEOBJECT;
+  var BASE_LEXICON_NODE = BASE_LEXICON.LexiconNode || BASEOBJECT;
   var BASE_LEXICON_FACTORY = BASE_LEXICON.LexiconFactory || function(options) {
-    console.warn("No lexicon factory was injected. This lexicon will not accept precedence rules or word frequencies.");
+    BASEOBJECT.warn("No lexicon factory was injected. This lexicon will not accept precedence rules or word frequencies.");
     var lex = new Lexicon(options);
     if (lex.orthography && (!lex.wordFrequencies || lex.wordFrequencies.length === 0) && typeof Lexicon.bootstrapLexicon === "function") {
       Lexicon.bootstrapLexicon(lex);
@@ -86,6 +92,7 @@
         this[property] = options[property];
       }
     }
+    console.log('BASE_LEXICON', BASE_LEXICON.prototype);
     BASE_LEXICON.call(this);
   };
   Lexicon.prototype = Object.create(BASE_LEXICON.prototype, {
@@ -109,7 +116,7 @@
     getLexicalEntries: {
       value: function(lexicalEntryToMatch) {
         if (BASE_LEXICON.prototype.getLexicalEntries) {
-          console.log("Calling super getLexicalEntries");
+          this.debug("Calling super getLexicalEntries");
           return BASE_LEXICON.prototype.getLexicalEntries(this, arguments);
         }
 
@@ -117,7 +124,7 @@
           matches = [],
           self = this;
 
-        console.log("Getting matching entrys for ", lexicalEntryToMatch, " from ", this.collection);
+        this.debug("Getting matching entrys for ", lexicalEntryToMatch, " from ", this.collection);
 
         if (!lexicalEntryToMatch) {
           deffered.resolve(matches);
@@ -132,11 +139,11 @@
             } else if (orthographyToMatch.orthography) {
               orthographyToMatch = orthographyToMatch.orthography;
             }
-            
+
             if (entry.fields.orthography === orthographyToMatch) {
               matches.unshift(entry);
             } else {
-              console.log("This entry ", entry, "doesnt match", lexicalEntryToMatch);
+              self.debug("This entry ", entry, "doesnt match", lexicalEntryToMatch);
             }
           });
         }

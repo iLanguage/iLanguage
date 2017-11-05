@@ -15,7 +15,7 @@ LanguageTools
 MorphoParser
 build
 test-reports
-Gruntfile.js
+coverage
 test
 libs
 src
@@ -26,7 +26,9 @@ dist/vendor.js
 .gitattributes
 .gitignore
 .npmignore
+bower.json
 Gruntfile.js
+gulpfile.js
 CONTRIBUTING.md
 
 #ignore compiled handlebars
