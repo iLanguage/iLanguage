@@ -45,6 +45,7 @@
   "dependencies": {
     "collections": "git://github.com/cesine/collections.git#bower_support",
     "fielddb": "git://github.com/cesine/FieldDB.git",
+    "memory": "0.0.3",
     "q": "^1.5.1"
   },
   "devDependencies": {
@@ -58,6 +59,7 @@
     "gulp-jshint": "^2.0.4",
     "gulp-load-plugins": "^1.5.0",
     "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
     "jasmine-node": "~1.14.5",
@@ -73,7 +75,8 @@
   "scripts": {
     "test": "jasmine-node test",
     "cover": "gulp istanbul",
-    "build": "browserify js/ilanguage.js -o ilanguage.js",
+    "build": "browserify --standalone ILanguage js/ilanguage.js -o ilanguage.js",
+    "build:gulp": "gulp browserify",
     "prepare": "gulp release"
   },
   "license": "Apache-2.0"

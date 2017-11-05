@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
+var rename = require('gulp-rename');
 
 var browserify = require('browserify');
 // var vinylTransform = require('vinyl-transform');
@@ -69,28 +70,45 @@ https://github.com/substack/node-browserify/issues/1044
 
 gulp.task('browserify', function() {
   var browserified = through2.obj(function(file, enc, next) {
+    var options = {
+      shim: {
+        fielddb: {
+          path: './node_modules/fielddb/fielddb.js',
+          exports: 'fielddb'
+        }
+      },
+    };
+    if (false) {
+      console.log("Old options", options);
+    }
     browserify({
+        // outfile: 'ilanguage.js',
+        extension: '.min.js',
         entries: [file.path],
-        standalone: 'iLanguage',
-        derequire: true
+        standalone: "ILanguage",
+        derequire: false
       })
       // .transform('stripify')  /* TODO export iLanguage */
       .bundle(function(err, res) {
+        if (err) {
+          console.log("unable to browserify. ", err.stack, res);
+          return;
+        }
         // assumes file.contents is a Buffer
         file.contents = res;
         next(null, file);
       });
   });
-  // vinylTransform(function(filename) {
-  //   var b = browserify(filename);
-  //   return b.bundle();
-  // });
 
   return gulp.src(['./js/ilanguage.js'])
     .pipe(browserified)
+    .pipe(rename("ilanguage.js"))
+    .pipe(gulp.dest('./'))
     .pipe(uglify())
+    .pipe(rename("ilanguage.min.js"))
     .pipe(gulp.dest('./'));
 });
+
 
 /**
 https://medium.com/@sogko/gulp-browserify-the-gulp-y-way-bb359b3f9623

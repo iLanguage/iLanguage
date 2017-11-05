@@ -1,5 +1,7 @@
-var lexiconFactory =  LexiconFactory || require('../../js/lexicon/Lexicon').LexiconFactory;
+'use strict';
+
 var Lexicon = Lexicon || require('../../js/lexicon/Lexicon').Lexicon;
+var lexiconFactory = Lexicon.LexiconFactory;
 
 var specIsRunningTooLong = 5000;
 
@@ -35,17 +37,16 @@ describe('Lexicon: as a user I want to search for anything, even things that don
     });
     expect(lex.length).toEqual(4);
     var lookUp = new Lexicon.LexiconNode({
-      igt: {
+      fields: {
         orthography: "four"
       }
     });
+    // console.log("lexicon where looking up four ", lex.getLexicalEntries);
     lex.getLexicalEntries(lookUp).then(function(result) {
-      expect(result[0].igt).toEqual({
-        orthography: 'four',
-        utterance: 'four',
-        morphemes: 'four',
-        gloss: 'four'
-      });
+      // console.log(" found four in lexicon ", result)
+      expect(result).toBeDefined();
+      expect(result.length).toEqual(1);
+      expect(result[0].fields.orthography).toEqual('four');
     }, function(reason) {
       expect(reason).toEqual("something");
     }).then(done, done);
@@ -62,12 +63,7 @@ describe('Lexicon: as a user I want to search for anything, even things that don
     lex.getLexicalEntries('four').then(function(result) {
       // console.log(result);
       expect(result.length).toBeGreaterThan(0);
-      expect(result[0].igt).toEqual({
-        orthography: 'four',
-        utterance: 'four',
-        morphemes: 'four',
-        gloss: 'four'
-      });
+      expect(result[0].fields.orthography).toEqual('four');
     }, function(reason) {
       expect(reason).toEqual("something");
     }).then(done, done);
@@ -82,6 +78,7 @@ describe('Lexicon: as a user I want to search for anything, even things that don
       url: 'http://mycorpus.org/corpus1'
     });
     expect(lex.length).toEqual(4);
+    // expect(lex.wordFrequencies).toEqual(" a lexicon ");
     lex.getLexicalEntries('missing').then(function(result) {
       // console.log(result);
       expect(result.length).toEqual(0);

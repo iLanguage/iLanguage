@@ -1,3 +1,4 @@
+'use strict';
 var MorphemeSegmenter = MorphemeSegmenter || require('../../js/lexicon/MorphemeSegmenter').MorphemeSegmenter;
 
 // var specIsRunningTooLong = 5000;
@@ -43,7 +44,7 @@ describe('MorphemeSegmenter construction', function() {
         orthography: 'noqata tusunaywanmi',
         morphemeSegmentationOptions: {
           algorithm: 'MorphoParser',
-          precedenceRelations: ['ta-@','mi-@'],
+          precedenceRelations: ['ta-@', 'mi-@'],
           maxIterations: 2
         }
       });

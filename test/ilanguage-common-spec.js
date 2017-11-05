@@ -1,6 +1,6 @@
 'use strict';
-var iLanguage = iLanguage || require('../js/ilanguage');
-var Tokenizer = iLanguage.Corpus.Orthography.Tokenizer;
+var ILanguage = ILanguage || require('../js/ilanguage');
+var Tokenizer = ILanguage.Corpus.Orthography.Tokenizer;
 
 /*
   ======== A Handy Little Jasmine Reference ========
@@ -48,8 +48,8 @@ describe('lib/ilanguage', function() {
   describe('It has useful content for infoviz', function() {
 
     it('should automatically clean the text to create informative wordclouds', function() {
-      expect(iLanguage.Corpus).toBeDefined();
-      expect(iLanguage.Lexicon).toBeDefined();
+      expect(ILanguage.Corpus).toBeDefined();
+      expect(ILanguage.Lexicon).toBeDefined();
     });
 
     it('should guess negative words for this text', function() {

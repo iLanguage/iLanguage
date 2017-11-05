@@ -1,3 +1,4 @@
+'use strict';
 var Tokenizer = Tokenizer || require('../../js/lexicon/Tokenizer').Tokenizer;
 
 // var specIsRunningTooLong = 5000;

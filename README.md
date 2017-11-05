@@ -19,19 +19,20 @@ $ npm install --save ilanguage
 [More examples](https://github.com/iLanguage/iLanguage/tree/master/test)
 
 ```javascript
- var textToTest = {
-      orthography: "this will not have any stop words or morphemes, vulgar words or unrepresentative words like banana",
-      nonContentWordsArray: "not any",
-      userSpecifiedNonContentWords: true,
-      userRemovedWordsForThisDocumentArray: ['banana'],
-      userRemovedWordsForAllDocumentsArray: ['vulgar'],
-      // morphemes: /(^un|^pre|s$|ed$|ing$)/,
-      morphemesArray: ["un-", " pre-", " -s", " -ed", " -ing"]
-    };
-    NonContentWords.processNonContentWords(textToTest);
-    expect(NonContentWords.filterText(textToTest).filteredText)
-    .toEqual('thi will  have  stop word or morpheme  word or representative word like ');
-  
+var ILanguage = require('ilanguage').ILanguage;
+var lang = new ILanguage(); 
+var textToTest = {
+  orthography: "this will not have any stop words or morphemes, vulgar words or unrepresentative words like banana",
+  nonContentWordsArray: "not any",
+  userSpecifiedNonContentWords: true,
+  userRemovedWordsForThisDocumentArray: ['banana'],
+  userRemovedWordsForAllDocumentsArray: ['vulgar'],
+  // morphemes: /(^un|^pre|s$|ed$|ing$)/,
+  morphemesArray: ["un-", " pre-", " -s", " -ed", " -ing"]
+};
+NonContentWords.processNonContentWords(textToTest);
+expect(NonContentWords.filterText(textToTest).filteredText)
+  .toEqual('thi will  have  stop word or morpheme  word or representative word like ');
 ```
 
 

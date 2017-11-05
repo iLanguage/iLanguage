@@ -1,15 +1,75 @@
 (function(exports) {
-  // var ObservableDOM = require("frb/dom"); // add support for content editable
-  // var Bindings = require("frb/bindings");
-  var SortedSet = exports.SortedSet || require("collections/sorted-set");
-  var UniqueSet = exports.Set || require("collections/set");
-  var CORS = exports.FieldDB ? exports.FieldDB.CORS : require("fielddb/api/CORS").CORS;
-  var Q = exports.FieldDB ? exports.FieldDB.Q : require("q");
+  /* globals FieldDB, alert */
   var NonContentWords = exports.NonContentWords || require('./NonContentWords').NonContentWords;
   var LexemeFrequency = exports.LexemeFrequency || require('./LexemeFrequency').LexemeFrequency;
   var MorphemeSegmenter = exports.MorphemeSegmenter || require('./MorphemeSegmenter').MorphemeSegmenter;
+  var Q = Q || exports.FieldDB ? exports.FieldDB.Q : require("q");
+  var FieldDB = FieldDB || exports.FieldDB || require('fielddb');
+  var BASEOBJECT = Object;
+  try {
+    BASEOBJECT = FieldDB.FieldDB ? FieldDB.FieldDB.FieldDBObject : FieldDB.FieldDBObject;
+  } catch (exception) {
+    console.warn("Using Object as base object");
+  }
+  // Accept injected Lexicon functionality
+  var BASE_LEXICON = BASEOBJECT;
+  var BASE_LEXICON_NODE = BASE_LEXICON.LexiconNode || BASEOBJECT;
+  var BASE_LEXICON_FACTORY = BASE_LEXICON.LexiconFactory || function(options) {
+    BASEOBJECT.warn("No lexicon factory was injected. This lexicon will not accept precedence rules or word frequencies.");
+    var lex = new Lexicon(options);
+    if (lex.orthography && (!lex.wordFrequencies || lex.wordFrequencies.length === 0) && typeof Lexicon.bootstrapLexicon === "function") {
+      Lexicon.bootstrapLexicon(lex);
 
-  var maxLexiconSize = 1000;
+      lex.wordFrequencies = lex.wordFrequencies || [];
+
+      for (var wordIndex in lex.wordFrequencies) {
+        if (!lex.wordFrequencies.hasOwnProperty(wordIndex)) {
+          continue;
+        }
+        var word = lex.wordFrequencies[wordIndex];
+        if (typeof word === "string") {
+          word = {
+            orthography: word
+          };
+        }
+        /* accept Datum as words */
+        if (!word.fields && word.fields) {
+          word.fields = word.fields;
+        }
+        if (!word.fields) {
+          word.fields = {};
+        }
+        if (word.orthography && !word.fields.orthography) {
+          word.fields.orthography = word.orthography;
+          delete word.orthography;
+        }
+        word.count = word.count || 0;
+        word.categories = word.categories || [];
+        word.datumids = word.datumids || word.docids || [];
+        if (lex._id) {
+          word.datumids.push(lex._id);
+        }
+        if (lex.url) {
+          word.url = lex.url;
+        }
+        if (lex.length > Lexicon.maxLexiconSize) {
+          console.warn("Ignoring lexical entry (lexicon has reached max size " + Lexicon.maxLexiconSize + ") ", word);
+          continue;
+        }
+        lex.add(new LexiconNode(word));
+      }
+    }
+
+    return lex;
+  };
+
+  try {
+    // // BASE_LEXICON = require('fielddb-glosser/lib/Lexicon').Lexicon;
+    // BASE_LEXICON_NODE = BASE_LEXICON.LexiconNode;
+    // BASE_LEXICON_FACTORY = BASE_LEXICON.LexiconFactory;
+  } catch (exception) {
+    console.warn("Can't use fielddb-glosser, its probably not availible");
+  }
 
   var LexiconNode = function(options) {
     for (var property in options) {
@@ -17,426 +77,105 @@
         this[property] = options[property];
       }
     }
-    this.igtBeforeCleaning = JSON.parse(JSON.stringify(options.igt));
-    Object.call(this);
+    BASE_LEXICON_NODE.call(this);
   };
-
-  LexiconNode.prototype = Object.create(Object.prototype, {
+  LexiconNode.prototype = Object.create(BASE_LEXICON_NODE.prototype, {
     constructor: {
       value: LexiconNode
-    },
-    equals: {
-      value: function(b) {
-        var a = this;
-        var equal = false;
-        var fieldIndex,
-          field,
-          tmpArray;
-
-        if (!a.igt || !b.igt) {
-          equal = false;
-          return equal;
-        }
-
-        for (fieldIndex in this.expandedIGTFields) {
-          field = this.expandedIGTFields[fieldIndex];
-          if (a.igt.hasOwnProperty(field)) {
-            // console.log(a);
-            if (a.igt[field] === b.igt[field]) {
-              equal = true;
-            }
-          }
-        }
-        // If the nodes are "equal" then make sure they have the same combineFieldsIfEqual
-        if (equal) {
-          for (fieldIndex in this.combineFieldsIfEqual) {
-            field = this.combineFieldsIfEqual[fieldIndex];
-            if (a.hasOwnProperty(field)) {
-              tmpArray = [];
-              a[field] = a[field].concat(b[field]);
-              /*jshint loopfunc: true */
-              a[field].map(function(item) {
-                if (tmpArray.indexOf(item) === -1) {
-                  tmpArray.push(item);
-                }
-              });
-              a[field] = tmpArray;
-              b[field] = tmpArray;
-            }
-          }
-          if (a.confidence && b.confidence) {
-            a.confidence = (parseFloat(a.confidence, 10) + parseFloat(b.confidence, 10)) / 2;
-            b.confidence = a.confidence;
-          }
-          if (a.allomorphs || b.allomorphs) {
-            var allomorphs = a.allomorphs ? a.allomorphs : "";
-            allomorphs = allomorphs + allomorphs ? ", " : "";
-            allomorphs = allomorphs + b.allomorphs ? b.allomorphs : "";
-            a.allomorphs = allomorphs;
-            b.allomorphs = allomorphs;
-          }
-        }
-        return equal;
-      }
-    },
-    expandedIGTFields: {
-      value: ["morphemes", "gloss", "allomorphy", "phonetic", "orthography"]
-    },
-    combineFieldsIfEqual: {
-      value: ["datumids", "utteranceContext"]
-    },
-    sortBy: {
-      value: "morphemes",
-      writable: true
-    },
-    compare: {
-      value: function(b) {
-        var a = this;
-        var result = 0;
-        if (!b || !b.igt || !b.igt[this.sortBy]) {
-          return -1;
-        }
-        if (!a || !a.igt || !a.igt[this.sortBy]) {
-          return 1;
-        }
-        if ((typeof(a.igt[this.sortBy]) === 'number') && (typeof(b.igt[this.sortBy]) === 'number')) {
-          result = a.igt[this.sortBy] - b.igt[this.sortBy];
-        } else if ((typeof(a.igt[this.sortBy]) === 'string') && (typeof(b.igt[this.sortBy]) === 'string')) {
-          if (a.igt[this.sortBy] < b.igt[this.sortBy]) {
-            result = -1;
-          } else if (a.igt[this.sortBy] > b.igt[this.sortBy]) {
-            result = 1;
-          } else {
-            result = 0;
-          }
-        } else if (typeof(a.igt[this.sortBy]) === 'string') {
-          result = 1;
-        } else {
-          result = -1;
-        }
-        return result;
-      }
-    },
-    clean: {
-      value: function() {
-        // console.log("Preparing datum with this lexical entry to be cleaned...");
-        var deffered = Q.defer();
-        this.cleanedData = [];
-        var promises = [];
-        var self = this;
-        this.proposedChanges = [];
-
-        var successFunction = function(doc) {
-          // console.log(doc);
-          doc.datumFields.map(function(datumField) {
-            if (self.igtBeforeCleaning[datumField.label] !== self.igt[datumField.label] && (new RegExp(self.igtBeforeCleaning[datumField.label], "i")).test(datumField.mask)) {
-              var change = {
-                before: datumField.mask + ""
-              };
-              // TODO this makes things lower case... because part of the map reduce seems to be doing that...
-              datumField.mask = datumField.mask.replace(new RegExp(self.igtBeforeCleaning[datumField.label], "ig"), self.igt[datumField.label]);
-              datumField.value = datumField.mask;
-              change.after = datumField.mask;
-              self.proposedChanges.push(change);
-              return datumField;
-            }
-          });
-          self.cleanedData.push(doc);
-        };
-        var failFunction = function(reason) {
-          console.log(reason);
-        };
-
-        for (var idIndex = 0; idIndex < this.datumids.length; idIndex++) {
-          // console.log(this.datumids.length[idIndex]);
-          promises[idIndex] = CORS.makeCORSRequest({
-            method: 'GET',
-            dataType: 'json',
-            url: this.url + "/" + this.datumids[idIndex]
-          });
-          promises[idIndex].then(successFunction).fail(failFunction);
-        }
-        Q.allSettled(promises).then(function(results) {
-          deffered.resolve(self.proposedChanges);
-        });
-        return deffered.promise;
-      }
-    },
-    save: {
-      value: function() {
-        var deffered = Q.defer(),
-          promises = [];
-
-        // console.log("Saving cleaned datum...");
-        while (this.cleanedData.length > 0) {
-          var cleanedDatum = this.cleanedData.pop();
-          promises.push(CORS.makeCORSRequest({
-            method: 'PUT',
-            dataType: 'json',
-            data: cleanedDatum,
-            url: this.url + "/" + cleanedDatum._id
-          }));
-        }
-        Q.allSettled(promises).then(function(results) {
-          // console.log("Saving results: ", results);
-          deffered.resolve(results);
-        });
-        return deffered.promise;
-      }
     }
   });
 
-
-  var Lexicon = function(values, equals, compare, getDefault) {
-    // console.log("\tConstructing Lexicon... ");
-    // SortedSet.apply(this, [values, equals, compare, getDefault]);
-    SortedSet.apply(this, Array.prototype.slice.call(arguments, 1));
-    // if (!compare) {
-    //   this.contentCompare = this.__proto__.igtCompare;
-    // }
-    // if (!equals) {
-    //   this.contentEquals = this.__proto__.igtEqual;
-    // }
+  var Lexicon = function(options) {
+    this.collection = options.collection || [];
+    for (var property in options) {
+      if (options.hasOwnProperty(property)) {
+        this[property] = options[property];
+      }
+    }
+    console.log('BASE_LEXICON', BASE_LEXICON.prototype);
+    BASE_LEXICON.call(this);
   };
-
-  Lexicon.prototype = Object.create(SortedSet.prototype, {
+  Lexicon.prototype = Object.create(BASE_LEXICON.prototype, {
     constructor: {
       value: Lexicon
     },
-    sortBy: {
-      value: "morphemes"
+
+    length: {
+      get: function() {
+        return this.collection.length;
+      },
+      set: function() {}
     },
 
-    toJSON: {
-      value: function() {
-        return JSON.stringify(this.toObject(), null, 2);
+    add: {
+      value: function(item) {
+        this.collection.unshift(item);
       }
     },
+
     getLexicalEntries: {
       value: function(lexicalEntryToMatch) {
+        if (BASE_LEXICON.prototype.getLexicalEntries) {
+          this.debug("Calling super getLexicalEntries");
+          return BASE_LEXICON.prototype.getLexicalEntries(this, arguments);
+        }
+
         var deffered = Q.defer(),
           matches = [],
           self = this;
 
+        this.debug("Getting matching entrys for ", lexicalEntryToMatch, " from ", this.collection);
+
         if (!lexicalEntryToMatch) {
           deffered.resolve(matches);
         } else {
-          this.filter(function(value, key, object, depth) {
-            // console.log(key + " of " + self.length);
-            if (typeof lexicalEntryToMatch.equals === "function") {
-              if (lexicalEntryToMatch.equals(value)) {
-                matches.push(value);
-                // console.log(value);
-              }
+          this.collection.map(function(entry) {
+            if (!entry || !entry.fields) {
+              return;
+            }
+            var orthographyToMatch = lexicalEntryToMatch;
+            if (orthographyToMatch.fields && orthographyToMatch.fields.orthography) {
+              orthographyToMatch = orthographyToMatch.fields.orthography;
+            } else if (orthographyToMatch.orthography) {
+              orthographyToMatch = orthographyToMatch.orthography;
+            }
+
+            if (entry.fields.orthography === orthographyToMatch) {
+              matches.unshift(entry);
             } else {
-              var howWellDoesThisMatch = 0;
-              lexicalEntryToMatch = lexicalEntryToMatch.trim();
-              for (var attr in value.igt) {
-                if (value.igt.hasOwnProperty(attr) && value.igt[attr] === lexicalEntryToMatch) {
-                  howWellDoesThisMatch = howWellDoesThisMatch + 1;
-                }
-              }
-              if (howWellDoesThisMatch > 0) {
-                matches.push(value);
-                // console.log(value);
-              }
+              self.debug("This entry ", entry, "doesnt match", lexicalEntryToMatch);
             }
-            if (key === self.length - 1) {
-              deffered.resolve(matches);
-            }
-          }, this);
+          });
         }
+        deffered.resolve(matches);
+
         return deffered.promise;
-      }
-    },
-
-    guessContextSensitiveGlosses: {
-      value: function(datum) {
-
-        if (!datum.morphemes) {
-          console.warn("There was no morphemes line to guess the gloss from...");
-          return datum;
-        }
-        var glossGroups = [];
-        var matchingNodes = [];
-        var morphemeToFind = "";
-        var morphemeGroup = datum.morphemes.split(/ +/);
-        var matchingfunction = function(node) {
-          if (node.igt.morphemes === morphemeToFind) {
-            // console.log(node);
-            matchingNodes.push(node);
-          }
-        };
-        for (var group in morphemeGroup) {
-          var morphemes = morphemeGroup[group].split("-");
-          var glosses = [];
-          for (var m in morphemes) {
-            if (!morphemes.hasOwnProperty(m)) {
-              continue;
-            }
-            matchingNodes = [];
-            morphemeToFind = morphemes[m];
-            this.filter(matchingfunction);
-
-            var gloss = "?"; // If there's no matching gloss, use question marks
-            if (matchingNodes && matchingNodes.length > 0) {
-              // Take the first gloss for this morpheme
-              // console.log("Glosses which match: " + morphemes[m], matchingNodes);
-              try {
-                gloss = matchingNodes[0].igt.gloss;
-              } catch (e) {
-                // console.log(matchingNodes);
-              }
-            }
-            glosses.push(gloss);
-          }
-
-          glossGroups.push(glosses.join("-"));
-        }
-        datum.glossAlternates = datum.glossAlternates ? datum.glossAlternates.concat(glossGroups) : glossGroups;
-        datum.gloss = glossGroups.join(" ");
-        // Replace the gloss line with the guessed glosses
-        return datum;
-      }
-    },
-
-    /**
-     * Takes as a parameters an array of this.precedenceRelations which came from CouchDB precedence rule query.
-     * Example Rule: {"key":{"x":"@","relation":"preceeds","y":"aqtu","context":"aqtu-nay-wa-n"},"value":2}
-     */
-    generatePrecedenceForceDirectedRulesJsonForD3: {
-      value: function(dontConnectWordBoundaries) {
-        /*
-         * Cycle through the precedence rules, convert them into graph edges with the morpheme index in the morpheme array as the source/target values
-         */
-        var morphemeLinks = [];
-        var morphemes = {};
-
-
-        /*
-         * Create the JSON required by D3
-         */
-        var precedenceGraph = {
-          links: morphemeLinks,
-          nodes: morphemes
-        };
-        this.precedenceGraph = precedenceGraph;
-
-        return precedenceGraph;
       }
     }
   });
 
+
   var LexiconFactory = function(options) {
-    // var lex = new Lexicon(null, Lexicon.prototype.igtEqual, Lexicon.prototype.igtCompare);
-    var lex = new Lexicon();
-    lex.precedenceRelations = new UniqueSet();
-    lex.references = new UniqueSet();
-    if (options.precedenceRelations && options.precedenceRelations.length > 0) {
-      for (var i in options.precedenceRelations) {
-        try {
-          //Add source target and value to the link
-          delete options.precedenceRelations[i].key.previous.utterance;
-          delete options.precedenceRelations[i].key.subsequent.utterance;
-          options.precedenceRelations[i].key.utteranceContext = options.precedenceRelations[i].key.context.utterance;
-          options.precedenceRelations[i].key.datumid = options.precedenceRelations[i].id;
+    var lex = BASE_LEXICON_FACTORY.apply(this, [options]);
 
-          // Put the previous and subsequent morphemes into the morpheme nodes
-          // lex.add(options.precedenceRelations[i].key.context.utterance, new LexiconNode({
-          //   igt: options.precedenceRelations[i].key.previous
-          // }));
-          lex.add(new LexiconNode({
-            igt: options.precedenceRelations[i].key.previous,
-            datumids: [options.precedenceRelations[i].key.context.id],
-            utteranceContext: [options.precedenceRelations[i].key.context.utterance],
-            url: options.url
-          }));
-
-          // lex.add(options.precedenceRelations[i].key.context.utterance, new LexiconNode({
-          //   igt: options.precedenceRelations[i].key.previous
-          // }));
-          lex.add(new LexiconNode({
-            igt: options.precedenceRelations[i].key.subsequent,
-            datumids: [options.precedenceRelations[i].key.context.id],
-            utteranceContext: [options.precedenceRelations[i].key.context.utterance],
-            url: options.url
-          }));
-          lex.references.add(options.precedenceRelations[i].key.context.id);
-
-          //To avoid loops
-          if (options.precedenceRelations[i].key.subsequent.morphemes.indexOf("@") === -1) {
-            lex.precedenceRelations.add(options.precedenceRelations[i].key);
-          }
-
-        } catch (e) {
-          console.warn(e);
-        }
-
-      }
-    }
-
-    if (options.orthography) {
-      if (options.nonContentWordsArray) {
-        options.userSpecifiedNonContentWords = true;
-        if (Object.prototype.toString.call(options.nonContentWordsArray) === '[object Array]' && options.nonContentWordsArray.length === 0) {
-          options.userSpecifiedNonContentWords = false;
-          // console.log("User sent an empty array of non content words, attempting to automatically detect them");
-        }
-        // else if (options.nonContentWordsArray.trim && !options.nonContentWordsArray.trim()) {
-        //   options.userSpecifiedNonContentWords = false;
-        // }
-      }
-      NonContentWords.processNonContentWords(options);
-
-      for (var wordIndex in options.wordFrequencies) {
-        if (!options.wordFrequencies.hasOwnProperty(wordIndex)) {
-          continue;
-        }
-        var word = options.wordFrequencies[wordIndex].orthography;
-        var count = options.wordFrequencies[wordIndex].count;
-        var categories = options.wordFrequencies[wordIndex].categories;
-        if (lex.length > maxLexiconSize) {
-          continue;
-        }
-        lex.add(new LexiconNode({
-          igt: {
-            orthography: word,
-            utterance: word,
-            morphemes: word,
-            gloss: word,
-          },
-          categories: categories,
-          datumids: [options._id],
-          count: count,
-          utteranceContext: [word],
-          url: options.url
-        }));
-
-      }
-    }
-
-    for (var property in options) {
-      if (options.hasOwnProperty(property)) {
-        lex[property] = options[property];
-      }
-    }
+    console.log(lex.length);
     return lex;
   };
+
   Lexicon.NonContentWords = NonContentWords;
   Lexicon.LexemeFrequency = LexemeFrequency;
   Lexicon.LexiconNode = LexiconNode;
   Lexicon.LexiconFactory = LexiconFactory;
   Lexicon.MorphemeSegmenter = MorphemeSegmenter;
+  Lexicon.maxLexiconSize = BASE_LEXICON.maxLexiconSize || 10000;
+  Lexicon.bootstrapLexicon = BASE_LEXICON.bootstrapLexicon = Lexicon.LexemeFrequency.calculateNonContentWords;
 
   exports.Lexicon = Lexicon;
   try {
     global.Lexicon = Lexicon;
-    global.LexiconFactory = LexiconFactory;
   } catch (e) {
     console.log(e);
   }
-
-  exports.LexiconFactory = LexiconFactory;
 
   // }(typeof exports === 'object' && exports || this));
 })(typeof exports === 'undefined' ? this : exports);
