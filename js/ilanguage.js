@@ -15,8 +15,8 @@
   }
 
   /**
-   * @class A model of an I-Language (the data of one homogenous individual) 
-   * as opposed to a model of an E-Language (a colection of data samples spoken by individuals 
+   * @class A model of an I-Language (the data of one homogenous individual)
+   * as opposed to a model of an E-Language (a colection of data samples spoken by individuals
    * who identify as speaking the same language).
    *
    * I-Language Examples:
@@ -29,32 +29,32 @@
    *  - Arabic
    *  - Malay
    *  - Spanish
-   *  - Hindi/Urdu 
+   *  - Hindi/Urdu
    *
    * E-Languages are a collection of I-Languages. I-Languages are usually more internally
-   * consistant and as such are more welcoming to statistical modeling since we don't 
+   * consistant and as such are more welcoming to statistical modeling since we don't
    * have to average over diverse behavior we can use a smaller sample size.
    *
    * There is a textbook about I-language if you would like more info:
    *  http://linguistics.concordia.ca/I-language/isac_reiss_chapter1.pdf
-   *  
-   *    "An I-language is a computational system that is encoded in, or 
+   *
+   *    "An I-language is a computational system that is encoded in, or
    *     a property of, an individual brain."
-   * 
-   *    "The I-language approach to linguistics thus [models] individual mental grammars, 
-   *    entities that are internal to each person. In addition to these two words 
-   *    beginning with the letter I, there is a third relevant term implicit in 
-   *    the notion of a grammar as a system of rules or patterns. In mathematics a 
-   *    set can be defined extensionally, by listing its members, or intensionally, 
-   *    by providing a formula or description that characterizes all and only the 
+   *
+   *    "The I-language approach to linguistics thus [models] individual mental grammars,
+   *    entities that are internal to each person. In addition to these two words
+   *    beginning with the letter I, there is a third relevant term implicit in
+   *    the notion of a grammar as a system of rules or patterns. In mathematics a
+   *    set can be defined extensionally, by listing its members, or intensionally,
+   *    by providing a formula or description that characterizes all and only the
    *    members of the set."
    *
    * @param {Object} options Optional json initialization object
    * @property {String} dbname This is the identifier of the corpus, it is set when
    *           a corpus is created. It must be a file safe name which means it is
-   *           [a-z] with no uppercase letters or symbols, by convention it cannot 
+   *           [a-z] with no uppercase letters or symbols, by convention it cannot
    *           contain -, but _ is acceptable.
-   
+
    * @extends Object
    * @tutorial test/ilanguage-spec.js
    */
@@ -149,7 +149,7 @@
   try {
     globals.ILanguage = ILanguage;
   } catch (e) {
-    console.log("cannot set ILanguage on globals in this context");
+    console.log("cannot set ILanguage on globals in this context", exports);
     // console.log(e.stack);
   }
   exports.ILanguage = exports.ILanguage || ILanguage;
