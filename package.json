@@ -73,6 +73,7 @@
     "node": "~0.8 || ~0.10 || ~0.12 || ~8.0"
   },
   "scripts": {
+    "lint": "gulp jshint",
     "test": "jasmine-node test",
     "cover": "gulp istanbul",
     "build": "browserify --standalone ILanguage js/ilanguage.js -o ilanguage.js",
