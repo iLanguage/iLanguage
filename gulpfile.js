@@ -79,19 +79,19 @@ gulp.task('browserify', function() {
       },
     };
     if (false) {
-      console.log("Old options", options);
+      console.log('Old options', options);
     }
     browserify({
         // outfile: 'ilanguage.js',
         extension: '.min.js',
         entries: [file.path],
-        standalone: "ILanguage",
+        standalone: 'ILanguage',
         derequire: false
       })
       // .transform('stripify')  /* TODO export iLanguage */
       .bundle(function(err, res) {
         if (err) {
-          console.log("unable to browserify. ", err.stack, res);
+          console.log('unable to browserify. ', err.stack, res);
           return;
         }
         // assumes file.contents is a Buffer
@@ -102,10 +102,10 @@ gulp.task('browserify', function() {
 
   return gulp.src(['./js/ilanguage.js'])
     .pipe(browserified)
-    .pipe(rename("ilanguage.js"))
+    .pipe(rename('ilanguage.js'))
     .pipe(gulp.dest('./'))
     .pipe(uglify())
-    .pipe(rename("ilanguage.min.js"))
+    .pipe(rename('ilanguage.min.js'))
     .pipe(gulp.dest('./'));
 });
 

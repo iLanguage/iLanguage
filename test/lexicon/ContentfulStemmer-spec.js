@@ -76,18 +76,26 @@ describe('Basic NLP tasks', function() {
 			.toEqual([{
 				orthography: 'zzzzz',
 				count: 3,
+				rank: 0.75,
+				normalizedCount: 1,
 				categories: ['functionalWord']
 			}, {
 				orthography: 'bbbbbb',
 				count: 2,
+				rank: 0.5,
+				normalizedCount: 0.6666666666666666,
 				categories: ['buzzWord']
 			}, {
 				orthography: 'aaaaa',
 				count: 2,
+				rank: 0.5,
+				normalizedCount: 0.6666666666666666,
 				categories: ['functionalWord']
 			}, {
 				orthography: 'cccccc',
 				count: 1,
+				rank: 0.25,
+				normalizedCount: 0.3333333333333333,
 				categories: ['buzzWord']
 			}]);
 	});

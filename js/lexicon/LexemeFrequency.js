@@ -201,15 +201,23 @@
       // console.log('Setting cutoffPercent automatically ' + typology);
     }
 
+    var maxCount = 0;
+    wordFrequencies.forEach(function(word) {
+      if (word.count > maxCount) {
+        maxCount = word.count;
+      }
+    });
+
     // console.log('calculateNonContentWords', wordFrequencies);
     // console.log('calculateNonContentWords', obj.nonContentWordsArray);
     for (var oIndex in wordFrequencies) {
       if (!wordFrequencies.hasOwnProperty(oIndex)) {
         continue;
       }
-      var wordRank = (wordFrequencies[oIndex].count / obj.vocabSize);
+      wordFrequencies[oIndex].rank = (wordFrequencies[oIndex].count / obj.vocabSize);
+      wordFrequencies[oIndex].normalizedCount = (wordFrequencies[oIndex].count / maxCount);
       // console.log('wordFrequencies[oIndex] ' + wordFrequencies[oIndex] + ' ' + wordFrequencies[oIndex] + ' ' + wordRank);
-      if (wordRank > cutoffPercent) {
+      if (wordFrequencies[oIndex].rank > cutoffPercent) {
         if (wordFrequencies[oIndex].orthography.length > 5) {
           buzzWords.push(wordFrequencies[oIndex].orthography);
           wordFrequencies[oIndex].categories = ['buzzWord'];
