@@ -13,18 +13,17 @@
     return newWordMap;
   };
 
-  var getUnique = function(arrayObj) {
-    var u = {}, a = [];
-    for (var i = 0, l = arrayObj.length; i < l; ++i) {
-      if (u.hasOwnProperty(arrayObj[i])) {
-        continue;
+  var getUnique = function(list) {
+    var u = {};
+    var a = [];
+    list.forEach(function(item) {
+      if (!item) {
+        return;
       }
-      if (arrayObj[i]) {
-        a.push(arrayObj[i]);
-        u[arrayObj[i]] = 1;
-      }
-    }
-    return a;
+      a.push(item);
+      u[item] = 1;
+    });
+    return Object.keys(u);
   };
 
   var calculateWordFrequencies = function(obj) {
