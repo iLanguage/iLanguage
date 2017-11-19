@@ -45,7 +45,6 @@
   ],
   "dependencies": {
     "fielddb": "git://github.com/cesine/FieldDB.git",
-    "memory": "0.0.3",
     "q": "^1.5.1"
   },
   "devDependencies": {
@@ -65,6 +64,7 @@
     "jasmine-node": "~1.14.5",
     "jshint": "^2.9.5",
     "jshint-stylish": "^2.2.1",
+    "memory": "0.0.3",
     "through2": "^2.0.3",
     "vinyl-source-stream": "^1.1.0",
     "vinyl-transform": "^1.0.0"
