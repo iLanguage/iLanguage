@@ -96,7 +96,7 @@
           return '^' + morpheme.replace('-', '');
         }
       }).join('|');
-      userCloud.morphemesRegExp = new RegExp('(' + userCloud.morphemesRegExp + ')');
+      userCloud.morphemesRegExp = new RegExp('(' + userCloud.morphemesRegExp + ')', 'g');
     } else {
       userCloud.morphemesRegExp = null;
     }

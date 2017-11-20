@@ -48,7 +48,6 @@ describe('Tokenizer construction', function() {
 
   describe('morphemeSegmentationOptions', function() {
     it('should create an array of words if a segmenter\'s rules are not downloaded yet ', function() {
-
       var doc = Tokenizer.tokenizeInput({
         orthography: 'noqata tusunayawanmi',
         ilanguage: 'lingllama-communitycorpus',

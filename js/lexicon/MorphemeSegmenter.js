@@ -258,6 +258,9 @@
           console.log("No segmentation options were specified, not returning any segmentations");
         }
         doc.morphemes = doc.morphemes || doc.utterance || doc.orthography;
+        if (doc.morphemesRegExp) {
+          doc.morphemes = doc.morphemes.replace(doc.morphemesRegExp, '-$1-');
+        }
         return doc;
       }
 
