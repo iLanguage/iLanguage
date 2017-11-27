@@ -1,6 +1,6 @@
 (function(exports) {
 
-	var Corpus = require('fielddb/api/corpus/ComputationalLinguisticsCorpus').ComputationalLinguisticsCorpus;
+	var Corpus =  exports.FieldDB ? exports.FieldDB.ComputationalLinguisticsCorpus : require('fielddb/api/corpus/ComputationalLinguisticsCorpus').ComputationalLinguisticsCorpus;
 	Corpus.Orthography = {};
 	Corpus.Orthography.Tokenizer = exports.Tokenizer || require('../lexicon/Tokenizer').Tokenizer;
 
