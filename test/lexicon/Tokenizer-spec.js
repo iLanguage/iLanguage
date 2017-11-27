@@ -56,32 +56,32 @@ describe('Tokenizer construction', function() {
       });
     });
   });
-});
 
-describe('Tokenizer construction', function() {
-  it('should create an array of words if a segmenter\'s rules are not downloaded yet ', function() {
-
-    var doc = Tokenizer.tokenizeInput({
-      orthography: 'noqata tusunayawanmi',
-      ilanguage: 'lingllama-communitycorpus',
-      morphemeSegmentationOptions: {
-        algorithm: "MorphoParser",
-        maxIterations: 2
-      }
+  describe('morphemeSegmentationOptions', function() {
+    it('should create an array of words if a segmenter\'s rules are not downloaded yet ', function() {
+      var doc = Tokenizer.tokenizeInput({
+        orthography: 'noqata tusunayawanmi',
+        ilanguage: 'lingllama-communitycorpus',
+        morphemeSegmentationOptions: {
+          algorithm: "MorphoParser",
+          maxIterations: 2
+        }
+      });
+      expect(doc.orthographyArray).toEqual(['noqata', 'tusunayawanmi']);
     });
-    expect(doc.orthographyArray).toEqual(['noqata', 'tusunayawanmi']);
+
+    xit('should create an array of tokens (morphemes) if a segmenter\'s rules have been downloaded', function() {
+      var doc = Tokenizer.tokenizeInput({
+        orthography: 'noqata tusunayawanmi',
+        ilanguage: 'lingllama-communitycorpus',
+        morphemeSegmentationOptions: {
+          algorithm: "MorphoParser",
+          seeds: "noqa-ta tusu-na-y-wa-n-mi",
+          maxIterations: 2
+        }
+      });
+      expect(doc.orthographyArray).toEqual(['noqa', 'ta', 'tusu', 'na', 'y', 'wa', 'n', 'mi']);
+    });
   });
 
-  xit('should create an array of tokens (morphemes) if a segmenter\'s rules have been downloaded', function() {
-    var doc = Tokenizer.tokenizeInput({
-      orthography: 'noqata tusunayawanmi',
-      ilanguage: 'lingllama-communitycorpus',
-      morphemeSegmentationOptions: {
-        algorithm: "MorphoParser",
-        seeds: "noqa-ta tusu-na-y-wa-n-mi",
-        maxIterations: 2
-      }
-    });
-    expect(doc.orthographyArray).toEqual(['noqa', 'ta', 'tusu', 'na', 'y', 'wa', 'n', 'mi']);
-  });
 });

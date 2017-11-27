@@ -215,6 +215,12 @@
       }
       wordFrequencies[oIndex].rank = (wordFrequencies[oIndex].count / obj.vocabSize);
       wordFrequencies[oIndex].normalizedCount = (wordFrequencies[oIndex].count / maxCount);
+      if (obj.userSpecifiedNonContentWords) {
+        if (obj.nonContentWordsArray.indexOf(wordFrequencies[oIndex].orthography.toLocaleLowerCase()) > -1) {
+          wordFrequencies[oIndex].categories = ['userDefinedNonContentWord'];
+        }
+        continue;
+      }
       // console.log('wordFrequencies[oIndex] ' + wordFrequencies[oIndex] + ' ' + wordFrequencies[oIndex] + ' ' + wordRank);
       if (wordFrequencies[oIndex].rank > cutoffPercent) {
         if (wordFrequencies[oIndex].orthography.length > 5) {

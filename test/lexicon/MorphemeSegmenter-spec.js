@@ -39,6 +39,14 @@ describe('MorphemeSegmenter construction', function() {
       expect(doc.morphemes).toEqual('noqa-ta tusu-nay-wa-n-mi');
     });
 
+    it('should find and replace morphemesRegExp', function() {
+      var doc = MorphemeSegmenter.runSegmenter({
+        orthography: 'აზრებისა და ემოციური განცდების გაფორმებაში, შეაძლებინებს მას გარკვეულ ფორმაში',
+        morphemesRegExp: /(^სტა|ები$|^სა|ში$)/g
+      });
+      expect(doc.morphemes).toEqual('აზრებისა და ემოციური განცდების გაფორმებაში, შეაძლებინებს მას გარკვეულ ფორმა-ში-');
+    });
+
     it('should provide a suggested segmentation if precedence relations are provided', function() {
       var doc = MorphemeSegmenter.runSegmenter({
         orthography: 'noqata tusunaywanmi',
