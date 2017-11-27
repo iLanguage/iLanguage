@@ -9,7 +9,15 @@
     fineWordInternallyButNotExternallyArray: ['-', '\'', '-', '-'],
     wordDelimitersArray: [],
     // morphemesRegExp = /[はをがはのに。、「」、。・]+/g;
-    japaneseWordBoundaryMorphemes: ['\u3001-\u303F', '\u3040-\u309F', '\u30A0-\u30FF']
+    languages: {
+      ja: {
+        punctuationArray: ['\u3000-\u303f'],
+        wordBoundaryMorphemes: ['の','に']
+        // This list resutls in false segmentations?
+        // 'もの','いし', 'い', 'いは', 'かしら', 'かどうか', 'かい', 'か', 'かな', 'かも', 'かも知れない', 'から', 'が', 'き', 'きり', 'ぎゃ', 'く', 'くせに', 'け', 'けど', 'けん', 'こ', 'こえ', 'こそ', 'ころ', 'ごろ', 'さ', 'しか', 'して', 'し', 'すら', 'す', 'せ', 'ぜ', 'たら', 'だけ', 'だに', 'だの', 'そ', 'ぞ', 'た', 'っけ', 'ったら', 'って', 'っ', 'つ', 'つつ', 'ても', 'て', 'では', 'でも', 'で', 'といえども', 'とか', 'ところで', 'として', 'とて', 'とは', 'とも', 'と', 'どころか', 'ども', 'どんだけ', 'な', 'なぁ', 'ながら', 'など', 'なら', 'なりに', 'なり', 'なん', 'なんか', 'なんて', 'なんで', 'について', 'にて', 'に', 'には', 'にゃ', 'ね', 'ので', 'のに', 'のみ', 'の', 'は', 'ば', 'ばかり', 'ばかりか', 'ばっか', 'ばかし', 'へ', 'ほど', 'ほ', 'まで', 'までに', 'ま', 'まま', 'まんま', 'もの', 'ものの', 'もん', 'も', 'やら', 'や', 'より', 'よーん', 'よ', 'らむ', 'ら', 'わ', 'をして', 'を', 'んで','ん', 'ゟ', 'ザ', 'ママ', 'ヶ', '丈', '乍ら', '今や', '儘', '切り', '所か', '所で', '程', '草', '迄']
+        // wordBoundaryMorphemes: ['\u3040-\u309F', '\u30A0-\u30FF']
+      }
+    }
   };
   // ^(@|https?:
   var regExpEscape = function(s) {
@@ -35,12 +43,13 @@
     if (doc.morphemeSegmentationOptions) {
       doc = MorphemeSegmenter.runSegmenter(doc);
     }
+
     var orthographicTokens = [],
       orthographicWords = [],
       text = doc.orthography.trim(),
       punctuationArray = doc.punctuationArray || defaults.punctuationArray,
       wordDelimitersArray = doc.wordDelimitersArray || defaults.wordDelimitersArray,
-      wordBoundaryMorphemes = doc.wordBoundaryMorphemes,
+      wordBoundaryMorphemes = doc.wordBoundaryMorphemes || [],
       fineWordInternallyButNotExternallyArray = doc.fineWordInternallyButNotExternallyArray || defaults.fineWordInternallyButNotExternallyArray;
 
     // fineWordInternallyButNotExternallyArray = fineWordInternallyButNotExternallyArray.concat(doc.punctuation); //TODO test this
@@ -59,8 +68,19 @@
     }
 
     doc.tokenizeOnTheseArray = punctuationArray.concat(wordDelimitersArray);
-    doc.tokenizeOnTheseRegExp = new RegExp('([' + doc.tokenizeOnTheseArray.join('') + '])', 'g');
 
+    /**
+    Add language specific punctionation, and word boundary morphemesArray
+    */
+    if (!doc.language && doc.orthography.indexOf('。') > -1) {
+      doc.language = {
+        iso: 'ja'
+      };
+      doc.tokenizeOnTheseArray = doc.tokenizeOnTheseArray.concat(defaults.languages.ja.punctuationArray);
+      wordBoundaryMorphemes = wordBoundaryMorphemes.concat(defaults.languages.ja.wordBoundaryMorphemes);
+    }
+
+    doc.tokenizeOnTheseRegExp = new RegExp('([' + doc.tokenizeOnTheseArray.join('') + '])', 'g');
     if (wordBoundaryMorphemes && wordBoundaryMorphemes.length > 0) {
       doc.wordBoundaryMorphemesRegExp = new RegExp('([' + wordBoundaryMorphemes.join() + '])', 'g');
       text = text.replace(doc.wordBoundaryMorphemesRegExp, ' $1 ');

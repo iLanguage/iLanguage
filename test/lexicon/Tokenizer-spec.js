@@ -46,6 +46,17 @@ describe('Tokenizer construction', function() {
     expect(doc.orthographicWords).toEqual(['This', 'has', 'BBB', 'rewrite', 'rules']);
   });
 
+  describe('language detection', function() {
+    describe('japanese', function() {
+      it('should detect japanese', function() {
+        var doc = Tokenizer.tokenizeInput({
+          orthography: '伊豆の伊東にヒロポン屋というものが存在している。旅館の番頭にさそわれてヤキトリ屋へ一パイのみに行って、元ダンサーという女中を相手にのんでいると、まッ黒いフロシキ包み（一尺四方ぐらい）を背負ってはいってきた二十五六の青年がある。女中がついと立って何か話していたが、二人でトントン二階へあがっていった。 三分ぐらいで降りて戻ってきたが、男が立ち去ると、 「あの人、',
+        });
+        expect(doc.orthographicWords).toEqual([ '伊豆', 'の', '伊東', 'に', 'ヒロポン屋というも', 'の', 'が存在している', '旅館', 'の', '番頭', 'に', 'さそわれてヤキトリ屋へ一パイ', 'の', 'み', 'に', '行って', '元ダンサ', 'という女中を相手', 'に', 'の', 'んでいると', 'まッ黒いフロシキ包み（一尺四方ぐらい）を背負ってはいってきた二十五六', 'の', '青年がある', '女中がついと立って何か話していたが', '二人でトントン二階へあがっていった', '三分ぐらいで降りて戻ってきたが', '男が立ち去ると', 'あ', 'の', '人' ]);
+      });
+    });
+  });
+
   describe('morphemeSegmentationOptions', function() {
     it('should create an array of words if a segmenter\'s rules are not downloaded yet ', function() {
       var doc = Tokenizer.tokenizeInput({
