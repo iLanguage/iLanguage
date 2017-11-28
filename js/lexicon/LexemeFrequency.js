@@ -80,6 +80,7 @@
 
     /* convert the frequency map into an array of words with more meta data */
     obj.wordFrequencies = [];
+    var maxCount = 0;
     // console.log(frequencyMap);
     for (var caseGroupedWord in frequencyMap) {
       if (!frequencyMap.hasOwnProperty(caseGroupedWord)) {
@@ -106,10 +107,18 @@
       if (wordEntry.count > mostPopularCaseCount) {
         wordEntry.alternates = reverseProtectionAgainstReservedWords(frequencyMap[caseGroupedWord]);
       }
+      if (wordEntry.count > maxCount) {
+        maxCount = wordEntry.count;
+      }
+
       obj.wordFrequencies.push(wordEntry);
     }
     // console.log(obj.wordFrequencies);
 
+    obj.wordFrequencies.forEach(function(wordEntry){
+      wordEntry.rank = (wordEntry.count / obj.wordFrequencies.length);
+      wordEntry.normalizedCount = (wordEntry.count / maxCount);
+    });
 
     /* sort the morphems by length */
     obj.prefixesArray.sort(function(a, b) {
@@ -200,21 +209,12 @@
       // console.log('Setting cutoffPercent automatically ' + typology);
     }
 
-    var maxCount = 0;
-    wordFrequencies.forEach(function(word) {
-      if (word.count > maxCount) {
-        maxCount = word.count;
-      }
-    });
-
     // console.log('calculateNonContentWords', wordFrequencies);
     // console.log('calculateNonContentWords', obj.nonContentWordsArray);
     for (var oIndex in wordFrequencies) {
       if (!wordFrequencies.hasOwnProperty(oIndex)) {
         continue;
       }
-      wordFrequencies[oIndex].rank = (wordFrequencies[oIndex].count / obj.vocabSize);
-      wordFrequencies[oIndex].normalizedCount = (wordFrequencies[oIndex].count / maxCount);
       if (obj.userSpecifiedNonContentWords) {
         if (obj.nonContentWordsArray.indexOf(wordFrequencies[oIndex].orthography.toLocaleLowerCase()) > -1) {
           wordFrequencies[oIndex].categories = ['userDefinedNonContentWord'];

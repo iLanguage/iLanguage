@@ -28,25 +28,39 @@ describe('Basic NLP tasks', function() {
 				alternates: {
 					A: 1,
 					a: 1
-				}
+				},
+				rank: 0.2857142857142857,
+				normalizedCount: 1
 			}, {
 				orthography: 'cloud',
-				count: 1
+				count: 1,
+				rank: 0.14285714285714285,
+				normalizedCount: 0.5
 			}, {
 				orthography: 'is',
-				count: 1
+				count: 1,
+				rank: 0.14285714285714285,
+				normalizedCount: 0.5
 			}, {
 				orthography: 'visible',
-				count: 1
+				count: 1,
+				rank: 0.14285714285714285,
+				normalizedCount: 0.5
 			}, {
 				orthography: 'mass',
-				count: 1
+				count: 1,
+				rank: 0.14285714285714285,
+				normalizedCount: 0.5
 			}, {
 				orthography: 'of',
-				count: 1
+				count: 1,
+				rank: 0.14285714285714285,
+				normalizedCount: 0.5
 			}, {
 				orthography: 'H20',
-				count: 1
+				count: 1,
+				rank: 0.14285714285714285,
+				normalizedCount: 0.5
 			}]);
 	});
 
